@@ -52,7 +52,30 @@ def main(argv=None) -> int:
 
     try:
         if args.cmd == "check":
-            _print(client.health_check())
+            # Ce qui a été lu dans .env (masqué) — pour repérer typo/espace.
+            print("=== Ce que je lis dans .env ===")
+            print(f"  API_URL      : {client.api_url}")
+            print(f"  EMAIL        : {client.email!r}")
+            pw = client.password or ""
+            print(f"  PASSWORD     : {'*' * len(pw)}  ({len(pw)} caractères)")
+            tok = client.database_token or ""
+            print(f"  TOKEN        : {'défini (' + str(len(tok)) + ' car.)' if tok else 'vide'}")
+            print()
+            result = client.health_check()
+            print("=== Résultat de la connexion ===")
+            _print(result)
+            print()
+            token_ok = result.get("token") == "OK"
+            jwt_ok = result.get("jwt") == "OK"
+            if token_ok and jwt_ok:
+                print("✅ TOUT est connecté : données ET création de bases possibles.")
+            elif token_ok:
+                print("✅ JETON OK → Claude peut LIRE/ÉCRIRE des données tout de suite.")
+                print("ℹ️  Mot de passe non validé → la CRÉATION de bases se fera plus tard.")
+            elif jwt_ok:
+                print("✅ MOT DE PASSE OK → création de bases possible.")
+            else:
+                print("❌ Ni le jeton ni le mot de passe ne sont acceptés. Copiez-moi ce résultat.")
         elif args.cmd == "workspaces":
             _print(client.list_workspaces())
         elif args.cmd == "databases":

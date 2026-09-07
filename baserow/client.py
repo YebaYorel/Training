@@ -291,13 +291,41 @@ class BaserowClient:
 
         return {"table": table, "fields": created}
 
+    def check_token(self) -> bool:
+        """Valide le Database Token seul (sans mot de passe)."""
+        if not self.database_token:
+            raise BaserowError("BASEROW_TOKEN non défini.")
+        self._request("GET", "/api/database/tokens/check/", auth="token")
+        return True
+
     def health_check(self) -> Dict[str, Any]:
-        """Valide la configuration : auth JWT + accès workspaces."""
-        result: Dict[str, Any] = {"api_url": self.api_url, "jwt": False, "token": bool(self.database_token)}
-        self._authenticate()
-        result["jwt"] = True
-        ws = self.list_workspaces()
-        result["workspaces"] = [{"id": w["id"], "name": w["name"]} for w in ws]
+        """Diagnostic tolérant : teste le jeton ET le mot de passe séparément,
+        sans planter si l'un des deux échoue. Renvoie un état lisible."""
+        result: Dict[str, Any] = {"api_url": self.api_url}
+
+        # --- Jeton (données) ---
+        if self.database_token:
+            try:
+                self.check_token()
+                result["token"] = "OK"
+            except BaserowError as exc:
+                result["token"] = f"ÉCHEC ({exc.status}): {exc.body}"
+        else:
+            result["token"] = "absent"
+
+        # --- Mot de passe (structure) ---
+        has_pw = bool(self.email and self.password and self.password not in ("change-me", ""))
+        if has_pw:
+            try:
+                self._authenticate()
+                ws = self.list_workspaces()
+                result["jwt"] = "OK"
+                result["workspaces"] = [{"id": w["id"], "name": w["name"]} for w in ws]
+            except BaserowError as exc:
+                result["jwt"] = f"ÉCHEC ({exc.status}): {exc.body}"
+        else:
+            result["jwt"] = "absent"
+
         return result
 
 
