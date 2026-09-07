@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "baserow": {
+      "command": "python3",
+      "args": ["baserow_mcp_server.py"],
+      "env": {}
+    }
+  }
+}

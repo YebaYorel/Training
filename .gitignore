@@ -1,0 +1,17 @@
+# Secrets — NE JAMAIS committer (RGPD art. 32 / sécurité des identifiants)
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+
+# Divers
+.DS_Store
+*.log
