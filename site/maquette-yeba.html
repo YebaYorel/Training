@@ -1,0 +1,1007 @@
+<title>Maquette YEBA FORMATIONS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+
+<style>
+:root{
+  --bleu:#1B3A6B; --bleu-clair:#2C5490; --or:#C9A84C; --or-pale:#E3CB8C;
+  --encre:#121212;
+  --fond:#F5F6F9; --surface:#FFFFFF; --bord:#DDE1E9;
+  --texte:#15181F; --sourdine:#5A6274;
+  --bande:#1B3A6B; --bande-texte:#FFFFFF; --bande-sourdine:#B9C6DC;
+  --ok:#1E6B4F; --alerte:#8A5A12;
+  --r:10px; --max:72rem;
+  --f-titre:'Montserrat',system-ui,-apple-system,sans-serif;
+  --f-texte:'Inter',system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fond:#0E1116; --surface:#161B24; --bord:#2A3240;
+    --texte:#E8EAEF; --sourdine:#9AA4B6;
+    --bande:#141A25; --bande-texte:#F2F4F8; --bande-sourdine:#9AA4B6;
+    --bleu-clair:#7FA3D8; --ok:#5FCFA0; --alerte:#E0B45F;
+  }
+}
+:root[data-theme="dark"]{
+  --fond:#0E1116; --surface:#161B24; --bord:#2A3240;
+  --texte:#E8EAEF; --sourdine:#9AA4B6;
+  --bande:#141A25; --bande-texte:#F2F4F8; --bande-sourdine:#9AA4B6;
+  --bleu-clair:#7FA3D8; --ok:#5FCFA0; --alerte:#E0B45F;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--fond);color:var(--texte);
+  font-family:var(--f-texte);font-size:1.0625rem;line-height:1.65;
+  -webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--f-titre);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.2vw,2.125rem);font-weight:700;letter-spacing:-.015em}
+h3{font-size:1.1875rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:clamp(1rem,4vw,2rem)}
+.pile{display:flex;flex-direction:column}
+.eyebrow{font-family:var(--f-titre);font-size:.75rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sourdine)}
+.lede{font-size:clamp(1.0625rem,1.9vw,1.25rem);color:var(--sourdine);max-width:60ch}
+.mesure{max-width:65ch}
+
+/* ---------- Entête ---------- */
+.entete{position:sticky;top:0;z-index:50;background:var(--surface);
+  border-bottom:1px solid var(--bord)}
+.entete__in{display:flex;align-items:center;gap:1rem;
+  min-height:4.25rem;flex-wrap:wrap}
+.marque{display:flex;align-items:center;gap:.7rem;text-decoration:none;
+  margin-right:auto;padding:.25rem 0}
+.marque svg{width:44px;height:auto;flex:none}
+.marque__t{font-family:var(--f-titre);font-weight:800;font-size:1.0625rem;
+  letter-spacing:.01em;line-height:1.1}
+.marque__s{font-family:var(--f-titre);font-weight:600;font-size:.6875rem;
+  letter-spacing:.2em;color:var(--sourdine);text-transform:uppercase}
+.nav{display:flex;gap:.15rem;flex-wrap:wrap}
+.nav a{font-size:.9375rem;font-weight:500;text-decoration:none;color:var(--sourdine);
+  padding:.5rem .7rem;border-radius:6px;white-space:nowrap}
+.nav a:hover{color:var(--texte);background:var(--fond)}
+.nav a[aria-current="page"]{color:var(--texte);font-weight:600;
+  box-shadow:inset 0 -2px 0 var(--or)}
+.theme-btn{border:1px solid var(--bord);background:transparent;color:var(--sourdine);
+  border-radius:6px;width:2.25rem;height:2.25rem;cursor:pointer;font-size:1rem;flex:none}
+.theme-btn:hover{color:var(--texte)}
+:focus-visible{outline:3px solid var(--bleu-clair);outline-offset:2px;border-radius:3px}
+
+/* ---------- Blocs ---------- */
+.sect{padding-block:clamp(2.75rem,6vw,4.5rem)}
+.sect--bande{background:var(--bande);color:var(--bande-texte)}
+.sect--bande .lede,.sect--bande .eyebrow{color:var(--bande-sourdine)}
+.sect--bande h2,.sect--bande h3{color:var(--bande-texte)}
+.tete{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--f-titre);font-weight:700;font-size:.9375rem;
+  min-height:3rem;padding:.75rem 1.5rem;border-radius:8px;
+  text-decoration:none;cursor:pointer;border:2px solid var(--bleu);
+  background:var(--bleu);color:#fff}
+.btn:hover{background:var(--bleu-clair);border-color:var(--bleu-clair)}
+.btn--fant{background:transparent;color:var(--texte);border-color:var(--bord)}
+.btn--fant:hover{background:var(--surface);border-color:var(--sourdine)}
+.sect--bande .btn{background:#fff;border-color:#fff;color:var(--bleu)}
+.sect--bande .btn:hover{background:var(--or-pale);border-color:var(--or-pale)}
+.sect--bande .btn--fant{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.sect--bande .btn--fant:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap}
+
+.grille{display:grid;gap:1.25rem}
+@media (min-width:44rem){.g2{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:56rem){.g3{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:44rem){.g4{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.g4{grid-template-columns:repeat(4,1fr)}}
+
+.carte{background:var(--surface);border:1px solid var(--bord);border-radius:var(--r);
+  padding:1.5rem;display:flex;flex-direction:column;gap:.6rem}
+.carte h3{margin-bottom:.15rem}
+.carte p{color:var(--sourdine);font-size:.9688rem}
+.carte__pied{margin-top:auto;padding-top:.9rem;display:flex;gap:.6rem;
+  align-items:baseline;flex-wrap:wrap;font-size:.875rem;color:var(--sourdine)}
+
+/* ---------- Héros ---------- */
+.hero{position:relative;background:var(--bande);color:var(--bande-texte);
+  overflow:hidden;padding-block:clamp(3rem,7vw,5rem)}
+.hero__reseau{position:absolute;inset:0;opacity:.16;pointer-events:none}
+.hero__in{position:relative;display:grid;gap:2.5rem}
+@media (min-width:60rem){.hero__in{grid-template-columns:1.15fr .85fr;align-items:start}}
+.hero h1{color:#fff}
+.hero__sub{font-size:clamp(1.0625rem,2vw,1.3125rem);color:var(--bande-sourdine);
+  max-width:52ch;margin-top:1rem}
+.filet{width:3.5rem;height:3px;background:var(--or);border-radius:2px}
+
+/* Panneau des échéances : instrument, pas décor */
+.panneau{background:rgba(255,255,255,.055);border:1px solid rgba(201,168,76,.4);
+  border-radius:var(--r);padding:1.25rem}
+.panneau__t{font-family:var(--f-titre);font-size:.75rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--or);margin-bottom:.9rem}
+.ech{display:grid;grid-template-columns:auto 1fr;gap:.6rem .85rem;align-items:start;
+  padding-block:.7rem;border-top:1px solid rgba(255,255,255,.12)}
+.ech:first-of-type{border-top:0;padding-top:0}
+.pastille{font-size:.6875rem;font-weight:700;font-family:var(--f-titre);
+  letter-spacing:.06em;padding:.2rem .5rem;border-radius:99px;white-space:nowrap;
+  text-transform:uppercase}
+.pastille--actif{background:var(--or);color:#121212}
+.pastille--venir{background:rgba(255,255,255,.16);color:#fff}
+.ech__t{font-weight:600;font-size:.9375rem;color:#fff}
+.ech__d{font-size:.8438rem;color:var(--bande-sourdine);
+  font-variant-numeric:tabular-nums}
+.panneau__note{font-size:.8125rem;color:var(--bande-sourdine);margin-top:.9rem;
+  padding-top:.9rem;border-top:1px solid rgba(255,255,255,.12)}
+
+/* ---------- Preuves / certifications ---------- */
+.certs{display:grid;gap:.75rem}
+@media (min-width:40rem){.certs{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:64rem){.certs{grid-template-columns:repeat(4,1fr)}}
+.cert{background:var(--surface);border:1px solid var(--bord);border-radius:8px;
+  padding:.9rem 1rem;display:flex;flex-direction:column;gap:.15rem}
+.cert__n{font-family:var(--f-titre);font-weight:700;font-size:.9375rem}
+.cert__d{font-size:.8125rem;color:var(--sourdine);font-variant-numeric:tabular-nums}
+
+/* ---------- Listes ---------- */
+.liste{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:.65rem}
+.liste li{display:grid;grid-template-columns:1.15rem 1fr;gap:.7rem;
+  font-size:.9688rem;color:var(--sourdine)}
+.liste li::before{content:"";width:.5rem;height:.5rem;border-radius:2px;
+  background:var(--or);margin-top:.5rem}
+.sect--bande .liste li{color:var(--bande-sourdine)}
+
+/* ---------- Tableaux ---------- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--bord);border-radius:var(--r);
+  background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.9375rem}
+th,td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--bord);
+  vertical-align:top}
+th{font-family:var(--f-titre);font-size:.75rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--sourdine)}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- Encadré légal ---------- */
+.legal{border:1px solid var(--bord);border-left:4px solid var(--or);
+  border-radius:var(--r);background:var(--surface);padding:1.5rem;
+  display:flex;flex-direction:column;gap:.9rem}
+.legal h3{font-size:1.0625rem}
+.legal p,.legal li{font-size:.9375rem;color:var(--sourdine)}
+.legal ol{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.5rem}
+.ref{font-size:.8125rem;color:var(--sourdine);font-style:italic}
+
+/* ---------- À compléter ---------- */
+.acompl{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;
+  font-family:var(--f-titre);font-weight:700;letter-spacing:.05em;
+  background:rgba(201,168,76,.18);color:var(--alerte);
+  border:1px dashed var(--or);border-radius:5px;padding:.1rem .45rem}
+
+/* ---------- Portrait ---------- */
+.portrait{display:grid;gap:2rem}
+@media (min-width:52rem){.portrait{grid-template-columns:.8fr 1.2fr}}
+.photo{aspect-ratio:4/5;border-radius:var(--r);border:1px solid var(--bord);
+  background:linear-gradient(160deg,var(--bleu),var(--encre));
+  display:flex;align-items:flex-end;padding:1.25rem;color:#fff}
+.photo span{font-size:.8125rem;color:var(--or-pale)}
+
+/* ---------- Pied ---------- */
+.pied{background:var(--encre);color:#E8EAEF;padding-block:2.75rem 2rem;margin-top:2rem}
+.pied a{color:#E8EAEF}
+.pied__g{display:grid;gap:2rem}
+@media (min-width:52rem){.pied__g{grid-template-columns:1.4fr 1fr 1fr}}
+.pied h4{font-size:.75rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--or);margin-bottom:.8rem}
+.pied ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem}
+.pied a{font-size:.9063rem;text-decoration:none;opacity:.85}
+.pied a:hover{opacity:1;text-decoration:underline}
+.pied__bas{margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.14);
+  font-size:.8125rem;color:#9AA4B6}
+.lien-cookie{background:none;border:0;color:inherit;font:inherit;
+  text-decoration:underline;cursor:pointer;padding:0}
+
+.page{display:none}
+.page[data-actif]{display:block}
+@media (prefers-reduced-motion:no-preference){
+  .page[data-actif]{animation:entre .3s ease-out}
+  @keyframes entre{from{opacity:.6;transform:translateY(6px)}to{opacity:1;transform:none}}
+}
+.saut{position:absolute;left:-9999px;background:var(--bleu);color:#fff;
+  padding:.75rem 1rem;z-index:100}
+.saut:focus{left:1rem;top:1rem;position:fixed}
+</style>
+
+<a class="saut" href="#principal">Aller au contenu</a>
+
+<header class="entete">
+  <div class="wrap entete__in">
+    <a class="marque" href="#accueil" data-lien>
+      <svg viewBox="0 0 240 150" aria-hidden="true">
+        <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <g stroke="var(--bleu-clair)" stroke-width="6"><path d="M62 118 L20 118 L41 74 Z"/><path d="M41 74 L41 118"/></g>
+          <g stroke="var(--or)" stroke-width="6"><path d="M220 118 L178 118 L199 74 Z"/><path d="M199 74 L199 118"/></g>
+          <g stroke="var(--bleu-clair)" stroke-width="7"><path d="M172 118 L68 118 L120 46 Z"/><path d="M94 82 L146 82 M120 46 L120 118"/></g>
+          <g stroke="var(--or)" stroke-width="4"><path d="M41 74 L94 82 M199 74 L146 82"/></g>
+          <circle cx="120" cy="30" r="9" stroke="var(--or)" stroke-width="6"/>
+          <path d="M120 39 L120 46" stroke="var(--or)" stroke-width="6"/>
+        </g>
+      </svg>
+      <span class="pile">
+        <span class="marque__t">YEBA</span>
+        <span class="marque__s">Formations</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#accueil" data-lien>Accueil</a>
+      <a href="#formations" data-lien>Formations</a>
+      <a href="#conseil" data-lien>Conseil &amp; audit</a>
+      <a href="#financements" data-lien>Financements</a>
+      <a href="#tarifs" data-lien>Tarifs</a>
+      <a href="#parcours" data-lien>Mon parcours</a>
+      <a href="#references" data-lien>Références</a>
+      <a href="#contact" data-lien>Contact</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Changer de thème">◐</button>
+  </div>
+</header>
+
+<main id="principal">
+
+<!-- ══════════════════ ACCUEIL ══════════════════ -->
+<section class="page" data-page="accueil" data-actif>
+  <div class="hero">
+    <svg class="hero__reseau" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+      <defs><pattern id="res" width="64" height="64" patternUnits="userSpaceOnUse">
+        <path d="M32 0 L64 18 L64 46 L32 64 L0 46 L0 18 Z" fill="none"
+              stroke="#C9A84C" stroke-width=".7"/>
+        <circle cx="32" cy="0" r="1.6" fill="#C9A84C"/>
+        <circle cx="0" cy="46" r="1.6" fill="#C9A84C"/>
+        <circle cx="64" cy="18" r="1.6" fill="#C9A84C"/>
+      </pattern></defs>
+      <rect width="100%" height="100%" fill="url(#res)"/>
+    </svg>
+    <div class="wrap hero__in">
+      <div class="pile" style="gap:1.5rem">
+        <div class="filet"></div>
+        <h1>Vos équipes utilisent déjà l’IA.</h1>
+        <p class="hero__sub">Reste à savoir avec quelles règles, et où partent vos
+          données. Je forme vos salariés, je mets vos usages en conformité, et je
+          vous laisse les documents qui le prouvent.</p>
+        <div class="actions">
+          <a class="btn" href="#contact" data-lien>Parler de votre situation</a>
+          <a class="btn btn--fant" href="#formations" data-lien>Voir les formations</a>
+        </div>
+        <p style="font-size:.875rem;color:var(--bande-sourdine)">
+          Organisme certifié Qualiopi · La Réunion · Intra et inter-entreprise
+        </p>
+      </div>
+
+      <aside class="panneau">
+        <p class="panneau__t">Ce qui s’applique aujourd’hui</p>
+        <div class="ech">
+          <span class="pastille pastille--actif">En vigueur</span>
+          <span>
+            <span class="ech__t">Culture de l’IA du personnel</span><br>
+            <span class="ech__d">Règlement (UE) 2024/1689, art. 4 — depuis le 02/02/2025</span>
+          </span>
+        </div>
+        <div class="ech">
+          <span class="pastille pastille--actif">En vigueur</span>
+          <span>
+            <span class="ech__t">Transparence des systèmes d’IA</span><br>
+            <span class="ech__d">Règlement (UE) 2024/1689, art. 50 — depuis le 02/08/2026</span>
+          </span>
+        </div>
+        <div class="ech">
+          <span class="pastille pastille--venir">À venir</span>
+          <span>
+            <span class="ech__t">Systèmes à haut risque, annexe III</span><br>
+            <span class="ech__d">Reporté au 02/12/2027 — règlement (UE) 2026/1744</span>
+          </span>
+        </div>
+        <p class="panneau__note">Le report du 27 juillet 2026 ne touche ni
+          l’article 4 ni l’article 50. Un report n’est pas une dispense —
+          c’est le contresens le plus répandu depuis cet été.</p>
+      </aside>
+    </div>
+  </div>
+
+  <div class="sect">
+    <div class="wrap pile" style="gap:1.75rem">
+      <div class="tete" style="margin:0">
+        <p class="eyebrow">Ce que je fais</p>
+        <h2>Trois portes d’entrée</h2>
+      </div>
+      <div class="grille g3">
+        <article class="carte">
+          <h3>Former vos équipes</h3>
+          <p>IA générative, automatisation, RGPD et cybersécurité, vente,
+            management. En intra dans vos locaux, ou en inter.</p>
+          <div class="carte__pied"><a href="#formations" data-lien>Le catalogue →</a></div>
+        </article>
+        <article class="carte">
+          <h3>Mettre en place l’IA</h3>
+          <p>Automatiser ce qui se répète, relier vos outils, construire la base
+            de données qui vous manque. Puis vous en laisser la main.</p>
+          <div class="carte__pied"><a href="#conseil" data-lien>Conseil &amp; audit →</a></div>
+        </article>
+        <article class="carte">
+          <h3>Vous mettre en conformité</h3>
+          <p>Registre des traitements, qualification de vos usages d’IA,
+            documents à produire. Avec les preuves à présenter en contrôle.</p>
+          <div class="carte__pied"><a href="#conseil" data-lien>Conseil &amp; audit →</a></div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="sect" style="padding-top:0">
+    <div class="wrap pile" style="gap:1.25rem">
+      <div class="tete" style="margin:0">
+        <p class="eyebrow">Vérifiable</p>
+        <h2>Enregistrements et certifications</h2>
+      </div>
+      <div class="certs">
+        <div class="cert"><span class="cert__n">Qualiopi</span>
+          <span class="cert__d">n° 25FOF02027.1 — actions de formation</span></div>
+        <div class="cert"><span class="cert__n">Déclaration d’activité</span>
+          <span class="cert__d">n° 04973676397 — Préfet de La Réunion</span></div>
+        <div class="cert"><span class="cert__n">SIRET</span>
+          <span class="cert__d">814 622 262 00032</span></div>
+        <div class="cert"><span class="cert__n">Référent handicap</span>
+          <span class="cert__d">en organisme de formation</span></div>
+      </div>
+      <p class="ref">L’enregistrement de la déclaration d’activité ne vaut pas
+        agrément de l’État.</p>
+    </div>
+  </div>
+
+  <div class="sect sect--bande">
+    <div class="wrap pile" style="gap:1.5rem">
+      <div class="tete" style="margin:0">
+        <p class="eyebrow">Avant de choisir</p>
+        <h2>La question que tout le monde pose en premier</h2>
+      </div>
+      <p class="lede">« Qui paie ? » — 80 % des entreprises réunionnaises sont des
+        TPE-PME, et la plupart ignorent qu’elles cotisent déjà pour la formation
+        de leurs salariés. Voyons ce à quoi vous avez droit avant de parler prix.</p>
+      <div class="actions">
+        <a class="btn" href="#financements" data-lien>Les financements possibles</a>
+        <a class="btn btn--fant" href="#tarifs" data-lien>Les tarifs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FORMATIONS ══════════════════ -->
+<section class="page" data-page="formations">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Catalogue</p>
+        <h1>Formations</h1>
+        <p class="lede">Chaque formation fait l’objet d’un test de positionnement
+          avant l’entrée, d’une évaluation des acquis à la sortie, et d’une
+          attestation individuelle. Toutes sont adaptables en intra.</p>
+      </div>
+
+      <div class="grille g2">
+        <article class="carte">
+          <p class="eyebrow">IA générative</p>
+          <h3>IA Générative</h3>
+          <p>Comprendre le fonctionnement et les limites, rédiger des consignes
+            efficaces, appliquer à vos tâches, maîtriser les risques.</p>
+          <div class="carte__pied"><strong>14 h</strong> · 2 jours · inter ou intra</div>
+        </article>
+        <article class="carte">
+          <p class="eyebrow">IA générative</p>
+          <h3>Copilot pour Microsoft 365</h3>
+          <p>La méthode des 4 P : périmètre, prompt, production, preuve. Trois
+            parcours métier complets, pas une visite guidée d’applications.</p>
+          <div class="carte__pied"><strong>14 h</strong> · 2 jours · intra</div>
+        </article>
+        <article class="carte">
+          <p class="eyebrow">Automatisation</p>
+          <h3>Automatisation</h3>
+          <p>Repérer ce qui se répète, concevoir un enchaînement, le construire
+            sans développer, le sécuriser et mesurer le gain réel.</p>
+          <div class="carte__pied"><strong>14 h</strong> <span class="acompl">durée à confirmer</span></div>
+        </article>
+        <article class="carte">
+          <p class="eyebrow">Conformité</p>
+          <h3>RGPD &amp; Cybersécurité</h3>
+          <p>Qualifier vos traitements, tenir un registre, répondre aux personnes,
+            reconnaître les menaces et réagir à une violation de données.</p>
+          <div class="carte__pied"><strong>14 h</strong> <span class="acompl">durée à confirmer</span></div>
+        </article>
+        <article class="carte">
+          <p class="eyebrow">Commercial</p>
+          <h3>Initiation à la vente</h3>
+          <p>Les étapes de l’entretien, la découverte du besoin, l’argumentation
+            par le bénéfice, les objections et la conclusion.</p>
+          <div class="carte__pied"><strong>7 h</strong> · 1 jour · inter ou intra</div>
+        </article>
+        <article class="carte">
+          <p class="eyebrow">Management</p>
+          <h3>Management de proximité</h3>
+          <p>Posture, consignes et délégation, recadrage factuel, pilotage de
+            l’activité, périmètre de décision.</p>
+          <div class="carte__pied"><strong>7 h</strong> · 1 jour · sur mesure</div>
+        </article>
+      </div>
+
+      <div class="legal">
+        <h3>Ce qui est compris dans chaque formation</h3>
+        <ul class="liste">
+          <li>Un test de positionnement adressé avant l’entrée, exploité pour
+            adapter le contenu au niveau réel du groupe</li>
+          <li>Les supports, remis à chaque stagiaire</li>
+          <li>Une évaluation des acquis sur grille critériée</li>
+          <li>Une attestation individuelle de fin de formation</li>
+          <li>Une évaluation de satisfaction à chaud, puis à froid à 60 jours</li>
+        </ul>
+        <p class="ref">Supports projetés en corps 26 points minimum, contrastes
+          conformes au niveau AA du référentiel WCAG 2.1. Toute adaptation
+          nécessaire est étudiée avec vous avant l’entrée en formation — sans
+          qu’aucun motif médical ne soit demandé ni conservé.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="#contact" data-lien>Demander un programme détaillé</a>
+        <a class="btn btn--fant" href="#financements" data-lien>Voir les financements</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONSEIL ══════════════════ -->
+<section class="page" data-page="conseil">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Au-delà de la formation</p>
+        <h1>Conseil &amp; audit</h1>
+        <p class="lede">Former ne suffit pas toujours. Parfois il faut construire
+          l’outil, ou vérifier que ce qui tourne déjà est en règle.</p>
+      </div>
+
+      <div class="grille g3">
+        <article class="carte">
+          <h3>Audit RGPD</h3>
+          <p>Cartographie de vos traitements, registre, durées de conservation,
+            contrats de sous-traitance, information des personnes. Vous repartez
+            avec un plan d’action daté et priorisé.</p>
+        </article>
+        <article class="carte">
+          <h3>Qualification IA Act</h3>
+          <p>Où se situent vos usages d’IA dans le règlement européen, quelles
+            obligations s’appliquent déjà, ce qu’il faut documenter. Une note
+            d’analyse écrite, datée et signée.</p>
+        </article>
+        <article class="carte">
+          <h3>Mise en place d’outils</h3>
+          <p>Automatiser un processus, relier vos logiciels, structurer la base
+            de données qui vous manque. Construit avec vous, documenté, et
+            repris en main par vos équipes.</p>
+        </article>
+      </div>
+
+      <div class="legal">
+        <h3>Comment je travaille</h3>
+        <ol>
+          <li><strong>Un premier échange, gratuit.</strong> Trente minutes pour
+            comprendre votre situation. Si je ne suis pas le bon interlocuteur,
+            je vous le dis.</li>
+          <li><strong>Une proposition écrite.</strong> Périmètre, livrables,
+            délai, prix. Rien ne démarre sans votre accord.</li>
+          <li><strong>La mission.</strong> Vous voyez l’avancement, vous validez
+            les livrables au fur et à mesure.</li>
+          <li><strong>La reprise en main.</strong> Tout ce que je construis, vous
+            devez pouvoir le faire tourner sans moi. C’est la condition de fin
+            de mission.</li>
+        </ol>
+        <p class="ref">Les apports en matière juridique et réglementaire sont
+          dispensés à titre de repères opérationnels et ne constituent pas une
+          consultation juridique.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FINANCEMENTS ══════════════════ -->
+<section class="page" data-page="financements">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Qui paie</p>
+        <h1>Financements</h1>
+        <p class="lede">La plupart des dirigeants que je rencontre ignorent
+          qu’ils cotisent déjà pour la formation de leurs salariés. Voici les
+          voies possibles, et ce qu’elles impliquent.</p>
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <caption class="visually-hidden"></caption>
+          <thead><tr>
+            <th scope="col">Voie</th><th scope="col">Pour qui</th>
+            <th scope="col">Ce qu’il faut anticiper</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>OPCO</strong></td>
+              <td>Salariés d’une entreprise adhérente</td>
+              <td class="num">Dossier à déposer <strong>avant</strong> le démarrage</td></tr>
+            <tr><td><strong>Plan de développement des compétences</strong></td>
+              <td>Salariés, à l’initiative de l’employeur</td>
+              <td>Budget interne, pas de dossier externe</td></tr>
+            <tr><td><strong>France Travail</strong></td>
+              <td>Demandeurs d’emploi</td>
+              <td>Accord préalable du conseiller</td></tr>
+            <tr><td><strong>Région Réunion</strong></td>
+              <td>Selon les dispositifs ouverts</td>
+              <td>Dépend des appels en cours</td></tr>
+            <tr><td><strong>Financement personnel</strong></td>
+              <td>Vous financez vous-même</td>
+              <td>Régime protecteur — voir ci-dessous</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="legal">
+        <h3>Vous financez votre formation vous-même : ce que la loi vous garantit</h3>
+        <p>Lorsqu’une personne finance elle-même sa formation, ce n’est pas une
+          simple vente. Les articles <strong>L6353-3 à L6353-7 du Code du
+          travail</strong> imposent un cadre protecteur, d’ordre public.
+          Voici ce qu’il vous garantit, et ce que je m’engage à respecter :</p>
+        <ol>
+          <li><strong>Un contrat de formation professionnelle</strong> vous est
+            remis avant toute inscription. Il précise la nature, la durée, le
+            programme et l’objet de l’action, le niveau de connaissances
+            préalables requis, les conditions de déroulement, les diplômes et
+            titres du formateur, les modalités de paiement et les conditions
+            financières en cas d’abandon <span class="ref">(art. L6353-4)</span>.</li>
+          <li><strong>Dix jours pour changer d’avis.</strong> À compter de la
+            signature, vous pouvez vous rétracter par lettre recommandée avec
+            avis de réception. Sans motif. Sans pénalité
+            <span class="ref">(art. L6353-5)</span>.</li>
+          <li><strong>Aucune somme ne vous est demandée avant l’expiration de ce
+            délai.</strong> Ni acompte, ni arrhes, ni frais de dossier, ni frais
+            de réservation <span class="ref">(art. L6353-6)</span>.</li>
+          <li><strong>30 % au maximum</strong> peuvent être encaissés à
+            l’expiration du délai de rétractation
+            <span class="ref">(art. L6353-6)</span>.</li>
+          <li><strong>Le solde est échelonné</strong> au fur et à mesure du
+            déroulement de la formation <span class="ref">(art. L6353-6)</span>.</li>
+          <li><strong>En cas d’abandon</strong>, seules les prestations
+            effectivement réalisées sont dues, augmentées le cas échéant du
+            dédit prévu au contrat <span class="ref">(art. L6353-7)</span>.</li>
+        </ol>
+        <p class="ref">C’est la raison pour laquelle vous ne trouverez sur ce
+          site aucun bouton de paiement immédiat. Un organisme qui vous fait
+          payer avant l’expiration du délai de rétractation est en infraction.</p>
+      </div>
+
+      <div class="legal">
+        <h3>Et le CPF ?</h3>
+        <p>Le compte personnel de formation ne peut financer qu’une action
+          conduisant à une certification enregistrée au RNCP ou au répertoire
+          spécifique. <span class="acompl">à confirmer</span> — mes formations
+          actuelles ne sont pas enregistrées à ce titre. Je préfère vous le dire
+          franchement plutôt que de vous laisser déposer un dossier qui sera
+          refusé.</p>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="#contact" data-lien>Voir ce à quoi vous avez droit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TARIFS ══════════════════ -->
+<section class="page" data-page="tarifs">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Transparence</p>
+        <h1>Tarifs</h1>
+        <p class="lede">Les prix sont affichés pour que vous puissiez vous
+          situer sans avoir à demander. Chaque intervention fait ensuite l’objet
+          d’un devis écrit.</p>
+      </div>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th scope="col">Prestation</th><th scope="col">Base</th>
+            <th scope="col">À partir de</th>
+          </tr></thead>
+          <tbody>
+            <tr><td><strong>Formation inter-entreprise</strong><br>
+              <span class="ref">par stagiaire</span></td>
+              <td class="num">la journée (7 h)</td>
+              <td class="num"><span class="acompl">à compléter</span></td></tr>
+            <tr><td><strong>Formation intra-entreprise</strong><br>
+              <span class="ref">groupe complet, dans vos locaux</span></td>
+              <td class="num">la journée (7 h)</td>
+              <td class="num"><span class="acompl">à compléter</span></td></tr>
+            <tr><td><strong>Audit RGPD</strong></td>
+              <td class="num">forfait</td>
+              <td class="num"><span class="acompl">à compléter</span></td></tr>
+            <tr><td><strong>Qualification IA Act</strong></td>
+              <td class="num">forfait</td>
+              <td class="num"><span class="acompl">à compléter</span></td></tr>
+            <tr><td><strong>Mise en place d’outils</strong></td>
+              <td class="num">la journée</td>
+              <td class="num"><span class="acompl">à compléter</span></td></tr>
+            <tr><td><strong>Premier échange</strong></td>
+              <td class="num">30 minutes</td>
+              <td class="num"><strong>Gratuit</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grille g2">
+        <div class="legal">
+          <h3>Ce qui est compris</h3>
+          <ul class="liste">
+            <li>La conception et l’adaptation du contenu à votre contexte</li>
+            <li>L’animation</li>
+            <li>Les supports remis aux stagiaires</li>
+            <li>Le test de positionnement et l’évaluation des acquis</li>
+            <li>Les attestations et les pièces de traçabilité</li>
+          </ul>
+        </div>
+        <div class="legal">
+          <h3>Ce qui vient en plus</h3>
+          <ul class="liste">
+            <li>La location de salle, si la formation ne se tient pas chez vous</li>
+            <li>La restauration et l’hébergement des stagiaires</li>
+            <li>Les déplacements hors zone habituelle</li>
+            <li>Les licences logicielles nécessaires aux ateliers</li>
+          </ul>
+          <p class="ref">Régime de TVA : <span class="acompl">à compléter</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ PARCOURS ══════════════════ -->
+<section class="page" data-page="parcours">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2.5rem">
+      <div class="tete">
+        <p class="eyebrow">Qui vous forme</p>
+        <h1>Aurélien Lumeka</h1>
+      </div>
+
+      <div class="portrait">
+        <div class="photo"><span>Portrait — à remplacer par une photo réelle</span></div>
+        <div class="pile" style="gap:1.25rem">
+          <p class="lede" style="color:var(--texte)">Je forme depuis 2021. J’ai
+            commencé par la vente, le management et les compétences relationnelles,
+            dans plusieurs centres de formation de l’île. Depuis 2026, je forme à
+            l’intelligence artificielle, je mets en place des outils en entreprise,
+            et j’accompagne sur le RGPD et l’IA Act.</p>
+          <p class="mesure" style="color:var(--sourdine)">Je dirige YEBA
+            FORMATIONS depuis avril 2021. Je ne prétends pas tout savoir sur
+            l’IA : le domaine bouge trop vite pour que quiconque le prétende. Ce
+            que je sais faire, c’est vérifier avant de vous l’enseigner, et vous
+            dire quand je ne sais pas.</p>
+          <p class="mesure" style="color:var(--sourdine)">Le marché de la
+            formation est en baisse. Je préfère être franc là-dessus : je ne
+            vends pas des journées, je vends ce qui reste une fois que je suis
+            parti. C’est pour cette raison que toute mission d’outillage se
+            termine par une reprise en main par vos équipes.</p>
+        </div>
+      </div>
+
+      <div class="pile" style="gap:1.25rem">
+        <div class="tete" style="margin:0">
+          <p class="eyebrow">Vérifiable</p>
+          <h2>Certifications et enregistrements</h2>
+        </div>
+        <div class="certs">
+          <div class="cert"><span class="cert__n">Qualiopi</span>
+            <span class="cert__d">n° 25FOF02027.1 — actions de formation</span></div>
+          <div class="cert"><span class="cert__n">Déclaration d’activité</span>
+            <span class="cert__d">n° 04973676397 — Préfet de La Réunion</span></div>
+          <div class="cert"><span class="cert__n">Google AI Specialist</span>
+            <span class="cert__d"><span class="acompl">année à préciser</span></span></div>
+          <div class="cert"><span class="cert__n">Google Professional AI</span>
+            <span class="cert__d"><span class="acompl">année à préciser</span></span></div>
+          <div class="cert"><span class="cert__n">SecNumAcadémie</span>
+            <span class="cert__d">ANSSI — cybersécurité</span></div>
+          <div class="cert"><span class="cert__n">MOOC RGPD</span>
+            <span class="cert__d">CNIL</span></div>
+          <div class="cert"><span class="cert__n">Référent handicap</span>
+            <span class="cert__d">en organisme de formation</span></div>
+          <div class="cert"><span class="cert__n">SIRET</span>
+            <span class="cert__d">814 622 262 00032</span></div>
+        </div>
+        <p class="ref">Les justificatifs sont communiqués sur simple demande.
+          L’enregistrement de la déclaration d’activité ne vaut pas agrément de
+          l’État.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ RÉFÉRENCES ══════════════════ -->
+<section class="page" data-page="references">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Ce qu’en disent les stagiaires</p>
+        <h1>Références</h1>
+        <p class="lede">Je ne publie que des retours nommés, avec l’accord écrit
+          de leur auteur. Un témoignage anonyme ne prouve rien.</p>
+      </div>
+
+      <div class="grille g3">
+        <article class="carte">
+          <p style="font-size:1.0625rem;color:var(--texte)">« <span class="acompl">verbatim à recueillir</span> »</p>
+          <div class="carte__pied"><strong>Prénom N.</strong> · Fonction · Entreprise</div>
+        </article>
+        <article class="carte">
+          <p style="font-size:1.0625rem;color:var(--texte)">« <span class="acompl">verbatim à recueillir</span> »</p>
+          <div class="carte__pied"><strong>Prénom N.</strong> · Fonction · Entreprise</div>
+        </article>
+        <article class="carte">
+          <p style="font-size:1.0625rem;color:var(--texte)">« <span class="acompl">verbatim à recueillir</span> »</p>
+          <div class="carte__pied"><strong>Prénom N.</strong> · Fonction · Entreprise</div>
+        </article>
+      </div>
+
+      <div class="grille g4">
+        <div class="cert"><span class="cert__n"><span class="acompl">chiffre</span></span>
+          <span class="cert__d">stagiaires formés</span></div>
+        <div class="cert"><span class="cert__n"><span class="acompl">chiffre</span></span>
+          <span class="cert__d">sessions réalisées</span></div>
+        <div class="cert"><span class="cert__n"><span class="acompl">%</span></span>
+          <span class="cert__d">taux de satisfaction</span></div>
+        <div class="cert"><span class="cert__n"><span class="acompl">%</span></span>
+          <span class="cert__d">taux de réussite aux évaluations</span></div>
+      </div>
+      <p class="ref">Ces indicateurs sont déjà suivis dans mon système de gestion
+        et sont mis à jour après chaque session.</p>
+
+      <div class="legal">
+        <h3>Comment ces retours sont recueillis</h3>
+        <p>Une évaluation de satisfaction est remise à chaud en fin de session, et
+          une seconde à froid, 60 jours plus tard, pour mesurer ce qui a
+          réellement été mis en pratique. Un témoignage n’est publié qu’avec
+          l’accord écrit de son auteur, révocable à tout moment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section class="page" data-page="contact">
+  <div class="sect">
+    <div class="wrap pile" style="gap:2rem">
+      <div class="tete">
+        <p class="eyebrow">Premier échange</p>
+        <h1>Parlons de votre situation</h1>
+        <p class="lede">Trente minutes, sans engagement. Si je ne suis pas le bon
+          interlocuteur pour votre besoin, je vous le dirai — et je vous
+          orienterai si je le peux.</p>
+      </div>
+
+      <div class="grille g2">
+        <form class="legal" style="gap:1.1rem" onsubmit="event.preventDefault();
+              this.querySelector('[data-msg]').hidden=false">
+          <h3>Décrivez votre besoin</h3>
+          <label class="pile" style="gap:.35rem">
+            <span style="font-weight:600;font-size:.9375rem">Nom et prénom *</span>
+            <input required name="nom" autocomplete="name" style="font:inherit;
+              padding:.7rem;border:1px solid var(--bord);border-radius:6px;
+              background:var(--fond);color:var(--texte)">
+          </label>
+          <label class="pile" style="gap:.35rem">
+            <span style="font-weight:600;font-size:.9375rem">Courriel *</span>
+            <input required type="email" name="email" autocomplete="email" style="font:inherit;
+              padding:.7rem;border:1px solid var(--bord);border-radius:6px;
+              background:var(--fond);color:var(--texte)">
+          </label>
+          <label class="pile" style="gap:.35rem">
+            <span style="font-weight:600;font-size:.9375rem">Structure</span>
+            <input name="structure" autocomplete="organization" style="font:inherit;
+              padding:.7rem;border:1px solid var(--bord);border-radius:6px;
+              background:var(--fond);color:var(--texte)">
+          </label>
+          <label class="pile" style="gap:.35rem">
+            <span style="font-weight:600;font-size:.9375rem">Votre besoin *</span>
+            <textarea required name="message" rows="4" style="font:inherit;
+              padding:.7rem;border:1px solid var(--bord);border-radius:6px;
+              background:var(--fond);color:var(--texte);resize:vertical"></textarea>
+          </label>
+          <label style="display:grid;grid-template-columns:auto 1fr;gap:.6rem;
+                 align-items:start;font-size:.875rem;color:var(--sourdine)">
+            <input type="checkbox" required style="margin-top:.3rem;width:1.15rem;height:1.15rem">
+            <span>J’ai lu la politique de confidentialité et j’accepte d’être
+              recontacté à propos de ma demande.</span>
+          </label>
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <label>Ne pas remplir<input type="text" name="site" tabindex="-1" autocomplete="off"></label>
+          </div>
+          <button class="btn" type="submit">Envoyer ma demande</button>
+          <p data-msg hidden style="color:var(--ok);font-weight:600;font-size:.9375rem">
+            Maquette — dans la version en ligne, votre demande serait envoyée et
+            une réponse vous parviendrait sous 2 jours ouvrés.</p>
+          <p class="ref">Champ caché anti-robot, jeton anti-CSRF et limitation de
+            débit à mettre en place côté serveur. Aucun service tiers, donc aucun
+            transfert d’adresse IP hors UE.</p>
+        </form>
+
+        <div class="pile" style="gap:1.25rem">
+          <div class="legal">
+            <h3>Directement</h3>
+            <p style="color:var(--texte)"><strong>contact@yebaformations.re</strong></p>
+            <p><span class="acompl">téléphone à compléter</span></p>
+            <p>Réponse sous <strong>2 jours ouvrés</strong>. Délai d’accès aux
+              formations : inscription possible jusqu’à <strong>10 jours
+              ouvrés</strong> avant le démarrage.</p>
+          </div>
+          <div class="legal">
+            <h3>Vous avez besoin d’un aménagement ?</h3>
+            <p>Rythme, supports, salle, matériel, déplacement : dites-moi ce dont
+              vous avez besoin, jamais pourquoi. Aucun motif médical ne vous sera
+              demandé ni conservé.</p>
+            <p style="color:var(--texte)"><strong>Référent handicap :</strong>
+              Aurélien Lumeka — contact@yebaformations.re</p>
+          </div>
+          <div class="legal">
+            <h3>Signaler une faille de sécurité</h3>
+            <p>Les signalements de bonne foi sont bienvenus et ne feront l’objet
+              d’aucune poursuite.</p>
+            <p style="color:var(--texte)"><strong>security@yebaformations.re</strong>
+              — accusé de réception sous 72 h ouvrées.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pied">
+  <div class="wrap">
+    <div class="pied__g">
+      <div>
+        <p style="font-family:var(--f-titre);font-weight:800;font-size:1.125rem">
+          YEBA FORMATIONS</p>
+        <p style="font-size:.9063rem;color:#9AA4B6;margin-top:.5rem;max-width:40ch">
+          Organisme de formation certifié Qualiopi au titre des actions de
+          formation. La Réunion.</p>
+        <p style="font-size:.8125rem;color:#9AA4B6;margin-top:.9rem;
+           font-variant-numeric:tabular-nums">
+          SIRET 814 622 262 00032<br>
+          Déclaration d’activité n° 04973676397 — Préfet de La Réunion<br>
+          Qualiopi n° 25FOF02027.1</p>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <ul>
+          <li><a href="#formations" data-lien>Formations</a></li>
+          <li><a href="#conseil" data-lien>Conseil &amp; audit</a></li>
+          <li><a href="#financements" data-lien>Financements</a></li>
+          <li><a href="#tarifs" data-lien>Tarifs</a></li>
+          <li><a href="#contact" data-lien>Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Informations légales</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+          <li><a href="#">Politique cookies</a></li>
+          <li><a href="#">Conditions générales</a></li>
+          <li><a href="#">Accessibilité</a></li>
+          <li><button class="lien-cookie" type="button" data-yeba-open-consent>Gérer mes cookies</button></li>
+        </ul>
+      </div>
+    </div>
+    <p class="pied__bas">
+      L’enregistrement de la déclaration d’activité ne vaut pas agrément de
+      l’État. · Certains contenus de ce site sont conçus avec l’assistance d’un
+      système d’IA générative (règlement (UE) 2024/1689, art. 50). Aucune
+      décision automatisée n’est prise à votre sujet.
+    </p>
+  </div>
+</footer>
+
+<!-- ══════════════════ BANDEAU COOKIES ══════════════════ -->
+<style>
+.cc{position:fixed;inset-inline:0;bottom:0;z-index:9999;display:none;
+  background:var(--bleu);color:#fff;border-top:4px solid var(--or);
+  padding:1.5rem clamp(1rem,5vw,3rem);font-family:var(--f-texte)}
+.cc[data-open]{display:block}
+.cc__in{max-width:var(--max);margin-inline:auto}
+.cc h2{font-size:1.1875rem;color:var(--or-pale);margin-bottom:.5rem}
+.cc p{margin-bottom:1.25rem;max-width:60ch;font-size:.9688rem;color:#D8E0EE}
+.cc__act{display:flex;gap:.75rem;flex-wrap:wrap}
+.cc__b{font:inherit;font-family:var(--f-titre);font-weight:700;min-height:3rem;
+  padding:.75rem 1.5rem;border-radius:8px;cursor:pointer;
+  border:2px solid #fff;background:#fff;color:var(--bleu);flex:1 1 12rem}
+.cc__b--g{background:transparent;color:#fff}
+</style>
+<section class="cc" id="cc" role="dialog" aria-modal="true" aria-labelledby="cct" hidden>
+  <div class="cc__in">
+    <h2 id="cct">Votre choix sur les cookies</h2>
+    <p>Cookies strictement nécessaires au fonctionnement du site, et — seulement
+      si vous l’acceptez — une mesure d’audience. Aucun cookie publicitaire,
+      aucun profilage, aucun contenu tiers.</p>
+    <div class="cc__act">
+      <button class="cc__b" type="button" data-cc="reject">Tout refuser</button>
+      <button class="cc__b" type="button" data-cc="accept">Tout accepter</button>
+      <button class="cc__b cc__b--g" type="button" data-cc="reject">Continuer sans accepter</button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  "use strict";
+  var pages = document.querySelectorAll("[data-page]");
+  var liens = document.querySelectorAll(".nav a");
+
+  function aller(nom, defiler){
+    var cible = document.querySelector('[data-page="' + nom + '"]');
+    if(!cible){ nom = "accueil"; cible = document.querySelector('[data-page="accueil"]'); }
+    pages.forEach(function(p){ p.toggleAttribute("data-actif", p === cible); });
+    liens.forEach(function(a){
+      if(a.getAttribute("href") === "#" + nom) a.setAttribute("aria-current","page");
+      else a.removeAttribute("aria-current");
+    });
+    if(defiler) window.scrollTo({top:0, behavior:"instant"});
+    var h = cible.querySelector("h1");
+    if(h && defiler){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+  }
+
+  document.addEventListener("click", function(e){
+    var a = e.target.closest("[data-lien]");
+    if(!a) return;
+    e.preventDefault();
+    var nom = a.getAttribute("href").slice(1);
+    history.pushState({p:nom}, "", "#" + nom);
+    aller(nom, true);
+  });
+  window.addEventListener("popstate", function(){
+    aller((location.hash || "#accueil").slice(1), true);
+  });
+  aller((location.hash || "#accueil").slice(1), false);
+
+  // Thème
+  var btn = document.getElementById("theme");
+  btn.addEventListener("click", function(){
+    var r = document.documentElement;
+    var sombre = r.getAttribute("data-theme") === "dark" ||
+      (!r.hasAttribute("data-theme") &&
+       window.matchMedia("(prefers-color-scheme: dark)").matches);
+    r.setAttribute("data-theme", sombre ? "light" : "dark");
+  });
+
+  // Consentement — refus aussi accessible que l'acceptation
+  var cc = document.getElementById("cc"), CLE = "yeba_consent_maquette";
+  function ouvrir(){ cc.hidden = false; cc.setAttribute("data-open",""); }
+  function fermer(){ cc.removeAttribute("data-open"); cc.hidden = true; }
+  cc.addEventListener("click", function(e){
+    var b = e.target.closest("[data-cc]");
+    if(!b) return;
+    try{ localStorage.setItem(CLE, JSON.stringify({
+      v:1, date:Date.now(), purposes: b.dataset.cc === "accept" ? ["audience"] : []
+    })); }catch(err){}
+    fermer();
+  });
+  document.addEventListener("click", function(e){
+    if(e.target.closest("[data-yeba-open-consent]")){ e.preventDefault(); ouvrir(); }
+  });
+  var vu = null;
+  try{ vu = localStorage.getItem(CLE); }catch(err){}
+  if(!vu) setTimeout(ouvrir, 600);
+})();
+</script>

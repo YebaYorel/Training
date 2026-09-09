@@ -91,34 +91,60 @@ de toute autre indemnité.
 > **Ces dispositions sont d'ordre public.** Elles résultent des articles L6353-3
 > à L6353-7 du Code du travail et priment sur toute stipulation contraire.
 
-**4.1 Contrat obligatoire** — Un **contrat de formation professionnelle** est
-conclu avant toute inscription. Il précise obligatoirement : la nature, la durée,
-le programme et l'objet de l'action ; le niveau de connaissances préalables
-requis ; les conditions dans lesquelles la formation est donnée ; les diplômes
-et titres des personnes chargées de la formation ; les modalités de paiement et
-les conditions financières en cas de cessation anticipée ou d'abandon.
+**4.1 Contrat obligatoire — art. L6353-3** — Lorsqu'un contrat de formation
+professionnelle est conclu **entre une personne physique qui entreprend une
+formation à titre individuel et à ses frais, et un organisme de formation**, il
+est soumis aux dispositions des articles L6353-3 à L6353-7. Ce contrat est
+conclu **avant toute inscription**.
 
-**4.2 Délai de rétractation de 10 jours** — Dans les **dix jours** suivant la
-signature du contrat, le stagiaire peut se rétracter par **lettre recommandée
-avec avis de réception**. Aucune motivation n'est exigée. Aucune pénalité n'est
-due.
+**4.2 Clauses obligatoires — art. L6353-4** — Le contrat comporte
+obligatoirement :
 
-**4.3 Interdiction de tout versement anticipé** — **Aucune somme ne peut être
-exigée ni encaissée avant l'expiration du délai de rétractation.** Cette
-interdiction couvre tout versement, sous quelque appellation que ce soit :
-acompte, arrhes, frais de dossier, frais de réservation.
+1. la **nature, la durée, le programme et l'objet** des actions de formation
+   ainsi que les moyens pédagogiques et techniques mis en œuvre ;
+2. le **niveau de connaissances préalables** requis pour suivre la formation et
+   obtenir la qualification visée ;
+3. les **conditions dans lesquelles la formation est donnée** aux stagiaires,
+   notamment les modalités de sa réalisation ;
+4. les **diplômes, titres ou références** des personnes chargées de la
+   formation ;
+5. les **modalités de paiement** ainsi que les conditions financières prévues
+   en cas de cessation anticipée de la formation ou d'abandon en cours de stage.
 
-**4.4 Plafond de 30 %** — À l'expiration du délai de rétractation, il ne peut
-être exigé une somme supérieure à **30 % du prix convenu**.
+**4.3 Délai de rétractation de 10 jours — art. L6353-5** — Dans le délai de
+**dix jours à compter de la signature du contrat**, le stagiaire peut se
+rétracter par **lettre recommandée avec avis de réception**. Aucune motivation
+n'est exigée. **Aucune pénalité n'est due.**
 
-**4.5 Échelonnement du solde** — Le solde est échelonné **au fur et à mesure du
-déroulement de l'action de formation**.
+**4.4 Interdiction de tout versement anticipé — art. L6353-6** — **Aucune somme
+ne peut être exigée du stagiaire avant l'expiration du délai de rétractation.**
+Cette interdiction couvre tout versement, sous quelque appellation que ce soit :
+acompte, arrhes, frais de dossier, frais de réservation, frais de gestion.
 
-**4.6 Cessation anticipée** — En cas de cessation anticipée du fait du
-stagiaire, seules sont dues les prestations effectivement réalisées, augmentées
-le cas échéant d'un dédit contractuel dont le montant et les conditions sont
-précisés au contrat. En cas d'abandon pour force majeure dûment reconnue, seules
-les prestations effectivement réalisées sont dues.
+**4.5 Plafond de 30 % — art. L6353-6** — À l'expiration du délai de
+rétractation, **il ne peut être payé une somme supérieure à 30 % du prix
+convenu**.
+
+**4.6 Échelonnement du solde — art. L6353-6** — Le solde donne lieu à
+**échelonnement des paiements au fur et à mesure du déroulement de l'action de
+formation**.
+
+**4.7 Cessation anticipée — art. L6353-7** — En cas de cessation anticipée de la
+formation du fait de l'organisme, ou d'abandon du stage par le stagiaire pour un
+autre motif que la force majeure dûment reconnue, le contrat est résilié : seules
+les prestations effectivement dispensées sont dues, à due proportion de leur
+valeur prévue au contrat, augmentées le cas échéant d'un **dédit** dont le
+montant et les conditions figurent au contrat.
+
+**4.8 Mention obligatoire du délai de rétractation** — Le contrat rappelle
+expressément les dispositions de l'article L6353-5 relatives au délai de
+rétractation de dix jours.
+
+> **Source : [Code du travail, articles L6353-3 à L6353-7 — Légifrance](https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006189927)**
+> ([art. L6353-5](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006904415) ·
+> [art. L6353-6](https://code.travail.gouv.fr/code-du-travail/l6353-6)).
+> Ces dispositions sont **d'ordre public** : aucune clause contraire n'est
+> opposable au stagiaire.
 
 > ⚠️ **Conséquence directe sur le site.** Aucun bouton de paiement immédiat ne
 > peut être proposé à un particulier. Le parcours conforme est : demande
