@@ -1,0 +1,140 @@
+{
+  "_meta": {
+    "description": "Referentiel des tests de positionnement. Une entree par formation du CATALOGUE FORMATIONS (Airtable appQ2zqc80kkc6MR1 / tblEYxI7LpLZpBPlo). Ajouter une formation ne demande aucune modification de scoring.py.",
+    "echelle_auto": {
+      "0": "Je ne connais pas",
+      "1": "J'en ai entendu parler",
+      "2": "Je sais faire avec de l'aide",
+      "3": "Je sais faire seul et je peux l'expliquer"
+    },
+    "seuils": {
+      "niveau_decouverte_max": 35,
+      "niveau_intermediaire_max": 65,
+      "calibration_surestimation": 25,
+      "calibration_sousestimation": -25,
+      "groupe_appuyer_max": 40,
+      "groupe_ajuster_max": 70,
+      "groupe_alleger_sigma_max": 15,
+      "groupe_differencier_sigma_min": 20
+    },
+    "ponderation_niveau_global": { "reel": 0.7, "auto": 0.3 }
+  },
+
+  "FOR-0001": {
+    "titre": "IA Generative",
+    "duree_heures": 14,
+    "domaines": {
+      "D1": { "libelle": "Comprendre le fonctionnement et les limites", "poids_heures": 3 },
+      "D2": { "libelle": "Rediger des prompts efficaces", "poids_heures": 4 },
+      "D3": { "libelle": "Appliquer a des taches metier", "poids_heures": 4 },
+      "D4": { "libelle": "Risques et conformite (RGPD / IA Act)", "poids_heures": 3 }
+    },
+    "auto_items": {
+      "B1": "D1", "B2": "D1", "B3": "D2", "B4": "D2",
+      "B5": "D3", "B6": "D3", "B7": "D4", "B8": "D4"
+    },
+    "qcm": {
+      "C1": { "domaine": "D1", "correct": "b" },
+      "C2": { "domaine": "D1", "correct": "c" },
+      "C3": { "domaine": "D1", "correct": "a" },
+      "C4": { "domaine": "D2", "correct": "b" },
+      "C5": { "domaine": "D2", "correct": "c" },
+      "C6": { "domaine": "D2", "correct": "a" },
+      "C7": { "domaine": "D3", "correct": "b" },
+      "C8": { "domaine": "D3", "correct": "c" },
+      "C9": { "domaine": "D3", "correct": "a" },
+      "C10": { "domaine": "D4", "correct": "c" },
+      "C11": { "domaine": "D4", "correct": "b" },
+      "C12": { "domaine": "D4", "correct": "a" }
+    }
+  },
+
+  "FOR-0002": {
+    "titre": "Automatisation",
+    "duree_heures": 14,
+    "_alerte": "Duree absente du catalogue Airtable - 14 h suppose, a confirmer.",
+    "domaines": {
+      "D1": { "libelle": "Diagnostiquer ce qui s'automatise", "poids_heures": 3 },
+      "D2": { "libelle": "Concevoir un workflow", "poids_heures": 4 },
+      "D3": { "libelle": "Construire en no-code", "poids_heures": 4 },
+      "D4": { "libelle": "Securiser et mesurer", "poids_heures": 3 }
+    },
+    "auto_items": {
+      "B1": "D1", "B2": "D1", "B3": "D2", "B4": "D2",
+      "B5": "D3", "B6": "D3", "B7": "D4", "B8": "D4"
+    },
+    "qcm": {
+      "C1": { "domaine": "D1", "correct": "b" },
+      "C2": { "domaine": "D1", "correct": "c" },
+      "C3": { "domaine": "D1", "correct": "a" },
+      "C4": { "domaine": "D2", "correct": "c" },
+      "C5": { "domaine": "D2", "correct": "b" },
+      "C6": { "domaine": "D2", "correct": "a" },
+      "C7": { "domaine": "D3", "correct": "c" },
+      "C8": { "domaine": "D3", "correct": "b" },
+      "C9": { "domaine": "D3", "correct": "a" },
+      "C10": { "domaine": "D4", "correct": "b" },
+      "C11": { "domaine": "D4", "correct": "c" },
+      "C12": { "domaine": "D4", "correct": "a" }
+    }
+  },
+
+  "FOR-0003": {
+    "titre": "RGPD & Cybersecurite",
+    "duree_heures": 14,
+    "_alerte": "Duree absente du catalogue Airtable - 14 h suppose, a confirmer.",
+    "domaines": {
+      "D1": { "libelle": "Qualifier : donnee, traitement, roles", "poids_heures": 3 },
+      "D2": { "libelle": "Appliquer les 6 principes", "poids_heures": 4 },
+      "D3": { "libelle": "Documenter : registre et droits", "poids_heures": 3 },
+      "D4": { "libelle": "Securiser et reagir", "poids_heures": 4 }
+    },
+    "auto_items": {
+      "B1": "D1", "B2": "D1", "B3": "D2", "B4": "D2",
+      "B5": "D3", "B6": "D3", "B7": "D4", "B8": "D4"
+    },
+    "qcm": {
+      "C1": { "domaine": "D1", "correct": "b" },
+      "C2": { "domaine": "D1", "correct": "c" },
+      "C3": { "domaine": "D1", "correct": "a" },
+      "C4": { "domaine": "D2", "correct": "c" },
+      "C5": { "domaine": "D2", "correct": "b" },
+      "C6": { "domaine": "D2", "correct": "a" },
+      "C7": { "domaine": "D3", "correct": "c" },
+      "C8": { "domaine": "D3", "correct": "b" },
+      "C9": { "domaine": "D3", "correct": "a" },
+      "C10": { "domaine": "D4", "correct": "b" },
+      "C11": { "domaine": "D4", "correct": "c" },
+      "C12": { "domaine": "D4", "correct": "a" }
+    }
+  },
+
+  "FOR-0004": {
+    "titre": "Vente : Initiation a la vente",
+    "duree_heures": 7,
+    "domaines": {
+      "D1": { "libelle": "Structurer l'entretien", "poids_heures": 1.5 },
+      "D2": { "libelle": "Decouvrir le besoin", "poids_heures": 2 },
+      "D3": { "libelle": "Argumenter et presenter le prix", "poids_heures": 2 },
+      "D4": { "libelle": "Objections, conclusion, suivi", "poids_heures": 1.5 }
+    },
+    "auto_items": {
+      "B1": "D1", "B2": "D1", "B3": "D2", "B4": "D2",
+      "B5": "D3", "B6": "D3", "B7": "D4", "B8": "D4"
+    },
+    "qcm": {
+      "C1": { "domaine": "D1", "correct": "b" },
+      "C2": { "domaine": "D1", "correct": "c" },
+      "C3": { "domaine": "D1", "correct": "a" },
+      "C4": { "domaine": "D2", "correct": "c" },
+      "C5": { "domaine": "D2", "correct": "b" },
+      "C6": { "domaine": "D2", "correct": "c" },
+      "C7": { "domaine": "D3", "correct": "b" },
+      "C8": { "domaine": "D3", "correct": "b" },
+      "C9": { "domaine": "D3", "correct": "a" },
+      "C10": { "domaine": "D4", "correct": "b" },
+      "C11": { "domaine": "D4", "correct": "a" },
+      "C12": { "domaine": "D4", "correct": "c" }
+    }
+  }
+}
