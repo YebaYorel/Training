@@ -1,0 +1,220 @@
+<!--
+  YEBA FORMATIONS — Bandeau de consentement aux cookies
+  Conforme aux exigences CNIL : refus aussi simple que l'acceptation, aucun
+  traceur avant choix, choix révocable, preuve conservée.
+
+  Aucune dépendance, aucun service tiers, aucun appel réseau sortant.
+  Couleurs conformes à la charte, contrastes vérifiés (voir AUDIT-DESIGN.md) :
+  l'or #C9A84C n'est JAMAIS utilisé sur fond blanc (2,29:1 — échec WCAG).
+
+  INTÉGRATION
+  1. Coller ce bloc juste avant </body> sur toutes les pages.
+  2. Déclarer les scripts soumis à consentement ainsi :
+       <script type="text/plain" data-yeba-consent="audience" src="/js/audience.js"></script>
+     Le type "text/plain" empêche le navigateur de les exécuter. Le script
+     ci-dessous les réactive uniquement après acceptation.
+  3. Ajouter dans le pied de page :
+       <button type="button" data-yeba-open-consent>Gérer mes cookies</button>
+-->
+
+<style>
+  .yeba-cc__overlay{position:fixed;inset:0;background:rgba(18,18,18,.72);
+    z-index:9998;display:none}
+  .yeba-cc__overlay[data-open]{display:block}
+  .yeba-cc{position:fixed;inset-inline:0;bottom:0;z-index:9999;display:none;
+    background:#1B3A6B;color:#FFFFFF;border-top:4px solid #C9A84C;
+    padding:1.5rem clamp(1rem,5vw,3rem);font-family:Inter,system-ui,sans-serif;
+    font-size:1rem;line-height:1.6}
+  .yeba-cc[data-open]{display:block}
+  .yeba-cc__inner{max-width:70rem;margin-inline:auto}
+  .yeba-cc__title{font-family:Montserrat,Inter,system-ui,sans-serif;
+    font-weight:700;font-size:1.25rem;margin:0 0 .5rem;color:#C9A84C}
+  .yeba-cc__text{margin:0 0 1.25rem;max-width:60ch}
+  .yeba-cc__text a{color:#FFFFFF;text-decoration:underline}
+  .yeba-cc__actions{display:flex;flex-wrap:wrap;gap:.75rem}
+  /* Refuser et Accepter : même taille, même poids, même hiérarchie.
+     Un bouton de refus discret est un manquement caractérisé. */
+  .yeba-cc__btn{font:inherit;font-weight:600;min-height:3rem;padding:.75rem 1.5rem;
+    border-radius:.375rem;cursor:pointer;border:2px solid #FFFFFF;
+    background:#FFFFFF;color:#1B3A6B;flex:1 1 12rem}
+  .yeba-cc__btn--ghost{background:transparent;color:#FFFFFF}
+  .yeba-cc__btn:focus-visible{outline:3px solid #C9A84C;outline-offset:3px}
+  .yeba-cc__btn:hover{opacity:.9}
+  .yeba-cc__prefs{margin:0 0 1.25rem;padding:1rem;background:rgba(255,255,255,.08);
+    border-radius:.375rem;display:none}
+  .yeba-cc__prefs[data-open]{display:block}
+  .yeba-cc__row{display:flex;gap:.75rem;align-items:flex-start;margin-bottom:1rem}
+  .yeba-cc__row:last-child{margin-bottom:0}
+  .yeba-cc__row input{margin-top:.35rem;width:1.25rem;height:1.25rem;flex:none}
+  .yeba-cc__row label{font-weight:600}
+  .yeba-cc__row p{margin:.25rem 0 0;font-size:.9375rem;opacity:.9}
+  @media (prefers-reduced-motion:no-preference){
+    .yeba-cc[data-open]{animation:yeba-cc-in .25s ease-out}
+    @keyframes yeba-cc-in{from{transform:translateY(100%)}to{transform:none}}
+  }
+</style>
+
+<div class="yeba-cc__overlay" id="yeba-cc-overlay" hidden></div>
+
+<section class="yeba-cc" id="yeba-cc" role="dialog" aria-modal="true"
+         aria-labelledby="yeba-cc-title" aria-describedby="yeba-cc-text" hidden>
+  <div class="yeba-cc__inner">
+    <h2 class="yeba-cc__title" id="yeba-cc-title">Votre choix sur les cookies</h2>
+    <p class="yeba-cc__text" id="yeba-cc-text">
+      Nous utilisons des cookies strictement nécessaires au fonctionnement du
+      site, et — uniquement si vous l'acceptez — un outil de mesure d'audience
+      pour améliorer nos contenus. Aucun cookie publicitaire, aucun profilage.
+      <a href="/politique-cookies">En savoir plus</a>
+    </p>
+
+    <div class="yeba-cc__prefs" id="yeba-cc-prefs">
+      <div class="yeba-cc__row">
+        <input type="checkbox" id="yeba-cc-necessary" checked disabled>
+        <div>
+          <label for="yeba-cc-necessary">Strictement nécessaires</label>
+          <p>Sécurité, mémorisation de votre choix. Toujours actifs.</p>
+        </div>
+      </div>
+      <div class="yeba-cc__row">
+        <input type="checkbox" id="yeba-cc-audience">
+        <div>
+          <label for="yeba-cc-audience">Mesure d'audience</label>
+          <p>Nombre de visites et pages consultées. Données non recoupées,
+             jamais transmises à des fins publicitaires.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="yeba-cc__actions">
+      <button type="button" class="yeba-cc__btn" data-yeba-action="reject">
+        Tout refuser
+      </button>
+      <button type="button" class="yeba-cc__btn" data-yeba-action="accept">
+        Tout accepter
+      </button>
+      <button type="button" class="yeba-cc__btn yeba-cc__btn--ghost"
+              data-yeba-action="customise" aria-expanded="false"
+              aria-controls="yeba-cc-prefs">
+        Personnaliser
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORAGE_KEY = "yeba_consent";
+  var VERSION = 1;                        // à incrémenter si les finalités changent
+  var MAX_AGE_DAYS = 182;                 // 6 mois
+
+  var banner  = document.getElementById("yeba-cc");
+  var overlay = document.getElementById("yeba-cc-overlay");
+  var prefs   = document.getElementById("yeba-cc-prefs");
+  var audienceBox = document.getElementById("yeba-cc-audience");
+  var lastFocused = null;
+
+  function read() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      var data = JSON.parse(raw);
+      if (data.version !== VERSION) return null;
+      var ageDays = (Date.now() - data.date) / 86400000;
+      if (ageDays > MAX_AGE_DAYS) return null;
+      return data;
+    } catch (e) {
+      // Navigation privée ou stockage bloqué : on redemande, on ne suppose rien.
+      return null;
+    }
+  }
+
+  function write(purposes) {
+    var data = {
+      version: VERSION,
+      date: Date.now(),
+      purposes: purposes        // preuve du consentement, sans donnée identifiante
+    };
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (e) {}
+    return data;
+  }
+
+  // N'active QUE les scripts dont la finalité a été acceptée.
+  function unlock(purposes) {
+    var nodes = document.querySelectorAll('script[type="text/plain"][data-yeba-consent]');
+    Array.prototype.forEach.call(nodes, function (node) {
+      if (purposes.indexOf(node.getAttribute("data-yeba-consent")) === -1) return;
+      var s = document.createElement("script");
+      Array.prototype.forEach.call(node.attributes, function (attr) {
+        if (attr.name !== "type" && attr.name !== "data-yeba-consent") {
+          s.setAttribute(attr.name, attr.value);
+        }
+      });
+      if (!node.src) s.textContent = node.textContent;
+      node.parentNode.replaceChild(s, node);
+    });
+  }
+
+  function open() {
+    lastFocused = document.activeElement;
+    banner.hidden = false;  overlay.hidden = false;
+    banner.setAttribute("data-open", ""); overlay.setAttribute("data-open", "");
+    var first = banner.querySelector("[data-yeba-action]");
+    if (first) first.focus();
+    document.addEventListener("keydown", onKeydown, true);
+  }
+
+  function close() {
+    banner.removeAttribute("data-open"); overlay.removeAttribute("data-open");
+    banner.hidden = true; overlay.hidden = true;
+    document.removeEventListener("keydown", onKeydown, true);
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  // Piège de focus : tant qu'un choix n'est pas fait, la tabulation reste
+  // dans le dialogue. Échap ne ferme pas — fermer ne vaut pas consentement.
+  function onKeydown(e) {
+    if (e.key !== "Tab") return;
+    var f = banner.querySelectorAll("button, input:not([disabled]), a[href]");
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  function decide(purposes) { write(purposes); unlock(purposes); close(); }
+
+  banner.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-yeba-action]");
+    if (!btn) return;
+    var action = btn.getAttribute("data-yeba-action");
+
+    if (action === "customise") {
+      var isOpen = prefs.hasAttribute("data-open");
+      prefs.toggleAttribute("data-open", !isOpen);
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      if (!isOpen) {
+        btn.setAttribute("data-yeba-action", "save");
+        btn.textContent = "Enregistrer mes choix";
+      }
+      return;
+    }
+    if (action === "reject") return decide([]);
+    if (action === "accept") return decide(["audience"]);
+    if (action === "save")   return decide(audienceBox.checked ? ["audience"] : []);
+  });
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest("[data-yeba-open-consent]")) {
+      e.preventDefault();
+      var saved = read();
+      audienceBox.checked = !!(saved && saved.purposes.indexOf("audience") !== -1);
+      open();
+    }
+  });
+
+  var existing = read();
+  if (existing) unlock(existing.purposes); else open();
+})();
+</script>
