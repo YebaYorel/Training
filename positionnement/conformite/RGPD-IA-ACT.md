@@ -102,8 +102,41 @@ savoir où ils se situent.
 | **Destinataires** | Responsable pédagogique + formateur de la session. **Ni l'entreprise cliente, ni l'OPCO.** |
 | **Sous-traitants** | Airtable Inc. (🇺🇸), Tally (🇧🇪), Mistral AI (🇫🇷), hébergeur n8n |
 | **Transferts hors UE** | **Oui — Airtable Inc.** Voir section 3. |
-| **Conservation** | Réponses individuelles : **3 ans** après la fin de la formation (durée de contrôle des financeurs). Synthèses de session anonymisées : conservation libre. |
+| **Conservation** | Réponses individuelles : **3 ans** après la fin de la formation. ⚠️ *Durée usuelle, à confirmer* : elle dépend du financeur (OPCO, CPF, Région, France Travail), dont les délais de contrôle diffèrent. Vérifier auprès de chacun et retenir la plus longue. Synthèses de session anonymisées : conservation libre. |
 | **Sécurité** | Accès nominatif, table sans identité directe, secrets hors base |
+
+### Article 22 — décision individuelle automatisée
+
+L'article 22 du RGPD interdit qu'une personne fasse l'objet d'une décision
+fondée **exclusivement** sur un traitement automatisé produisant des effets
+juridiques ou l'affectant de manière significative.
+
+Le dispositif y échappe pour la même raison qu'il échappe au haut risque IA
+Act : **aucune décision n'est produite par la machine**. Le score n'ouvre ni ne
+ferme l'accès à la formation, ne conditionne aucun financement, et la synthèse
+est validée par un humain avant tout usage.
+
+> Les deux régimes — art. 22 RGPD et annexe III de l'IA Act — sont **cumulatifs
+> et distincts**. Ils se trouvent ici neutralisés par le même choix
+> d'architecture, mais une évolution du dispositif devra être réexaminée au
+> regard des deux, pas d'un seul.
+
+### Sous-traitance : qui est responsable de traitement ?
+
+Pour tes formations propres, tu es **responsable de traitement**.
+
+Pour les prestations réalisées **pour le compte d'un autre centre** (les
+formations « en institut » du catalogue semblent en relever), c'est en principe
+le **donneur d'ordre** qui est responsable de traitement, et toi son
+**sous-traitant** (art. 28). Conséquences concrètes :
+
+- tu ne peux pas réutiliser librement les réponses collectées ;
+- la mention d'information doit porter **son** identité, pas la tienne ;
+- le contrat de sous-traitance doit prévoir ce traitement ;
+- la durée de conservation est **la sienne**.
+
+**À clarifier par écrit avant la première session concernée.** C'est aussi ce
+qui commande la variable `[ORGANISME]` du bloc E.
 
 ### Minimisation appliquée (art. 5.1.c)
 

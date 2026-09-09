@@ -191,6 +191,29 @@ droite. Les lignes marquées « À valider » ou « incomplet » remontent en t�
 | Libellé `Statut Inscription` modifié dans Airtable | `Positionnement dû` reste « NON » partout | Vérifier chaque trimestre que la vue n'est pas vide à tort |
 | Taux de réponse < 50 % à J-4 | Vue `Positionnement en souffrance` | Appels, puis passation papier en ouverture |
 | n8n indisponible | Webhook perdu, **silencieusement** | Réconciliation quotidienne : comparer réponses reçues et `Positionnement envoyé` |
+| **Dérive formulaire ↔ corrigé** | Aucune — c'est le danger | Voir ci-dessous |
+
+### 🔴 La dérive silencieuse entre le formulaire en ligne et le corrigé
+
+Le formulaire Tally et le corrigé `referentiels.json` sont **deux objets
+séparés, maintenus à la main**. Le jour où tu réordonnes les options d'un QCM
+dans Tally sans toucher au JSON, le moteur continue de tourner — **et score
+faux, sans aucune erreur visible**. Tu construis alors ta journée sur des
+profils inventés.
+
+C'est le risque le plus grave du dispositif, parce qu'il est **silencieux**.
+Trois parades, par ordre d'efficacité :
+
+1. **Générer le formulaire depuis le JSON** plutôt que de le saisir. C'est la
+   seule parade réellement sûre.
+2. À défaut, **une question-témoin** : un QCM dont la bonne réponse est connue
+   de toi seul, dont le taux de réussite doit rester stable d'une session à
+   l'autre. Un effondrement soudain signale une désynchronisation.
+3. Au minimum, **une relecture croisée** formulaire/corrigé à chaque
+   modification, tracée et datée.
+
+Tant que la parade 1 n'est pas en place, **ne modifie jamais un formulaire
+sans rouvrir `referentiels.json` dans la foulée.**
 
 > La dernière ligne est la plus dangereuse : un webhook perdu ne produit aucune
 > erreur visible. Prévoir un contrôle quotidien de cohérence, sinon tu

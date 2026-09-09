@@ -174,6 +174,10 @@ pas » est une réponse utile — c'est même la plus utile.
 
 Merci de répondre avant le {Date de début − 4 jours}.
 
+Vous préférez le remplir avec moi plutôt que seul(e) devant un écran ?
+Appelez-moi au {Téléphone}, nous le faisons ensemble en 10 minutes. Une
+version papier en grands caractères est aussi disponible sur demande.
+
 Si vous avez besoin d'un aménagement particulier pour suivre la formation
 dans de bonnes conditions, la dernière question du formulaire est faite
 pour ça — ou répondez simplement à ce message.

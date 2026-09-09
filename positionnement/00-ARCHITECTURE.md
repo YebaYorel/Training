@@ -125,6 +125,25 @@ Pour chaque domaine, on calcule la **moyenne du groupe (M)** et son
 | 40 ≤ M < 70 | **AJUSTER** | Volume prévu conservé, exemples calés sur le bloc A |
 | M ≥ 70 et σ < 15 | **ALLÉGER** | Rappel express (20–30 min), temps réinvesti sur les domaines faibles |
 
+### ⚠️ Limite de précision à connaître avant d'interpréter
+
+Avec **3 QCM par domaine**, le score « réel » d'un domaine ne peut prendre que
+quatre valeurs : **0, 33, 67 ou 100**. Une seule réponse change le score de
+33 points. Conséquences à tenir :
+
+- **Au niveau individuel**, un écart inférieur à 34 points entre deux stagiaires
+  sur un domaine **ne signifie rien**. Ne jamais classer les stagiaires entre eux.
+- **L'indice de calibration** doit être lu comme un **signal**, pas comme une
+  mesure. « Cette personne se surestime nettement » est exploitable ; « elle se
+  surestime de 28 points » ne l'est pas.
+- **Au niveau du groupe**, en revanche, la moyenne est robuste : les erreurs
+  individuelles se compensent. C'est bien pour la décision **collective** que ce
+  test est fiable — et c'est son objet.
+
+C'est le prix d'un test de 15 minutes tenant sur un A4. L'alternative (30 QCM,
+45 minutes) ferait chuter le taux de réponse bien plus qu'elle ne gagnerait en
+précision. Arbitrage assumé.
+
 > **Garde-fou contractuel.** « ALLÉGER » ne veut **jamais** dire supprimer. Les
 > objectifs annoncés au programme sont contractuels (Qualiopi ind. 5 et 6) et
 > doivent tous être traités et évalués. On ajuste la **profondeur** et le **temps**,

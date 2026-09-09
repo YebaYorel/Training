@@ -19,9 +19,15 @@ formations, et (2) la méthode pour produire une nouvelle banque d'items.
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-- Le **QR code** encode uniquement `INS-xxxxx` (référence d'inscription).
-  Il permet de rattacher la feuille à la bonne personne **sans lire le nom** :
-  aucun OCR d'écriture manuscrite n'est nécessaire pour l'identification.
+- Le **QR code** encode un **jeton opaque** (ex. `p7K3xR9m`), tiré au hasard à
+  l'édition et stocké en base en regard de l'inscription. Il permet de rattacher
+  la feuille à la bonne personne **sans lire le nom**, et sans qu'aucune
+  information exploitable ne figure sur la feuille elle-même.
+
+  > 🔒 **Ne pas encoder `INS-xxxxx` directement dans le QR.** Une feuille
+  > oubliée sur une table, photographiée par un tiers, deviendrait alors
+  > directement rattachable à une inscription pour quiconque a accès à la base.
+  > Le jeton opaque supprime ce risque pour un coût nul.
 - Le nom manuscrit ne sert qu'au contrôle visuel humain. Il n'est jamais
   extrait automatiquement.
 - En version papier, le QR est **pré-imprimé** au moment de l'édition : une
@@ -33,6 +39,20 @@ formations, et (2) la méthode pour produire une nouvelle banque d'items.
 > uniquement à adapter le contenu de la formation à votre niveau et à vos
 > besoins. Répondez spontanément : « je ne sais pas » est une réponse utile.
 > Durée : environ 15 minutes.
+>
+> **Vous préférez le remplir avec quelqu'un ?** Appelez le {Téléphone} : nous
+> le faisons ensemble en 10 minutes. Une version papier en grands caractères
+> est également disponible sur simple demande.
+
+> ♿ **Cette dernière phrase n'est pas optionnelle.** Un questionnaire web de
+> 20 items en autonomie exclut de fait les personnes en difficulté avec le
+> numérique, en situation d'illettrisme, ou malvoyantes — et les exclut
+> *silencieusement* : elles ne répondent pas, et on met ça sur le compte de la
+> négligence. Annoncer la passation assistée **dès le premier envoi**, pas
+> seulement en relance, est une exigence d'accessibilité autant qu'un levier de
+> taux de réponse. Vérifier par ailleurs que le formulaire en ligne retenu est
+> conforme aux critères d'accessibilité (contraste, navigation clavier,
+> compatibilité lecteur d'écran) : ce point n'a pas été vérifié ici.
 
 ---
 
