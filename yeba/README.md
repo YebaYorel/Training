@@ -16,6 +16,7 @@ l'historique des versions, Airtable pour l'usage quotidien.
 | Vous voulez… | Ouvrez |
 |---|---|
 | Savoir ce qui ne va pas et quoi faire | `audit/RAPPORT-AUDIT-ET-PLAN-ACTION.md` |
+| Trancher les prix | `audit/ARBITRAGE-TARIFAIRE.md` |
 | Produire un support conforme à la marque | `identite/charte-graphique.md` |
 | Vendre à une entreprise | `documents/05-convention-de-formation.md` + `03-conditions-generales-de-vente.md` |
 | Vendre à un particulier | `documents/06-contrat-formation-particulier.md` — **jamais la convention** |
@@ -49,7 +50,8 @@ yeba/
 │   ├── 12-politique-tarifaire.md
 │   └── 13-financements-mobilisables.md
 └── audit/
-    └── RAPPORT-AUDIT-ET-PLAN-ACTION.md
+    ├── RAPPORT-AUDIT-ET-PLAN-ACTION.md   Constats, 13 actions priorisées, autocritique
+    └── ARBITRAGE-TARIFAIRE.md            Réconciliation de la grille — 6 décisions à prendre
 ```
 
 ---
@@ -76,7 +78,23 @@ Le champ « Éléments manquants à fournir » de la base liste, document par do
 | **1** | Désigner un médiateur de la consommation | Débloque la vente aux particuliers — obligation légale |
 | **1** | Fournir l'attestation d'assurance RC Pro | Débloque 5 documents |
 | **1** | Confirmer le n° Qualiopi sur le certificat papier | Deux sources sur trois indiquaient `25FOF02027.1` |
+| **1** | **Dire si le tarif intra est par journée ou pour la prestation entière** | Six fiches sont gelées tant que ce point n'est pas tranché |
 | **2** | Valider la grille tarifaire, ligne par ligne | Débloque la publication du site |
 | **2** | Reprendre les 32 lignes de `INDICATEURS QUALIOPI` | Toutes déclarées non conformes à ce jour |
+| **2** | Trancher le délai d'accès : 10 ou 15 jours ouvrés | La charte dit 15, les fiches FOR-0009 et FOR-0010 disent 10 |
+| **3** | Donner intitulé, durée et domaine de FOR-0008 | Fiche vide, actuellement bloquée en « En développement » |
 
-Détail et justification : `audit/RAPPORT-AUDIT-ET-PLAN-ACTION.md`.
+Détail et justification : `audit/RAPPORT-AUDIT-ET-PLAN-ACTION.md` et `audit/ARBITRAGE-TARIFAIRE.md`.
+
+---
+
+## Mise à jour du 11/09/2026
+
+Le catalogue est passé de 7 à **10 formations** : FOR-0008 (à compléter), **FOR-0009 « Produire
+un site Internet en vocal »** et **FOR-0010 « Créer des emailings professionnels avec l'IA »**
+ont été ajoutées le 10/09 et mises au standard du catalogue le 11/09 — objectifs, prérequis,
+public, programme horaire détaillé sur 2 jours, modalités d'évaluation, adaptations handicap
+circonstanciées, régime de marque.
+
+La mention **CPF a été retirée de FOR-0009** : sans certification RNCP ou RS, l'annoncer est une
+pratique commerciale trompeuse (code de la consommation, art. L.121-2).
