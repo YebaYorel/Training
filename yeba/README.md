@@ -17,6 +17,7 @@ l'historique des versions, Airtable pour l'usage quotidien.
 |---|---|
 | Savoir ce qui ne va pas et quoi faire | `audit/RAPPORT-AUDIT-ET-PLAN-ACTION.md` |
 | Trancher les prix | `audit/ARBITRAGE-TARIFAIRE.md` |
+| Savoir ce que la base fait vraiment, et ce qu'il reste à activer | `audit/TEST-GRANDEUR-NATURE-ET-REPARATIONS.md` |
 | Produire un support conforme à la marque | `identite/charte-graphique.md` |
 | Vendre à une entreprise | `documents/05-convention-de-formation.md` + `03-conditions-generales-de-vente.md` |
 | Vendre à un particulier | `documents/06-contrat-formation-particulier.md` — **jamais la convention** |
@@ -51,7 +52,10 @@ yeba/
 │   └── 13-financements-mobilisables.md
 └── audit/
     ├── RAPPORT-AUDIT-ET-PLAN-ACTION.md   Constats, 13 actions priorisées, autocritique
-    └── ARBITRAGE-TARIFAIRE.md            Réconciliation de la grille — 6 décisions à prendre
+    ├── ARBITRAGE-TARIFAIRE.md            Réconciliation de la grille — 6 décisions à prendre
+    └── TEST-GRANDEUR-NATURE-ET-REPARATIONS.md
+                                          Test des 3 parcours clients, 18 défauts trouvés,
+                                          réparations faites, 5 actions manuelles restantes
 ```
 
 ---
@@ -85,6 +89,10 @@ Le champ « Éléments manquants à fournir » de la base liste, document par do
 | **3** | Donner intitulé, durée et domaine de FOR-0008 | Fiche vide, actuellement bloquée en « En développement » |
 
 Détail et justification : `audit/RAPPORT-AUDIT-ET-PLAN-ACTION.md` et `audit/ARBITRAGE-TARIFAIRE.md`.
+
+État réel de la base Airtable après test grandeur nature, réparations effectuées et actions manuelles
+restantes (activation des automatisations, création des formulaires, suppression des champs interdits) :
+`audit/TEST-GRANDEUR-NATURE-ET-REPARATIONS.md`.
 
 ---
 
