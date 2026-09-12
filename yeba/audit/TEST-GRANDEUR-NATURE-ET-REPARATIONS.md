@@ -125,6 +125,13 @@ que ce qui reste à faire, **avec le fondement juridique en clair** :
 | `Nb de lignes d'émargement` | Zéro = aucune feuille d'émargement, pièce exigée en contrôle (L.6362-1) |
 | `Consentement RGPD`, `Situation de handicap`, `Aménagements nécessaires` | Remontés de la fiche apprenant pour déclencher le réflexe référent handicap sans jamais collecter de donnée de santé (RGPD art. 9) |
 
+### 4.3 bis  Deux contradictions publiques tranchées
+
+| Point | Décision | Ce qui a été corrigé |
+|---|---|---|
+| **Délai d'accès** | **15 jours ouvrés partout** | La charte qualité (YEBA-DOC-10, engagement n° 3) annonçait 15 jours, les fiches FOR-0009 et FOR-0010 annonçaient 10. Deux délais publics contradictoires, relevés en audit (RNQ ind. 1). Les deux fiches sont réécrites sur 15 jours ouvrés, avec la justification du délai (montage du financement, test de positionnement, convocation). |
+| **Référent handicap** | **Aurélien LUMEKA, nommément désigné** | Le socle documentaire le nommait déjà ; la base Airtable, non. A-01, A-02 et A-04 disent désormais « votre référent handicap est Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45 ». Le RNQ ind. 26 attend un interlocuteur identifié, pas une fonction anonyme. |
+
 ### 4.4 La chaîne de preuve Qualiopi
 
 C'est votre demande sur le test de positionnement, généralisée à tous les documents.
@@ -300,14 +307,15 @@ d'origine) restent illisibles depuis cet environnement : la politique réseau bl
 `v5.airtableusercontent.com`. Les documents du socle ont donc été **réécrits**, pas corrigés. Relisez-les
 avant d'archiver les anciens.
 
-**Ce que je n'ai pas inventé.** Le nom de votre référent handicap n'apparaît nulle part dans la base :
-les courriels disent « notre référent handicap » avec l'adresse de contact. Si c'est vous, dites-le moi
-et je le nomme partout. Idem pour l'encart Assurance, toujours en attente des documents de votre
-assureur — les cinq emplacements réservés dans la charte graphique restent vides.
+**Ce qui reste en attente de votre part.** L'encart Assurance : les cinq emplacements réservés dans la
+charte graphique (assureur, n° de police, garanties, montants, validité) restent vides tant que je n'ai
+pas l'attestation de votre assureur. Vous m'avez dit que vous me l'envoyez — dès réception, je remplis
+la charte, les mentions légales et les modèles de convention.
 
-**Une contradiction non tranchée.** La charte qualité annonce un délai d'accès de **15 jours ouvrés**,
-les fiches FOR-0009 et FOR-0010 annoncent **10 jours**. Deux délais publics contradictoires sur le même
-site : il faut en choisir un. Dites-moi lequel et j'aligne l'ensemble.
+**FOR-0008 attend trois informations.** Vous avez choisi de la compléter plutôt que de l'archiver, mais
+la fiche est vide : il me manque l'**intitulé**, le **domaine** et la **durée visée** en heures. Donnez-moi
+ces trois éléments et je la monte au standard des autres, avec barème tarifaire et bloc tarifs
+automatique. En attendant, elle reste visible dans le catalogue en statut « En développement ».
 
 ---
 
@@ -320,6 +328,9 @@ site : il faut en choisir un. Dites-moi lequel et j'aligne l'ensemble.
 3. **Activer A-02, A-03, A-04, A-08** et **mettre à jour A-01** (§ 5.1).
 4. **Créer les trois formulaires** (§ 5.2) — sans eux, la porte d'entrée reste fermée.
 5. **Supprimer les six champs** du § 5.3, dont les deux champs de données de santé.
+
+Et deux choses qui dépendent de vous : **l'attestation de votre assureur** (pour l'encart Assurance) et
+**l'intitulé, le domaine et la durée de FOR-0008** (pour la monter au standard).
 
 ---
 
