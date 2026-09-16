@@ -43,3 +43,23 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
+
+## Skills installées
+
+26 skills sont chargées depuis `.claude/skills/` — inventaire, périmètre écarté
+et analyse RGPD / IA Act dans `.claude/skills/README.md`.
+
+Réflexes à appliquer sans qu'on te le demande :
+
+- **Tout texte destiné à un stagiaire ou à un client** passe par `stop-slop`
+  avant d'être remis.
+- **Tout support de présentation** respecte `practical-typography` : lisibilité
+  d'abord, le public peut être en situation de handicap visuel.
+- **`mem` n'accueille jamais de donnée personnelle** (nom, e-mail, téléphone,
+  santé, handicap d'un prospect ou d'un stagiaire). Ces données vont dans
+  Baserow, où finalité, base légale et durée de conservation sont définies.
+- Pendant une tâche à plusieurs étapes, `task-observer` repère ce qui mérite de
+  devenir une skill réutilisable. Pour le désactiver, supprimer cette ligne.
+- Les sorties de `security-best-practices` et `security-threat-model` sont des
+  brouillons d'analyse, jamais une attestation de conformité : un audit remis à
+  un client engage la responsabilité professionnelle de YEBA FORMATIONS.
