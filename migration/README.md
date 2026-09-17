@@ -49,7 +49,38 @@ cp .env.example .env
 
 `.env` est ignoré par Git. Ne jamais l'y committer.
 
-## Lancer la migration
+## Deux voies, selon ce que vous avez sous la main
+
+### Voie A — import CSV (aucun identifiant Baserow requis)
+
+C'est celle qui débloque immédiatement, et qui évite le piège des cookies.
+
+```bash
+python migration/export_csv.py --sans-donnees-perso   # commencer sans les stagiaires
+python migration/export_csv.py                        # les 19 tables
+```
+
+Puis dans Baserow : **Base de données → Ajouter une table → Importer un
+fichier → CSV**, en cochant « première ligne = en-têtes ». Aucun cookie n'est
+demandé par cette voie.
+
+**Ce que le CSV perd** : les liens entre tables deviennent du texte, les pièces
+jointes ne suivent pas, les formules sont figées en valeurs. C'est la limite de
+tout import par fichier.
+
+### ⛔ Ce qu'il ne faut pas faire : l'import Airtable natif de Baserow
+
+Il réclame les cookies `__Host-airtable-session` et `.sig`. Ce ne sont pas des
+identifiants d'API mais une **session complète** : qui les détient est vous,
+sur toutes vos bases, sans mot de passe ni double authentification, et sans
+pouvoir révoquer ce seul accès. Les coller dans un formulaire tiers — ou les
+transmettre à quiconque — est précisément la manœuvre qu'un organisme formant à
+la cybersécurité doit refuser.
+
+Un jeton d'API Airtable en lecture seule, lui, se crée sur
+https://airtable.com/create/tokens et se révoque en un clic.
+
+### Voie B — migration par API (conserve les liens)
 
 ```bash
 python migration/airtable_vers_baserow.py --plan        # n'écrit rien
