@@ -1,3 +1,3 @@
 requests>=2.31
 python-dotenv>=1.0
-mcp>=1.2.0
+mcp>=1.2.0,<2          # FastMCP renommé MCPServer en 2.x — le serveur utilise l'API 1.x

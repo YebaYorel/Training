@@ -1,0 +1,3220 @@
+{
+  "tables": [
+    {
+      "id": "tblQJDUCikyk9zCjq",
+      "name": "CONFIG SYSTEME",
+      "fields": [
+        {
+          "id": "fldv6kNYb6dulqoAv",
+          "name": "Paramètre",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldyWdWVwoeT9aIpY",
+          "name": "Valeur",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldFzeC6iPE5p6LHG",
+          "name": "Description",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldPbmEAGmiQgkh75",
+          "name": "Dernière modification",
+          "type": "lastModifiedTime",
+          "options": {}
+        },
+        {
+          "id": "fldzEiyfwAs97jf0e",
+          "name": "Logo (fichier)",
+          "type": "multipleAttachments",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblEYxI7LpLZpBPlo",
+      "name": "CATALOGUE FORMATIONS",
+      "fields": [
+        {
+          "id": "fld6Xp5Zw0J0XQSh5",
+          "name": "Titre formation",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldJJdwcBDad0kDUL",
+          "name": "Index",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldWPKxIdTNSNiK6n",
+          "name": "Référence catalogue",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldjiurLwibphehvH",
+          "name": "Type de formation",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldSIGD4tyrbWRnyn",
+          "name": "Domaine",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldcMSEP0XWMPuUdR",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldUTrd3hxOnHY53h",
+          "name": "Objectifs pédagogiques",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldIFQ1HzJaBBoykp",
+          "name": "Prérequis",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld7CazsUxGR1OxSF",
+          "name": "Public cible",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld8GlwffOYDcNKMl",
+          "name": "Programme détaillé",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldNUqS1VCsf2erCm",
+          "name": "Méthodes pédagogiques",
+          "type": "multipleSelects",
+          "options": {}
+        },
+        {
+          "id": "fld474uBdXZ6UOltS",
+          "name": "Modalités d'évaluation",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldgkIZrOJeDAxT2F",
+          "name": "Durée en heures",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldmM09bgaAjwhfwY",
+          "name": "Durée en jours",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldpNLAhe2tUe5vOt",
+          "name": "Dernière révision du programme",
+          "type": "dateTime",
+          "options": {}
+        },
+        {
+          "id": "fldaty410G5hlJmvL",
+          "name": "Tarif inter HT / jour / personne",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldFqIXtNjUWKoZeq",
+          "name": "Tarif intra HT / jour / groupe",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldcuDval8pLQzfjv",
+          "name": "Tarif par journée formateur",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldi7uNszrdR4Ldwp",
+          "name": "Statut TVA",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldno5FDiMRQqZ8tK",
+          "name": "Programme PDF",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldl2yLMXYDCEpce4",
+          "name": "Support de formation",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld6dDfCAIq3omieb",
+          "name": "Evaluation de positionnement",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldqHh3QoxZTuzfZn",
+          "name": "Grille d'évaluation",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld7HPNm7N6g1JSJd",
+          "name": "Doc - Fiche programme signée",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldgF3ixeckVkWkCn",
+          "name": "Doc - Règlement intérieur (version en vigueur)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldY2Iman2hJBjfW6",
+          "name": "Doc - CGV en vigueur",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldznAAeimQgN4rbt",
+          "name": "Doc - Charte qualité",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldtGnMdISb6pYVXO",
+          "name": "Doc - Accessibilité handicap",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld5QY1mOGHEHm7WO",
+          "name": "Doc - Procédure réclamations",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld5YlfwSa67uKWYf",
+          "name": "Doc - Preuves de veille (articles, formations suivies)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld3WJqOymGw8R35b",
+          "name": "Code RNCP ou RS",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldMUNaGdGV5MgEZO",
+          "name": "Accessibilité handicap",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldADYnLuEBfmqnI9",
+          "name": "Adaptations possibles",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld0grIzQO2B1Vhlq",
+          "name": "Financements éligibles",
+          "type": "multipleSelects",
+          "options": {}
+        },
+        {
+          "id": "fldOOz2pqtG4YpV5Z",
+          "name": "Taux de satisfaction moyen",
+          "type": "percent",
+          "options": {}
+        },
+        {
+          "id": "fldqIJ1fMpImp1d9x",
+          "name": "Taux de réussite",
+          "type": "percent",
+          "options": {}
+        },
+        {
+          "id": "fldRVW750ot7ierMJ",
+          "name": "Nombre de sessions réalisées",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldivCa49hCqSugPe",
+          "name": "Nombre d'apprenants formés",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldRar72QOA5zlJ3t",
+          "name": "Date dernier audit QUALIOPI",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldn7gLbMfhWBdUzd",
+          "name": "SESSIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldeuShYDeRuzzurb",
+          "name": "DEVIS & FACTURES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldA0CD80ZJkq9Joi",
+          "name": "RESSOURCES PÉDAGOGIQUES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldbsvcmvRBqUysLD",
+          "name": "Délai et modalités d'accès",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldqNN5FSoVK3rr2y",
+          "name": "Questions test de positionnement",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldo6BssfaNGRSLBj",
+          "name": "Réponses attendues test de positionnement",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldjQwM1mvCjp3R4p",
+          "name": "Lien vers le formulaire de positionnement",
+          "type": "url",
+          "options": {}
+        },
+        {
+          "id": "flde1R445gBLV2vLc",
+          "name": "Synthèse fiche adaptation",
+          "type": "aiText",
+          "options": {}
+        },
+        {
+          "id": "fldYWUk5Fise7RgIl",
+          "name": "Mallette formateur (documents)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldpLRGUwDSgGt145",
+          "name": "Marque / Confidentialité contractuelle",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld85UQOd4TphhhgR",
+          "name": "⚠️ Ancien bloc tarifaire manuel (obsolète)",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldWytX70G2LL0UUJ",
+          "name": "FICHE PROGRAMME COMPLÈTE (à envoyer)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldceg0jxNHI38Xx8",
+          "name": "Barème tarifaire",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldJYUhGvdFFTWHR2",
+          "name": "Prix inter TOTAL (action)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fld4goilFvLlV4kk8",
+          "name": "Prix intra TOTAL (action)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldoIGoiOTyCsZ57q",
+          "name": "TARIFS (bloc public auto)",
+          "type": "formula",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblgqWIeM7l5qWV8H",
+      "name": "FORMATEURS & PRESTATAIRES",
+      "fields": [
+        {
+          "id": "fldjKrZRBweGoIumy",
+          "name": "Nom Prénom",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "flds07Pp88RCf2Jnw",
+          "name": "Type",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldVcRp1wNlVujjuf",
+          "name": "Email Professionnel",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldjWrsHKV0gMVzpy",
+          "name": "Téléphone",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "fldQ8312masuhsyNV",
+          "name": "Adresse",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldNdhMr5rUKG8KGd",
+          "name": "Spécialités",
+          "type": "multipleSelects",
+          "options": {}
+        },
+        {
+          "id": "fldnx4xaejh5zGzAY",
+          "name": "CV",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldnXGZUg397tbZkc",
+          "name": "Certifications & diplômes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldU1Y8S97B0KSnLw",
+          "name": "Copie diplômes",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldyi6xOzU5Ekxf6E",
+          "name": "Expérience professionnelle",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldHWFkhSUmEVJk6X",
+          "name": "SIRET (Si externe)",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldhq44AAsvvxphEB",
+          "name": "Numéro TVA Intracommunautaire",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld6mrvUk1nCgM7qg",
+          "name": "Convention sous-traitance signée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldwC3GKxAprrXhe9",
+          "name": "Date début convention",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldPbdoD9NawAh0B7",
+          "name": "Date fin convention",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld49bAa1v2272fjv",
+          "name": "Tarif journalier HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldg9pC4GQxiwh2lu",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldmR7yNxx5ybigbz",
+          "name": "Notes internes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld76fNRx7zX2KA1u",
+          "name": "SESSIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld0tIwIuZKnhZQdN",
+          "name": "SESSIONS 2",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldiod0PKpYOgKGDK",
+          "name": "ALERTES & TÂCHES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblVLHyTCywkNtmvr",
+      "name": "ENTREPRISES & CLIENTS",
+      "fields": [
+        {
+          "id": "fldnLXDHDfgyR2NoE",
+          "name": "Nom entreprise",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldlqt4YzfTrjN1ey",
+          "name": "Type",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldEBXisxKPXJHqDw",
+          "name": "SIRET",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldmA7rLp0nLQfxXM",
+          "name": "Code NAF/APE",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldRV0AJu3SKAG7UR",
+          "name": "Secteur d'activité",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldPPj9wKE7AmzjFX",
+          "name": "Effectif (nb de salariés)",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldM0W9EHCXn4D69f",
+          "name": "Nom contact principal",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldStQ8Uu8qfx3M7N",
+          "name": "Fonction du contact",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld62FxSqHrjy7sA8",
+          "name": "Email contact",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldnSnQrr5XVWq0OG",
+          "name": "Téléphone contact",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "flddxN2CrNDhGM7lM",
+          "name": "Adresse complète",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld4Waif18CiMAiZY",
+          "name": "Code postal",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld9ceGYfxRTzdvj1",
+          "name": "Ville",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld1VucvwTNXgk2Uk",
+          "name": "OPCO de référence",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldriWPVO92eGivVG",
+          "name": "Numéro adhérent OPCO",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldeNst4CGEOSgUDn",
+          "name": "Convention cadre signée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldCS0P7jW6kkBWZw",
+          "name": "Convention cadre (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldhOYXQekyCFZJE0",
+          "name": "Date premier contrat",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldvX80F9SvaUU47I",
+          "name": "Date dernier contrat",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld71kTjdJzmEJyqj",
+          "name": "Notes commerciales",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldIwJWqdwixCWg79",
+          "name": "Source",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldK6QgOMd6hu1G6L",
+          "name": "APPRENANTS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldety4WTSEqFcsKP",
+          "name": "SESSIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldwfXotYoBOiutYB",
+          "name": "DEVIS & FACTURES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldasEI4kFoqA1xQV",
+          "name": "STAGES & ALTERNANCES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblm9YJud4dK7gD9d",
+      "name": "APPRENANTS",
+      "fields": [
+        {
+          "id": "fldd30LNm9EjqnjCT",
+          "name": "Nom Prénom",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldbiw84zFJFRZOO2",
+          "name": "Civilité",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld1Z5KLxGIslXKot",
+          "name": "Date de naissance",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldj9iuqomJlYriCb",
+          "name": "Lieu de naissance",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldIsDvbUbTQUgDt1",
+          "name": "Nationalité",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldo8dhEBcP675nYb",
+          "name": "Numéro apprenant",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldCg9SP8fNXvAKnc",
+          "name": "Index apprenant",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldIW9NwjxdZD44VE",
+          "name": "Référence apprenant",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldyISG2qSqLAI2Mt",
+          "name": "Email personnel",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldH93p0TK7vpwg8o",
+          "name": "Email professionnel",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fld3gaUVVB5x5Tkoy",
+          "name": "Téléphone portable",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "fldYxAZxpwNiuSbOr",
+          "name": "Adresse",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldS5kfQthKwworOC",
+          "name": "Code postal",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldBJPyhKrqsVrkFe",
+          "name": "Ville",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldHaFv2O0wYtjEO4",
+          "name": "Entreprise employeur",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldKervVAmnTTYhj1",
+          "name": "Nom entreprise (from Entreprise employeur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldv7uK0C38av4fFD",
+          "name": "Email contact (from Entreprise employeur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldlnXxW2ln6MjWxX",
+          "name": "Téléphone contact (from Entreprise employeur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldAqUDPmaFb9AWkF",
+          "name": "OPCO de référence (from Entreprise employeur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldWRpYeJOu3CAYP9",
+          "name": "Fonction actuelle",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "flda70t4Hgn72Iobq",
+          "name": "Niveau de formation",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld62Ch6uhfNlh0o7",
+          "name": "Numéro CPF",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldzdngzt43gGXmKg",
+          "name": "Statut emploi",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldBQ6j188IgEAWJa",
+          "name": "Consentement RGPD donné",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldVsTXEsXBYeWocC",
+          "name": "Date consentement RGPD",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldbHjLNsN8EeUofV",
+          "name": "Document RGPD / IA ACT signé (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld9A2i1gzvW1BFsX",
+          "name": "Droit à l'image signé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldvgNnbUAE4fXwmf",
+          "name": "Document droit à l'image (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld2MJvGnv02Y9Q5u",
+          "name": "Date signature droit à l'image",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldYWCX71iVXD9EMn",
+          "name": "Situation de handicap (RQTH)",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldMT7cDobHZJhMb2",
+          "name": "⚠️ NE PAS REMPLIR — Type de handicap (à supprimer, RGPD art.9)",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld9pCAekzARpSiBP",
+          "name": "Aménagements nécessaires",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldOeC2WWOvkOVPSX",
+          "name": "⚠️ NE PAS REMPLIR — Document RQTH (à supprimer, RGPD art.9)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldcL6W8cZpINLFsS",
+          "name": "Référent handicap contacté",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldLCCHJqdugoNiON",
+          "name": "Statut apprenant",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldjUxpt1nq21FwcL",
+          "name": "Photo",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldCSUiXPK4hLrgdV",
+          "name": "Notes internes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldHmUv02TSdHpV4n",
+          "name": "Date de création",
+          "type": "createdTime",
+          "options": {}
+        },
+        {
+          "id": "fldttAJSm6qhKdxYS",
+          "name": "INSCRIPTIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldOeLdhqkX0BRRUH",
+          "name": "PRESENCES & EMARGEMENTS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldiVNyVWheMBpmMg",
+          "name": "EVALUATIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldoOVSYk7AlmG1Dg",
+          "name": "MAILING LOG",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldHxj08g0UwD1Znh",
+          "name": "ALERTES & TÂCHES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldvFwBizB35QdNmi",
+          "name": "STAGES & ALTERNANCES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldUjD9u0QNQE2Y5C",
+          "name": "Session souhaitée (pré-inscription)",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldlODSTaK84N2Zx7",
+          "name": "Entreprise",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldDQI2SXA4P0m4gw",
+          "name": "Field 47",
+          "type": "singleLineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblg3KHANR7nq4cH6",
+      "name": "SESSIONS",
+      "fields": [
+        {
+          "id": "fldNjbYsciSwdUzuc",
+          "name": "Nom de la session",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldXgTjZg5EtYosdJ",
+          "name": "Formation",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldv6eSVLQd9juRcs",
+          "name": "Titre formation",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldbZPoKlbpTOip6J",
+          "name": "Durée (heures)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldaT51SDtAfW8Qbs",
+          "name": "Durée (jours)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldidC65A7jjPlHEU",
+          "name": "Tarif inter HT (from Notes)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldW3AgVdDpuxz8kI",
+          "name": "Tarif intra HT (from Notes)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldBtfsstVLo3Ui6m",
+          "name": "Programme PDF",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldBW9tT98MgFGmLJ",
+          "name": "Formateur principal",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldeGUvQqtFHoXbva",
+          "name": "Nom Prénom (from Formateur principal)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldI08Q8tpEbMN41w",
+          "name": "Email Professionnel (from Formateur principal)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldF795GpoNbDM2Hd",
+          "name": "Téléphone (from Formateur principal)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld9ub4gHLF6s45hc",
+          "name": "Spécialités (from Formateur principal)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldF3Eb0vpcCqo1AK",
+          "name": "Formateur(s) suppléant(s)",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldDl58s6C6iepjQY",
+          "name": "Nom Prénom (from Formateur(s) suppléant(s))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldmUcOxX9k8gOY9d",
+          "name": "Email Professionnel (from Formateur(s) suppléant(s))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldh3oBJ5y9jbyHVd",
+          "name": "Téléphone (from Formateur(s) suppléant(s))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldjUInDYTv6ALyRy",
+          "name": "Spécialités (from Formateur(s) suppléant(s))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldn6I6ix2jjU9F8a",
+          "name": "Client commanditaire",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld2thOYnGTzrLBdq",
+          "name": "Nom entreprise (from Client commanditaire)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldMkFXx1jGeDGtYa",
+          "name": "Email contact (from Client commanditaire)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldD98V1FZr1bgrHT",
+          "name": "OPCO de référence (from Client commanditaire)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldMF7SFMhwYFz7K5",
+          "name": "Type de session",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldZYdDetuJDMTNsF",
+          "name": "Date de début",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldaTV5honw4xJqQL",
+          "name": "Date de fin",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldIfDmUcQEy0Fqg2",
+          "name": "Horaires",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldOTKtqKr0sQKhLC",
+          "name": "Lieu",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldkHE3HDBqEzCBpg",
+          "name": "Lien visioconférence",
+          "type": "url",
+          "options": {}
+        },
+        {
+          "id": "fldz9Fj51k7NFb6K2",
+          "name": "Salle/ Ressources nécessaires",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldqQx5E0d6APrNL1",
+          "name": "Places maximum",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldv8VlOGI8jeTFgY",
+          "name": "Nombre minimum pour confirmation",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldMHotzfUBKvnpXo",
+          "name": "Nombre d'inscrits",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldxfFymB8BV1mUnf",
+          "name": "Places restantes",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldDJgDZEyHxMmw3q",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldUHsRwVrctLi2Ck",
+          "name": "Motif annulation/ report",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldcT2OGaR2hlcuSV",
+          "name": "Notes internes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldQAplzrLprtrd6p",
+          "name": "Questionnaire positionnement envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldPjThpNBAg80K8j",
+          "name": "Programme envoyé aux apprenants",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldk3sLOc8qojsQx9",
+          "name": "Convocations envoyées",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldU6Gg4hTiBoP4uC",
+          "name": "Convocations signées (toutes)",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldDuQwDSrfct85Sq",
+          "name": "Règlement intérieur signé (tous)",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldYGCIL8NlpNhHV4",
+          "name": "Feuilles d'émargement collectées",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld6bSlV330i9NNGf",
+          "name": "Evaluation à chaud faite",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldl2mLkCqZdbYt7z",
+          "name": "Attestation de fin envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld8M163t6K96X1Sw",
+          "name": "Evaluation à chaud J+30 envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldgvsIzl80cyywah",
+          "name": "Evaluation à froid J+90 envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldlv3yY7Wy6IBGSy",
+          "name": "Coût formateur HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldpd1RgEcSsc5bDW",
+          "name": "Chiffres d'affaires session HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldOy4UUNbKwnEbkv",
+          "name": "Marge brute",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldwJ9VtuZPnQBCVC",
+          "name": "INSCRIPTIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldfjDnJ6vlQlrGHJ",
+          "name": "PRESENCES & EMARGEMENTS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldR7OlrGsJESb4ct",
+          "name": "EVALUATIONS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldsFM7zzePTmUKUJ",
+          "name": "DEVIS & FACTURES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldpy9vlnsmh3VuRr",
+          "name": "MAILING LOG",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld49KCqbA0Y9qRwm",
+          "name": "ALERTES & TÂCHES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld8K69d6211hqwXU",
+          "name": "Programme détaillé (à partir de Formation)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldNdLAzLpxSzLAFJ",
+          "name": "Rappel J-7 dû",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldRoK8YoKabWIMwB",
+          "name": "STAGES & ALTERNANCES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldf3eMQdUA7dsYSr",
+          "name": "APPRENANTS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldx1BXT3blRFj7UV",
+          "name": "Nb inscrits (auto)",
+          "type": "count",
+          "options": {}
+        },
+        {
+          "id": "fldaSaznLq4RxCKhZ",
+          "name": "Mallette formateur",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "flds5ZM5d3o8G3IQX",
+          "name": "Mallette envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldGAVyMF0Ehzk3b5",
+          "name": "Mallette due (J-2)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldaYrTr2UHjuHoxv",
+          "name": "Mallette - détails (auto)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldRy8HyYOgA12uGZ",
+          "name": "📎 Pack légal remis aux stagiaires",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "flddzaiF0niCcx0MG",
+          "name": "Pack légal (PDF auto)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld5Yz0JsJR8KngM9",
+          "name": "⚠️ Contrôle avant ouverture",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldpbGMAHfOFPtqpq",
+          "name": "Objectifs (from Formation)",
+          "type": "multipleLookupValues",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblUWW5ken5sAUDJk",
+      "name": "INSCRIPTIONS",
+      "fields": [
+        {
+          "id": "fldXQbvpvv9wUtixf",
+          "name": "Référence inscription",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldEGYpvn5SnWJSaP",
+          "name": "Apprenant",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldoqCoZ2hfup7Z9U",
+          "name": "Email personnel (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld4Uu6zqkUkAepQJ",
+          "name": "Téléphone portable (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld1UA7ZkxrkB4q5D",
+          "name": "Entreprise employeur (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "flduqIkc6VOTS6Qoi",
+          "name": "Niveau de formation (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldtHZop33C8Rj2MB",
+          "name": "Session",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld9Ffjpt8okQgr3e",
+          "name": "Formation (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldCerqZaKaew3kFC",
+          "name": "Formateur principal (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldNgn0XqZ0ypcsOn",
+          "name": "Date de début (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldpagz1KGarc6jzy",
+          "name": "Date de fin (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldcumK8LgwSLgKas",
+          "name": "Lieu (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldAfwInF0CailCMK",
+          "name": "Statut (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldRW2qpWjWYhlh31",
+          "name": "Date d'inscription",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldIDdTMRCF7NnTDk",
+          "name": "Mode de financement",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldFiMy0f9BpnF3Rv",
+          "name": "Accord financement reçu",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld2Qs8EvBHM6unH5",
+          "name": "Référence dossier financement",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldljP77AbepmXwa6",
+          "name": "Montant pris en charge HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldz45GCveT98z7Co",
+          "name": "Montant restant à charge HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldEN3GdbO3dAiRaG",
+          "name": "Statut Inscription",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld8IFHAnFRlWbONV",
+          "name": "Motif absence/ abandon",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldlKM9OEsh3useMp",
+          "name": "Date de confirmation",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldRgHz3zBRfkhTDq",
+          "name": "Programme envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldSPPkhrk3OJwdaO",
+          "name": "Règlement intérieur envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldZImLzxFXFMz3Rn",
+          "name": "CGV envoyées",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldbAlRBIpvynIxTm",
+          "name": "Convention de formation envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldz3KQNqRM9zai5I",
+          "name": "Doc RGPD envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldOioTfjG7MWpqmV",
+          "name": "Droit à l'image envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld0Sg3Sa6b9baSxy",
+          "name": "Déclaration handicap envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldfOUy2H646nHziZ",
+          "name": "Convocation envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld6tluGhuzjAD94X",
+          "name": "Lien visio envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldq0BnnnyPY8l1sm",
+          "name": "Attestation de fin envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldd651EQg0iH6JDm",
+          "name": "Convention / contrat signé(e)",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldL2mXyldTQnrAPl",
+          "name": "Convention PDF signée",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldNzwmcK9ELxlawO",
+          "name": "Date signature convention",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldgYDI6SDDrClGs5",
+          "name": "URL signature éléctronique",
+          "type": "url",
+          "options": {}
+        },
+        {
+          "id": "fld9BshTOy8LLe4Zs",
+          "name": "Règlement intérieur signé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "flddSspvQ8eaqAfUT",
+          "name": "Règlement intérieur PDF signé",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldnVGJ3OK7m4qv6v",
+          "name": "RGPD signé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld1lJESDvSTfUvxG",
+          "name": "RGPD PDF signé",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldMC46mx1C3ch9OF",
+          "name": "Droit à l'image signé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldIBBRSSHlY98Tjw",
+          "name": "Déclaration handicap signée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldCPazJMZ9qzZtOY",
+          "name": "Note finale",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "flducRtmWIzk5V1sF",
+          "name": "Note sur",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fld9HcsmLLhVjmgQz",
+          "name": "Pourcentage réussite",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fld4p9Jlx9NzuDfOv",
+          "name": "Mention",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldRLofke0IW1qXjF",
+          "name": "Attestation générée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldAi4J2J3pWaXW1O",
+          "name": "Attestation PDF",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldkp1LWanr3HqXCw",
+          "name": "Remarques pédagogiques",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld8n7HNMkX6Zw886",
+          "name": "PRESENCES & EMARGEMENTS",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldx1GDb632kTJKCR",
+          "name": "⚠️ Ancien SESSIONS (obsolète — ne pas utiliser)",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldXnMaJP778xh6nQ",
+          "name": "Programme PDF (from Notes) (à partir de Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "flddZPgvz4VlStqz6",
+          "name": "Date envoi mail",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldz26jVxo98Sd5la",
+          "name": "Prêt à envoyer",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fld9VoQgfclU694qS",
+          "name": "Alerte \"J-7 dû\"",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldgCVWoA6taziPxO",
+          "name": "Rappel horaires",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldL2oHN3repfqQDo",
+          "name": "Email stagiaire (auto)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldxEWAU69vr4moGN",
+          "name": "Éval à froid J+30 due",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldHKJL8xDodefrRn",
+          "name": "Éval à froid J+30 envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldDJLOCFMEwwsGhd",
+          "name": "Convocation J-7 due",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldzgwysipFjKtJSP",
+          "name": "Convocation - détails (auto)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldCaaUucLn2aAIm8",
+          "name": "Positionnement envoyé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldCjftEagLsBgZ3q",
+          "name": "Éval à chaud envoyée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld4K3FdpZzSrDuGL",
+          "name": "Éval à chaud due",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldEHcg953DkSUPv9",
+          "name": "Pack légal (PDF) (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldnPQ01lxxbgB2g1",
+          "name": "Régime contractuel (auto)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldquxIihr26GQjqa",
+          "name": "Fin du délai de rétractation (10 j)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldO9rufCYEyjRZPd",
+          "name": "💶 Encaissement autorisé ?",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldU3v6Zq50mQquIL",
+          "name": "Résultat calculé (seuil 70 %)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldVugdiBk8fUrwLc",
+          "name": "Consentement RGPD (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldhLPvL2oaA33syq",
+          "name": "Situation de handicap (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld0MAHnvjCpcuKEl",
+          "name": "Aménagements nécessaires (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldYOba0Ve1jYqLmW",
+          "name": "Nb de lignes d'émargement",
+          "type": "count",
+          "options": {}
+        },
+        {
+          "id": "fldE1EzMnuZMxYBsq",
+          "name": "🧭 Contrôle dossier stagiaire",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldBgke1DVXIeV9Ed",
+          "name": "Contrôle session (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld0j2NbxvAeStUmF",
+          "name": "Durée en heures (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldTCPr2NqhcaitKe",
+          "name": "Objectifs (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldRHgnmCG70VxHDO",
+          "name": "Créé par",
+          "type": "createdBy",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblUF2NHzUmDECDIW",
+      "name": "PRESENCES & EMARGEMENTS",
+      "fields": [
+        {
+          "id": "fldjsgPhZ0NRJ2pYn",
+          "name": "Référence présence",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fld5Xxq9Auw9WYe1E",
+          "name": "Apprenant",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld8xaSYlm0neUlWg",
+          "name": "Nom Prénom (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld1HmL3NI2apMBCE",
+          "name": "Email personnel (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldQUt0SzvOs7Dgha",
+          "name": "Téléphone portable (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldndaO4Bjg8rTulS",
+          "name": "Session",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldPuk72WMtZeIa0m",
+          "name": "Formation (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldTZxIyyzQgX4Hs4",
+          "name": "Formateur principal (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld9CX9puuLO3Npng",
+          "name": "Date de début (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld9ykGR2qHCQOOvP",
+          "name": "Inscription liée",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldMJzp6Glvqiw9Nt",
+          "name": "Date journée",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldyds0cPXhygrTFr",
+          "name": "Matin - Présent",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldEVaWUzNnriqki0",
+          "name": "Après-midi - Présent",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld5GoiyhgS5X6kxJ",
+          "name": "Heure d'arrivée",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldJo6yCgH7ljD6Ho",
+          "name": "Heure de départ",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldI9hQaozxWIaxhF",
+          "name": "Motif d'absence",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldENv48JA7ET7byv",
+          "name": "Justificatif d'absence",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldmk6YfKe5TQPsoa",
+          "name": "Emargement apprenant (signature)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldkrz7KXzZQOEO4h",
+          "name": "Emargement formateur (signature)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldkmDGX89Ie1luE6",
+          "name": "Observations",
+          "type": "multilineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tbllQ4ydL7V62z4kC",
+      "name": "EVALUATIONS",
+      "fields": [
+        {
+          "id": "fld2ILfb8gs28M84P",
+          "name": "Référence éval",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fld2o8eHsyrBTAJ0r",
+          "name": "Apprenant",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldK4lIodEiBysv2u",
+          "name": "Nom Prénom (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldJvFsFlZjqBovpe",
+          "name": "Email personnel (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldKvIiylbnOTwBOQ",
+          "name": "Téléphone portable (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld7kfiQKh3k0jDmh",
+          "name": "Entreprise employeur (from Apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld3Gm7768WQ0fLUC",
+          "name": "Session",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldyBpDxrJvH71FCm",
+          "name": "Formation (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldlwd10nuvZ3qpXI",
+          "name": "Formateur principal (from Session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldtAu7sWSrqS7BAh",
+          "name": "Type d'évaluation",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldCaPWDs5Nr28pbL",
+          "name": "Date d'évaluation",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldyzNA1us94QjSAL",
+          "name": "Score obtenu",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldqhHjVyykc5cSeO",
+          "name": "Score maximum",
+          "type": "number",
+          "options": {}
+        },
+        {
+          "id": "fldW989XiAifzIdJj",
+          "name": "Score en %",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldvh7HWs8HBISf7a",
+          "name": "Résultat",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldZcPgiFoAQQJHrV",
+          "name": "Commentaires du formateur",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldHtnq4iBe24nX2y",
+          "name": "Document d'évaluation (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldK7lndFTYwiGJVh",
+          "name": "Envoyé à l'apprenant",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldzsD29qP9IOSDmB",
+          "name": "Date d'envoi",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld4IjohUMwbv9oFK",
+          "name": "Lien formulaire (si en ligne)",
+          "type": "url",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tbl6oAUGfGVBRy7Jl",
+      "name": "DEVIS & FACTURES",
+      "fields": [
+        {
+          "id": "fldazxLYnbXz3KKtk",
+          "name": "Numéro",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldYJsUF9bXfQIG2n",
+          "name": "Référence",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldlWhqXWJVyl3fBO",
+          "name": "Type document",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldxHqI05EOPX8ABS",
+          "name": "Client",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldIxB8JxQX2Ija2H",
+          "name": "Nom entreprise (from Client)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldV8jZo8vtjDEa1M",
+          "name": "Nom contact principal (from Client)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldTap3k39s2QcMwC",
+          "name": "Email contact (from Client)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld4Bnpbbnct84TGx",
+          "name": "Téléphone contact (from Client)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldrec0RZrydBbCEJ",
+          "name": "Session concernée",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldO4Pp9jelXiTWLl",
+          "name": "Formation (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldxUku5pODNS651G",
+          "name": "Formateur principal (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldjk8j8wZ5ZoboVP",
+          "name": "Date de début (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldNUnKLDVq51ZYt3",
+          "name": "Formation (hors session)",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldowg9mmuwnesLjU",
+          "name": "Titre formation (from Formation (hors session))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldDVtK7mFCi5VnpV",
+          "name": "Programme détaillé (from Formation (hors session))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldyFfAGYI17aMyZY",
+          "name": "Tarif inter HT (from Formation (hors session))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld9AG2Hii3QaIK8X",
+          "name": "Tarif intra HT (from Formation (hors session))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldwmV1hb0nWAEb4N",
+          "name": "Accessibilité handicap (from Formation (hors session))",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldrl7ibiAXBiWalV",
+          "name": "Montant HT",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fld7VLDxEgCkLX624",
+          "name": "Statut TVA",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld1moWkOwVNV6Rx3",
+          "name": "Montant TVA",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldyqUp5d4bD1m8aM",
+          "name": "Montant TTC",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldOfeimF96O4rxtn",
+          "name": "Date d'émission",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld9BHSmF8oaa4BoZ",
+          "name": "Date d'expiration (devis)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldeOqGEDdFVMusWG",
+          "name": "Date d'échéance (facture)",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldH33pDaAFsJ93vz",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldUNTRwCa8io4Fui",
+          "name": "PDF document",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld3TPUw17VVTQACC",
+          "name": "Mode de paiement",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldmcR4ivQyzsh3kk",
+          "name": "Date de paiement reçu",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld7mJwcwlaycfkb6",
+          "name": "Montant encaissé",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldw4D0yJ7OVrNYdS",
+          "name": "Reste dû",
+          "type": "formula",
+          "options": {}
+        },
+        {
+          "id": "fldbRKfj1HlIST7el",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldbWfS4SJETz24RO",
+          "name": "ALERTES & TÂCHES",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldE5oBgFTXwTevF0",
+          "name": "Date de fin (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld7QMXPvXGDWr0X1",
+          "name": "Horaires (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldyFWZBENzJbtMW8",
+          "name": "Lieu (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld0Wy1hVbyomCkjD",
+          "name": "Durée en heures (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "flddRBDZShninQRVx",
+          "name": "Durée en jours (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldhE5JRNx8pTgyUT",
+          "name": "Type de session (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldQ6UHhvEbG0o4Vt",
+          "name": "Programme PDF (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldF6u4R2v1DVMFVy",
+          "name": "Pack légal PDF (from Session concernée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblJ6YmFkxByrpyxb",
+      "name": "FOURNISSEURS",
+      "fields": [
+        {
+          "id": "fld3I94rbgqE009Ea",
+          "name": "Nom fournisseur",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldLgr4U2vbxRgsoF",
+          "name": "Type",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldDxC3tvGDo7RiJP",
+          "name": "SIRET",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld8jz9cnhjvthNTU",
+          "name": "Contact",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldmgq7X1PZWDXvrP",
+          "name": "Email",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldhgh25Ul4nXDJq7",
+          "name": "Téléphone",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "fldewYwPE1lVejY4t",
+          "name": "Produits/ services",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldqxY2hQsgWLUPjU",
+          "name": "Délai de livraison habituel",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldWqmI42nnIxHlMi",
+          "name": "Conditions tarifaires",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld04F9Dyk60rAE7M",
+          "name": "Contrat fournisseur signé",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldr1x99MFhYpE3v4",
+          "name": "Contrat (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "flduDBvTIIt29YrOi",
+          "name": "Date fin contrat",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldTvwhaTNmSD4LfH",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldhnKmLDECdFAEgx",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblBAwsuKf6Nw8w8Z",
+      "name": "INDICATEURS QUALIOPI",
+      "fields": [
+        {
+          "id": "fld6TEv6yHMEomhXU",
+          "name": "Indicateur",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldz75ntgZaVJOpW9",
+          "name": "Libellé officiel",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldOhbKxX0OnhTWPz",
+          "name": "Critère de qualité",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fld2R8cY5rd3pTJf2",
+          "name": "Preuves requises",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldog0TrBJSfmJha9",
+          "name": "Statut de conformité",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldHXR7LucVaqolhG",
+          "name": "Score auto-audit",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld5FrkBmrI2Gg2Rs",
+          "name": "Documents de preuve",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldPmnPK8K6IcTclq",
+          "name": "Dernière vérification",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldbQq4SvmePjrRD3",
+          "name": "Prochain audit prévu",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldClSUyYpxuOp3so",
+          "name": "Observations",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldm1O43UWVRldcOz",
+          "name": "Actions correctives",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldu6ycG5cxWO3SDC",
+          "name": "Responsable",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldujy0FEhQa9b3Cw",
+          "name": "📄 Documents de preuve YEBA",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld2HXfoOypscbTZe",
+          "name": "Nb de documents rattachés",
+          "type": "count",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblZzrwucFi1qQi8C",
+      "name": "MAILING LOG",
+      "fields": [
+        {
+          "id": "fldZcL95Non03xxgc",
+          "name": "Name",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldvxxfYK7YjEgEe9",
+          "name": "Auto number",
+          "type": "autoNumber",
+          "options": {}
+        },
+        {
+          "id": "fldPnIxGvbza2rApB",
+          "name": "Destinataire",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldt7XEr9U3zplQaR",
+          "name": "Nom destinataire",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld3m1ihlN2lZ5Zee",
+          "name": "Type d'email",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldMZYBdH9hfaYfQp",
+          "name": "Sujet de l'email",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldPzf6PMXTSyVFxH",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldzmT8mmQXwOmzAg",
+          "name": "Date d'envoi",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld7QtXq1ffjQWWhF",
+          "name": "Apprenant lié",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldKSEZvyIpc8uCUH",
+          "name": "Email personnel (from Apprenant lié)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldnWBAQ47lpet7tM",
+          "name": "Téléphone portable (from Apprenant lié)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldNkzipbikyi2GEN",
+          "name": "Session liée",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fld3qw7TnJvDJBk2T",
+          "name": "Formation (from Session liée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldE5cFgwmuDyVFXY",
+          "name": "Date de début (from Session liée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldUudTYWTlnaCcdv",
+          "name": "Statut (from Session liée)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldhNqBk1foFTbEf5",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tbl4Vt26ab6tiPV0J",
+      "name": "ALERTES & TÂCHES",
+      "fields": [
+        {
+          "id": "fldrow94W4VW60i73",
+          "name": "Titre de l'alerte",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld3V17sT2UkW4wpR",
+          "name": "Type",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldnXXHix1UHmclR9",
+          "name": "Priorité",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldmrPIywnzH7CErH",
+          "name": "Status",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldkbMCPhWvOXdJoU",
+          "name": "Date de l'alerte",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldsx0TtLLDgtYnzV",
+          "name": "Date d'échéance",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldJfnZ93uu3CLRK0",
+          "name": "Lié à apprenant",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldtwzjOcfiQkoN7i",
+          "name": "Nom Prénom (from Lié à apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld6ZhZPOkPMoaJV8",
+          "name": "Email personnel (from Lié à apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldl5Dzmo8vaY68rc",
+          "name": "Téléphone portable (from Lié à apprenant)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldt3m4pFQXaYuKtb",
+          "name": "Lié à session",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldXJZ1iokgLY1zRy",
+          "name": "Formation (from Lié à session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldVx8FeNZzaLHiaU",
+          "name": "Date de début (from Lié à session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldvF0iPsIoTWe5nr",
+          "name": "Statut (from Lié à session)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld1F0q2A9pE6N9Hn",
+          "name": "Lié à factures",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldyIyRY6s9gu6piO",
+          "name": "Référence (from Lié à factures)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldoI0VO8VGsClu55",
+          "name": "Montant HT (from Lié à factures)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldnPfKHZKSQBI5DZ",
+          "name": "Date d'échéance (facture) (from Lié à factures)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld1SRBIWZ2tfq6Ql",
+          "name": "Statut (from Lié à factures)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldwplftNGRpslk6n",
+          "name": "Lié à Formateur",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldTfN6tedV69QWEq",
+          "name": "Nom Prénom (from Lié à Formateur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fld5XDgMh3L2mbPII",
+          "name": "Email Professionnel (from Lié à Formateur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldwdC1WMDGee5GCN",
+          "name": "Téléphone (from Lié à Formateur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldIsMowZskquWTfd",
+          "name": "Date fin convention (from Lié à Formateur)",
+          "type": "multipleLookupValues",
+          "options": {}
+        },
+        {
+          "id": "fldp5P1oHa2qmDsjX",
+          "name": "Description",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldwEA8Fr12PHNVpq",
+          "name": "Actions réalisées",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldIdV1HvRrX9OKSH",
+          "name": "Date de résolution",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldQe4SSbMvbBjgto",
+          "name": "Lié à projet IA",
+          "type": "singleLineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblOtTLB3g98fOJ1D",
+      "name": "PARTENAIRES & FINANCEURS",
+      "fields": [
+        {
+          "id": "fldAzW7NJYzQDCRoJ",
+          "name": "Nom du partenaire",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldc8YCOBwJdTF0DS",
+          "name": "Type de partenaire",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldgLheDBNseQtHk7",
+          "name": "Contact référent",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldtmw9zemFG9ZqJ1",
+          "name": "Email",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fldqomRg58VysVHms",
+          "name": "Téléphone",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "fldBD5kgnS1s3dSuW",
+          "name": "Domaine de collaboration",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldOvooFjQH3vai30",
+          "name": "Convention de partenariat signée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldUDMFFDzf9KgdrZ",
+          "name": "Convention (PDF)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldkEoBGLRn3eyWll",
+          "name": "Date début partenariat",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldYTOT0AnfVLSTLn",
+          "name": "Date fin / renouvellement",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldUQzCbK7RnN8Evj",
+          "name": "Subventions ou dispositifs associés",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldywxSBIJC8NFoce",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fld21h89OMNH2EM4Y",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblvmQa6V9tgaHPPF",
+      "name": "RESSOURCES PÉDAGOGIQUES",
+      "fields": [
+        {
+          "id": "fldnvMZPyjPeV70E1",
+          "name": "Nom Ressource",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldsqgEnon5ItzFHp",
+          "name": "Type",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldutTByFrQXoRaRP",
+          "name": "Description / cas d'usage",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldtbFF7fazxbU70X",
+          "name": "Mots-clés",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldrZR7Zq51UVpGvA",
+          "name": "Fichier",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldU0iswrZ7Mlll3X",
+          "name": "Réutilisable tel quel",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld6ATvS1EOie4img",
+          "name": "Date d'ajout",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldXFpSwv61QR6IAB",
+          "name": "Formations compatibles",
+          "type": "multipleRecordLinks",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblU5DphvZLflSiGg",
+      "name": "CHARGES & ABONNEMENTS",
+      "fields": [
+        {
+          "id": "fldoKDsSBjX5Mtr7T",
+          "name": "Nom du service",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldLsHXO2cObMYO8V",
+          "name": "Catégorie",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldgcMspmvvX1SmRO",
+          "name": "Coût",
+          "type": "currency",
+          "options": {}
+        },
+        {
+          "id": "fldhkGj6cakqWz69z",
+          "name": "Fréquence",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldZqvwENqgFdU0JI",
+          "name": "Prochain renouvellement",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldzXQOAWiBxtl71H",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldYN658akMYtrVw6",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldSKrZK4rLQLI4NB",
+          "name": "Coût annualisé estimé",
+          "type": "formula",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblBkvq4rlptLwjuw",
+      "name": "STAGES & ALTERNANCES",
+      "fields": [
+        {
+          "id": "fldZFDhknAB96CXgj",
+          "name": "Nom du parcours",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldpeLwC4n89rdEk3",
+          "name": "Type de parcours",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldVySfOgeeRE6GbL",
+          "name": "Statut recherche",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldmS3UyyNdupxwNL",
+          "name": "Date début recherche",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldIrz2ZfuBlZFYDm",
+          "name": "Date début placement",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld89Hm3HjqmCgPhk",
+          "name": "Date fin placement",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldy2sddK4U4QCauu",
+          "name": "Poste / Intitulé",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldCWHQ1Nml2DGA4A",
+          "name": "Maître d'apprentissage / Tuteur",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldvrxf7WwUek1Lud",
+          "name": "Email tuteur",
+          "type": "email",
+          "options": {}
+        },
+        {
+          "id": "fld2To3lKXry015xm",
+          "name": "Téléphone tuteur",
+          "type": "phoneNumber",
+          "options": {}
+        },
+        {
+          "id": "fldEsJ6V86LWKZswp",
+          "name": "Convention signée",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fld0WSNQMwA36zeEo",
+          "name": "Convention (PDF signé)",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fldB9wzT6O3Qwa80Y",
+          "name": "Livret d'alternance à jour",
+          "type": "checkbox",
+          "options": {}
+        },
+        {
+          "id": "fldaGdcoV6kMq3Rp5",
+          "name": "Date dernière visite tuteur/formateur",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fld7khGorBLmLqGBa",
+          "name": "Compte-rendu visite",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldOt6jajzzfniPWR",
+          "name": "Notes",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldaYBvWRY1qe1Txg",
+          "name": "Apprenant",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldHHPL4sFXrxjtvI",
+          "name": "Entreprise d'accueil",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldSTRJ8y2unZu8AE",
+          "name": "Session",
+          "type": "multipleRecordLinks",
+          "options": {}
+        }
+      ]
+    },
+    {
+      "id": "tblSCxGvNSDdH3Blt",
+      "name": "DOCUMENTS OFFICIELS YEBA",
+      "fields": [
+        {
+          "id": "fldFCGhX6WU0PWlsm",
+          "name": "Titre du document",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldFfYg5S7zrqgROf",
+          "name": "Référence",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldvVm8OtKA7eE1m6",
+          "name": "Catégorie",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldqQiP8xnhi84YJ0",
+          "name": "Version",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldyCwllaCBJYedcE",
+          "name": "Date d'édition",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldYnUWqpUGVAEdBj",
+          "name": "Prochaine révision",
+          "type": "date",
+          "options": {}
+        },
+        {
+          "id": "fldMOFv8zq7OW4BW1",
+          "name": "Statut",
+          "type": "singleSelect",
+          "options": {}
+        },
+        {
+          "id": "fldcNJ4MDGkK3uDKb",
+          "name": "Contenu intégral",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldE8BlVltDAI1Si9",
+          "name": "Base légale / référentiel",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "fldS2LL5ZlqPs5ZKI",
+          "name": "Indicateurs RNQ couverts",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fld5ZokEH4L1eoTS2",
+          "name": "Destinataires",
+          "type": "multipleSelects",
+          "options": {}
+        },
+        {
+          "id": "fldnw8BJdOz4v4wBA",
+          "name": "Éléments manquants à fournir",
+          "type": "multilineText",
+          "options": {}
+        },
+        {
+          "id": "flduFcM9CYQJjUPCF",
+          "name": "Fichier mis en page",
+          "type": "multipleAttachments",
+          "options": {}
+        },
+        {
+          "id": "fld0MdUBIAm1dLnIg",
+          "name": "Fichier source (dépôt Git)",
+          "type": "singleLineText",
+          "options": {}
+        },
+        {
+          "id": "fldbO9qKnZoR7lunW",
+          "name": "🎯 Indicateurs Qualiopi prouvés",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldW5MKrXmUnl9wU2",
+          "name": "📚 Sessions où ce document est remis",
+          "type": "multipleRecordLinks",
+          "options": {}
+        },
+        {
+          "id": "fldhYZnGesQ0V8Rnz",
+          "name": "🔎 Où ce document doit apparaître",
+          "type": "formula",
+          "options": {}
+        }
+      ]
+    }
+  ]
+}
