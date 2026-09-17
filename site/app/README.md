@@ -15,8 +15,12 @@ scene.js       scène animée du héros
 
 Tout est dans `contenu.js`. Aucune connaissance technique requise.
 
-- **Ajouter une formation** : copier un bloc de `FORMATIONS`, changer les valeurs.
-  Le filtre par domaine et le sélecteur du formulaire se mettent à jour seuls.
+- **Ajouter une formation** : **dans Airtable**, puis `python site/build.py`.
+  Le catalogue vit dans `formations.js`, qui est GÉNÉRÉ — ne l'éditez jamais à
+  la main, il serait écrasé. Le filtre par domaine et le sélecteur du
+  formulaire se mettent à jour seuls.
+  L'accroche commerciale, elle, n'est pas dans Airtable : elle se règle dans le
+  dictionnaire `ACCROCHES` de `site/build.py`.
 - **Ajouter une brève de veille** : ajouter une entrée en tête de `VEILLE`.
   Les trois champs `resume`, `impact` et `source` sont obligatoires — une brève
   sans source n'est pas de la veille.
@@ -104,16 +108,20 @@ selon l'exemption CNIL, reste dispensé de consentement.
 
 ## Limites connues
 
-1. **La veille est manuelle.** Un flux automatique suppose un serveur. Les
+1. ~~Catalogue recopié à la main~~ — **corrigé**. `build.py` génère
+   `formations.js` depuis Airtable, avec le filtre de marque blanche et le
+   contrôle d'éligibilité CPF appliqués à la génération. Il n'y a plus qu'une
+   seule source de vérité.
+2. **La veille est manuelle.** Un flux automatique suppose un serveur. Les
    entrées sont datées et sourcées à la main dans `contenu.js`.
-2. **Le formulaire n'envoie rien** : il ouvre votre messagerie. Aucune collecte,
+3. **Le formulaire n'envoie rien** : il ouvre votre messagerie. Aucune collecte,
    donc aucun traitement à déclarer — mais aucune mesure de conversion non plus.
-3. **Les mentions légales sont incomplètes.** Forme juridique, capital social,
+4. **Les mentions légales sont incomplètes.** Forme juridique, capital social,
    RCS, TVA intracommunautaire, hébergeur et médiateur de la consommation sont
    signalés en jaune dans la page. Ce ne sont pas des détails : le médiateur est
    une obligation dès qu'un particulier finance lui-même une formation
    (code de la consommation, art. L.612-1).
-4. **Pas de rendu serveur.** Les moteurs de recherche indexent aujourd'hui le
+5. **Pas de rendu serveur.** Les moteurs de recherche indexent aujourd'hui le
    JavaScript, mais une version statique par page resterait préférable pour le
    référencement. À envisager si le trafic devient un objectif prioritaire.
 

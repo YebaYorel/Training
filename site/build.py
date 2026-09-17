@@ -174,13 +174,87 @@ def main():
         print("Mode --check : rien n'a été écrit.")
         return
 
-    sortie = Path(__file__).parent / "data" / "formations.json"
+    racine = Path(__file__).parent
+    sortie = racine / "data" / "formations.json"
     sortie.parent.mkdir(parents=True, exist_ok=True)
     sortie.write_text(
         json.dumps({"formations": publiables}, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"Écrit : {sortie}")
+
+    ecrire_module(racine, publiables)
+
+
+# ─── Surcouche éditoriale ────────────────────────────────────────────────
+# Airtable porte les données de gestion ; l'accroche commerciale, elle, ne s'y
+# trouve pas et n'a pas à y être. Elle est maintenue ici, rapprochée de chaque
+# formation par son titre. Une formation sans accroche n'est pas bloquée :
+# elle s'affiche sans, et le script le signale.
+ACCROCHES = {
+    "Automatisation": "Vos tâches répétitives, faites une fois pour toutes.",
+    "Copilot pour Microsoft 365 — la méthode des 4 P": "Périmètre, Prompt, Production, Preuve.",
+    "Créer des emailings professionnels avec l'IA": "Un courriel qui obtient une réponse.",
+    "IA Générative": "Comprendre, piloter, vérifier.",
+    "Produire un site Internet en vocal": "Votre site, à la voix. Et vous le gardez.",
+    "RGPD & Cybersécurité": "Savoir quoi faire dans les 72 heures.",
+    "Vente : Initiation à la vente": "De la découverte à la signature.",
+}
+
+
+def _js(valeur):
+    """Littéral JavaScript sûr. json.dumps échappe déjà guillemets et
+    caractères de contrôle ; on neutralise en plus la séquence </script>."""
+    return json.dumps(valeur, ensure_ascii=False).replace("</", "<\\/")
+
+
+def ecrire_module(racine, formations):
+    """Écrit site/app/formations.js, importé par contenu.js.
+
+    Sans cette étape, le catalogue du site était recopié à la main depuis le
+    JSON : deux sources pour une même vérité, donc une divergence certaine à
+    terme.
+    """
+    lignes = [
+        "/* FICHIER GÉNÉRÉ — NE PAS MODIFIER À LA MAIN.",
+        " * Produit par `python site/build.py` depuis la base Airtable.",
+        " * Toute correction se fait dans Airtable, puis on régénère.",
+        " * Les fiches en marque blanche (FOR-0005, FOR-0007) sont exclues",
+        " * par contrat et ne doivent jamais apparaître ici.",
+        " */",
+        "",
+        "export const FORMATIONS = [",
+    ]
+    sans_accroche = []
+    for f in formations:
+        accroche = ACCROCHES.get(f["titre"])
+        if not accroche:
+            sans_accroche.append(f["titre"])
+        lignes += [
+            "  {",
+            f"    id: {_js(f['id'])},",
+            f"    titre: {_js(f['titre'])},",
+            f"    domaine: {_js(f['domaine'])},",
+            f"    type: {_js(f['type'])},",
+            f"    heures: {_js(f['heures'])},",
+            f"    jours: {_js(f['jours'])},",
+            f"    tarif: {_js(f['tarif_jour_personne'])},",
+            f"    accroche: {_js(accroche or f['titre'])},",
+            f"    public: {_js(f['public'])},",
+            f"    prerequis: {_js(f['prerequis'])},",
+            f"    objectifs: {_js([o.strip(' 12345678.-') for o in f['objectifs'].split(chr(10)) if o.strip() and not o.strip().startswith('À l')])},",
+            "  },",
+        ]
+    lignes += ["];", ""]
+
+    cible = racine / "app" / "formations.js"
+    cible.parent.mkdir(parents=True, exist_ok=True)
+    cible.write_text("\n".join(lignes), encoding="utf-8")
+    print(f"Écrit : {cible}")
+    if sans_accroche:
+        print("  ⚠ Sans accroche éditoriale (ajoutez-la dans ACCROCHES de build.py) :")
+        for t in sans_accroche:
+            print(f"      {t}")
 
 
 if __name__ == "__main__":

@@ -41,108 +41,28 @@ export const CERTIFICATIONS = [
   { nom: 'Qualiopi 25FOR02027.1', emetteur: 'Qualitia — COFRAC' },
 ];
 
-export const FORMATIONS = [
-  {
-    id: 'automatisation', titre: 'Automatisation', domaine: 'Automatisation',
-    type: 'Inter-entreprise', heures: 14, jours: 2, tarif: 490,
-    accroche: 'Vos tâches répétitives, faites une fois pour toutes.',
-    public: 'Dirigeants de TPE-PME, indépendants et fonctions administratives.',
-    objectifs: [
-      'Repérer dans votre activité les tâches réellement automatisables',
-      'Concevoir un enchaînement : déclencheur, conditions, actions',
-      'Mettre en place une automatisation sans écrire de code',
-      'Sécuriser les données traitées au regard du RGPD',
-      'Mesurer le temps gagné et fiabiliser le processus',
-    ],
-    prerequis: 'Usage courant des outils bureautiques et du web. Aucune programmation.',
-  },
-  {
-    id: 'copilot', titre: 'Copilot pour Microsoft 365', domaine: 'IA Générative',
-    type: 'Intra-entreprise', heures: 14, jours: 2, tarif: 425,
-    accroche: 'Périmètre, Prompt, Production, Preuve.',
-    public: 'Salariés et dirigeants équipés de Microsoft 365 qui produisent chaque semaine des documents ou des analyses.',
-    objectifs: [
-      "Comprendre pourquoi un assistant relié à vos données ne se pilote pas comme un outil grand public",
-      "Déterminer si l'assistant peut atteindre un document donné",
-      'Formuler une demande en désignant explicitement les sources',
-      'Diagnostiquer une réponse décevante et choisir le bon correctif',
-      'Trier : je saisis, j’anonymise d’abord, je ne saisis jamais',
-    ],
-    prerequis: 'Licence Copilot active et nominative par stagiaire, documents professionnels réels accessibles, administrateur joignable. Conditions vérifiées par écrit 5 jours ouvrés avant.',
-  },
-  {
-    id: 'emailing', titre: "Emailings professionnels avec l'IA", domaine: 'IA Générative',
-    type: 'Intra-entreprise', heures: 14, jours: 2, tarif: 425,
-    accroche: 'Un courriel qui obtient une réponse.',
-    public: 'Dirigeants, commerciaux, fonctions administratives et chargés de communication.',
-    objectifs: [
-      'Constituer et segmenter une base de contacts conforme au RGPD',
-      "Écrire l'objet, l'accroche, le corps et l'appel à l'action",
-      'Concevoir une séquence de courriels et en régler le rythme',
-      'Être reçu : délivrabilité, désinscription, expéditeur identifié',
-      'Corriger à partir des indicateurs réels',
-    ],
-    prerequis: 'Usage courant d’une messagerie et d’un tableur. Venez avec votre situation réelle.',
-  },
-  {
-    id: 'ia-generative', titre: 'IA Générative', domaine: 'IA Générative',
-    type: 'Inter-entreprise', heures: 14, jours: 2, tarif: 490,
-    accroche: 'Comprendre, piloter, vérifier.',
-    public: 'Professionnels, indépendants et salariés souhaitant intégrer l’IA dans leur quotidien.',
-    objectifs: [
-      'Expliquer le fonctionnement et les limites des modèles',
-      'Rédiger des consignes efficaces et itérer',
-      'Mobiliser l’IA sur des tâches métier concrètes',
-      'Maîtriser les risques : confidentialité, erreurs factuelles, biais',
-      'Rester conforme au RGPD et au règlement européen sur l’IA',
-    ],
-    prerequis: 'Aisance avec un navigateur et les outils bureautiques.',
-  },
-  {
-    id: 'site-vocal', titre: 'Produire un site Internet en vocal', domaine: 'IA Générative',
-    type: 'Intra-entreprise', heures: 14, jours: 2, tarif: 425,
-    accroche: 'Votre site, à la voix. Et vous le gardez.',
-    public: 'Dirigeants de TPE, artisans, commerçants et créateurs sans site — ou avec un site qu’ils ne peuvent pas modifier seuls.',
-    objectifs: [
-      'Formuler à l’oral un cahier des charges exploitable',
-      'Piloter un générateur de site et corriger par itérations',
-      'Vérifier chaque contenu : textes, tarifs, coordonnées',
-      'Mettre en ligne un site conforme : mentions, confidentialité, traceurs',
-      'Le maintenir seul, sans rappeler un prestataire',
-    ],
-    prerequis: 'Usage courant d’un ordinateur. Aucune compétence en développement. Venez avec votre projet réel.',
-    noteHandicap: 'La saisie clavier est acceptée en substitution intégrale de la dictée : la compétence évaluée est la structuration de la demande, pas la production sonore. Parcours entièrement réalisable au clavier.',
-  },
-  {
-    id: 'rgpd-cyber', titre: 'RGPD & Cybersécurité', domaine: 'RGPD & Conformité',
-    type: 'Inter-entreprise', heures: 14, jours: 2, tarif: 490,
-    accroche: 'Savoir quoi faire dans les 72 heures.',
-    public: 'Dirigeants, responsables administratifs, et tout salarié manipulant des données personnelles.',
-    objectifs: [
-      'Identifier les traitements soumis au RGPD dans votre activité',
-      'Appliquer les six principes : licéité, minimisation, exactitude, conservation, sécurité, responsabilité',
-      'Constituer et tenir à jour un registre des traitements',
-      'Prévenir hameçonnage, rançongiciel et mots de passe faibles',
-      'Réagir à une violation : mesures conservatoires et notification CNIL sous 72 h',
-    ],
-    prerequis: 'Aucun prérequis technique.',
-  },
-  {
-    id: 'vente', titre: 'Initiation à la vente', domaine: 'Vente & Management',
-    type: 'Inter-entreprise', heures: 7, jours: 1, tarif: 390,
-    accroche: 'De la découverte à la signature.',
-    public: 'Créateurs d’entreprise, indépendants, commerciaux débutants.',
-    objectifs: [
-      'Dérouler un entretien, de la préparation à la conclusion',
-      'Mener une découverte par un questionnement structuré',
-      'Construire une proposition de valeur adaptée au besoin',
-      'Traiter les objections courantes avec méthode',
-      'Conclure et organiser le suivi',
-    ],
-    prerequis: 'Aucun prérequis.',
-    noteHandicap: 'Les jeux de rôle peuvent se tenir en trio fermé, ou être remplacés par un rôle d’observateur à la grille critériée, ou par une étude de cas écrite.',
-  },
-];
+/* Catalogue — importé de formations.js, GÉNÉRÉ depuis Airtable par
+   `python site/build.py`. Ne jamais éditer le catalogue ici : il serait
+   écrasé à la prochaine génération, et les deux sources divergeraient. */
+import { FORMATIONS as CATALOGUE } from './formations.js';
+
+/* Surcouche éditoriale : précisions d'accessibilité propres à certaines
+   formations. Elles relèvent de la pédagogie, pas de la gestion, et n'ont
+   donc pas leur place dans Airtable. Rapprochées par identifiant de fiche. */
+const NOTES_HANDICAP = {
+  rec1H1ma1PJSh1gnO:
+    "La saisie clavier est acceptée en substitution intégrale de la dictée : la "
+    + "compétence évaluée est la structuration de la demande, pas la production "
+    + "sonore. Parcours entièrement réalisable au clavier.",
+  recpSsg0jyP4uj2ed:
+    "Les jeux de rôle peuvent se tenir en trio fermé, ou être remplacés par un "
+    + "rôle d'observateur à la grille critériée, ou par une étude de cas écrite.",
+};
+
+export const FORMATIONS = CATALOGUE.map((f) => ({
+  ...f,
+  noteHandicap: NOTES_HANDICAP[f.id],
+}));
 
 /* Veille — à compléter à la main. Chaque entrée porte sa date et sa source :
    une brève sans source n'est pas de la veille, c'est une rumeur. */

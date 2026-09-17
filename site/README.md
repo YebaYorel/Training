@@ -106,7 +106,7 @@ C'est la solution la plus sobre juridiquement ; voir ses limites ci-dessous.
 
 ## Limites connues
 
-1. **La constante `FORMATIONS` d'`index.html` est recopiée à la main** depuis
+1. ~~Catalogue recopié à la main~~ — **corrigé** : `build.py` génère `app/formations.js`, importé par `contenu.js`. Une seule source de vérité : Airtable.
    `data/formations.json`. Une divergence entre les deux est possible. À
    corriger par une étape de génération qui réinjecte le JSON dans la page.
 
