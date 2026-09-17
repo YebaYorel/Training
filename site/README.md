@@ -11,10 +11,20 @@ Airtable (CATALOGUE FORMATIONS)
         ▼
    site/build.py   ── filtre marque blanche ── contrôle CPF ──►  refus si échec
         │
-        ▼
-site/data/formations.json          site/index.html
-                                    (données injectées, aucun appel réseau)
+        ├──► site/data/formations.json     (données brutes)
+        └──► site/app/formations.js        (module importé par l'application)
+                        │
+                        ▼
+              site/app/  — l'application en huit pages
+              (données embarquées, aucun appel réseau)
 ```
+
+Deux pages coexistent dans ce dépôt :
+
+| | Fichier | Usage |
+|---|---|---|
+| Vitrine d'une page | `site/index.html` | première version, conservée comme référence |
+| **Application** | `site/app/` | **la version en service** — voir `site/app/README.md` |
 
 Le visiteur ne contacte jamais Airtable. Sa clé d'API reste sur votre machine ;
 elle n'est jamais présente dans la page publiée. Le site n'émet aucune requête
@@ -29,8 +39,13 @@ python site/build.py --check     # simulation : affiche publiables / exclues
 python site/build.py             # écrit site/data/formations.json
 ```
 
-Après régénération, reporter les formations dans la constante `FORMATIONS` de
-`index.html`. *(Étape à automatiser : voir « Limites connues ».)*
+`build.py` écrit deux fichiers :
+
+- `site/data/formations.json` — les données, lisibles telles quelles ;
+- `site/app/formations.js` — le module importé par l'application.
+
+Rien à recopier à la main : les deux contrôles ci-dessous s'appliquent à la
+génération, donc à ce que le site affiche.
 
 ## Les deux contrôles bloquants
 
@@ -106,9 +121,9 @@ C'est la solution la plus sobre juridiquement ; voir ses limites ci-dessous.
 
 ## Limites connues
 
-1. ~~Catalogue recopié à la main~~ — **corrigé** : `build.py` génère `app/formations.js`, importé par `contenu.js`. Une seule source de vérité : Airtable.
-   `data/formations.json`. Une divergence entre les deux est possible. À
-   corriger par une étape de génération qui réinjecte le JSON dans la page.
+1. ~~Catalogue recopié à la main~~ — **corrigé**. `build.py` génère
+   `app/formations.js`, importé par `app/contenu.js`. Le catalogue n'existe
+   plus qu'en un seul endroit : Airtable.
 
 2. **Le formulaire `mailto:` a un coût de conversion.** Il ouvre le logiciel de
    messagerie du visiteur, ce qui échoue sur les postes sans client configuré,
