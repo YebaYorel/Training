@@ -126,16 +126,20 @@ def _appel(url, entetes, donnees=None, methode=None):
 
 
 class Airtable:
-    def __init__(self, jeton):
+    def __init__(self, jeton, url=None):
         self.h = {"Authorization": f"Bearer {jeton}"}
+        # Configurable pour permettre de rejouer la migration contre un
+        # simulateur avant de la lancer sur les données réelles.
+        self.url = (url or os.environ.get("AIRTABLE_API_URL")
+                    or "https://api.airtable.com").rstrip("/")
 
     def schema(self):
-        return _appel(f"https://api.airtable.com/v0/meta/bases/{BASE_AIRTABLE}/tables", self.h)
+        return _appel(f"{self.url}/v0/meta/bases/{BASE_AIRTABLE}/tables", self.h)
 
     def lignes(self, table_id):
         out, params = [], {"pageSize": 100}
         while True:
-            url = f"https://api.airtable.com/v0/{BASE_AIRTABLE}/{table_id}?" + urllib.parse.urlencode(params)
+            url = f"{self.url}/v0/{BASE_AIRTABLE}/{table_id}?" + urllib.parse.urlencode(params)
             rep = _appel(url, self.h)
             out += rep.get("records", [])
             if not rep.get("offset"):
@@ -181,6 +185,21 @@ def aplatir(valeur):
     if isinstance(valeur, list):
         return [aplatir(v) for v in valeur]
     return valeur
+
+
+def cible_liee(champ):
+    """Identifiant de la table pointée par un champ de liaison.
+
+    Même précaution que pour les options de sélecteur : l'API REST le place
+    sous « options.linkedTableId », d'autres sources sous « config ». Le
+    connecteur MCP, lui, ne le renvoie pas du tout — d'où l'alerte bruyante
+    en passe 2 plutôt qu'un saut silencieux.
+    """
+    for cle in ("options", "config"):
+        cible = (champ.get(cle) or {}).get("linkedTableId")
+        if cible:
+            return cible
+    return None
 
 
 def choix_de(champ):
@@ -337,17 +356,33 @@ def migrer(args):
     # Passe 2 — liens entre tables, une fois toutes les tables créées
     print("\nLiens entre tables :")
     noms_at = {t["id"]: t["name"] for t in schema["tables"]}
+    attendus = sum(1 for t in tables for c in t["fields"]
+                   if c["type"] in LIENS and not interdit(c["name"]))
+    faits = perdus = 0
+
     for t in tables:
         tid = corresp_tables[t["name"]]
         for c in t["fields"]:
             if c["type"] not in LIENS or interdit(c["name"]):
                 continue
-            cible_at = (c.get("options") or {}).get("linkedTableId")
+            cible_at = cible_liee(c)
             cible_nom = noms_at.get(cible_at)
+            if not cible_at:
+                # Silence interdit ici : une migration qui paraît réussie mais
+                # perd ses relations est pire qu'une migration qui échoue.
+                perdus += 1
+                print(f"  ✗ {t['name']} → {c['name']} : table liée non indiquée par l'API")
+                rapport["reprise_manuelle"].append(
+                    f"{t['name']} → {c['name']} (lien) : l'API n'a pas indiqué la table "
+                    "cible — lien à recréer à la main")
+                continue
             if cible_nom not in corresp_tables:
+                perdus += 1
+                print(f"  ✗ {t['name']} → {c['name']} : table « {cible_nom} » hors périmètre")
                 rapport["reprise_manuelle"].append(
                     f"{t['name']} → {c['name']} : table liée « {cible_nom} » hors périmètre")
                 continue
+            faits += 1
             br.creer_champ(tid, {"name": c["name"][:255], "type": "link_row",
                                  "link_row_table_id": corresp_tables[cible_nom]})
             # Remplissage des liaisons
@@ -363,15 +398,29 @@ def migrer(args):
                 br.maj_lignes(tid, maj[i:i + 200])
             print(f"  ✓ {t['name']} → {c['name']} ({len(maj)} liaisons)")
 
+    rapport["liens"] = {"attendus": attendus, "crees": faits, "perdus": perdus}
     (RACINE / "rapport-migration.json").write_text(
         json.dumps(rapport, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"\nMigration terminée. Rapport : {RACINE / 'rapport-migration.json'}")
+
+    print(f"\nLiens : {faits}/{attendus} créés.")
+    if perdus:
+        print(f"\n{'═' * 66}")
+        print(f"⚠ MIGRATION INCOMPLÈTE — {perdus} liaison(s) sur {attendus} non créée(s).")
+        print("Les tables et les lignes sont en place, mais les relations")
+        print("manquantes doivent être recréées à la main dans Baserow avant")
+        print("toute suppression des données chez Airtable.")
+        print(f"Détail : {RACINE / 'rapport-migration.json'}")
+        print(f"{'═' * 66}")
+
+    print(f"\nRapport : {RACINE / 'rapport-migration.json'}")
     print("\nÀ FAIRE ENSUITE, dans cet ordre :")
     print("  1. Vérifier les données dans Baserow, table par table.")
     print("  2. Recréer les formules et les lookups (voir le rapport).")
     print("  3. Reporter les pièces jointes.")
     print("  4. Mettre à jour le registre des traitements (art. 30).")
     print("  5. SEULEMENT ENSUITE : supprimer les données chez Airtable (art. 5.1.e).")
+    if perdus:
+        sys.exit(2)
 
 
 if __name__ == "__main__":
