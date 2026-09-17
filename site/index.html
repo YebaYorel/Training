@@ -1,0 +1,877 @@
+<title>YEBA Formations 974</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+
+<style>
+/* ──────────────────────────────────────────────────────────────
+   YEBA FORMATIONS — charte officielle (source : Airtable CONFIG SYSTEME)
+   Bleu #1B3A6B · Or #C9A84C · Noir #121212
+   RÈGLE ABSOLUE : l'or ne touche JAMAIS le blanc en texte (2,29:1 = échec
+   WCAG). Or sur bleu 4,93:1 (AA). Or sur noir 8,20:1 (AAA).
+   L'or est réservé aux surfaces, filets et au texte sur fond sombre.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Palette claire — définie en entier ici, redéfinie plus bas pour le sombre */
+  --encre:        #121212;
+  --encre-douce:  #3D4657;
+  --papier:       #F4F5F8;   /* neutre biaisé bleu, pas un gris mort */
+  --surface:      #FFFFFF;
+  --surface-2:    #EAECF2;
+  --filet:        #D3D8E4;
+  --bleu:         #1B3A6B;
+  --bleu-clair:   #2E5694;
+  --or:           #C9A84C;
+  --or-profond:   #8A6F22;   /* seule variante d'or lisible sur fond clair */
+  --nuit:         #0C1B33;   /* fond du héros, constant dans les deux thèmes */
+  --nuit-2:       #132646;
+
+  --pas: clamp(1rem, 0.6rem + 1.6vw, 1.75rem);
+  --gouttiere: clamp(1rem, 0.5rem + 2.5vw, 3.5rem);
+  --large: 74rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --encre:       #EEF1F7;
+    --encre-douce: #A9B4C8;
+    --papier:      #0C1B33;
+    --surface:     #132646;
+    --surface-2:   #1B3354;
+    --filet:       #2A4269;
+    --bleu:        #7FA5DC;
+    --bleu-clair:  #A8C4EC;
+    --or-profond:  #C9A84C;
+  }
+}
+:root[data-theme="dark"] {
+  --encre:       #EEF1F7;
+  --encre-douce: #A9B4C8;
+  --papier:      #0C1B33;
+  --surface:     #132646;
+  --surface-2:   #1B3354;
+  --filet:       #2A4269;
+  --bleu:        #7FA5DC;
+  --bleu-clair:  #A8C4EC;
+  --or-profond:  #C9A84C;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--encre);
+  font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .chiffre {
+  font-family: Fraunces, "Iowan Old Style", Georgia, serif;
+  font-weight: 900;
+  line-height: 1.04;
+  text-wrap: balance;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+a { color: inherit; }
+:where(a, button, summary, input, select):focus-visible {
+  outline: 3px solid var(--or);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.enveloppe {
+  max-width: var(--large);
+  margin-inline: auto;
+  padding-inline: var(--gouttiere);
+}
+
+.oeil-seul {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ─────────────────  ACCÈS RAPIDE  ───────────────── */
+.saut {
+  position: absolute; left: -9999px;
+  background: var(--nuit); color: #FFF;
+  padding: 0.75rem 1.25rem; z-index: 99;
+}
+.saut:focus { left: 1rem; top: 1rem; }
+
+/* ─────────────────  EN-TÊTE  ───────────────── */
+.barre {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 40;
+  background: color-mix(in srgb, var(--papier) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--filet);
+}
+.barre .enveloppe {
+  display: flex; align-items: center; gap: 1rem;
+  padding-block: 0.7rem;
+}
+.marque { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; margin-right: auto; }
+.marque svg { width: 46px; height: auto; flex: none; }
+.marque-nom {
+  font-family: Fraunces, Georgia, serif; font-weight: 900;
+  font-size: 1.15rem; letter-spacing: 0.01em; line-height: 1.1;
+}
+.marque-nom span { display: block; font-size: 0.66rem; letter-spacing: 0.22em;
+  font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 700;
+  color: var(--or-profond); }
+
+.nav-liens { display: flex; gap: 1.4rem; font-size: 0.95rem; }
+.nav-liens a { text-decoration: none; padding-block: 0.3rem; border-bottom: 2px solid transparent; }
+.nav-liens a:hover { border-bottom-color: var(--or); }
+@media (max-width: 860px) { .nav-liens { display: none; } }
+
+.bouton {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--nuit); color: #FFFFFF;
+  font-family: inherit; font-weight: 700; font-size: 0.95rem;
+  padding: 0.7rem 1.3rem; border: 1px solid var(--nuit);
+  border-radius: 2px; text-decoration: none; cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.bouton:hover { transform: translateY(-2px); box-shadow: 0 6px 0 -2px var(--or); }
+.bouton--or { background: var(--or); color: var(--nuit); border-color: var(--or); }
+.bouton--or:hover { box-shadow: 0 6px 0 -2px var(--nuit); }
+.bouton--creux { background: transparent; color: var(--encre); border-color: var(--filet); }
+
+/* ─────────────────  HÉROS  ───────────────── */
+.heros {
+  position: relative;
+  background: var(--nuit);
+  color: #F2F5FA;
+  overflow: hidden;
+  isolation: isolate;
+}
+#reseau {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 0; opacity: 0.85;
+}
+.heros .enveloppe { position: relative; z-index: 2; padding-block: clamp(3rem, 7vw, 6rem) clamp(9rem, 16vw, 13rem); }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--or);                     /* or sur nuit = 8,2:1 → AAA */
+  margin-bottom: 1.4rem;
+}
+.eyebrow::before {
+  content: ""; width: 2.2rem; height: 2px; background: var(--or);
+}
+
+.heros h1 {
+  font-size: clamp(2.6rem, 1.4rem + 5.4vw, 5.4rem);
+  max-width: 17ch;
+  color: #FFFFFF;
+}
+.heros h1 em {
+  font-style: normal;
+  color: var(--or);
+  display: block;
+}
+.chapo {
+  margin: 1.6rem 0 0;
+  max-width: 54ch;
+  font-size: clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  color: #C9D3E4;
+}
+.actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2.2rem; }
+.heros .bouton--creux { color: #FFFFFF; border-color: rgba(255,255,255,0.35); }
+
+/* Silhouette des pitons — ancrage réunionnais, reprise du logo */
+.pitons {
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  width: 100%; height: clamp(90px, 15vw, 190px);
+  z-index: 1; display: block;
+}
+
+/* ─────────────────  BANDEAU DE PREUVES  ───────────────── */
+.preuves {
+  background: var(--surface);
+  border-bottom: 1px solid var(--filet);
+}
+.preuves .enveloppe {
+  display: grid; gap: 0 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  padding-block: 2.2rem;
+}
+.preuve { padding-block: 0.6rem; }
+.preuve dt {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--encre-douce); margin-bottom: 0.35rem;
+}
+.preuve dd {
+  margin: 0; font-family: Fraunces, Georgia, serif; font-weight: 600;
+  font-size: 1.32rem; line-height: 1.25; font-variant-numeric: tabular-nums;
+}
+.preuve dd small { display: block; font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.8rem; font-weight: 400; color: var(--encre-douce); line-height: 1.4; margin-top: 0.2rem; }
+
+/* ─────────────────  SECTIONS  ───────────────── */
+.section { padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+.section--alt { background: var(--surface); border-block: 1px solid var(--filet); }
+
+.titre-section { max-width: 40rem; margin-bottom: 2.8rem; }
+.titre-section h2 { font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3.1rem); }
+.titre-section p { color: var(--encre-douce); margin: 1rem 0 0; max-width: 58ch; }
+
+/* ─────────────────  FILTRES  ───────────────── */
+.filtres {
+  display: flex; flex-wrap: wrap; gap: 0.6rem;
+  margin-bottom: 2rem; padding: 0; list-style: none;
+}
+.filtre {
+  font-family: inherit; font-size: 0.9rem; font-weight: 700;
+  padding: 0.5rem 1rem; cursor: pointer;
+  background: transparent; color: var(--encre-douce);
+  border: 1px solid var(--filet); border-radius: 100px;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+}
+.filtre:hover { border-color: var(--or); }
+.filtre[aria-pressed="true"] {
+  background: var(--nuit); border-color: var(--nuit); color: #FFFFFF;
+}
+
+/* ─────────────────  CARTES FORMATION  ───────────────── */
+.catalogue {
+  display: grid; gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(21rem, 100%), 1fr));
+  list-style: none; padding: 0; margin: 0;
+}
+.carte {
+  display: flex; flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--filet);
+  border-top: 3px solid var(--or);
+  padding: 1.6rem;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.section--alt .carte { background: var(--papier); }
+.carte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px -18px rgba(12, 27, 51, 0.5);
+  border-color: var(--bleu);
+  border-top-color: var(--or);
+}
+.carte-domaine {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--or-profond); margin-bottom: 0.7rem;
+}
+.carte h3 { font-size: 1.42rem; font-weight: 600; }
+.carte-accroche {
+  font-family: Fraunces, Georgia, serif; font-style: italic;
+  color: var(--encre-douce); margin: 0.6rem 0 0; font-size: 1.02rem;
+}
+.carte-meta {
+  display: flex; flex-wrap: wrap; gap: 0.45rem;
+  margin: 1.1rem 0 0; padding: 0; list-style: none;
+}
+.puce {
+  font-size: 0.78rem; font-weight: 700;
+  padding: 0.28rem 0.6rem; border-radius: 3px;
+  background: var(--surface-2); color: var(--encre-douce);
+}
+.puce--acces { background: color-mix(in srgb, var(--or) 22%, transparent); color: var(--or-profond); }
+.carte-objectifs { margin: 1.2rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; color: var(--encre-douce); }
+.carte-objectifs li { margin-bottom: 0.35rem; }
+.carte-pied {
+  margin-top: auto; padding-top: 1.3rem;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 1rem; border-top: 1px solid var(--filet);
+}
+.tarif { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 1.5rem;
+  font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tarif small { display: block; font-family: "Atkinson Hyperlegible", sans-serif;
+  font-size: 0.74rem; font-weight: 400; color: var(--encre-douce); }
+.lien-devis {
+  font-weight: 700; font-size: 0.92rem; text-decoration: none;
+  border-bottom: 2px solid var(--or); padding-bottom: 2px; white-space: nowrap;
+}
+
+/* ─────────────────  MÉTHODE  ───────────────── */
+.etapes { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  list-style: none; padding: 0; margin: 0; counter-reset: e; }
+.etape { counter-increment: e; padding-left: 3.3rem; position: relative; }
+.etape::before {
+  content: counter(e, decimal-leading-zero);
+  position: absolute; left: 0; top: -0.2rem;
+  font-family: Fraunces, Georgia, serif; font-weight: 900; font-size: 1.9rem;
+  color: var(--or); font-variant-numeric: tabular-nums;
+}
+.etape h3 { font-size: 1.12rem; font-weight: 600; margin-bottom: 0.4rem; }
+.etape p { margin: 0; font-size: 0.95rem; color: var(--encre-douce); }
+
+/* ─────────────────  CONFORMITÉ  ───────────────── */
+.deux-colonnes { display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); align-items: start; }
+.liste-check { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.liste-check li { display: grid; grid-template-columns: 1.7rem 1fr; gap: 0.7rem; align-items: start; }
+.liste-check svg { width: 1.35rem; height: 1.35rem; margin-top: 0.22rem; color: var(--or-profond); }
+.liste-check strong { display: block; }
+.liste-check span { color: var(--encre-douce); font-size: 0.95rem; }
+
+.encart {
+  background: var(--nuit); color: #E7EDF7;
+  padding: clamp(1.6rem, 4vw, 2.4rem); border-left: 3px solid var(--or);
+}
+.encart h3 { color: #FFFFFF; font-size: 1.35rem; font-weight: 600; margin-bottom: 0.8rem; }
+.encart p { margin: 0 0 0.9rem; font-size: 0.97rem; color: #C3CEE1; }
+.encart p:last-child { margin-bottom: 0; }
+.encart em { color: var(--or); font-style: normal; font-weight: 700; }
+
+/* ─────────────────  CONTACT  ───────────────── */
+.contact-grille { display: grid; gap: clamp(2rem, 5vw, 3.5rem); grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr)); }
+.coord { list-style: none; padding: 0; margin: 1.8rem 0 0; display: grid; gap: 1.1rem; }
+.coord dt { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--encre-douce); }
+.coord dd { margin: 0.2rem 0 0; font-size: 1.1rem; }
+.coord a { text-decoration: none; border-bottom: 2px solid var(--or); }
+
+.champ { display: grid; gap: 0.4rem; margin-bottom: 1.1rem; }
+.champ label { font-size: 0.85rem; font-weight: 700; }
+.champ input, .champ select, .champ textarea {
+  font-family: inherit; font-size: 1rem; padding: 0.7rem 0.85rem;
+  background: var(--surface); color: var(--encre);
+  border: 1px solid var(--filet); border-radius: 2px;
+}
+.section--alt .champ input, .section--alt .champ select, .section--alt .champ textarea { background: var(--papier); }
+.champ textarea { min-height: 7rem; resize: vertical; }
+.note-form { font-size: 0.85rem; color: var(--encre-douce); margin: 1rem 0 0; }
+
+/* ─────────────────  PIED DE PAGE  ───────────────── */
+.pied { background: var(--nuit); color: #B9C6DB; padding-block: 3rem 2rem; font-size: 0.9rem; }
+.pied .enveloppe { display: grid; gap: 2rem; }
+.pied-haut { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.pied h2 { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 700;
+  color: var(--or); margin-bottom: 0.8rem; }
+.pied a { color: #DDE5F1; }
+.bloc-marque { border-top: 1px solid rgba(201,168,76,0.3); padding-top: 1.6rem; line-height: 1.75; }
+.bloc-marque strong { color: #FFFFFF; }
+.mention-legale { color: #8FA0BC; font-size: 0.82rem; }
+
+/* ─────────────────  RÉVÉLATION AU DÉFILEMENT  ─────────────────
+   Le contenu est VISIBLE par défaut. La classe n'est ajoutée que par JS,
+   donc sans JS — ou avec un lecteur d'écran — rien n'est masqué.       */
+.js .revele { opacity: 0; transform: translateY(18px); }
+.js .revele.vu { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2,.7,.3,1); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  .js .revele { opacity: 1 !important; transform: none !important; }
+  .carte:hover, .bouton:hover { transform: none; }
+}
+</style>
+
+<a class="saut" href="#principal">Aller au contenu</a>
+
+<header class="barre">
+  <div class="enveloppe">
+    <a class="marque" href="#principal">
+      <svg viewBox="0 0 240 150" role="img" aria-label="YEBA FORMATIONS">
+        <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <g stroke="#1B3A6B" stroke-width="3">
+            <path d="M62 118 L20 118 L41 74 Z"/>
+            <path d="M41 74 L30.5 96 L51.5 96 M20 118 L41 96 L62 118 M41 74 L41 118"/>
+          </g>
+          <g stroke="#C9A84C" stroke-width="3">
+            <path d="M220 118 L178 118 L199 74 Z"/>
+            <path d="M199 74 L188.5 96 L209.5 96 M178 118 L199 96 L220 118 M199 74 L199 118"/>
+          </g>
+          <g stroke="#1B3A6B" stroke-width="3.5">
+            <path d="M172 118 L68 118 L120 46 Z"/>
+            <path d="M120 46 L94 82 L146 82 M68 118 L94 82 M172 118 L146 82 M120 46 L120 118 M94 82 L120 118 L146 82"/>
+          </g>
+          <g stroke="#C9A84C" stroke-width="1.6" opacity="0.85"><path d="M41 74 L94 82 M199 74 L146 82"/></g>
+          <circle cx="120" cy="30" r="7.5" stroke="#C9A84C" stroke-width="3"/>
+          <path d="M120 37.5 L120 46" stroke="#C9A84C" stroke-width="3"/>
+          <g stroke="#C9A84C" stroke-width="1.6" opacity="0.8"><path d="M112.5 30 L96 22 M127.5 30 L144 22 M120 22.5 L120 12"/></g>
+        </g>
+        <circle cx="96" cy="22" r="2.6" fill="#C9A84C"/><circle cx="144" cy="22" r="2.6" fill="#C9A84C"/>
+        <circle cx="120" cy="12" r="2.6" fill="#C9A84C"/><circle cx="120" cy="30" r="2.4" fill="#1B3A6B"/>
+      </svg>
+      <span class="marque-nom">YEBA<span>Formations · 974</span></span>
+    </a>
+    <nav class="nav-liens" aria-label="Principale">
+      <a href="#catalogue">Formations</a>
+      <a href="#methode">Méthode</a>
+      <a href="#conformite">Conformité</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="bouton bouton--or" href="#contact">Demander un devis</a>
+  </div>
+</header>
+
+<main id="principal">
+
+  <section class="heros">
+    <canvas id="reseau" aria-hidden="true"></canvas>
+    <div class="enveloppe">
+      <p class="eyebrow">Organisme certifié Qualiopi · La Réunion</p>
+      <h1>L'intelligence artificielle, <em>enfin utilisable par votre entreprise.</em></h1>
+      <p class="chapo">
+        Formations en IA générative, automatisation et conformité RGPD, conçues
+        pour les TPE-PME réunionnaises. En intra dans vos locaux ou en inter à
+        Sainte-Clotilde. Vous repartez avec un livrable qui fonctionne, pas avec
+        des notes.
+      </p>
+      <div class="actions">
+        <a class="bouton bouton--or" href="#catalogue">Voir les 7 formations</a>
+        <a class="bouton bouton--creux" href="#conformite">Notre engagement conformité</a>
+      </div>
+    </div>
+    <svg class="pitons" viewBox="0 0 1440 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 190 L0 150 L150 96 L280 140 L430 62 L560 128 L700 40 L860 120 L1000 74 L1150 134 L1290 88 L1440 142 L1440 190 Z"
+            fill="#132646"/>
+      <path d="M0 190 L0 172 L180 132 L340 166 L520 108 L680 158 L840 116 L1010 162 L1180 124 L1320 164 L1440 136 L1440 190 Z"
+            fill="#0C1B33"/>
+      <path d="M0 172 L180 132 L340 166 L520 108 L680 158 L840 116 L1010 162 L1180 124 L1320 164 L1440 136"
+            fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+    </svg>
+  </section>
+
+  <section class="preuves" aria-label="Références de l'organisme">
+    <dl class="enveloppe">
+      <div class="preuve">
+        <dt>Certification</dt>
+        <dd>Qualiopi<small>n° 25FOR02027.1 — actions de formation. Valide jusqu'au 16/02/2027.</small></dd>
+      </div>
+      <div class="preuve">
+        <dt>Déclaration d'activité</dt>
+        <dd>04973676397<small>Auprès du Préfet de La Réunion. Ne vaut pas agrément de l'État.</small></dd>
+      </div>
+      <div class="preuve">
+        <dt>Délai d'accès</dt>
+        <dd>15 jours<small>Ouvrés minimum entre l'inscription et le démarrage.</small></dd>
+      </div>
+      <div class="preuve">
+        <dt>Accessibilité</dt>
+        <dd>100 %<small>Des formations accessibles. Référent handicap : Aurélien Lumeka.</small></dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="section" id="catalogue">
+    <div class="enveloppe">
+      <div class="titre-section revele">
+        <h2>Sept formations, un seul critère : que ça serve lundi matin.</h2>
+        <p>
+          Chaque programme se termine par un livrable que vous emportez — un site
+          en ligne, un registre de traitements, une automatisation qui tourne.
+          Tarifs nets de taxe, TVA non applicable (art. 261-4-4° a du CGI).
+        </p>
+      </div>
+
+      <ul class="filtres" role="group" aria-label="Filtrer par domaine" id="filtres"></ul>
+      <p class="oeil-seul" role="status" aria-live="polite" id="annonce"></p>
+      <ul class="catalogue" id="catalogue-liste"></ul>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="methode">
+    <div class="enveloppe">
+      <div class="titre-section revele">
+        <h2>De l'appel à l'attestation</h2>
+        <p>
+          Un parcours identique pour chaque client, parce que c'est ce qu'exige
+          la certification — et parce que vous devez savoir où vous en êtes.
+        </p>
+      </div>
+      <ol class="etapes revele">
+        <li class="etape">
+          <h3>Analyse du besoin</h3>
+          <p>Un échange pour cadrer l'objectif réel, le niveau des participants et les contraintes de votre activité.</p>
+        </li>
+        <li class="etape">
+          <h3>Devis sous 5 jours ouvrés</h3>
+          <p>Programme, durée, tarif et modalités de financement OPCO. Les prestations de conseil apparaissent sur des lignes distinctes, car elles sont soumises à TVA.</p>
+        </li>
+        <li class="etape">
+          <h3>Test de positionnement</h3>
+          <p>Envoyé avant la session pour ajuster le contenu au niveau réel du groupe, et non au niveau supposé.</p>
+        </li>
+        <li class="etape">
+          <h3>Formation et livrable</h3>
+          <p>08h30–12h00 / 13h00–16h30, pauses à 10h00 et 15h00. Sept heures par journée. Chacun repart avec sa production.</p>
+        </li>
+        <li class="etape">
+          <h3>Évaluation et attestation</h3>
+          <p>Évaluation des acquis, mesure de satisfaction, attestation de fin de formation conforme aux exigences du financeur.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="conformite">
+    <div class="enveloppe">
+      <div class="titre-section revele">
+        <h2>Le formateur qui applique ce qu'il enseigne</h2>
+        <p>
+          Former au RGPD avec des outils qui exportent vos données hors d'Europe
+          serait contradictoire. Voici ce que cet engagement change concrètement.
+        </p>
+      </div>
+      <div class="deux-colonnes">
+        <ul class="liste-check revele">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <div><strong>Aucune donnée personnelle sur ce site</strong>
+            <span>Pas de traceur, pas de mesure d'audience, pas de police distante appelant un serveur tiers à votre insu. Aucun bandeau cookies : il n'y a rien à consentir.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <div><strong>Handicap : le besoin, jamais le justificatif</strong>
+            <span>Aucun document médical n'est demandé — seul le besoin d'aménagement est recueilli, conformément à l'article 9 du RGPD. Supports en corps 26 points minimum, contrastes WCAG 2.1 AA.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <div><strong>Règlement IA : classer avant de déployer</strong>
+            <span>Tout projet d'automatisation est qualifié au regard du règlement (UE) 2024/1689 avant d'être mis en œuvre. Un tri de candidatures ou un scoring de salariés relève de l'annexe III — haut risque.</span></div>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <div><strong>Ce que nous ne promettons pas</strong>
+            <span>Nos formations ne portent pas de code RNCP ou RS : elles ne sont pas éligibles au CPF. Le dire clairement vaut mieux que de le laisser croire.</span></div>
+          </li>
+        </ul>
+        <aside class="encart revele">
+          <h3>Financer votre formation</h3>
+          <p>
+            Les formations sont finançables par votre <em>OPCO</em>, votre plan de
+            développement des compétences, <em>France Travail</em>, l'AIF ou la
+            <em>Région Réunion</em>.
+          </p>
+          <p>
+            Le montage du dossier fait partie de la prestation : c'est précisément
+            ce que couvre le délai de 15 jours ouvrés entre votre inscription et
+            le démarrage.
+          </p>
+          <p>
+            Formation professionnelle continue : <em>TVA non applicable</em>,
+            article 261-4-4° a du code général des impôts. Les prestations de
+            conseil et d'audit sont, elles, soumises à TVA au taux de 8,5 %.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="contact">
+    <div class="enveloppe">
+      <div class="contact-grille">
+        <div class="revele">
+          <div class="titre-section" style="margin-bottom:0">
+            <h2>Parlons de votre besoin</h2>
+            <p>
+              Un appel de quinze minutes suffit généralement à savoir si une
+              formation est la bonne réponse — ou si autre chose le serait
+              davantage.
+            </p>
+          </div>
+          <dl class="coord">
+            <div>
+              <dt>Téléphone</dt>
+              <dd><a href="tel:+262693322445">0693 32 24 45</a></dd>
+            </div>
+            <div>
+              <dt>Courriel</dt>
+              <dd><a href="mailto:yebaformations@gmail.com">yebaformations@gmail.com</a></dd>
+            </div>
+            <div>
+              <dt>Adresse</dt>
+              <dd>9 rue Françoise Châtelain<br>97490 Sainte-Clotilde, La Réunion</dd>
+            </div>
+            <div>
+              <dt>Référent handicap</dt>
+              <dd>Aurélien Lumeka — réponse sous 48 h ouvrées,<br>proposition d'aménagement sous 5 jours ouvrés.</dd>
+            </div>
+          </dl>
+        </div>
+
+        <form class="revele" id="formulaire">
+          <div class="champ">
+            <label for="f-nom">Votre nom</label>
+            <input type="text" id="f-nom" name="nom" autocomplete="name" required>
+          </div>
+          <div class="champ">
+            <label for="f-structure">Votre structure</label>
+            <input type="text" id="f-structure" name="structure" autocomplete="organization">
+          </div>
+          <div class="champ">
+            <label for="f-formation">Formation qui vous intéresse</label>
+            <select id="f-formation" name="formation"></select>
+          </div>
+          <div class="champ">
+            <label for="f-message">Votre besoin, en quelques lignes</label>
+            <textarea id="f-message" name="message" placeholder="Nombre de participants, dates envisagées, contraintes particulières…"></textarea>
+          </div>
+          <button class="bouton bouton--or" type="submit">Préparer ma demande</button>
+          <p class="note-form">
+            Ce formulaire n'envoie rien à un serveur : il ouvre votre logiciel de
+            messagerie avec le message déjà rédigé. Vos informations restent sur
+            votre appareil jusqu'à ce que vous décidiez d'envoyer.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pied">
+  <div class="enveloppe">
+    <div class="pied-haut">
+      <div>
+        <h2>Formations</h2>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem" id="pied-liens"></ul>
+      </div>
+      <div>
+        <h2>Informations</h2>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem">
+          <li>Délai d'accès : 15 jours ouvrés</li>
+          <li>Horaires : 08h30–12h00 / 13h00–16h30</li>
+          <li>Formations non éligibles au CPF</li>
+          <li>TVA non applicable — art. 261-4-4° a du CGI</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <ul style="list-style:none;padding:0;margin:0;display:grid;gap:0.4rem">
+          <li><a href="tel:+262693322445">0693 32 24 45</a></li>
+          <li><a href="mailto:yebaformations@gmail.com">yebaformations@gmail.com</a></li>
+          <li>9 rue Françoise Châtelain<br>97490 Sainte-Clotilde</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bloc-marque">
+      <strong>YEBA FORMATIONS — Aurélien LUMEKA, directeur</strong><br>
+      9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion<br>
+      Tél. 0693 32 24 45 — yebaformations@gmail.com<br>
+      SIRET 814 622 262 00032<br>
+      Déclaration d'activité n° 04973676397 auprès du Préfet de La Réunion.<br>
+      <span class="mention-legale">Cet enregistrement ne vaut pas agrément de l'État.</span><br>
+      Certification Qualiopi n° 25FOR02027.1 délivrée au titre de la catégorie
+      actions de formation — organisme certificateur Qualitia (accrédité COFRAC).<br>
+      Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* Catalogue — extrait d'Airtable par site/build.py.
+   Les fiches en marque blanche (FOR-0005, FOR-0007) sont exclues par contrat
+   et ne doivent jamais apparaître ici. */
+const FORMATIONS = [
+  { titre: "Automatisation", domaine: "Automatisation", type: "Inter-entreprise",
+    heures: 14, jours: 2, tarif: 490,
+    accroche: "Vos tâches répétitives, faites une fois pour toutes.",
+    objectifs: ["Repérer les tâches automatisables de votre activité",
+                "Concevoir un workflow : déclencheur, conditions, actions",
+                "Sécuriser les données traitées au regard du RGPD"] },
+  { titre: "Copilot pour Microsoft 365 — la méthode des 4 P", domaine: "IA Générative", type: "Intra-entreprise",
+    heures: 14, jours: 2, tarif: 425,
+    accroche: "Périmètre, Prompt, Production, Preuve.",
+    objectifs: ["Savoir ce que l'assistant voit réellement de vos documents",
+                "Formuler une demande en désignant explicitement les sources",
+                "Trier : je saisis, j'anonymise d'abord, je ne saisis jamais"] },
+  { titre: "Créer des emailings professionnels avec l'IA", domaine: "IA Générative", type: "Intra-entreprise",
+    heures: 14, jours: 2, tarif: 425,
+    accroche: "Un courriel qui obtient une réponse.",
+    objectifs: ["Constituer une base de contacts conforme au RGPD",
+                "Écrire l'objet, l'accroche et l'appel à l'action",
+                "Être reçu : délivrabilité, désinscription, expéditeur identifié"] },
+  { titre: "IA Générative", domaine: "IA Générative", type: "Inter-entreprise",
+    heures: 14, jours: 2, tarif: 490,
+    accroche: "Comprendre, piloter, vérifier.",
+    objectifs: ["Expliquer le fonctionnement et les limites des modèles",
+                "Rédiger des prompts efficaces et itérer",
+                "Maîtriser les risques : confidentialité, hallucinations, biais"] },
+  { titre: "Produire un site Internet en vocal", domaine: "IA Générative", type: "Intra-entreprise",
+    heures: 14, jours: 2, tarif: 425,
+    accroche: "Votre site, à la voix. Et vous le gardez.",
+    objectifs: ["Formuler à l'oral un cahier des charges exploitable",
+                "Piloter un générateur de site et corriger par itérations",
+                "Le maintenir seul, sans rappeler un prestataire"] },
+  { titre: "RGPD & Cybersécurité", domaine: "RGPD & Cybersécurité", type: "Inter-entreprise",
+    heures: 14, jours: 2, tarif: 490,
+    accroche: "Savoir quoi faire dans les 72 heures.",
+    objectifs: ["Identifier les traitements soumis au RGPD dans votre activité",
+                "Constituer et tenir à jour un registre des traitements",
+                "Réagir à une violation : mesures et notification CNIL sous 72 h"] },
+  { titre: "Vente : Initiation à la vente", domaine: "Vente", type: "Inter-entreprise",
+    heures: 7, jours: 1, tarif: 390,
+    accroche: "De la découverte à la signature.",
+    objectifs: ["Dérouler un entretien, de la préparation à la conclusion",
+                "Mener une découverte par un questionnement structuré",
+                "Traiter les objections courantes avec méthode"] }
+];
+
+const euros = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+const liste = document.getElementById('catalogue-liste');
+const annonce = document.getElementById('annonce');
+let domaineActif = 'Tous';
+
+function carte(f) {
+  const li = document.createElement('li');
+  li.className = 'carte revele vu';
+  const objectifs = f.objectifs.map(o => `<li>${o}</li>`).join('');
+  li.innerHTML = `
+    <p class="carte-domaine">${f.domaine}</p>
+    <h3>${f.titre}</h3>
+    <p class="carte-accroche">${f.accroche}</p>
+    <ul class="carte-meta">
+      <li class="puce">${f.type}</li>
+      <li class="puce">${f.heures} h · ${f.jours} jour${f.jours > 1 ? 's' : ''}</li>
+      <li class="puce puce--acces">Accessible handicap</li>
+    </ul>
+    <ul class="carte-objectifs">${objectifs}</ul>
+    <div class="carte-pied">
+      <p class="tarif">${euros.format(f.tarif)}<small>HT par jour et par personne</small></p>
+      <a class="lien-devis" href="#contact" data-formation="${f.titre}">Demander un devis</a>
+    </div>`;
+  return li;
+}
+
+function afficher() {
+  const vues = domaineActif === 'Tous'
+    ? FORMATIONS
+    : FORMATIONS.filter(f => f.domaine === domaineActif);
+  liste.replaceChildren(...vues.map(carte));
+  annonce.textContent = `${vues.length} formation${vues.length > 1 ? 's' : ''} affichée${vues.length > 1 ? 's' : ''}.`;
+  liste.querySelectorAll('.lien-devis').forEach(a => {
+    a.addEventListener('click', () => {
+      const select = document.getElementById('f-formation');
+      if (select) select.value = a.dataset.formation;
+    });
+  });
+}
+
+// Filtres
+const domaines = ['Tous', ...new Set(FORMATIONS.map(f => f.domaine))];
+const filtres = document.getElementById('filtres');
+domaines.forEach(d => {
+  const li = document.createElement('li');
+  const b = document.createElement('button');
+  b.className = 'filtre';
+  b.type = 'button';
+  b.textContent = d;
+  b.setAttribute('aria-pressed', String(d === domaineActif));
+  b.addEventListener('click', () => {
+    domaineActif = d;
+    filtres.querySelectorAll('.filtre').forEach(x =>
+      x.setAttribute('aria-pressed', String(x.textContent === d)));
+    afficher();
+  });
+  li.appendChild(b);
+  filtres.appendChild(li);
+});
+afficher();
+
+// Sélecteur du formulaire + liens de pied de page
+const select = document.getElementById('f-formation');
+[{ titre: 'Je ne sais pas encore' }, ...FORMATIONS].forEach(f => {
+  const o = document.createElement('option');
+  o.value = f.titre; o.textContent = f.titre;
+  select.appendChild(o);
+});
+const piedLiens = document.getElementById('pied-liens');
+FORMATIONS.forEach(f => {
+  const li = document.createElement('li');
+  const a = document.createElement('a');
+  a.href = '#catalogue'; a.textContent = f.titre;
+  li.appendChild(a); piedLiens.appendChild(li);
+});
+
+// Formulaire : composition d'un courriel local. Rien ne transite par un serveur.
+document.getElementById('formulaire').addEventListener('submit', e => {
+  e.preventDefault();
+  const d = new FormData(e.target);
+  const corps = [
+    `Nom : ${d.get('nom') || ''}`,
+    `Structure : ${d.get('structure') || ''}`,
+    `Formation : ${d.get('formation') || ''}`,
+    '',
+    d.get('message') || ''
+  ].join('\n');
+  window.location.href = 'mailto:yebaformations@gmail.com'
+    + '?subject=' + encodeURIComponent('Demande de devis — ' + (d.get('formation') || 'formation'))
+    + '&body=' + encodeURIComponent(corps);
+});
+
+// Révélation au défilement
+const doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!doux && 'IntersectionObserver' in window) {
+  const io = new IntersectionObserver(entrees => {
+    entrees.forEach(en => { if (en.isIntersecting) { en.target.classList.add('vu'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.revele').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.revele').forEach(el => el.classList.add('vu'));
+}
+
+/* ── Réseau du héros ──────────────────────────────────────────────
+   Nœuds reliés, écho du logo : un nœud de connexion et ses satellites.
+   Canvas plutôt que SVG, conformément aux règles de génération graphique. */
+(function reseau() {
+  const c = document.getElementById('reseau');
+  if (!c || doux) return;
+  const ctx = c.getContext('2d');
+  let n = [], w = 0, h = 0, brut;
+
+  function dimensionner() {
+    const r = c.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = r.width; h = r.height;
+    c.width = w * dpr; c.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const densite = w < 700 ? 26 : 52;
+    n = Array.from({ length: densite }, () => ({
+      x: Math.random() * w, y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
+      r: Math.random() * 1.6 + 0.9
+    }));
+  }
+
+  function dessiner() {
+    ctx.clearRect(0, 0, w, h);
+    for (let i = 0; i < n.length; i++) {
+      const a = n[i];
+      a.x += a.vx; a.y += a.vy;
+      if (a.x < 0 || a.x > w) a.vx *= -1;
+      if (a.y < 0 || a.y > h) a.vy *= -1;
+      for (let j = i + 1; j < n.length; j++) {
+        const b = n[j], dx = a.x - b.x, dy = a.y - b.y;
+        const d = Math.hypot(dx, dy);
+        if (d < 150) {
+          ctx.strokeStyle = `rgba(201, 168, 76, ${(1 - d / 150) * 0.3})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = 'rgba(201, 168, 76, 0.65)';
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); ctx.fill();
+    }
+    brut = requestAnimationFrame(dessiner);
+  }
+
+  dimensionner();
+  dessiner();
+  let t;
+  window.addEventListener('resize', () => {
+    clearTimeout(t);
+    t = setTimeout(() => { cancelAnimationFrame(brut); dimensionner(); dessiner(); }, 180);
+  });
+})();
+</script>
