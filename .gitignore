@@ -15,3 +15,11 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Dossiers clients — NE JAMAIS committer dans un dépôt PUBLIC
+# (données à caractère personnel de clients et de stagiaires, coordonnées
+# bancaires, signature manuscrite scannée). RGPD art. 5.1.f et 32.
+devis/
+dossiers_clients/
+*.iban
+signature*.png
