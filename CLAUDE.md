@@ -43,3 +43,51 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
+
+## Identité YEBA FORMATIONS — valeurs de référence
+
+Source de vérité pour toute pièce produite au nom de YEBA FORMATIONS
+(devis, convention, convocation, attestation, certificat de réalisation,
+support pédagogique). **Recopier depuis ici, ne jamais ressaisir de
+mémoire ni reprendre un ancien document sans vérifier.**
+
+| Rubrique | Valeur exacte |
+|---|---|
+| Raison sociale | YEBA FORMATIONS |
+| Directeur / référent handicap | Aurélien LUMEKA |
+| SIRET | 814 622 262 00032 |
+| Code APE | 85.59Z |
+| Adresse | 9 rue François Châtelain — Les Calebassiers, Bât A — Entrée 1 — Porte 0042, 97490 Sainte-Clotilde (La Réunion) |
+| Téléphone | +262 6 93 32 24 45 |
+| Déclaration d'activité (NDA) | 04973676397, auprès du préfet de région de La Réunion — *ne vaut pas agrément de l'État* |
+| **Certification Qualiopi** | **25FOR02027.1** — catégorie « actions de formation » |
+| Adresse électronique institutionnelle | contact@yebaformations.re |
+| Adresse électronique de contact documents | yebaformations@proton.me |
+| Régime de TVA | non applicable, article 293 B du CGI (franchise en base) |
+
+### Pièges connus — à vérifier à chaque production
+
+- **Qualiopi : `25FOR02027.1`**, avec un **R**. La forme `25FOF02027.1`
+  circule dans d'anciens documents : elle est **fausse**. Un numéro de
+  certification erroné sur une pièce déposée à un OPCO est un motif de
+  rejet et fragilise le document en cas de contrôle.
+- **Ne jamais écrire `yebaformations@gmail.re`** (domaine inexistant) ni
+  `yebaformations@gmail.com` (abandonné au profit de Proton).
+- **Deux adresses coexistent** (`contact@yebaformations.re` et
+  `yebaformations@proton.me`) : demander laquelle doit figurer avant de
+  produire une pièce contractuelle, plutôt que de panacher.
+- **Coordonnées bancaires** : jamais dans ce dépôt (public). Les reprendre
+  depuis la source interne au moment de produire la pièce.
+- **Lieux de formation** : jamais par défaut ni par reprise d'un ancien
+  devis — le lieu se confirme dossier par dossier.
+
+### Réflexe conformité sur ces pièces
+
+- **RGPD** — Une pièce nominative (devis client, convention, feuille
+  d'émargement) porte des données à caractère personnel : finalité
+  d'exécution et de traçabilité (art. 6.1.b et 6.1.c), conservation
+  3 ans, hébergement UE. Ne jamais committer ces pièces dans ce dépôt.
+- **IA Act** — Tout support conçu avec l'assistance d'une IA générative
+  porte la mention de transparence de l'article 50 du règlement
+  (UE) 2024/1689. Aucun système d'IA n'intervient dans l'évaluation des
+  stagiaires : hors annexe III (haut risque).
