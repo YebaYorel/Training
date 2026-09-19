@@ -17,6 +17,19 @@ concurrentielle et un exercice de simulation.
 | [06](06-conformite-rgpd-ia-act.md) | Conformité RGPD & IA Act | **À lire avant la première vente de conformité** |
 | [07](07-plan-90-jours.md) | Plan 90 jours | L'exécution, semaine par semaine |
 | [08](08-autocritique-et-questions.md) | Autocritique + questions | Les failles de ce dossier, et ce qu'il me manque |
+| **[09](09-concurrence-et-contre-attaque.md)** | **Concurrence et contre-attaque** | **Qui sont vos concurrents, ce qu'ils vendent, à quel prix, et comment les battre** |
+| **[10](10-ingenierie-pedagogique-ia.md)** | **Ingénierie pédagogique** | **Le déroulé 2 jours heure par heure, la grille critériée, l'évaluation** |
+| **[11](11-prospection-opco-et-plateformes.md)** | **OPCO, plateformes, prospection** | **Comment aller chercher les contrats — et ce qui ne marche pas** |
+
+## Les 3 renseignements les plus importants du dossier
+
+1. **Flowt vend à partir de 1 500 €/jour en distanciel.** Le marché national est à
+   1 200-2 500 €/j. **Vous vous sous-vendez** — passez à 1 400-1 600 €/j en présentiel (doc 09).
+2. **Les bases d'adhérents des OPCO ne sont pas accessibles**, et les utiliser serait illicite.
+   La voie légale et gratuite est l'Annuaire des entreprises / SIRENE, plus le référencement
+   dans les catalogues des 7 OPCO réunionnais (doc 11).
+3. **L'AFEST est votre verrou** : finançable, et structurellement impossible à faire depuis
+   la métropole en visio (doc 09 §4). ⚠️ Périmètre Qualiopi à vérifier auprès du certificateur.
 
 ## Les 5 décisions qui commandent tout
 

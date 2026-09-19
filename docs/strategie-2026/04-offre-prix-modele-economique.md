@@ -63,7 +63,7 @@ sont applicables depuis cette date**.
 | 0 | **Diagnostic IA & Conformité** | Visio 20 min | **Gratuit** | Qualifier, pas vendre | 0,5 h |
 | 1 | **Atelier « IA Act : êtes-vous en règle ? »** | Petit-déjeuner 2 h, 15-25 dirigeants, en hôtel | **Gratuit** ou 49 €/pers. | Générer 3-5 rendez-vous par session | 1 j |
 | 2 | **Conformité article 4 — Pack Essentiel** | ½ journée intra + attestation + politique IA interne + registre des usages | **1 490 €** | **Offre d'entrée. Celle qu'on vend.** | 1 j |
-| 3 | **Formation « IA opérationnelle »** | 2 jours intra, finançable OPCO | **2 400 €** (1 200 €/j) | Montée en compétence | 2 j + 0,5 j prépa |
+| 3 | **Formation « IA opérationnelle »** | 2 jours intra, finançable OPCO, déroulé complet en doc 10 | **2 800 - 3 200 €** *(1 400-1 600 €/j)* | Montée en compétence | 2 j + 0,5 j prépa |
 | 4 | **Sprint d'implémentation** | 3 semaines, 1 workflow livré, documenté, transféré | **4 500 €** | Preuve chiffrée + porte vers la marche 5 | 6 j |
 | 5 | **Abonnement « Copilote IA »** | Hotline + 1 amélioration/mois + veille réglementaire + revue trimestrielle | **550 €/mois**, engagement 12 mois | **Le cœur du modèle** | 0,5 j/mois |
 | 6 | **Diagnostic gouvernance RGPD & IA Act** | 3 j, cartographie des usages IA, registre, plan d'action | **3 500 €** | Haut de gamme, PME > 20 salariés | 3 j |
@@ -122,17 +122,17 @@ ils encaissent la valeur relationnelle, vous encaissez les rendez-vous.*
 | Ligne | Volume | Prix **[H]** | CA | Jours |
 |---|---|---|---|---|
 | Pack Essentiel art. 4 | 20 | 1 490 € | 29 800 € | 20 |
-| Formation IA opérationnelle | 18 jours | 1 200 €/j | 21 600 € | 25 |
+| Formation IA opérationnelle | 18 jours | **1 500 €/j** | 27 000 € | 25 |
 | Sprint d'implémentation | 8 | 4 500 € | 36 000 € | 48 |
 | Abonnement Copilote (6 clients, 7 mois moy.) | 42 mois-clients | 550 € | 23 100 € | 21 |
 | Diagnostic gouvernance | 6 | 3 500 € | 21 000 € | 18 |
 | Sous-traitance CFA *(en décroissance assumée)* | 15 jours | 550 €/j **[H]** | 8 250 € | 15 |
-| **TOTAL** | | | **139 750 €** | **147 j** |
+| **TOTAL** | | | **145 150 €** | **147 j** |
 
 Reste **~73 jours** pour la prospection, le contenu, l'administratif, Qualiopi et la veille.
 C'est tendu mais tenable **à condition que le contenu soit produit en lot** (doc 03).
 
-**Scénario prudent année 1 : 60-70 %, soit 85 à 98 k€.**
+**Scénario prudent année 1 : 60-70 %, soit 87 à 102 k€.**
 **Indicateur de survie, à surveiller plus que le CA : `CA récurrent mensuel`.**
 Objectif mois 6 : ≥ 1 650 € (3 abonnés). Objectif mois 12 : ≥ 4 400 € (8 abonnés).
 
