@@ -60,8 +60,8 @@ corriger en semaine 4, pas en semaine 12.
 
 | # | Action | Temps |
 |---|---|---|
-| 18 | Acheter et installer le matériel (§2 doc 03) + monter le **coin de tournage réel** | 5 h |
-| 19 | Installer la chaîne technique : Whisper local, Kdenlive, modèle de sous-titres à la charte | 4 h |
+| 18 | **Test OBS sur drap vert avant tout achat** (§2 doc 03) · mesurer la profondeur de pièce (3,5 m ?) · puis acheter et installer fond vert + 4 éclairages | 6 h |
+| 19 | Chaîne technique : **préréglage OBS d'incrustation verrouillé**, Whisper local, Kdenlive, modèle de sous-titres à la charte | 5 h |
 | 20 | **Journée de production n°1** → 16 vidéos | 7 h |
 | 21 | Programmer 4 semaines de publications (Swello / Agorapulse / Metricool) | 2 h |
 | 22 | **Journée de production n°2** (semaine 9) → 16 vidéos, dont **les 3 premiers cas clients** | 7 h |
@@ -78,10 +78,10 @@ montent, changez de contenu immédiatement.
 
 | # | Action |
 |---|---|
-| 25 | Site `yebaformations.re` : squelette, charte, accessibilité AA |
+| 25 | WordPress sur OVHcloud : thème de blocs, charte, accessibilité AA, **fermeture des 5 fuites** (Google Fonts, Gravatar, émojis, oEmbed, XML-RPC) |
 | 26 | Page pivot **`/ia-act-article-4`** + **autodiagnostic en 7 questions** |
 | 27 | Pages légales complètes (mentions, confidentialité, CGV, accessibilité, handicap) |
-| 28 | **Matomo** auto-hébergé + **Cal.com** (ou Brevo Meetings). Zéro pixel, zéro bandeau |
+| 28 | **Matomo** auto-hébergé + **Cal.com** (ou Brevo Meetings) + extensions FR (SEOPress, SecuPress, WP Rocket, Imagify, Brevo). Zéro pixel, zéro bandeau, **aucun overlay d'accessibilité** |
 | 29 | PDF **« Article 4 de l'IA Act — la checklist des 7 points »**, version accessible |
 | 30 | VPS OVHcloud : **n8n** + 3 automatisations (formulaire→Baserow, relances J+2/J+9, journal de publication) |
 | 31 | Données structurées, `llms.txt`, fiche d'établissement Google, annuaires locaux |
@@ -120,11 +120,31 @@ montent, changez de contenu immédiatement.
 
 ---
 
+## Paramètres actés le 19/09/2026
+
+| Paramètre | Valeur retenue | Conséquence |
+|---|---|---|
+| Trésorerie | **> 6 mois de charges fixes** | ✅ **Plan complet** : les 5 blocs sont exécutés |
+| Temps disponible | **8 à 10 h/semaine** | ✅ Le plan tel qu'écrit est tenable (≈ 9 h/sem) |
+| Site | **WordPress chez OVHcloud** | Autonomie éditoriale · routine de maintenance 30 min/mois à ajouter |
+| Décor vidéo | **Fond vert + OBS en local** | +150 à 250 € de matériel · test de profondeur de pièce en semaine 5 · aucun faux bureau en fond |
+
+**Trois points de vigilance créés par ces choix :**
+1. **Le test OBS passe avant l'achat.** Si votre machine ne tient pas l'incrustation en
+   direct, la journée de production passe de 7 h à 8 h 30. À savoir avant de planifier.
+2. **La profondeur de pièce (3,5 m) conditionne tout le montage du fond vert.** Mesurez
+   avant de commander.
+3. **WordPress ajoute une routine hebdomadaire de mises à jour.** Inscrivez-la à votre
+   agenda maintenant, sinon elle n'existera pas — et un WordPress non mis à jour est un
+   risque de sécurité que vous ne pouvez pas vous permettre dans votre métier.
+
+---
+
 ## Arbitrages honnêtes sur ce plan
 
 **Ce plan représente ~110 heures sur 12 semaines, soit ~9 h/semaine** en plus de votre
-activité de formation actuelle. C'est lourd. Si vous ne pouvez pas tenir 9 h/semaine, alors
-**coupez le bloc 3 (contenu), pas le bloc 2 (vente)**. Le contenu est un amplificateur ;
+activité de formation actuelle. Votre disponibilité déclarée (8-10 h) le rend tenable, mais
+sans marge. Si une semaine saute, **coupez le bloc 3 (contenu), jamais le bloc 2 (vente)**. Le contenu est un amplificateur ;
 la prospection est le moteur. Un amplificateur branché sur rien ne produit rien.
 
 **Ce que ce plan ne fait pas :** il ne vous rend pas viral en 90 jours. Il vous rend

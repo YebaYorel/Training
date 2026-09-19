@@ -6,55 +6,116 @@ production par mois**, produisant **16 vidéos**, soit 4 publications/semaine.
 
 ---
 
-## 1. Le fond de la chambre : je vous déconseille le fond virtuel
+## 1. Décor : fond vert + OBS (décision actée le 19/09/2026)
 
-Vous demandez un arrière-plan modifié. Analysons avant de trancher.
+**Votre choix : fond vert avec incrustation locale sous OBS.** C'est la seule des trois
+options qui combine un arrière-plan modifiable *et* un traitement **100 % sur votre
+machine** : votre visage ne quitte jamais votre ordinateur. Sur le plan de la souveraineté,
+c'est la meilleure des trois. C'est aussi la plus exigeante à régler — donc on la règle
+une fois, correctement, et on ne touche plus.
 
-**Option A — Fond virtuel IA (détourage logiciel).**
-Coût 0-25 €/mois. Mais : contours qui bavent sur les cheveux et les mains, halo lumineux,
-décrochage dès que vous bougez — et surtout **effet « faux »** immédiatement perceptible.
-Vous vendez la confiance et la conformité : un décor visiblement truqué travaille contre
-votre promesse. De plus, la plupart des outils de détourage en ligne **envoient votre
-visage à un serveur tiers hors UE** : incompatible avec votre règle de souveraineté.
+> J'avais recommandé le coin réel pour des raisons de crédibilité perçue. Vous avez
+> tranché. **La façon de neutraliser mon objection est simple : n'incrustez pas un faux
+> bureau.** Un faux mur de bureau derrière un vrai type se voit en trois secondes et
+> travaille contre un discours de confiance. Utilisez le fond vert pour ce qu'il fait
+> vraiment bien (§1.3).
 
-**Option B — Fond vert + OBS (local).**
-Détourage propre, traitement **100 % sur votre machine**, zéro transfert. Mais exige un
-éclairage séparé du fond, ~2 m de recul, et un décor virtuel crédible. Réalisable, mais
-c'est la solution la plus exigeante en réglage.
+### 1.1 — Contrainte physique à vérifier AVANT d'acheter
 
-**Option C — Coin réel de 1,2 m (recommandée).**
-Vous n'avez pas besoin de cacher votre chambre. Vous avez besoin de **1,20 m de mur**.
-Un panneau, une couleur de marque, une étagère, deux objets, une plante, un éclairage.
-Coût 250-400 € une fois. Résultat : vrai, chaleureux, cohérent d'une vidéo à l'autre,
-zéro traitement, zéro transfert, zéro bug en tournage.
+```
+  [fond vert] ←1,5 à 2 m→ [vous] ←1,5 à 2 m→ [caméra]
+  ⇒ profondeur nécessaire : 3,5 à 4 m
+```
 
-> **Décision : Option C en principal, Option B en secours** pour les plans où vous voulez
-> incruster un schéma ou une capture d'écran derrière vous. Steve Jobs avait raison sur ce
-> point précis : un vrai type devant un faux mur perd plus qu'il ne gagne.
+Le recul entre vous et le fond n'est pas négociable : c'est lui qui évite le **spill**
+(reflet vert sur les cheveux, les épaules et la peau), le défaut qui trahit immédiatement
+une incrustation amateur.
 
-**Composition du coin (achats concrets) :**
-panneau ou toile tendue dans **votre couleur de marque** (à me communiquer) · une étagère
-avec 3 objets seulement (un livre sur l'IA, un objet péi identifiable, une plante) · votre
-**certificat Qualiopi encadré** visible en arrière-plan flou — preuve permanente sans un
-mot · éclairage principal en softbox 60×60 à 45°, un petit éclairage d'appoint derrière
-pour décoller la silhouette du mur.
+**Mesurez votre pièce aujourd'hui.** Si vous n'avez pas 3,5 m :
+- **Repli A** — fond vert **rapproché** (1 m) + éclairage de contre-jour derrière vous pour
+  décoller la silhouette. Fonctionne, mais exige un réglage fin et un cadrage serré.
+- **Repli B** — **plan buste très serré** sur fond vert à 1 m : moins de surface de fond,
+  moins de spill, résultat propre. C'est le repli que je recommande en petite pièce.
+- **Repli C** — retour au coin réel de 1,20 m (doc initial). Sans honte : c'est une
+  contrainte de pièce, pas un renoncement.
+
+### 1.2 — Matériel et réglages
+
+| Élément | Choix | Prix indicatif |
+|---|---|---|
+| Fond vert | Toile **tendue** sur cadre (pas de tissu pendu : les plis créent des ombres impossibles à incruster) — 2×2 m minimum, ou panneau pliable | 60-120 € |
+| Éclairage du **fond** | **2 panneaux LED dédiés au fond**, à 45° de chaque côté, réglés identiques | 70-140 € |
+| Éclairage du **sujet** | Softbox principale 60×60 à 45° + **contre-jour derrière vous** | 90-160 € |
+| Total supplémentaire vs coin réel | | **+150 à 250 €** |
+
+**Le principe que tout le monde rate : le fond et vous êtes éclairés séparément.** Un fond
+vert éclairé par la même lumière que vous donne un vert irrégulier, donc une incrustation
+qui bave. Deux sources pour le fond, deux pour vous.
+
+**Réglages OBS — filtre « Incrustation par chrominance » :**
+
+| Paramètre | Valeur de départ | À ajuster si |
+|---|---|---|
+| Type de couleur clé | Vert | — |
+| Similarité | **380-420** | Trop bas : trous dans le fond. Trop haut : vous disparaissez |
+| Lissage | **75-85** | Contours durs ou tremblants |
+| **Réduction du déversement** (spill) | **95-110** | **Liseré vert sur les cheveux et les épaules** |
+| Luminosité / Contraste | 0 | Ne toucher qu'en dernier recours |
+
+**Trois règles de tournage :**
+1. **Ne portez jamais de vert** — ni turquoise, ni kaki, ni motif vert. Vous deviendriez
+   transparent par endroits. Testez chaque tenue **avant** la journée de tournage.
+2. **Verrouillez le préréglage OBS** une fois réglé : même position de caméra, mêmes
+   marques au sol, mêmes lumières. Vous retrouvez le réglage chaque mois sans refaire
+   30 minutes de calage.
+3. **Enregistrez déjà incrusté dans OBS** (pas d'incrustation en post-production) : pour
+   16 vidéos en une journée, c'est ce qui vous fait gagner deux heures de montage.
+
+### 1.3 — Ce que vous mettez derrière (le point décisif)
+
+**N'incrustez pas un faux décor de bureau.** Le fond vert vous donne quelque chose de bien
+plus puissant : **la capacité de mettre l'information derrière vous.**
+
+| Usage | Effet | Pilier concerné |
+|---|---|---|
+| **Capture d'écran plein cadre** de l'outil dont vous parlez | Vous démontrez au lieu de raconter | Pilier 3 |
+| **Schéma ou chronologie** (ex. le calendrier de l'IA Act) | Vous devenez le professeur devant son tableau | Pilier 2 |
+| **Chiffre géant** (« 11 h/mois ») qui apparaît au bon moment | Mémorisation immédiate | Pilier 1 |
+| **Aplat uni à vos couleurs de marque** + votre logo discret | Fond par défaut, sobre, cohérent | Tous |
+| **Photo réelle de La Réunion prise par vous** | Ancrage local, jamais une banque d'images | Pilier 5 |
+
+> **Règle de marque : jamais de faux bureau, jamais de photo de banque d'images.**
+> Aplat de marque par défaut, contenu pédagogique quand vous démontrez, photo réelle du
+> territoire quand vous parlez du péi. Ce sont les trois seuls fonds autorisés.
+
+**Et un élément à garder dans le cadre malgré le fond vert :** votre **certificat Qualiopi**
+n'est plus dans le décor. Compensez par un **bandeau permanent discret en bas de cadre** :
+`YEBA FORMATIONS · Qualiopi · NDA 04973676397`. Preuve permanente, sans un mot, et cohérent
+sur les 16 vidéos.
 
 ---
 
-## 2. Matériel — budget 600 à 900 € (une fois)
+## 2. Matériel — budget 750 à 1 150 € (une fois)
 
 | Poste | Choix | Prix indicatif | Pourquoi |
 |---|---|---|---|
-| Caméra | **Votre smartphone**, objectif principal, 4K 25 ou 50 i/s | 0 € | Meilleur rapport qualité/simplicité. N'achetez pas d'appareil photo. |
-| Micro | **Micro-cravate sans fil** (2 émetteurs) | 100-180 € | **Le son est 70 % de la qualité perçue.** Le poste le plus rentable. |
-| Éclairage | Softbox LED 60×60 + petit panneau d'appoint | 90-160 € | Supprime les ombres et le teint verdâtre |
+| Caméra | **Votre smartphone** en source OBS (via câble USB ou application de caméra virtuelle) | 0 € | Meilleur rapport qualité/simplicité. N'achetez pas d'appareil photo. |
+| Micro | **Micro-cravate sans fil** (2 émetteurs) | 100-180 € | **Le son est 70 % de la qualité perçue.** Le poste le plus rentable de la liste. |
+| Fond vert | Toile tendue sur cadre, 2×2 m minimum | 60-120 € | Les plis sont l'ennemi n°1 de l'incrustation |
+| Éclairage fond | 2 panneaux LED dédiés | 70-140 € | **Indispensable** : sans lui, l'incrustation bave |
+| Éclairage sujet | Softbox 60×60 + contre-jour | 90-160 € | Décolle votre silhouette du fond |
 | Trépied | Trépied colonne + rotule smartphone | 40-80 € | Cadrage identique d'un mois à l'autre |
-| Téléprompteur | Application téléprompteur locale sur tablette | 0-30 € | Divise par 3 le temps de tournage |
-| Décor | Panneau + étagère + objets | 150-300 € | Voir §1 |
+| Téléprompteur | Application locale sur tablette | 0-30 € | Divise par 3 le temps de tournage |
 | Acoustique | 2 panneaux mousse + tapis + rideau | 40-80 € | Enlève l'écho de chambre |
+| Ordinateur | **Le vôtre** — vérifier qu'il tient l'incrustation en temps réel | 0 € | À tester avant d'acheter le reste |
 
 **Ce qu'il ne faut PAS acheter :** appareil photo hybride, stabilisateur, deuxième caméra,
-abonnement à un studio IA d'avatars. Vous n'en avez aucun besoin et ça ajoute du frottement.
+abonnement à un studio IA d'avatars. Aucun besoin, et chacun ajoute du frottement.
+
+> ⚠️ **Test à faire en premier, avant tout achat :** installez OBS, mettez un drap vert ou
+> un mur uni, et vérifiez que **votre machine tient l'incrustation en direct sans saccade**.
+> Si elle rame, il faut enregistrer brut et incruster dans Kdenlive en post-production —
+> ce qui change complètement l'organisation de la journée de tournage (§8).
 
 ---
 
@@ -204,12 +265,14 @@ La **première image est déjà le résultat**. Le premier mot est déjà le con
 | Créneau | Tâche | Sortie |
 |---|---|---|
 | J-7, 1 h | Écriture des 16 scripts (Mistral + votre relecture) | 16 scripts de 90 mots |
-| **8h00-8h30** | Installation décor, lumière, son, test | Cadre validé |
-| **8h30-11h00** | Tournage des 16 vidéos, téléprompteur, 2 prises max | 16 rushes |
-| **11h00-11h30** | Captures d'écran OBS pour le pilier 3 | 4 démos |
+| **8h00-8h45** | Installation fond vert, 2 lumières fond + 2 sujet, son, **chargement du préréglage OBS**, test d'incrustation sur 20 s | Cadre et clé validés |
+| **8h45-11h15** | Tournage des 16 vidéos **déjà incrustées dans OBS**, téléprompteur, 2 prises max | 16 rushes prêts à monter |
+| **11h15-11h45** | Captures d'écran OBS pour le pilier 3 | 4 démos |
 | **13h30-14h00** | Transcription Whisper en local, en lot | 16 fichiers `.srt` |
 | **14h00-16h30** | Montage Kdenlive : modèle + sous-titres + export | 16 MP4 verticaux |
 | **16h30-17h30** | Rédaction des légendes, programmation sur 4 semaines | Mois publié |
+
+> ⚠️ **Si votre machine ne tient pas l'incrustation en direct** (§2) : tournez sur fond vert brut, et ajoutez **1 h 30 d'incrustation dans Kdenlive** en début d'après-midi. La journée passe alors à 8 h 30. Testez-le **avant** de planifier la première journée.
 
 **Ne montez jamais une vidéo isolément.** Le coût de démarrage (installer, éclairer, se
 mettre en voix) est le même pour 1 que pour 16. C'est toute l'économie du système.

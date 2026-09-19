@@ -194,6 +194,15 @@ C'est ça, sortir de la précarité — pas une vidéo à 100 000 vues.
 
 ---
 
+## 5 bis. Paramètres actés le 19/09/2026
+
+Trésorerie **> 6 mois** · **8-10 h/semaine** → **plan complet exécutable**.
+Site : **WordPress chez OVHcloud** (autonomie éditoriale). Vidéo : **fond vert + OBS en
+local** (traitement 100 % sur votre machine — meilleur que ma proposition initiale sur le
+plan de la souveraineté, à condition de **ne jamais incruster un faux bureau**).
+
+---
+
 ## 6. Ordre d'exécution (détail en 07)
 
 1. **Semaines 1-2** — Infrastructure souveraine + réseaux professionnels **séparés** des

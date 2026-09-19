@@ -17,16 +17,14 @@ tient pas 6 mois, ce plan vous fait couler plus vite, pas moins vite.**
 **Deuxième défaut :** mes prix sont des **hypothèses**. Si votre marché local plafonne à
 700 €/jour de formation, le modèle à 139 750 € s'effondre et il faut tout recalculer.
 
-**Correction :**
-- **Test de trésorerie préalable.** Si votre trésorerie couvre moins de **4 mois** de
-  charges fixes : **supprimez le bloc 3 (contenu) du trimestre**. Faites bloc 1 + bloc 2 +
-  bloc 5 uniquement. La communication attend le trimestre suivant. Ce n'est pas négociable
-  et c'est plus important que tout le reste de ce document.
-- **Version allégée « 4 h/semaine »** : 20 appels/mois, 8 vidéos/mois (une demi-journée de
-  tournage), pas de site sur mesure — une page unique. Moins ambitieux, mais tenable, et
-  **un plan tenu bat un plan parfait abandonné en semaine 5.**
-- Aucun chiffre de ce dossier n'est exploitable tant que vous ne m'avez pas donné vos
-  vrais tarifs et votre vrai CA (§7).
+**✅ Levé le 19/09/2026 :** trésorerie **supérieure à 6 mois** de charges fixes et
+**8 à 10 h/semaine** disponibles. **Le plan complet est exécutable.** Cette faille tombe.
+
+**Ce qui reste :**
+- Mes prix restent des hypothèses `[H]`. Si votre marché plafonne à 700 €/jour, le modèle à
+  139 750 € s'effondre et il faut tout recalculer. **Donnez-moi vos tarifs réels.**
+- La marge est mince : 9 h/semaine sur 12 semaines, sans imprévu. **Si une semaine saute,
+  coupez le contenu, jamais la prospection.**
 
 ---
 
@@ -88,18 +86,28 @@ trimestre, parce qu'elle protège tout le reste.
 
 ---
 
-## 5. Faille technique — j'ai décidé pour vous sur le site
+## 5. Faille technique — j'avais décidé pour vous, vous avez corrigé
 
-**Le défaut :** je recommande un site statique (Astro) pour la vitesse, la sécurité et
-l'accessibilité. Mais **cela vous rend dépendant de moi ou d'un développeur pour changer
-une virgule**. Pour un dirigeant seul qui veut ajuster un tarif un dimanche soir, c'est un
-vrai handicap opérationnel que j'ai minimisé au profit de l'élégance technique.
+**Le défaut :** je recommandais Astro pour la vitesse et la sécurité, en minimisant le fait
+que **cela vous rendait dépendant de moi pour changer une virgule**. Pour un dirigeant seul,
+c'est un handicap opérationnel réel que j'avais sous-pondéré au profit de l'élégance technique.
 
-**Correction :** c'est votre arbitrage, pas le mien. **Si votre autonomie éditoriale compte
-plus que la performance, prenez WordPress** — avec une hygiène stricte (peu d'extensions,
-polices auto-hébergées, aucun script tiers, mises à jour hebdomadaires). Le gain de
-souveraineté et d'accessibilité reste atteignable ; vous perdez en vitesse et vous gagnez
-en autonomie. **Dites-moi lequel vous voulez et j'adapte sans discuter.**
+**✅ Arbitré le 19/09/2026 : WordPress chez OVHcloud.** Votre autonomie éditoriale prime.
+J'exécute sans rediscuter.
+
+**Ce que ce choix crée, et que j'ai intégré au doc 05 :** une routine de mises à jour
+hebdomadaire, une discipline de 12 extensions maximum, et surtout **la fermeture des
+5 fuites que WordPress crée par défaut** (Google Fonts, Gravatar, émojis, oEmbed, XML-RPC).
+Ce dernier point n'était pas dans ma version Astro parce qu'il n'existait pas — il devient
+**le travail de conformité principal du site**, et presque personne ne le fait.
+
+**Même mouvement sur le décor vidéo :** vous avez choisi le **fond vert + OBS** contre mon
+coin réel. Mon objection portait sur la crédibilité d'un faux décor, pas sur la technique —
+et le traitement 100 % local du fond vert est en réalité **meilleur que ma proposition sur
+le plan de la souveraineté**. J'ai donc gardé mon objection uniquement là où elle vaut :
+**jamais de faux bureau en fond**. Trois fonds autorisés seulement (aplat de marque, contenu
+pédagogique, photo réelle du péi). Le fond vert cesse d'être un cache-misère et devient un
+outil pédagogique.
 
 ---
 
@@ -177,7 +185,7 @@ d'empreinte et zéro exposition des données.** C'est vrai et suffisant.
 
 ---
 
-## 10. Les 10 informations qu'il me manque pour être précis à 100 %
+## 10. Ce qu'il me manque encore pour être précis à 100 %
 
 *Je ne les invente pas. Tant que je ne les ai pas, tout chiffre de ce dossier marqué **[H]**
 est une hypothèse de travail, pas une recommandation.*
@@ -195,11 +203,16 @@ est une hypothèse de travail, pas une recommandation.*
 7. **Disposez-vous d'un second numéro** pour WhatsApp Business ?
 8. **Combien d'heures par semaine**, réellement et durablement, pouvez-vous consacrer à ce plan ?
 
-### Bloquant pour décider
-9. **Site : Astro sur mesure (rapide, sûr, mais je dois intervenir pour chaque modification)
-   ou WordPress (autonome, plus lourd) ?**
-10. **Acceptez-vous de tourner dans un coin réel plutôt qu'avec un fond virtuel ?**
-    (Détermine tout le budget matériel et l'identité visuelle de vos vidéos.)
+### ✅ Tranché le 19/09/2026
+- Trésorerie **> 6 mois** · **8-10 h/semaine** → **plan complet**
+- Site → **WordPress chez OVHcloud**
+- Vidéo → **fond vert + incrustation OBS en local**
+
+### Nouvelles questions créées par ces choix
+9. **Quelle est la profondeur de votre pièce de tournage ?** Il faut **3,5 m** entre le fond
+   vert et la caméra. En dessous, on bascule sur le plan buste serré (doc 03 §1.1).
+10. **Quelle machine utilisez-vous pour monter ?** (processeur, mémoire, système) — si elle
+    ne tient pas l'incrustation OBS en direct, la journée de production passe de 7 h à 8 h 30.
 
 ### Utile, non bloquant
 - Avez-vous déjà des clients entreprise en direct, ou uniquement du CFA ?

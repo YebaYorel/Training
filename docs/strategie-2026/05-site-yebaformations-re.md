@@ -30,28 +30,96 @@ traceurs américains n'a pas besoin d'être critiqué — il s'est disqualifié 
 
 ---
 
-## 2. Choix technique : site statique plutôt que WordPress
+## 2. WordPress chez OVHcloud (décision actée le 19/09/2026)
 
-| Critère | WordPress | **Site statique (Astro/Hugo)** |
+**Votre choix : WordPress.** Raison retenue : **l'autonomie éditoriale**. Vous devez pouvoir
+changer un tarif un dimanche soir depuis votre téléphone, sans dépendre de moi ni d'un
+développeur. Sur une entreprise solo, c'est un argument qui l'emporte sur la performance
+brute — j'avais sous-pondéré ce point.
+
+**Ce que vous perdez, dit franchement :** une surface d'attaque plus large, une routine de
+mises à jour hebdomadaire, et une vigilance permanente sur les scripts tiers. **Ce n'est
+pas grave à condition de tenir la discipline ci-dessous.** Un WordPress bien tenu vaut
+mieux qu'un site statique qu'on n'ose plus modifier.
+
+### 2.1 — Installation
+
+1. **Hébergement OVHcloud** — prendre une offre **avec accès SSH, PHP 8.3+ et sauvegardes
+   automatiques** (les offres d'entrée de gamme ne les ont pas toutes). *Tarifs à vérifier
+   directement chez OVHcloud : je ne les invente pas.*
+2. **Module WordPress en 1 clic** depuis l'espace client OVH.
+3. **Identifiant administrateur : jamais `admin`, jamais `yeba`, jamais votre prénom.**
+4. **URL de connexion modifiée** (plugin dédié) : élimine 95 % des attaques automatisées.
+5. **2FA sur le compte administrateur.** Obligatoire — vous vendez la sécurité.
+6. **PHP 8.3+, HTTPS forcé, HSTS activé.**
+
+### 2.2 — Thème : un thème de blocs natif, jamais un constructeur de pages
+
+| ❌ À éviter | ✅ À choisir |
+|---|---|
+| Elementor, Divi, WPBakery | **Thème de blocs natif** (Twenty Twenty-Five) ou **GeneratePress** / **Kadence** |
+| Thèmes « multi-usages » à 60 démos | Thème léger, `accessibility-ready`, < 100 ko de CSS |
+
+**Pourquoi pas de constructeur de pages :** ils ajoutent 300 à 800 ko de code, dégradent
+l'accessibilité (structure de titres cassée, focus clavier perdu) et vous enferment. L'éditeur
+de site natif de WordPress suffit largement pour vos 9 pages, et il est plus simple à
+prendre en main.
+
+### 2.3 — Extensions : la liste courte, et elle est presque entièrement française
+
+> **Règle : moins de 12 extensions actives.** Chaque extension est une porte d'entrée
+> potentielle et un risque de casse à la mise à jour.
+
+| Besoin | Extension | Éditeur | Pourquoi ce choix |
+|---|---|---|---|
+| Référencement | **SEOPress** | 🇫🇷 France (Rennes) | Équivalent Yoast, sans traceur, éditeur français |
+| Sécurité | **SecuPress** | 🇫🇷 France | Audit, pare-feu, blocage des attaques par force brute |
+| Performance | **WP Rocket** | 🇫🇷 France (WP Media) | Le meilleur cache du marché, éditeur français |
+| Images | **Imagify** | 🇫🇷 France (WP Media) | Compression + WebP |
+| Formulaires + e-mail | **Brevo pour WordPress** | 🇫🇷 France | Formulaires **et** envois, un seul sous-traitant, hébergé en France |
+| Statistiques | **Matomo** (connecté à votre instance auto-hébergée) | 🇪🇺 / auto-hébergé | Pas de transfert hors UE |
+| **Polices en local** | **OMGF** (ou désactivation manuelle) | — | **Critique — voir 2.4** |
+| Sauvegardes | **UpdraftPlus** + sauvegardes OVH | — | Double filet |
+| Rendez-vous | **Cal.com** auto-hébergé, intégré par iframe, ou module Brevo | 🇪🇺 | Pas Calendly |
+
+**Extensions à bannir absolument :**
+- **Les « overlays d'accessibilité »** (AccessiBe, UserWay et assimilés). Ils ne rendent pas
+  un site accessible, dégradent souvent l'expérience des utilisateurs de lecteurs d'écran,
+  et ont fait l'objet de contentieux. **Pour un référent handicap, en installer un serait
+  une faute professionnelle visible.** L'accessibilité se fait dans le thème et le contenu,
+  pas avec une surcouche.
+- Google Analytics, Google Site Kit, pixel Meta, Jetpack, Hotjar : transferts et traceurs.
+
+### 2.4 — Les 5 fuites que WordPress crée par défaut, et qu'il faut fermer
+
+C'est le vrai travail de conformité d'un WordPress, et presque personne ne le fait :
+
+| Fuite par défaut | Ce qui part | Correction |
 |---|---|---|
-| Vitesse | Moyenne, dépend des extensions | **Excellente** (fichiers servis directement) |
-| Sécurité | Surface d'attaque large, mises à jour permanentes | **Quasi nulle** : pas de base, pas d'exécution serveur |
-| Maintenance | Hebdomadaire | Quasi nulle |
-| Accessibilité | Dépend du thème | **Maîtrisée ligne à ligne** |
-| Coût | Hébergement + extensions | Hébergement mutualisé simple |
-| Modification par vous seul | Facile | **Nécessite moi ou un éditeur de contenu** |
-| Traceurs par défaut | Souvent des appels tiers (Google Fonts, CDN) | **Zéro appel externe** |
+| **Google Fonts** chargées à distance par le thème | **L'adresse IP de chaque visiteur part vers Google (USA)** — motif de condamnations en Europe | **Héberger les polices en local** (OMGF ou intégration manuelle) |
+| **Gravatar** sur les commentaires | IP + empreinte de l'e-mail vers Automattic (USA) | Désactiver les commentaires (vous n'en avez pas besoin) |
+| **Émojis WordPress** | Requête vers `s.w.org` | Désactivé par WP Rocket ou une ligne dans `functions.php` |
+| **`oEmbed`** (YouTube, Twitter intégrés) | Traceurs tiers dès le chargement | Héberger vos vidéos ou utiliser une intégration à clic différé |
+| **XML-RPC** et énumération des utilisateurs | Surface d'attaque | Désactivés par SecuPress |
 
-**Recommandation : Astro, statique, hébergé chez OVHcloud.** Déploiement par FTP ou Git.
-Aucun appel à un serveur américain : polices auto-hébergées, aucun CDN tiers, aucune
-bibliothèque distante.
+> **Le jour où ces 5 points sont fermés, vous pouvez écrire en page d'accueil :**
+> *« Ce site ne transmet aucune donnée hors de l'Union européenne. »* — et c'est vrai,
+> vérifiable par n'importe qui avec l'inspecteur réseau de son navigateur. **Aucun de vos
+> concurrents locaux ne peut l'écrire.** C'est un argument de vente, pas une case à cocher.
 
-> **Réserve honnête.** Le point faible est votre autonomie éditoriale : modifier un texte
-> nécessite un passage par le dépôt. Deux réponses possibles : (a) je vous construis le
-> site ici, dans ce dépôt, et chaque modification se fait en une phrase dans une session
-> Claude Code ; (b) on ajoute un back-office léger. **Si vous voulez pouvoir tout changer
-> seul depuis votre téléphone sans aide, alors WordPress reste le bon choix malgré ses
-> défauts** — dites-le-moi et j'adapte, c'est un arbitrage qui vous appartient.
+### 2.5 — Routine de maintenance (30 min/mois, non négociable)
+
+| Fréquence | Action |
+|---|---|
+| **Automatique** | Mises à jour mineures de WordPress et correctifs de sécurité |
+| **Hebdomadaire** | Vérifier les mises à jour d'extensions, les appliquer après sauvegarde |
+| **Mensuel** | Audit SecuPress · test de restauration de sauvegarde · vérification qu'aucun script tiers n'est apparu |
+| **Trimestriel** | Test d'accessibilité au clavier · test de vitesse **depuis La Réunion** · revue des comptes utilisateurs |
+
+**Test de non-régression à faire après chaque mise à jour majeure :** ouvrir la page
+`/ia-act-article-4`, remplir le formulaire, vérifier l'arrivée dans Baserow. Deux minutes.
+Un formulaire cassé silencieusement pendant trois semaines, c'est trois semaines de
+prospects perdus sans le savoir.
 
 ---
 
@@ -203,16 +271,19 @@ transmet aucune donnée hors de l'Union européenne. »*
 | Étape | Contenu | Délai |
 |---|---|---|
 | 1 | Domaine + DNS + DNSSEC + boîtes mail + SPF/DKIM/DMARC | J+2 |
-| 2 | Squelette Astro, charte (vos couleurs), accessibilité AA | J+7 |
+| 2 | Installation WordPress, thème de blocs, charte (vos couleurs), fermeture des 5 fuites (§2.4) | J+7 |
 | 3 | Pages `/`, `/ia-act-article-4`, `/contact` + autodiagnostic | J+14 |
 | 4 | Pages restantes + pages légales + Matomo + Cal.com | J+21 |
 | 5 | Données structurées, `llms.txt`, fiche Google, annuaires | J+28 |
 | 6 | Cas clients au fil des autorisations signées | continu |
 
-> **Je peux construire ce site dans ce dépôt**, page par page, en respectant les critères
-> d'accessibilité et l'absence totale d'appel externe. Il me manque : **vos codes couleurs
-> hexadécimaux**, votre **logo**, votre **adresse postale professionnelle**, votre
-> **téléphone professionnel**, et l'arbitrage Astro / WordPress du §2.
+> **Ce que je peux vous préparer ici, prêt à coller dans WordPress :** la charte CSS
+> (une fois vos couleurs connues), les textes complets des 9 pages, les 5 pages légales,
+> le code de fermeture des 5 fuites du §2.4, le script de l'autodiagnostic en 7 questions,
+> le PDF checklist accessible et la configuration n8n. **Vous gardez la main sur
+> l'éditeur : je fournis le contenu et le code, vous publiez.**
+> Il me manque : **vos codes couleurs hexadécimaux**, votre **logo**, votre **adresse
+> postale professionnelle** et votre **téléphone professionnel**.
 
 ---
 
