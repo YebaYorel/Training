@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La pyramide des risques de l'IA Act</title>
+<style>
+  :root{
+    --nuit:#12294A; --accent:#C2410C; --vert:#156B36; --rouge:#B91C1C;
+    --clair:#EFF2F7; --blanc:#FFFFFF; --gris:#8FA0B8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--nuit); color:var(--blanc);
+    font-family:Verdana,"DejaVu Sans",Arial,sans-serif;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  #scene{flex:1;position:relative;overflow:hidden}
+  .s{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:4vh 6vw;opacity:0;transform:translateY(22px);
+    transition:opacity .6s ease,transform .6s ease;pointer-events:none;
+  }
+  .s.on{opacity:1;transform:none}
+  h1{font-size:clamp(30px,5.6vw,74px);line-height:1.15;font-weight:700}
+  h2{font-size:clamp(26px,4.4vw,58px);line-height:1.2;font-weight:700;margin-bottom:.5em}
+  p.big{font-size:clamp(20px,2.9vw,38px);line-height:1.45;max-width:20ch}
+  p.sub{font-size:clamp(17px,2.2vw,29px);color:var(--clair);margin-top:.8em;max-width:26ch;line-height:1.45}
+  .kicker{font-size:clamp(15px,1.8vw,24px);letter-spacing:.14em;color:var(--accent);
+          font-weight:700;margin-bottom:1.1em}
+  .trio{display:flex;gap:3vw;align-items:stretch;flex-wrap:wrap;justify-content:center;margin-top:1vh}
+  .card{
+    background:rgba(255,255,255,.07);border-left:8px solid var(--gris);
+    padding:2.4vh 2.2vw;min-width:22vw;max-width:30vw;text-align:left;border-radius:6px;
+    opacity:.28;transition:opacity .5s ease,border-color .5s ease,background .5s ease;
+  }
+  .card.hot{opacity:1;background:rgba(255,255,255,.14)}
+  .card .t{font-size:clamp(19px,2.3vw,31px);font-weight:700;margin-bottom:.45em}
+  .card .d{font-size:clamp(15px,1.75vw,23px);color:var(--clair);line-height:1.45}
+  .c1.hot{border-color:#E0A82E}.c2.hot{border-color:var(--rouge)}.c3.hot{border-color:#3FA46A}
+  .pyr{display:flex;flex-direction:column;align-items:center;gap:1.1vh;width:100%;margin-top:1vh}
+  .lvl{
+    padding:1.7vh 2vw;border-radius:6px;font-weight:700;color:#fff;text-align:center;
+    opacity:0;transform:scale(.9);transition:opacity .55s ease,transform .55s ease;
+    font-size:clamp(16px,2.1vw,29px);line-height:1.3;
+  }
+  .lvl.on{opacity:1;transform:none}
+  .lvl small{display:block;font-weight:400;font-size:clamp(13px,1.55vw,21px);
+             color:#E9EEF5;margin-top:.35em;line-height:1.4}
+  .l1{background:#B91C1C;width:40%}
+  .l2{background:#C2410C;width:55%}
+  .l3{background:#8A6D1F;width:70%}
+  .l4{background:#156B36;width:85%}
+  table.cal{border-collapse:collapse;margin-top:1vh;font-size:clamp(15px,1.9vw,25px)}
+  table.cal td{border:1px solid rgba(255,255,255,.35);padding:.5em 1em;text-align:left}
+  table.cal td:first-child{color:#FFC58A;font-weight:700;white-space:nowrap}
+  .badge{display:inline-block;background:var(--accent);padding:.35em 1em;border-radius:4px;
+         font-size:clamp(15px,1.8vw,24px);font-weight:700;margin-bottom:1em}
+  ol{text-align:left;max-width:24ch;font-size:clamp(18px,2.4vw,32px);line-height:1.6;
+     padding-left:1.4em}
+  ol li{margin-bottom:.4em}
+  #bar{height:8px;background:rgba(255,255,255,.14)}
+  #fill{height:100%;width:0;background:var(--accent);transition:width .25s linear}
+  #cc{
+    background:#000;color:#fff;font-size:clamp(16px,2vw,26px);line-height:1.45;
+    padding:1.6vh 6vw;min-height:12vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;
+  }
+  #ui{position:fixed;top:14px;right:18px;display:flex;gap:10px;align-items:center;z-index:9}
+  button{
+    background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);
+    font:inherit;font-size:15px;padding:.5em .95em;border-radius:5px;cursor:pointer;
+  }
+  button:hover{background:rgba(255,255,255,.28)}
+  #hint{position:fixed;bottom:15vh;left:0;right:0;text-align:center;color:var(--gris);font-size:14px}
+</style>
+</head>
+<body>
+<div id="ui">
+  <button id="pp">Pause</button>
+  <button id="rw">Recommencer</button>
+</div>
+<div id="scene">
+
+  <section class="s" data-t="0">
+    <div class="kicker">SÉQUENCE 2</div>
+    <h1>La pyramide<br>des risques</h1>
+    <p class="sub">Règlement (UE) 2024/1689 &ndash; l'IA Act</p>
+  </section>
+
+  <section class="s" data-t="7">
+    <h2>Une idée fausse</h2>
+    <p class="big">L'IA Act ne classe pas les outils.</p>
+    <p class="sub">Il classe les usages que vous en faites.<br>
+       Le même outil peut être anodin ici, et très encadré là.</p>
+  </section>
+
+  <section class="s" data-t="20">
+    <h2>Quatre niveaux</h2>
+    <div class="pyr">
+      <div class="lvl l1" id="n1">Risque inacceptable
+        <small>Interdit, sans exception possible</small></div>
+      <div class="lvl l2" id="n2">Haut risque
+        <small>Autorisé, mais fortement encadré</small></div>
+      <div class="lvl l3" id="n3">Risque limité
+        <small>Obligation de transparence</small></div>
+      <div class="lvl l4" id="n4">Risque minimal
+        <small>Usage libre</small></div>
+    </div>
+  </section>
+
+  <section class="s" data-t="56">
+    <div class="badge">NIVEAU 1</div>
+    <h2>Inacceptable</h2>
+    <p class="big" style="color:#FF9E9E">Détecter les émotions des salariés au travail.</p>
+    <p class="sub">Noter socialement les personnes.<br>
+       Article 5 &ndash; aucun accord ne rend licite une pratique interdite.</p>
+  </section>
+
+  <section class="s" data-t="76">
+    <div class="badge">NIVEAU 2</div>
+    <h2>Haut risque</h2>
+    <p class="big" style="color:#FFC58A">Tout ce qui décide sur une personne.</p>
+    <p class="sub">Recrutement, promotion, affectation, évaluation.<br>
+       Annexe III &ndash; supervision humaine et information obligatoires.</p>
+  </section>
+
+  <section class="s" data-t="98">
+    <h2>Votre rôle</h2>
+    <p class="big">Vous êtes déployeur.</p>
+    <p class="sub">Celui qui met l'outil en service sous sa propre autorité.<br>
+       L'outil n'est jamais responsable. Vous, oui.</p>
+  </section>
+
+  <section class="s" data-t="116">
+    <div class="badge">ARTICLE 4</div>
+    <h2>Former, c'est obligatoire</h2>
+    <p class="big">Assurer un niveau suffisant de maîtrise de l'IA de son personnel.</p>
+    <p class="sub">Applicable depuis le 2 février 2025.<br>Aucune exemption liée à la taille.</p>
+  </section>
+
+  <section class="s" data-t="138">
+    <h2>Le calendrier</h2>
+    <table class="cal">
+      <tr><td>1<sup>er</sup> août 2024</td><td>Entrée en vigueur</td></tr>
+      <tr><td>2 février 2025</td><td>Interdictions et littératie IA</td></tr>
+      <tr><td>2 août 2025</td><td>Modèles à usage général, sanctions</td></tr>
+      <tr><td>2 août 2026</td><td>Application générale, haut risque</td></tr>
+      <tr><td>2 août 2027</td><td>Haut risque intégré aux produits</td></tr>
+    </table>
+  </section>
+
+  <section class="s" data-t="158">
+    <h1>Classez l'usage.<br><span style="color:#FFC58A">Pas l'outil.</span></h1>
+  </section>
+
+</div>
+<div id="bar"><div id="fill"></div></div>
+<div id="cc"><span id="cctxt"></span></div>
+<div id="hint">Espace : lecture / pause &nbsp;•&nbsp; Flèches : scène précédente ou suivante</div>
+
+<script>
+const CC = [
+ [0,  "La pyramide des risques de l'IA Act."],
+ [7,  "Commencons par une idée fausse, tres repandue."],
+ [12, "L'IA Act ne classe pas les outils. Il classe les usages que vous en faites."],
+ [20, "Il distingue quatre niveaux."],
+ [25, "Tout en haut, le risque inacceptable : ces usages sont interdits, sans exception."],
+ [34, "En dessous, le haut risque : ces usages restent autorisés, mais fortement encadrés."],
+ [42, "Puis le risque limité : vous devez simplement être transparent."],
+ [49, "Et à la base, le risque minimal : la très grande majorité de vos usages de bureau."],
+ [56, "Niveau un. Détecter ou déduire les émotions des salariés sur le lieu de travail."],
+ [64, "Une caméra qui mesure l'engagement en réunion entre dans ce champ. C'est interdit."],
+ [70, "Et l'accord des salariés n'y change rien : on ne consent pas à une pratique interdite."],
+ [76, "Niveau deux. Le haut risque, c'est tout ce qui décide sur une personne."],
+ [84, "Trier des CV, évaluer, promouvoir, affecter, mettre fin à un contrat."],
+ [91, "Là, il faut un humain qui supervise vraiment, et informer les représentants du personnel."],
+ [98, "Dans tous les cas, votre rôle sera presque toujours le même : celui de déployeur."],
+ [106,"Celui qui met l'outil en service sous sa propre autorité."],
+ [111,"Retenez une phrase : l'outil n'est jamais responsable. Celui qui l'a mis en service, oui."],
+ [116,"Et il y a une obligation qui vous concerne déjà : l'article 4."],
+ [123,"Assurer un niveau suffisant de maîtrise de l'IA de son personnel."],
+ [130,"Applicable depuis le 2 février 2025, sans exemption liée à la taille de l'entreprise."],
+ [138,"Voici le calendrier d'application, à vérifier régulièrement : il peut encore bouger."],
+ [150,"Retenez l'essentiel."],
+ [158,"Classez l'usage. Pas l'outil."],
+ [175,""]
+];
+const DUREE = 175;
+const scenes = [...document.querySelectorAll('.s')].map(e=>({el:e,t:+e.dataset.t}));
+const fill=document.getElementById('fill'), cctxt=document.getElementById('cctxt');
+const pp=document.getElementById('pp');
+let t=0, on=true, last=performance.now();
+
+function rendu(){
+  let idx=0; for(let i=0;i<scenes.length;i++) if(t>=scenes[i].t) idx=i;
+  scenes.forEach((s,i)=>s.el.classList.toggle('on', i===idx));
+  const seuils={n1:25,n2:34,n3:42,n4:49};
+  for(const k in seuils){
+    const el=document.getElementById(k);
+    if(el) el.classList.toggle('on', t>=seuils[k]);
+  }
+  let c=""; for(const [s,txt] of CC) if(t>=s) c=txt;
+  cctxt.textContent=c;
+  fill.style.width=Math.min(100,(t/DUREE)*100)+"%";
+}
+function boucle(now){
+  if(on){ t+=(now-last)/1000; if(t>DUREE){t=DUREE;on=false;pp.textContent="Lecture";} rendu(); }
+  last=now; requestAnimationFrame(boucle);
+}
+pp.onclick=()=>{ if(t>=DUREE) t=0; on=!on; pp.textContent=on?"Pause":"Lecture"; };
+document.getElementById('rw').onclick=()=>{ t=0; on=true; pp.textContent="Pause"; rendu(); };
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'){e.preventDefault();pp.click();}
+  if(e.code==='ArrowRight'){const n=scenes.find(s=>s.t>t); t=n?n.t:DUREE; rendu();}
+  if(e.code==='ArrowLeft'){const p=[...scenes].reverse().find(s=>s.t<t-1); t=p?p.t:0; rendu();}
+});
+rendu(); requestAnimationFrame(boucle);
+</script>
+</body>
+</html>

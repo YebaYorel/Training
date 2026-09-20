@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les trois positions du manager</title>
+<style>
+  :root{
+    --nuit:#12294A; --accent:#C2410C; --vert:#156B36; --rouge:#B91C1C;
+    --clair:#EFF2F7; --blanc:#FFFFFF; --gris:#8FA0B8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--nuit); color:var(--blanc);
+    font-family:Verdana,"DejaVu Sans",Arial,sans-serif;
+    display:flex;flex-direction:column;overflow:hidden;
+  }
+  #scene{flex:1;position:relative;overflow:hidden}
+  .s{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;
+    padding:4vh 6vw;opacity:0;transform:translateY(22px);
+    transition:opacity .6s ease,transform .6s ease;pointer-events:none;
+  }
+  .s.on{opacity:1;transform:none}
+  h1{font-size:clamp(30px,5.6vw,74px);line-height:1.15;font-weight:700}
+  h2{font-size:clamp(26px,4.4vw,58px);line-height:1.2;font-weight:700;margin-bottom:.5em}
+  p.big{font-size:clamp(20px,2.9vw,38px);line-height:1.45;max-width:20ch}
+  p.sub{font-size:clamp(17px,2.2vw,29px);color:var(--clair);margin-top:.8em;max-width:26ch;line-height:1.45}
+  .kicker{font-size:clamp(15px,1.8vw,24px);letter-spacing:.14em;color:var(--accent);
+          font-weight:700;margin-bottom:1.1em}
+  .trio{display:flex;gap:3vw;align-items:stretch;flex-wrap:wrap;justify-content:center;margin-top:1vh}
+  .card{
+    background:rgba(255,255,255,.07);border-left:8px solid var(--gris);
+    padding:2.4vh 2.2vw;min-width:22vw;max-width:30vw;text-align:left;border-radius:6px;
+    opacity:.28;transition:opacity .5s ease,border-color .5s ease,background .5s ease;
+  }
+  .card.hot{opacity:1;background:rgba(255,255,255,.14)}
+  .card .t{font-size:clamp(19px,2.3vw,31px);font-weight:700;margin-bottom:.45em}
+  .card .d{font-size:clamp(15px,1.75vw,23px);color:var(--clair);line-height:1.45}
+  .c1.hot{border-color:#E0A82E}.c2.hot{border-color:var(--rouge)}.c3.hot{border-color:#3FA46A}
+  .badge{display:inline-block;background:var(--accent);padding:.35em 1em;border-radius:4px;
+         font-size:clamp(15px,1.8vw,24px);font-weight:700;margin-bottom:1em}
+  ol{text-align:left;max-width:24ch;font-size:clamp(18px,2.4vw,32px);line-height:1.6;
+     padding-left:1.4em}
+  ol li{margin-bottom:.4em}
+  #bar{height:8px;background:rgba(255,255,255,.14)}
+  #fill{height:100%;width:0;background:var(--accent);transition:width .25s linear}
+  #cc{
+    background:#000;color:#fff;font-size:clamp(16px,2vw,26px);line-height:1.45;
+    padding:1.6vh 6vw;min-height:12vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;
+  }
+  #ui{position:fixed;top:14px;right:18px;display:flex;gap:10px;align-items:center;z-index:9}
+  button{
+    background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.4);
+    font:inherit;font-size:15px;padding:.5em .95em;border-radius:5px;cursor:pointer;
+  }
+  button:hover{background:rgba(255,255,255,.28)}
+  #hint{position:fixed;bottom:15vh;left:0;right:0;text-align:center;color:var(--gris);font-size:14px}
+</style>
+</head>
+<body>
+<div id="ui">
+  <button id="pp">Pause</button>
+  <button id="rw">Recommencer</button>
+</div>
+<div id="scene">
+
+  <section class="s" data-t="0">
+    <div class="kicker">SÉQUENCE 1</div>
+    <h1>Ni ami,<br>ni ennemi</h1>
+    <p class="sub">Les trois positions du manager</p>
+  </section>
+
+  <section class="s" data-t="7">
+    <h2>Une question simple</h2>
+    <p class="big">Votre responsable est-il un ami&nbsp;?<br>Un adversaire&nbsp;?</p>
+    <p class="sub">La plupart des gens hésitent. C'est normal :<br>la bonne réponse n'est ni l'une, ni l'autre.</p>
+  </section>
+
+  <section class="s" data-t="19">
+    <h2>Trois positions possibles</h2>
+    <div class="trio">
+      <div class="card c1 hot"><div class="t">1. L'ami</div>
+        <div class="d">Je veux être apprécié.<br>J'évite le conflit.</div></div>
+      <div class="card c2"><div class="t">2. L'ennemi</div>
+        <div class="d">Je veux être craint.<br>Je contrôle tout.</div></div>
+      <div class="card c3"><div class="t">3. Le garant</div>
+        <div class="d">Je tiens le cadre.<br>Le même pour tous.</div></div>
+    </div>
+  </section>
+
+  <section class="s" data-t="33">
+    <div class="badge">POSITION 1</div>
+    <h2>L'ami</h2>
+    <p class="big">Je n'ose plus recadrer.</p>
+    <p class="sub">Les règles deviennent négociables.<br>Ceux qui ne demandent rien se sentent lésés.</p>
+  </section>
+
+  <section class="s" data-t="48">
+    <div class="badge">POSITION 2</div>
+    <h2>L'ennemi</h2>
+    <p class="big">On me cache les erreurs.</p>
+    <p class="sub">L'information remonte fausse.<br>Je décide sur du vide.</p>
+  </section>
+
+  <section class="s" data-t="63">
+    <div class="badge">POSITION 3</div>
+    <h2>Le garant du cadre</h2>
+    <p class="big">On sait à quoi s'attendre.</p>
+    <p class="sub">Je défends la règle, pas ma personne.<br>Le désaccord redevient possible.</p>
+  </section>
+
+  <section class="s" data-t="82">
+    <h2>La formule</h2>
+    <p class="big" style="color:#FFC58A">Chaleureux sur la relation.<br>Ferme sur le cadre.</p>
+    <p class="sub">Ce n'est pas contradictoire.<br>C'est la définition de la posture managériale.</p>
+  </section>
+
+  <section class="s" data-t="98">
+    <h2>Le test, avant d'agir</h2>
+    <ol>
+      <li>Appliquerais-je la même règle à quelqu'un que j'apprécie moins&nbsp;?</li>
+      <li>Pourrais-je dire cette phrase devant toute l'équipe&nbsp;?</li>
+      <li>Est-ce la règle que je défends, ou mon ego&nbsp;?</li>
+    </ol>
+  </section>
+
+  <section class="s" data-t="126">
+    <h1>Ni ami.<br>Ni ennemi.<br><span style="color:#FFC58A">Prévisible.</span></h1>
+  </section>
+
+</div>
+<div id="bar"><div id="fill"></div></div>
+<div id="cc"><span id="cctxt"></span></div>
+<div id="hint">Espace : lecture / pause &nbsp;•&nbsp; Flèches : scène précédente ou suivante</div>
+
+<script>
+/* Sous-titres = texte exact de la voix off (fiche script). */
+const CC = [
+ [0,  "Ni ami, ni ennemi. Les trois positions du manager."],
+ [7,  "Votre responsable est-il un ami ? Un adversaire ? La plupart des gens hésitent."],
+ [13, "C'est normal : la bonne réponse n'est ni l'une, ni l'autre."],
+ [19, "Il existe trois positions possibles. Deux sont des pièges. Une seule tient."],
+ [26, "Regardons ce que chacune produit réellement dans une équipe."],
+ [33, "Position un : l'ami. Je veux être apprécié, alors j'évite le conflit."],
+ [40, "Résultat : je n'ose plus recadrer. Les règles deviennent négociables, et ceux qui ne demandent rien se sentent lésés."],
+ [48, "Position deux : l'ennemi. Je veux être craint, alors je contrôle tout."],
+ [55, "Résultat : on me cache les erreurs. L'information remonte fausse, et je décide sur du vide."],
+ [63, "Position trois : le garant du cadre. Je défends la règle, pas ma personne."],
+ [71, "Je suis prévisible : la même règle s'applique à tous. Chacun sait à quoi s'attendre."],
+ [77, "Et parce que le cadre est stable, le désaccord redevient possible."],
+ [82, "La formule tient en deux lignes : chaleureux sur la relation, ferme sur le cadre."],
+ [90, "Ce n'est pas contradictoire. C'est exactement la définition de la posture managériale."],
+ [98, "Avant d'agir, posez-vous trois questions."],
+ [103,"Un : appliquerais-je la même règle à quelqu'un que j'apprécie moins ?"],
+ [110,"Deux : pourrais-je dire cette phrase devant toute l'équipe ?"],
+ [117,"Trois : est-ce la règle que je défends, ou mon ego ?"],
+ [126,"Ni ami. Ni ennemi. Prévisible. C'est déjà beaucoup."],
+ [150,""]
+];
+const DUREE = 150;
+const scenes = [...document.querySelectorAll('.s')].map(e=>({el:e,t:+e.dataset.t}));
+const fill=document.getElementById('fill'), cctxt=document.getElementById('cctxt');
+const pp=document.getElementById('pp');
+let t=0, on=true, last=performance.now();
+
+function rendu(){
+  let idx=0; for(let i=0;i<scenes.length;i++) if(t>=scenes[i].t) idx=i;
+  scenes.forEach((s,i)=>s.el.classList.toggle('on', i===idx));
+  const cards=scenes[2].el.querySelectorAll('.card');
+  if(cards.length){
+    const k = t<26 ? 0 : (t<30 ? 1 : 2);
+    cards.forEach((c,i)=>c.classList.toggle('hot', i<=k));
+  }
+  let c=""; for(const [s,txt] of CC) if(t>=s) c=txt;
+  cctxt.textContent=c;
+  fill.style.width=Math.min(100,(t/DUREE)*100)+"%";
+}
+function boucle(now){
+  if(on){ t+=(now-last)/1000; if(t>DUREE){t=DUREE;on=false;pp.textContent="Lecture";} rendu(); }
+  last=now; requestAnimationFrame(boucle);
+}
+pp.onclick=()=>{ if(t>=DUREE) t=0; on=!on; pp.textContent=on?"Pause":"Lecture"; };
+document.getElementById('rw').onclick=()=>{ t=0; on=true; pp.textContent="Pause"; rendu(); };
+document.addEventListener('keydown',e=>{
+  if(e.code==='Space'){e.preventDefault();pp.click();}
+  if(e.code==='ArrowRight'){const n=scenes.find(s=>s.t>t); t=n?n.t:DUREE; rendu();}
+  if(e.code==='ArrowLeft'){const p=[...scenes].reverse().find(s=>s.t<t-1); t=p?p.t:0; rendu();}
+});
+rendu(); requestAnimationFrame(boucle);
+</script>
+</body>
+</html>
