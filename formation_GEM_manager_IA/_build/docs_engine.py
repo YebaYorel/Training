@@ -8,15 +8,30 @@ from reportlab.lib.enums import TA_LEFT, TA_CENTER
 from reportlab.platypus import (BaseDocTemplate, PageTemplate, Frame, Paragraph,
                                 Spacer, Table, TableStyle, PageBreak, KeepTogether)
 
-ORGANISME = "GEM FORMATION"
+from charte import charger, verifier
+_C = charger(); verifier(_C)
 
-NUIT   = colors.HexColor("#12294A")
-ACCENT = colors.HexColor("#C2410C")
-VERT   = colors.HexColor("#156B36")
-ROUGE  = colors.HexColor("#B91C1C")
-GRIS   = colors.HexColor("#4A5568")
-CLAIR  = colors.HexColor("#EFF2F7")
-TXT    = colors.HexColor("#1A1A2E")
+ORGANISME  = _C["organisme"]
+TITRE_JOUR = _C["titre_jour"]
+
+NUIT   = colors.HexColor(_C["nuit"])
+ACCENT = colors.HexColor(_C["accent"])
+VERT   = colors.HexColor(_C["vert"])
+ROUGE  = colors.HexColor(_C["rouge"])
+GRIS   = colors.HexColor(_C["gris"])
+CLAIR  = colors.HexColor(_C["clair"])
+TXT    = colors.HexColor(_C["txt"])
+
+def _pale(hexa, f=0.88):
+    """Fond tres clair derive d'une couleur, pour les encadres."""
+    c = colors.HexColor(hexa)
+    return colors.Color(c.red + (1 - c.red) * f,
+                        c.green + (1 - c.green) * f,
+                        c.blue + (1 - c.blue) * f)
+
+PALE_ROUGE  = _pale(_C["rouge"])
+PALE_VERT   = _pale(_C["vert"])
+PALE_ACCENT = _pale(_C["accent"])
 
 def S(nom, taille, **kw):
     base = dict(fontName="Helvetica", fontSize=taille, leading=taille * 1.45,
@@ -45,7 +60,7 @@ def _entete(titre, sous):
         canv.setFillColor(NUIT); canv.rect(0, H - 26 * mm, L, 26 * mm, stroke=0, fill=1)
         canv.setFillColor(colors.white); canv.setFont("Helvetica-Bold", 15)
         canv.drawString(18 * mm, H - 14 * mm, titre[:78])
-        canv.setFont("Helvetica", 10.5); canv.setFillColor(colors.HexColor("#C8D3E2"))
+        canv.setFont("Helvetica", 10.5); canv.setFillColor(_pale(_C["nuit"], 0.72))
         canv.drawString(18 * mm, H - 20.5 * mm, sous[:110])
         canv.setStrokeColor(colors.HexColor("#D5DCE6")); canv.setLineWidth(0.7)
         canv.line(18 * mm, 14 * mm, L - 18 * mm, 14 * mm)

@@ -29,7 +29,7 @@ f += [E(3), encadre("Conseils de diction", [
     "Débit lent : environ 130 mots par minute. Le silence fait partie du texte.",
     "Marquez une pause d'une seconde après chaque phrase courte projetée à l'écran.",
     "Ne lisez pas le sous-titre mot à mot si le groupe réagit : la vidéo peut être mise en pause."],
-    coul=VERT, fond=colors.HexColor("#E8F3EC"))]
+    coul=VERT, fond=PALE_VERT)]
 
 for titre, chemin, duree, quand in [
     ("Vidéo n°1 — Les trois positions du manager",

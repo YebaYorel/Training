@@ -8,7 +8,7 @@ QUIZ1 = [
   "Le manager défend la règle, pas sa personne. Il peut être chaleureux sur la relation "
   "et ferme sur le cadre : c'est ce qui le rend prévisible, donc fiable."),
 
- ("QCM", "Un collaborateur débutant doit exécuter une tâche nouvelle, urgente et à enjeu de sécurité. "
+ ("QCM", "Une saisonnière, deuxième jour, doit utiliser le transpalette électrique un samedi de rush. "
   "Quel style est le plus adapté ?",
   ["Délégatif", "Directif", "Participatif", "Persuasif"], 1,
   "Compétence faible sur la tâche + urgence + sécurité = style directif. Ce n'est ni "
@@ -35,7 +35,7 @@ QUIZ1 = [
   "Décrire les faits → Exprimer l'effet en « je » → Suggérer une solution → Conclure "
   "sur un accord daté. Le « je » évite l'accusation et rend le message recevable."),
 
- ("VF", "Un retour négatif peut être formulé en réunion d'équipe, à condition que les "
+ ("VF", "Un retour négatif peut être formulé pendant le brief d'équipe, à condition que les "
   "faits reprochés soient exacts.", None, False,
   "Faux. L'exactitude des faits ne change rien : un recadrage public humilie et fait "
   "perdre la face. Il se fait toujours en privé, dans les 48 heures."),
@@ -46,15 +46,15 @@ QUIZ1 = [
   "L.4121-1 : obligation de prendre les mesures nécessaires pour assurer la sécurité et "
   "protéger la santé physique et mentale. L.1152-1 vise le harcèlement moral."),
 
- ("QCM", "En réunion, sur un sujet d'opinion, le manager donne son avis :",
+ ("QCM", "Pendant le brief, sur un sujet d'opinion, le manager donne son avis :",
   ["En premier, pour donner le cap",
    "En dernier, après avoir entendu l'équipe",
    "Jamais, pour rester neutre",
    "Uniquement par écrit, après la réunion"], 1,
-  "Si le manager parle en premier, plus personne ne le contredit et la réunion ne sert "
-  "à rien. Indicateur : s'il parle plus de 40 % du temps, ce n'est plus une réunion."),
+  "Si le manager parle en premier, plus personne ne le contredit et le brief ne sert "
+  "à rien. Indicateur : s'il parle plus de 40 % du temps, ce n'est plus un brief."),
 
- ("QCM", "Face au « sceptique » qui objecte sur tout, la meilleure réponse consiste à :",
+ ("QCM", "Face au vendeur « sceptique » qui objecte sur tout, la meilleure réponse consiste à :",
   ["L'ignorer et poursuivre l'ordre du jour",
    "Le contredire fermement devant le groupe",
    "Lui demander ce qu'il lui faudrait pour y croire",
@@ -97,8 +97,8 @@ QUIZ2 = [
   "Le même outil peut être à risque minimal pour rédiger un compte rendu et à haut "
   "risque pour trier des candidatures. C'est l'usage qui est qualifié."),
 
- ("QCM", "Utiliser un dispositif d'IA pour détecter les émotions des salariés pendant "
-  "les réunions est un usage :",
+ ("QCM", "Utiliser un dispositif d'IA pour analyser le sourire des hôtesses de caisse pendant "
+  "le service est un usage :",
   ["Autorisé si les salariés ont donné leur accord",
    "À haut risque, donc encadré",
    "Interdit",
@@ -107,7 +107,7 @@ QUIZ2 = [
   "pratiques prohibées (IA Act, art. 5), sauf raisons médicales ou de sécurité. "
   "L'accord des salariés ne rend pas licite une pratique interdite."),
 
- ("QCM", "Trier et classer automatiquement des candidatures relève du niveau :",
+ ("QCM", "Trier automatiquement les 300 CV reçus pour les saisonniers relève du niveau :",
   ["Risque minimal", "Risque limité", "Haut risque", "Risque inacceptable"], 2,
   "Haut risque : l'emploi et la gestion de la main-d'œuvre figurent à l'annexe III. "
   "Conséquences : supervision humaine effective, information des travailleurs et de "
@@ -146,7 +146,7 @@ QUIZ2 = [
   "(Code du travail, art. L.2312-38)."),
 
  ("OUV", "Vous souhaitez utiliser une IA pour rédiger les comptes rendus des entretiens "
-  "annuels de votre équipe, à partir de vos notes. Énoncez les trois réflexes à "
+  "annuels de vos vendeurs, à partir de vos notes. Énoncez les trois réflexes à "
   "appliquer, puis dites ce que vous décidez et pourquoi.", None, None,
   "Réflexe 1 — Données personnelles : oui, massivement (nom, appréciations, parfois "
   "éléments de santé ou de situation familiale). RGPD : finalité, base légale, "

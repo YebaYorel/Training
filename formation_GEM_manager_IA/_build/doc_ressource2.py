@@ -3,7 +3,7 @@ from docs_engine import *
 
 f = []
 f += [H1("Fiche ressource n°2 — IA, RGPD et IA Act : ce que le responsable engage"),
-      P("Document remis aux participants. Les références réglementaires doivent être "
+      P("Document remis aux stagiaires du titre professionnel MEM. Les références doivent être "
         "vérifiées à leur version en vigueur à la date de consultation."), E(3)]
 
 f += [H2("1. Comprendre une IA générative en trois minutes")]
@@ -51,7 +51,7 @@ f += [E(3), encadre("Le piège du consentement du salarié", [
     "En entreprise, le consentement d'un salarié est rarement une base légale valable : "
     "le lien de subordination rend le consentement difficilement « libre ».",
     "Cherchez plutôt : exécution du contrat, obligation légale, ou intérêt légitime documenté."],
-    coul=ACCENT, fond=colors.HexColor("#FCEFE7"))]
+    coul=ACCENT, fond=PALE_ACCENT)]
 
 f += [E(3), H3("Surveiller, contrôler, évaluer : les limites"),
       *puces([
@@ -94,10 +94,10 @@ f += [H3("Les deux rôles"),
 f += [E(3), H3("Les quatre niveaux de risque"),
       tableau([
         ["Niveau", "Exemples pour un manager", "Régime"],
-        ["Inacceptable", "Détection des émotions des salariés sur le lieu de travail ; notation "
+        ["Inacceptable", "Analyse du sourire ou de l'humeur des hôtesses de caisse ; notation "
          "sociale ; exploitation d'une vulnérabilité", "<b>Interdit</b> (art. 5)"],
-        ["Haut risque", "Tri et classement de candidatures ; décisions de promotion ou de rupture ; "
-         "répartition automatisée des tâches ; suivi et évaluation de la performance",
+        ["Haut risque", "Tri des CV de saisonniers ; décisions de promotion ou de rupture ; "
+         "génération du planning ; suivi et évaluation de la performance vendeur",
          "Autorisé mais fortement encadré (annexe III, pt 4)"],
         ["Risque limité", "Agent conversationnel, contenus générés, images ou vidéos synthétiques",
          "Obligation de transparence (art. 50)"],
@@ -107,12 +107,12 @@ f += [E(3), H3("Les quatre niveaux de risque"),
 
 f += [E(3), encadre("Interdictions qui concernent directement le management", [
     "Reconnaître ou déduire les émotions des salariés sur le lieu de travail — sauf "
-    "raisons médicales ou de sécurité. Une solution qui « mesure l'engagement » ou "
-    "« l'attention » en réunion entre dans le champ de l'interdiction.",
+    "raisons médicales ou de sécurité. Une solution qui « mesure l'engagement » ou le sourire en caisse "
+    "entre dans le champ de l'interdiction.",
     "Noter socialement les personnes à partir de comportements sans rapport avec la finalité.",
     "Exploiter une vulnérabilité (âge, handicap, situation économique) pour influencer un comportement.",
     "Référence : IA Act, article 5. Applicable depuis le 2 février 2025."],
-    coul=ROUGE, fond=colors.HexColor("#FBEAEA"))]
+    coul=ROUGE, fond=PALE_ROUGE)]
 
 f += [E(3), H3("Vos obligations de déployeur (art. 26)"),
       *numerote([
@@ -133,7 +133,7 @@ f += [E(3), H3("L'article 4 : la littératie en matière d'IA"),
         "d'usage et les personnes concernées.",
         "Applicable depuis le 2 février 2025. Aucune exemption liée à la taille de l'entreprise.",
         "<b>Conservez la trace de cette journée</b> : émargement, programme, évaluation. "
-        "C'est un commencement de preuve."], coul=VERT, fond=colors.HexColor("#E8F3EC"))]
+        "C'est un commencement de preuve."], coul=VERT, fond=PALE_VERT)]
 
 f += [E(3), H3("Le calendrier d'application"),
       tableau([
@@ -190,20 +190,20 @@ f += [E(2), P("Exigez ces réponses dans le contrat ou l'accord de sous-traitanc
 f += [E(3), H2("6. Où l'IA vous rend réellement du temps")]
 f += [tableau([
     ["Usage", "Gain typique", "Condition de conformité"],
-    ["Structurer un compte rendu à partir de vos notes", "20 à 40 min par réunion",
+    ["Structurer le compte rendu du brief à partir de vos notes", "20 à 40 min par réunion",
      "Anonymiser les noms, ne pas traiter d'avis sur des personnes"],
     ["Préparer un entretien difficile (scénarios, questions)", "30 min",
      "Cas décrit sans élément identifiant"],
     ["Rédiger une trame de procédure ou un mode opératoire", "1 à 2 h",
      "Relecture métier obligatoire avant diffusion"],
     ["Reformuler une consigne pour trois publics différents", "20 min", "Aucune donnée personnelle"],
-    ["Interroger un document long (appel d'offres, accord)", "1 h",
+    ["Interroger un document long (accord d'entreprise, contrat fournisseur)", "1 h",
      "Vérifier toute citation dans le document source"]],
     [None, 30*mm, 58*mm])]
 
 f += [E(3), H3("Un bon prompt tient en quatre blocs"),
       *numerote([
-        "<b>Rôle</b> : « Tu es responsable qualité dans une PME industrielle de 40 personnes. »",
+        "<b>Rôle</b> : « Tu es chef de rayon dans une enseigne de 40 personnes. »",
         "<b>Contexte</b> : secteur, taille, contrainte, public destinataire, ce qui a déjà été tenté.",
         "<b>Tâche</b> : un seul verbe d'action, très précis. « Rédige », « compare », « liste ».",
         "<b>Format</b> : longueur, plan attendu, ton, ce qu'il ne faut pas faire.",

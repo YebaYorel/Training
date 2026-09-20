@@ -1,138 +1,167 @@
 # -*- coding: utf-8 -*-
 from docs_engine import *
 
-f = [H1("Conducteur d'animation — journée complète"),
-     P("Document formateur. Horaires, diapositives, matériel et points de vigilance."),
+f = [H1("Conducteur d'animation — journée complète à distance"),
+     P("Document formateur. Horaires, diapositives, dispositif technique et points de vigilance."),
      E(3)]
 f += [encadre("Cadre de la journée", [
-    "Horaires : 8h00 → 17h00. Déjeuner 12h00 → 13h00.",
-    "Pauses de 15 minutes à 10h00 et à 15h00.",
-    "Temps de face-à-face pédagogique : 7 h 30 (8 h moins les deux pauses).",
-    "Matin : la psychologie du dirigeant. Après-midi : IA et responsabilité en entreprise.",
-    "Deux évaluations formatives (grilles n°1 et n°2) et deux quiz de 10 questions."])]
-f += [E(3), encadre("Point à valider avec le commanditaire", [
-    "La commande mentionne 7 heures de formation ; le créneau 8h00-17h00 avec une heure de "
-    "déjeuner et deux pauses de 15 minutes représente 7 h 30 de face-à-face.",
-    "Deux options : conserver 7 h 30 et le mentionner sur la convention, ou retirer 30 minutes "
-    "(le plus simple : réduire le jeu n°4 à un seul passage et le jeu n°8 à 15 minutes).",
-    "À trancher avant l'édition du programme et de la feuille d'émargement."],
-    coul=ACCENT, fond=colors.HexColor("#FCEFE7"))]
+    "Modalité : <b>formation à distance</b>, en classe virtuelle synchrone.",
+    "Horaires : 9h00 → 17h00. Déjeuner 12h30 → 13h30.",
+    "Pauses de 15 minutes à 10h30 et à 15h15.",
+    "<b>Durée de formation : 7 h 00</b> (9h-17h moins l'heure de déjeuner), pauses incluses.",
+    "Public : stagiaires du titre professionnel Manager d'Établissement Marchand (MEM).",
+    "Matin : la psychologie du dirigeant. Après-midi : IA et responsabilité en entreprise."])]
+f += [E(3), encadre("Ce qui a changé avec le passage à distance", [
+    "Tous les jeux en déplacement ont été reconçus : tchat, pouces face caméra, salles séparées.",
+    "Les séquences d'apport ne dépassent jamais 15 minutes sans interaction.",
+    "Les cartes à découper sont devenues des fiches PDF envoyées la veille.",
+    "Une variante de repli est prévue pour chaque jeu si les salles séparées échouent.",
+    "Le diaporama doit être <b>envoyé avant</b> : le partage d'écran dégrade la lisibilité."],
+    coul=ACCENT, fond=PALE_ACCENT)]
 
 def seq(donnees, titre):
     return [E(4), H2(titre),
             tableau([["Horaire", "Séquence", "Ce que fait le formateur", "Support"]] + donnees,
-                    [22*mm, 38*mm, None, 28*mm])]
+                    [22*mm, 34*mm, None, 26*mm])]
 
 f += seq([
- ["8h00\n8h20", "Ouverture, cadre, objectifs",
-  "Accueil, tour de table éclair (prénom + une attente en 10 secondes). Pose du cadre. "
-  "Demande explicite des besoins d'accessibilité. Lance le jeu n°1.", "Diapos 1 à 5"],
- ["8h20\n9h00", "Dans la tête du dirigeant",
+ ["8h30", "Ouverture de la salle",
+  "Se connecte 30 minutes avant. Teste son, partage d'écran, salles séparées et lecture de la vidéo 1. "
+  "Accueille les premiers arrivés.", "—"],
+ ["9h00\n9h20", "Accueil, cadre, objectifs",
+  "Tour de table éclair (prénom + une attente, 10 secondes chacun). Pose les règles à distance. "
+  "Demande explicitement les besoins d'adaptation. Lance le jeu n°1.", "Diapos 1 à 6"],
+ ["9h20\n9h55", "Dans la tête du dirigeant",
   "Apport : charge, confidentialité, décision en information incomplète, double loyauté. "
-  "Fait réagir sur la colonne « on croit / réalité ».", "Diapos 6 à 11"],
- ["9h00\n9h45", "Ni ami, ni ennemi",
-  "Diffuse la vidéo n°1 (2 min 30) puis développe les trois positions. Exercice éclair : "
-  "reformuler les trois phrases qui coûtent cher.", "Diapos 12 à 16 + vidéo 1"],
- ["9h45\n10h00", "Les styles : introduction",
-  "Pose les quatre styles et l'erreur la plus fréquente. Annonce le jeu de la reprise.", "Diapos 17 à 19"],
- ["10h00\n10h15", "PAUSE", "Prépare les 4 affiches styles dans les coins de la salle.", "—"],
- ["10h15\n10h35", "Jeu n°2 — Les quatre coins",
-  "Anime les 8 situations au rythme soutenu. Ne commente pas longuement entre deux.", "Kit jeux, fiche J2"],
- ["10h35\n11h05", "Exigence et toxicité",
-  "Apport puis jeu n°3 (cartes). Fait émerger trois critères et les affiche pour la journée. "
-  "Traite le volet juridique sans dramatiser.", "Diapos 20 à 25 + fiche J3"],
- ["11h05\n11h20", "Langage, posture, réunion",
-  "Trois canaux, posture en 5 points, DESC, réunion avant/pendant, profils difficiles. "
-  "Fait tester la posture debout, 60 secondes.", "Diapos 26 à 32"],
- ["11h20\n11h50", "Jeu n°4 — La réunion de 9h",
-  "Distribue les rôles, lance 8 minutes chrono, débrief avec la grille n°1. "
-  "Deux passages si le groupe est nombreux.", "Fiche J4 + grille n°1"],
- ["11h50\n12h00", "Quiz n°1 et synthèse",
-  "Distribue le quiz n°1 (10 min, documents fermés). Ramasse. La correction se fera à 13h.",
-  "Quiz n°1"]], "Matin — la psychologie du dirigeant")
+  "Fait réagir sur la colonne « on croit / réalité ».", "Diapos 7 à 12"],
+ ["9h55\n10h30", "Ni ami, ni ennemi",
+  "Diffuse la vidéo n°1 (2 min 30) puis développe les trois positions et le piège du chef sorti "
+  "du rang. Exercice éclair dans le tchat.", "Diapos 13 à 18 + vidéo 1"],
+ ["10h30\n10h45", "PAUSE", "Laisse la salle ouverte. Reste connecté : c'est là que viennent les questions gênantes.", "—"],
+ ["10h45\n11h10", "Les styles + jeu n°2",
+  "Pose les quatre styles, puis enchaîne les 8 situations de magasin au rythme soutenu.",
+  "Diapos 19 à 22 + fiche J2"],
+ ["11h10\n11h35", "Exigence et toxicité + jeu n°3",
+  "Apport puis salles séparées (10 min). Fait émerger trois critères et les laisse affichés. "
+  "Traite le volet juridique sans dramatiser.", "Diapos 23 à 28 + fiche J3"],
+ ["11h35\n11h50", "Langage, posture, brief",
+  "Trois canaux, posture en 5 points, la même en visio, DESC, brief avant/pendant, profils "
+  "difficiles. Fait tester la posture debout, 60 secondes.", "Diapos 29 à 36"],
+ ["11h50\n12h20", "Jeu n°4 — Le brief de 8h",
+  "Envoie les rôles en message privé, lance 8 minutes, débrief avec la grille n°1. "
+  "Deux passages si l'effectif le permet.", "Fiche J4 + grille n°1"],
+ ["12h20\n12h30", "Quiz n°1",
+  "Diffuse le quiz n°1 (PDF à remplir ou réponses dans le tchat privé). 10 minutes, documents fermés. "
+  "Correction reportée à 13h30.", "Quiz n°1"]], "Matin — 9h00 à 12h30")
 
 f += [SAUT()]
 f += seq([
- ["13h00\n13h15", "Reprise et correction",
-  "Corrige le quiz n°1 avec le corrigé (5 min), puis lance le jeu n°5 debout pour relancer "
-  "l'énergie digestive.", "Corrigé quiz 1 + fiche J5"],
- ["13h15\n13h50", "Comprendre l'IA sans jargon",
-  "Explique la prédiction du mot suivant. Fait vivre une hallucination en direct si un outil "
-  "est disponible. Présente les trois pièges.", "Diapos 35 à 39"],
- ["13h50\n14h20", "RGPD pour responsables",
+ ["13h30\n13h45", "Reprise et correction",
+  "Corrige le quiz n°1 (5 min), puis lance le jeu n°5 debout : c'est le créneau le plus difficile "
+  "de la journée, il ne se négocie pas.", "Corrigé quiz 1 + fiche J5"],
+ ["13h45\n14h15", "Comprendre l'IA sans jargon",
+  "Explique la prédiction du mot suivant. Montre une hallucination en direct si possible. "
+  "Les trois pièges, puis le biais appliqué au tri des saisonniers.", "Diapos 40 à 45"],
+ ["14h15\n14h45", "RGPD pour responsables",
   "Les six réflexes, le piège du consentement, les limites de la surveillance, l'article 22. "
-  "Rythme soutenu : c'est un passage, pas un cours de droit.", "Diapos 40 à 44"],
- ["14h20\n14h30", "IA Act : architecture",
-  "Diffuse la vidéo n°2 (2 min 45) puis pose les quatre niveaux.", "Diapos 45 à 47 + vidéo 2"],
- ["14h30\n14h50", "Jeu n°6 — Le tri des risques",
-  "12 cartes, 4 zones. Corrige en citant l'article, jamais un avis personnel.", "Fiche J6"],
- ["14h50\n15h00", "Interdits, haut risque, article 4",
-  "Insiste sur l'article 4 : c'est l'argument qui justifie cette journée. "
-  "Mentionne les sanctions sans en faire le sujet.", "Diapos 48 à 52"],
- ["15h00\n15h15", "PAUSE", "Vérifie le matériel du jeu n°7 et projette le prompt dangereux.", "—"],
- ["15h15\n15h45", "Responsabilité du déployeur",
-  "Les cinq devoirs, la supervision humaine réelle, les trois réflexes. Puis jeu n°7.",
-  "Diapos 54 à 57 + fiche J7"],
- ["15h45\n16h20", "L'IA qui rend du temps",
-  "Usages concrets, prompt en 4 blocs, question de la souveraineté. Laisse les participants "
-  "citer leurs propres tâches.", "Diapos 58 à 62"],
- ["16h20\n16h40", "Jeu n°8 — Mon chantier IA",
-  "Atelier individuel puis présentations de 60 secondes, évaluées avec la grille n°2.",
-  "Fiche J8 + grille n°2"],
- ["16h40\n16h50", "Quiz n°2", "Distribue, 10 minutes, documents fermés. Ramasse.", "Quiz n°2"],
- ["16h50\n17h00", "Correction, plan 30 jours, clôture",
-  "Corrige le quiz n°2 en 4 minutes. Chacun énonce une action à voix haute. "
-  "Évaluation à chaud et émargement.", "Corrigé quiz 2 + diapos 63 à 69"]],
- "Après-midi — IA et responsabilité en entreprise")
+  "Rythme soutenu : c'est un passage, pas un cours de droit.", "Diapos 46 à 51"],
+ ["14h45\n15h15", "IA Act",
+  "Diffuse la vidéo n°2 (2 min 55), pose les quatre niveaux, les interdits, le haut risque "
+  "et l'article 4. Mentionne les sanctions sans en faire le sujet.", "Diapos 52 à 58 + vidéo 2"],
+ ["15h15\n15h30", "PAUSE", "Prépare les salles séparées du jeu n°6 pendant la pause.", "—"],
+ ["15h30\n15h50", "Jeu n°6 — Le tri des risques",
+  "12 usages, 4 niveaux, salles séparées. Corrige en citant l'article, jamais un avis personnel.",
+  "Fiche J6"],
+ ["15h50\n16h15", "Responsabilité du déployeur + jeu n°7",
+  "Les cinq devoirs, la supervision humaine réelle, les trois réflexes. Puis le prompt qui fuit.",
+  "Diapos 60 à 63 + fiche J7"],
+ ["16h15\n16h35", "L'IA qui rend du temps",
+  "Usages concrets, prompt en 4 blocs, souveraineté. Laisse les stagiaires citer leurs propres tâches.",
+  "Diapos 64 à 68"],
+ ["16h35\n16h45", "Jeu n°8 — Mon chantier IA",
+  "Atelier individuel, trois présentations de 60 secondes évaluées avec la grille n°2. "
+  "Les autres fiches sont déposées après la session.", "Fiche J8 + grille n°2"],
+ ["16h45\n16h55", "Quiz n°2", "Diffuse, 10 minutes, documents fermés.", "Quiz n°2"],
+ ["16h55\n17h00", "Correction, plan, clôture",
+  "Corrige en 3 minutes. Chacun énonce une action à voix haute, caméra allumée. "
+  "Évaluation à chaud et émargement de fin.", "Corrigé quiz 2 + diapos 69 à 73"]],
+ "Après-midi — 13h30 à 17h00")
 
-f += [SAUT(), H2("Matériel à préparer la veille")]
-f += [tableau([
- ["Support", "Quantité", "Remarque"],
- ["Diaporama (69 diapositives)", "1", "Tester la projection et le contraste dans la salle réelle"],
- ["Vidéos 1 et 2 (fichiers HTML)", "2", "Lecture hors ligne dans un navigateur, plein écran"],
- ["Fiche ressource n°1 et n°2", "1 jeu par stagiaire", "Imprimer en recto simple, corps 13 pt"],
- ["Quiz n°1 et n°2", "1 par stagiaire", "Ne pas distribuer avec les corrigés"],
- ["Corrigés 1 et 2", "1 pour le formateur", "Feuilles distinctes, à garder"],
- ["Grilles n°1 et n°2", "1 par observateur", "Prévoir large pour le jeu n°4"],
- ["Kit jeux — cartes J3, J4, J6", "1 jeu pour 4 stagiaires", "À découper avant la session"],
- ["Affiches A3", "4 styles + 4 risques + VRAI/FAUX", "Gros caractères, noir sur blanc"],
- ["Ruban adhésif, chronomètre visible, marqueurs", "—", "Chronomètre projeté si possible"]],
- [56*mm, 42*mm, None])]
+f += [SAUT(), H2("Checklist technique")]
+f += [H3("J–7 — une semaine avant"),
+      *puces([
+        "Envoyer le lien de connexion, les horaires et le programme détaillé.",
+        "Envoyer le <b>diaporama en PDF</b> : chacun suivra sur son écran, à son propre zoom.",
+        "Envoyer les fiches J2, J3, J6, J7, J8 et les deux grilles d'évaluation.",
+        "Demander par retour : besoins d'adaptation, contraintes de connexion, effectif définitif.",
+        "Indiquer le numéro ou l'adresse de l'<b>assistance technique</b> joignable le jour J."])]
+f += [E(2), H3("J–1 — la veille"),
+      *puces([
+        "Relancer les stagiaires n'ayant pas confirmé leur connexion.",
+        "Tester le partage d'une vidéo HTML avec le son : c'est le point qui casse le plus souvent.",
+        "Vérifier la création et le retour automatique des salles séparées.",
+        "Préparer les quatre messages privés du jeu n°4, prêts à coller.",
+        "Préparer un partage de connexion mobile en secours."])]
+f += [E(2), H3("Jour J — 30 minutes avant"),
+      *puces([
+        "Ouvrir la salle à 8h30. Tester micro, caméra, partage, son de la vidéo.",
+        "Ouvrir déjà les deux vidéos dans des onglets séparés, prêtes à lancer.",
+        "Afficher une diapositive d'accueil : horaires, règles, contact assistance.",
+        "Vérifier que le tchat est ouvert à tous, y compris en message privé."])]
 
-f += [E(4), H2("Accessibilité — vérifications avant l'ouverture")]
+f += [E(3), encadre("Plan B — quand la technique lâche", [
+    "<b>Un stagiaire ne se connecte pas</b> : l'assistance technique prend le relais pendant que "
+    "vous continuez. Vous ne suspendez jamais le groupe pour une personne.",
+    "<b>Les salles séparées échouent</b> : tout jeu se rabat sur le tchat en plénière. "
+    "Les variantes sont écrites fiche par fiche dans le kit jeux.",
+    "<b>La vidéo ne se partage pas avec le son</b> : vous la laissez défiler en muet et vous lisez "
+    "le script voix off. C'est prévu, c'est même la modalité recommandée.",
+    "<b>Votre connexion tombe</b> : les stagiaires restent en salle, vous revenez. "
+    "Annoncez cette consigne dès 9h00 pour éviter la débandade.",
+    "<b>Rupture longue</b> : basculer sur un rattrapage convenu avec le centre. "
+    "Tracer l'incident et la mesure prise."], coul=ROUGE, fond=PALE_ROUGE)]
+
+f += [SAUT(), H2("Accessibilité — vérifications spécifiques au distanciel")]
 f += puces([
  "Demander en ouverture, devant tout le groupe, si quelqu'un a un besoin particulier.",
- "Lire à voix haute toute carte distribuée et tout élément projeté : personne ne doit "
- "dépendre de sa seule vue pour suivre.",
- "Proposer systématiquement une variante assise aux jeux en déplacement (jeux 1, 2, 5, 6).",
- "Vérifier l'éclairage : ne pas éteindre complètement, le contraste du diaporama le permet.",
- "Placer les personnes malvoyantes au premier rang, face à l'écran, avant qu'elles ne le demandent.",
- "Disposer des exemplaires papier des diapositives clés pour lecture de près."])
+ "<b>Le point le plus important</b> : le diaporama a été envoyé avant. Le partage d'écran "
+ "compresse l'image et ruine le travail fait sur la taille des caractères.",
+ "Annoncer le numéro de chaque diapositive à voix haute : « diapositive 24, les dégâts côté équipe ».",
+ "Lire à voix haute tout ce qui est écrit à l'écran, y compris le tchat et les consignes de jeu.",
+ "Ne jamais désigner un élément par sa seule couleur : dire « la colonne de droite, exigeant ».",
+ "Proposer la transcription automatique si l'outil en dispose, et vérifier qu'elle est activable.",
+ "Vérifier que personne n'est contraint de suivre sur un téléphone : le proposer autrement si c'est le cas."])
 
 f += [E(4), H2("Points de vigilance d'animation")]
 f += puces([
- "<b>8h00</b> : ne pas commencer par le contenu. Le cadre et le jeu n°1 conditionnent toute la journée.",
- "<b>Matin</b> : le sujet touche les vécus. Si un participant raconte une situation personnelle "
+ "<b>9h00</b> : ne pas commencer par le contenu. Le cadre et le jeu n°1 conditionnent toute la journée.",
+ "<b>À distance, le silence n'est pas un accord.</b> Nommez, relancez, comptez jusqu'à cinq.",
+ "<b>Matin</b> : le sujet touche des vécus. Si un stagiaire raconte une situation personnelle "
  "difficile, accueillir brièvement, ne pas instruire le cas, proposer un temps à la pause.",
- "<b>Jeu n°4</b> : ne jamais laisser les observateurs commenter la personnalité. "
- "Recentrer sur un fait observé dès la première dérive.",
- "<b>13h00</b> : le créneau digestif est le plus difficile. Le jeu n°5 debout n'est pas optionnel.",
+ "<b>Public MEM</b> : ce sont de futurs responsables, souvent en alternance en magasin. Partez "
+ "toujours d'une situation de rayon, de caisse ou de planning, jamais d'un exemple de bureau.",
+ "<b>Jeu n°4</b> : ne jamais laisser les observateurs commenter la personnalité. Recentrer sur "
+ "un fait observé dès la première dérive.",
  "<b>Après-midi</b> : résister à la tentation du cours de droit. Une référence par notion, pas plus.",
  "<b>Questions juridiques individuelles</b> : rappeler que la formation n'est pas un conseil "
  "juridique personnalisé et renvoyer vers un conseil compétent.",
- "<b>16h50</b> : faire énoncer chaque plan d'action à voix haute. L'engagement public triple le passage à l'acte."])
+ "<b>16h55</b> : faire énoncer chaque plan d'action à voix haute. L'engagement public triple le "
+ "passage à l'acte — et à distance, il réveille le groupe une dernière fois."])
 
 f += [E(4), H2("Après la session")]
 f += puces([
- "Conserver : émargement, programme, quiz renseignés, grilles, fiches « Mon chantier IA ».",
- "Ces pièces documentent à la fois l'action de formation et, pour le commanditaire, "
- "l'effort de littératie en matière d'IA attendu par l'article 4 du règlement (UE) 2024/1689.",
- "Transmettre au commanditaire une synthèse anonymisée des résultats aux deux quiz.",
- "Point de vigilance RGPD : les copies de quiz comportent des données personnelles "
- "(nom, résultat). Définir une durée de conservation et l'annoncer aux stagiaires."])
+ "Conserver : émargements, programme, quiz renseignés, grilles, fiches « Mon chantier IA », "
+ "traces de connexion.",
+ "Transmettre au centre une synthèse <b>anonymisée</b> des résultats aux deux quiz.",
+ "Signaler tout incident technique et la mesure de rattrapage retenue : c'est attendu au titre "
+ "de l'assistance technique en formation à distance.",
+ "<b>Point de vigilance RGPD</b> : les copies de quiz et les grilles nominatives sont des données "
+ "personnelles. Définir une durée de conservation, l'annoncer aux stagiaires, et ne transmettre "
+ "au centre que ce qui lui est nécessaire.",
+ "Voir le document « Dispositif à distance et conformité » pour le détail des obligations."])
 
 doc = document("../08_conducteur/Conducteur_animation_journee.pdf",
-               "Conducteur d'animation — journée complète",
-               "8h00-17h00 — minutage, supports, matériel, vigilances")
+               "Conducteur d'animation — journée à distance",
+               "9h00-17h00 — minutage, dispositif technique, plan B, vigilances")
 doc.build(f)
-print("Conducteur : OK")
+print("Conducteur (distanciel 9h-17h) : OK")

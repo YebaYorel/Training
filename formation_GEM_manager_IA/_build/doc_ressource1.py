@@ -3,17 +3,17 @@ from docs_engine import *
 
 f = []
 f += [H1("Fiche ressource n°1 — La psychologie du dirigeant et la posture managériale"),
-      P("Document remis aux participants. À conserver et à relire 30 jours après la formation."), E(3)]
+      P("Document remis aux stagiaires du titre professionnel Manager d'Établissement Marchand. À conserver et à relire 30 jours après la formation."), E(3)]
 
 f += [H2("1. Ce que porte un dirigeant (et que l'équipe ne voit pas)")]
 f += [P("Le dirigeant n'a ni les mêmes informations, ni les mêmes échéances, ni les mêmes "
         "contraintes que son équipe. Comprendre cet écart ne sert pas à l'excuser : cela sert "
         "à mieux dialoguer avec lui, et à se préparer à occuper sa place.")]
 f += puces([
-    "<b>La charge économique</b> : la trésorerie, les échéances, la paie du mois prochain.",
+    "<b>La charge économique</b> : le chiffre, la marge, la démarque, la paie du mois prochain.",
     "<b>La confidentialité subie</b> : il détient des informations qu'il n'a pas le droit de partager.",
     "<b>La décision en information incomplète</b> : il tranche rarement avec toutes les données.",
-    "<b>La double loyauté</b> : vers le haut (résultats, actionnaires, financeurs) et vers le bas "
+    "<b>La double loyauté</b> : vers le haut (siège, objectifs, marge) et vers le bas "
     "(conditions de travail, équité, moyens). Les deux tirent en sens inverse.",
     "<b>L'exposition permanente</b> : son humeur du matin est lue, interprétée et commentée."])
 f += [E(2), encadre("Ce qu'il faut retenir", [
@@ -35,6 +35,15 @@ f += [tableau([
     [34*mm, 48*mm, None])]
 f += [E(3), P("<b>La formule à retenir :</b> chaleureux sur la relation, ferme sur le cadre. "
               "Ce n'est pas contradictoire, c'est la définition même de la posture managériale.")]
+f += [E(3), H3("Le pi\u00e8ge du chef sorti du rang"),
+      P("C'est la situation la plus fr\u00e9quente en \u00e9tablissement marchand : hier vendeur, "
+        "aujourd'hui responsable, avec la m\u00eame \u00e9quipe, la m\u00eame pause et les m\u00eames blagues. "
+        "Puis arrive le premier samedi de repos \u00e0 refuser, et l'amiti\u00e9 se transforme en dette."),
+      *puces([
+        "Posez la r\u00e8gle <b>avant</b> d'en avoir besoin, d\u00e8s les premiers jours.",
+        "Dites explicitement ce qui change et ce qui ne change pas dans la relation.",
+        "N'annulez pas les liens : rendez-les visibles et \u00e9quitables pour tous.",
+        "Acceptez de perdre un peu de popularit\u00e9 : c'est le prix de la pr\u00e9visibilit\u00e9."])]
 f += [E(2), H3("Le test des trois questions avant d'agir"),
       *numerote([
         "Est-ce que j'appliquerais la même règle à quelqu'un que j'apprécie moins ?",
@@ -44,7 +53,7 @@ f += [E(2), encadre("Trois phrases à bannir", [
     "« Entre nous, la direction se trompe » → vous détruisez votre propre légitimité.",
     "« Je te le dis, mais garde-le pour toi » → vous créez un cercle, donc des exclus.",
     "« De toute façon, on n'y peut rien » → vous validez l'impuissance de l'équipe."],
-    coul=ROUGE, fond=colors.HexColor("#FBEAEA"))]
+    coul=ROUGE, fond=PALE_ROUGE)]
 
 f += [SAUT(), H2("3. Les quatre styles de management, et quand les utiliser")]
 f += [P("Il n'existe pas de bon style en soi. Il existe un style adapté à une personne, "
@@ -92,7 +101,7 @@ f += [E(3), encadre("Les conséquences, côté équipe", [
     "Disparition du signalement d'erreur : les problèmes remontent trop tard.",
     "Absentéisme, puis départs en série — les plus employables partent les premiers.",
     "Cadre de lecture : les 6 familles de facteurs de risques psychosociaux, dont les "
-    "« rapports sociaux au travail dégradés »."], coul=ROUGE, fond=colors.HexColor("#FBEAEA"))]
+    "« rapports sociaux au travail dégradés »."], coul=ROUGE, fond=PALE_ROUGE)]
 f += [E(2), source("INRS, dossier « Risques psychosociaux », six familles de facteurs de RPS (inrs.fr).")]
 
 f += [E(3), H3("Le rappel juridique"),
@@ -131,11 +140,11 @@ f += [E(3), H2("7. Dire ce qui ne va pas : la méthode DESC")]
 f += [tableau([
     ["Étape", "Ce que je fais", "Exemple"],
     ["D — Décrire", "Les faits seuls, datés, sans adjectif",
-     "« Le rapport est arrivé jeudi à 17h, l'échéance était mardi. »"],
+     "« La caisse a ouvert à 9h12, l'ouverture était à 9h00. »"],
     ["E — Exprimer", "L'effet, en parlant de soi",
-     "« J'ai dû décaler la réunion client, je me suis retrouvé en difficulté. »"],
+     "« J'ai eu six clients en attente devant une grille fermée. »"],
     ["S — Suggérer", "Une solution précise, pas un reproche",
-     "« Je te propose de me prévenir dès que tu vois un retard arriver. »"],
+     "« Je te propose de m'appeler dès que tu vois que tu seras en retard. »"],
     ["C — Conclure", "Un accord daté et vérifiable",
      "« On se refait un point vendredi 10h pour valider. »"]],
     [30*mm, 54*mm, None])]
@@ -144,14 +153,14 @@ f += [E(2), encadre("Les trois règles non négociables du feedback", [
     "Dans les 48 heures après le fait. Au-delà, c'est du ressentiment.",
     "Un seul sujet par entretien. Deux reproches simultanés = zéro message reçu."])]
 
-f += [E(4), H2("8. Conduire une réunion qui sert à quelque chose")]
-f += [H3("Avant — c'est là que la réunion se gagne"),
+f += [E(4), H2("8. Conduire un brief d'équipe qui sert à quelque chose")]
+f += [H3("Avant — c'est là que le brief se gagne"),
       *puces([
         "Un objectif écrit en une phrase : « À la fin, nous aurons décidé que… »",
         "Trois points maximum à l'ordre du jour, avec une durée par point.",
         "Les bonnes personnes, pas toutes les personnes.",
         "Une durée annoncée — et tenue, même si tout n'est pas traité.",
-        "<b>Règle simple :</b> pas d'ordre du jour écrit, pas de réunion."])]
+        "<b>Règle simple :</b> pas d'ordre du jour écrit, pas de brief."])]
 f += [E(2), H3("Pendant"),
       *puces([
         "Rappeler l'objectif en 30 secondes, debout si possible.",
@@ -159,7 +168,7 @@ f += [E(2), H3("Pendant"),
         "Aller chercher les silencieux nommément, en premier.",
         "Couper le hors-sujet avec respect : « Sujet important, je le note, on le traite à part. »",
         "Conclure par qui fait quoi, pour quand — à voix haute, devant tous.",
-        "<b>Indicateur :</b> si vous parlez plus de 40 % du temps, ce n'est plus une réunion."])]
+        "<b>Indicateur :</b> si vous parlez plus de 40 % du temps, ce n'est plus un brief."])]
 f += [E(2), H3("Les quatre profils difficiles"),
       tableau([
         ["Profil", "Ce qu'il fait", "Ce que vous faites"],

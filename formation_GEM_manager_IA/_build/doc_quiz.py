@@ -43,7 +43,7 @@ def feuille_corrige(chemin, numero, titre_partie, questions):
         "Feuille distincte de la feuille stagiaire. À ne pas distribuer avant la correction.",
         "Barème : 9 questions fermées à 1 point, 1 question ouverte sur 3 points — total 12 points.",
         "Seuil d'acquisition : 8 / 12. En dessous, reprendre en priorité les items ratés."],
-        coul=ROUGE, fond=colors.HexColor("#FBEAEA"))]
+        coul=ROUGE, fond=PALE_ROUGE)]
     f += [E(5)]
     lignes = [["N°", "Réponse attendue", "Justification à donner au groupe"]]
     for i, q in enumerate(questions, 1):

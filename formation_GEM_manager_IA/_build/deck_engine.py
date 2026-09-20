@@ -12,19 +12,27 @@ from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 
-ORGANISME = "GEM FORMATION"
-TITRE_JOUR = "Manager aujourd'hui : posture et intelligence artificielle"
+from charte import charger, verifier
+_C = charger(); verifier(_C)
 
-# ---- Palette neutre accessible (a remplacer par la charte GEM si fournie) ----
-C_TXT     = RGBColor(0x1A, 0x1A, 0x2E)   # 15.8:1 sur blanc
-C_BG      = RGBColor(0xFF, 0xFF, 0xFF)
-C_NUIT    = RGBColor(0x12, 0x29, 0x4A)   # bandeau  13.0:1 avec blanc
-C_GRIS    = RGBColor(0x4A, 0x55, 0x68)   # 7.1:1 sur blanc
-C_ACCENT  = RGBColor(0xC2, 0x41, 0x0C)   # orange  5.4:1 sur blanc
-C_VERT    = RGBColor(0x15, 0x6B, 0x36)   # 6.2:1 sur blanc
-C_ROUGE   = RGBColor(0xB9, 0x1C, 0x1C)   # 6.0:1 sur blanc
-C_BLANC   = RGBColor(0xFF, 0xFF, 0xFF)
-C_CLAIR   = RGBColor(0xEF, 0xF2, 0xF7)
+ORGANISME  = _C["organisme"]
+TITRE_JOUR = _C["titre_jour"]
+MODALITE   = _C["modalite"]
+HORAIRES   = _C["horaires"]
+
+def _rgb(h):
+    h = h.lstrip("#")
+    return RGBColor(int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16))
+
+C_TXT    = _rgb(_C["txt"])
+C_BG     = RGBColor(0xFF, 0xFF, 0xFF)
+C_NUIT   = _rgb(_C["nuit"])
+C_GRIS   = _rgb(_C["gris"])
+C_ACCENT = _rgb(_C["accent"])
+C_VERT   = _rgb(_C["vert"])
+C_ROUGE  = _rgb(_C["rouge"])
+C_BLANC  = RGBColor(0xFF, 0xFF, 0xFF)
+C_CLAIR  = _rgb(_C["clair"])
 
 FONT = "Verdana"
 SZ_TITRE, SZ_CORPS, SZ_SOUS, SZ_SURTITRE = 40, 28, 24, 18

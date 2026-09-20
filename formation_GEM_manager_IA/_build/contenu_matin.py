@@ -3,69 +3,79 @@ from deck_engine import *
 
 def construire(prs):
     # ---------------------------------------------------------- OUVERTURE --
-    slide_couverture(prs,
-        "FORMATION – 1 JOUR",
+    slide_couverture(prs, MODALITE,
         ["Manager aujourd'hui :", "posture et intelligence", "artificielle"],
         "Psychologie du dirigeant  •  IA et responsabilité en entreprise",
-        ORGANISME + "   –   8h00 → 17h00")
+        ORGANISME + "   –   TP Manager d'Établissement Marchand   –   " + HORAIRES)
 
     slide(prs, "Votre journée",
-        [(1, "8h00  Ouverture et cadre commun"),
-         (1, "8h20  La psychologie du dirigeant"),
-         (1, "10h00  Pause – 15 minutes"),
-         (1, "12h00  Déjeuner"),
-         (1, "13h00  IA et responsabilité"),
-         (1, "15h00  Pause – 15 minutes"),
+        [(1, "9h00  Ouverture et cadre commun"),
+         (1, "9h20  La psychologie du dirigeant"),
+         (1, "10h30  Pause – 15 minutes"),
+         (1, "12h30  Déjeuner"),
+         (1, "13h30  IA et responsabilité"),
+         (1, "15h15  Pause – 15 minutes"),
          (1, "17h00  Clôture")],
-        note="Deux univers, une seule question : quel responsable devenez-vous ?")
+        note="7 heures. Deux univers. Une seule question : quel chef devenez-vous ?")
+
+    slide(prs, "Nos règles à distance",
+        [(1, "Caméra allumée si vous le pouvez"),
+         (1, "Micro coupé hors prise de parole"),
+         (1, "La main levée vaut la parole"),
+         (1, "Le tchat sert aux questions, j'y réponds"),
+         (1, "Un souci technique ? Écrivez tout de suite"),
+         (1, "Besoin d'adaptation ? Dites-le maintenant")],
+        note="Aucun enregistrement. Une gêne à montrer votre cadre ? Dites-le-moi.",
+        etiquette="À LIRE")
 
     slide(prs, "Ce soir, vous saurez…",
-        [(1, "Nommer la place du dirigeant"),
+        [(1, "Nommer la place du responsable"),
          (1, "Choisir un style selon la situation"),
          (1, "Distinguer exigence et toxicité"),
-         (1, "Tenir une réunion sous tension"),
+         (1, "Tenir un brief d'équipe sous tension"),
          (1, "Situer une IA dans l'IA Act"),
-         (1, "Protéger les données de vos équipes"),
+         (1, "Protéger les données de votre équipe"),
          (1, "Lancer 3 usages IA dès lundi")],
-        note="7 compétences. Toutes évaluées aujourd'hui.")
+        note="Le matin nourrit directement le bloc 1 du titre : manager l'équipe.")
 
-    slide(prs, "Notre cadre de travail",
-        [(1, "On parle vrai, on ne cite personne"),
-         (1, "Pas de question bête, jamais"),
-         (1, "Le téléphone dort, sauf ateliers"),
-         (1, "On essaie : l'erreur est la méthode"),
-         (1, "Besoin spécifique ? Dites-le maintenant")],
-        note="Accessibilité : signalez-moi tout besoin, j'adapte immédiatement.")
+    slide(prs, "Ce que vous allez devenir",
+        [(1, "Manager d'établissement marchand"),
+         (2, "Rayon, magasin, point de vente, équipe"),
+         (1, "Entre la direction et le terrain"),
+         (1, "Comptable des résultats, garant du climat"),
+         (2, "Deux missions qui se contredisent souvent"),
+         (1, "Aujourd'hui, on travaille cette place")],
+        note="Tout ce qu'on voit aujourd'hui se joue en magasin, pas dans un manuel.")
 
     slide_jeu(prs, "1", "Le thermomètre", "15 min",
         "Faire émerger les représentations du groupe",
-        ["Une ligne imaginaire traverse la salle",
-         "À gauche : « mon chef est un ami »",
-         "À droite : « mon chef est un adversaire »",
-         "Placez-vous où vous vous sentez juste",
-         "3 volontaires expliquent leur place",
+        ["Une règle de 0 à 10 s'affiche à l'écran",
+         "0 : « mon chef est un ami »",
+         "10 : « mon chef est un adversaire »",
+         "Écrivez votre chiffre dans le tchat",
+         "Trois volontaires expliquent leur note",
          "Personne ne débat : on écoute"],
-        "Ruban adhésif au sol, espace libre de 6 mètres")
+        "Tchat de la visioconférence. Aucun outil supplémentaire.")
 
     # ------------------------------------------------------------ PARTIE 1 --
-    slide_partie(prs, "PARTIE 1", ["La psychologie", "du dirigeant"], "8h20 – 12h00",
+    slide_partie(prs, "PARTIE 1", ["La psychologie", "du dirigeant"], "9h20 – 12h30",
         ["Dans sa tête : ce qu'il porte vraiment",
          "Ni ami, ni ennemi : la juste place",
          "Quatre styles, quatre situations",
          "Exigeant ou toxique : la frontière",
-         "Langage, posture, réunions"])
+         "Langage, posture, brief d'équipe"])
 
-    # --- M1 : dans la tete du dirigeant
+    # --- M1
     slide_choc(prs, "Diriger,", "c'est arbitrer seul.",
-        "Et assumer devant tout le monde.", C_NUIT)
+        "Et assumer devant tout le magasin.", C_NUIT)
 
     slide(prs, "Ce que le dirigeant porte",
-        [(1, "La survie économique de la structure"),
+        [(1, "La survie économique de l'enseigne"),
          (1, "La paie de chacun, tous les mois"),
          (1, "Des informations qu'il ne peut dire"),
          (1, "Les décisions qu'il n'a pas choisies"),
          (1, "Le regard permanent de l'équipe")],
-        note="Il ne voit pas la même carte que vous. Ni la même échéance.")
+        note="Il ne voit pas le même tableau de bord que vous. Ni la même échéance.")
 
     slide(prs, "La solitude du décideur",
         [(1, "Il ne peut pas se plaindre en interne"),
@@ -77,12 +87,12 @@ def construire(prs):
         note="Source : H. Mintzberg, « Le manager au quotidien », rôles décisionnels.")
 
     slide(prs, "Sa double loyauté",
-        [(1, "Vers le haut : actionnaires, résultats"),
-         (1, "Vers le bas : équipes, conditions"),
+        [(1, "Vers le haut : siège, marge, objectifs"),
+         (1, "Vers le bas : équipe, planning, conditions"),
          (1, "Les deux tirent en sens inverse"),
          (1, "Il devient un traducteur permanent"),
          (2, "Vous serez exactement à cette place demain")],
-        note="Le manager de proximité vit ce grand écart chaque jour.")
+        note="Exemple : la direction impose − 2 heures de planning. Vous annoncez quoi ?")
 
     slide_deux_colonnes(prs, "Ce qu'on croit / ce qui est",
         "On croit", ["« Il s'en fiche »", "« Il décide seul »",
@@ -91,7 +101,7 @@ def construire(prs):
                                     "Il est tenu à la confidentialité", "Il rend des comptes aussi"],
         note="Comprendre n'est pas excuser. Comprendre, c'est mieux négocier.")
 
-    # --- M2 : ni ami ni ennemi
+    # --- M2
     slide_choc(prs, "Ni ami.", "Ni ennemi.", "Une troisième place existe.", C_ACCENT)
 
     slide(prs, "Les trois positions",
@@ -102,6 +112,14 @@ def construire(prs):
          (1, "Le garant : je tiens le cadre"),
          (2, "Résultat : on sait à quoi s'attendre")],
         note="VIDÉO 1 – « Les trois positions du manager » (2 min 30).")
+
+    slide(prs, "Le piège du chef sorti du rang",
+        [(1, "Hier collègue, aujourd'hui responsable"),
+         (1, "Même pause, même groupe, mêmes blagues"),
+         (1, "Puis il faut refuser un samedi de repos"),
+         (2, "Et là, l'amitié devient une dette"),
+         (1, "La règle se pose avant d'en avoir besoin")],
+        note="Situation n°1 en établissement marchand. À traiter dès le premier jour.")
 
     slide(prs, "Le manager garant du cadre",
         [(1, "Il défend la règle, pas sa personne"),
@@ -119,47 +137,47 @@ def construire(prs):
         note="Question test : « Pourrais-je dire cela à toute l'équipe ? »")
 
     slide(prs, "Trois phrases qui coûtent cher",
-        [(1, "« Entre nous, la direction se trompe »"),
+        [(1, "« Entre nous, le siège se trompe »"),
          (2, "Vous cassez votre propre autorité"),
          (1, "« Je te le dis, mais garde-le pour toi »"),
          (2, "Vous créez un cercle, donc des exclus"),
          (1, "« De toute façon, on n'y peut rien »"),
          (2, "Vous validez l'impuissance de l'équipe")],
-        note="Exercice éclair : reformulez chaque phrase en version garante.")
+        note="Exercice éclair dans le tchat : reformulez la première en version garante.")
 
-    # --- M3 : les styles
+    # --- M3
     slide_choc(prs, "Il n'y a pas", "de bon style.",
         "Il y a le style que la situation réclame.", C_NUIT)
 
     slide(prs, "Quatre styles, quatre usages",
         [(1, "Directif : je dis quoi et comment"),
-         (2, "Urgence, sécurité, personne débutante"),
+         (2, "Rush, sécurité, saisonnier de la veille"),
          (1, "Persuasif : j'explique et j'embarque"),
-         (2, "Changement, résistance, sens à donner"),
+         (2, "Nouveau planning, nouvelle procédure"),
          (1, "Participatif : je décide avec"),
-         (2, "Équipe compétente mais hésitante"),
+         (2, "Équipe compétente mais démotivée"),
          (1, "Délégatif : je confie et je suis")],
         note="Source : P. Hersey & K. Blanchard, leadership situationnel.")
 
     slide(prs, "L'erreur la plus fréquente",
         [(1, "Utiliser toujours le même style"),
-         (1, "Directif avec un expert : il se ferme"),
-         (1, "Délégatif avec un débutant : il coule"),
-         (1, "Participatif en urgence : on perd"),
+         (1, "Directif avec un ancien : il se ferme"),
+         (1, "Délégatif avec un saisonnier : il coule"),
+         (1, "Participatif un samedi de soldes : on perd"),
          (2, "Le style se choisit selon la personne ET la tâche")],
-        note="Même collaborateur, deux tâches : deux styles différents.")
+        note="Même vendeur, deux tâches : deux styles différents.")
 
     slide_jeu(prs, "2", "Les quatre coins", "20 min",
         "Choisir le bon style sous contrainte de temps",
-        ["Chaque coin de salle = un style",
-         "Je lis une situation réelle à voix haute",
-         "Vous avez 10 secondes pour vous placer",
-         "Un porte-parole par coin justifie",
+        ["Quatre styles, quatre numéros : 1 à 4",
+         "Je lis une situation de magasin",
+         "10 secondes : votre chiffre dans le tchat",
+         "Je choisis deux personnes qui justifient",
          "On révèle le style attendu et pourquoi",
          "8 situations s'enchaînent"],
-        "4 affiches A3, jeu de 8 situations (kit jeux, fiche J2)")
+        "Tchat, ou sondage intégré à la visio si disponible (kit jeux, fiche J2)")
 
-    # --- M4 : exigence / toxicite
+    # --- M4
     slide_choc(prs, "Être exigeant", "n'est pas être dur.",
         "La différence tient en un mot : le cadre.", C_ACCENT)
 
@@ -172,10 +190,10 @@ def construire(prs):
         note="La ténacité : tenir la règle le 40e jour comme le premier.")
 
     slide_deux_colonnes(prs, "Exigeant ou toxique ?",
-        "Toxique", ["Critique la personne", "Humilie en public",
+        "Toxique", ["Critique la personne", "Humilie devant les clients",
                     "Règles qui changent", "Contrôle chaque geste",
                     "Silence punitif"],
-        "Exigeant", ["Critique le résultat", "Recadre en privé",
+        "Exigeant", ["Critique le résultat", "Recadre en réserve",
                      "Règles stables et dites", "Contrôle les jalons",
                      "Dit les choses vite"],
         note="Repère : l'exigence donne un chemin, la toxicité ferme les portes.")
@@ -184,7 +202,7 @@ def construire(prs):
         [(1, "Hypervigilance, fatigue, sommeil"),
          (1, "Plus personne n'ose signaler d'erreur"),
          (1, "Absentéisme, puis départs en série"),
-         (1, "Les meilleurs partent les premiers"),
+         (1, "Les meilleurs vendeurs partent d'abord"),
          (2, "Facteurs de RPS : rapports sociaux dégradés (INRS)")],
         note="Source : INRS, les 6 familles de facteurs de risques psychosociaux.")
 
@@ -200,15 +218,15 @@ def construire(prs):
 
     slide_jeu(prs, "3", "Exigeant ou toxique ?", "20 min",
         "Tracer collectivement la frontière",
-        ["Équipes de 4, 12 cartes situations",
-         "Trois zones : exigeant / limite / toxique",
-         "10 min pour classer les 12 cartes",
-         "Chaque équipe défend sa carte « limite »",
-         "On cherche le critère qui fait basculer",
-         "Synthèse : 3 critères retenus au tableau"],
-        "12 cartes A5 par équipe (kit jeux, fiche J3)")
+        ["Sous-groupes de 4 en salles séparées",
+         "12 situations dans un document partagé",
+         "Trois colonnes : exigeant / limite / toxique",
+         "10 minutes, puis retour en salle plénière",
+         "Chaque groupe défend sa situation « limite »",
+         "Synthèse : 3 critères retenus à l'écran"],
+        "Salles séparées + fiche J3 envoyée en PDF avant la session")
 
-    # --- M5 : langage, posture, reunion
+    # --- M5
     slide_choc(prs, "On ne retient pas", "ce que vous dites.",
         "On retient comment vous le dites.", C_NUIT)
 
@@ -226,32 +244,40 @@ def construire(prs):
          (1, "Mains visibles, au-dessus de la taille"),
          (1, "Regard balayé : 3 secondes par personne"),
          (1, "Silence de 2 secondes avant l'essentiel")],
-        note="À tester dès le prochain atelier : effet immédiat sur l'écoute.")
+        note="Debout derrière votre écran pendant 60 secondes : on essaie tout de suite.")
+
+    slide(prs, "La même posture, en visio",
+        [(1, "Caméra à hauteur des yeux, pas plus bas"),
+         (1, "Regardez l'objectif, pas votre image"),
+         (1, "Buste visible : les mains doivent entrer"),
+         (1, "Nommez les gens : « Karim, ton avis ? »"),
+         (2, "À distance, le silence dure deux fois plus longtemps")],
+        note="En visio, tout ce qui n'est pas nommé explicitement n'existe pas.")
 
     slide(prs, "Dire ce qui ne va pas : DESC",
         [(1, "Décrire les faits, sans adjectif"),
-         (2, "« Le rapport est arrivé jeudi 17h »"),
+         (2, "« La caisse a ouvert à 9h12 au lieu de 9h »"),
          (1, "Exprimer l'effet, en « je »"),
-         (2, "« J'ai dû décaler la réunion client »"),
+         (2, "« J'ai eu six clients en attente à l'entrée »"),
          (1, "Suggérer une solution précise"),
          (1, "Conclure sur un accord daté")],
-        note="Jamais devant les autres. Toujours dans les 48 heures.")
+        note="Jamais devant un client ni devant l'équipe. Toujours dans les 48 heures.")
 
-    slide(prs, "La réunion : avant",
+    slide(prs, "Le brief d'équipe : avant",
         [(1, "Un objectif écrit en une phrase"),
-         (1, "Trois points maximum à l'ordre du jour"),
+         (1, "Trois points maximum, pas un de plus"),
          (1, "Les bonnes personnes, pas toutes"),
          (1, "Une durée annoncée et tenue"),
          (2, "Sans objectif écrit : annulez, vous gagnez 1 heure")],
         note="Règle simple : pas d'ordre du jour, pas de réunion.")
 
-    slide(prs, "La réunion : pendant",
+    slide(prs, "Le brief d'équipe : pendant",
         [(1, "Vous rappelez l'objectif en 30 secondes"),
          (1, "Vous parlez en dernier sur les avis"),
          (1, "Vous faites parler les silencieux"),
          (1, "Vous coupez le hors-sujet avec respect"),
          (1, "Vous clarifiez : qui fait quoi pour quand")],
-        note="Si vous parlez plus de 40 % du temps, ce n'est plus une réunion.")
+        note="Si vous parlez plus de 40 % du temps, ce n'est plus un brief.")
 
     slide(prs, "Quatre profils difficiles",
         [(1, "Le bavard : cadrez le temps de parole"),
@@ -261,22 +287,22 @@ def construire(prs):
          (2, "Jamais d'affrontement public : vous perdez deux fois")],
         note="Vous allez tous les rencontrer dans le jeu de rôle suivant.")
 
-    slide_jeu(prs, "4", "La réunion de 9h", "30 min",
+    slide_jeu(prs, "4", "Le brief de 8h", "30 min",
         "Se mettre dans la peau du manager, en direct",
         ["Un manager, quatre rôles secrets",
-         "Sujet : un planning refusé par l'équipe",
-         "8 minutes de réunion, chrono visible",
-         "Les observateurs remplissent la grille 1",
+         "Sujet : le planning des fêtes est refusé",
+         "8 minutes de brief, chrono partagé à l'écran",
+         "Les autres observent avec la grille n°1",
          "Débrief : d'abord le manager parle",
          "Puis les rôles, puis les observateurs"],
-        "Cartes rôles (kit jeux J4) + grille d'évaluation n°1")
+        "Rôles envoyés en message privé + grille d'évaluation n°1")
 
     slide(prs, "Ce qu'on retient du matin",
         [(1, "Le dirigeant arbitre avec l'info qu'il a"),
          (1, "Ni ami, ni ennemi : garant du cadre"),
          (1, "Le style se choisit, il ne se subit pas"),
          (1, "L'exigence ouvre, la toxicité ferme"),
-         (1, "La réunion se gagne avant d'entrer")],
+         (1, "Le brief se gagne avant de le lancer")],
         note="À vous : QUIZ n°1, 10 questions, 10 minutes, sans document.")
 
-    slide_pause(prs, "Déjeuner", "Rendez-vous à 13h00 précises – salle identique")
+    slide_pause(prs, "Déjeuner", "Reconnexion à 13h30 précises – même lien")

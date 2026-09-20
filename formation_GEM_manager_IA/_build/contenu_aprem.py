@@ -2,24 +2,24 @@
 from deck_engine import *
 
 def construire(prs):
-    slide_partie(prs, "PARTIE 2", ["IA et responsabilité", "en entreprise"], "13h00 – 17h00",
+    slide_partie(prs, "PARTIE 2", ["IA et responsabilité", "en entreprise"], "13h30 – 17h00",
         ["Ce qu'est vraiment une IA générative",
          "RGPD : l'essentiel pour un responsable",
          "IA Act : les 4 niveaux de risque",
          "Ce que vous n'avez pas le droit de faire",
          "L'IA qui vous rend du temps"])
 
-    slide_jeu(prs, "5", "Vrai ou faux, debout", "15 min",
+    slide_jeu(prs, "5", "Vrai ou faux", "15 min",
         "Réveiller le groupe et mesurer les idées reçues",
-        ["Debout au centre de la salle",
-         "Affirmation lue : vrai à gauche, faux à droite",
-         "Interdit de rester au milieu",
+        ["Debout, et caméra si vous le pouvez",
+         "Vrai : pouce levé. Faux : pouce baissé",
+         "Interdit de ne pas répondre",
          "Deux personnes justifient à chaque fois",
          "Je donne la réponse et la source",
          "6 affirmations, rythme rapide"],
         "Aucun. 6 affirmations (kit jeux, fiche J5)")
 
-    # --- A1 : comprendre l'IA
+    # --- A1
     slide_choc(prs, "Une IA générative", "ne sait rien.",
         "Elle calcule ce qui est probable après vos mots.", C_NUIT)
 
@@ -35,13 +35,22 @@ def construire(prs):
         [(1, "L'hallucination : elle invente, avec aplomb"),
          (2, "Chiffres, articles de loi, noms, citations"),
          (1, "Le biais : elle reproduit ses données"),
-         (2, "Un historique de recrutement biaisé se rejoue"),
+         (2, "Un historique d'embauche biaisé se rejoue"),
          (1, "La fuite : ce que vous saisissez peut sortir"),
          (2, "Selon l'outil et son hébergement")],
-        note="Règle d'or : jamais de donnée que vous ne mettriez pas sur un mur.")
+        note="Règle d'or : aucune donnée que vous n'afficheriez pas en salle de pause.")
+
+    slide(prs, "Le biais, en magasin",
+        [(1, "Vous triez 300 CV de saisonniers"),
+         (1, "L'outil apprend sur vos embauches passées"),
+         (1, "Il reproduit vos préférences d'hier"),
+         (2, "Âge, quartier, prénom, durée d'inactivité"),
+         (1, "Résultat : une discrimination automatisée")],
+        note="Bloc 1 du titre : lutter contre les discriminations. C'est exactement ça.",
+        couleur_bandeau=C_ROUGE, etiquette="TP MEM")
 
     slide_deux_colonnes(prs, "Ce qu'elle fait bien / mal",
-        "Confiez-lui", ["Reformuler, résumer", "Structurer un plan",
+        "Confiez-lui", ["Reformuler, résumer", "Structurer un brief",
                         "Traduire, corriger", "Faire 20 variantes",
                         "Préparer un questionnement"],
         "Ne lui confiez pas", ["Un chiffre à vérifier", "Une référence juridique",
@@ -50,7 +59,7 @@ def construire(prs):
         g_coul=C_VERT, d_coul=C_ROUGE,
         note="Elle est un stagiaire brillant et amnésique : on relit toujours.")
 
-    # --- A2 : RGPD
+    # --- A2
     slide_choc(prs, "Vos équipes", "sont des personnes.",
         "Leurs données leur appartiennent. Toujours.", C_ACCENT)
 
@@ -77,7 +86,7 @@ def construire(prs):
          (1, "Information et consultation du CSE"),
          (2, "Code du travail, article L.2312-38"),
          (1, "Contrôle proportionné au but poursuivi"),
-         (2, "Pas de surveillance permanente d'un poste")],
+         (2, "Pas de caméra braquée en continu sur une caisse")],
         note="Sources : Légifrance et CNIL, fiches « travail et données » (cnil.fr).",
         couleur_bandeau=C_ROUGE)
 
@@ -90,7 +99,7 @@ def construire(prs):
         note="Source : RGPD, article 22. C'est le pont direct vers l'IA Act.",
         couleur_bandeau=C_ROUGE)
 
-    # --- A3 : IA Act
+    # --- A3
     slide_choc(prs, "L'IA Act", "ne classe pas les outils.",
         "Il classe les usages que vous en faites.", C_NUIT)
 
@@ -106,11 +115,11 @@ def construire(prs):
         [(1, "Inacceptable : interdit, sans exception"),
          (2, "Émotions au travail, notation sociale"),
          (1, "Haut risque : autorisé, très encadré"),
-         (2, "Recrutement, promotion, affectation, suivi"),
+         (2, "Embauche, promotion, planning, suivi"),
          (1, "Risque limité : obligation de transparence"),
          (2, "Dire que c'est une IA, marquer les contenus"),
          (1, "Risque minimal : usage libre")],
-        note="VIDÉO 2 – « La pyramide des risques de l'IA Act » (2 min 45).")
+        note="VIDÉO 2 – « La pyramide des risques de l'IA Act » (2 min 55).")
 
     slide(prs, "Interdit : ce qui vous concerne",
         [(1, "Détecter les émotions des salariés"),
@@ -118,14 +127,14 @@ def construire(prs):
          (1, "Noter socialement les personnes"),
          (1, "Exploiter une vulnérabilité pour influencer"),
          (2, "Source : IA Act, article 5, applicable depuis 2025")],
-        note="Une caméra qui « mesure l'engagement » en réunion : interdite.",
+        note="Une caméra qui mesure le sourire des hôtesses de caisse : interdite.",
         couleur_bandeau=C_ROUGE)
 
-    slide(prs, "Haut risque : RH en première ligne",
+    slide(prs, "Haut risque : le quotidien du MEM",
         [(1, "Trier, filtrer, classer des candidatures"),
          (1, "Évaluer, promouvoir, mettre fin à un contrat"),
-         (1, "Répartir les tâches automatiquement"),
-         (1, "Suivre et noter la performance"),
+         (1, "Bâtir le planning automatiquement"),
+         (1, "Suivre et noter la performance vendeur"),
          (2, "Source : IA Act, annexe III, point 4")],
         note="Obligation clé : informer les représentants du personnel avant usage.",
         couleur_bandeau=C_ROUGE)
@@ -139,29 +148,29 @@ def construire(prs):
         note="Source : IA Act, article 4 (littératie en matière d'IA).",
         etiquette="ESSENTIEL")
 
-    slide(prs, "Ce que ç a coûte si on ignore",
+    slide(prs, "Ce que ça coûte si on ignore",
         [(1, "Pratique interdite : jusqu'à 35 M€"),
          (2, "Ou 7 % du chiffre d'affaires mondial"),
          (1, "Autres manquements : jusqu'à 15 M€"),
          (2, "Ou 3 % du chiffre d'affaires mondial"),
          (1, "RGPD : jusqu'à 20 M€ ou 4 %"),
          (2, "Le plus élevé des deux montants s'applique")],
-        note="Le risque réel pour une PME : l'image, le contentieux, le CSE.",
+        note="Le risque réel pour une enseigne : l'image, le contentieux, le CSE.",
         couleur_bandeau=C_ROUGE)
+
+    slide_pause(prs, "Pause", "15 minutes – reprise à 15h30, caméra allumée")
 
     slide_jeu(prs, "6", "Le tri des risques", "20 min",
         "Savoir classer un usage avant de l'autoriser",
-        ["4 zones au sol : interdit → minimal",
-         "12 cartes usages réels d'entreprise",
-         "Par équipe : placer chaque carte, 8 min",
-         "Une équipe défend, une autre conteste",
-         "Correction avec l'article applicable",
-         "On note les 3 cartes qui ont divisé"],
-        "12 cartes usages + 4 affiches zones (kit jeux, fiche J6)")
+        ["Sous-groupes de 4 en salles séparées",
+         "12 usages réels d'un établissement marchand",
+         "Classez chacun dans l'un des 4 niveaux",
+         "8 minutes, puis retour en plénière",
+         "Un groupe défend, un autre conteste",
+         "Correction avec l'article applicable"],
+        "Salles séparées + fiche J6 (tableau à compléter)")
 
-    slide_pause(prs, "Pause", "15 minutes – reprise à 15h15")
-
-    # --- A4 : responsabilite manager
+    # --- A4
     slide_choc(prs, "L'outil n'est jamais", "responsable.",
         "Celui qui l'a mis en service, oui.", C_ACCENT)
 
@@ -193,29 +202,29 @@ def construire(prs):
 
     slide_jeu(prs, "7", "Le prompt qui fuit", "20 min",
         "Transformer un usage risqué en usage conforme",
-        ["Je projette un prompt réel et dangereux",
-         "Il contient nom, santé, avis sur un salarié",
-         "Par deux : repérez tout ce qui cloche",
+        ["Je partage un prompt réel et dangereux",
+         "Il contient nom, santé, avis sur une vendeuse",
+         "Par deux, en salle séparée : ce qui cloche",
          "Réécrivez-le en version conforme",
          "Deux binômes lisent leur version",
          "On compare avec la version de référence"],
-        "Fiche J7 recto/verso, un stylo par personne")
+        "Partage d'écran + fiche J7 envoyée avant la session")
 
-    # --- A5 : IA utile
+    # --- A5
     slide_choc(prs, "L'IA ne remplace pas", "le manager.",
         "Elle lui rend les heures qu'il n'a plus.", C_NUIT)
 
     slide(prs, "Où vous gagnez du temps",
-        [(1, "Comptes rendus de réunion structurés"),
+        [(1, "Comptes rendus de brief structurés"),
          (1, "Préparation d'un entretien difficile"),
          (1, "Trames, procédures, modes opératoires"),
-         (1, "Traduction et reformulation de consignes"),
+         (1, "Argumentaires et objections produits"),
          (1, "Analyse d'un texte long, en questions")],
         note="Aucun de ces usages n'est à haut risque, s'il reste anonymisé.")
 
     slide(prs, "Un bon prompt en 4 blocs",
-        [(1, "Rôle : « Tu es responsable qualité… »"),
-         (1, "Contexte : secteur, taille, contrainte"),
+        [(1, "Rôle : « Tu es chef de rayon… »"),
+         (1, "Contexte : enseigne, taille, contrainte"),
          (1, "Tâche : un seul verbe, très précis"),
          (1, "Format : longueur, plan, ton attendu"),
          (2, "Et toujours : « dis-moi ce qu'il te manque »")],
@@ -230,29 +239,28 @@ def construire(prs):
         note="Un hébergement UE ne suffit pas : regardez le droit applicable.",
         etiquette="À GARDER")
 
-    slide_jeu(prs, "8", "Mon chantier IA", "20 min",
+    slide_jeu(prs, "8", "Mon chantier IA", "15 min",
         "Repartir avec un plan applicable dès lundi",
         ["Listez vos tâches répétitives de la semaine",
          "Entourez celle qui vous coûte le plus",
          "Vérifiez-la avec les 3 réflexes",
          "Rédigez le prompt en 4 blocs",
-         "Testez-le, puis améliorez-le une fois",
-         "Présentez votre chantier en 60 secondes"],
+         "Trois volontaires présentent en 60 secondes"],
         "Fiche J8 « Mon plan 30 jours » + grille d'évaluation n°2")
 
     slide(prs, "Ce qu'on retient de l'après-midi",
         [(1, "L'IA prédit, elle ne sait pas"),
          (1, "Données : finalité, minimum, durée, info"),
          (1, "L'IA Act classe les usages, pas les outils"),
-         (1, "RH = haut risque, humain obligatoire"),
+         (1, "Embauche et planning = haut risque"),
          (1, "Article 4 : former, c'est obligatoire")],
         note="À vous : QUIZ n°2, 10 questions, 10 minutes, sans document.")
 
     slide_choc(prs, "Vous ne serez pas", "des chefs parfaits.",
         "Vous serez des chefs prévisibles. C'est mieux.", C_ACCENT)
 
-    slide(prs, "Avant de partir",
-        [(1, "Votre plan 30 jours est dans votre poche"),
+    slide(prs, "Avant de vous déconnecter",
+        [(1, "Votre plan 30 jours est écrit"),
          (1, "Une action, une date, une personne"),
          (1, "Les fiches ressources restent à vous"),
          (1, "L'évaluation à chaud : 3 minutes"),
