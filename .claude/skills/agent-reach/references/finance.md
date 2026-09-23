@@ -1,46 +1,57 @@
-# 金融行情
+# Cotations financières (Xueqiu)
 
-雪球股票行情、搜索与热门内容。行情可能延迟，不构成投资建议。
+Cotations boursières, recherche et contenus populaires de Xueqiu (plateforme
+chinoise). Les cours peuvent être différés ; ce n'est pas un conseil en
+investissement.
 
-## 先检查状态
+## Vérifier d'abord l'état
 
 ```bash
 agent-reach doctor --json
 ```
 
-`xueqiu.active_backend` 有值时按该后端使用；值为 `null` 只表示 Doctor 没有完成
-实时内容验证。雪球需要已登录会话或最小 Cookie，不能把 HTTP 400 当成股票不存在。
+Si `xueqiu.active_backend` est renseigné, utiliser ce backend ; la valeur `null`
+signifie seulement que Doctor n'a pas vérifié le contenu en direct. Xueqiu
+exige une session connectée ou un cookie minimal : une erreur HTTP 400 ne veut
+pas dire que l'action n'existe pas.
 
-## OpenCLI（桌面已有 Chrome 登录态时优先）
+## OpenCLI (prioritaire si une session Chrome connectée existe sur le poste)
 
 ```bash
-# 验证当前登录态
+# Vérifier la session actuelle
 opencli xueqiu whoami -f yaml
 
-# 股票搜索与实时行情
-opencli xueqiu search "英伟达" -f yaml
+# Recherche d'actions et cours en temps réel
+opencli xueqiu search "NVIDIA" -f yaml
 opencli xueqiu stock NVDA -f yaml
 
-# 热门内容与热门股票
+# Contenus et actions populaires
 opencli xueqiu hot -f yaml
 opencli xueqiu hot-stock -f yaml
 
-# 查看全部只读命令
+# Voir toutes les commandes en lecture seule
 opencli xueqiu --help
 ```
 
-OpenCLI 只复用用户已经存在且明确控制的浏览器会话。不要自动执行
-`opencli xueqiu login`；没有现成登录态时，让用户先在 Chrome 登录，或显式导入
-雪球所需的最小 Cookie：
+OpenCLI réutilise uniquement une session de navigateur déjà ouverte et
+contrôlée par l'utilisateur. Ne jamais lancer `opencli xueqiu login`
+automatiquement ; sans session existante, demander à l'utilisateur de se
+connecter dans Chrome, ou d'importer explicitement le cookie minimal :
 
 ```bash
 agent-reach configure --from-browser chrome --platform xueqiu
 ```
 
-该配置只读取并保存 `xq_a_token`，不会顺带采集其他平台 Cookie。
+Cette configuration lit et enregistre uniquement `xq_a_token`, sans collecter
+les cookies d'autres plateformes.
 
-## 验收与失败处理
+> ⚠️ Règle YEBA : plateforme chinoise, hors UE — accord explicite d'Aurélien
+> requis avant toute configuration de cookie.
 
-- 以返回股票名称、代码、价格或非空内容列表为成功；退出码 0 但字段为空不算成功。
-- HTTP 400 通常是会话/Cookie 问题，不表示股票代码不存在。
-- `whoami` 成功而 `stock`/`hot` 失败时，按适配器解析或平台接口问题报告，不要误诊成未登录。
+## Validation et gestion des échecs
+
+- Succès = nom, code, cours de l'action ou liste de contenus non vide ; un code
+  de sortie 0 avec des champs vides n'est pas un succès.
+- HTTP 400 = en général un problème de session/cookie, pas un code action inexistant.
+- Si `whoami` réussit mais `stock`/`hot` échouent : signaler un problème
+  d'adaptateur ou d'API de la plateforme, pas un défaut de connexion.

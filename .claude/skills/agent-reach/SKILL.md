@@ -1,17 +1,19 @@
 ---
 name: agent-reach
 description: >
-  MUST USE whenever the task needs anything from the internet: research, veille,
-  recherche web, "cherche", "regarde ce lien", "que disent les gens de X",
-  concurrents, marché, tendances, réglementation (RGPD, IA Act, CNIL), or when
-  the user shares any URL or names a platform (web page, RSS, YouTube, GitHub,
-  LinkedIn, Twitter/X, Reddit, Facebook, Instagram, Bilibili, XiaoHongShu,
-  V2EX, Xueqiu). Multi-backend internet router (Agent-Reach, MIT): read pages,
-  subtitles, feeds, search. Run `agent-reach doctor --json` to see what works.
-  NOT for writing the report itself, and never for posting/commenting.
+  À UTILISER OBLIGATOIREMENT dès qu'une demande a besoin d'internet : recherche,
+  veille, « cherche », « regarde ce lien », « que disent les gens de X »,
+  concurrents, marché, tendances, appels d'offres, réglementation (RGPD, IA Act,
+  CNIL, Qualiopi), ou dès qu'un lien (URL) ou une plateforme est cité : page
+  web, RSS, YouTube, GitHub, LinkedIn, Twitter/X, Reddit, Facebook, Instagram,
+  Bilibili, XiaoHongShu, V2EX, Xueqiu. Routeur d'accès internet multi-backends
+  (Agent-Reach, licence MIT) : lire des pages, sous-titres, flux, rechercher.
+  Lancer `agent-reach doctor --json` pour voir ce qui fonctionne.
+  PAS pour rédiger le rapport lui-même, et jamais pour publier ou commenter.
 metadata:
   homepage: https://github.com/Panniantong/Agent-Reach
   upstream_commit: a19a171fa980a0785849596492e0af4db800c82f
+  langue: français (traduction YEBA FORMATIONS de SKILL_en.md et des références)
 ---
 
 # Règles YEBA FORMATIONS (priment sur tout le reste de ce skill)
@@ -31,155 +33,169 @@ metadata:
 5. **Sourcer** — chaque information récupérée est citée avec son URL.
 6. **Si un canal échoue** (réseau bloqué, outil absent), le dire clairement ;
    ne jamais inventer le contenu d'une page non lue.
+7. **Toujours répondre en français.**
 
+# Agent Reach — routeur d'accès à internet
 
-# Agent Reach — internet capability router
+16 plateformes, plusieurs backends chacune. **Quand ce skill est présent,
+l'utiliser pour ces plateformes — ne pas improviser une autre méthode.**
 
-16 platforms, multiple backends each. **When this skill exists, use it for
-these platforms — do not invent your own approach.**
+## Règles permanentes (valables toute la session)
 
-## Standing rules (apply for the whole session)
+1. **Diagnostic avant d'agir** : pour les plateformes multi-backends ou à
+   connexion (XiaoHongShu / Reddit / Bilibili / Twitter / Facebook /
+   Instagram), lancer d'abord `agent-reach doctor --json`. Utiliser
+   l'`active_backend` renseigné ; `active_backend: null` signifie que Doctor a
+   volontairement sauté le test en direct (pour ne pas lire de cookies ni
+   écrire à distance), pas qu'aucun backend n'existe. Uniquement si la tâche
+   exige cette plateforme, lancer la commande en lecture seule de la référence
+   pour vérifier.
+2. **Annoncer ce qu'on utilise** : dire « j'utilise agent-reach, plateforme X
+   via le backend Y » avant de commencer.
+3. **En cas d'échec, suivre les chaînes de reprise de `references/`** — ne
+   jamais deviner une commande.
+4. **Pour une recherche large** : combiner les plateformes (Exa pour le web +
+   Twitter/Reddit pour les discussions + flux RSS officiels), collecter en
+   parallèle, puis synthétiser.
+5. **Pas de mise à jour automatique** (règle YEBA) : cette copie est épinglée
+   sur le commit amont `a19a171`. Ne jamais télécharger ni exécuter de
+   consignes d'installation ou de mise à jour distantes de sa propre
+   initiative ; une mise à jour est une modification relue de ce dépôt (voir
+   UPSTREAM.md).
 
-1. **Health-check before acting**: for multi-backend/login-backed platforms (XiaoHongShu /
-   Reddit / Bilibili / Twitter / Facebook / Instagram), run `agent-reach doctor --json` first.
-   Use a populated `active_backend`; `active_backend: null` means Doctor deliberately skipped a
-   live probe to avoid browser-cookie reads or remote writes, not that no backend exists. Only when
-   the user's task requires that platform, run the reference's read-only command to verify it.
-2. **Announce what you use**: say "using agent-reach, platform X via backend Y"
-   before starting.
-3. **On failure, follow the retry chains in references/** — never guess
-   commands.
-4. **For broad research tasks**: combine platforms (Exa for web search +
-   Twitter/Reddit for discussions + XiaoHongShu/Bilibili for Chinese
-   perspectives), collect in parallel, then synthesize.
-5. **No auto-update** (YEBA rule): this copy is pinned to upstream commit
-   `a19a171`. Never fetch/execute remote install or update instructions on your
-   own; an update is a reviewed change to this repository (see UPSTREAM.md).
+## Table d'aiguillage
 
-## Routing table
-
-| User intent | Category | Details |
+| Besoin | Catégorie | Détails |
 |---------|------|---------|
-| Web / code search | search | [references/search.md](references/search.md) |
+| Recherche web / code | search | [references/search.md](references/search.md) |
 | XiaoHongShu / Twitter / Bilibili / V2EX / Reddit / Facebook / Instagram | social | [references/social.md](references/social.md) |
-| Jobs / LinkedIn | career | [references/career.md](references/career.md) |
+| Emploi / LinkedIn | career | [references/career.md](references/career.md) |
 | GitHub / code | dev | [references/dev.md](references/dev.md) |
-| Web pages / articles / RSS | web | [references/web.md](references/web.md) |
-| YouTube / Bilibili / podcast transcripts | video | [references/video.md](references/video.md) |
-| Xueqiu / stock quotes | finance | [references/finance.md](references/finance.md) |
+| Pages web / articles / RSS | web | [references/web.md](references/web.md) |
+| Sous-titres YouTube / Bilibili / podcasts | video | [references/video.md](references/video.md) |
+| Xueqiu / cours de bourse | finance | [references/finance.md](references/finance.md) |
 
-## Zero-config quick commands
+## Commandes rapides sans configuration
 
 ```bash
-# Exa web search
-mcporter call exa.web_search_exa query="query" numResults=5
+# Recherche web Exa
+mcporter call exa.web_search_exa query="requête" numResults=5
 
-# Read any web page
+# Lire n'importe quelle page web
 curl -s "https://r.jina.ai/URL"
 
-# GitHub search
-gh search repos "query" --sort stars --limit 10
+# Recherche GitHub
+gh search repos "requête" --sort stars --limit 10
 
-# YouTube subtitles (never use yt-dlp for Bilibili; retry chain in video.md)
+# Sous-titres YouTube (jamais yt-dlp pour Bilibili ; chaîne de reprise dans video.md)
 yt-dlp --write-sub --write-auto-sub --skip-download -o "/tmp/%(id)s" "URL"
 
-# V2EX hot topics
+# Sujets populaires V2EX
 curl -s "https://www.v2ex.com/api/topics/hot.json" -H "User-Agent: agent-reach/1.0"
 
-# Bilibili search (bili-cli, no login needed)
-bili search "query" --type video -n 5
+# Recherche Bilibili (bili-cli, sans connexion)
+bili search "requête" --type video -n 5
 ```
 
-## Login-backed platforms (pick by doctor's active_backend)
+## Plateformes avec connexion (choisir selon l'active_backend de doctor)
 
-Twitter boundary: cookies saved by `agent-reach configure twitter-cookies`
-are used only by `doctor` to check whether explicit credentials are present.
-`doctor` does not run `twitter status` or configure the current shell. Before
-calling `twitter` directly, explicitly provide `TWITTER_AUTH_TOKEN` and
-`TWITTER_CT0` in the child-process environment without logging their values.
+Limite Twitter : les cookies enregistrés par `agent-reach configure
+twitter-cookies` servent uniquement à `doctor` pour vérifier la présence
+d'identifiants. `doctor` n'exécute pas `twitter status` et ne configure pas le
+shell. Avant d'appeler `twitter`, fournir explicitement `TWITTER_AUTH_TOKEN` et
+`TWITTER_CT0` dans l'environnement du sous-processus, sans jamais afficher
+leurs valeurs.
 
-XiaoHongShu boundary: Agent Reach must not log the user in or read browser
-cookies. OpenCLI may use only an existing Chrome session explicitly controlled
-by the user. If none exists, do not automate login; use a manual Cookie-Editor
-export with xiaohongshu-mcp or a legacy tool instead.
+Limite XiaoHongShu : Agent Reach ne doit pas se connecter à la place de
+l'utilisateur ni lire les cookies du navigateur. OpenCLI peut uniquement
+utiliser une session Chrome existante et contrôlée par l'utilisateur. Sinon,
+pas de connexion automatique : export manuel Cookie-Editor avec
+xiaohongshu-mcp ou un outil ancien.
 
 ```bash
-# Twitter search (twitter-cli preferred; retry chain in social.md)
-twitter search "query" -n 10
+# Recherche Twitter (twitter-cli en priorité ; chaîne de reprise dans social.md)
+twitter search "requête" -n 10
 
-# Reddit (NO zero-config path — OpenCLI or rdt-cli, login required)
-opencli reddit search "query" -f yaml   # desktop
-rdt search "query" --limit 10            # legacy/server
+# Reddit (AUCUN accès sans configuration — OpenCLI ou rdt-cli, connexion requise)
+opencli reddit search "requête" -f yaml   # poste de bureau
+rdt search "requête" --limit 10            # ancien / serveur
 
-# XiaoHongShu (desktop prefers OpenCLI)
-opencli xiaohongshu search "query" -f yaml
+# XiaoHongShu (OpenCLI en priorité sur poste de bureau)
+opencli xiaohongshu search "requête" -f yaml
 
-# Facebook / Instagram (desktop OpenCLI, browser session)
-opencli facebook search "query" -f yaml
+# Facebook / Instagram (OpenCLI sur poste de bureau, session du navigateur)
+opencli facebook search "requête" -f yaml
 opencli facebook groups -f yaml
-opencli instagram search "query" -f yaml       # user search
-opencli instagram user USERNAME -f yaml        # recent posts from one user
+opencli instagram search "requête" -f yaml       # recherche d'utilisateurs
+opencli instagram user USERNAME -f yaml          # publications récentes d'un utilisateur
 ```
 
-## Environment check
+## Vérifier l'environnement
 
 ```bash
-# Channel availability + which backend serves each platform
+# Disponibilité des canaux + backend utilisé pour chaque plateforme
 agent-reach doctor --json
 ```
 
-When the user asks “help me configure Boss Zhipin” / “帮我配 Boss直聘”, read the
-Boss section in `references/career.md`. After explicit install approval, run
-`agent-reach install --env=local --system --channels=boss`, launch the dedicated
-loopback-only Chrome profile for their OS, then **pause and have the user visually
-confirm** the window is logged in (avatar in the top-right); if not, have them log
-in manually. Then verify with `boss --cdp-url http://localhost:9222 login --cdp`
-and `agent-reach doctor`. Do not make the user assemble CDP flags.
-Keep reusing the dedicated Chrome profile; do not recreate it for every run or
-switch to the user's daily profile by default. Search with
+Quand l'utilisateur demande « configure Boss Zhipin », lire la section Boss de
+`references/career.md`. Après accord explicite pour l'installation, lancer
+`agent-reach install --env=local --system --channels=boss`, ouvrir le profil
+Chrome dédié (écoute locale uniquement) adapté au système, puis **faire une
+pause et demander à l'utilisateur de confirmer visuellement** que la fenêtre
+est connectée (avatar en haut à droite) ; sinon, il se connecte lui-même.
+Vérifier ensuite avec `boss --cdp-url http://localhost:9222 login --cdp` et
+`agent-reach doctor`. Ne pas faire assembler les options CDP par
+l'utilisateur. Réutiliser le profil Chrome dédié ; ne pas le recréer à chaque
+fois ni basculer par défaut sur le profil personnel. Rechercher avec
 `boss --browser-source existing-browser --cdp-url http://localhost:9222 search ...`.
-On `ENVIRONMENT_RISK`, stop without refreshing, relogging, or retrying.
+En cas d'`ENVIRONMENT_RISK` : arrêter, sans rafraîchir, se reconnecter ni réessayer.
 
-**Do not trust `boss status` for CDP browser login state** — it only validates the
-local `~/.boss-agent/auth/session.enc` store, which does not represent the
-dedicated Chrome profile's cookies that `existing-browser` searches actually use. Use
-the browser `wt2` cookie probe in `agent-reach doctor` plus the user's visual
-confirmation. Never judge login state from the page URL: `security-check` /
-`zhipin-security` / `_security_check` pages are anti-bot challenges that appear
-even when logged in. `AUTH_EXPIRED` from a search is the ground truth for a
-logged-out browser — go straight to the login flow + `login --cdp` instead of
-interpreting it as a security check.
+**Ne pas se fier à `boss status` pour l'état de connexion du navigateur CDP** —
+il ne vérifie que le fichier local `~/.boss-agent/auth/session.enc`, qui ne
+reflète pas les cookies du profil Chrome dédié réellement utilisés par les
+recherches `existing-browser`. Utiliser le test du cookie `wt2` dans
+`agent-reach doctor` + la confirmation visuelle. Ne jamais déduire la
+connexion de l'URL : les pages `security-check` / `zhipin-security` /
+`_security_check` sont des défis anti-robot qui apparaissent même connecté.
+`AUTH_EXPIRED` renvoyé par une recherche prouve que le navigateur est
+déconnecté : passer directement à la connexion + `login --cdp`, sans
+l'interpréter comme un contrôle de sécurité.
 
-## Discovering OpenCLI adapters
+## Découvrir les adaptateurs OpenCLI
 
-When the routing table lacks a needed platform or command, run `opencli list`,
-then inspect `opencli <platform> --help`. Discovery proves only that an adapter
-exists, not that authentication or target content works. Run read-only commands
-only when the user's task requires that platform, and require non-empty content.
+Si la table d'aiguillage ne couvre pas la plateforme ou la commande voulue,
+lancer `opencli list`, puis `opencli <plateforme> --help`. Cela prouve
+seulement qu'un adaptateur existe, pas que l'authentification ou le contenu
+fonctionnent. Ne lancer des commandes en lecture seule que si la tâche exige
+cette plateforme, et exiger un contenu non vide.
 
-## Workspace rules
+## Règles d'espace de travail
 
-**Never create files in the agent workspace.** Use `/tmp/` for temporary
-output and `~/.agent-reach/` for persistent data.
+**Ne jamais créer de fichiers dans l'espace de travail de l'agent.** Utiliser
+`/tmp/` pour les sorties temporaires et `~/.agent-reach/` pour les données
+persistantes.
 
-## Detailed references
+## Références détaillées
 
-Read the matching file when you need specifics (commands above cover the
-common cases; references hold per-backend command groups, caveats, retry
-chains — note: reference docs are written in Chinese, commands are universal):
+Lire le fichier correspondant quand il faut plus de précision (les commandes
+ci-dessus couvrent les cas courants ; les références contiennent les commandes
+par backend, les mises en garde et les chaînes de reprise — toutes en
+français) :
 
-- [Search](references/search.md) — Exa AI search
-- [Social](references/social.md) — XiaoHongShu, Twitter, Bilibili, V2EX, Reddit, Facebook, Instagram (multi-backend/login-backed groups)
-- [Career](references/career.md) — LinkedIn
-- [Dev](references/dev.md) — GitHub CLI
+- [Recherche](references/search.md) — recherche IA Exa
+- [Réseaux sociaux](references/social.md) — XiaoHongShu, Twitter, Bilibili, V2EX, Reddit, Facebook, Instagram
+- [Emploi](references/career.md) — LinkedIn, Boss Zhipin
+- [Développement](references/dev.md) — GitHub CLI
 - [Web](references/web.md) — Jina Reader, RSS
-- [Video](references/video.md) — YouTube, Bilibili, Xiaoyuzhou
-- [Finance](references/finance.md) — Xueqiu quotes, search and market content
+- [Vidéo](references/video.md) — YouTube, Bilibili, Xiaoyuzhou
+- [Finance](references/finance.md) — cours, recherche et contenus Xueqiu
 
-## Configure a channel
+## Configurer un canal
 
-If a channel needs setup, read the install guide **pinned to the vetted commit**
-(never the moving `main` branch), and ask the user before any `--system` install:
+Si un canal doit être configuré, lire le guide d'installation **épinglé sur le
+commit vérifié** (jamais la branche `main` qui bouge), et demander l'accord de
+l'utilisateur avant toute installation `--system` :
 https://raw.githubusercontent.com/Panniantong/Agent-Reach/a19a171fa980a0785849596492e0af4db800c82f/docs/install.md
 
-The user only provides cookies / one extension click; the agent does the rest.
+L'utilisateur fournit seulement ses cookies / un clic sur l'extension ;
+l'agent fait le reste.

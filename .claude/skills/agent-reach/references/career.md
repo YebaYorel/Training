@@ -1,79 +1,99 @@
-# 职场招聘
+# Emploi et recrutement
 
-LinkedIn、Boss直聘。
+LinkedIn, Boss Zhipin (site d'emploi chinois).
+
+> ⚠️ **Règles YEBA — RGPD + IA Act** : consulter des profils de personnes =
+> traitement de données personnelles (RGPD : finalité, base légale,
+> minimisation, information des personnes). Utiliser ces données pour trier,
+> noter ou présélectionner des candidats relève potentiellement de l'**IA Act,
+> annexe III (emploi) = haut risque** : le signaler systématiquement.
+> Les CGU de LinkedIn interdisent l'extraction automatisée : accord explicite
+> d'Aurélien requis avant tout usage.
 
 ## LinkedIn
 
 ```bash
-# 获取个人资料
+# Récupérer un profil
 mcporter call linkedin.get_person_profile linkedin_username="username" sections="experience,education"
 
-# 搜索人才
-mcporter call linkedin.search_people keywords="AI engineer" location="Shanghai"
+# Rechercher des personnes
+mcporter call linkedin.search_people keywords="AI engineer" location="La Réunion"
 
-# 获取公司资料
+# Récupérer une fiche entreprise
 mcporter call linkedin.get_company_profile company_name="openai" sections="posts,jobs"
 
-# 搜索职位
+# Rechercher des offres d'emploi
 mcporter call linkedin.search_jobs keywords="software engineer" location="Remote" max_pages=2
 ```
 
-> **需要登录**: 首次使用前运行 `uvx mcp-server-linkedin@latest --login`，保存有效登录态。
+> **Connexion requise** : avant la première utilisation, lancer
+> `uvx mcp-server-linkedin@latest --login` pour enregistrer une session valide.
 
-### Fallback 方案
+### Solution de repli
 
-如果 MCP 不可用，可以用 Jina Reader：
+Si le MCP n'est pas disponible, utiliser Jina Reader :
 
 ```bash
 curl -s "https://r.jina.ai/https://linkedin.com/in/username"
 ```
 
-## Boss直聘
+## Boss Zhipin
 
-当用户说“帮我配 Boss直聘”时，按本节完成安装、启动专用 Chrome、等待用户手动
-登录和最终验证。不要把 9222 端口等实现细节先甩给用户，也不要替用户输入账号、
-扫码或处理滑块。
+Quand l'utilisateur demande « configure Boss Zhipin », suivre cette section :
+installation, lancement d'un Chrome dédié, attente de la connexion manuelle par
+l'utilisateur, vérification finale. Ne pas lui imposer d'emblée les détails
+techniques (port 9222…), et ne jamais saisir à sa place identifiants, QR code
+ou captcha à glissière.
 
-> **关键区分：登录门槛 ≠ 反爬安全校验。** zhipin.com 落地后可能停在三种页面：
-> 已登录的 `web/geek/job`、未登录的 `web/user/`（扫码登录/手机号登录）、以及
-> 反爬的**安全校验页**（URL 含 `security-check` / `zhipin-security` /
-> `_security_check`）。安全校验页与登录无关：**已登录也会出现**（带 CDP 调试
-> 端口的 Chrome 几乎必现）。绝不用当前页 URL 判断登录态。
+> **Distinction clé : page de connexion ≠ contrôle anti-robot.** Sur
+> zhipin.com on peut arriver sur trois pages : `web/geek/job` (connecté),
+> `web/user/` (non connecté : QR code / téléphone), ou une **page de contrôle
+> de sécurité** anti-robot (URL contenant `security-check` / `zhipin-security`
+> / `_security_check`). Cette dernière n'a rien à voir avec la connexion : **elle
+> apparaît même connecté** (quasi systématique avec un Chrome ayant un port de
+> débogage CDP). Ne jamais déduire l'état de connexion de l'URL.
 
-> **双登录态存储（existing-browser 严格 CDP 模式下以浏览器为准）。** 存在两个凭据存储，
-> **都不能删**，但认证的是不同通道：
+> **Deux stockages de session (en mode CDP strict existing-browser, c'est le
+> navigateur qui fait foi).** Les deux sont nécessaires, **ne jamais les
+> supprimer**, mais ils authentifient des canaux différents :
 >
-> | 存储 | 角色 |
+> | Stockage | Rôle |
 > |---|---|
-> | `~/.boss-agent/auth/session.enc` | ① 硬性门槛：`_get_browser()` 无条件 `get_token()`，读不到直接 `AuthRequired`，CDP 搜索会在连浏览器前就失败；② **不是**搜索的认证凭据：CDP 复用真 Chrome 的 `contexts[0]` 时，它的 cookies 只在「无 context」分支注入，实际从未生效；③ httpx 通道（低危 op：`status`/`detail`/`cities`/`job_card_httpx`）真用它的 cookies + stoken，code 37 的 `force_refresh()` 也回写它 |
-> | 专用 Chrome profile 内的浏览器 cookie | CDP 模式下 search/greet 等高危 op 实际携带的凭据 |
+> | `~/.boss-agent/auth/session.enc` | ① Prérequis obligatoire : `_get_browser()` appelle toujours `get_token()` ; s'il est illisible → `AuthRequired`, et la recherche CDP échoue avant même de se connecter au navigateur ; ② ce **n'est pas** l'identifiant utilisé pour la recherche : en CDP (réutilisation de `contexts[0]` du vrai Chrome), ses cookies ne sont injectés que dans la branche « sans contexte », donc jamais appliqués ; ③ le canal httpx (opérations à faible risque : `status`/`detail`/`cities`/`job_card_httpx`) utilise réellement ses cookies + stoken, et `force_refresh()` (code 37) le réécrit |
+> | Cookies du profil Chrome dédié | Identifiants réellement utilisés en CDP pour les opérations sensibles (search/greet…) |
 >
-> **`boss status` / `status --live` 只校验 session.enc**——即使报
-> `logged_in: true`，也不代表 CDP 浏览器已登录。所以：
-> 1. 拉起专用 Chrome 后，第一步必须**暂停并让用户肉眼确认**窗口内是已登录
->    状态（右上角有头像），确认后才允许执行搜索；
-> 2. doctor 的 boss 行会直接探测浏览器内有无 wt2 cookie，以它为准；
-> 3. **`AUTH_EXPIRED` 是 ground truth**：搜索报它就直接走登录 runbook
->    （用户在专用窗口登录 → `login --cdp`），禁止再往「安全校验」方向解释；
->    `_security_check` 页面只在 `AUTH_EXPIRED` 不存在时才按滑块处理。
-> 4. 不要为了「清理旧凭据」删除 session.enc；要刷新它就跑 `login --cdp`。
+> **`boss status` / `status --live` ne vérifient que session.enc** — même
+> `logged_in: true` ne prouve pas que le navigateur CDP est connecté. Donc :
+> 1. Après le lancement du Chrome dédié, **faire une pause et demander à
+>    l'utilisateur de confirmer visuellement** qu'il est connecté (avatar en
+>    haut à droite) avant toute recherche ;
+> 2. la ligne boss de `doctor` teste directement la présence du cookie `wt2`
+>    dans le navigateur : c'est elle qui fait foi ;
+> 3. **`AUTH_EXPIRED` est la vérité terrain** : si la recherche le renvoie,
+>    passer directement à la procédure de connexion (connexion dans la fenêtre
+>    dédiée → `login --cdp`), sans l'interpréter comme un contrôle de sécurité ;
+>    la page `_security_check` ne se traite (captcha) qu'en l'absence d'`AUTH_EXPIRED` ;
+> 4. ne pas supprimer session.enc pour « nettoyer » ; pour le rafraîchir,
+>    lancer `login --cdp`.
 
-> **依赖状态**：所需公开 strict-CDP API 来自 boss-agent-cli 后继拆分 PR #403–#407
-> （#402/#382 已按维护者意见拆分），已全部合并入上游 master。Agent Reach 的安装器锁定
-> 上游固定提交
-> `4c991b77086a203173bf08a4cb64a23af6514fe6`，而不是会移动的 branch；上游发布正式版后
-> 应把安装器切回版本约束。
+> **Dépendances** : l'API CDP stricte publique vient des PR #403–#407 de
+> boss-agent-cli (fusionnées en amont). L'installateur Agent Reach est épinglé
+> sur le commit amont `4c991b77086a203173bf08a4cb64a23af6514fe6` et non sur une
+> branche mobile ; à remplacer par une contrainte de version à la sortie d'une
+> version officielle.
 
-体检（无副作用，不搜索）：
+Diagnostic (sans effet de bord, sans recherche) :
 
 ```bash
-agent-reach doctor          # boss 行：off = 未装或 CDP 不通；warn = 链路就绪，
-                            # message 会注明浏览器内有无 wt2 登录 cookie（以浏览器为准）
+agent-reach doctor          # ligne boss : off = non installé ou CDP injoignable ; warn = chaîne prête,
+                            # le message indique si le cookie wt2 est présent dans le navigateur (il fait foi)
 ```
 
-搜索 + JD 使用公开 API（`browser_source` / `job_card_browser` / `JobItem.lid`）。
-因为 pipx/uv tool 是隔离环境，普通 `python` 不一定能 import 已安装工具；
-用 `uv run --with` 保证脚本和锁定依赖处于同一解释器环境：
+Recherche + fiche de poste via l'API publique (`browser_source` /
+`job_card_browser` / `JobItem.lid`). Comme pipx/uv tool sont isolés, un
+`python` ordinaire ne peut pas forcément importer l'outil installé ; utiliser
+`uv run --with` pour avoir le script et les dépendances épinglées dans le même
+interpréteur :
 
 ```bash
 uv run --isolated --no-project \
@@ -87,13 +107,13 @@ from boss_agent_cli.platforms.zhipin import BossPlatform
 
 auth = AuthManager(Path.home() / ".boss-agent")
 
-# 严格 CDP 模式：复用已登录浏览器、CDP 失败立即抛错、永不 headless
+# Mode CDP strict : réutilise le navigateur connecté, erreur immédiate si CDP échoue, jamais headless
 with BossClient(
     auth,
     cdp_url="http://localhost:9222",
     browser_source="existing-browser",
 ) as boss:
-    raw = boss.search_jobs("大模型", city="深圳", page=1)
+    raw = boss.search_jobs("大模型", city="深圳", page=1)  # « grand modèle » à Shenzhen
     if raw.get("code") != 0:
         code, message = BossPlatform(boss).parse_error(raw)
         raise RuntimeError(f"{code}: {message}")
@@ -105,21 +125,23 @@ with BossClient(
         )
         print(item.get("jobName"), post_desc)
 
-# AccountRiskError / EnvironmentRiskError → 立即停止，不自动重试；
-# 明确 token/stoken 过期的 code 37 由 BossClient 最多刷新并重试一次。
+# AccountRiskError / EnvironmentRiskError → arrêt immédiat, pas de nouvel essai automatique ;
+# un code 37 indiquant clairement l'expiration du token/stoken est rafraîchi et réessayé une seule fois par BossClient.
 PY
 ```
 
-### 环境体检与恢复（抓取前必查）
+### Diagnostic et remise en état (à vérifier avant toute collecte)
 
-搜索前若 `agent-reach doctor` 报 boss 为 `off` 或 `warn`，按下面 runbook 排查，不要读源码瞎猜：
+Si avant une recherche `agent-reach doctor` indique boss en `off` ou `warn`,
+suivre cette procédure, sans deviner en lisant le code source :
 
-1. **CDP 端口通不通**：
+1. **Le port CDP répond-il ?**
    ```bash
-   curl -s http://localhost:9222/json/version   # 有 Browser 字段 = 端口通
+   curl -s http://localhost:9222/json/version   # champ Browser présent = port OK
    ```
 
-2. **调试 Chrome 没开 / 已关**：按系统启动专用 Chrome（登录态独立，不污染日常浏览器）：
+2. **Chrome de débogage non lancé / fermé** : lancer le Chrome dédié selon le
+   système (session indépendante, sans toucher au navigateur habituel) :
    ```bash
    # macOS
    open -na "Google Chrome" --args --remote-debugging-address=127.0.0.1 \
@@ -132,53 +154,68 @@ PY
      "https://www.zhipin.com/web/geek/job"
    ```
 
-   Windows PowerShell：
+   Windows PowerShell :
    ```powershell
    Start-Process chrome.exe -ArgumentList '--remote-debugging-address=127.0.0.1','--remote-debugging-port=9222',"--user-data-dir=$env:USERPROFILE\.boss-chrome-profile",'https://www.zhipin.com/web/geek/job'
    ```
 
-   只绑定回环地址。任何能访问 9222 的进程都能完全控制该 Chrome；不要监听公网。
-   这个专用 profile 要长期复用，以保留稳定登录态；不要每次运行时删除或新建，
-   也不要默认切换到日常主 Chrome。不使用时关闭这个专用窗口。
+   Écouter uniquement sur l'adresse locale (127.0.0.1). Tout processus ayant
+   accès au port 9222 contrôle entièrement ce Chrome : ne jamais l'exposer sur
+   le réseau. Réutiliser durablement ce profil dédié pour garder une session
+   stable ; ne pas le supprimer/recréer à chaque fois, ni basculer par défaut
+   sur le Chrome personnel. Fermer la fenêtre dédiée quand elle ne sert pas.
 
-   **拉起后第一步：暂停并让用户肉眼确认窗口内是已登录状态（右上角有头像）。**
-   不要用 `boss status` 代替这一步——它只校验本地 session.enc，不代表浏览器。
+   **Première étape après le lancement : pause, et confirmation visuelle par
+   l'utilisateur qu'il est connecté (avatar en haut à droite).** Ne pas
+   remplacer cette étape par `boss status`, qui ne vérifie que session.enc.
 
-3. **用户手动登录（浏览器未登录时）**：判定以 doctor 的浏览器 cookie 探测为准
-   （无 wt2 = 浏览器未登录），其次才是用户肉眼确认；`boss status` 只作参考。
-   让用户在这个专用窗口登录或扫码。用户确认完成后，保存 CDP 登录态：
+3. **Connexion manuelle par l'utilisateur (si le navigateur n'est pas
+   connecté)** : se fier d'abord au test de cookie de doctor (pas de wt2 =
+   non connecté), puis à la confirmation visuelle ; `boss status` n'est
+   qu'indicatif. L'utilisateur se connecte ou scanne le QR code dans la fenêtre
+   dédiée. Une fois confirmé, enregistrer la session CDP :
    ```bash
    boss --cdp-url http://localhost:9222 login --cdp
    ```
 
-   若窗口停在安全校验页（`security-check` / `zhipin-security`），这是反爬挑战、
-   不是登录页：等它自动放行或让用户手动过一下滑块即可，不要当成“未登录”去
-   重新扫码登录。
+   Si la fenêtre reste sur une page de contrôle de sécurité
+   (`security-check` / `zhipin-security`), c'est un défi anti-robot, pas une
+   page de connexion : attendre la validation automatique ou laisser
+   l'utilisateur passer le captcha, sans relancer une connexion par QR code.
 
-4. **登录态是否有效**（浏览器 cookie 探测 + stoken 是否过期）：
+4. **La session est-elle valide ?** (test du cookie navigateur + expiration du stoken)
    ```bash
-   agent-reach doctor     # 看 boss 行 message 里的浏览器 wt2 cookie 探测结果
-   boss status            # 只反映本地 session.enc，仅作参考
+   agent-reach doctor     # voir le résultat du test du cookie wt2 dans le message de la ligne boss
+   boss status            # reflète uniquement session.enc, indicatif
    ```
 
-5. **错误码处置**（搜索/取 JD 时）：
-   - `AUTH_EXPIRED`（用户未登录）→ **ground truth**：CDP 浏览器未登录（不管
-     `boss status` 说什么），直接走第 3 步登录流程 + `login --cdp`，禁止往
-     「安全校验」方向解释；
-   - code 36（ACCOUNT_RISK）→ 立即停，手动到 BOSS 页面处理，不可自动重试；
-   - code 9（RATE_LIMITED）→ 冷却后重试；
-   - code 37 + `环境存在异常` → `ENVIRONMENT_RISK`，立即停止，不刷新 Token、不重新登录、不自动重试；
-   - 只有文案明确表示 token/stoken 过期的 code 37 才是 `TOKEN_REFRESH_FAILED`；客户端最多自动刷新并重试一次，仍失败再重新登录。
+5. **Traitement des codes d'erreur** (recherche / fiche de poste) :
+   - `AUTH_EXPIRED` (utilisateur non connecté) → **vérité terrain** : le
+     navigateur CDP n'est pas connecté (quoi que dise `boss status`) ; passer à
+     l'étape 3 + `login --cdp`, sans parler de contrôle de sécurité ;
+   - code 36 (ACCOUNT_RISK) → arrêt immédiat, traitement manuel sur le site
+     BOSS, pas de nouvel essai automatique ;
+   - code 9 (RATE_LIMITED) → attendre, puis réessayer ;
+   - code 37 + message `环境存在异常` (« anomalie d'environnement ») →
+     `ENVIRONMENT_RISK` : arrêt immédiat, pas de rafraîchissement de token, pas
+     de reconnexion, pas de nouvel essai ;
+   - seul un code 37 dont le message indique clairement l'expiration du
+     token/stoken est un `TOKEN_REFRESH_FAILED` ; le client rafraîchit et
+     réessaie une seule fois, puis reconnexion si l'échec persiste.
 
-用户要求开始搜索时，Agent 必须指定严格 CDP 模式（全局选项放在子命令之前）：
+Quand l'utilisateur demande de lancer la recherche, l'agent doit imposer le mode
+CDP strict (options globales avant la sous-commande) :
 
 ```bash
-boss --browser-source existing-browser --cdp-url http://localhost:9222 search "大模型" --city 广州 --page 1
+boss --browser-source existing-browser --cdp-url http://localhost:9222 search "大模型" --city 广州 --page 1   # « grand modèle » à Canton (le site attend du chinois)
 ```
 
-不要无提示连续翻页。boss-agent-cli PR #383 为跨 CLI 进程的普通搜索增加持久
-5–10 秒列表预算；该 PR 合并发布前，Agent 仍应主动串行、降频调用。
+Ne pas enchaîner les pages sans prévenir. Tant que la PR #383 de
+boss-agent-cli (budget persistant de 5 à 10 s entre recherches) n'est pas
+publiée, l'agent doit lui-même espacer et sérialiser les appels.
 
-> **等待属预期，不是卡死**：连续搜索命中节流时，boss-agent-cli 会静默等待 5–10 秒
-> （TTY 下会显示「节流等待 Ns…」提示；Agent Reach 以 `--json` 调用，看不到该提示）。
-> 等待窗口内不要重试、不要拉起新浏览器、不要切换 profile。
+> **L'attente est normale, ce n'est pas un blocage** : en cas de limitation,
+> boss-agent-cli attend silencieusement 5 à 10 s (message visible seulement en
+> terminal interactif ; Agent Reach appelle avec `--json` et ne le voit pas).
+> Pendant l'attente : ne pas réessayer, ne pas lancer un nouveau navigateur,
+> ne pas changer de profil.

@@ -1,148 +1,165 @@
-# 视频/播客
+# Vidéo / Podcast
 
-YouTube、B站、小宇宙播客的字幕和转录。
+Sous-titres et transcriptions : YouTube, Bilibili, podcasts Xiaoyuzhou.
 
 ## YouTube (yt-dlp)
 
-### 获取视频元数据
+### Récupérer les métadonnées d'une vidéo
 
 ```bash
 yt-dlp --dump-json "URL"
 ```
 
-### 下载字幕
+### Télécharger les sous-titres
 
 ```bash
-# 下载字幕 (不下载视频)
-yt-dlp --write-sub --write-auto-sub --sub-lang "zh-Hans,zh,en" --skip-download -o "/tmp/%(id)s" "URL"
+# Télécharger les sous-titres (sans la vidéo)
+yt-dlp --write-sub --write-auto-sub --sub-lang "fr,en" --skip-download -o "/tmp/%(id)s" "URL"
 
-# 然后读取 .vtt 文件
+# Puis lire le fichier .vtt
 cat /tmp/VIDEO_ID.*.vtt
 ```
 
-### 获取评论
+### Récupérer les commentaires
 
 ```bash
-# 提取评论（best-effort，不保证完整）
+# Extraire les commentaires (au mieux, pas de garantie d'exhaustivité)
 yt-dlp --write-comments --skip-download --write-info-json \
   --extractor-args "youtube:max_comments=20" \
   -o "/tmp/%(id)s" "URL"
-# 评论在 .info.json 的 comments 字段中
+# Les commentaires sont dans le champ comments du fichier .info.json
 ```
 
-### 搜索视频
+> ⚠️ RGPD : les commentaires contiennent des pseudonymes = données
+> personnelles. Ne les conserver que si la finalité le justifie.
+
+### Rechercher des vidéos
 
 ```bash
-yt-dlp --dump-json "ytsearch5:query"
+yt-dlp --dump-json "ytsearch5:requête"
 ```
 
-> **字幕注意**: 手动上传的字幕提取可靠；自动生成字幕可能存在行间重复，需后处理。
-> **评论注意**: `--write-comments` 基于网页抓取（非 YouTube Data API），部分评论可能丢失。
+> **Sous-titres** : ceux déposés manuellement sont fiables ; les sous-titres
+> automatiques peuvent contenir des lignes répétées, à nettoyer.
+> **Commentaires** : `--write-comments` repose sur la page web (pas sur l'API
+> YouTube Data), certains commentaires peuvent manquer.
 
-### 字幕失败时的重试链（按序执行，拿到实质内容即停）
+### Chaîne de reprise si les sous-titres échouent (dans l'ordre, s'arrêter dès qu'on a du contenu)
 
-`doctor` 只确认 yt-dlp 本体与 JS runtime 能执行，不会请求具体视频；因此
-`active_backend: yt-dlp` 不等于目标视频的字幕已经通过实时验证。
+`doctor` vérifie seulement que yt-dlp et le runtime JS s'exécutent, sans
+interroger de vidéo précise ; `active_backend: yt-dlp` ne garantit donc pas que
+les sous-titres de la vidéo visée fonctionnent.
 
-1. 先用上面的 `yt-dlp --write-sub --write-auto-sub` 命令。
-2. 若出现 bot 校验、字幕响应为空或没有生成字幕文件，且 OpenCLI 已连接：
-   `opencli youtube transcript "URL" -f yaml`。
-3. OpenCLI 若返回 `Caption URL returned empty response`，最多重试 3 次；这是带
-   过期时间的字幕 URL 偶发失效，不能把空响应当成“视频没有字幕”。
-4. 仍失败或视频本来就没有字幕：`agent-reach transcribe "URL"` 下载音频转写。
+1. Commencer par la commande `yt-dlp --write-sub --write-auto-sub` ci-dessus.
+2. Si vérification anti-robot, réponse vide ou aucun fichier de sous-titres, et
+   qu'OpenCLI est connecté : `opencli youtube transcript "URL" -f yaml`.
+3. Si OpenCLI renvoie `Caption URL returned empty response`, réessayer au plus
+   3 fois : c'est une URL de sous-titres à durée limitée qui a expiré, pas une
+   vidéo sans sous-titres.
+4. Toujours en échec, ou vidéo réellement sans sous-titres :
+   `agent-reach transcribe "URL"` (téléchargement de l'audio + transcription).
 
-成功标准是实际得到非空字幕/转录内容，不是命令退出码或 `doctor` 的版本探测结果。
+Le succès = un contenu de sous-titres/transcription réellement non vide, pas un
+code de sortie ni le résultat de `doctor`.
 
-### 无字幕兜底：Whisper 音频转写
+### Solution de repli sans sous-titres : transcription Whisper
 
 ```bash
-# 视频没有字幕时的兜底：下载音频并用 Whisper 转写（Groq 免费 key 即可）
+# Vidéo sans sous-titres : télécharger l'audio et le transcrire avec Whisper (clé Groq gratuite)
 agent-reach transcribe "https://www.youtube.com/watch?v=VIDEO_ID"
-agent-reach transcribe ./local_audio.mp3 -o /tmp/transcript.txt
+agent-reach transcribe ./audio_local.mp3 -o /tmp/transcript.txt
 ```
 
-> `agent-reach transcribe` 只接收公开 http(s) URL 或本地音频文件。用 `ytsearch5:` 搜索时，先从 yt-dlp 结果里选出具体视频 URL，再转写。
-> 需要先配置 key：`agent-reach configure groq-key`（隐藏输入；免费，console.groq.com）
-> 或 `agent-reach configure openai-key`。默认 auto 模式只使用第一个已配置服务商
->（优先 Groq，否则 OpenAI），失败即停止，不会把音频自动发给另一家。
-> `--allow-provider-fallback` 会显式授权跨服务商降级；同一音频内容可能被 Groq 和
-> OpenAI 分别处理，并可能产生 OpenAI 费用，只应在确认内容可分享给两家后使用。
+> `agent-reach transcribe` accepte uniquement une URL http(s) publique ou un
+> fichier audio local. Après une recherche `ytsearch5:`, choisir d'abord l'URL
+> précise dans les résultats de yt-dlp, puis transcrire.
+> Configurer d'abord une clé : `agent-reach configure groq-key` (saisie masquée ;
+> gratuit, console.groq.com) ou `agent-reach configure openai-key`. Le mode auto
+> utilise uniquement le premier fournisseur configuré (Groq en priorité, sinon
+> OpenAI) et s'arrête en cas d'échec, sans envoyer l'audio à un autre.
+> `--allow-provider-fallback` autorise explicitement le basculement : le même
+> audio peut alors être traité par Groq ET OpenAI, avec des frais OpenAI
+> possibles ; à n'utiliser qu'après avoir confirmé que le contenu peut être
+> partagé avec les deux.
+>
+> ⚠️ Règle YEBA : Groq et OpenAI sont américains (hors UE). Ne jamais
+> transcrire un enregistrement contenant la voix ou les données d'un client ou
+> d'un stagiaire (RGPD : la voix est une donnée personnelle).
 
-## B站 / Bilibili（bili-cli 为主，OpenCLI 补字幕）
+## Bilibili (bili-cli en principal, OpenCLI pour les sous-titres)
 
-> ⚠️ **不要用 yt-dlp 读 B站**：B站风控已全面 412 拦截 yt-dlp（实测最新版、直连/代理/带 Cookie 全部无效）。yt-dlp 只用于 YouTube。
+> ⚠️ **Ne pas utiliser yt-dlp pour Bilibili** : l'anti-robot de Bilibili bloque
+> yt-dlp (erreur 412) dans tous les cas testés (dernière version,
+> direct/proxy/avec cookie). yt-dlp sert uniquement pour YouTube.
 
-### 视频详情/搜索/热门/排行 (bili-cli，只读无需登录)
+### Détails / recherche / tendances / classements (bili-cli, lecture seule, sans connexion)
 
 ```bash
-# 视频详情（标题/UP主/时长/播放互动数据/字幕可用性）
+# Détails d'une vidéo (titre, auteur, durée, statistiques, sous-titres disponibles)
 bili video BVxxx
 
-# 搜索视频
-bili search "query" --type video -n 5
+# Rechercher des vidéos
+bili search "requête" --type video -n 5
 
-# 热门视频 / 排行榜
+# Vidéos populaires / classement
 bili hot -n 10
 bili rank -n 10
 
-# 下载音频并切分为 ASR-ready WAV（无字幕时配合 agent-reach transcribe 转写）
+# Télécharger l'audio et le découper en WAV prêt pour la transcription
 bili audio BVxxx
 ```
 
-### 字幕 (OpenCLI，需要桌面 Chrome)
+### Sous-titres (OpenCLI, nécessite Chrome sur un poste de bureau)
 
 ```bash
-# 字幕逐句带时间轴
+# Sous-titres phrase par phrase avec horodatage
 opencli bilibili subtitle BVxxx
 
-# OpenCLI 也能搜索/读视频元数据（备选）
-opencli bilibili search "query" -f yaml
+# OpenCLI sait aussi chercher / lire les métadonnées (solution de secours)
+opencli bilibili search "requête" -f yaml
 opencli bilibili video BVxxx -f yaml
 ```
 
-### 零配置兜底：搜索 API 直连
+### Repli sans configuration : appel direct de l'API de recherche
 
 ```bash
 UA="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
 curl -s -c /tmp/bili_ck.txt -o /dev/null -A "$UA" "https://www.bilibili.com/"
 curl -s -b /tmp/bili_ck.txt -A "$UA" -e "https://www.bilibili.com/" \
-  "https://api.bilibili.com/x/web-interface/search/all/v2?keyword=QUERY&page=1"
+  "https://api.bilibili.com/x/web-interface/search/all/v2?keyword=REQUETE&page=1"
 ```
 
-> **安装 bili-cli**: `pipx install bilibili-cli`（上游 2026-03 起停更但实测健康；只读场景无需登录，`bili login` 扫码可解锁动态/收藏等个人功能）。
+> **Installer bili-cli** : `pipx install bilibili-cli` (plus maintenu depuis
+> mars 2026 mais fonctionnel ; pas de connexion nécessaire en lecture seule).
 
-## 小宇宙播客 / Xiaoyuzhou Podcast
+## Podcasts Xiaoyuzhou
 
-### 转录单集播客（可选 --polish 增强标点）
+### Transcrire un épisode (option --polish pour améliorer la ponctuation)
 
 ```bash
-# 输出 Markdown 文件到 /tmp/。--polish 让 Llama 3.3 70B 给文稿补中文标点+合理分段
+# Produit un fichier Markdown dans /tmp/. --polish ajoute ponctuation et paragraphes via Llama 3.3 70B
 ~/.agent-reach/tools/xiaoyuzhou/transcribe.sh --polish "https://www.xiaoyuzhoufm.com/episode/EPISODE_ID"
 ```
 
-> 转写 prompt 已要求 Whisper 输出中文标点；若标点效果仍不理想，可加 `--polish` 用 Groq 上免费的 Llama 3.3 70B 补标点+合理分段（9 分钟播客约多 ~7 秒）。每次转写多一轮 LLM 调用，按需使用。
+### Prérequis
 
-### 前置要求
+1. **ffmpeg** : `brew install ffmpeg` (macOS) ou `apt install ffmpeg`
+2. **Clé API Groq** (gratuite) : https://console.groq.com/keys
+3. **Configurer la clé** : `agent-reach configure groq-key` (saisie masquée)
+4. **Premier lancement** : `agent-reach install --env=auto --system --channels=xiaoyuzhou` (accord explicite requis)
 
-1. **ffmpeg**: `brew install ffmpeg`
-2. **Groq API Key** (免费): https://console.groq.com/keys
-3. **配置 Key**: `agent-reach configure groq-key`（隐藏输入）
-4. **首次运行**: `agent-reach install --env=auto --system --channels=xiaoyuzhou`（需用户明确授权）
-
-### 检查状态
+### Vérifier l'état
 
 ```bash
 agent-reach doctor
 ```
 
-> 输出 Markdown 文件默认保存到 `/tmp/`。
+## Guide de choix
 
-## 选择指南
-
-| 场景 | 推荐工具 |
+| Situation | Outil recommandé |
 |-----|---------|
-| YouTube 字幕 | yt-dlp；失败时 OpenCLI（最多 3 次）→ agent-reach transcribe |
-| B站视频详情/搜索 | bili-cli |
-| B站字幕 | opencli bilibili subtitle |
-| 播客转录 | 小宇宙 transcribe.sh |
-| 无字幕音视频 | agent-reach transcribe（B站音频先 `bili audio`） |
+| Sous-titres YouTube | yt-dlp ; si échec OpenCLI (3 essais max) → agent-reach transcribe |
+| Détails / recherche Bilibili | bili-cli |
+| Sous-titres Bilibili | opencli bilibili subtitle |
+| Transcription de podcast | transcribe.sh Xiaoyuzhou |
+| Audio/vidéo sans sous-titres | agent-reach transcribe (pour Bilibili, d'abord `bili audio`) |

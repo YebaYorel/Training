@@ -1,36 +1,42 @@
-# 搜索工具
+# Outils de recherche
 
-Exa AI 搜索引擎。
+Moteur de recherche IA Exa.
 
-## Exa AI 搜索
+## Recherche IA Exa
 
-高质量 AI 搜索引擎，适合查找技术文档、官方示例和相关网页。
+Moteur de recherche IA de bonne qualité, adapté pour trouver de la documentation
+technique, des exemples officiels et des pages pertinentes.
 
 ```bash
-mcporter call exa.web_search_exa query="query" numResults=5
+mcporter call exa.web_search_exa query="requête" numResults=5
 mcporter call exa.web_search_exa query="library API code example" numResults=5
 ```
 
-### 使用场景
+> ⚠️ Règle YEBA : Exa est un service américain (hors UE). Uniquement des
+> requêtes publiques et anonymisées — jamais de nom de client, de stagiaire ni
+> de donnée personnelle dans la requête (RGPD, transfert hors UE).
 
-| 场景 | 参数 |
+### Cas d'usage
+
+| Situation | Paramètres |
 |-----|------|
-| 网页搜索 | `web_search_exa(query: "...", numResults: 5)` |
-| 技术/代码资料 | `web_search_exa(query: "框架名 API 示例", numResults: 5)` |
+| Recherche web | `web_search_exa(query: "...", numResults: 5)` |
+| Documentation technique / code | `web_search_exa(query: "nom du framework API exemple", numResults: 5)` |
 
-> Exa MCP 的 `get_code_context_exa` 已弃用且默认不注册。代码问题也使用
-> `web_search_exa`；需要精确搜索仓库内容时，改用 `dev.md` 中的 GitHub 搜索。
+> L'outil `get_code_context_exa` du MCP Exa est obsolète et n'est pas enregistré
+> par défaut. Pour les questions de code, utiliser aussi `web_search_exa` ; pour
+> chercher précisément dans le contenu d'un dépôt, utiliser la recherche GitHub
+> de `dev.md`.
 
-### 特点
+### Points forts
 
-- 擅长英文内容和技术文档
-- 可通过查询词定位官方文档和代码示例
-- 结果质量高
+- Très bon sur les contenus en anglais et la documentation technique
+- Permet de cibler la documentation officielle et les exemples de code
+- Résultats de bonne qualité
 
-## 与其他搜索工具对比
+## Comparaison avec d'autres outils de recherche
 
-| 工具 | 来源 | 适用场景 |
+| Outil | Origine | Usage |
 |-----|------|---------|
-| Exa | agent-reach | 英文/技术/代码搜索 |
-| 智谱搜索 | my-mcp-tools | 中文搜索 |
-| GitHub 搜索 | agent-reach (dev.md) | 仓库/代码搜索 |
+| Exa | agent-reach | Recherche anglophone / technique / code |
+| Recherche GitHub | agent-reach (dev.md) | Dépôts / code |

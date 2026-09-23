@@ -1,33 +1,37 @@
-# 网页阅读
+# Lecture de pages web
 
-通用网页、RSS。
+Pages web générales, flux RSS.
 
-## 通用网页 (Jina Reader)
+## Page web générale (Jina Reader)
 
 ```bash
-# 读取任意网页内容
+# Lire le contenu de n'importe quelle page web
 curl -s "https://r.jina.ai/URL"
 
-# 示例
+# Exemple
 curl -s "https://r.jina.ai/https://example.com/article"
 ```
 
-**适用场景**: 大多数网页可以直接用 Jina Reader 读取。
+**Quand l'utiliser** : la plupart des pages web se lisent directement avec Jina Reader.
+
+> ⚠️ Règle YEBA : Jina Reader est un service tiers hors UE (société Elastic).
+> N'y envoyer que des URL publiques, jamais une page contenant des données
+> personnelles ou client (RGPD).
 
 ## Web Reader (MCP)
 
 ```bash
-# 读取网页内容 (Markdown 格式)
+# Lire une page web (format Markdown)
 mcporter call web-reader.webReader url="https://example.com"
 
-# 保留图片
+# Conserver les images
 mcporter call web-reader.webReader url="https://example.com" retain_images=true
 
-# 纯文本格式
+# Format texte brut
 mcporter call web-reader.webReader url="https://example.com" return_format="text"
 ```
 
-**适用场景**: 需要更精确控制输出格式时使用。
+**Quand l'utiliser** : quand il faut contrôler plus finement le format de sortie.
 
 ## RSS (feedparser)
 
@@ -39,12 +43,13 @@ for e in feedparser.parse('FEED_URL').entries[:5]:
 "
 ```
 
-**适用场景**: 订阅博客、新闻源、播客等 RSS feed。
+**Quand l'utiliser** : suivre des blogs, sites d'actualité, podcasts via leur flux RSS
+(ex. veille CNIL, EUR-Lex, presse locale).
 
-## 选择指南
+## Guide de choix
 
-| 场景 | 推荐工具 |
+| Situation | Outil recommandé |
 |-----|---------|
-| 通用网页 | Jina Reader (`curl r.jina.ai`) |
-| 需要图片/格式控制 | web-reader MCP |
-| RSS 订阅 | feedparser |
+| Page web générale | Jina Reader (`curl r.jina.ai`) |
+| Besoin des images / du format | MCP web-reader |
+| Abonnement RSS | feedparser |
