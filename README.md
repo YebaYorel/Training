@@ -94,6 +94,30 @@ touchant à des données ou à de l'IA.)*
 
 ---
 
+## 6. Skill « agent-reach » (accès internet pour Claude)
+
+Source : [github.com/Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach)
+(licence MIT), épinglé sur le commit `a19a171` — voir
+`.claude/skills/agent-reach/UPSTREAM.md`.
+
+- **Claude Code (ce dépôt)** : le skill est dans `.claude/skills/agent-reach/`.
+  Claude le déclenche seul dès qu'une demande touche internet (recherche,
+  URL, plateforme, veille réglementaire).
+- **Installation automatique** : le hook `SessionStart`
+  (`.claude/hooks/agent-reach-setup.sh`) installe le CLI `agent-reach` à
+  chaque démarrage de session (≈ 12 s la 1re fois, instantané ensuite).
+- **Application Claude (claude.ai)** : importer `dist/agent-reach-skill.zip`
+  dans Paramètres → Capacités → Skills.
+- Diagnostic : `agent-reach doctor`.
+
+**RGPD / IA Act** : lire des profils ou publications de personnes (LinkedIn,
+X, Facebook…) = traitement de données personnelles (RGPD). Utilisé pour trier
+ou noter des personnes = IA Act à vérifier. Exa (USA) et Jina Reader ne sont
+pas des services souverains UE : n'y envoyer que des requêtes publiques
+anonymisées. Ces règles sont inscrites en tête du `SKILL.md`.
+
+---
+
 ## Sources
 - Modèle d'authentification (JWT vs Database Token) :
   [baserow.io/user-docs/personal-api-tokens](https://baserow.io/user-docs/personal-api-tokens)
