@@ -1,4 +1,6 @@
-# YEBA IA — Calendrier semaine 1 (14 publications)
+# YEBA IA — Calendrier semaine 1 (14 Reels + 1 post de lancement)
+
+> **Lancement : vendredi 25 septembre 2026.** Budget publicitaire : 0 € → 100 % organique.
 
 > Publication simultanée Facebook + Instagram via Meta Business Suite.
 > Créneaux de départ (heure de La Réunion) : **7 h 00** et **19 h 30** — à ajuster après 2 semaines.
@@ -11,9 +13,14 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 1 — Lundi
+## JOUR 1 — Vendredi 25/09/2026 (LANCEMENT)
 
-### 1A · 7 h 00 · ⚪ Manifeste — « Pourquoi YEBA IA »
+### 1-0 · 7 h 00 · Post image de lancement (sans vidéo)
+- **Visuel** : `visuels/post/post_lancement.png`
+- **Légende** : « YEBA IA est né. 🇷🇪 Une seule promesse : l'IA, simplement. Ce midi : ma première vidéo. Abonne-toi pour ne rien rater. »
+- **Pourquoi** : la page n'est pas vide quand les premiers visiteurs arrivent, et vous gagnez la matinée pour finir le tournage.
+
+### 1A · 12 h 00 · ⚪ Manifeste — « Pourquoi YEBA IA »
 - **Hook écran** : « L'IA est simple. On vous l'a mal expliquée. »
 - **Hook voix** : « Si l'IA vous paraît compliquée… ce n'est pas de votre faute. »
 - **Script** :
@@ -28,7 +35,7 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 - **Action** : commenter + s'abonner.
 
 ### 1B · 19 h 30 · 🟢 Douleur n° 1 — « Tu n'as besoin que d'UN outil »
-- **Hook écran** : « 12 000 outils IA. Il t'en faut 1. »
+- **Hook écran** : « Des milliers d'outils IA. Il t'en faut 1. »
 - **Script** :
   1. « Tu te sens noyé sous les outils IA ? Normal. »
   2. « C'est comme le bouchon sur la route du Littoral : tout le monde klaxonne, personne n'avance. »
@@ -38,13 +45,13 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 - **Visuel** : texte animé 12 000 → 1 ; capture d'écran de Le Chat (sans donnée perso).
 - **Flag** : [RGPD] outil européen = données traitées en UE → argument de confiance.
 - **Hashtags** : #IA #Productivite #TPE #LaReunion
-- ⚠️ Le chiffre « 12 000 » est une **accroche à remplacer par un chiffre sourcé** au moment du tournage (ex. nombre d'outils référencés par un annuaire public comme theresanaiforthat.com, avec la date), ou par « Des milliers d'outils IA ».
+- ⚠️ Ne pas afficher de chiffre précis sans source datée (ex. annuaire public d'outils IA, avec la date).
 
 ---
 
-## JOUR 2 — Mardi
+## JOUR 2 — Samedi 26/09
 
-### 2A · 7 h 00 · 🟢 « L'IA expliquée avec un cari »
+### 2A · 10 h 00 (week-end) · 🟢 « L'IA expliquée avec un cari »
 - **Hook écran** : « ChatGPT ne réfléchit pas. Il cuisine. »
 - **Script** :
   1. « Imagine un cuisinier qui a lu TOUTES les recettes de cari du monde. »
@@ -69,9 +76,9 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 3 — Mercredi
+## JOUR 3 — Dimanche 27/09
 
-### 3A · 7 h 00 · 🟢 « La recette d'une demande parfaite : R-C-T-F »
+### 3A · 10 h 00 (week-end) · 🟢 « La recette d'une demande parfaite : R-C-T-F »
 - **Hook écran** : « 4 lettres qui changent tout. »
 - **Script** :
   1. « **R**ôle : “Tu es un assistant commercial.” »
@@ -97,7 +104,7 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 4 — Jeudi
+## JOUR 4 — Lundi 28/09
 
 ### 4A · 7 h 00 · 🟠 Actu IA décodée (gabarit à remplir la veille)
 - **Hook écran** : « L'info IA de la semaine en 30 s. »
@@ -126,7 +133,7 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 5 — Vendredi
+## JOUR 5 — Mardi 29/09
 
 ### 5A · 7 h 00 · 🟢 Chiffre clé TPE
 - **Hook écran** : « 1 TPE-PME sur 4 utilise déjà l'IA. »
@@ -153,9 +160,9 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 6 — Samedi
+## JOUR 6 — Mercredi 30/09
 
-### 6A · 10 h 00 (week-end) · 🟣 Test péi — « Une pub pour un snack en 2 minutes »
+### 6A · 7 h 00 · 🟣 Test péi — « Une pub pour un snack en 2 minutes »
 - **Hook écran** : « J'ai créé la pub d'un snack en 2 minutes. »
 - **Script** :
   1. Montrer la demande R-C-T-F (écran).
@@ -178,9 +185,9 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ---
 
-## JOUR 7 — Dimanche
+## JOUR 7 — Jeudi 01/10
 
-### 7A · 10 h 00 · ⚪ Coulisses — « De la vente à l'IA »
+### 7A · 7 h 00 · ⚪ Coulisses — « De la vente à l'IA »
 - **Hook écran** : « J'ai formé des vendeurs pendant des années. Puis l'IA est arrivée. »
 - **Script** :
   1. « Pendant des années, j'ai formé à la vente et au management. »
@@ -203,15 +210,31 @@ Légende des rubriques : 🟢 *L'IA en 30 s chrono* · 🔵 *Le droit sans migra
 
 ## Récapitulatif
 
-| Jour | 7 h 00 (10 h le week-end) | 19 h 30 |
+| Jour | Matin : 7 h 00 (10 h 00 le week-end) | Soir : 19 h 30 |
 |---|---|---|
-| Lundi | ⚪ Manifeste | 🟢 1 seul outil |
-| Mardi | 🟢 L'IA et le cari | 🔵 Mail client dans l'IA [RGPD] |
-| Mercredi | 🟢 R-C-T-F (+ carrousel) | 🔴 L'IA va me remplacer ? |
-| Jeudi | 🟠 Actu IA décodée | 🔵 IA Act = alerte cyclone [IA Act] |
-| Vendredi | 🟢 1 TPE sur 4 | 🔵 5 choses à ne jamais taper [RGPD] |
-| Samedi | 🟣 Pub snack en 2 min [IA Act] | 🔵 Deepfake [IA Act] |
-| Dimanche | ⚪ Coulisses | 🟢 Bilan + question |
+| Ven. 25/09 | Post lancement (7 h) + ⚪ Manifeste (12 h) | 🟢 1 seul outil |
+| Sam. 26/09 | 🟢 L'IA et le cari | 🔵 Mail client dans l'IA [RGPD] |
+| Dim. 27/09 | 🟢 R-C-T-F (+ carrousel) | 🔴 L'IA va me remplacer ? |
+| Lun. 28/09 | 🟠 Actu IA décodée | 🔵 IA Act = alerte cyclone [IA Act] |
+| Mar. 29/09 | 🟢 1 TPE sur 4 | 🔵 5 choses à ne jamais taper [RGPD] |
+| Mer. 30/09 | 🟣 Pub snack en 2 min [IA Act] | 🔵 Deepfake [IA Act] |
+| Jeu. 01/10 | ⚪ Coulisses | 🟢 Bilan + question |
 
 Répartition : 40 % pratique · 35 % droit/confiance · 25 % actu/histoire →
 cohérent avec vos 3 douleurs et votre avantage concurrentiel (RGPD + IA Act).
+
+---
+
+## Visuels prêts à l'emploi (dossier `visuels/`)
+
+| Publication | Fichier(s) | Usage |
+|---|---|---|
+| Lancement | `post/post_lancement.png` | Post image 4:5 |
+| Chaque Reel (1A → 7B) | `couverture-reel/couverture-reel_XX.png` | « Modifier la couverture » → importer depuis la pellicule |
+| 3A R-C-T-F | `carrousel/carrousel_recette-RCTF_01…06.png` | Carrousel publié le même jour |
+| 4B IA Act | `carrousel/carrousel_ia-act-alerte-cyclone_01…06.png` | Carrousel en complément du Reel |
+| 5B RGPD | `carrousel/carrousel_5-choses-a-ne-jamais-taper_01…07.png` | Carrousel (remplace le Reel si manque de temps) |
+| Tout plan généré par IA | `pastille/pastille_genere-par-IA.png` | À superposer dans Edits/CapCut [IA Act art. 50] |
+| Profil | `couverture-facebook/…png`, `a-la-une/*.png`, `post/post_qui-sommes-nous.png` | Couverture Page, Stories à la une, 1er post épinglé |
+
+Texte alternatif conseillé (accessibilité) : reprendre mot pour mot le texte de l'image.
