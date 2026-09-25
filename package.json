@@ -8,7 +8,9 @@
     "apercu": "vite build --mode apercu && python3 site/integrer-medias.py",
     "preview": "vite preview",
     "sync": "node site/scripts/airtable-sync.mjs",
-    "sync-export": "node site/scripts/airtable-sync.mjs --depuis site/airtable"
+    "sync-export": "node site/scripts/airtable-sync.mjs --depuis site/airtable",
+    "espace": "vite --config vite.espace.config.js",
+    "espace:apercu": "vite build --config vite.espace.config.js --mode apercu"
   },
   "repository": {
     "type": "git",

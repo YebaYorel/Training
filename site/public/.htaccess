@@ -17,7 +17,7 @@ AddDefaultCharset UTF-8
   RewriteRule "(^|/)\.(?!well-known/)" - [R=404,L]
   # 3. Fichiers de développement : introuvables même s'ils étaient envoyés par erreur
   RewriteRule "\.(map|md|log|env|ini|sh|py|mjs|jsx|lock|bak|sql)$" - [R=404,L,NC]
-  RewriteRule "(^|/)(package(-lock)?\.json|vite\.config\.js|node_modules|site|src)(/|$)" - [R=404,L,NC]
+  RewriteRule "(^|/)(package(-lock)?\.json|vite(\.espace)?\.config\.js|node_modules|site|src|espace|dist-espace|apercu-espace)(/|$)" - [R=404,L,NC]
 </IfModule>
 
 <IfModule mod_headers.c>

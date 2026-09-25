@@ -20,6 +20,36 @@ Le site ne contacte jamais Airtable depuis le navigateur du visiteur : aucun jet
   apparaît automatiquement, avec des valeurs par défaut, même sans éditorial.
 - Jeton : créer un *personal access token* Airtable avec la seule portée `data.records:read`, limité à cette base.
 
+## Section publique « Qualiopi : la preuve, pas la promesse »
+
+`npm run sync` (ou `sync-export`) écrit aussi `site/src/documents.json` depuis la table DOCUMENTS OFFICIELS.
+Règle de publication appliquée par le script, jamais par le site :
+
+- un document n'est listé que s'il s'adresse à l'extérieur (Public, Prospects, Stagiaires, Clients entreprises) ;
+- texte intégral lisible en ligne **seulement** si « En vigueur » ET sans aucun marqueur de travail
+  (« à vérifier », « à compléter », « [ … ] », « Action A-… », « interne », ⚠️…) ; sinon « Recevoir le document » (courriel) ;
+- mentions légales et confidentialité renvoient vers les pages du site (versions à jour) ;
+- aucun statut interne (incomplet, à valider, score d'auto-audit) n'est jamais publié.
+
+`site/src/rnq.json` contient la synthèse publique des 33 indicateurs (le texte du décret fait foi).
+
+## Espace YEBA (privé) — Coffre Qualiopi, Parcours, BPF
+
+Outil de pilotage **local**, jamais déployé (absent de `npm run build`, bloqué par `.htaccess`).
+
+```bash
+npm run espace          # http://127.0.0.1:5180 — démo fictive, ou vos données si AIRTABLE_TOKEN est dans .env
+npm run espace:apercu   # fichier HTML autonome de démonstration (données fictives uniquement)
+```
+
+- Jeton Airtable : portée **data.records:read** uniquement, sur la seule base YEBA. Il reste dans `.env`,
+  est ajouté par le proxy local côté serveur et n'arrive jamais dans le navigateur.
+- Le proxy n'accepte que : GET, la base appQ2zqc80kkc6MR1, 10 tables listées, requêtes de la page elle-même
+  (même origine, hôte 127.0.0.1/localhost). Tout le reste répond 403/405.
+- Minimisation RGPD : ni email, ni téléphone, ni date de naissance, ni aménagements des apprenants ne sont lus.
+- BPF : **préparation**. Rubriques à contrôler avec la notice cerfa n° 50199 avant télédéclaration
+  sur Mon Activité Formation (avant le 31 mai N+1).
+
 ## Où modifier quoi
 - **Formations** : dans Airtable, puis `npm run sync`. **Accroches et mots-clés** : `site/src/data.js`.
 - **Textes des sections** : `site/src/App.jsx`.

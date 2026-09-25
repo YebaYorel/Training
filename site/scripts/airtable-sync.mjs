@@ -6,7 +6,7 @@
 //   Mode export :  node site/scripts/airtable-sync.mjs --depuis site/airtable
 //                  (catalogue-brut.json + sessions-brut.json au format { records: [{ id, fields }] })
 //
-// Écrit site/src/catalogue.json — seul fichier lu par le site.
+// Écrit site/src/catalogue.json et site/src/documents.json — seuls fichiers lus par le site.
 // Règles de publication (CONFIG SYSTEME) appliquées ici, pas dans le site :
 //   • seules les fiches « Active » et dont la marque YEBA est obligatoire sont publiées
 //     (jamais de marque blanche / sous-traitance) ;
@@ -20,9 +20,11 @@ import { fileURLToPath } from 'node:url'
 
 const ICI = dirname(fileURLToPath(import.meta.url))
 const SORTIE = resolve(ICI, '../src/catalogue.json')
+const SORTIE_DOCS = resolve(ICI, '../src/documents.json')
 const BASE = process.env.AIRTABLE_BASE_ID || 'appQ2zqc80kkc6MR1'
 const T_CATALOGUE = 'tblEYxI7LpLZpBPlo'
 const T_SESSIONS = 'tblg3KHANR7nq4cH6'
+const T_DOCUMENTS = 'tblSCxGvNSDdH3Blt'
 
 // Identifiants de champs (stables même si un champ est renommé dans Airtable)
 const C = {
@@ -37,6 +39,16 @@ const S = {
   formation: 'fldXgTjZg5EtYosdJ', type: 'fldMF7SFMhwYFz7K5', debut: 'fldZYdDetuJDMTNsF', fin: 'fldaTV5honw4xJqQL',
   lieu: 'fldOTKtqKr0sQKhLC', places: 'fldqQx5E0d6APrNL1', restantes: 'fldxfFymB8BV1mUnf', statut: 'fldDJgDZEyHxMmw3q',
 }
+const D = {
+  ref: 'fldFfYg5S7zrqgROf', titre: 'fldFCGhX6WU0PWlsm', version: 'fldqQiP8xnhi84YJ0', statut: 'fldMOFv8zq7OW4BW1',
+  date: 'fldyCwllaCBJYedcE', rnq: 'fldS2LL5ZlqPs5ZKI', destinataires: 'fld5ZokEH4L1eoTS2', contenu: 'fldcNJ4MDGkK3uDKb',
+}
+// Un document n'est listé que s'il s'adresse à l'extérieur ; jamais les documents purement internes.
+const DESTINATAIRES_PUBLICS = ['Public / site internet', 'Prospects', 'Stagiaires', 'Clients entreprises']
+// Tout marqueur de travail interne bloque la publication du texte intégral (le document reste « sur demande »).
+const MARQUEURS_INTERNES = /à vérifier|à compléter|à confirmer|à désigner|interne|action a-\d|\[[^\]]*\]|⚠️|écart|non-conformit/i
+// Documents dont la version à jour est déjà une page du site : on renvoie vers la page.
+const PAGES_DU_SITE = { 'YEBA-DOC-01': 'mentions-legales.html', 'YEBA-DOC-02': 'confidentialite.html' }
 const MARQUES_PUBLIQUES = ['Catalogue YEBA — marque YEBA obligatoire', 'Client direct — marque YEBA obligatoire']
 const STATUTS_SESSION_PUBLICS = ['Planifiée', 'Confirmée', 'Ouverte', 'Inscriptions ouvertes']
 
@@ -126,6 +138,42 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
   return { synchronise: new Date().toISOString(), formations, agenda }
 }
 
+/** « 3, 9, 16 » → [3, 9, 16] ; les plages (« 1 à 32 ») ne sont pas dépliées pour ne pas surévaluer la couverture. */
+function lireRnq(v) {
+  const t = texte(v)
+  if (/\d+\s*à\s*\d+/.test(t)) return { indicateurs: [], global: true }
+  const n = [...t.matchAll(/\b(\d{1,2})\b/g)].map((m) => Number(m[1])).filter((x) => x >= 1 && x <= 33)
+  return { indicateurs: [...new Set(n)], global: false }
+}
+
+export function transformerDocuments(documents) {
+  const sortie = []
+  for (const r of documents.records) {
+    const f = r.fields
+    const dest = noms(f[D.destinataires])
+    if (!dest.some((d) => DESTINATAIRES_PUBLICS.includes(d))) continue
+    const ref = texte(f[D.ref])
+    const contenu = texte(f[D.contenu])
+    const lisible = nom(f[D.statut]) === 'En vigueur' && contenu && !MARQUEURS_INTERNES.test(contenu)
+    const { indicateurs, global } = lireRnq(f[D.rnq])
+    sortie.push({
+      ref,
+      titre: texte(f[D.titre]),
+      version: texte(f[D.version]) || null,
+      date: f[D.date] ? String(f[D.date]).slice(0, 10) : null,
+      indicateurs,
+      tousCriteres: global,
+      pour: dest.filter((d) => DESTINATAIRES_PUBLICS.includes(d) || d === 'Financeurs / OPCO'),
+      // Le statut interne (incomplet, à valider…) n'est JAMAIS publié : seul le mode d'accès l'est.
+      acces: PAGES_DU_SITE[ref] ? 'page' : lisible ? 'lecture' : 'demande',
+      page: PAGES_DU_SITE[ref] || null,
+      texte: !PAGES_DU_SITE[ref] && lisible ? contenu : null,
+    })
+  }
+  sortie.sort((a, b) => a.ref.localeCompare(b.ref))
+  return { synchronise: new Date().toISOString(), documents: sortie }
+}
+
 async function toutLire(table, jeton) {
   const records = []
   let offset
@@ -144,15 +192,24 @@ async function toutLire(table, jeton) {
 
 async function principal() {
   const i = process.argv.indexOf('--depuis')
-  let catalogue, sessions
+  let catalogue, sessions, documents
   if (i > -1) {
     const dossier = resolve(process.argv[i + 1])
     catalogue = JSON.parse(await readFile(resolve(dossier, 'catalogue-brut.json'), 'utf8'))
     sessions = JSON.parse(await readFile(resolve(dossier, 'sessions-brut.json'), 'utf8'))
+    documents = await readFile(resolve(dossier, 'documents-brut.json'), 'utf8').then(JSON.parse, () => null)
   } else {
     const jeton = process.env.AIRTABLE_TOKEN
     if (!jeton) throw new Error('AIRTABLE_TOKEN manquant (voir .env.example).')
-    ;[catalogue, sessions] = await Promise.all([toutLire(T_CATALOGUE, jeton), toutLire(T_SESSIONS, jeton)])
+    ;[catalogue, sessions, documents] = await Promise.all([
+      toutLire(T_CATALOGUE, jeton), toutLire(T_SESSIONS, jeton), toutLire(T_DOCUMENTS, jeton),
+    ])
+  }
+  if (documents) {
+    const docs = transformerDocuments(documents)
+    await writeFile(SORTIE_DOCS, JSON.stringify(docs, null, 2) + '\n')
+    const n = (a) => docs.documents.filter((d) => d.acces === a).length
+    console.log(`documents.json : ${n('lecture')} en lecture, ${n('page')} page(s) du site, ${n('demande')} sur demande.`)
   }
   const sortie = transformer(catalogue, sessions)
   await writeFile(SORTIE, JSON.stringify(sortie, null, 2) + '\n')

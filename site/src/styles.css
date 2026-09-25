@@ -908,3 +908,88 @@ html[data-contraste='1'] .ifa-panneau { border: 3px solid #000; }
 html[data-calme='1'] .formation:hover::after, html[data-calme='1'] .formation:focus-visible::after, html[data-calme='1'] .formation.vedette::after { animation: none; }
 /* Champ piège anti-robot : hors écran, invisible aux humains et aux lecteurs d'écran */
 .ifa-piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---------- Qualiopi : la preuve, pas la promesse ---------- */
+.qualiopi .q-tete { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: end; }
+.q-certif {
+  display: flex; gap: 14px; align-items: center; background: var(--bleu); color: #fff;
+  padding: 20px 24px; border-radius: var(--rayon); box-shadow: var(--ombre);
+}
+.q-certif svg { color: var(--or); flex: none; }
+.q-certif p { display: grid; line-height: 1.35; }
+.q-certif strong { font-family: var(--titre); font-size: 1.05rem; }
+.q-certif span { color: var(--texte-sombre); font-size: 0.95rem; }
+.q-chiffres { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 40px 0 28px; }
+.q-chiffres li {
+  background: #fff; border-radius: 18px; padding: 18px 20px; border-left: 6px solid var(--or);
+  font-weight: 700; color: var(--bleu); box-shadow: 0 14px 34px -26px rgba(7, 15, 32, 0.6);
+}
+.q-chiffres strong { display: block; font-family: var(--titre); font-size: 2.4rem; line-height: 1; color: var(--bleu); }
+.q-vues .onglet { font-size: 1rem; }
+.q-docs { list-style: none; display: grid; gap: 14px; margin-top: 24px; }
+.q-doc {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  background: #fff; border-radius: 18px; padding: 18px 22px; border: 1px solid rgba(27, 58, 107, 0.1);
+}
+.q-doc-icone { color: var(--bleu); }
+.q-doc-corps { min-width: 0; }
+.q-doc-ref { font-family: var(--titre); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.06em; color: var(--bleu); }
+.q-doc h3 { font-size: 1.15rem; color: var(--noir); margin: 4px 0; line-height: 1.25; }
+.q-doc-rnq { font-size: 0.92rem; color: var(--texte-clair); }
+.q-doc .btn { white-space: nowrap; }
+.q-carte { display: grid; grid-template-columns: 1.4fr 1fr; gap: 28px; margin-top: 28px; align-items: start; }
+.q-legende { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 18px; font-weight: 700; font-size: 0.92rem; }
+.q-legende span { display: inline-flex; gap: 8px; align-items: center; }
+.q-pt { width: 18px; height: 18px; border-radius: 6px; display: inline-block; }
+.q-pt.en-ligne, .q-ind.en-ligne { background: var(--bleu); color: #fff; border: 2px solid var(--bleu); }
+.q-pt.sur-demande, .q-ind.sur-demande { background: #fff; color: var(--bleu); border: 2px solid var(--bleu); }
+.q-pt.audit, .q-ind.audit { background: #eef2f8; color: #3c4a60; border: 2px dashed #7d8aa0; }
+.q-criteres { display: grid; gap: 14px; }
+.q-critere { background: #fff; border-radius: 18px; padding: 16px 18px; }
+.q-critere h3 { font-size: 1rem; color: var(--bleu); display: flex; gap: 10px; align-items: center; margin-bottom: 12px; }
+.q-num {
+  flex: none; width: 30px; height: 30px; border-radius: 9px; background: var(--or); color: var(--bleu-nuit);
+  display: grid; place-items: center; font-size: 0.9rem;
+}
+.q-puces { display: flex; flex-wrap: wrap; gap: 8px; }
+.q-ind {
+  min-width: 48px; height: 48px; border-radius: 12px; font-family: var(--titre); font-weight: 800; font-size: 1.05rem;
+  transition: transform .2s, box-shadow .2s;
+}
+.q-ind:hover { transform: translateY(-2px); }
+.q-ind[aria-pressed='true'] { box-shadow: 0 0 0 4px var(--or); }
+.q-detail {
+  position: sticky; top: 110px; background: var(--bleu); color: #fff; border-radius: var(--rayon); padding: 26px;
+  min-height: 180px;
+}
+.q-detail h3 { color: var(--or); margin-bottom: 10px; }
+.q-detail ul { margin-top: 14px; padding-left: 1.1em; display: grid; gap: 8px; }
+.q-detail .q-muet { color: var(--texte-sombre); }
+.q-note { margin-top: 32px; font-size: 0.9rem; max-width: 80ch; }
+.q-lecteur { width: min(860px, 100%); }
+.q-texte h4 { margin-top: 12px; }
+.q-texte h5 { font-family: var(--titre); font-size: 1rem; color: var(--noir); margin-top: 6px; }
+.q-texte p { margin: 0; }
+.q-texte .q-puce { padding-left: 1.2em; position: relative; }
+.q-texte .q-puce::before { content: ''; position: absolute; left: 0; top: 0.65em; width: 8px; height: 8px; border-radius: 2px; background: var(--or); }
+.q-imprimer { justify-self: start; }
+@media (max-width: 900px) {
+  .qualiopi .q-tete, .q-carte { grid-template-columns: 1fr; }
+  .q-detail { position: static; }
+}
+@media (max-width: 640px) {
+  .q-chiffres { grid-template-columns: 1fr; gap: 10px; }
+  .q-chiffres li { display: flex; gap: 12px; align-items: center; }
+  .q-chiffres strong { font-size: 2rem; }
+  .q-doc { grid-template-columns: 1fr; gap: 10px; padding: 18px; }
+  .q-doc-icone { display: none; }
+  .q-doc .btn { justify-self: start; white-space: normal; }
+}
+@media print {
+  body.impr-doc > :not(.q-lecteur-fond) { display: none !important; }
+  body.impr-doc .q-lecteur-fond { position: static; background: none; backdrop-filter: none; padding: 0; display: block; }
+  body.impr-doc .q-lecteur { max-height: none; overflow: visible; box-shadow: none; width: 100%; }
+  body.impr-doc .fermer, body.impr-doc .q-imprimer { display: none; }
+  body.impr-doc .formation-tete { background: #fff; color: #000; border-bottom: 2px solid #000; }
+  body.impr-doc .formation-tete h3, body.impr-doc .formation-tete p { color: #000; }
+}

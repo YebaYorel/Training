@@ -1,0 +1,263 @@
+{
+  "synchronise": "2026-09-25T20:06:40.994Z",
+  "documents": [
+    {
+      "ref": "YEBA-DOC-01",
+      "titre": "Mentions légales",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        3
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises"
+      ],
+      "acces": "page",
+      "page": "mentions-legales.html",
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-02",
+      "titre": "Politique de confidentialité et de protection des données",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        3,
+        8,
+        26,
+        28
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises"
+      ],
+      "acces": "page",
+      "page": "confidentialite.html",
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-03",
+      "titre": "Conditions générales de vente et de prestation",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        2,
+        3,
+        4,
+        10,
+        16
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-04",
+      "titre": "Règlement intérieur applicable aux stagiaires",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        3,
+        9,
+        16,
+        28
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Stagiaires",
+        "Clients entreprises"
+      ],
+      "acces": "lecture",
+      "page": null,
+      "texte": "YEBA FORMATIONS — RÈGLEMENT INTÉRIEUR APPLICABLE AUX STAGIAIRES\nRéf. YEBA-DOC-04 | Version 1.0 | Édition du 10/09/2026 | Révision annuelle\nÉtabli en application des articles L.6352-3 à L.6352-5 et R.6352-1 à R.6352-15 du code du travail. Indicateur RNQ 3.\nRemis à chaque stagiaire AVANT son entrée en formation, et affiché dans la salle.\n\nTITRE PRÉLIMINAIRE — CHAMP D'APPLICATION\n\nArticle 1 — Personnes concernées\nLe présent règlement s'applique à toute personne suivant une action de formation dispensée par YEBA FORMATIONS, quel que soit le lieu : locaux de l'Organisme, locaux du Client, salle louée, ou formation à distance.\nLorsque la formation se déroule dans les locaux d'une entreprise d'accueil, les dispositions d'hygiène et de sécurité de cette entreprise s'appliquent aux stagiaires en complément du présent règlement. En cas de contradiction, la disposition la plus protectrice prévaut.\n\nArticle 2 — Entrée en vigueur et acceptation\nLe règlement est remis à chaque stagiaire avant son entrée en formation. Son acceptation est matérialisée par la signature de l'accusé de réception figurant en dernière page. L'accès à la formation vaut acceptation.\n\nTITRE I — HYGIÈNE ET SÉCURITÉ\n\nArticle 3 — Règle générale\nChaque stagiaire veille à sa sécurité personnelle et à celle des autres. Il respecte les consignes générales et particulières de sécurité en vigueur sur le lieu de formation.\n\nArticle 4 — Consignes d'incendie et d'évacuation\nLes consignes d'incendie, les issues de secours et les points de rassemblement sont portés à la connaissance des stagiaires AU DÉBUT DE CHAQUE SESSION, par le formateur. En cas d'alerte, le stagiaire suit sans délai les instructions données et rejoint le point de rassemblement.\n\nArticle 5 — Risque cyclonique et alertes météorologiques\nEn cas de déclenchement d'une alerte cyclonique orange ou rouge, ou d'une alerte rouge forte pluie par la préfecture de La Réunion :\n• l'ALERTE ORANGE entraîne la suspension immédiate de la session en cours ; les stagiaires regagnent leur domicile sans délai ;\n• l'ALERTE ROUGE interdit tout déplacement : nul ne se rend sur le lieu de formation ;\n• la session est REPORTÉE SANS FRAIS pour le stagiaire ni pour le Client.\n\nArticle 6 — Accident\nTout accident, même bénin, survenu pendant la formation ou pendant le trajet, est SIGNALÉ IMMÉDIATEMENT au formateur, qui en informe la direction. Une déclaration est établie sans délai. Pour un salarié en formation, l'accident relève du régime de l'accident du travail : l'employeur est informé sans délai et procède aux déclarations lui incombant.\n\nArticle 7 — Boissons alcoolisées et substances\nIl est interdit d'introduire ou de consommer des boissons alcoolisées ou des substances illicites sur le lieu de formation. L'ACCÈS À LA FORMATION EST REFUSÉ à toute personne en état d'ébriété ou sous l'emprise de substances, pour sa sécurité et celle du groupe.\n\nArticle 8 — Interdiction de fumer et de vapoter\nIl est interdit de fumer et de vapoter dans les locaux de formation, conformément aux articles L.3512-8 et L.3513-6 du code de la santé publique.\n\nArticle 9 — Restauration\nIl est interdit de prendre ses repas dans les salles de formation, sauf disposition contraire expressément prévue par l'organisation de la session.\n\nTITRE II — DISCIPLINE ET COMPORTEMENT\n\nArticle 10 — Horaires et assiduité\nLes horaires sont fixés par la convocation et rappelés en début de session. Horaires type : 08h30–12h00 / 13h00–16h30, avec une pause de 15 minutes le matin, une pause de 15 minutes l'après-midi, et une pause méridienne de 60 minutes.\nLe stagiaire est tenu de suivre l'intégralité de la formation et de SIGNER LA FEUILLE D'ÉMARGEMENT PAR DEMI-JOURNÉE. Toute absence ou retard est signalé au formateur et justifié.\nL'ÉMARGEMENT N'EST PAS UNE FORMALITÉ. C'est la preuve légale de la réalisation de l'action (code du travail, art. L.6362-1 et suivants). Une demi-journée non émargée peut conduire le financeur à refuser sa prise en charge : la somme correspondante reste alors due par le Client ou par le stagiaire.\n\nArticle 11 — Accès aux locaux\nLe stagiaire n'accède aux locaux que pour suivre la formation, aux horaires prévus. Il ne peut s'y trouver à d'autres fins, ni y introduire des personnes étrangères à la formation, ni y procéder à des ventes ou à des activités de propagande.\n\nArticle 12 — Usage du matériel\nLe matériel mis à disposition est utilisé conformément à son objet et restitué en fin de session. Toute anomalie est signalée. Le stagiaire ne peut emporter aucun matériel sans autorisation écrite.\n\nArticle 13 — Téléphones et appareils personnels\nLes téléphones sont mis en mode silencieux pendant les séquences. Les communications se prennent en dehors de la salle, pendant les pauses.\n\nArticle 14 — Enregistrement des séances\nTout enregistrement audio, vidéo ou photographique d'une séance est INTERDIT, sauf autorisation écrite préalable de l'Organisme ET de l'ensemble des personnes concernées. Cette règle protège le droit à l'image des participants et la propriété intellectuelle des contenus.\n\nArticle 15 — Respect des personnes\nLes échanges se déroulent dans le respect mutuel. Sont interdits et sanctionnés : tout propos ou comportement à caractère discriminatoire, sexiste, raciste, homophobe ou validiste, tout harcèlement moral ou sexuel, toute agression verbale ou physique.\n\nArticle 16 — Confidentialité du groupe\nLes formations abordent des situations professionnelles réelles apportées par les participants. CE QUI EST DIT DANS LA SALLE NE SORT PAS DE LA SALLE. Cet engagement lie chaque stagiaire et le formateur, et vaut pour les informations relatives aux entreprises et aux personnes évoquées.\n\nArticle 17 — Documents pédagogiques\nLes supports remis sont réservés à l'usage personnel du stagiaire. Leur reproduction, leur diffusion et leur utilisation à des fins de formation de tiers sont interdites. Leur utilisation pour entraîner ou évaluer un système d'intelligence artificielle est interdite.\n\nTITRE III — SANCTIONS ET PROCÉDURE DISCIPLINAIRE\n\nArticle 18 — Nature des sanctions (art. R.6352-3 du code du travail)\nConstitue une sanction toute mesure, autre que les observations verbales, prise par le directeur à la suite d'un agissement du stagiaire considéré comme fautif. Selon la gravité :\n1. l'avertissement écrit ;\n2. le blâme ;\n3. l'exclusion temporaire de la formation ;\n4. l'exclusion définitive de la formation.\n\nArticle 19 — Garanties de procédure (art. R.6352-4 à R.6352-8)\nAucune sanction ne peut être infligée sans que le stagiaire ait été informé au préalable, PAR ÉCRIT, DES GRIEFS retenus contre lui.\n• Lorsque la sanction envisagée est autre qu'un avertissement ou un blâme sans conséquence immédiate sur la présence : le stagiaire est CONVOQUÉ par lettre recommandée avec avis de réception ou remise en main propre contre décharge, indiquant l'objet, la date, l'heure et le lieu de l'entretien, et PRÉCISANT QU'IL PEUT SE FAIRE ASSISTER PAR UNE PERSONNE DE SON CHOIX, stagiaire ou salarié de l'organisme.\n• Au cours de l'entretien, le directeur indique le motif de la sanction envisagée et recueille les explications du stagiaire.\n• La sanction ne peut intervenir MOINS D'UN JOUR FRANC NI PLUS DE QUINZE JOURS après l'entretien. Elle est notifiée par écrit motivé, par lettre recommandée ou remise contre décharge.\n• MESURE CONSERVATOIRE : lorsque l'agissement rend indispensable une mesure immédiate, une exclusion temporaire à effet immédiat peut être prononcée ; aucune sanction définitive ne peut alors être prise sans que la procédure ci-dessus ait été respectée.\n\nArticle 20 — Information de l'employeur et du financeur (art. R.6352-8)\nLorsque le stagiaire est un salarié envoyé par son employeur, ou lorsque la formation est financée par un tiers, l'employeur et le financeur sont informés de la sanction prononcée.\n\nArticle 21 — Conséquences financières de l'exclusion\nL'exclusion définitive prononcée pour faute ne donne lieu à aucun remboursement. Les heures non suivies ne sont pas facturées au financeur ; elles restent dues par le Client.\n\nTITRE IV — REPRÉSENTATION DES STAGIAIRES\n\nArticle 22 — Élection de délégués (art. R.6352-9 à R.6352-12)\nPour toute action de formation d'une durée SUPÉRIEURE À 500 HEURES, il est procédé à l'élection d'un délégué titulaire et d'un délégué suppléant, au scrutin uninominal à deux tours. Tous les stagiaires sont électeurs et éligibles.\nL'élection est organisée par le directeur pendant les heures de formation, au plus tôt 20 heures et au plus tard 40 heures après le début du stage. Lorsque aucune candidature n'est présentée, un PROCÈS-VERBAL DE CARENCE est établi et transmis au préfet de région.\nLes délégués font toute suggestion pour améliorer le déroulement des stages et les conditions de vie ; ils présentent les réclamations individuelles et collectives relatives à la formation, à l'hygiène et à la sécurité, et à l'application du présent règlement.\n\nArticle 23 — Actions de moins de 500 heures\nPour les actions d'une durée inférieure à 500 heures — cas de l'ensemble des formations actuellement au catalogue — l'élection n'est pas requise. Les réclamations sont alors adressées directement au directeur, selon la procédure YEBA-DOC-09, dont le stagiaire est informé en début de session.\n\nTITRE V — RÉCLAMATIONS, HANDICAP ET DONNÉES\n\nArticle 24 — Réclamations\nToute réclamation peut être adressée à yebaformations@gmail.com ou remise au formateur. Accusé de réception sous 48 heures ouvrées, réponse motivée sous 15 jours ouvrés. La procédure complète (YEBA-DOC-09) est remise avec le présent règlement.\n\nArticle 25 — Situation de handicap\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45.\nTout besoin d'aménagement peut être signalé À TOUT MOMENT, y compris en cours de formation, et sera examiné sans délai. LE STAGIAIRE N'A PAS À INDIQUER LA NATURE DE SON HANDICAP : seul le besoin d'aménagement est demandé.\n\nArticle 26 — Données personnelles\nLe traitement des données personnelles des stagiaires est décrit dans la Politique de confidentialité (réf. YEBA-DOC-02), remise avec le présent règlement.\n\nACCUSÉ DE RÉCEPTION\nJe soussigné(e) .................................................................., stagiaire de l'action de formation « ............................................... », reconnais avoir reçu, lu et compris le règlement intérieur de YEBA FORMATIONS, ainsi que la politique de confidentialité et la procédure de réclamation qui y sont annexées.\nFait à ................................ le ......................\nSignature du stagiaire :\n\n────────────────────\nYEBA FORMATIONS — Aurélien LUMEKA, directeur\n9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion\nTél. 0693 32 24 45 — yebaformations@gmail.com\nSIRET 814 622 262 00032\nDéclaration d'activité n° 04973676397 auprès du Préfet de La Réunion.\nCet enregistrement ne vaut pas agrément de l'État.\nCertification Qualiopi n° 25FOR02027.1 délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC).\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com\n────────────────────"
+    },
+    {
+      "ref": "YEBA-DOC-05",
+      "titre": "Convention de formation professionnelle (modèle — client entreprise)",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        3,
+        4,
+        5,
+        6,
+        8,
+        12,
+        21
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-06",
+      "titre": "Contrat de formation professionnelle (modèle — particulier)",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        3,
+        5,
+        6,
+        12,
+        16
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Stagiaires",
+        "Prospects"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-08",
+      "titre": "Politique handicap et accessibilité",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        8,
+        20,
+        26,
+        28,
+        32
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-09",
+      "titre": "Procédure de traitement des réclamations, difficultés et aléas",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        10,
+        16,
+        30,
+        31,
+        32
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-10",
+      "titre": "Charte qualité et engagements de service",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [],
+      "tousCriteres": true,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-11",
+      "titre": "Charte d'usage de l'intelligence artificielle",
+      "version": "1.1",
+      "date": "2026-09-23",
+      "indicateurs": [
+        21,
+        22,
+        23,
+        25
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Clients entreprises",
+        "Prospects",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-12",
+      "titre": "Politique tarifaire 2026",
+      "version": "2.0",
+      "date": "2026-09-22",
+      "indicateurs": [
+        1
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    },
+    {
+      "ref": "YEBA-DOC-13",
+      "titre": "Notice des financements mobilisables",
+      "version": "1.0",
+      "date": "2026-09-10",
+      "indicateurs": [
+        1,
+        3,
+        4
+      ],
+      "tousCriteres": false,
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises",
+        "Stagiaires",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null,
+      "texte": null
+    }
+  ]
+}

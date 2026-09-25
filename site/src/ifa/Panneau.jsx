@@ -32,6 +32,8 @@ export default function Panneau({ onFermer }) {
   const [saisie, setSaisie] = useState('')
   const fil = useRef(null)
   const champ = useRef(null)
+  // Mémoire de la conversation (formation évoquée, ton du visiteur) : en mémoire vive seulement, jamais stockée
+  const memoire = useRef({})
 
   function repondreAvecDelai(rep, delai = 700) {
     setEcrit(true)
@@ -65,9 +67,10 @@ export default function Panneau({ onFermer }) {
     if (!q) return
     setSaisie('')
     setMessages((m) => [...m, { id: nouvelId(), de: 'moi', texte: [q] }])
-    const rep = repondre(RACCOURCIS[q] ?? q)
+    const rep = repondre(RACCOURCIS[q] ?? q, memoire.current)
     const longueur = rep.texte.join(' ').length
-    repondreAvecDelai(rep, Math.min(450 + longueur * 4, 1500))
+    // Temps de « frappe » proportionnel à la réponse, avec une légère variation : plus naturel
+    repondreAvecDelai(rep, Math.min(500 + longueur * 3.5 + Math.random() * 250, 1800))
   }
 
   return (

@@ -1,0 +1,200 @@
+{
+  "source": "Référentiel national qualité — synthèse des intitulés (décret n° 2026-728 du 01/08/2026). Texte exact : Légifrance.",
+  "criteres": [
+    {
+      "n": 1,
+      "titre": "Information du public"
+    },
+    {
+      "n": 2,
+      "titre": "Objectifs et adaptation des prestations"
+    },
+    {
+      "n": 3,
+      "titre": "Accueil, accompagnement, suivi et évaluation"
+    },
+    {
+      "n": 4,
+      "titre": "Moyens pédagogiques, techniques et d'encadrement"
+    },
+    {
+      "n": 5,
+      "titre": "Qualification et développement des compétences des intervenants"
+    },
+    {
+      "n": 6,
+      "titre": "Inscription dans l'environnement professionnel"
+    },
+    {
+      "n": 7,
+      "titre": "Recueil et prise en compte des appréciations et réclamations"
+    }
+  ],
+  "indicateurs": [
+    {
+      "n": 1,
+      "critere": 1,
+      "libelle": "Information du public accessible, détaillée et vérifiable sur les prestations : prérequis, objectifs, durée, modalités et délais d'accès, tarifs, contacts, méthodes mobilisées, modalités d'évaluation, accessibilité handicap."
+    },
+    {
+      "n": 2,
+      "critere": 1,
+      "libelle": "Diffusion d'indicateurs de résultats adaptés à la nature des prestations et des publics."
+    },
+    {
+      "n": 3,
+      "critere": 1,
+      "libelle": "Pour les prestations conduisant à une certification professionnelle : information sur les taux d'obtention, les possibilités de valider des blocs de compétences, les équivalences, passerelles, suites de parcours et débouchés."
+    },
+    {
+      "n": 4,
+      "critere": 2,
+      "libelle": "Le prestataire analyse le besoin du bénéficiaire en lien avec l'entreprise et/ou le financeur le cas échéant."
+    },
+    {
+      "n": 5,
+      "critere": 2,
+      "libelle": "Le prestataire définit les objectifs opérationnels et évaluables de la prestation."
+    },
+    {
+      "n": 6,
+      "critere": 2,
+      "libelle": "Le prestataire établit les contenus et les modalités de mise en œuvre de la prestation, adaptés aux objectifs définis et aux publics bénéficiaires."
+    },
+    {
+      "n": 7,
+      "critere": 2,
+      "libelle": "Pour les prestations certifiantes : adéquation du contenu aux exigences de la certification visée."
+    },
+    {
+      "n": 8,
+      "critere": 3,
+      "libelle": "Le prestataire met en œuvre des pratiques de positionnement et d'évaluation des acquis à l'entrée de la prestation."
+    },
+    {
+      "n": 9,
+      "critere": 3,
+      "libelle": "Le prestataire informe les publics bénéficiaires des conditions de déroulement de la prestation."
+    },
+    {
+      "n": 10,
+      "critere": 3,
+      "libelle": "Adaptation de la prestation, de l'accompagnement et du suivi aux publics bénéficiaires."
+    },
+    {
+      "n": 11,
+      "critere": 3,
+      "libelle": "Évaluation de l'atteinte par les publics bénéficiaires des objectifs de la prestation."
+    },
+    {
+      "n": 12,
+      "critere": 3,
+      "libelle": "Engagement des bénéficiaires et prévention des ruptures de parcours."
+    },
+    {
+      "n": 13,
+      "critere": 3,
+      "libelle": "Démarche d'amélioration continue de l'accompagnement des apprenants en alternance et du placement en entreprise."
+    },
+    {
+      "n": 14,
+      "critere": 3,
+      "libelle": "(CFA) Accompagnement socio-professionnel, éducatif et relatif à l'exercice de la citoyenneté."
+    },
+    {
+      "n": 15,
+      "critere": 3,
+      "libelle": "(CFA) Information des apprentis sur leurs droits et devoirs, et sur les règles applicables en matière de santé et sécurité."
+    },
+    {
+      "n": 16,
+      "critere": 3,
+      "libelle": "Pour les prestations certifiantes : information et accompagnement des bénéficiaires sur les conditions de présentation à la certification."
+    },
+    {
+      "n": 17,
+      "critere": 4,
+      "libelle": "Le prestataire met à disposition des moyens humains et techniques adaptés et un environnement approprié (conditions, locaux, équipements, etc.)."
+    },
+    {
+      "n": 18,
+      "critere": 4,
+      "libelle": "Le prestataire mobilise et coordonne les différents intervenants internes et/ou externes (pédagogiques, administratifs, logistiques, commerciaux…)."
+    },
+    {
+      "n": 19,
+      "critere": 4,
+      "libelle": "Le prestataire met à disposition du bénéficiaire des ressources pédagogiques et permet à celui-ci de se les approprier."
+    },
+    {
+      "n": 20,
+      "critere": 4,
+      "libelle": "(CFA) Personnel dédié à l'appui à la mobilité nationale et internationale, référent handicap et conseil de perfectionnement."
+    },
+    {
+      "n": 21,
+      "critere": 5,
+      "libelle": "Le prestataire détermine, mobilise et évalue les compétences des différents intervenants internes et/ou externes, adaptées aux prestations."
+    },
+    {
+      "n": 22,
+      "critere": 5,
+      "libelle": "Le prestataire entretient et développe les compétences de ses salariés, adaptées aux prestations qu'il délivre."
+    },
+    {
+      "n": 23,
+      "critere": 6,
+      "libelle": "Le prestataire réalise une veille légale et réglementaire sur le champ de la formation professionnelle et en exploite les enseignements."
+    },
+    {
+      "n": 24,
+      "critere": 6,
+      "libelle": "Le prestataire réalise une veille sur les évolutions des compétences, des métiers et des emplois dans ses secteurs d'intervention et en exploite les enseignements."
+    },
+    {
+      "n": 25,
+      "critere": 6,
+      "libelle": "Le prestataire réalise une veille sur les innovations pédagogiques et technologiques permettant une évolution de ses prestations et en exploite les enseignements."
+    },
+    {
+      "n": 26,
+      "critere": 6,
+      "libelle": "Mobilisation des expertises, outils et réseaux nécessaires pour accueillir, accompagner, former ou orienter les publics en situation de handicap."
+    },
+    {
+      "n": 27,
+      "critere": 6,
+      "libelle": "En cas de sous-traitance ou de portage salarial : le prestataire s'assure du respect de la conformité au référentiel par le sous-traitant ou le salarié porté."
+    },
+    {
+      "n": 28,
+      "critere": 6,
+      "libelle": "(Alternance) Mobilisation des entreprises et réseaux pour le placement des apprenants en alternance."
+    },
+    {
+      "n": 29,
+      "critere": 6,
+      "libelle": "(CFA) Accompagnement à l'insertion professionnelle et à la poursuite de parcours des apprentis."
+    },
+    {
+      "n": 30,
+      "critere": 7,
+      "libelle": "Le prestataire met en œuvre des modalités d'évaluation permettant de recueillir les appréciations des parties prenantes."
+    },
+    {
+      "n": 31,
+      "critere": 7,
+      "libelle": "Traitement des difficultés rencontrées et des réclamations exprimées par les parties prenantes ; exploitation pour améliorer la prestation."
+    },
+    {
+      "n": 32,
+      "critere": 7,
+      "libelle": "Le prestataire met en œuvre une démarche d'amélioration continue."
+    },
+    {
+      "n": 33,
+      "critere": 7,
+      "libelle": "(CFA) Évaluation des enseignements par les apprentis — indicateur créé par le décret n° 2026-728."
+    }
+  ]
+}

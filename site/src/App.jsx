@@ -41,6 +41,7 @@ import { AGENDA, CERTIFS, ENTREPRISE, FILTRES, FINANCEURS, FORMATIONS, PROFILS, 
 import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } from './anim.jsx'
 import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 import Lanceur from './ifa/Lanceur.jsx'
+import Qualiopi from './qualiopi.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
@@ -48,6 +49,7 @@ const SECTIONS = [
   { id: 'formations', label: 'Formations' },
   { id: 'implementation', label: 'Solutions IA' },
   { id: 'gouvernance', label: 'RGPD & IA Act' },
+  { id: 'qualiopi', label: 'Qualiopi' },
   { id: 'financement', label: 'Financement' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -134,6 +136,7 @@ export default function App() {
         <Implementation />
         <Methode />
         <Gouvernance />
+        <Qualiopi />
         <Resultats />
         <APropos />
         <Reunion />

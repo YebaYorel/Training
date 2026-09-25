@@ -20,5 +20,7 @@ env/
 node_modules/
 dist/
 apercu/
+apercu-espace/
+dist-espace/
 YEBA-site-apercu.html
 site/airtable/
