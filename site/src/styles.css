@@ -613,17 +613,16 @@ html, body { overflow-x: hidden; }
 /* ================= Effets inspirés de Magic UI (recodés, sans dépendance) ================= */
 /* Faisceau qui fait le tour d'un cadre (« border beam ») — version composée par la carte graphique :
    un grand dégradé conique tourne (transform), un calque intérieur le masque sauf sur 2 px de bord. */
-.formation.vedette, .diagnostic { position: relative; isolation: isolate; overflow: hidden; }
-.formation.vedette::before, .diagnostic::before {
+.diagnostic { position: relative; isolation: isolate; overflow: hidden; }
+.diagnostic::before {
   content: ''; position: absolute; z-index: -2; left: 50%; top: 50%; width: 200%; aspect-ratio: 1;
   translate: -50% -50%; pointer-events: none;
   background: conic-gradient(from 0deg, transparent 0 72%, var(--or-clair) 86%, #5b8bd6 93%, transparent 100%);
   animation: tour 6s linear infinite; will-change: transform;
 }
-.formation.vedette::after, .diagnostic::after {
+.diagnostic::after {
   content: ''; position: absolute; z-index: -1; inset: 2px; border-radius: calc(var(--rayon) - 2px); pointer-events: none;
 }
-.formation.vedette::after { background: #fff; }
 .diagnostic::after {
   border-radius: 28px;
   background:
@@ -639,8 +638,8 @@ html, body { overflow-x: hidden; }
   animation: reflet 3.2s ease-in-out infinite;
 }
 @keyframes reflet { 60%, 100% { transform: translateX(120%); } }
-@media (prefers-reduced-motion: reduce) { .btn-or::after, .formation.vedette::before, .diagnostic::before { animation: none; } }
-html[data-calme='1'] .btn-or::after, html[data-calme='1'] .formation.vedette::before, html[data-calme='1'] .diagnostic::before { animation: none; }
+@media (prefers-reduced-motion: reduce) { .btn-or::after, .diagnostic::before { animation: none; } }
+html[data-calme='1'] .btn-or::after, html[data-calme='1'] .diagnostic::before { animation: none; }
 
 /* ================= Parcours par profil ================= */
 .profils { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 50px; }
@@ -884,3 +883,26 @@ html[data-contraste='1'] .ifa-panneau { border: 3px solid #000; }
   .ifa-lanceur-nom { display: none; }
   .ifa-lanceur { padding: 4px; }
 }
+
+/* ================= Liseré tournant au survol d'une formation =================
+   Un anneau de 3 px posé AU-DESSUS de la carte (masque « bord seulement »), pour qu'il fasse tout le tour,
+   y compris sur l'en-tête bleu. Dégradé conique aux couleurs YEBA, dont l'angle tourne.
+   Seule la carte survolée (ou la carte vedette) est animée : aucun coût pour le reste de la page. */
+@property --liseret { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+.formation { position: relative; transition: box-shadow .3s ease; }
+.formation::after {
+  content: ''; position: absolute; inset: 0; z-index: 4; border-radius: inherit; padding: 3px; pointer-events: none;
+  background: conic-gradient(from var(--liseret), var(--bleu) 0%, #3d6bb3 22%, var(--or) 42%, var(--or-clair) 50%, var(--or) 58%, #3d6bb3 78%, var(--bleu) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: 0; transition: opacity .3s ease;
+}
+.formation:hover::after, .formation:focus-visible::after, .formation.vedette::after {
+  opacity: 1; animation: liseret 2.6s linear infinite;
+}
+.formation:hover, .formation:focus-visible { box-shadow: 0 24px 50px -24px rgba(201, 168, 76, 0.55), 0 18px 40px -28px rgba(7, 15, 32, 0.6); }
+.formation.vedette::after { animation-duration: 5s; }
+.formation.vedette:hover::after { animation-duration: 2.6s; }
+@keyframes liseret { to { --liseret: 360deg; } }
+@media (prefers-reduced-motion: reduce) { .formation:hover::after, .formation:focus-visible::after, .formation.vedette::after { animation: none; } }
+html[data-calme='1'] .formation:hover::after, html[data-calme='1'] .formation:focus-visible::after, html[data-calme='1'] .formation.vedette::after { animation: none; }
