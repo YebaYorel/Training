@@ -35,16 +35,17 @@ import {
   Workflow,
   X,
 } from 'lucide-react'
-import { CERTIFS, ENTREPRISE, FILTRES, FORMATIONS } from './data.js'
+import { AGENDA, CERTIFS, ENTREPRISE, FILTRES, FINANCEURS, FORMATIONS, PROFILS, SYNCHRO, euros } from './data.js'
 import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } from './anim.jsx'
+import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
-  { id: 'metiers', label: 'Métiers' },
+  { id: 'diagnostic', label: 'Diagnostic' },
   { id: 'formations', label: 'Formations' },
   { id: 'implementation', label: 'Solutions IA' },
   { id: 'gouvernance', label: 'RGPD & IA Act' },
-  { id: 'apropos', label: 'Qui suis-je' },
+  { id: 'financement', label: 'Financement' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -68,6 +69,11 @@ export default function App() {
   const [taille, setTaille] = useState(() => lirePref('taille', '1'))
   const [contraste, setContraste] = useState(() => lirePref('contraste', '0'))
   const [calme, setCalme] = useState(() => lirePref('calme', '0'))
+  const [profil, setProfil] = useState(null)
+  function choisirProfil(id) {
+    setProfil(id)
+    requestAnimationFrame(() => document.getElementById('formations')?.scrollIntoView())
+  }
 
   useEffect(() => {
     const h = document.documentElement
@@ -90,13 +96,17 @@ export default function App() {
         <Hero calmeForce={calme === '1'} />
         <Bandeau />
         <Metiers />
+        <Parcours onChoisir={choisirProfil} />
         <Chiffres />
-        <Catalogue />
+        <Catalogue profil={profil} onEffacerProfil={() => setProfil(null)} />
         <Implementation />
         <Methode />
         <Gouvernance />
+        <Resultats />
         <APropos />
+        <Reunion />
         <Pratique />
+        <Questions />
         <Contact />
       </main>
       <Pied />
@@ -435,57 +445,72 @@ function Chiffres() {
   )
 }
 
-/* ---------- Catalogue ---------- */
-function Catalogue() {
+/* ---------- Catalogue (données Airtable + mise en scène) ---------- */
+function Catalogue({ profil, onEffacerProfil }) {
   const [filtre, setFiltre] = useState('tout')
   const [ouverte, setOuverte] = useState(null)
-  const liste = FORMATIONS.filter((f) => filtre === 'tout' || f.cat === filtre)
+  const profilActif = PROFILS.find((p) => p.id === profil)
+  const liste = profilActif
+    ? profilActif.refs.map((r) => FORMATIONS.find((f) => f.ref === r)).filter(Boolean)
+    : FORMATIONS.filter((f) => filtre === 'tout' || f.cat === filtre)
   return (
     <section id="formations" className="bloc clair" aria-labelledby="titre-formations" style={{ paddingTop: 40 }}>
       <div className="conteneur">
         <Reveal>
           <p className="surtitre">Le garage à compétences</p>
         </Reveal>
-        <TitreAnime id="titre-formations" texte="Votre entreprise est un moteur. On la règle." />
+        <TitreAnime id="titre-formations" texte="Votre entreprise est un moteur. On la règle." accent={[4]} />
         <Reveal>
           <p className="intro">
-            Allumage, turbo, pilote automatique… Chaque formation porte le nom de la pièce qu’elle améliore. Cliquez sur une
-            carte pour voir ce que vos équipes sauront faire en repartant.
+            Allumage, turbo, pilote automatique… Chaque formation porte le nom de la pièce qu’elle améliore. Tarifs,
+            prérequis et modalités sont affichés en clair sur chaque fiche.
           </p>
         </Reveal>
         <LayoutGroup>
-          <div className="filtres" role="group" aria-label="Filtrer les formations">
-            {FILTRES.map((f) => (
-              <button key={f.id} className="filtre" aria-pressed={filtre === f.id} onClick={() => setFiltre(f.id)}>
-                {filtre === f.id && (
-                  <motion.span layoutId="pastille" className="pastille" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
-                )}
-                <span>{f.label}</span>
+          {profilActif ? (
+            <div className="profil-actif" role="status">
+              <span>
+                Sélection pour : <strong>{profilActif.titre}</strong>
+              </span>
+              <button className="btn btn-contour-bleu btn-petit" onClick={onEffacerProfil}>
+                Voir tout le catalogue
               </button>
-            ))}
-          </div>
+            </div>
+          ) : (
+            <div className="filtres" role="group" aria-label="Filtrer les formations">
+              {FILTRES.map((f) => (
+                <button key={f.id} className="filtre" aria-pressed={filtre === f.id} onClick={() => setFiltre(f.id)}>
+                  {filtre === f.id && (
+                    <motion.span layoutId="pastille" className="pastille" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />
+                  )}
+                  <span>{f.label}</span>
+                </button>
+              ))}
+            </div>
+          )}
           <motion.ul className="grille-formations" layout style={{ listStyle: 'none' }} aria-live="polite">
             <AnimatePresence mode="popLayout">
-              {liste.map((f) => (
+              {liste.map((f, k) => (
                 <motion.li
                   key={f.ref}
                   layout
                   initial={{ opacity: 0, scale: 0.9, y: 30 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.45, ease: EASE }}
+                  transition={{ duration: 0.45, ease: EASE, delay: profilActif ? k * 0.06 : 0 }}
                   style={{ display: 'flex' }}
                 >
-                  <CarteFormation f={f} onOuvrir={() => setOuverte(f)} />
+                  <CarteFormation f={f} onOuvrir={() => setOuverte(f)} vedette={f.badge === 'Le socle'} />
                 </motion.li>
               ))}
             </AnimatePresence>
           </motion.ul>
         </LayoutGroup>
+        <Agenda />
         <Reveal>
-          <p className="note" style={{ marginTop: 36 }}>
-            Tarifs sur devis, en inter comme en intra. Organisme certifié Qualiopi : votre OPCO peut examiner une demande de
-            prise en charge, selon ses propres critères.
+          <p className="note" style={{ marginTop: 28 }}>
+            Prix nets de taxe : TVA non applicable, article 293 B du code général des impôts. Informations issues de notre
+            base de formation, mise à jour le {new Date(SYNCHRO).toLocaleDateString('fr-FR')}.
           </p>
         </Reveal>
       </div>
@@ -494,15 +519,51 @@ function Catalogue() {
   )
 }
 
-function CarteFormation({ f, onOuvrir }) {
+/* Prochaines sessions inter-entreprises, publiées automatiquement depuis Airtable */
+function Agenda() {
+  const fmt = (d) => new Date(d + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric', month: 'long' })
+  return (
+    <Reveal className="agenda" aria-labelledby="titre-agenda">
+      <h3 id="titre-agenda">
+        <CalendarClock size={26} aria-hidden="true" /> Prochaines sessions inter-entreprises
+      </h3>
+      {AGENDA.length ? (
+        <ul>
+          {AGENDA.map((s) => {
+            const f = FORMATIONS.find((x) => x.ref === s.ref)
+            return (
+              <li key={s.ref + s.debut}>
+                <strong>{f?.nom}</strong>
+                <span>
+                  {fmt(s.debut)}
+                  {s.fin !== s.debut && ' → ' + fmt(s.fin)}
+                </span>
+                <span>{s.lieu}</span>
+                {s.placesRestantes != null && <span className="places">{s.placesRestantes} place(s)</span>}
+              </li>
+            )
+          })}
+        </ul>
+      ) : (
+        <p>
+          Les prochaines dates sont en cours de programmation. Écrivez-nous pour être prévenu en premier, ou organisons une
+          session intra, à vos dates, dans vos locaux.
+        </p>
+      )}
+    </Reveal>
+  )
+}
+
+function CarteFormation({ f, onOuvrir, vedette }) {
+  const prix = f.tarifs?.interTotal ?? f.tarifs?.intraTotal
   return (
     <motion.button
-      className="formation"
+      className={'formation' + (vedette ? ' vedette' : '')}
       onClick={onOuvrir}
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       aria-haspopup="dialog"
-      aria-label={`${f.nom} — ${f.sousTitre}. Voir le détail`}
+      aria-label={`${f.nom} — ${f.sousTitre}. Voir la fiche complète`}
     >
       <motion.div className="formation-tete" layoutId={'tete-' + f.ref}>
         {f.badge && <span className="badge">{f.badge}</span>}
@@ -514,9 +575,11 @@ function CarteFormation({ f, onOuvrir }) {
           <span>
             <CalendarClock size={16} aria-hidden="true" /> {f.jours} j · {f.heures} h
           </span>
-          <span>
-            <Users size={16} aria-hidden="true" /> {f.effectif}
-          </span>
+          {f.effectif && (
+            <span>
+              <Users size={16} aria-hidden="true" /> {f.effectif}
+            </span>
+          )}
         </div>
         <ul className="cles">
           {f.cles.map((c) => (
@@ -524,7 +587,16 @@ function CarteFormation({ f, onOuvrir }) {
           ))}
         </ul>
         <div className="formation-pied">
-          Voir le programme
+          <span className="prix">
+            {prix ? (
+              <>
+                <small>{f.tarifs.interTotal ? 'Inter, par personne' : 'Intra, par groupe'}</small>
+                {euros(prix)}
+              </>
+            ) : (
+              'Voir la fiche'
+            )}
+          </span>
           <span className="fleche">
             <ArrowRight size={22} aria-hidden="true" />
           </span>
@@ -534,8 +606,22 @@ function CarteFormation({ f, onOuvrir }) {
   )
 }
 
+const ONGLETS = [
+  ['programme', 'Programme'],
+  ['acces', 'Prérequis & accès'],
+  ['evaluation', 'Évaluation'],
+  ['tarifs', 'Tarifs & financement'],
+  ['handicap', 'Accessibilité'],
+]
+
+function Paragraphes({ texte }) {
+  if (!texte) return <p>Information disponible sur demande.</p>
+  return texte.split(/\n+/).map((l, k) => <p key={k}>{l}</p>)
+}
+
 function FicheFormation({ f, onFermer }) {
   const ref = useRef(null)
+  const [onglet, setOnglet] = useState('programme')
   useEffect(() => {
     const avant = document.activeElement
     ref.current?.focus()
@@ -548,6 +634,8 @@ function FicheFormation({ f, onFermer }) {
       avant?.focus?.()
     }
   }, [onFermer])
+  const t = f.tarifs
+  const ind = f.indicateurs ?? {}
   return (
     <motion.div
       className="fond-modal"
@@ -581,49 +669,164 @@ function FicheFormation({ f, onFermer }) {
             <span>
               <CalendarClock size={16} aria-hidden="true" /> {f.jours} jour{f.jours > 1 ? 's' : ''} · {f.heures} heures
             </span>
-            <span>
-              <Users size={16} aria-hidden="true" /> {f.effectif}
-            </span>
+            {f.effectif && (
+              <span>
+                <Users size={16} aria-hidden="true" /> {f.effectif}
+              </span>
+            )}
             <span>
               <Building2 size={16} aria-hidden="true" /> {f.format}
             </span>
           </div>
-          <div>
-            <h4>Pour qui ?</h4>
-            <p>{f.public}</p>
+          <div className="onglets" role="tablist" aria-label="Sections de la fiche">
+            {ONGLETS.map(([id, label]) => (
+              <button
+                key={id}
+                role="tab"
+                id={'tab-' + id}
+                aria-selected={onglet === id}
+                aria-controls={'panneau-' + id}
+                className="onglet"
+                onClick={() => setOnglet(id)}
+              >
+                {onglet === id && <motion.span layoutId="soulignement" className="soulignement" />}
+                {label}
+              </button>
+            ))}
           </div>
-          {f.objectifs ? (
-            <div>
-              <h4>En repartant, vous saurez :</h4>
-              <ol>
-                {f.objectifs.map((o, k) => (
-                  <motion.li
-                    key={o}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.25 + k * 0.05 }}
-                  >
-                    {o}
-                  </motion.li>
-                ))}
-              </ol>
-            </div>
-          ) : (
-            <p className="note">Programme détaillé en cours de finalisation. Contactez-nous pour être prévenu de l’ouverture.</p>
-          )}
-          <p className="note">
-            Horaires : 08h00–12h00 / 13h00–17h00. Accès : 15 jours ouvrés minimum après inscription. Besoin d’un
-            aménagement ? Notre référent handicap étudie chaque demande. Fiche programme complète sur demande — réf. {f.ref}.
-          </p>
-          <a className="btn btn-bleu" href={`mailto:${ENTREPRISE.email}?subject=${encodeURIComponent('Demande — ' + f.nom)}`}>
-            Demander un devis <ArrowRight size={20} aria-hidden="true" />
-          </a>
-          <button className="btn btn-contour-bleu" onClick={onFermer}>
-            Fermer la fiche
-          </button>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={onglet}
+              role="tabpanel"
+              id={'panneau-' + onglet}
+              aria-labelledby={'tab-' + onglet}
+              className="panneau"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+            >
+              {onglet === 'programme' && (
+                <>
+                  <h4>Pour qui ?</h4>
+                  <Paragraphes texte={f.public} />
+                  {f.objectifs ? (
+                    <>
+                      <h4>En repartant, vous saurez :</h4>
+                      <ol>
+                        {f.objectifs.map((o) => (
+                          <li key={o}>{o}</li>
+                        ))}
+                      </ol>
+                    </>
+                  ) : (
+                    <p className="note">Objectifs détaillés en cours de finalisation. Contactez-nous pour être prévenu.</p>
+                  )}
+                  <p className="discret">
+                    Programme détaillé sur demande — réf. {f.ref}
+                    {f.revision && `, version du ${new Date(f.revision).toLocaleDateString('fr-FR')}`}.
+                  </p>
+                </>
+              )}
+              {onglet === 'acces' && (
+                <>
+                  <h4>Prérequis</h4>
+                  <Paragraphes texte={f.prerequis} />
+                  <h4>Délai et modalités d’accès</h4>
+                  <Paragraphes texte={f.acces} />
+                  <h4>Horaires</h4>
+                  <p>08h00–12h00 / 13h00–17h00, pauses de 10h et 15h incluses : 8 heures de formation par jour.</p>
+                </>
+              )}
+              {onglet === 'evaluation' && (
+                <>
+                  <h4>Comment vos acquis sont évalués</h4>
+                  <Paragraphes texte={f.evaluation} />
+                  <h4>Résultats de cette formation</h4>
+                  <IndicateursFormation ind={ind} />
+                </>
+              )}
+              {onglet === 'tarifs' && (
+                <>
+                  {t ? (
+                    <div className="tarifs">
+                      {t.interTotal && (
+                        <div>
+                          <span>Inter-entreprises</span>
+                          <strong>{euros(t.interTotal)}</strong>
+                          <small>par personne · soit {euros(t.interJour)} / jour</small>
+                        </div>
+                      )}
+                      {t.intraTotal && (
+                        <div>
+                          <span>Intra-entreprise</span>
+                          <strong>{euros(t.intraTotal)}</strong>
+                          <small>
+                            pour le groupe, jusqu’à 10 personnes
+                            {t.supplement ? ` · +${euros(t.supplement)} / pers. / jour au-delà` : ''}
+                          </small>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <p>Tarif sur devis.</p>
+                  )}
+                  {t?.mentionTva && <p className="discret">Prix nets de taxe — {t.mentionTva}.</p>}
+                  <h4>Financements possibles</h4>
+                  <ul className="financeurs">
+                    {(f.financements ?? []).map((n) => (
+                      <li key={n}>
+                        <strong>{n}</strong> — {FINANCEURS[n] ?? 'selon les critères du financeur.'}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {onglet === 'handicap' && (
+                <>
+                  <h4>Accessibilité et aménagements</h4>
+                  <Paragraphes texte={f.adaptations} />
+                  <p>Référent handicap : {ENTREPRISE.dirigeant} — {ENTREPRISE.email}</p>
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+          <div className="modal-actions">
+            <a className="btn btn-bleu" href={`mailto:${ENTREPRISE.email}?subject=${encodeURIComponent('Demande — ' + f.nom + ' (' + f.ref + ')')}`}>
+              Demander un devis <ArrowRight size={20} aria-hidden="true" />
+            </a>
+            <button className="btn btn-contour-bleu" onClick={onFermer}>
+              Fermer la fiche
+            </button>
+          </div>
         </div>
       </motion.div>
     </motion.div>
+  )
+}
+
+function IndicateursFormation({ ind }) {
+  const aDesDonnees = ind.satisfaction != null || ind.reussite != null || ind.stagiaires
+  if (!aDesDonnees)
+    return <p>Formation récente : ses premiers indicateurs seront publiés ici à l’issue des premières sessions.</p>
+  return (
+    <ul className="mini-indicateurs">
+      {ind.stagiaires != null && (
+        <li>
+          <strong>{ind.stagiaires}</strong> stagiaires formés
+        </li>
+      )}
+      {ind.satisfaction != null && (
+        <li>
+          <strong>{ind.satisfaction} %</strong> de satisfaction
+        </li>
+      )}
+      {ind.reussite != null && (
+        <li>
+          <strong>{ind.reussite} %</strong> de réussite
+        </li>
+      )}
+    </ul>
   )
 }
 

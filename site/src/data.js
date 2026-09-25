@@ -1,8 +1,10 @@
-// Contenus publics du site — source : base Airtable « YEBA FORMATIONS - Centre de formation »
-// (tables CATALOGUE FORMATIONS et CONFIG SYSTEME, relevées le 25/09/2026).
-// Exclues volontairement : FOR-0005 et FOR-0007 (marque blanche : YEBA ne doit pas apparaître),
-// FOR-0001 (archivée). Aucun tarif affiché : la grille IA est « à valider » dans CONFIG SYSTEME.
-// Jamais de mention CPF (aucune certification RNCP/RS) ni « formation obligatoire ».
+// Contenus publics du site.
+// • catalogue.json est GÉNÉRÉ depuis Airtable (npm run sync) : il décide QUELLES formations sont publiées
+//   (Active + marque YEBA obligatoire, jamais de marque blanche) et porte les informations réglementaires
+//   (durée, tarifs, prérequis, évaluation, accès, handicap, financements, indicateurs — RNQ ind. 1 et 2).
+// • EDITORIAL ci-dessous n'apporte que la mise en scène : nom court, accroche, mots-clés, badge, filtre.
+// Jamais de mention « finançable CPF » (aucune certification RNCP/RS) ni « formation obligatoire ».
+import catalogue from './catalogue.json'
 
 export const ENTREPRISE = {
   nom: 'YEBA FORMATIONS',
@@ -26,7 +28,7 @@ export const FILTRES = [
   { id: 'metiers', label: 'Vente & management' },
 ]
 
-export const FORMATIONS = [
+const EDITORIAL = [
   {
     ref: 'FOR-0011',
     nom: 'ALLUMAGE-TURBO',
@@ -253,4 +255,165 @@ export const CERTIFS = [
   'MOOC RGPD — CNIL',
   'Référent handicap en organisme de formation',
   'Déclaration d’activité n° 04973676397',
+]
+
+/* ---------- Fusion Airtable + éditorial ---------- */
+const CAT_PAR_DEFAUT = 'ia'
+function fusionner(fiche, edito) {
+  const [nomCourt, ...reste] = fiche.titre.split(' — ')
+  return {
+    ...(edito ?? { nom: nomCourt, sousTitre: reste.join(' — '), cat: CAT_PAR_DEFAUT, cles: [], objectifs: null }),
+    ref: fiche.ref,
+    jours: fiche.jours ?? edito?.jours,
+    heures: fiche.heures ?? edito?.heures,
+    format: fiche.type ?? edito?.format,
+    public: edito?.public || fiche.public,
+    prerequis: fiche.prerequis,
+    evaluation: fiche.evaluation,
+    acces: fiche.acces,
+    adaptations: fiche.adaptations,
+    financements: fiche.financements,
+    tarifs: fiche.tarifs,
+    indicateurs: fiche.indicateurs,
+    revision: fiche.revision,
+  }
+}
+const parRef = Object.fromEntries(EDITORIAL.map((e) => [e.ref, e]))
+const publiees = new Set(catalogue.formations.map((f) => f.ref))
+// Ordre éditorial d'abord, puis toute nouvelle fiche publiée dans Airtable
+export const FORMATIONS = [
+  ...EDITORIAL.filter((e) => publiees.has(e.ref)).map((e) => fusionner(catalogue.formations.find((f) => f.ref === e.ref), e)),
+  ...catalogue.formations.filter((f) => !parRef[f.ref]).map((f) => fusionner(f)),
+]
+export const AGENDA = catalogue.agenda
+export const SYNCHRO = catalogue.synchronise
+
+export const euros = (n) => (n == null ? '' : n.toLocaleString('fr-FR') + ' €')
+
+/* ---------- Parcours par profil ---------- */
+export const PROFILS = [
+  {
+    id: 'dirigeant',
+    titre: 'Je dirige une TPE-PME',
+    texte: 'Décider où l’IA vous fera gagner du temps, sans risque juridique.',
+    refs: ['FOR-0014', 'FOR-0003', 'FOR-0011'],
+  },
+  {
+    id: 'manager',
+    titre: 'Je manage ou je gère les RH',
+    texte: 'Équiper vos équipes et poser des règles claires.',
+    refs: ['FOR-0011', 'FOR-0008', 'FOR-0003', 'FOR-0006'],
+  },
+  {
+    id: 'salarie',
+    titre: 'Je veux gagner du temps au quotidien',
+    texte: 'Des gestes concrets, dès le lendemain de la formation.',
+    refs: ['FOR-0011', 'FOR-0002', 'FOR-0010', 'FOR-0009'],
+  },
+  {
+    id: 'technique',
+    titre: 'Je suis référent informatique',
+    texte: 'Déployer des agents et une IA locale sous contrôle.',
+    refs: ['FOR-0013', 'FOR-0015', 'FOR-0002'],
+  },
+]
+
+/* ---------- Diagnostic express (calcul local, rien n'est envoyé) ---------- */
+export const DIAGNOSTIC = [
+  {
+    q: 'Vos équipes utilisent-elles déjà un outil d’IA (ChatGPT, Copilot, Mistral…) ?',
+    r: [
+      { t: 'Pas encore', m: 0, refs: ['FOR-0011'] },
+      { t: 'Oui, chacun de son côté, sans règles', m: 1, refs: ['FOR-0011', 'FOR-0003'], alerte: 'regles' },
+      { t: 'Oui, avec des règles écrites', m: 3, refs: ['FOR-0013'] },
+    ],
+  },
+  {
+    q: 'Manipulez-vous des données sensibles (santé, RH, juridique, comptabilité) ?',
+    r: [
+      { t: 'Oui, tous les jours', m: 0, refs: ['FOR-0015', 'FOR-0003'], alerte: 'sensible' },
+      { t: 'Parfois', m: 1, refs: ['FOR-0003'] },
+      { t: 'Non', m: 2, refs: [] },
+    ],
+  },
+  {
+    q: 'Combien d’heures par semaine partent en tâches répétitives (devis, relances, ressaisies) ?',
+    r: [
+      { t: 'Moins de 2 heures', m: 2, refs: [] },
+      { t: 'Entre 2 et 5 heures', m: 1, refs: ['FOR-0002'] },
+      { t: 'Plus de 5 heures', m: 0, refs: ['FOR-0002'], alerte: 'automatiser' },
+    ],
+  },
+  {
+    q: 'Votre entreprise travaille-t-elle sous Microsoft 365 ?',
+    r: [
+      { t: 'Oui', m: 1, refs: ['FOR-0006'] },
+      { t: 'Non', m: 1, refs: [] },
+      { t: 'Je ne sais pas', m: 0, refs: [] },
+    ],
+  },
+  {
+    q: 'Avez-vous un inventaire de vos usages d’IA et une charte interne ?',
+    r: [
+      { t: 'Non, rien d’écrit', m: 0, refs: ['FOR-0003', 'FOR-0014'], alerte: 'preuve' },
+      { t: 'En cours', m: 1, refs: ['FOR-0003'] },
+      { t: 'Oui, à jour', m: 3, refs: [] },
+    ],
+  },
+  {
+    q: 'Votre priorité pour les six prochains mois ?',
+    r: [
+      { t: 'Gagner du temps', m: 0, refs: ['FOR-0002', 'FOR-0011'] },
+      { t: 'Sécuriser nos pratiques', m: 0, refs: ['FOR-0003'] },
+      { t: 'Vendre plus', m: 0, refs: ['FOR-0004', 'FOR-0010'] },
+      { t: 'Mieux piloter l’entreprise', m: 0, refs: ['FOR-0014'] },
+    ],
+  },
+]
+export const ALERTES = {
+  regles: 'Des usages sans règles écrites : c’est le premier point à sécuriser (RGPD et IA Act).',
+  sensible: 'Avec des données sensibles, privilégiez une IA locale ou européenne, et un tri strict de ce qui est saisi.',
+  automatiser: 'Plus de 5 heures par semaine : une automatisation se rembourse souvent en quelques semaines.',
+  preuve: 'Sans inventaire ni charte, vous ne pouvez pas prouver les mesures prises. Un audit de gouvernance s’impose.',
+}
+
+/* ---------- Financement ---------- */
+export const FINANCEURS = {
+  OPCO: 'Votre opérateur de compétences peut prendre en charge tout ou partie de la formation de vos salariés, selon ses critères.',
+  'Plan PDC': 'Le plan de développement des compétences : l’entreprise finance la formation de ses salariés, avec ou sans aide.',
+  'France Travail': 'Pour les demandeurs d’emploi, sur accord de France Travail.',
+  AIF: 'L’aide individuelle à la formation de France Travail, sur devis validé par votre conseiller.',
+  Région: 'Selon les dispositifs ouverts par la Région Réunion au moment de votre demande.',
+}
+
+/* ---------- Questions fréquentes ---------- */
+export const FAQ = [
+  [
+    'Mes formations peuvent-elles être financées ?',
+    'Oui, selon votre situation : OPCO, plan de développement des compétences, France Travail (AIF) ou dispositifs de la Région. Nous sommes certifiés Qualiopi, condition exigée par les financeurs publics et paritaires. Nous vous aidons à monter la demande.',
+  ],
+  [
+    'Et le CPF ?',
+    'Pas aujourd’hui : aucune de nos formations n’est enregistrée au RNCP ou au Répertoire spécifique, condition pour être éligible au CPF. Nous préférons vous le dire clairement.',
+  ],
+  [
+    'Combien de temps avant de démarrer ?',
+    '15 jours ouvrés minimum entre l’inscription et le premier jour. Ce délai sert à vous envoyer le test de positionnement et à adapter le contenu à vos dossiers réels.',
+  ],
+  [
+    'Intra ou inter, quelle différence ?',
+    'En intra, nous venons dans vos locaux, pour votre équipe, sur vos cas. En inter, vous rejoignez d’autres entreprises en salle de séminaire : idéal pour une ou deux personnes.',
+  ],
+  [
+    'Nos données sont-elles en sécurité pendant la formation ?',
+    'Chaque stagiaire travaille avec un compte professionnel, jamais personnel. Nous apprenons à trier ce qui peut être saisi, ce qui doit être anonymisé et ce qui ne doit jamais l’être.',
+  ],
+  [
+    'Je suis en situation de handicap. Comment ça se passe ?',
+    'Signalez simplement votre besoin d’aménagement : aucun justificatif médical n’est demandé. Supports agrandis, rythme adapté, pauses supplémentaires : le référent handicap étudie chaque situation avant l’entrée en formation.',
+  ],
+  [
+    'Qu’est-ce que je reçois à la fin ?',
+    'Une attestation de fin de formation, les résultats de l’évaluation, et des livrables utilisables dès le lendemain : bibliothèque de demandes, charte, plan d’action.',
+  ],
 ]

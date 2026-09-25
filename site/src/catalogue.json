@@ -1,0 +1,418 @@
+{
+  "synchronise": "2026-09-25T08:35:49.689Z",
+  "source": "Airtable appQ2zqc80kkc6MR1",
+  "formations": [
+    {
+      "ref": "FOR-0002",
+      "titre": "RÉGLAGE MOTEUR — Automatiser sans coder (n8n)",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 16,
+      "jours": 2,
+      "prerequis": "Utilisation courante des outils bureautiques et web. Aucune compétence en développement requise.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Positionnement à l'entrée ; projet pratique évalué (construction d'une automatisation) sur grille d'évaluation ; évaluation finale ; attestation de fin de formation.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session (sous réserve de places disponibles et d'accord de financement). Modalités : formulaire en ligne → devis → convention signée. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription au référent handicap Aurélien LUMEKA (yebaformations@gmail.com).",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9).\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; séquences de 80 minutes maximum ; livrables écrits remis à chacun.\n\nSUR DEMANDE : support imprimé en corps 16 points ou fichier lisible par lecteur d'écran (gratuit) ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; fractionnement du parcours en demi-journées ; sortie de salle sans justification ; travail en binôme en substitution des mises en situation devant le groupe ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION : l'atelier « schéma au crayon » peut être mené sur support numérique agrandi ; le travail de construction sur poste peut être réalisé en binôme, l'apprentissage portant sur la conception et non sur la manipulation.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 990,
+        "interJour": 495,
+        "intraTotal": 3690,
+        "intraJour": 1845,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-10"
+    },
+    {
+      "ref": "FOR-0003",
+      "titre": "CONTRÔLE TECHNIQUE — Gouvernance RGPD et IA Act",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 8,
+      "jours": 1,
+      "prerequis": "Aucun prérequis technique. Utilisation courante d'un ordinateur et d'une messagerie électronique.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Positionnement à l'entrée (QCM diagnostique) ; évaluation des acquis en fin de formation par QCM et étude de cas (rédaction d'une fiche de registre) notés sur grille d'évaluation ; attestation de fin de formation remise à chaque stagiaire.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session (sous réserve de places disponibles et d'accord de financement). Modalités : formulaire en ligne → devis → convention signée. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription au référent handicap Aurélien LUMEKA (yebaformations@gmail.com).",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9). Sur cette formation en particulier, ce principe est également un cas pédagogique : il illustre l'article 9 en acte.\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; séquences de 80 minutes maximum ; livrables écrits remis à chacun.\n\nSUR DEMANDE : support imprimé en corps 16 points ou fichier lisible par lecteur d'écran (gratuit) ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; fractionnement du parcours en demi-journées ; sortie de salle sans justification ; travail en binôme en substitution des mises en situation devant le groupe ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION : les jeux de tri de cartes (« Personnelle, sensible, ou ni l'un ni l'autre ? », « Le tri du courrier ») sont imprimés en corps 14 points minimum et disponibles en version numérique agrandie ; l'exercice de crise « 72 heures » peut être réalisé à l'écrit plutôt qu'en restitution orale devant le groupe.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 890,
+        "interJour": 890,
+        "intraTotal": 1690,
+        "intraJour": 1690,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-10"
+    },
+    {
+      "ref": "FOR-0004",
+      "titre": "TRACTION — Vendre et négocier",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 8,
+      "jours": 1,
+      "prerequis": "Aucun prérequis.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Positionnement à l'entrée ; mises en situation et jeux de rôle évalués sur grille ; évaluation finale ; attestation de fin de formation.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session (sous réserve de places disponibles et d'accord de financement). Modalités : formulaire en ligne → devis → convention signée. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription au référent handicap Aurélien LUMEKA (yebaformations@gmail.com).",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9).\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; jeux de cartes imprimés en corps 14 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; livrables écrits remis à chacun.\n\nSUR DEMANDE : support imprimé en corps 16 points ou fichier lisible par lecteur d'écran (gratuit) ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; sortie de salle sans justification ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION — POINT DE VIGILANCE RÉEL : cette journée repose sur des jeux de rôle devant le groupe, qui peuvent être un obstacle en cas de handicap psychique, de bégaiement ou d'anxiété sociale. Aménagements prévus : jeu de rôle en trio fermé plutôt que devant le groupe entier ; rôle d'observateur à la grille critériée, qui évalue les mêmes compétences sans exposition ; évaluation finale à l'écrit sur étude de cas en substitution de la mise en situation. La séquence « Vendez-moi ce stylo » et son rejeu ne sont jamais obligatoires.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 690,
+        "interJour": 690,
+        "intraTotal": 1390,
+        "intraJour": 1390,
+        "supplement": 120,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": 8
+      },
+      "revision": "2026-09-10"
+    },
+    {
+      "ref": "FOR-0006",
+      "titre": "COPILOTE — Microsoft 365 par la méthode des 4 P",
+      "type": "Intra-entreprise",
+      "public": "",
+      "heures": 16,
+      "jours": 2,
+      "prerequis": "Aucun prérequis technique de niveau. Savoir créer un document, saisir des données dans un tableur et gérer sa messagerie. Aucune compétence en programmation.\n\nCONDITIONS MATÉRIELLES BLOQUANTES, vérifiées par écrit avec le client au plus tard 5 jours ouvrés avant la session :\n1. Un poste à jour par stagiaire, avec accès réseau non filtré vers les services Microsoft 365 ;\n2. Un compte nominatif ET une licence Copilot active, vérifiée individuellement pour chaque stagiaire ;\n3. DES DOCUMENTS PROFESSIONNELS RÉELS accessibles depuis ce compte. C'est la condition que tout le monde oublie : sans contenu à exploiter, Copilot n'a rien à se mettre sous la dent et deux jours d'ateliers tombent à plat ;\n4. Le point de contact administrateur du client, joignable pendant la session.\n\nSi l'une de ces quatre conditions n'est pas réunie, la session est reportée. Elle n'est pas dégradée.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "ÉVALUATION DIAGNOSTIQUE : test de positionnement adressé avant l'entrée en formation (Qualiopi ind. 8), séquence 0 « La question qui dérange » et recueil des attentes affiché.\n\nÉVALUATION FORMATIVE CONTINUE : observation des ateliers à la grille critériée (12 critères, 4 niveaux : Non acquis / En cours / Acquis / Maîtrisé). La grille est remise aux stagiaires dès l'ouverture. Points de mesure rattachés aux objectifs :\n• O2 — atelier « Qui voit quoi ? » (J1, 10 cas ; seuil 8/10) ;\n• O3 — fiche « Mes 5 demandes métier » (J1 ; 4 exploitables sur 5) ;\n• O4 — atelier « Les 4 réponses ratées » (J1 ; 3 diagnostics corrects sur 4) ;\n• O6 — livrable réutilisable conçu en J2, présenté en 3 minutes ;\n• O7 — atelier « Le Tri de la Réserve » (J2, 20 cartes ; seuil 16/20).\n\nÉVALUATION SOMMATIVE :\n• Mise en situation finale notée sur la grille — conduite d'un processus complet, vérification documentée et justification écrite des informations écartées (objectif O5) ;\n• Rédaction de trois mesures de gouvernance argumentées (objectif O8) ;\n• Restitution orale de 3 minutes (objectif O1) ;\n• Quiz individuel de 10 questions — seuil de réussite 7/10 — correction commentée en groupe.\n\nRÈGLE BLOQUANTE : trois critères de la grille relèvent de la conformité et de la responsabilité. Un niveau « non acquis » sur l'un d'eux empêche la mention « maîtrisé », quel que soit le total obtenu. On ne compense pas un risque juridique par de la productivité.\n\nÉVALUATION DE LA SATISFACTION : à chaud en fin de journée 2 ; à froid à 60 jours, portant sur les usages effectivement installés au poste de travail.\n\nSANCTION : attestation individuelle de fin de formation mentionnant les objectifs visés et les résultats de l'évaluation.",
+      "acces": "Inscription possible jusqu'à 10 jours ouvrés avant le démarrage, sous réserve de places disponibles et de la vérification écrite des prérequis techniques (licences Copilot actives et nominatives pour chaque stagiaire). Formation 100 % en présentiel.",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9).\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; livret ressource écrit conçu pour être relu seul six mois après la formation ; version imprimée en corps 16 points disponible sur simple demande.\n\nSUR DEMANDE : fichier lisible par lecteur d'écran ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; fractionnement du parcours en demi-journées ; sortie de salle sans justification ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION : poste de travail adapté (loupe d'écran, clavier, souris ergonomique, dictée vocale) ; les fonctions d'accessibilité intégrées à la suite bureautique sont présentées en séance, ce qui bénéficie à tout le groupe ; la restitution de 3 minutes du livrable personnel peut être remplacée par une remise écrite commentée.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 990,
+        "interJour": 495,
+        "intraTotal": 2890,
+        "intraJour": 1445,
+        "supplement": 130,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-10"
+    },
+    {
+      "ref": "FOR-0008",
+      "titre": "EMBRAYAGE — Manager au quotidien",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 8,
+      "jours": 1,
+      "prerequis": "Aucun prérequis. Exercer, ou s'apprêter à exercer, une fonction d'encadrement direct.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session, sous réserve de places disponibles et d'accord de financement. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription auprès du référent handicap Aurélien LUMEKA (yebaformations@gmail.com), sans supplément de prix.",
+      "adaptations": "Support projeté en corps 26 points minimum, contrastes vérifiés WCAG 2.1. Support imprimé en corps 16 points sur simple demande. Mises en situation adaptables : observation écrite plutôt qu'orale, temps de préparation majoré, binômage. Aucun aménagement n'est facturé.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 690,
+        "interJour": 690,
+        "intraTotal": 1390,
+        "intraJour": 1390,
+        "supplement": 120,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": null
+    },
+    {
+      "ref": "FOR-0009",
+      "titre": "CARROSSERIE — Produire un site internet à la voix",
+      "type": "Intra-entreprise",
+      "public": "",
+      "heures": 8,
+      "jours": 1,
+      "prerequis": "Utilisation courante d'un ordinateur, d'un navigateur web et d'une messagerie électronique. Aucune compétence en développement, en graphisme ni en référencement n'est requise.\nSavoir formuler une demande à l'oral de façon structurée est un atout — c'est précisément ce que la formation travaille.\nLe stagiaire vient avec SON projet réel : son activité, ses tarifs, ses photos, ses textes existants s'il en a.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Positionnement à l'entrée (questionnaire sur le projet de site et le niveau de départ) ; évaluation formative continue pendant les ateliers de production ; évaluation finale sur cas concret — le site réellement produit par le stagiaire est évalué sur grille critériée remise dès l'ouverture ; QCM de 10 questions, seuil de réussite 7/10 ; attestation de fin de formation mentionnant les objectifs, la durée et les résultats de l'évaluation des acquis.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le démarrage, sous réserve de places disponibles et d'accord de financement. Formation intra-entreprise, 100 % en présentiel.\nModalités : prise de contact → analyse du besoin → devis sous 5 jours ouvrés → convention signée → démarrage.\nCe délai de 15 jours ouvrés est celui de la charte qualité YEBA FORMATIONS (YEBA-DOC-10, engagement n° 3). Il couvre le montage du dossier de financement, l'envoi du test de positionnement et la convocation.\nAccessibilité : tout besoin d'aménagement peut être signalé dès l'inscription, et à tout moment ensuite, au référent handicap Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45.",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9).\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; livrables écrits remis à chacun ; l'accessibilité des sites produits est elle-même un objet du programme (séquence D4).\n\nSUR DEMANDE : support imprimé en corps 16 points ou fichier lisible par lecteur d'écran (gratuit) ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; fractionnement du parcours en demi-journées ; sortie de salle sans justification ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION — POINT DE VIGILANCE RÉEL : le pilotage à la voix est au cœur du programme. Il peut être un obstacle en cas de trouble de la parole, de bégaiement, de surdité ou de forte gêne à s'exprimer à voix haute devant un groupe.\nAMÉNAGEMENTS PRÉVUS : dictée depuis une salle ou un espace à l'écart, casque à réduction de bruit fourni ; SAISIE CLAVIER ACCEPTÉE EN SUBSTITUTION INTÉGRALE DE LA DICTÉE — la compétence évaluée est la structuration de la demande, pas la production sonore ; temps allongé pour la correction des erreurs de transcription ; pour les personnes sourdes ou malentendantes, parcours entièrement réalisable au clavier, sans perte d'objectif pédagogique ni mention particulière sur l'attestation.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "Région",
+        "France Travail",
+        "AIF"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 790,
+        "interJour": 790,
+        "intraTotal": 1590,
+        "intraJour": 1590,
+        "supplement": 130,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-11"
+    },
+    {
+      "ref": "FOR-0010",
+      "titre": "INJECTION — Emailing professionnel assisté par l'IA",
+      "type": "Intra-entreprise",
+      "public": "",
+      "heures": 8,
+      "jours": 1,
+      "prerequis": "Utilisation courante d'une messagerie électronique et d'un tableur simple. Aucune compétence technique ni expérience du marketing n'est requise.\nLe stagiaire vient avec SA situation réelle : son fichier de contacts s'il en a un, un courriel qu'il a déjà envoyé, et l'offre qu'il souhaite promouvoir.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Positionnement à l'entrée (questionnaire sur les pratiques d'envoi et l'état du fichier de contacts) ; évaluation formative continue pendant les ateliers de rédaction ; évaluation finale sur cas concret — production d'une séquence complète et d'une fiche de registre des traitements, notée sur grille critériée remise dès l'ouverture ; QCM de 10 questions, seuil de réussite 7/10 ; attestation de fin de formation mentionnant les objectifs, la durée et les résultats de l'évaluation des acquis.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le démarrage, sous réserve de places disponibles et d'accord de financement. Formation intra-entreprise, 100 % en présentiel.\nModalités : prise de contact → analyse du besoin → devis sous 5 jours ouvrés → convention signée → démarrage.\nCe délai de 15 jours ouvrés est celui de la charte qualité YEBA FORMATIONS (YEBA-DOC-10, engagement n° 3). Il couvre le montage du dossier de financement, l'envoi du test de positionnement et la convocation.\nAccessibilité : tout besoin d'aménagement peut être signalé dès l'inscription, et à tout moment ensuite, au référent handicap Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45.",
+      "adaptations": "Formation accessible aux personnes en situation de handicap. Aucun justificatif médical n'est demandé : seul le besoin d'aménagement est recueilli (RGPD art. 9).\n\nDÉJÀ INTÉGRÉ, SANS DEMANDE PRÉALABLE : diaporama en corps 26 points minimum ; jeux de cartes imprimés en corps 14 points minimum ; contrastes conformes WCAG 2.1 niveau AA ; consignes données à l'oral ET à l'écrit ; pauses de 15 min à 10h00 et 15h00 ; livrables écrits remis à chacun.\n\nSUR DEMANDE : support imprimé en corps 16 points ou fichier lisible par lecteur d'écran (gratuit) ; placement en première rangée ; description orale de tout élément projeté ; salle accessible de plain-pied vérifiée avant confirmation ; temps majoré d'un tiers aux évaluations ; pauses supplémentaires ; fractionnement du parcours en demi-journées ; sortie de salle sans justification ; interprétariat LSF organisé avec le financeur (Agefiph / Ressource Handicap Formation).\n\nSPÉCIFIQUE À CETTE FORMATION : les séquences reposent sur la lecture rapide d'objets de courriels projetés (« La boîte de réception », « Sept mots », le rejeu final). Aménagements prévus : remise de la liste sur papier en corps 16 points AVANT la projection ; suppression du chronomètre ; lecture à voix haute systématique de chaque objet projeté ; travail en binôme pour les exercices de tri. Les votes à main levée peuvent être remplacés par un vote écrit.\nLe jeu de rôle « La demande embarrassante » peut être traité entièrement à l'écrit, sans restitution devant le groupe.\n\nRéférent handicap : Aurélien LUMEKA — yebaformations@gmail.com — 0693 32 24 45. Contact sous 48 h ouvrées, proposition d'aménagement sous 5 jours ouvrés. Procédure complète : YEBA-DOC-08.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "Région",
+        "AIF"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 790,
+        "interJour": 790,
+        "intraTotal": 1590,
+        "intraJour": 1590,
+        "supplement": 130,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-11"
+    },
+    {
+      "ref": "FOR-0011",
+      "titre": "ALLUMAGE-TURBO — L'IA générative au travail : usages, sécurité et preuves (3 jours)",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 24,
+      "jours": 3,
+      "prerequis": "Aucun prérequis technique pour les journées 1 et 2 : savoir utiliser un navigateur internet et une messagerie.\nChaque stagiaire dispose d'un poste connecté et d'un compte PROFESSIONNEL sur l'outil d'IA retenu par son employeur — jamais un compte personnel.\nPour la journée 3 (assistants personnalisés) : licence active et nominative pour l'une des deux voies — Microsoft 365 Copilot ou Google Workspace avec Gemini (voie américaine), Mistral Le Chat Pro ou Dust (voie européenne). À défaut, un environnement de démonstration est fourni par YEBA FORMATIONS. La vérification écrite de ces accès est faite lors de l'entretien préalable.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "ÉVALUATION DIAGNOSTIQUE : entretien de cadrage avec le responsable + test de positionnement avant l'entrée en formation (usages déjà installés, outils et licences disponibles). Séquence 0 et recueil des attentes, repris en fin de J3.\n\nÉVALUATION FORMATIVE CONTINUE : grille critériée (12 critères par bloc, 4 niveaux : Non acquis / En cours d'acquisition / Acquis / Maîtrisé), remise dès l'ouverture. Points de mesure :\n• O2 — « Mes 6 demandes métier » (5 exploitables sur 6) ;\n• O3 — « Le Tri de la Réserve » (16/20) ;\n• O4 — « Les 5 réponses ratées » (4 sur 5) ;\n• O5 — « Qui voit quoi ? » (8/10) ;\n• O7 — 10 demandes soumises au test du collègue ;\n• O10 — « Les 4 erreurs cachées » (3 sur 4).\n• Quiz d'étape en fin de J1 (10 questions, non bloquant).\n\nÉVALUATION SOMMATIVE (J3) :\n• assistant personnalisé présenté en 3 minutes, limites énoncées (O9) ;\n• note d'arbitrage américain / européen (O8) ;\n• deux mentions art. 50 et trois mesures de gouvernance (O11) ;\n• fiche de poste « usages IA » + plan d'action à 30 jours (O12) ;\n• mise en situation finale notée sur la grille ;\n• quiz final individuel de 10 questions — seuil de réussite 7/10 — correction commentée.\n\nRÈGLE BLOQUANTE : les critères de conformité et de responsabilité (tri des données, vérification, droits d'accès, transparence) ne se compensent pas : un « non acquis » sur l'un d'eux empêche la mention « maîtrisé », quel que soit le total.\n\nÉVALUATION DE LA SATISFACTION : à chaud en fin de J3 ; classe virtuelle de suivi à J+30 ; évaluation à froid à 60 jours portant sur les usages effectivement installés au poste. Méthode de calcul des taux publiée avec les résultats (RNQ V10, indicateur 2).\n\nSUPERVISION HUMAINE : aucun système d'IA n'évalue, ne note, ne classe ni ne sélectionne les stagiaires. La décision finale appartient au formateur (règlement (UE) 2024/1689, annexe III, point 3).\n\nSANCTION : attestation individuelle de fin de formation mentionnant les objectifs et les résultats de l'évaluation des acquis ; pièces du dossier de preuve remises à l'employeur.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session, sous réserve de places disponibles et d'accord de financement. Modalités : formulaire en ligne, entretien de cadrage de 20 minutes, devis, puis convention signée.\nLes trois jours se suivent (ou J1 + J2 consécutifs et J3 dans les 15 jours, en intra).\nAccessibilité : tout besoin d'aménagement peut être signalé dès l'inscription et jusqu'au démarrage auprès du référent handicap Aurélien LUMEKA (yebaformations@gmail.com). Supports en corps 16 points, adaptation du rythme et pauses supplémentaires : sans supplément de prix.",
+      "adaptations": "Support projeté en corps 26 points minimum et contrastes vérifiés selon WCAG 2.1. Livret ressource en corps 16 points sur simple demande. Adaptation du rythme, pauses supplémentaires, reformulation écrite des consignes orales, temps majoré pour les quiz, binômage sur les ateliers longs. Accessibilité physique du lieu vérifiée avant chaque session et communiquée avec la convocation. Aucun de ces aménagements n'est facturé, et aucune information médicale n'est demandée.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 1680,
+        "interJour": 560,
+        "intraTotal": 4380,
+        "intraJour": 1460,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-23"
+    },
+    {
+      "ref": "FOR-0013",
+      "titre": "PILOTE AUTOMATIQUE — Agents IA sous contrôle humain (niveau avancé, 2 jours)",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 16,
+      "jours": 2,
+      "prerequis": "Usage avancé de l'IA générative, ou ALLUMAGE-TURBO acquis. Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation n'est exigée, mais le stagiaire doit accepter de travailler dans un terminal. Poste avec droits d'installation, ou machine virtuelle fournie par YEBA FORMATIONS. Checklist technique transmise 10 jours avant : débit réseau vérifié sur le lieu, comptes et clés d'accès aux outils retenus. Entretien de cadrage de 20 minutes avec le responsable avant l'inscription.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "ÉVALUATION DIAGNOSTIQUE : test de positionnement adressé avant l'entrée en formation, portant sur les systèmes déjà déployés et le niveau d'autonomie déjà accordé. Checklist technique vérifiée 10 jours avant.\n\nÉVALUATION FORMATIVE CONTINUE : grille critériée à 12 critères, 4 niveaux, remise dès l'ouverture. Points de mesure :\n• O1 — atelier de qualification (9 situations correctes sur 10) ;\n• O2 — agent exécutant sa tâche trois fois sans intervention, en fin de J1 ;\n• O4 — atelier « Jusqu'où laisser faire ? » (5 niveaux justifiés sur 6) ;\n• O6 — atelier de qualification juridique (7 cas corrects sur 8, article cité).\n\nÉVALUATION SOMMATIVE :\n• chaîne de deux agents avec point d'arrêt humain, démontrée en direct (O3) ;\n• journal d'exécution produit et responsable de chaque décision désigné (O5) ;\n• procédure d'arrêt d'urgence rédigée, puis TESTÉE EN SÉANCE PAR UN AUTRE STAGIAIRE (O7) ;\n• note d'arbitrage architecture américaine / européenne sur un cas réel (O8) ;\n• restitution de 5 minutes ;\n• quiz individuel de 10 questions — seuil de réussite 7/10 — correction commentée en groupe.\n\nRÈGLE BLOQUANTE : les critères C2, C4, C6, C7, C9, C10 et C11 relèvent de la conformité et de la responsabilité. Un niveau « non acquis » sur l'un d'eux empêche la mention « maîtrisé », quel que soit le total obtenu. À ce niveau, un agent mal encadré produit un dommage réel : on ne compense pas ce risque par de la performance technique.\n\nÉVALUATION DE LA SATISFACTION : à chaud en fin de J2 ; à froid à 60 jours, portant sur les agents effectivement mis en production et sur les incidents survenus.\n\nSUPERVISION HUMAINE : aucun système d'IA n'évalue, ne note, ne classe ni ne sélectionne les stagiaires. La décision finale appartient au formateur (règlement (UE) 2024/1689, annexe III, point 3).\n\nSANCTION : attestation individuelle de fin de formation mentionnant les objectifs visés et les résultats de l'évaluation.",
+      "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session. Effectif limité à 8 stagiaires, imposé par la nature technique des ateliers. Checklist technique transmise 10 jours avant : poste avec droits d'installation ou machine virtuelle fournie, débit réseau vérifié sur le lieu de formation, comptes et clés d'accès aux outils retenus. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription auprès du référent handicap Aurélien LUMEKA (yebaformations@gmail.com), sans supplément de prix.",
+      "adaptations": "Support projeté en corps 26 points minimum et contrastes vérifiés selon WCAG 2.1. Livret ressource en corps 16 points sur simple demande. Terminal configurable en fort contraste et en corps majoré. Adaptation du rythme, pauses supplémentaires, reformulation écrite des consignes orales, temps majoré pour le quiz, binômage sur les ateliers techniques. Accessibilité physique du lieu vérifiée avant chaque session. Aucun de ces aménagements n'est facturé.",
+      "financements": [
+        "OPCO",
+        "Plan PDC",
+        "France Travail",
+        "AIF",
+        "Région"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 990,
+        "interJour": 495,
+        "intraTotal": 3690,
+        "intraJour": 1845,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": "2026-09-23"
+    },
+    {
+      "ref": "FOR-0014",
+      "titre": "TABLEAU DE BORD — Séminaire dirigeants en résidentiel",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 16,
+      "jours": 2,
+      "prerequis": "Aucun prérequis technique. Le dirigeant vient avec trois éléments : la liste de ses cinq tâches les plus chronophages, son chiffre d'affaires et son effectif, et la liste des outils numériques déjà en place. Ces éléments sont demandés au moment de l'inscription et conditionnent la personnalisation des ateliers.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Avant : test de positionnement envoyé en amont (adaptation du rythme et personnalisation des ateliers).\nPendant : grille critériée à 12 critères, remise dès l'ouverture, renseignée atelier par atelier. Critères bloquants (C2, C3, C6, C10, C11) : un « non acquis » sur l'un d'eux interdit la mention « maîtrisé », quel que soit le total.\nFin : soutenance de 8 minutes du plan d'agents, puis quiz de 10 questions — seuil de réussite 7/10.\nAprès : évaluation à chaud, puis à froid à 60 jours sur les usages réellement installés.\n\nLivrables notés : plan d'agents, tableau de responsabilité, charte d'usage, budget à 12 mois.\n\nAucun système d'IA n'évalue, ne note, ne classe ni ne sélectionne les stagiaires. La correction est arrêtée exclusivement par le formateur (règlement (UE) 2024/1689, annexe III, point 3).",
+      "acces": "Délai d'accès : 15 jours ouvrés minimum entre la signature de la convention et le démarrage. Inscription sur invitation nominative. L'hébergement est contracté directement entre le dirigeant et l'établissement hôtelier : il n'est ni encaissé ni facturé par YEBA FORMATIONS, et n'entre pas dans l'assiette pédagogique finançable.",
+      "adaptations": "Supports en corps 16 points, adaptation du rythme, pauses supplémentaires, reformulation écrite des consignes orales. Aménagements fournis sans supplément de prix. Référent handicap : Aurélien LUMEKA.",
+      "financements": [
+        "OPCO",
+        "Plan PDC"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 1690,
+        "interJour": 845,
+        "intraTotal": 3380,
+        "intraJour": 1690,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": null
+    },
+    {
+      "ref": "FOR-0015",
+      "titre": "MOTEUR FERMÉ — IA locale souveraine",
+      "type": "Inter-entreprise",
+      "public": "",
+      "heures": 16,
+      "jours": 2,
+      "prerequis": "Usage courant de l'IA générative (ou niveau ALLUMAGE acquis). Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation exigée, mais le stagiaire doit accepter de travailler dans un terminal. Un poste avec droits d'administration est nécessaire : 16 Go de mémoire vive recommandés, 8 Go au minimum, et 20 Go d'espace disque libre. Les modèles sont téléchargés par le formateur AVANT la session.",
+      "methodes": [
+        "Présentiel"
+      ],
+      "evaluation": "Avant : test de positionnement envoyé en amont (adaptation du rythme).\nPendant : grille critériée à 12 critères, remise dès l'ouverture, renseignée atelier par atelier. Critères bloquants (C2, C4, C5, C8, C10) : un « non acquis » sur l'un d'eux interdit la mention « maîtrisé ».\nFin : mise en situation notée (note d'arbitrage soutenue), puis quiz de 10 questions — seuil de réussite 7/10.\nAprès : évaluation à chaud, puis à froid à 60 jours sur les usages réellement installés.\n\nAucun système d'IA n'évalue, ne note, ne classe ni ne sélectionne les stagiaires. La correction est arrêtée exclusivement par le formateur (règlement (UE) 2024/1689, annexe III, point 3).",
+      "acces": "Délai d'accès : 15 jours ouvrés minimum entre la signature de la convention et le démarrage. Ce délai couvre le téléchargement préalable des modèles et la vérification des machines des stagiaires.",
+      "adaptations": "Supports en corps 16 points, adaptation du rythme, pauses supplémentaires, reformulation écrite des consignes orales. Machine de secours équipée apportée par le formateur pour le stagiaire dont le poste ne suit pas. Aménagements fournis sans supplément de prix. Référent handicap : Aurélien LUMEKA.",
+      "financements": [
+        "OPCO",
+        "Plan PDC"
+      ],
+      "certification": null,
+      "tarifs": {
+        "interTotal": 990,
+        "interJour": 495,
+        "intraTotal": 3690,
+        "intraJour": 1845,
+        "supplement": 150,
+        "mentionTva": "TVA non applicable, art. 293 B du CGI"
+      },
+      "indicateurs": {
+        "satisfaction": null,
+        "reussite": null,
+        "sessions": null,
+        "stagiaires": null
+      },
+      "revision": null
+    }
+  ],
+  "agenda": []
+}

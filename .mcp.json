@@ -2,8 +2,17 @@
   "mcpServers": {
     "baserow": {
       "command": "python",
-      "args": ["baserow_mcp_server.py"],
+      "args": [
+        "baserow_mcp_server.py"
+      ],
       "env": {}
+    },
+    "21st": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp",
+      "headers": {
+        "x-api-key": "${TWENTYFIRST_API_KEY}"
+      }
     }
   }
 }
