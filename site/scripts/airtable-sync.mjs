@@ -122,7 +122,8 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
     .filter((s) => refsPubliques.has(s.ref))
     .sort((a, b) => a.debut.localeCompare(b.debut))
   formations.sort((a, b) => a.ref.localeCompare(b.ref))
-  return { synchronise: new Date().toISOString(), source: `Airtable ${BASE}`, formations, agenda }
+  // Pas d’identifiant de base dans le fichier livré au navigateur (aucune aide à la reconnaissance)
+  return { synchronise: new Date().toISOString(), formations, agenda }
 }
 
 async function toutLire(table, jeton) {

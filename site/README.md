@@ -31,3 +31,14 @@ Le site ne contacte jamais Airtable depuis le navigateur du visiteur : aucun jet
 - Pas de formulaire : contact par téléphone ou e-mail (minimisation).
 - Bouton « Confort de lecture » : taille du texte, contraste renforcé, pause des animations (préférences stockées dans le navigateur du visiteur uniquement).
 - `prefers-reduced-motion` respecté ; polices Atkinson Hyperlegible (conçue pour les malvoyants) et Montserrat.
+
+## Sécurité — à respecter à chaque mise en ligne
+1. **Envoyer uniquement le contenu de `dist/`** chez OVH (jamais le dépôt entier). Le fichier `dist/.htaccess` doit être présent :
+   il impose HTTPS, la politique de sécurité du contenu (CSP), l'interdiction d'intégrer le site dans une autre page,
+   et rend introuvables les fichiers cachés (`.git`, `.env`) et de développement.
+2. **HSTS** : n'activer la ligne `Strict-Transport-Security` qu'une fois le certificat HTTPS actif (sinon le site devient inaccessible).
+3. **Rappels IFA** : quand `VITE_RAPPEL_ENDPOINT` est défini, ajouter son origine à `connect-src` dans `.htaccess`,
+   et **limiter le débit côté serveur** (n8n / Baserow). Le champ piège et le délai de 3 s ne suffisent pas contre un robot déterminé.
+4. **Comptes** : double authentification sur GitHub, OVH, Gmail, Airtable (condition de la garantie cyber Hiscox).
+5. **Dépendances** : `npm audit` avant chaque mise en ligne ; `npm ci` (versions verrouillées) plutôt que `npm install`.
+6. Tester en local avec les mêmes en-têtes : `npm run build && npm run preview`.

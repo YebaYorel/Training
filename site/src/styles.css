@@ -906,3 +906,5 @@ html[data-contraste='1'] .ifa-panneau { border: 3px solid #000; }
 @keyframes liseret { to { --liseret: 360deg; } }
 @media (prefers-reduced-motion: reduce) { .formation:hover::after, .formation:focus-visible::after, .formation.vedette::after { animation: none; } }
 html[data-calme='1'] .formation:hover::after, html[data-calme='1'] .formation:focus-visible::after, html[data-calme='1'] .formation.vedette::after { animation: none; }
+/* Champ piège anti-robot : hors écran, invisible aux humains et aux lecteurs d'écran */
+.ifa-piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

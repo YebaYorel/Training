@@ -192,7 +192,8 @@ function Agenda({ ajouter }) {
   const [jour, setJour] = useState(null)
   const [heure, setHeure] = useState(null)
   const [etat, setEtat] = useState('choix') // choix | formulaire | envoi | envoye | courriel
-  const [champs, setChamps] = useState({ nom: '', tel: '', entreprise: '', email: '', sujet: SUJETS[0], accord: false })
+  const [champs, setChamps] = useState({ nom: '', tel: '', entreprise: '', email: '', sujet: SUJETS[0], accord: false, site: '' })
+  const ouvertLe = useRef(0) // anti-robot : moment d'affichage du formulaire
   const [erreur, setErreur] = useState('')
   const maj = (k) => (e) => setChamps((c) => ({ ...c, [k]: e.target.type === 'checkbox' ? e.target.checked : e.target.value }))
 
@@ -203,6 +204,8 @@ function Agenda({ ajouter }) {
 
   async function envoyer(e) {
     e.preventDefault()
+    // Anti-robot : champ piège rempli, ou formulaire rempli en moins de 3 secondes → rejet silencieux
+    if (champs.site || Date.now() - ouvertLe.current < 3000) return setEtat('envoye')
     if (!champs.nom.trim()) return setErreur('Indiquez votre nom pour que nous sachions qui rappeler.')
     if (!telephoneValide(champs.tel)) return setErreur('Ce numéro semble incomplet : 10 chiffres, par exemple 0692 12 34 56.')
     if (!champs.accord) return setErreur('Cochez la case d’accord : sans elle, nous ne pouvons pas utiliser votre numéro.')
@@ -258,15 +261,20 @@ function Agenda({ ajouter }) {
   if (etat === 'formulaire' || etat === 'envoi')
     return (
       <form className="ifa-agenda" onSubmit={envoyer} noValidate>
+        {/* Champ piège invisible pour les humains, rempli par les robots */}
+        <div className="ifa-piege" aria-hidden="true">
+          <label htmlFor="ifa-site">Site web</label>
+          <input id="ifa-site" tabIndex={-1} autoComplete="off" value={champs.site} onChange={maj('site')} />
+        </div>
         <button type="button" className="ifa-retour" onClick={() => setEtat('choix')}>
           <ArrowLeft size={16} aria-hidden="true" /> {resume}
         </button>
         <label htmlFor="ifa-nom">Nom et prénom *</label>
-        <input id="ifa-nom" value={champs.nom} onChange={maj('nom')} autoComplete="name" required />
+        <input id="ifa-nom" value={champs.nom} onChange={maj('nom')} autoComplete="name" maxLength={80} required />
         <label htmlFor="ifa-tel">Téléphone *</label>
-        <input id="ifa-tel" value={champs.tel} onChange={maj('tel')} autoComplete="tel" inputMode="tel" placeholder="0692 12 34 56" required />
+        <input id="ifa-tel" value={champs.tel} onChange={maj('tel')} autoComplete="tel" inputMode="tel" placeholder="0692 12 34 56" maxLength={20} required />
         <label htmlFor="ifa-entreprise">Entreprise</label>
-        <input id="ifa-entreprise" value={champs.entreprise} onChange={maj('entreprise')} autoComplete="organization" />
+        <input id="ifa-entreprise" value={champs.entreprise} onChange={maj('entreprise')} autoComplete="organization" maxLength={100} />
         <label htmlFor="ifa-sujet">C’est au sujet de…</label>
         <select id="ifa-sujet" value={champs.sujet} onChange={maj('sujet')}>
           {SUJETS.map((s) => (
@@ -317,7 +325,7 @@ function Agenda({ ajouter }) {
           </motion.div>
         )}
       </AnimatePresence>
-      <button className="ifa-action" disabled={!jour || !heure} onClick={() => setEtat('formulaire')}>
+      <button className="ifa-action" disabled={!jour || !heure} onClick={() => ((ouvertLe.current = Date.now()), setEtat('formulaire'))}>
         Continuer
       </button>
     </div>

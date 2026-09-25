@@ -1,0 +1,45 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# YEBA FORMATIONS — durcissement du site (hébergement OVH, Apache)
+# À déposer à la racine du site avec le contenu de dist/ (jamais le dépôt entier).
+# ─────────────────────────────────────────────────────────────────────────────
+
+Options -Indexes -MultiViews
+ServerSignature Off
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # 1. HTTPS obligatoire
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  # 2. Fichiers et dossiers cachés (.git, .env, .htaccess…) : introuvables, sauf .well-known
+  RewriteRule "(^|/)\.(?!well-known/)" - [R=404,L]
+  # 3. Fichiers de développement : introuvables même s'ils étaient envoyés par erreur
+  RewriteRule "\.(map|md|log|env|ini|sh|py|mjs|jsx|lock|bak|sql)$" - [R=404,L,NC]
+  RewriteRule "(^|/)(package(-lock)?\.json|vite\.config\.js|node_modules|site|src)(/|$)" - [R=404,L,NC]
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Politique de sécurité du contenu : seul le code servi par ce site s'exécute.
+  # Quand l'adresse de réception des rappels (IFA) sera branchée, ajouter son origine à connect-src.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; media-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+  # Interdit d'afficher le site dans une page tierce (clickjacking) — doublon pour anciens navigateurs
+  Header always set X-Frame-Options "DENY"
+  # HTTPS imposé pendant 1 an (activer seulement une fois le certificat HTTPS en place)
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-origin"
+  Header unset X-Powered-By
+
+  # Cache : fichiers versionnés 1 an, pages HTML toujours revalidées
+  <FilesMatch "\.(js|css|woff2?|png|jpe?g|webp|mp4|webm|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

@@ -61,9 +61,12 @@ export function allerA(cible) {
 }
 
 /* ---------- Préférences d'accessibilité (propres au visiteur, sans cookie) ---------- */
+// Valeurs autorisées : une valeur modifiée à la main dans le navigateur est ignorée
+const PREFS_VALIDES = { taille: ['1', '2', '3'], contraste: ['0', '1'], calme: ['0', '1'] }
 function lirePref(cle, defaut) {
   try {
-    return localStorage.getItem('yeba-' + cle) ?? defaut
+    const v = localStorage.getItem('yeba-' + cle)
+    return PREFS_VALIDES[cle]?.includes(v) ? v : defaut
   } catch {
     return defaut
   }
