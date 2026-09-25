@@ -1078,7 +1078,7 @@ function Pied() {
         <div className="pied-grille">
           <img className="pied-logo" src="media/logo-yeba.png" alt="YEBA FORMATIONS" width="220" height="190" loading="lazy" />
           <address className="bloc-marque" style={{ fontStyle: 'normal' }}>
-            <strong>YEBA FORMATIONS</strong> — {e.dirigeant}, directeur
+            <strong>YEBA FORMATIONS</strong> — {e.dirigeant} EI, entrepreneur individuel
             <br />
             {e.adresse}
             <br />
