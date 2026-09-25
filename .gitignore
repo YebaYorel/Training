@@ -15,3 +15,6 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Node
+node_modules/

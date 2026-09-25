@@ -1,0 +1,23 @@
+{
+  "name": "yeba-sites",
+  "version": "1.0.0",
+  "description": "Sites web YEBA FORMATIONS (animations Framer Motion, design UI/UX Pro Max)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YebaYorel/Training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YebaYorel/Training/issues"
+  },
+  "homepage": "https://github.com/YebaYorel/Training#readme",
+  "dependencies": {
+    "framer-motion": "^13.4.3"
+  },
+  "private": true
+}
