@@ -1,0 +1,12 @@
+@import '@fontsource/montserrat/800.css';
+@import '@fontsource/atkinson-hyperlegible/400.css';
+@import '@fontsource/atkinson-hyperlegible/700.css';
+body { font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 20px; line-height: 1.7; color: #121212; background: #f7f4ec; margin: 0; }
+main { width: min(820px, 100% - 40px); margin: 0 auto; padding: 60px 0 90px; }
+h1, h2 { font-family: 'Montserrat', sans-serif; color: #1b3a6b; line-height: 1.15; }
+h1 { font-size: 2.4rem; }
+h2 { font-size: 1.4rem; margin-top: 2.2em; border-left: 6px solid #c9a84c; padding-left: 14px; }
+a { color: #1b3a6b; font-weight: 700; }
+.retour { display: inline-block; margin-bottom: 30px; }
+.a-completer { background: #fff3cd; border: 2px dashed #8a6d00; padding: 2px 8px; border-radius: 6px; font-weight: 700; }
+:focus-visible { outline: 4px solid #c9a84c; outline-offset: 3px; }
