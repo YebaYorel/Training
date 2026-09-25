@@ -618,6 +618,9 @@ function FicheFormation({ f, onFermer }) {
           <a className="btn btn-bleu" href={`mailto:${ENTREPRISE.email}?subject=${encodeURIComponent('Demande — ' + f.nom)}`}>
             Demander un devis <ArrowRight size={20} aria-hidden="true" />
           </a>
+          <button className="btn btn-contour-bleu" onClick={onFermer}>
+            Fermer la fiche
+          </button>
         </div>
       </motion.div>
     </motion.div>
@@ -663,6 +666,7 @@ function Implementation() {
           </div>
           <Reveal y={60}>
             <SchemaFlux />
+            <FluxMobile />
           </Reveal>
         </div>
       </div>
@@ -687,7 +691,7 @@ function SchemaFlux() {
     'M100 300 L190 392',
   ]
   return (
-    <figure className="flux">
+    <figure className="flux flux-large">
       <svg viewBox="0 0 440 480" role="img" aria-labelledby="flux-titre flux-desc">
         <title id="flux-titre">Exemple de workflow automatisé</title>
         <desc id="flux-desc">
@@ -746,12 +750,12 @@ function SchemaFlux() {
               textAnchor="middle"
               fontFamily="Montserrat, sans-serif"
               fontWeight="800"
-              fontSize="15"
+              fontSize="16"
               fill={k === 3 ? '#0b1830' : '#ffffff'}
             >
               {n.t}
             </text>
-            <text x={n.x} y={n.y + 18} textAnchor="middle" fontSize="13" fill={k === 3 ? '#0b1830' : '#c9d4e6'}>
+            <text x={n.x} y={n.y + 19} textAnchor="middle" fontSize="14" fill={k === 3 ? '#0b1830' : '#c9d4e6'}>
               {n.s}
             </text>
           </motion.g>
@@ -766,6 +770,45 @@ function SchemaFlux() {
         </span>
       </figcaption>
     </figure>
+  )
+}
+
+/* Version verticale du schéma pour les petits écrans : texte à taille réelle, pas d'SVG réduit */
+function FluxMobile() {
+  const calme = useReducedMotion()
+  const etapes = [
+    ['Demande client', 'formulaire, mail'],
+    ['Base de données', 'hébergée en UE'],
+    ['Agent IA', 'rédige, classe'],
+    ['Validation humaine', 'point d’arrêt obligatoire'],
+    ['Envoi + trace', 'journal horodaté'],
+  ]
+  return (
+    <ol className="flux-mobile" aria-label="Exemple de workflow automatisé">
+      {etapes.map(([t, s], k) => (
+        <motion.li
+          key={t}
+          className={k === 3 ? 'humain' : undefined}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.05 * k }}
+        >
+          <strong>{t}</strong>
+          <span>{s}</span>
+          {k < etapes.length - 1 && (
+            <span className="flux-mobile-lien" aria-hidden="true">
+              {!calme && (
+                <motion.i
+                  animate={{ top: ['0%', '100%'], opacity: [0, 1, 0] }}
+                  transition={{ duration: 1.4, repeat: Infinity, delay: k * 0.35, ease: 'easeInOut' }}
+                />
+              )}
+            </span>
+          )}
+        </motion.li>
+      ))}
+    </ol>
   )
 }
 
@@ -805,7 +848,7 @@ function Methode() {
               >
                 {k + 1}
               </motion.span>
-              <Reveal className="etape-carte" y={0} initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }}>
+              <Reveal className="etape-carte" y={0} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}>
                 <h3>
                   <span className="sr-only">Étape {k + 1} : </span>
                   {t}

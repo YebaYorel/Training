@@ -507,3 +507,106 @@ html[data-contraste='1'] .clair h2, html[data-contraste='1'] .clair h3 { color: 
   .hero p.accroche { margin-top: 12px; }
   .hero-actions { margin-top: 24px; }
 }
+
+/* ================= Responsive — passe complète ================= */
+/* Rien ne doit élargir la page sur mobile (une animation en attente décalée à droite suffisait) */
+html, body { overflow-x: hidden; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } main > section, footer { overflow-x: clip; } }
+
+/* Tailles minimales de texte (public malvoyant) : 14 px minimum */
+.badge, .mention-ia { font-size: 0.8rem; }
+
+/* Zones tactiles ≥ 44 px dans le pied de page */
+.pied-liens a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Bouton secondaire bleu (fiche formation) */
+.btn-contour-bleu { background: transparent; color: var(--bleu); box-shadow: inset 0 0 0 2px var(--bleu); justify-content: center; }
+.btn-contour-bleu:hover { background: #eef2f8; }
+.modal-corps .btn { justify-content: center; }
+
+/* Schéma : SVG sur grand écran, liste verticale sur petit écran */
+.flux-mobile { display: none; }
+@media (max-width: 640px) {
+  .flux-large { display: none; }
+  .flux-mobile { display: grid; gap: 34px; list-style: none; margin-top: 10px; }
+  .flux-mobile li {
+    position: relative; padding: 16px 20px; border-radius: 18px; text-align: center;
+    background: #132b54; border: 2px solid rgba(201, 168, 76, 0.55);
+  }
+  .flux-mobile li.humain { background: var(--or); border-color: var(--or-clair); }
+  .flux-mobile strong { display: block; color: #fff; font-family: var(--titre); font-size: 1.05rem; }
+  .flux-mobile span { display: block; color: var(--texte-sombre); font-size: 0.95rem; }
+  .flux-mobile li.humain strong, .flux-mobile li.humain span { color: var(--bleu-nuit); }
+  .flux-mobile-lien {
+    position: absolute !important; left: 50%; top: 100%; width: 4px; height: 34px; margin-left: -2px;
+    background: linear-gradient(180deg, #5b8bd6, var(--or));
+  }
+  .flux-mobile-lien i {
+    position: absolute; left: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; border-radius: 50%;
+    background: var(--or-clair); box-shadow: 0 0 12px var(--or);
+  }
+}
+
+/* Filtres : une seule ligne défilable au doigt sur mobile */
+@media (max-width: 640px) {
+  .filtres {
+    flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity;
+    margin-inline: -20px; padding: 4px 20px 12px; scrollbar-width: thin;
+  }
+  .filtre { flex: none; scroll-snap-align: start; }
+}
+
+/* Hero : titre et respirations adaptés aux petits téléphones */
+@media (max-width: 480px) {
+  .hero { padding: 110px 0 70px; }
+  .hero h1 { font-size: clamp(2.05rem, 10.5vw, 2.7rem); }
+  .hero .surtitre { font-size: 0.75rem; letter-spacing: 0.12em; }
+  .hero-rotateur { font-size: 1.2rem; gap: 8px 10px; margin-top: 18px; }
+  .hero p.accroche { font-size: 1.05rem; }
+  .hero-actions { margin-top: 26px; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .mention-ia { display: none; } /* reprise dans le pied de page */
+}
+
+/* Nav : logo un peu plus petit sur mobile */
+@media (max-width: 480px) { .nav-logo img { height: 40px; } .nav { top: 10px; } }
+
+/* Bouton d'accessibilité : moins envahissant sur mobile */
+@media (max-width: 640px) {
+  .acces-bouton { width: 54px; height: 54px; right: 12px; bottom: 12px; }
+  .acces-panneau { right: 12px; bottom: 76px; }
+}
+
+/* Contenus : marges et tailles sur mobile */
+@media (max-width: 560px) {
+  .conteneur { width: calc(100% - 32px); }
+  .carte-metier { padding: 30px 24px; }
+  .etape { grid-template-columns: 56px 1fr; gap: 16px; }
+  .etape-num { width: 56px; height: 56px; font-size: 1.2rem; }
+  .methode-rail { left: 25px; }
+  .etape-carte { padding: 20px 22px; }
+  .gouv-carte { padding: 26px 22px; }
+  .souverain { padding: 24px 22px; }
+  .contact { border-radius: 26px; }
+  .contact-actions .btn { width: 100%; justify-content: center; }
+  .chiffres { gap: 30px 16px; }
+  .modal .formation-tete { padding: 28px 24px 22px; }
+  .modal .formation-tete h3 { font-size: 1.6rem; padding-right: 50px; }
+  .modal-corps { padding: 22px 24px 28px; }
+  .fond-modal { padding: 8px; }
+  .pied-logo { width: 180px; }
+}
+
+/* Tablette : deux colonnes pour les cartes métiers et infos pratiques */
+@media (min-width: 641px) and (max-width: 900px) {
+  .metiers { grid-template-columns: repeat(2, 1fr); }
+  .metiers > :last-child { grid-column: 1 / -1; }
+}
+
+/* Très grands écrans : un peu plus d'air */
+@media (min-width: 1680px) {
+  .conteneur { width: min(1360px, 100% - 80px); }
+}
+@media (max-width: 640px) { .filtres { margin-inline: -16px; padding-inline: 16px; } }
+@media (max-width: 480px) { .hero .surtitre { font-size: 0.8rem; } }
+.nav-logo { display: inline-flex; align-items: center; min-height: 48px; min-width: 48px; }
