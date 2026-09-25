@@ -5,8 +5,8 @@ Refait tous les PNG de `../visuels/` aux couleurs de YEBA FORMATIONS
 
 ```bash
 cd reseaux-sociaux/outil-visuels
-npm i playwright            # une seule fois
-node detour.js              # (si le logo change) détoure logo.jpg -> logo-transparent.png
+npm i playwright opentype.js   # une seule fois
+node logo.js ../logo        # redessine le logo (sans l'œil) en SVG + PNG
 node build.js ../visuels    # régénère les 43 visuels
 ```
 

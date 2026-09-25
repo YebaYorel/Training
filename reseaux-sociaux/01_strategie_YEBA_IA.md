@@ -332,7 +332,7 @@ tableau (votre base Baserow peut les accueillir — aucune donnée personnelle).
 | Social | Contenus anxiogènes = mauvaise image | Ligne éditoriale « rassurer + outiller ». |
 | Politique | L'IA est un sujet polarisant | Rester factuel, sourcé, jamais partisan. |
 | Écologique | La vidéo générée par IA consomme beaucoup d'énergie | IA générative réservée aux plans **qui apportent quelque chose** ; le reste est filmé. Un bon message en soi pour votre audience. |
-| Image de marque | Le logo associe **un œil au-dessus d'une pyramide**. Sur un compte qui parle d'IA (donc de surveillance), certains y verront l'« œil de la Providence » souvent repris par les théories du complot : commentaires moqueurs possibles. | Votre décision : garder (c'est votre identité) **et** préparer une réponse courte (« l'œil = la vigilance : voir clair dans l'IA ») ; ou utiliser sur YEBA IA une variante sans œil. |
+| Image de marque | Le logo associait un œil au-dessus d'une pyramide (risque de moqueries « complotistes » sur un compte IA). | **Corrigé le 25/09/2026** : logo redessiné en vectoriel **sans l'œil** (`logo/`), toutes déclinaisons. |
 | Accessibilité | L'or #C9AB4C sur blanc n'atteint que 2,2:1 de contraste. | Règle graphique stricte (§4) ; tous les visuels livrés la respectent. |
 | Image de marque | La planche de charte contient des coquilles (« Circuial », « Monochromtic ») | À corriger avant de la montrer à un client ou à un graphiste. |
 | Technologique | Algorithme changeant | Mesurer chaque semaine, ne pas copier des « recettes » figées. |
@@ -353,12 +353,13 @@ qui n'a pas déjà marché gratuitement. Quand un budget existe, on booste
 
 **Encore ouvert :**
 1. L'identifiant **@yeba.ia** est-il libre sur Instagram ? (à tester en créant le compte)
-2. **Le symbole de l'œil** au-dessus des pyramides (voir §11) : on le garde tel quel sur YEBA IA ?
-3. Êtes-vous à l'aise pour **vous filmer** dès demain midi (Reel 1A) ?
+2. Êtes-vous à l'aise pour **vous filmer** dès demain midi (Reel 1A) ?
 
 ---
 
 ## 13. Visuels livrés
+
+- **Logo sans l'œil** : `reseaux-sociaux/logo/` — SVG (vectoriel, net à toute taille, pour imprimeur/site) + PNG 2000 px : couleur (fond transparent / blanc), version fond bleu, symbole seul or sur bleu et bleu sur or (**photo de profil** : marge prévue pour le recadrage rond).
 
 - **Dans le dépôt** : `reseaux-sociaux/visuels/` (43 PNG haute définition, charte
   respectée, contrastes vérifiés) — générés par `outil-visuels/build.js`

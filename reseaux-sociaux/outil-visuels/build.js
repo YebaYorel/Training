@@ -6,7 +6,7 @@ const path = require('path');
 const OUT = process.argv[2];
 const HERE = __dirname;
 const NAVY = '#1B3A6B', GOLD = '#C9AB4C', BLACK = '#121212', WHITE = '#FFFFFF';
-const LOGO = 'data:image/png;base64,' + fs.readFileSync(path.join(HERE, 'logo-transparent.png')).toString('base64');
+const LOGO = 'data:image/svg+xml;base64,' + fs.readFileSync(path.join(HERE, '..', 'logo', 'logo-yeba-formations_couleur_transparent.svg')).toString('base64');
 const FONTS = fs.readFileSync(path.join(HERE, 'fonts-local.css'), 'utf8')
   .replace(/fonts\/([^)]+)/g, (_, f) => 'data:font/woff2;base64,' + fs.readFileSync(path.join(HERE, 'fonts', f)).toString('base64'));
 
@@ -197,7 +197,7 @@ function aboutPost() {
   const W = 1080, H = 1350;
   return { name: 'post_qui-sommes-nous', W, H, pages: [
     `<div class="page" style="width:${W}px;height:${H}px;background:${WHITE};color:${NAVY};align-items:center;text-align:center;padding:80px">
-      <img src="${LOGO}" style="height:330px;mix-blend-mode:multiply">
+      <img src="${LOGO}" style="height:360px">
       <div class="h" style="font-size:96px;margin-top:40px">YEBA IA</div>
       <div class="h" style="font-size:60px;color:${BLACK};margin-top:14px">L'IA, simplement.</div>
       <div class="t" style="font-size:44px;margin-top:50px">Usage de l'IA · RGPD · IA Act<br>expliqués sans jargon</div>
