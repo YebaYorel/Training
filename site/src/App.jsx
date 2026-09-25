@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import Lenis from 'lenis'
 import {
   AnimatePresence,
   LayoutGroup,
   MotionConfig,
   motion,
+  useInView,
   useReducedMotion,
   useScroll,
   useSpring,
@@ -38,6 +40,7 @@ import {
 import { AGENDA, CERTIFS, ENTREPRISE, FILTRES, FINANCEURS, FORMATIONS, PROFILS, SYNCHRO, euros } from './data.js'
 import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } from './anim.jsx'
 import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
+import Lanceur from './ifa/Lanceur.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
@@ -48,6 +51,14 @@ const SECTIONS = [
   { id: 'financement', label: 'Financement' },
   { id: 'contact', label: 'Contact' },
 ]
+
+/** Défile vers une ancre, avec Lenis s'il est actif. */
+export function allerA(cible) {
+  const el = document.querySelector(cible)
+  if (!el) return
+  if (window.__lenis) window.__lenis.scrollTo(el, { offset: -100 })
+  else el.scrollIntoView()
+}
 
 /* ---------- Préférences d'accessibilité (propres au visiteur, sans cookie) ---------- */
 function lirePref(cle, defaut) {
@@ -72,8 +83,26 @@ export default function App() {
   const [profil, setProfil] = useState(null)
   function choisirProfil(id) {
     setProfil(id)
-    requestAnimationFrame(() => document.getElementById('formations')?.scrollIntoView())
+    requestAnimationFrame(() => allerA('#formations'))
   }
+
+  // Défilement lissé (Lenis) : la molette glisse au lieu d'avancer par crans.
+  // Désactivé si le visiteur demande moins de mouvement (système ou bouton « Animations en pause »).
+  useEffect(() => {
+    const systemeCalme = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (calme === '1' || systemeCalme) return
+    const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9, anchors: { offset: -100 } })
+    window.__lenis = lenis
+    let id = requestAnimationFrame(function boucle(t) {
+      lenis.raf(t)
+      id = requestAnimationFrame(boucle)
+    })
+    return () => {
+      cancelAnimationFrame(id)
+      lenis.destroy()
+      window.__lenis = undefined
+    }
+  }, [calme])
 
   useEffect(() => {
     const h = document.documentElement
@@ -110,6 +139,7 @@ export default function App() {
         <Contact />
       </main>
       <Pied />
+      <Lanceur />
       <PanneauAcces
         taille={taille}
         setTaille={setTaille}
@@ -200,11 +230,14 @@ function Hero({ calmeForce }) {
     return () => clearInterval(t)
   }, [calme])
 
+  // Vidéo en pause dès qu'elle quitte l'écran : le décodage ne concurrence plus le défilement
   useEffect(() => {
     const v = video.current
     if (!v) return
-    if (calme) v.pause()
-    else v.play().catch(() => {})
+    if (calme) return v.pause()
+    const obs = new IntersectionObserver(([e]) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause()), { threshold: 0.05 })
+    obs.observe(v)
+    return () => obs.disconnect()
   }, [calme])
 
   const titre = ["L'IA", 'au', 'service', 'de', 'vos', 'équipes.', 'Sous', 'contrôle', 'humain.']
@@ -628,7 +661,9 @@ function FicheFormation({ f, onFermer }) {
     const touche = (e) => e.key === 'Escape' && onFermer()
     document.addEventListener('keydown', touche)
     document.body.style.overflow = 'hidden'
+    window.__lenis?.stop()
     return () => {
+      window.__lenis?.start()
       document.removeEventListener('keydown', touche)
       document.body.style.overflow = ''
       avant?.focus?.()
@@ -646,6 +681,7 @@ function FicheFormation({ f, onFermer }) {
     >
       <motion.div
         className="modal"
+        data-lenis-prevent
         role="dialog"
         aria-modal="true"
         aria-labelledby="fiche-titre"
@@ -1146,22 +1182,43 @@ function APropos() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y = useTransform(scrollYProgress, [0, 1], [30, -30])
   const yCadre = useTransform(scrollYProgress, [0, 1], [-30, 30])
+  // Mention « portrait IA » : visible ~4 s à chaque arrivée sur la section, puis elle glisse derrière la photo.
+  // Elle reste permanente dans l'alternative textuelle et dans le pied de page (transparence, IA Act art. 50).
+  const refPhoto = useRef(null)
+  const photoVisible = useInView(refPhoto, { amount: 0.6 })
+  const [mention, setMention] = useState(true)
+  useEffect(() => {
+    if (!photoVisible) return setMention(true) // réarmée pour le prochain passage
+    const t = setTimeout(() => setMention(false), 4000)
+    return () => clearTimeout(t)
+  }, [photoVisible])
   return (
     <section id="apropos" className="bloc clair" aria-labelledby="titre-apropos" ref={ref} style={{ paddingTop: 40 }}>
       <div className="conteneur apropos">
         <figure className="portrait">
           <motion.div className="portrait-cadre" style={{ y: yCadre }} aria-hidden="true" />
-          <motion.picture style={{ y, display: 'block' }}>
-            <source srcSet="media/aurelien-lumeka.webp" type="image/webp" />
-            <img
-              src="media/aurelien-lumeka.jpg"
-              alt="Aurélien LUMEKA, souriant, en costume beige"
-              width="640"
-              height="800"
-              loading="lazy"
-            />
-          </motion.picture>
-          <figcaption>Portrait réalisé avec l’aide de l’IA.</figcaption>
+          <motion.div className="portrait-photo" style={{ y }} ref={refPhoto}>
+            <motion.span
+              className="mention-portrait"
+              aria-hidden="true"
+              initial={false}
+              animate={mention ? { y: 0, opacity: 1 } : { y: -58, opacity: 0.9 }}
+              transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
+            >
+              Portrait réalisé avec l’aide de l’IA
+            </motion.span>
+            <picture>
+              <source srcSet="media/aurelien-lumeka.webp" type="image/webp" />
+              <img
+                src="media/aurelien-lumeka.jpg"
+                alt="Aurélien LUMEKA, souriant, en costume beige — portrait réalisé avec l’aide de l’IA"
+                width="640"
+                height="800"
+                loading="lazy"
+              />
+            </picture>
+          </motion.div>
+          <figcaption className="sr-only">Portrait réalisé avec l’aide de l’IA.</figcaption>
         </figure>
         <div>
           <Reveal>

@@ -305,6 +305,7 @@ const PITONS = [
 export function Reunion() {
   const calme = useReducedMotion()
   const siege = VILLES[0]
+  const [active, setActive] = useState(null) // ville survolée (carte ou étiquette)
   return (
     <section className="sombre" aria-labelledby="titre-reunion">
       <Pitons couleur="var(--bleu-nuit)" fond="var(--creme)" />
@@ -322,7 +323,17 @@ export function Reunion() {
           </Reveal>
           <ul className="villes-liste">
             {VILLES.map((v) => (
-              <li key={v.n}>{v.n}</li>
+              <li key={v.n}>
+                <button
+                  className={active === v.n ? 'actif' : undefined}
+                  onPointerEnter={() => setActive(v.n)}
+                  onPointerLeave={() => setActive(null)}
+                  onFocus={() => setActive(v.n)}
+                  onBlur={() => setActive(null)}
+                >
+                  {v.n}
+                </button>
+              </li>
             ))}
           </ul>
         </div>
@@ -379,19 +390,75 @@ export function Reunion() {
                 style={{ transformOrigin: `${v.x}px ${v.y}px` }}
               >
                 {v.siege && !calme && (
-                  <motion.circle cx={v.x} cy={v.y} r="8" fill="none" stroke="#C9A84C" strokeWidth="2" animate={{ r: [8, 24], opacity: [0.9, 0] }} transition={{ duration: 2, repeat: Infinity }} />
+                  <motion.circle
+                    cx={v.x}
+                    cy={v.y}
+                    r="8"
+                    fill="none"
+                    stroke="#C9A84C"
+                    strokeWidth="2"
+                    style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+                    animate={{ scale: [1, 3], opacity: [0.9, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+                  />
                 )}
-                <circle cx={v.x} cy={v.y} r={v.siege ? 8 : 5.5} fill={v.siege ? '#C9A84C' : '#ffffff'} />
+                <motion.circle
+                  cx={v.x}
+                  cy={v.y}
+                  r={v.siege ? 8 : 5.5}
+                  fill={v.siege || active === v.n ? '#C9A84C' : '#ffffff'}
+                  style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+                  animate={{ scale: active === v.n ? 1.9 : 1 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                />
+                {/* Zone de survol élargie : un point de 11 px est trop petit pour la souris */}
+                <circle
+                  className="zone-ville"
+                  cx={v.x}
+                  cy={v.y}
+                  r="18"
+                  fill="transparent"
+                  onPointerEnter={() => setActive(v.n)}
+                  onPointerLeave={() => setActive(null)}
+                  onClick={() => setActive(active === v.n ? null : v.n)}
+                />
               </motion.g>
             ))}
-            <text x={siege.x + 12} y={siege.y - 8} fill="#ffffff" fontFamily="Montserrat, sans-serif" fontWeight="800" fontSize="15">
-              YEBA
-            </text>
+            {active !== siege.n && (
+              <text x={siege.x + 12} y={siege.y - 8} fill="#ffffff" fontFamily="Montserrat, sans-serif" fontWeight="800" fontSize="15">
+                YEBA
+              </text>
+            )}
+            <AnimatePresence>
+              {active && <EtiquetteVille ville={VILLES.find((v) => v.n === active)} />}
+            </AnimatePresence>
           </svg>
         </Reveal>
       </div>
       <Pitons couleur="var(--creme)" fond="var(--bleu-nuit)" />
     </section>
+  )
+}
+
+/** Nom de la ville en grand, au-dessus de son point (reste dans le cadre de la carte). */
+function EtiquetteVille({ ville }) {
+  const largeur = ville.n.length * 15 + 36
+  const x = Math.min(Math.max(ville.x, largeur / 2 + 4), 400 - largeur / 2 - 4)
+  const haut = ville.y < 70
+  const y = haut ? ville.y + 22 : ville.y - 66
+  return (
+    <motion.g
+      style={{ transformOrigin: `${ville.x}px ${ville.y}px`, pointerEvents: 'none' }}
+      initial={{ opacity: 0, scale: 0.4, y: haut ? -10 : 10 }}
+      animate={{ opacity: 1, scale: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.6 }}
+      transition={{ type: 'spring', stiffness: 420, damping: 26 }}
+    >
+      <rect x={x - largeur / 2} y={y} width={largeur} height="44" rx="22" fill="#C9A84C" />
+      <text x={x} y={y + 30} textAnchor="middle" fill="#0b1830" fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="24">
+        {ville.n}
+      </text>
+    </motion.g>
   )
 }
 

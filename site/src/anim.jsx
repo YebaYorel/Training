@@ -135,6 +135,9 @@ export function Pitons({ couleur, fond, inverse = false }) {
 /** Réseau neuronal posé sur trois pitons, tracé à l'écran — reprise animée du logo. */
 export function ReseauPitons({ className }) {
   const calme = useReducedMotion()
+  const ref = useRef(null)
+  // Les halos ne tournent que lorsque le réseau est à l'écran : rien ne se recalcule pendant le défilement ailleurs
+  const visible = useInView(ref, { amount: 0.2 })
   const triangles = [
     { d: 'M40 380 L200 140 L360 380 Z', c: '#3d6bb3' },
     { d: 'M200 380 L380 40 L560 380 Z', c: '#8f8a6a' },
@@ -147,7 +150,7 @@ export function ReseauPitons({ className }) {
     [0, 1], [0, 2], [1, 4], [3, 4], [3, 5], [4, 6], [5, 6], [5, 7], [6, 7], [7, 8], [8, 9], [9, 10], [1, 11], [6, 11], [2, 11], [7, 10],
   ]
   return (
-    <svg className={className} viewBox="0 0 760 400" aria-hidden="true">
+    <svg ref={ref} className={className} viewBox="0 0 760 400" aria-hidden="true">
       <defs>
         <linearGradient id="grad-reseau" x1="0" x2="1">
           <stop offset="0" stopColor="#5b8bd6" />
@@ -194,19 +197,24 @@ export function ReseauPitons({ className }) {
         />
       ))}
       {!calme &&
-        noeuds.map(([x, y], i) => (
-          <motion.circle
-            key={'halo' + i}
-            cx={x}
-            cy={y}
-            r="9"
-            fill="none"
-            stroke="#e3c979"
-            strokeWidth="2"
-            animate={{ r: [9, 26], opacity: [0.8, 0] }}
-            transition={{ duration: 2.4, repeat: Infinity, delay: 2.5 + (i % 5) * 0.5 }}
-          />
-        ))}
+        visible &&
+        noeuds
+          .filter((_, i) => i % 2 === 0)
+          .map(([x, y], i) => (
+            <motion.circle
+              key={'halo' + i}
+              cx={x}
+              cy={y}
+              r="9"
+              fill="none"
+              stroke="#e3c979"
+              strokeWidth="2"
+              style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{ scale: [1, 2.8], opacity: [0.8, 0] }}
+              transition={{ duration: 2.4, repeat: Infinity, delay: 1 + i * 0.45, ease: 'easeOut' }}
+            />
+          ))}
     </svg>
   )
 }

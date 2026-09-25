@@ -12,6 +12,8 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: resolve(__dirname, mode === 'apercu' ? 'apercu' : 'dist'),
     emptyOutDir: true,
+    // ~160 Ko compressés : React + Framer Motion + Lenis. L'assistante IFA est chargée à part, au premier clic.
+    chunkSizeWarningLimit: 600,
     rollupOptions:
       mode === 'apercu'
         ? undefined
