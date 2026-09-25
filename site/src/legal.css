@@ -1,12 +1,67 @@
+/* Pages légales YEBA FORMATIONS — lisibles, imprimables, sans JavaScript. Charte : bleu #1B3A6B, or #C9A84C. */
 @import '@fontsource/montserrat/800.css';
 @import '@fontsource/atkinson-hyperlegible/400.css';
 @import '@fontsource/atkinson-hyperlegible/700.css';
-body { font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 20px; line-height: 1.7; color: #121212; background: #f7f4ec; margin: 0; }
-main { width: min(820px, 100% - 40px); margin: 0 auto; padding: 60px 0 90px; }
-h1, h2 { font-family: 'Montserrat', sans-serif; color: #1b3a6b; line-height: 1.15; }
-h1 { font-size: 2.4rem; }
-h2 { font-size: 1.4rem; margin-top: 2.2em; border-left: 6px solid #c9a84c; padding-left: 14px; }
-a { color: #1b3a6b; font-weight: 700; }
-.retour { display: inline-block; margin-bottom: 30px; }
-.a-completer { background: #fff3cd; border: 2px dashed #8a6d00; padding: 2px 8px; border-radius: 6px; font-weight: 700; }
-:focus-visible { outline: 4px solid #c9a84c; outline-offset: 3px; }
+
+:root { --bleu: #1b3a6b; --nuit: #0b1830; --or: #c9a84c; --creme: #f7f4ec; --texte: #1c2433; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; font-size: 19px; line-height: 1.7; color: var(--texte); background: var(--creme); }
+a { color: var(--bleu); font-weight: 700; }
+:focus-visible { outline: 4px solid var(--or); outline-offset: 3px; border-radius: 6px; }
+.evitement { position: absolute; left: 16px; top: -80px; background: var(--bleu); color: #fff; padding: 12px 18px; border-radius: 10px; }
+.evitement:focus { top: 16px; }
+
+.bandeau { background: radial-gradient(circle at 85% 0%, rgba(201, 168, 76, 0.28), transparent 45%), var(--nuit); color: #fff; padding: 28px 16px 56px; }
+.bandeau-inner, .page { width: min(1120px, 100%); margin: 0 auto; }
+.bandeau a { color: #fff; }
+.retour { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; }
+.bandeau h1 { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1; margin: 22px 0 10px; }
+.bandeau .meta { color: #dbe3f0; font-size: 0.95rem; margin: 0; }
+.bandeau .meta strong { color: var(--or); }
+
+.page { display: grid; grid-template-columns: 270px 1fr; gap: 48px; padding: 40px 16px 80px; }
+@media (max-width: 900px) { .page { grid-template-columns: 1fr; gap: 24px; } }
+.sommaire { position: sticky; top: 20px; align-self: start; background: #fff; border-radius: 20px; padding: 20px 22px; border: 1px solid rgba(27, 58, 107, 0.12); }
+@media (max-width: 900px) { .sommaire { position: static; } }
+.sommaire h2 { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bleu); margin: 0 0 10px; }
+.sommaire ol { margin: 0; padding-left: 1.3em; font-size: 0.95rem; line-height: 1.5; }
+.sommaire li { margin: 6px 0; }
+.sommaire a { font-weight: 700; text-decoration: none; }
+.sommaire a:hover { text-decoration: underline; }
+
+main section { background: #fff; border-radius: 22px; padding: 26px 30px; margin-bottom: 18px; border: 1px solid rgba(27, 58, 107, 0.1); }
+@media (max-width: 560px) { main section { padding: 22px 18px; } body { font-size: 18px; } }
+main h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--bleu); font-size: 1.3rem; line-height: 1.25; margin: 0 0 12px; display: flex; gap: 12px; align-items: baseline; }
+main h2 .num { flex: none; display: inline-grid; place-items: center; min-width: 34px; height: 34px; border-radius: 10px; background: var(--bleu); color: #fff; font-size: 0.95rem; }
+main h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--bleu); font-size: 1.05rem; margin: 20px 0 6px; }
+main p, main li { margin: 6px 0; }
+dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; margin: 10px 0; }
+@media (max-width: 560px) { dl.fiche { grid-template-columns: 1fr; gap: 0; } dl.fiche dd { margin-bottom: 10px; } }
+dl.fiche dt { font-weight: 700; color: var(--bleu); }
+dl.fiche dd { margin: 0; }
+.encart { border-left: 5px solid var(--or); background: #f6f1e3; padding: 12px 16px; border-radius: 0 12px 12px 0; margin: 12px 0; }
+.important { font-weight: 700; }
+.a-completer { background: #fff3cd; border: 2px dashed #8a6d00; padding: 1px 8px; border-radius: 6px; font-weight: 700; color: #4a3a00; }
+.table-defilante { overflow-x: auto; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 0.92rem; line-height: 1.45; }
+th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid #e3e8f0; }
+thead th { background: var(--bleu); color: #fff; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+thead th:first-child { border-top-left-radius: 10px; }
+thead th:last-child { border-top-right-radius: 10px; }
+tbody th { color: var(--bleu); }
+
+.pied { background: var(--nuit); color: #dbe3f0; padding: 36px 16px; font-size: 0.9rem; line-height: 1.7; }
+.pied a { color: #fff; }
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .bandeau { background: #fff; color: #000; padding: 0 0 10px; border-bottom: 2px solid #000; }
+  .bandeau a, .retour, .sommaire, .evitement { display: none; }
+  .bandeau h1, .bandeau .meta { color: #000; }
+  .page { display: block; padding: 0; }
+  main section { border: 0; padding: 8px 0; break-inside: avoid; }
+  .pied { background: #fff; color: #000; }
+}
+.page > * { min-width: 0; }
