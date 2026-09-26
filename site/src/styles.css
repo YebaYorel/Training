@@ -108,7 +108,7 @@ h3 { font-size: 1.35rem; font-weight: 800; }
 .nav-liens a[aria-current='true'] { background: var(--bleu); color: #fff; }
 .nav-burger { display: none; }
 
-@media (max-width: 980px) {
+@media (max-width: 1240px) {
   .nav-liens { display: none; }
   .nav-liens.ouvert {
     display: flex; flex-direction: column; position: absolute; top: calc(100% + 10px); left: 0; right: 0;
@@ -993,3 +993,56 @@ html[data-calme='1'] .formation:hover::after, html[data-calme='1'] .formation:fo
   body.impr-doc .formation-tete { background: #fff; color: #000; border-bottom: 2px solid #000; }
   body.impr-doc .formation-tete h3, body.impr-doc .formation-tete p { color: #000; }
 }
+
+/* ---------- YEBA Studio (logiciels) ---------- */
+.studio { background: radial-gradient(circle at 10% 10%, rgba(201, 168, 76, 0.16), transparent 40%), var(--bleu-abysse); }
+.studio-f { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 24px; margin-top: 48px; align-items: stretch; }
+.carburant-vitrine {
+  position: relative; overflow: hidden; border-radius: 28px; padding: 34px; display: grid; gap: 14px; align-content: start;
+  background: linear-gradient(150deg, #13254a, var(--bleu) 60%, #274f8f); border: 2px solid var(--or); box-shadow: var(--ombre);
+}
+.carburant-vitrine::after {
+  content: ''; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.55), transparent 70%); animation: halo-studio 5s ease-in-out infinite alternate;
+}
+@keyframes halo-studio { from { transform: scale(0.85); opacity: 0.7; } to { transform: scale(1.15); opacity: 1; } }
+html[data-calme='1'] .carburant-vitrine::after { animation: none; }
+@media (prefers-reduced-motion: reduce) { .carburant-vitrine::after { animation: none; } }
+.carburant-vitrine > * { position: relative; z-index: 1; }
+.carburant-vitrine h3 { font-size: clamp(2rem, 4vw, 2.8rem); color: #fff; display: flex; gap: 10px; align-items: center; }
+.flamme-vitrine { color: #ff8a4c; width: 1em; height: 1em; }
+.carburant-vitrine .accroche { font-family: var(--titre); font-weight: 800; font-size: 1.3rem; color: var(--or-clair); }
+.carburant-vitrine p { color: #e6ecf6; }
+.ruban-or { justify-self: start; display: inline-flex; gap: 8px; align-items: center; background: var(--or); color: var(--bleu-nuit); font-family: var(--titre); font-weight: 800; font-size: 0.85rem; padding: 6px 14px; border-radius: 999px; }
+.prix-vitrine { font-size: 1.2rem; }
+.prix-vitrine strong { font-family: var(--titre); color: #fff; font-size: 1.5rem; }
+.garantie { display: flex; gap: 10px; align-items: flex-start; background: rgba(255, 255, 255, 0.08); border-radius: 14px; padding: 12px 14px; font-size: 0.95rem; }
+.garantie svg { color: var(--or); flex: none; margin-top: 3px; }
+.carburant-vitrine .btn { justify-self: start; }
+.studio-offres { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.studio-offre { background: #fff; color: var(--texte-clair); border-radius: 22px; padding: 22px; display: grid; gap: 12px; align-content: start; }
+.sombre .studio-offre h3 { color: var(--bleu); font-size: 1.15rem; }
+.studio-offre-tete { display: grid; gap: 4px; }
+.studio-offre-tete svg { color: var(--bleu); }
+.studio-prix { font-family: var(--titre); font-weight: 800; color: var(--noir); }
+.studio-offre ul { list-style: none; display: grid; gap: 6px; font-size: 0.93rem; }
+.studio-offre li { display: flex; gap: 8px; align-items: flex-start; }
+.studio-offre li svg { color: #1e7a4c; flex: none; margin-top: 4px; }
+.studio-offre.complet { background: #f6f1e3; border: 2px solid var(--or); }
+.studio-pourquoi { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
+.studio-point { display: grid; gap: 8px; align-content: start; }
+.studio-point svg { color: var(--or); }
+.sombre .studio-point h3 { font-size: 1.1rem; }
+.studio-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.studio-note { margin-top: 26px; font-size: 0.88rem; color: #b9c5da; max-width: 90ch; }
+@media (max-width: 1000px) {
+  .studio-f { grid-template-columns: minmax(0, 1fr); }
+  .studio-pourquoi { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .studio-offres, .studio-pourquoi { grid-template-columns: minmax(0, 1fr); }
+  .carburant-vitrine { padding: 24px 20px; }
+}
+
+.nav-liens a, .nav .btn { white-space: nowrap; }
+@media (min-width: 1241px) and (max-width: 1400px) { .nav-liens a { padding: 10px 10px; font-size: 0.85rem; } }

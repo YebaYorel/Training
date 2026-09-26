@@ -42,6 +42,7 @@ import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } fro
 import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 import Lanceur from './ifa/Lanceur.jsx'
 import Qualiopi from './qualiopi.jsx'
+import Studio from './studio.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
@@ -50,6 +51,7 @@ const SECTIONS = [
   { id: 'implementation', label: 'Solutions IA' },
   { id: 'gouvernance', label: 'RGPD & IA Act' },
   { id: 'qualiopi', label: 'Qualiopi' },
+  { id: 'studio', label: 'Logiciels' },
   { id: 'financement', label: 'Financement' },
   { id: 'contact', label: 'Contact' },
 ]
@@ -137,6 +139,7 @@ export default function App() {
         <Methode />
         <Gouvernance />
         <Qualiopi />
+        <Studio />
         <Resultats />
         <APropos />
         <Reunion />

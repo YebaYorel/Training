@@ -5,6 +5,7 @@
 // IA Act (art. 50) : IFA se présente toujours comme une assistante virtuelle, jamais comme une personne.
 
 import { AGENDA, CERTIFS, ENTREPRISE, FAQ, FORMATIONS, euros } from '../data.js'
+import { OFFRES } from '../../espace/src/licence.js'
 
 export const SUGGESTIONS_ACCUEIL = ['Voir les formations', 'Les tarifs', 'Le financement', 'Être rappelé']
 
@@ -206,6 +207,22 @@ const INTENTIONS = [
     id: 'cyclone',
     mots: ['cyclone', 'alerte orange', 'alerte rouge', 'meteo', 'forte pluie'],
     rep: () => ({ texte: ['Notre règlement intérieur est clair : en alerte cyclonique orange, la session est suspendue ; en alerte rouge, personne ne se déplace. La session est alors reportée sans frais. Votre sécurité d’abord !'], lien: '#qualiopi' }),
+  },
+  {
+    id: 'studio',
+    mots: ['logiciel', 'studio', 'bpf', 'bilan pedagogique', 'carburant', 'erp', 'ypareo', 'digiforma', 'dendreo', 'kit qualiopi', 'pack qualiopi', 'modeles qualiopi', 'emargement', 'gestion des sessions', 'opco qui paie', 'impaye'],
+    rep: () => ({
+      texte: [
+        'YEBA Studio, ce sont nos logiciels pour les organismes de formation :',
+        `• ${OFFRES.qualiopi.nom} — ${OFFRES.qualiopi.libellePrix} : les documents Qualiopi en Word, remplis à votre nom.`,
+        `• ${OFFRES.bpf.nom} — ${OFFRES.bpf.libellePrix} : l’assistant remplit votre BPF.`,
+        `• ${OFFRES.parcours.nom} — ${OFFRES.parcours.libellePrix} : sessions, dossiers, émargements, documents.`,
+        `• CARBURANT — ${OFFRES.carburant.premierMois} € le 1er mois puis ${OFFRES.carburant.prix} €/mois : l’IA qui fait rentrer l’argent des OPCO.`,
+        '14 jours d’essai gratuits, vos données restent chiffrées sur votre PC.',
+      ],
+      lien: '#studio',
+      suggestions: ['Être rappelé'],
+    }),
   },
   {
     id: 'qualiopi',

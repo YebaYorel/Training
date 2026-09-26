@@ -61,18 +61,7 @@ const CHAMPS = {
   apprenants: { nom: 'fldd30LNm9EjqnjCT' },
 }
 
-export const PIECES = [
-  ['programme', 'Programme'],
-  ['convention', 'Convention signée'],
-  ['convocation', 'Convocation'],
-  ['reglement', 'Règlement signé'],
-  ['rgpd', 'Info RGPD signée'],
-  ['amenagement', 'Besoins d’aménagement'],
-  ['positionnement', 'Positionnement'],
-  ['evalChaud', 'Éval. à chaud'],
-  ['evalFroid', 'Éval. à froid'],
-  ['attestation', 'Attestation de fin'],
-]
+export { PIECES } from './pieces.js'
 
 const nom = (v) => (v && typeof v === 'object' && !Array.isArray(v) ? v.name : v)
 const premier = (v) => (Array.isArray(v) ? v[0] : v)

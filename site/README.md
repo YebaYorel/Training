@@ -50,6 +50,14 @@ npm run espace:apercu   # fichier HTML autonome de démonstration (données fict
 - BPF : **préparation**. Rubriques à contrôler avec la notice cerfa n° 50199 avant télédéclaration
   sur Mon Activité Formation (avant le 31 mai N+1).
 
+## YEBA Studio (logiciels vendus aux organismes de formation)
+
+- Code : `site/espace/` (même application que l'Espace YEBA interne). Publication : `npm run build:tout` → le site dans `dist/`, le logiciel dans `dist/studio/`.
+- Modes : **démo** (fictive), **espace client** (données chiffrées AES-256 sur le PC, code personnel 8 à 12 chiffres + clé de secours), **interne** (Airtable, seulement sur votre poste avec `npm run espace`).
+- Licences : signées Ed25519, liées au code poste, vérifiées hors ligne. `npm run licence -- cles` (une seule fois, sur VOTRE poste), puis `npm run licence -- emettre …`.
+- Paiement et IA : `serveur/` (voir serveur/README.md). Sans serveur : commande par e-mail + lien de paiement Mollie.
+- Prix : `site/espace/src/licence.js` (OFFRES) — c'est la seule source ; le site, IFA et le serveur la lisent.
+
 ## Où modifier quoi
 - **Formations** : dans Airtable, puis `npm run sync`. **Accroches et mots-clés** : `site/src/data.js`.
 - **Textes des sections** : `site/src/App.jsx`.

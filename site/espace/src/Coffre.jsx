@@ -1,9 +1,12 @@
 // Coffre Qualiopi : les 33 indicateurs du RNQ, leurs preuves, et les documents officiels.
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronDown, Download, FileText, Paperclip, Printer, Search } from 'lucide-react'
+import { Bot, CheckCircle2, ChevronDown, CircleAlert, Download, FileText, Paperclip, Printer, Search } from 'lucide-react'
 import { Jauge, dateFr, telecharger } from './ui.jsx'
 import { preparationQualiopi } from './Tableau.jsx'
+import { preuvesAuto } from './audit.js'
+import { STATUTS_INDICATEUR } from './modele.js'
+import { MODELES } from './modeles-qualiopi.js'
 
 const FILTRES = [
   ['tous', 'Tous'],
@@ -21,7 +24,31 @@ function csvIndicateurs(ind) {
   return '﻿' + l.map((x) => x.map(c).join(';')).join('\r\n')
 }
 
-export default function Coffre({ db }) {
+function Editeur({ i, donnees, modifier }) {
+  const l = donnees.indicateurs[i.n] || {}
+  const maj = (champ, val) =>
+    modifier((d) => {
+      d.indicateurs[i.n] = { ...(d.indicateurs[i.n] || {}), [champ]: val, verif: new Date().toISOString().slice(0, 10) }
+    }, null)
+  return (
+    <div className="editeur-indicateur">
+      <label className="champ-select">
+        <span>Statut</span>
+        <select value={l.statut || 'en-cours'} onChange={(e) => maj('statut', e.target.value)}>
+          {STATUTS_INDICATEUR.map(([k, lib]) => <option key={k} value={k}>{lib}</option>)}
+        </select>
+      </label>
+      {[['preuves', 'Mes preuves (où les trouver)'], ['notes', 'Observations'], ['actions', 'Actions correctives']].map(([k, lib]) => (
+        <label key={k} className="champ">
+          <span>{lib}</span>
+          <textarea rows={2} defaultValue={l[k] || ''} onBlur={(e) => e.target.value !== (l[k] || '') && maj(k, e.target.value)} maxLength={2000} />
+        </label>
+      ))}
+    </div>
+  )
+}
+
+export default function Coffre({ db, donnees, modifier, aller }) {
   const [vue, setVue] = useState('indicateurs')
   const [filtre, setFiltre] = useState('tous')
   const [recherche, setRecherche] = useState('')
@@ -36,6 +63,8 @@ export default function Coffre({ db }) {
   )
   const criteres = [...new Set(db.indicateurs.map((i) => i.critere))].filter(Boolean).sort()
   const compte = (s) => db.indicateurs.filter((i) => i.statut.includes(s)).length
+  const auto = useMemo(() => preuvesAuto(donnees), [donnees])
+  const risques = db.indicateurs.filter((i) => !i.statut.includes('Non applicable') && !(i.statut.includes('Conforme') && !i.statut.includes('Non conforme'))).map((i) => ({ i, a: auto[i.n] })).sort((x, y) => (x.i.statut.includes('Non conforme') ? -1 : 0) - (y.i.statut.includes('Non conforme') ? -1 : 0) || (x.a?.ok === false ? -1 : 0) - (y.a?.ok === false ? -1 : 0))
 
   return (
     <div className="coffre">
@@ -68,8 +97,24 @@ export default function Coffre({ db }) {
         <p>Prochain audit : <strong>{dateFr(prochain)}</strong></p>
       </div>
 
+      {donnees && (
+        <section className="carte audit-blanc" aria-labelledby="audit-t">
+          <h2 id="audit-t"><Bot size={20} aria-hidden="true" /> Audit blanc</h2>
+          <p className="note">Croisement de vos statuts et des preuves détectées dans vos données. Les 5 points à traiter en premier :</p>
+          <ol>
+            {risques.slice(0, 5).map(({ i, a }) => (
+              <li key={i.n}>
+                <button className="lien-discret" onClick={() => (setFiltre('tous'), setOuvert(i.n))}>Indicateur {i.n}</button> — {i.libelle.slice(0, 90)}{i.libelle.length > 90 ? '…' : ''}
+                {a && <span className={a.ok ? 'ok' : 'attention-texte'}> · {a.texte}</span>}
+              </li>
+            ))}
+            {!risques.length && <li>Tous les indicateurs applicables sont déclarés conformes. Gardez vos preuves à jour !</li>}
+          </ol>
+        </section>
+      )}
+
       <div className="onglets-module" role="tablist">
-        {[['indicateurs', 'Indicateurs et preuves'], ['documents', `Documents officiels (${db.documents.length})`]].map(([id, l]) => (
+        {[['indicateurs', 'Indicateurs et preuves'], ...(db.documents.length ? [['documents', `Documents officiels (${db.documents.length})`]] : [])].map(([id, l]) => (
           <button key={id} role="tab" aria-selected={vue === id} className="onglet-module" onClick={() => setVue(id)}>{l}</button>
         ))}
       </div>
@@ -108,13 +153,22 @@ export default function Coffre({ db }) {
                       <AnimatePresence initial={false}>
                         {ouvert === i.n && (
                           <motion.div className="indicateur-corps" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25 }}>
-                            <dl>
+                            {auto[i.n] && (
+                              <p className={'preuve-auto ' + (auto[i.n].ok ? 'ok' : 'attention-texte')}>
+                                {auto[i.n].ok ? <CheckCircle2 size={16} aria-hidden="true" /> : <CircleAlert size={16} aria-hidden="true" />} Détecté dans vos données : {auto[i.n].texte}
+                              </p>
+                            )}
+                            {modifier && <Editeur i={i} donnees={donnees} modifier={modifier} />}
+                            {donnees && MODELES.some((m) => m.indicateurs.includes(i.n)) && (
+                              <p className="note">Modèles utiles : {MODELES.filter((m) => m.indicateurs.includes(i.n)).map((m) => m.titre).join(' · ')}{aller && <> — <button className="lien-discret" onClick={() => aller('modeles')}>ouvrir le Pack</button></>}</p>
+                            )}
+                            {!modifier && <dl>
                               {i.preuves && (<><dt>Preuves attendues</dt><dd className="pre">{i.preuves}</dd></>)}
                               {i.score && (<><dt>Auto-évaluation</dt><dd>{i.score}</dd></>)}
                               <dt>Dernière vérification</dt><dd>{dateFr(i.verif)}{i.responsable && ` · ${i.responsable}`}</dd>
                               {i.observations && (<><dt>Observations</dt><dd className="pre">{i.observations}</dd></>)}
                               {i.actions && (<><dt>Actions correctives</dt><dd className="pre">{i.actions}</dd></>)}
-                            </dl>
+                            </dl>}
                             {(i.documents.length > 0 || i.fichiers.length > 0) && (
                               <ul className="preuves">
                                 {i.documents.map((r) => {

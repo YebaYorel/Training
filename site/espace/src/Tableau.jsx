@@ -2,6 +2,7 @@
 import { useMemo } from 'react'
 import { AlertTriangle, ArrowRight, CalendarDays, CircleCheck, Info } from 'lucide-react'
 import { Jauge, Kpi, dateFr, euros, useIndex } from './ui.jsx'
+import { analyser } from './carburant.js'
 
 const AUJOURDHUI = () => new Date().toISOString().slice(0, 10)
 const plusJours = (d, n) => {
@@ -47,7 +48,7 @@ export function listeAlertes(db, index) {
 
 const ICONES = { bloquant: AlertTriangle, alerte: AlertTriangle, info: Info }
 
-export default function Tableau({ db, aller }) {
+export default function Tableau({ db, donnees, aller, ouverts }) {
   const index = useIndex(db)
   const q = preparationQualiopi(db.indicateurs)
   const alertes = useMemo(() => listeAlertes(db, index), [db, index])
@@ -61,7 +62,7 @@ export default function Tableau({ db, aller }) {
 
   return (
     <div className="tableau">
-      <h1>Bonjour Aurélien 👋</h1>
+      <h1>Bonjour {donnees ? (donnees.organisme.dirigeant || '').split(/[ ,]/)[0] || '' : 'Aurélien'} 👋</h1>
       <p className="chapo">
         {alertes.filter((x) => x.niveau === 'bloquant').length
           ? `${alertes.filter((x) => x.niveau === 'bloquant').length} point(s) bloquant(s) à traiter en priorité.`
@@ -74,6 +75,7 @@ export default function Tableau({ db, aller }) {
         <Kpi valeur={`${Math.round(tauxDossiers)} %`} libelle="Pièces des dossiers stagiaires" ton={tauxDossiers >= 90 ? 'ok' : 'attention'} />
         <Kpi valeur={euros(ca)} libelle={`Facturé en ${exercice} (HT)`} />
         <Kpi valeur={`J-${jBpf}`} libelle={`BPF ${exercice} à déclarer`} sous={`avant le 31/05/${exercice + 1}`} ton={jBpf < 45 ? 'attention' : ''} />
+        {donnees && (!ouverts || ouverts.has('carburant')) && <button className="kpi kpi-lien attention" onClick={() => aller('carburant')}><strong>{euros(analyser(donnees).total)}</strong><span>Argent en jeu · CARBURANT</span><small>Voir ce qui bloque →</small></button>}
       </div>
 
       <div className="colonnes-f">

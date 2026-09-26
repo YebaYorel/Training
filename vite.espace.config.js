@@ -61,11 +61,22 @@ function gardeAirtable(jeton) {
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') // variables SANS préfixe VITE_ : jamais injectées dans le code client
   const jeton = env.AIRTABLE_TOKEN || ''
+  const publiee = mode === 'studio' || mode === 'apercu'
   return {
     root: 'site/espace',
     base: './',
-    envPrefix: 'ESPACE_PUBLIC_', // aucune variable de .env n'est exposée au navigateur
-    plugins: [react(), gardeAirtable(jeton), ...(mode === 'apercu' ? [viteSingleFile()] : [])],
+    envPrefix: 'VITE_STUDIO_', // seules VITE_STUDIO_API / VITE_STUDIO_* (non secrètes) sont exposées au navigateur
+    plugins: [
+      react(),
+      gardeAirtable(jeton),
+      {
+        name: 'csp-api',
+        // Autorise le serveur YEBA Studio (paiement, IA) dans la politique de sécurité, s'il est configuré
+        transformIndexHtml: (html) => (env.VITE_STUDIO_API ? html.replace("connect-src 'self'", `connect-src 'self' ${new URL(env.VITE_STUDIO_API).origin}`) : html),
+      },
+      ...(mode === 'apercu' ? [viteSingleFile()] : [])],
+    // Versions publiées : le module Airtable interne est remplacé par un module vide (rien à découvrir dans le code)
+    resolve: publiee ? { alias: [{ find: /^\.\/donnees\.js$/, replacement: resolve(__dirname, 'site/espace/src/donnees-vide.js') }] } : undefined,
     server: {
       host: '127.0.0.1',
       port: 5180,
@@ -93,7 +104,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      outDir: resolve(__dirname, mode === 'apercu' ? 'apercu-espace' : 'dist-espace'),
+      outDir: resolve(__dirname, mode === 'apercu' ? 'apercu-espace' : mode === 'studio' ? 'dist/studio' : 'dist-espace'),
       emptyOutDir: true,
       chunkSizeWarningLimit: 700,
     },

@@ -2,7 +2,7 @@
 // Servent à montrer l'Espace sans exposer la moindre donnée de stagiaire ou de client (RGPD).
 import RNQ from '../../src/rnq.json'
 import DOCS from '../../src/documents.json'
-import { PIECES } from './donnees.js'
+import { PIECES } from './pieces.js'
 
 // Générateur pseudo-aléatoire déterministe : la démo est identique à chaque ouverture.
 function graine(n) {
