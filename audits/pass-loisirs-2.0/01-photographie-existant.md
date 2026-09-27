@@ -5,6 +5,11 @@
 - **Méthode** : lecture via le connecteur Airtable, **aucune écriture** (ni donnée, ni structure, ni automatisation).
 - **Source de toutes les constatations** : extrait de la base Airtable `appGyK0pp3tlRABVA` (schéma, descriptions de tables, table « Paramètres », interfaces, automatisations).
 
+> **Erratum du 27/09/2026 (après les correctifs)** : voir `02-rapport-ASTRA6.md`, section 5.
+> - Le constat P0-2 était mal localisé. Le tableau de bord 01 ne montrait qu'une ligne, à cause d'un filtre caché ; le code était exposé sur la page Direction « Paramètres et points à trancher ». Il est corrigé.
+> - Le texte des formules **est** lisible : elles ont été auditées.
+> - P0-1, P0-2 et le calcul des soldes sont corrigés.
+
 ---
 
 ## 1. Chiffres vérifiés
