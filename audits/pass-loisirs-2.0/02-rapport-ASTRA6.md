@@ -132,11 +132,13 @@ L'étape 1 n'avait pas pu lire le texte des formules. C'est fait. **Les 147 cham
 
 ## 4. Actions manuelles restantes (impossibles par l'API)
 
+Retentées le 27/09 : le connecteur ne propose ni réglage des droits d'édition d'une page, ni suppression de champ, ni lecture des collaborateurs, de la région ou de la double authentification. Les actions 4 et 5 relèvent d'une décision de Stan ou d'Aurélien.
+
 Elles sont à faire par Stan ou Aurélien dans l'**éditeur d'interface** Airtable, ou par ASTRA 6 s'il dispose d'un accès à l'écran. Ordre conseillé :
 
 1. **Page Animateur « Enfants du jour »** : passer Nom complet, Classe et Nage en lecture seule, et désactiver « Ajouter des enregistrements ». Même chose pour « Liste du jour » : l'animateur peut aujourd'hui créer une présence pour n'importe quel enfant.
 2. **Page Direction « Journal d'audit »** : **tous les champs sont modifiables**, y compris l'horodatage, l'acteur et le résultat. Les traces sont donc falsifiables. Il faut tout passer en lecture seule. Côté base, interdire la suppression de lignes si le forfait retenu le permet. *(RGPD art. 32 et responsabilité, art. 5-2.)*
-3. **Supprimer le champ « ⛔ À SUPPRIMER — détail médical (hors habilitation) »** (`fldhe9vXbdWBTyuYe`, table Enfants). Aucune formule ne s'en sert (vérifié). **Vérifier avant suppression** qu'aucune automatisation ni vue ne l'utilise : je n'ai pas lu le détail des 9 automatisations nœud par nœud, sauf la confirmation. *(RGPD art. 9.)*
+3. **Supprimer le champ « ⛔ À SUPPRIMER — détail médical (hors habilitation) »** (`fldhe9vXbdWBTyuYe`, table Enfants). **Vérifié le 27/09 : aucune formule et aucune des 9 automatisations ne l'utilisent** (trace `ASTRA-2026-09-27-06`). La suppression ne casse rien ; seule l'API ne sait pas la faire. *(RGPD art. 9.)*
 4. **Changer le code du portail** et le mettre à jour dans « Valeur confidentielle (direction) ».
 5. **Page brouillon « 10 · Soldes fiables »** (`pag6fcIH4tdqh8hrT`) : la publier ou la supprimer. Attention : **publier l'interface « Anim'Loisirs 974 — Pilote ACM » la publiera aussi**. C'est pour cette raison que je n'ai pas republié cette interface.
 6. **Compléter le registre des accès** : collaborateurs nominatifs, liens de partage, formulaires, boîtes Gmail des alertes et de l'expédition. *(Contrôle S05.)*
@@ -192,7 +194,7 @@ Elles sont à faire par Stan ou Aurélien dans l'**éditeur d'interface** Airtab
 | Sécurité | Le code du portail reste en clair dans la base, pour les collaborateurs qui ont accès à la base entière. | Il n'est plus dans aucune interface. Le vrai remède est le code de retrait par enfant et par jour (audit du 23/09, levier 4). |
 | Juridique | En lisant la base, l'assistant a lui-même fait transiter des données (fictives) hors UE. | Inscrit au registre (ACC-001), avec la condition de révocation avant le passage en RÉEL. |
 | Logique | J'ai d'abord déclaré à tort que le tableau de bord 01 exposait le code. | Corrigé et documenté (section 5). Leçon pour ASTRA 6 : **toujours lire une page avec `list_records_for_page`** avant de conclure sur ce qu'elle affiche. |
-| Faisabilité | Je n'ai pas lu le détail de 8 des 9 automatisations. | Action 4.3 : vérifier avant toute suppression de champ. |
+| Faisabilité | Les 9 automatisations ont finalement été relues nœud par nœud (trace `-06`). | Constats annexes : adresse Gmail écrite en dur dans les 4 alertes ; devis, facture et relances ne filtrent pas les destinataires sous restriction judiciaire (RGPD art. 10, sécurité des mineurs). |
 | Traçabilité | Horodatages déclarés approximatifs dans le journal. | Signalé en 2.5. L'horodatage système fait foi. |
 | Économique | Aucun coût engagé. Le forfait supérieur reste une décision de la direction. | Section 7. |
 
