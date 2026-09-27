@@ -151,10 +151,8 @@ class Doc:
         c0, c1 = t.rows[0].cells
         fixer_largeurs(t, [5.2, self.largeur / 360000 - 5.2])
         p = c0.paragraphs[0]
-        p.add_run().add_picture(str(ICI / "logo_1200.png"), width=Cm(2.2 if self.compact else 3.6))
-        if not self.compact:
-            p2 = c0.add_paragraph()
-            r = p2.add_run("YEBA FORMATIONS"); r.bold = True; r.font.size = Pt(11); r.font.color.rgb = BLEU
+        p.add_run().add_picture(str(ICI / "logo_sans_oeil_x3.png"), width=Cm(2.2 if self.compact else 3.6))
+
         c1.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
         _shade(c1, HEX_BLEU)
         p = c1.paragraphs[0]; p.alignment = WD_ALIGN_PARAGRAPH.LEFT

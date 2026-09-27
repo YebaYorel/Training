@@ -428,8 +428,22 @@ def conducteur():
     return doc.enregistrer(OUT / "Conducteur_de_seance_FORMATEUR.docx")
 
 
+def grille_vierge():
+    vierge = {"prenom": "", "nom": "", "session": 1}
+    se = D.SESSIONS[1]
+    doc = Doc("Grille critériée d'évaluation", "Modèle vierge — Nom : ................................ Date : ......../......../2026",
+              D.ACTION["intitule"], corps=10, paysage=True, mention_eval=True, compact=True)
+    doc.p("Échelle : 0 = non acquis · 1 = en cours · 2 = acquis · 3 = maîtrisé. Preuve obligatoire si 0 ou 3. "
+          "Score sur 39 — seuil 26/39 sans aucun critère à 0.", taille=9.5)
+    lignes = [["N°", "Critère", "Ce que je dois voir ou entendre", "0", "1", "2", "3", "Preuve observée / axe de progrès"]]
+    for i, (c, ind) in enumerate(CRITERES, 1):
+        lignes.append([str(i), c, ind, "☐", "☐", "☐", "☐", ""])
+    doc.table(lignes, [0.8, 4.4, 8.6, 0.9, 0.9, 0.9, 0.9, 8.6], taille=8.5, centre_cols=(0, 3, 4, 5, 6))
+    return doc.enregistrer(OUT / "Grille_criteriee_VIERGE.docx")
+
+
 def construire():
-    out = [kit(), quiz_papier(), quiz_corrige(), ressource(), conducteur()]
+    out = [kit(), quiz_papier(), quiz_corrige(), ressource(), conducteur(), grille_vierge()]
     out += [grille(s) for s in D.stagiaires()]
     return out
 

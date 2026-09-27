@@ -68,7 +68,7 @@ def construire():
         ["Dates", "Groupe 1 : lundi 28 septembre 2026 — Groupe 2 : mardi 29 septembre 2026 — programme identique"],
         ["Horaires", "8h00 – 17h00 — pauses 10h00-10h15 et 15h00-15h15 — déjeuner 12h00-13h00"],
         ["Lieu", f"{D.ACTION['lieu_nom']} — {D.ACTION['lieu_adresse']}"],
-        ["Financement", f"Plan de développement des compétences de MARILYN INSTITUT — prise en charge demandée à l'{D.CLIENT['opco']}"],
+        ["Financement", "Plan de développement des compétences de MARILYN INSTITUT"],
         ["Rémunération", "Vous restez salariée pendant la formation : votre rémunération est maintenue par votre employeur."],
     ], [3.8, 13.6], taille=11)
 

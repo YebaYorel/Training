@@ -38,19 +38,20 @@ h1{font-size:min(3.6vw,6.2vh);color:var(--bleu);margin:1.5vh 0 2vh;line-height:1
 .btn.or{background:var(--or);color:var(--bleuf)}
 .chrono{font-size:min(4vw,7vh);font-weight:900;color:var(--bleu);min-width:3.2em;text-align:center}
 .chrono.fin{color:var(--rouge)}
-.titre{background:var(--bleu);color:#fff;justify-content:center;align-items:flex-start;overflow:auto}
-.titre h1{color:#fff;font-size:min(5.5vw,9vh)}.titre p{font-size:clamp(22px,2.4vw,40px);color:var(--or);font-weight:700}
-.titre label{font-size:clamp(20px,2vw,32px);display:block;margin:1.5vh 0 .5vh}
-.titre input{font:inherit;font-size:clamp(22px,2.2vw,36px);padding:.3em .5em;border-radius:10px;border:0;width:min(640px,80vw)}
-.aide{font-size:clamp(14px,1.2vw,20px);color:#5A5F6A}.titre .aide{color:#DDE3EC;margin-top:3vh}
+.titre{background:var(--bleu);color:#fff;justify-content:flex-start;align-items:flex-start;overflow:auto}
+.titre h1{color:#fff;font-size:min(4.6vw,7.5vh);margin:1vh 0 1.5vh}.titre p{font-size:min(2.2vw,3.6vh);color:var(--or);font-weight:700;margin:.8vh 0}
+.titre label{font-size:min(1.9vw,3.2vh);display:block;margin:1vh 0 .4vh}
+.titre input{font:inherit;font-size:min(2vw,3.4vh);padding:.3em .5em;border-radius:10px;border:0;width:min(640px,80vw)}
+.aide{font-size:min(1.3vw,2.4vh);color:#5A5F6A;font-weight:400}.titre .aide{color:#DDE3EC;margin-top:2vh;font-weight:400}
 .podium{font-size:clamp(28px,3.4vw,56px);line-height:1.6}
 </style></head><body>
 <section class="ecran titre actif" id="accueil" aria-label="Accueil du quiz">
+  <div style="background:#fff;border-radius:16px;padding:1.2vh 1.2vw;margin-bottom:2vh"><img src="__LOGO__" alt="YEBA FORMATIONS" style="height:11vh;display:block"></div>
   <p>MARILYN INSTITUT · L'OR DES ÎLES</p>
   <h1>Le grand quiz<br>de la relation cliente</h1>
   <label for="e1">Équipe 1</label><input id="e1" value="Équipe Vanille">
   <label for="e2">Équipe 2</label><input id="e2" value="Équipe Frangipanier">
-  <p style="margin-top:4vh"><button class="btn or" onclick="demarrer()">Commencer ▶</button></p>
+  <p style="margin-top:2.5vh"><button class="btn or" onclick="demarrer()">Commencer ▶</button></p>
   <p class="aide">Aucune donnée n'est collectée ni envoyée : ce quiz fonctionne sans internet, sur cet ordinateur uniquement.<br>
   Clavier : Espace = révéler · → = question suivante · 1 / 2 = +1 point à l'équipe · C = chrono 30 s</p>
 </section>
@@ -104,7 +105,9 @@ document.addEventListener('keydown',e=>{ if($('accueil').classList.contains('act
 def construire():
     out = D.SORTIE / "04_PEDAGOGIE" / "Quiz_interactif_Marilyn.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(GABARIT.replace("__QUIZ__", json.dumps(QUIZ, ensure_ascii=False)), encoding="utf-8")
+    import base64
+    logo = "data:image/png;base64," + base64.b64encode((D.ICI / "logo_sans_oeil_x3.png").read_bytes()).decode()
+    out.write_text(GABARIT.replace("__QUIZ__", json.dumps(QUIZ, ensure_ascii=False)).replace("__LOGO__", logo), encoding="utf-8")
     return out
 
 

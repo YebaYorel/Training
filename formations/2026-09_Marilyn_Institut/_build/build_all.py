@@ -9,7 +9,7 @@ import zipfile
 from pathlib import Path
 
 import donnees as D
-import build_positionnement, build_livret, build_admin, build_pedago, build_ppt, build_qualiopi, quiz_html
+import build_positionnement, build_livret, build_admin, build_pedago, build_ppt, build_qualiopi, quiz_html, build_airtable
 from docx_lib import en_pdf
 
 
@@ -22,6 +22,8 @@ def main():
     ppt = build_ppt.construire()
     quiz_html.construire()
     en_pdf([f for f in fichiers if str(f).endswith(".docx")] + [ppt])
+    plan = build_airtable.construire()
+    en_pdf([f for f in plan if str(f).endswith(".docx")])
     zip_path = D.SORTIE.parent / "YEBA_Marilyn_Institut_livrables_2026-09.zip"
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
         for f in sorted(D.SORTIE.rglob("*")):

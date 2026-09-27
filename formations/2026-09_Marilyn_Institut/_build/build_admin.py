@@ -56,7 +56,7 @@ def convocation(s):
     doc.p("Madame,")
     doc.p(f"Vous êtes convoquée à l'action de formation ci-dessous, organisée par YEBA FORMATIONS à la demande de votre employeur, "
           f"{D.CLIENT['raison_sociale']}, représenté par {D.CLIENT['representant']}, {D.CLIENT['qualite']}. "
-          f"Cette formation est financée dans le cadre du plan de développement des compétences, avec une demande de prise en charge auprès de l'{D.CLIENT['opco']}.")
+          "Cette formation s'inscrit dans le plan de développement des compétences de votre employeur.")
     bloc_session(doc, s)
     doc.h2("À savoir avant de venir")
     doc.puces([

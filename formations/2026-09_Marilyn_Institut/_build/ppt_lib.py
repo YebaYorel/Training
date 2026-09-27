@@ -162,9 +162,17 @@ class Deck:
         s.notes_slide.notes_text_frame.text = texte
 
     # ------------------------------------------------------------- gabarits
+    def _logo_cartouche(self, s, x, y, largeur):
+        """Logo officiel, sans modification de couleur : posé sur un cartouche blanc pour rester lisible sur le bleu."""
+        from PIL import Image
+        w, h = Image.open(self.logo).size
+        haut = largeur * h / w
+        c = self._carte(s, x - 0.15, y - 0.12, largeur + 0.3, haut + 0.24, fond=BLANC)
+        s.shapes.add_picture(self.logo, Inches(x), Inches(y), width=Inches(largeur))
+
     def couverture(self, titre, sous, bas, note=""):
         s = self._slide(BLEU)
-        s.shapes.add_picture(self.logo_blanc, Inches(0.9), Inches(0.6), width=Inches(2.6))
+        self._logo_cartouche(s, 0.9, 0.35, 1.45)
         self._titre(s, titre, BLANC, top=1.75, taille=44, largeur=11.6)
         s.shapes.title.height = Inches(2.6)
         s.shapes.title.text_frame.vertical_anchor = MSO_ANCHOR.BOTTOM
@@ -342,7 +350,7 @@ class Deck:
 
     def fin(self, titre, lignes, note=""):
         s = self._slide(BLEU)
-        s.shapes.add_picture(self.logo_blanc, Inches(0.9), Inches(0.6), width=Inches(2.2))
+        self._logo_cartouche(s, 0.9, 0.35, 1.3)
         self._titre(s, titre, BLANC, top=2.0, taille=54, largeur=11.6)
         self._texte(s, 0.9, 3.4, 11.6, 3.6, lignes, taille=28, couleur=BLANC)
         self.notes(s, note)

@@ -11,8 +11,9 @@ OUT = D.SORTIE / "06_QUALIOPI_ET_OPCO"
 OK, AF, MQ, NA = "✔ Réalisé", "⚠ À compléter", "✘ Créé ce jour", "— Non applicable"
 
 INDICATEURS = [
-    (1, "Information du public (prérequis, objectifs, durée, tarifs, contacts, accessibilité)", OK,
-     "Programme FOR-0007, devis, livret d'accueil.", "Vérifier que la fiche publique est en ligne et à jour sur www.yebaformations.re (ou retirer la mention « sous-traitance » d'Airtable si l'action est bien en direct)."),
+    (1, "Information du public : objectifs, prérequis, durée, tarifs, accessibilité, méthodes pédagogiques et modes de financement (RNQ V10)", OK,
+     "Programme FOR-0007, devis, livret d'accueil. Fiche Airtable corrigée le 27/09 (client direct).",
+     "Vérifier que la fiche publique du site mentionne les méthodes pédagogiques et les modes de financement, sans promesse de prise en charge."),
     (2, "Indicateurs de résultats publiés", MQ, "Première action : aucun résultat à publier encore.",
      "Remplir le « Tableau des indicateurs de résultats » après les sessions et le publier sur le site."),
     (3, "Taux d'obtention des certifications", NA, "Action non certifiante.", ""),
@@ -27,7 +28,9 @@ INDICATEURS = [
      D.vigilance("ind9")),
     (10, "Adaptation de la prestation et de l'accompagnement", OK, "Fiche Indicateur 8, section 3 : 11 adaptations tracées.", ""),
     (11, "Évaluation de l'atteinte des objectifs", OK, "Grille critériée, quiz, positionnement matin/soir, attestation avec résultats.", ""),
-    (12, "Engagement des bénéficiaires et prévention des abandons", OK, "Pédagogie active (71 % de pratique), relance des non-répondantes, procédure retard/absence.", ""),
+    (12, "Prévenir les violences, le harcèlement et les discriminations, et y réagir (RNQ V10)", OK,
+     "Livret, rubrique 9 « Tolérance zéro » ; règlement intérieur, art. 9 ; conducteur, plans B (orientation, 3919).",
+     "Tenir le registre des signalements à accès restreint prévu par la procédure YEBA-DOC-14 (voir ta base Airtable)."),
     (13, "Coordination des acteurs de l'alternance", NA, "Pas d'action en alternance.", ""),
     (14, "Accompagnement socio-professionnel des apprentis", NA, "Réservé aux CFA.", ""),
     (15, "Information des apprentis sur leurs droits", NA, "Réservé aux CFA.", ""),
@@ -36,7 +39,8 @@ INDICATEURS = [
      "Conserver la preuve de réservation de la salle (à la charge du client selon le devis) et vérifier l'accessibilité PMR."),
     (18, "Coordination des intervenants", OK, "Formateur unique, référent pédagogique et handicap identifiés.", ""),
     (19, "Ressources pédagogiques mises à disposition", OK, "Ressource stagiaire, kit, phrases d'appui, livrables co-construits.", ""),
-    (20, "Référents (pédagogique, handicap, administratif) et ressources", OK, "Livret d'accueil, rubrique 2.", ""),
+    (20, "Indicateur propre aux CFA (RNQ V10)", NA, "Les référents pédagogique et handicap figurent au livret (rubrique 2).",
+     "La preuve « référent handicap » est rattachée à l'indicateur 26."),
     (21, "Compétences des intervenants", AF, "Titre professionnel FPA (2021), expérience vente et management.",
      "Tenir au dossier le CV et les justificatifs à jour du formateur (la convention dit « communiqués sur demande »)."),
     (22, "Développement des compétences des salariés de l'organisme", OK, "Plan de formation et entretien annuel (Drive, août 2025).", "Mettre à jour pour 2026."),
@@ -48,32 +52,37 @@ INDICATEURS = [
     (26, "Accueil des personnes en situation de handicap", AF, "Référent handicap, mesures universelles, fiche Indicateur 8 section 5.",
      "Tenir le « Registre des aménagements » créé ce jour (sans aucune donnée de santé)."),
     (27, "Sous-traitance : respect du référentiel", NA, "Action réalisée en direct (convention YEBA / MARILYN INSTITUT).",
-     "Airtable classe encore FOR-0007 en « sous-traitance — marque blanche » : à corriger."),
+     "Fiche FOR-0007 corrigée dans Airtable le 27/09/2026 (« Client direct »)."),
     (28, "Formation en situation de travail / alternance : ressources du milieu pro", NA, "Formation en salle.", ""),
     (29, "Insertion professionnelle", NA, "Concerne les actions d'insertion.", ""),
     (30, "Recueil des appréciations", OK, "Évaluation à chaud, à froid (3 mois), commanditaire (30 jours).", ""),
     (31, "Traitement des difficultés et réclamations", MQ, "Procédure décrite (livret, règlement, convention art. 12).",
      "Utiliser la « Fiche de réclamation » et le registre créés ce jour."),
-    (32, "Amélioration continue", MQ, "Rien encore : première action.", "Remplir la « Fiche bilan de session et plan d'amélioration » après chaque session."),
+    (32, "Amélioration continue, avec analyse des risques (RNQ V10)", MQ, "Rien encore : première action.",
+     "Remplir la « Fiche bilan de session et plan d'amélioration » ; ajouter au registre des risques : financement non accordé (cas vécu), présence non confirmée, lieu extérieur."),
+    (33, "Indicateur propre aux CFA (RNQ V10)", NA, "Pas d'apprentissage.", ""),
 ]
 
 
 def audit():
-    doc = Doc("Audit des 32 indicateurs Qualiopi", "Action Marilyn Institut — état au 27/09/2026",
+    doc = Doc("Audit des indicateurs Qualiopi (RNQ V10)", "Action Marilyn Institut — état au 27/09/2026",
               f"{D.ORG['qualiopi']} — action {D.ACTION['reference']}", corps=10, paysage=True, compact=True)
     ok = sum(1 for i in INDICATEURS if i[2] == OK)
     na = sum(1 for i in INDICATEURS if i[2] == NA)
     af = sum(1 for i in INDICATEURS if i[2] == AF)
     mq = sum(1 for i in INDICATEURS if i[2] == MQ)
     doc.p((f"Bilan : {ok} réalisés · {af} à compléter · {mq} fiches créées ce jour · {na} non applicables. ", {"b": True}),
-          "Aucun indicateur applicable n'est laissé sans réponse.", taille=11)
+          "Aucun indicateur applicable n'est laissé sans réponse. Numérotation alignée sur ta base Airtable (RNQ V10, décret n° 2026-728 du 1er août 2026 — à confirmer sur Légifrance).", taille=11)
     lignes = [["Ind.", "Exigence", "Statut", "Preuve pour cette action", "Action à mener"]]
     for n, e, st, pr, ac in INDICATEURS:
         lignes.append([str(n), e, st, pr, ac or "—"])
     doc.table(lignes, [1.1, 6.6, 3.2, 7.2, 7.7], taille=8.5, centre_cols=(0,))
     doc.h2("Contrôles spécifiques de l'OPCO EP")
     doc.table([["Point de contrôle", "État", "À faire"],
-               ["Accord de prise en charge obtenu AVANT le début de chaque session", "Inconnu", D.A_COMPLETER + " — demander la copie de l'accord à Sarah MACHON (convention, art. 7)."],
+               ["Accord de prise en charge obtenu AVANT le début de chaque session", "✘ Pas d'accord",
+                "Aucun accord de l'OPCO EP avant les sessions. Le conseiller OPCO EP, joint par téléphone par A. LUMEKA le 27/09/2026, a indiqué que la formation "
+                "se tiendrait sans accord. Conséquence contractuelle (convention, art. 7) : en cas de refus ou d'absence de prise en charge, le montant est dû par "
+                "l'entreprise. À faire : informer Sarah MACHON par écrit et garder une trace datée de l'appel (nom du conseiller, date, heure)."],
                ["Cohérence convention / émargement / certificat (noms, dates, durée)", "⚠ Écart",
                 D.vigilance("opco_ecart")],
                ["Orthographe des noms identique partout", "⚠ À vérifier", D.vigilance("opco_orthographe")],
@@ -85,7 +94,7 @@ def audit():
                ["Une facture par session", "✔", "Convention art. 7 : factures F-MAR-2026-01 et -02 déjà préparées (Drive)."],
                ["Convention collective (IDCC)", D.A_COMPLETER, "Champ « à compléter » dans la convention : à relever sur un bulletin de paie."]],
               [7.2, 3, 15.6], taille=9)
-    return doc.enregistrer(OUT / "01_Audit_32_indicateurs_Qualiopi_et_controles_OPCO.docx")
+    return doc.enregistrer(OUT / "01_Audit_indicateurs_Qualiopi_RNQ_V10_et_controles_OPCO.docx")
 
 
 def analyse_besoin():

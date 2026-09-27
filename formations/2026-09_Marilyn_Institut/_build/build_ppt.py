@@ -12,7 +12,7 @@ OUT = D.SORTIE / "04_PEDAGOGIE"
 
 def construire():
     OUT.mkdir(parents=True, exist_ok=True)
-    k = Deck(str(D.ICI / "logo_1200.png"), str(D.ICI / "logo_blanc_1200.png"))
+    k = Deck(str(D.ICI / "logo_sans_oeil_x3.png"), str(D.ICI / "logo_sans_oeil_x3.png"))
 
     # ------------------------------------------------------------------ OUVERTURE
     k.couverture("Excellence de la relation cliente & vente-conseil en institut",
