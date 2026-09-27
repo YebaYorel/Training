@@ -21,3 +21,4 @@ env/
 formations/*/_donnees_personnelles/
 formations/*/livrables/
 formations/*/*.zip
+formations/*/_build/livret_a5/livret.html

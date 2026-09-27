@@ -9,7 +9,7 @@ import zipfile
 from pathlib import Path
 
 import donnees as D
-import build_positionnement, build_livret, build_admin, build_pedago, build_ppt, build_qualiopi, quiz_html, build_airtable
+import build_positionnement, build_livret_a5, build_admin, build_pedago, build_ppt, build_qualiopi, quiz_html, build_airtable
 from docx_lib import en_pdf
 
 
@@ -17,7 +17,7 @@ def main():
     if D.SORTIE.exists():
         shutil.rmtree(D.SORTIE)
     fichiers = []
-    for mod in (build_positionnement, build_livret, build_admin, build_pedago, build_qualiopi):
+    for mod in (build_positionnement, build_livret_a5, build_admin, build_pedago, build_qualiopi):
         fichiers += mod.construire()
     ppt = build_ppt.construire()
     quiz_html.construire()

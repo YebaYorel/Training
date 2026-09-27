@@ -17,7 +17,7 @@ OUT = S / "07_A_DEPOSER_DANS_AIRTABLE"
 
 # (table, enregistrement, champ, fichier source relatif à livrables/, quand)
 PLAN = [
-    ("CATALOGUE FORMATIONS", "FOR-0007", "Programme PDF", "02_LIVRET_ACCUEIL/Livret_accueil_complet_programme_reglement_RGPD.pdf", "Maintenant"),
+    ("CATALOGUE FORMATIONS", "FOR-0007", "Programme PDF", "02_LIVRET_ACCUEIL/Livret_accueil_A5_lecture_ecran.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Support de formation", "04_PEDAGOGIE/Diaporama_Marilyn_Institut_relation_cliente_vente_conseil.pptx", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Support de formation", "04_PEDAGOGIE/Diaporama_Marilyn_Institut_relation_cliente_vente_conseil.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Support de formation", "04_PEDAGOGIE/Ressource_stagiaire_complete.pdf", "Maintenant"),
@@ -26,7 +26,7 @@ PLAN = [
     ("CATALOGUE FORMATIONS", "FOR-0007", "Evaluation de positionnement", "01_POSITIONNEMENT_ET_INDICATEUR_8/03_Fiche_Qualiopi_Indicateur_8_positionnement_et_adaptation.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Grille d'évaluation", "04_PEDAGOGIE/Grille_criteriee_VIERGE.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Grille d'évaluation", "04_PEDAGOGIE/Quiz_papier_feuille_reponse_individuelle.pdf", "Maintenant"),
-    ("CATALOGUE FORMATIONS", "FOR-0007", "Doc - Règlement intérieur (version en vigueur)", "02_LIVRET_ACCUEIL/Livret_accueil_complet_programme_reglement_RGPD.pdf", "Maintenant"),
+    ("CATALOGUE FORMATIONS", "FOR-0007", "Doc - Règlement intérieur (version en vigueur)", "02_LIVRET_ACCUEIL/Livret_accueil_A5_lecture_ecran.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Doc - Procédure réclamations", "06_QUALIOPI_ET_OPCO/04_Fiche_et_registre_reclamations_Indicateur_31.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Mallette formateur (documents)", "04_PEDAGOGIE/Conducteur_de_seance_FORMATEUR.pdf", "Maintenant"),
     ("CATALOGUE FORMATIONS", "FOR-0007", "Mallette formateur (documents)", "04_PEDAGOGIE/Kit_exercices_a_decouper_VENTE.pdf", "Maintenant"),
