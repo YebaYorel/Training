@@ -15,3 +15,9 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Données personnelles de stagiaires — JAMAIS sur GitHub (RGPD art. 5.1.f, 44 ;
+# engagement « aucun transfert hors UE » des conventions YEBA FORMATIONS)
+formations/*/_donnees_personnelles/
+formations/*/livrables/
+formations/*/*.zip

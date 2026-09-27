@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 150" role="img" aria-labelledby="t d">
+  <title id="t">YEBA FORMATIONS</title>
+  <desc id="d">Trois pitons triangules relies par un reseau, surmontes d'un noeud de connexion.</desc>
+  <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+    <g stroke="#1B3A6B" stroke-width="3">
+      <path d="M62 118 L20 118 L41 74 Z"/>
+      <path d="M41 74 L30.5 96 L51.5 96 M20 118 L41 96 L62 118 M41 74 L41 118"/>
+    </g>
+    <g stroke="#C9A84C" stroke-width="3">
+      <path d="M220 118 L178 118 L199 74 Z"/>
+      <path d="M199 74 L188.5 96 L209.5 96 M178 118 L199 96 L220 118 M199 74 L199 118"/>
+    </g>
+    <g stroke="#1B3A6B" stroke-width="3.5">
+      <path d="M172 118 L68 118 L120 46 Z"/>
+      <path d="M120 46 L94 82 L146 82 M68 118 L94 82 M172 118 L146 82 M120 46 L120 118 M94 82 L120 118 L146 82"/>
+    </g>
+    <g stroke="#C9A84C" stroke-width="1.6" opacity="0.85">
+      <path d="M41 74 L94 82 M199 74 L146 82"/>
+    </g>
+    <circle cx="120" cy="30" r="7.5" stroke="#C9A84C" stroke-width="3"/>
+    <path d="M120 37.5 L120 46" stroke="#C9A84C" stroke-width="3"/>
+    <g stroke="#C9A84C" stroke-width="1.6" opacity="0.8">
+      <path d="M112.5 30 L96 22 M127.5 30 L144 22 M120 22.5 L120 12"/>
+    </g>
+  </g>
+  <circle cx="96" cy="22" r="2.6" fill="#C9A84C"/>
+  <circle cx="144" cy="22" r="2.6" fill="#C9A84C"/>
+  <circle cx="120" cy="12" r="2.6" fill="#C9A84C"/>
+  <circle cx="120" cy="30" r="2.4" fill="#1B3A6B"/>
+</svg>
