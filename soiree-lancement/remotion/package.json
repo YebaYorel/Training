@@ -1,0 +1,22 @@
+{
+  "name": "yeba-soiree-remotion",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Vidéos motion design YEBA FORMATIONS (Remotion) — soirée de lancement",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render:intro": "remotion render src/index.ts Intro ../dist/yeba-intro.mp4",
+    "render:transition": "remotion render src/index.ts SectionTitle ../dist/yeba-transition-formations.mp4",
+    "render:all": "npm run render:intro && npm run render:transition"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.529",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.529"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "typescript": "5.6.3"
+  }
+}

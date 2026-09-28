@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YEBA FORMATIONS — Soirée de lancement</title>
+<link rel="stylesheet" href="vendor/reset.css">
+<link rel="stylesheet" href="vendor/reveal.css">
+<style>
+@font-face{font-family:Montserrat;font-weight:400;font-display:block;src:url(fonts/montserrat-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:700;font-display:block;src:url(fonts/montserrat-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:800;font-display:block;src:url(fonts/montserrat-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:900;font-display:block;src:url(fonts/montserrat-latin-900-normal.woff2) format('woff2')}
+:root{--noir:#121212;--bleu:#1B3A6B;--nuit:#0E2140;--or:#C9A84C;--blanc:#fff;--gris:#B8BCC6;--gris2:#8C93A0;--carte:#1C1C1C}
+html,body{background:var(--noir)}
+.reveal{font-family:Montserrat,system-ui,sans-serif;color:var(--blanc);font-size:46px}
+.reveal .slides section{height:100%;text-align:left;padding:0;box-sizing:border-box}
+.reveal h1,.reveal h2{font-family:Montserrat;font-weight:800;text-transform:none;letter-spacing:-.01em;margin:0;line-height:1.08;hyphens:none;word-break:keep-all;overflow-wrap:normal}
+.blanc{color:var(--blanc)}.or{color:var(--or)}.centre{text-align:center!important}
+.kicker{position:absolute;left:158px;top:150px;font-weight:800;font-size:40px;letter-spacing:.3em;color:var(--or);margin:0;text-transform:uppercase}
+.petit-logo{position:absolute;right:48px;bottom:30px;width:112px;margin:0!important}
+.titre-petit{position:absolute;left:96px;top:54px;font-size:62px}
+.titre-ligne{position:absolute;left:96px;top:54px;right:96px;font-size:76px;white-space:nowrap}
+/* cover */
+.logo-cover{position:absolute;left:50%;top:40px;width:430px;transform:translateX(-50%);margin:0!important}
+.l-cover .kicker{left:0;right:0;top:455px;text-align:center}
+.titre-cover{position:absolute;left:0;right:0;top:520px;text-align:center;font-size:68px}
+.meta{position:absolute;left:0;right:0;bottom:50px;text-align:center;color:var(--gris);font-size:40px;margin:0}
+/* statement */
+.barre{position:absolute;left:54px;top:210px;width:17px;height:516px;background:var(--or)}
+.statement{position:absolute;left:114px;top:225px;width:1300px;font-size:106px}
+.statement.etroit{width:900px;font-size:88px}
+.illu{position:absolute;margin:0!important}
+.illu-etoiles{right:110px;top:80px;width:260px;animation:tourne 30s linear infinite}
+.illu-jauge{right:70px;top:150px;width:540px}
+@keyframes tourne{to{transform:rotate(360deg)}}
+/* agenda */
+.agenda{position:absolute;left:96px;top:170px;list-style:none;margin:0;padding:0 0 0 42px;width:900px}
+.agenda li{display:flex;align-items:center;height:96px;font-size:48px;color:var(--gris2);font-weight:400}
+.agenda li .n{width:112px;font-weight:800;font-size:46px}
+.agenda li.actif{color:var(--blanc);font-weight:800;font-size:54px}.agenda li.actif .n{color:var(--or)}
+.marqueur{position:absolute;left:0;top:calc(var(--actif) * 96px + 14px);width:17px;height:68px;background:var(--or)}
+.agenda-big{position:absolute;right:70px;top:170px;font-weight:900;font-size:360px;line-height:1;color:var(--or)}
+/* team */
+.cartes{position:absolute;left:96px;right:96px;top:222px;display:flex;gap:54px;justify-content:center}
+.carte{width:432px;height:552px;background:var(--carte);border:2px solid var(--or);border-radius:26px;text-align:center;padding-top:42px;box-sizing:border-box}
+.photo{width:228px;height:228px;margin:0 auto;border-radius:50%;background:var(--bleu);border:4px solid var(--or);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:72px}
+.nom{font-weight:800;font-size:46px;margin-top:40px}.role{color:var(--gris);font-size:40px;margin-top:18px;padding:0 20px}
+/* badges */
+.badges{position:absolute;left:96px;right:96px;top:240px;display:grid;grid-template-columns:repeat(3,1fr);gap:48px 42px}
+.badge{height:210px;border:3px solid var(--or);border-radius:40px;background:var(--carte);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:44px;padding:0 20px}
+/* mot / Y */
+.mot-geant{position:absolute;left:0;right:0;top:120px;text-align:center;font-weight:900;font-size:420px;color:var(--or);line-height:1}
+.traduction{position:absolute;left:0;right:0;top:640px;text-align:center;font-weight:800;font-size:60px;margin:0}
+.y-geant{position:absolute;left:0;right:0;top:40px;text-align:center;font-weight:900;font-size:640px;color:var(--or);line-height:1}
+.branche{position:absolute;top:150px;width:470px;font-size:56px}.branche strong{display:block;font-weight:800;line-height:1.1}
+.branche span{display:block;color:var(--gris);font-size:42px;margin-top:20px}
+.branche.gauche{left:72px;text-align:right}.branche.droite{right:72px}
+/* citation */
+.guillemets{position:absolute;left:30px;top:10px;font-weight:900;font-size:340px;color:#4A3F22;line-height:1}
+.citation{position:absolute;left:288px;top:230px;width:1220px;margin:0;padding:0;border:0;box-shadow:none;font-style:normal;font-weight:800;font-size:88px;line-height:1.1;background:none}
+.mot-a-mot{display:inline-block;opacity:0}
+.present .mot-a-mot{animation:parole .5s ease-out forwards;animation-delay:calc(1.2s + var(--i) * .35s)}
+@keyframes parole{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
+/* baobab */
+.baobab-texte{position:absolute;left:96px;top:220px;width:720px}
+.baobab-texte .titre{font-size:100px}.sous{color:var(--gris);font-size:46px;margin-top:40px}
+.baobab{position:absolute;right:130px;top:40px;height:760px;margin:0!important;transform-origin:bottom}
+.present .baobab{animation:pousse 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pousse{from{transform:scaleY(.2);opacity:0}}
+/* split */
+.moitie.droite-bleue{position:absolute;left:50%;top:0;width:50%;height:100%;background:var(--bleu)}
+.split{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.split>div{position:relative;padding-top:210px;text-align:center}
+.split .titre-ligne{left:0;right:0;font-size:84px}
+.split .kicker{position:static;margin:40px 0 10px}.mot{font-weight:800;font-size:60px;margin:6px 0}
+.embleme{position:absolute;left:50%;bottom:60px;width:430px;transform:translateX(-50%);margin:0!important}
+/* valeurs */
+.valeurs{position:absolute;left:96px;top:170px;list-style:none;margin:0;padding:0}
+.valeurs li{font-weight:800;font-size:66px;height:130px;display:flex;align-items:center}
+.valeurs .n{color:var(--or);font-weight:900;font-size:80px;width:204px}
+/* frise */
+.frise{position:absolute;left:108px;right:108px;top:300px;display:flex}
+.frise .ligne{position:absolute;left:0;right:0;top:196px;height:8px;background:var(--or);transform-origin:left}
+.present .frise .ligne{animation:trace 1.6s ease-out both}@keyframes trace{from{transform:scaleX(0)}}
+.jalon{flex:1;text-align:center;position:relative}
+.jalon .date{height:150px;display:flex;align-items:flex-end;justify-content:center;color:var(--or);font-weight:800;font-size:52px;white-space:nowrap}
+.jalon .point{width:40px;height:40px;border-radius:50%;background:var(--or);margin:30px auto 0}.jalon.dernier .point{background:#fff;width:58px;height:58px;margin-top:21px}
+.jalon .txt{font-size:42px;margin-top:50px;padding:0 20px}
+/* grand chiffre */
+.grand-chiffre{position:absolute;left:40px;top:90px;width:880px;text-align:center;font-weight:900;font-size:470px;line-height:1;color:var(--or)}
+.explication{position:absolute;left:950px;top:260px;width:580px;font-weight:800;font-size:60px}.explication p{margin:0 0 40px}
+/* piliers */
+.piliers{position:absolute;left:96px;right:96px;top:250px;display:flex;gap:54px}
+.pilier{flex:1}.filigrane{font-weight:900;font-size:180px;color:#2A2A2A;line-height:1}
+.verbe{font-weight:800;font-size:70px;margin-top:10px}.trait{width:120px;height:11px;background:var(--or);margin:26px 0}
+.detail{color:var(--or);font-weight:800;font-size:44px}
+/* formats */
+.formats{position:absolute;left:96px;right:96px;top:222px;display:grid;grid-template-columns:5fr 1fr 5.4fr;grid-template-rows:264px 264px;gap:30px 36px}
+.format{background:var(--nuit);border-radius:22px;padding:0 48px;display:flex;flex-direction:column;justify-content:center}
+.format strong{font-weight:800;font-size:72px}.format span{color:var(--or);font-weight:800;font-size:44px}
+.format.or-plein{background:var(--or);color:var(--noir)}.format.or-plein span{color:var(--noir)}
+.f0{grid-column:1}.f1{grid-column:2/4}.f2{grid-column:1/3}.f3{grid-column:3}
+/* garage */
+.garage{position:absolute;left:96px;right:96px;top:170px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.tuile{height:156px;background:var(--carte);border:3px solid var(--c);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:38px;padding:0 14px}
+.legende{position:absolute;left:96px;top:760px;display:flex;gap:44px;font-size:40px}
+.legende i{display:inline-block;width:36px;height:36px;margin-right:16px;vertical-align:-4px}
+/* focus */
+.bande{position:absolute;left:0;top:0;width:492px;height:100%;background:var(--c);display:flex;align-items:center;justify-content:center}
+.code-vertical{transform:rotate(-90deg);white-space:nowrap;color:var(--noir);font-weight:900;font-size:74px}
+.focus{position:absolute;left:576px;top:0;right:80px;height:100%}
+.focus .kicker{left:0;top:66px;font-size:40px}
+.focus-titre{position:absolute;left:0;top:140px;right:0;font-size:90px}
+.puces{position:absolute;left:0;top:470px;list-style:none;margin:0;padding:0}
+.puces li{font-weight:800;font-size:54px;margin-bottom:22px}
+.chips{position:absolute;left:0;top:730px;display:flex;gap:28px}
+.chip{border:3px solid var(--or);border-radius:60px;padding:14px 34px;font-weight:800;font-size:40px}
+.onde{position:absolute;right:60px;top:470px;height:110px;display:flex;gap:10px;align-items:center}
+.onde i{width:12px;height:30%;background:var(--or);border-radius:6px;animation:onde 1.1s ease-in-out infinite}
+.onde i:nth-child(3n){animation-delay:-.3s}.onde i:nth-child(3n+1){animation-delay:-.6s}.onde i:nth-child(4n){animation-delay:-.9s}
+@keyframes onde{50%{height:100%}}
+/* démo */
+.live{position:absolute;left:96px;top:120px;background:#E53935;border-radius:60px;padding:14px 40px;font-weight:800;font-size:44px;letter-spacing:.12em;display:flex;align-items:center;gap:22px}
+.live i{width:26px;height:26px;border-radius:50%;background:#fff;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.2}}
+.demo{position:absolute;left:96px;top:300px;right:96px;font-size:124px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.mot-a-mot{opacity:1}}
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+<section data-auto-animate data-background-color="#121212" class="l-cover" id="S01">
+  <img class="logo-cover" data-id="logo" src="../assets/logo-yeba-fond-sombre.png"
+       alt="Logo YEBA FORMATIONS : trois pitons reliés en réseau">
+  <p class="kicker centre">SOIRÉE DE LANCEMENT</p>
+  <h1 class="titre-cover" data-id="titre"><span class="blanc">Sous le baobab de la connaissance,</span><br><span class="or">les graines du savoir.</span></h1>
+  <p class="meta">[DATE À PRÉCISER] · [LIEU À PRÉCISER] · La Réunion</p>
+  <aside class="notes">[S01] Présentation — ≈ 60 s
+
+Accueil. Laisser la vidéo d&#x27;intro tourner pendant que la salle s&#x27;installe. Puis : « Bonsoir à toutes et à tous. Merci d&#x27;être là. Ce soir, on ne va pas vous parler d&#x27;IA comme on en parle partout. On va vous parler de savoir. » Slogan : extrait du document de marque YEBA FORMATIONS (pièce jointe).
+
+VISUEL : Fond noir. Logo YEBA (version fond sombre) centré en grand, qui « respire » (léger zoom). Slogan en dessous, la 2e ligne en or.
+
+ANIMATION : Précédée de la vidéo Remotion « yeba-intro.mp4 » (10 s) en plein écran. Transition Morphose vers S02 : le logo rétrécit et file en haut à gauche.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-statement" id="S02">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">CE SOIR</p>
+  <h2 class="titre statement" data-id="titre"><span class="blanc">Moins de bruit sur l&#x27;IA.</span><br>
+    <span class="or fragment fade-up">Plus de décisions.</span></h2>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S02] Présentation — ≈ 60 s
+
+La promesse de la soirée, en une phrase. « Vous êtes dirigeants. Vous n&#x27;avez pas besoin d&#x27;un 47e article sur ChatGPT. Vous avez besoin de savoir quoi décider lundi matin. C&#x27;est l&#x27;objet de cette soirée. »
+
+VISUEL : Grille asymétrique : phrase alignée à gauche sur les 2/3 de l&#x27;écran, bandeau or vertical à droite (objet !!barre).
+
+ANIMATION : Morphose (le logo arrive en haut à gauche). Ligne 1 en fondu, ligne 2 en or 0,6 s après (VBA).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S03">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:0"><li class="actif"><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">01</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S03] Présentation — ≈ 45 s
+
+Présenter le déroulé en 30 secondes. Durées indicatives (total 75 min) : Présentation 6 · Histoire 10 · Offre 10 · Formations 16 · Applications &amp; sites 13 · Audit &amp; devis 10 · Mot de fin 10. Annoncer l&#x27;offre spéciale soirée à la fin : cela retient l&#x27;attention jusqu&#x27;au bout.
+
+VISUEL : Chronologie verticale épurée des 7 étapes. Un marqueur or (!!marqueur) désigne l&#x27;étape en cours ; les étapes à venir sont en gris.
+
+ANIMATION : Morphose. Ce même slide revient à chaque changement de partie : le marqueur or glisse sur l&#x27;étape suivante (effet « GPS »).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-team" id="S04">
+  <h2 class="titre-ligne" data-id="titre"><span class="blanc">3 visages.</span> <span class="or">1 mission.</span></h2>
+  <div class="cartes"><div class="carte fragment fade-up" data-id="carte0"><div class="photo">AL</div><div class="nom">Aurélien LUMEKA</div><div class="role">Directeur · IA &amp; gouvernance</div></div><div class="carte fragment fade-up" data-id="carte1"><div class="photo">S</div><div class="nom">Stan</div><div class="role">[Rôle à préciser]</div></div><div class="carte fragment fade-up" data-id="carte2"><div class="photo">A</div><div class="nom">Antho</div><div class="role">[Rôle à préciser]</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S04] Présentation — ≈ 120 s
+
+Chacun se présente en 30 secondes maximum : prénom, rôle, UNE anecdote. ⚠️ Rôles de Stan et Antho non communiqués : à compléter. RGPD : l&#x27;usage de vos photos sur un support projeté et éventuellement partagé suppose votre accord écrit (droit à l&#x27;image) — à formaliser pour Stan et Antho.
+
+VISUEL : Trois cartes verticales ; cercle photo (à remplacer par vos portraits) cerclé d&#x27;or, nom en blanc, rôle en gris.
+
+ANIMATION : Morphose. Cartes en apparition échelonnée gauche → droite (VBA, 0,3 s d&#x27;écart). Chaque intervenant prend la parole quand sa carte apparaît.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-badges" id="S05">
+  <h2 class="titre-ligne" data-id="titre"><span class="blanc">Certifié.</span> <span class="or">Pas autoproclamé.</span></h2>
+  <div class="badges"><div class="badge fragment zoom-in">Qualiopi</div><div class="badge fragment zoom-in">Google AI Specialist</div><div class="badge fragment zoom-in">Google Professional AI</div><div class="badge fragment zoom-in">SecNumacadémie ANSSI</div><div class="badge fragment zoom-in">MOOC CNIL — RGPD</div><div class="badge fragment zoom-in">Référent handicap</div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S05] Présentation — ≈ 75 s
+
+Ne pas lire la liste. Dire : « Quand on vous parle de RGPD et d&#x27;IA Act, on ne vous récite pas un article de blog. » Qualiopi : n° 25FOR02027.1 selon la table CONFIG SYSTÈME d&#x27;Airtable, valide jusqu&#x27;au 16/02/2027 — ⚠️ vos préférences indiquent 25FOF02027.1 : vérifier sur le certificat avant toute diffusion. Intitulés exacts des certifications Google à vérifier sur les attestations.
+
+VISUEL : Grille 3 × 2 de pastilles au contour or, un mot-clé par pastille, très grand.
+
+ANIMATION : Morphose. Pastilles en zoom léger, une par une (VBA).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S06">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:1"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class="actif"><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">02</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S06] Histoire — ≈ 10 s
+
+Transition silencieuse. Laisser la Morphose parler.
+
+VISUEL : Même slide que S03, marqueur or sur « Histoire ».
+
+ANIMATION : Morphose : le marqueur glisse de « Présentation » à « Histoire ».</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-quote" id="S07">
+  <div class="guillemets" aria-hidden="true">«</div>
+  <blockquote class="citation" data-id="titre"><span class="blanc">Pas de mot pour « formation ».</span><br>
+    <span class="or"><span class="mot-a-mot" style="--i:0">Alors</span> <span class="mot-a-mot" style="--i:1">maman</span> <span class="mot-a-mot" style="--i:2">a</span> <span class="mot-a-mot" style="--i:3">dit :</span> <span class="mot-a-mot" style="--i:4">Ko yeba.</span> <span class="mot-a-mot" style="--i:5">Le</span> <span class="mot-a-mot" style="--i:6">savoir.</span></span></blockquote><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S07] Histoire — ≈ 75 s
+
+Moment émotion : ralentir, baisser la voix. « En lingala, il n&#x27;existe pas de mot pour formation. Ma mère m&#x27;a parlé du savoir : Ko yeba. J&#x27;ai gardé YEBA. » Silence de 2 secondes avant la slide suivante.
+
+VISUEL : Citation plein écran, grands guillemets or en filigrane dans le coin supérieur gauche (hors texte).
+
+ANIMATION : Morphose depuis l&#x27;agenda. Ligne or en machine à écrire (Reveal.js) / fondu mot à mot (VBA). Suspense : le mot YEBA n&#x27;est révélé qu&#x27;à la slide suivante.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-word" id="S08">
+  <h2 class="mot-geant" data-id="yeba">YEBA</h2>
+  <p class="traduction">« Savoir, connaître » — en lingala</p><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S08] Histoire — ≈ 90 s
+
+Raconter : « Je voulais un nom dans ma langue maternelle, pour marquer ma différence et mon attachement à mes racines africaines. » Source : document de marque YEBA FORMATIONS (pièce jointe).
+
+VISUEL : Mot YEBA géant en or, occupant toute la largeur. Traduction dessous, en blanc.
+
+ANIMATION : Morphose. Le mot YEBA arrive en zoom depuis le centre ; à la slide suivante, E, B et A s&#x27;effacent et le Y reste (Morphose par caractère).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-tree" id="S09">
+  <h2 class="y-geant" data-id="yeba">Y</h2>
+  <div class="branche gauche fragment fade-left"><strong>L&#x27;arbre de la connaissance</strong><span>Genèse · Savoir</span></div>
+  <div class="branche droite fragment fade-right"><strong>L&#x27;arbre à palabres</strong><span>Afrique · Transmission</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S09] Histoire — ≈ 90 s
+
+« Le Y m&#x27;a fait penser à un arbre. Deux histoires me sont revenues : l&#x27;arbre de la connaissance (Genèse, ch. 2 et 3) et l&#x27;arbre à palabres, où l&#x27;on règle les problèmes du village et où les anciens transmettent. » Source : document de marque YEBA FORMATIONS.
+
+VISUEL : Un Y géant, dont les deux branches pointent vers deux étiquettes : à gauche l&#x27;arbre de la connaissance, à droite l&#x27;arbre à palabres.
+
+ANIMATION : Morphose depuis le mot YEBA : les lettres E, B, A s&#x27;effacent, le Y reste et grandit. Étiquettes en apparition gauche puis droite.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-baobab" id="S10">
+  <div class="baobab-texte"><h2 class="titre" data-id="titre"><span class="blanc">Sous le baobab,</span><br><span class="or">on transmet.</span></h2><p class="sous">Histoires · Vérités · Générations</p></div>
+  <img class="baobab" data-id="baobab" src="../assets/illustrations/baobab-or.png" alt="Silhouette dorée d'un baobab, l'arbre à palabres"><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S10] Histoire — ≈ 75 s
+
+« Sous ses branches, les anciens racontaient. Ce n&#x27;était ni une salle, ni un bureau : c&#x27;était un sanctuaire de transmission. C&#x27;est de cette vision qu&#x27;est née YEBA FORMATIONS. » Photo alternative recommandée : baobab au coucher du soleil (Unsplash, Leon Pauleikhoff) — voir README.
+
+VISUEL : Silhouette de baobab stylisée en or à droite, texte à gauche (grille asymétrique 60/40).
+
+ANIMATION : Morphose. Le baobab « pousse » (entrée par le bas, VBA « Balayer vers le haut »).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-split" id="S11">
+  <div class="moitie droite-bleue" data-id="droite"></div>
+  <div class="split">
+    <div><h2 class="titre-ligne centre" data-id="titre"><span class="blanc">Des racines.</span></h2><p class="kicker centre">HÉRITAGE</p><p class="mot">Afrique</p><p class="mot">Baobab</p><p class="mot">Transmission</p></div>
+    <div><h2 class="titre-ligne centre"><span class="or">Un réseau.</span></h2><p class="kicker centre">MODERNITÉ</p><p class="mot">IA</p><p class="mot">Réseau</p><p class="mot">Pitons 974</p></div>
+  </div>
+  <img class="embleme" data-id="embleme" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA : trois pitons en réseau">
+  <aside class="notes">[S11] Histoire — ≈ 75 s
+
+Expliquer le logo : trois pitons (ancrage réunionnais), un réseau de points reliés (la transmission, la mise en relation). « YEBA, c&#x27;est la rencontre entre l&#x27;héritage et la modernité. »
+
+VISUEL : Écran coupé en deux : gauche noir (héritage), droite bleu (modernité). L&#x27;emblème du logo (trois pitons en réseau) à cheval sur la jointure.
+
+ANIMATION : Morphose : les deux moitiés glissent l&#x27;une vers l&#x27;autre et l&#x27;emblème se pose au centre.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-values" id="S12">
+  <h2 class="titre-petit" data-id="titre">5 valeurs</h2>
+  <ol class="valeurs"><li class="fragment fade-up"><span class="n">01</span>Transmission vivante</li><li class="fragment fade-up"><span class="n">02</span>Bienveillance engagée</li><li class="fragment fade-up"><span class="n">03</span>Allégresse &amp; énergie</li><li class="fragment fade-up"><span class="n">04</span>Élévation collective</li><li class="fragment fade-up"><span class="n">05</span>Authenticité enracinée</li></ol><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S12] Histoire — ≈ 90 s
+
+Une phrase par valeur, pas plus. Exemple pour « Allégresse &amp; énergie » : « Apprendre doit être une fête de l&#x27;esprit. » Source : document de marque YEBA FORMATIONS.
+
+VISUEL : Liste verticale de 5 lignes, numéro or géant à gauche (01 → 05), valeur en blanc.
+
+ANIMATION : Morphose. Chaque valeur apparaît au clic (VBA : apparition au clic, pas automatique) pour que l&#x27;orateur la commente.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-timeline" id="S13">
+  <h2 class="titre-petit" data-id="titre">Le chemin</h2>
+  <div class="frise"><div class="ligne" data-id="ligne"></div><div class="jalon fragment fade-in"><div class="date">Avril 2021</div><div class="point"></div><div class="txt">Création</div></div><div class="jalon fragment fade-in"><div class="date">2021 → 2025</div><div class="point"></div><div class="txt">Vente · Management · Soft skills</div></div><div class="jalon fragment fade-in"><div class="date">2026</div><div class="point"></div><div class="txt">IA · RGPD · IA Act</div></div><div class="jalon fragment fade-in dernier"><div class="date">Ce soir</div><div class="point"></div><div class="txt">Nouvelle équipe</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S13] Histoire — ≈ 90 s
+
+Point fort à dire : « J&#x27;ai formé à la vente et au management dans plusieurs centres de formation. Depuis 2026, je forme à l&#x27;IA, à l&#x27;implémentation de workflows et je conseille les entreprises en gouvernance RGPD et IA Act. » Dates issues de vos préférences : YEBA dirigée depuis avril 2021.
+
+VISUEL : Chronologie horizontale épurée : 4 jalons sur une ligne or, dates en grand au-dessus de la ligne, texte en dessous (la ligne ne touche jamais le texte).
+
+ANIMATION : Morphose. La ligne or se trace de gauche à droite (VBA « Balayer »), les jalons s&#x27;allument un à un.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S14">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:2"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class="actif"><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">03</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S14] L&#x27;offre YEBA — ≈ 10 s
+
+Transition.
+
+VISUEL : Même slide que S03, marqueur or sur « L&#x27;offre YEBA ».
+
+ANIMATION : Morphose : le marqueur glisse.</aside>
+</section>
+<section data-auto-animate data-background-color="#1B3A6B" class="l-statement" id="S15">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">QUESTION</p>
+  <h2 class="titre statement" data-id="titre"><span class="blanc">Vos équipes utilisent déjà l&#x27;IA.</span><br>
+    <span class="or fragment fade-up">Avec quelles données ?</span></h2>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S15] L&#x27;offre YEBA — ≈ 60 s
+
+Faire lever les mains : « Qui a déjà vu un collaborateur coller un devis, un contrat, un fichier client dans un outil d&#x27;IA gratuit ? » ⚖️ RGPD (art. 5, 28, 32 et 44 et suivants : sous-traitance, sécurité, transferts hors UE) + IA Act (art. 4 : maîtrise de l&#x27;IA par le personnel, applicable depuis le 2 février 2025). Ne jamais dire « formation obligatoire » (règle interne, CONFIG SYSTÈME Airtable).
+
+VISUEL : Fond bleu. Question en or, très grande. Aucun autre élément.
+
+ANIMATION : Morphose. Silence de 3 secondes avant la ligne or (apparition au clic).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-pillars" id="S16">
+  <h2 class="titre-ligne" data-id="titre"><span class="blanc">3 métiers.</span> <span class="or">1 seul interlocuteur.</span></h2>
+  <div class="piliers"><div class="pilier fragment fade-up"><div class="filigrane">01</div><div class="verbe">Former</div><div class="trait"></div><div class="detail">Intra · Inter · Séminaires</div></div><div class="pilier fragment fade-up"><div class="filigrane">02</div><div class="verbe">Implémenter</div><div class="trait"></div><div class="detail">Workflows · Sites · Applications</div></div><div class="pilier fragment fade-up"><div class="filigrane">03</div><div class="verbe">Sécuriser</div><div class="trait"></div><div class="detail">RGPD · IA Act · Audit</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S16] L&#x27;offre YEBA — ≈ 90 s
+
+Le cœur du positionnement : « Vous n&#x27;avez pas à coordonner un formateur, un développeur et un juriste. Nous formons vos équipes, nous installons les outils, et nous sécurisons le tout. »
+
+VISUEL : Trois colonnes, verbe géant en blanc, sous-ligne en or ; numéro 01/02/03 en filigrane.
+
+ANIMATION : Morphose. Colonnes en entrée échelonnée par le bas (VBA).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-bignumber" id="S17">
+  <div class="grand-chiffre" data-id="titre"><span class="compteur" data-de="7" data-a="8">8</span>&nbsp;h</div>
+  <div class="explication"><p class="blanc">par journée de formation.</p><p class="or fragment fade-up">Le standard du marché : 7 h.</p></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S17] L&#x27;offre YEBA — ≈ 45 s
+
+Source : CONFIG SYSTÈME Airtable, horaires validés le 22/09/2026 (8h–12h / 13h–17h, 2 pauses de 15 min incluses). « À prix égal, une heure de plus de formation par jour. » ⚠️ La comparaison de prix avec les concurrents n&#x27;est pas documentée : ne pas affirmer « au même prix » sans relevé.
+
+VISUEL : Chiffre géant « 8 h » en or à gauche (2/3 de l&#x27;écran), texte à droite.
+
+ANIMATION : Morphose. Le chiffre compte de 7 à 8 (compteur Reveal.js / vidéo Remotion) ; en PowerPoint, zoom d&#x27;entrée.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-formats" id="S18">
+  <h2 class="titre-ligne" data-id="titre"><span class="blanc">Chez vous. Chez nous.</span> <span class="or">Ou au vert.</span></h2>
+  <div class="formats"><div class="format fragment zoom-in  f0"><strong>Intra</strong><span>Dans vos locaux</span></div><div class="format fragment zoom-in or-plein f1"><strong>Séminaire</strong><span>Dirigeants · Résidentiel</span></div><div class="format fragment zoom-in  f2"><strong>Inter</strong><span>Multi-entreprises</span></div><div class="format fragment zoom-in  f3"><strong>Sur-mesure</strong><span>Votre besoin</span></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S18] L&#x27;offre YEBA — ≈ 60 s
+
+Séminaire TABLEAU DE BORD : 6 à 8 dirigeants à huis clos, jamais deux concurrents directs sur la même session (catalogue Airtable, FOR-0014). C&#x27;est un argument fort pour ce public : le dire.
+
+VISUEL : Quatre tuiles en grille 2 × 2 asymétrique (la tuile « Séminaire » plus large, fond or, texte noir).
+
+ANIMATION : Morphose. Tuiles en « rebond » léger (VBA).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-statement" id="S19">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">NOTRE LIGNE</p>
+  <h2 class="titre statement etroit" data-id="titre"><span class="blanc">Souveraineté par défaut.</span><br>
+    <span class="or fragment fade-up">Outils européens d&#x27;abord.</span></h2>
+  <img class="illu illu-etoiles" src="../assets/illustrations/etoiles-ue.png" alt="Cercle de douze points dorés"><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S19] L&#x27;offre YEBA — ≈ 60 s
+
+⚠️ À n&#x27;affirmer que si c&#x27;est vrai pour vos propres outils : la table CONFIG SYSTÈME indique une migration en cours (Gmail → Brevo, Airtable → Baserow / OVHcloud). Formulation choisie : un engagement de méthode, pas une garantie. ⚖️ RGPD, chapitre V (transferts hors UE).
+
+VISUEL : Fond noir, phrase centrée ; petit drapeau européen stylisé (12 points or en cercle) en haut à droite.
+
+ANIMATION : Morphose. Les 12 points or se placent en cercle (VBA : apparition « Roue »).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-statement" id="S20">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">NOTRE PROMESSE</p>
+  <h2 class="titre statement" data-id="titre"><span class="blanc">Nous ne vendons pas la conformité.</span><br>
+    <span class="or fragment fade-up">Nous vous aidons à la prouver.</span></h2>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S20] L&#x27;offre YEBA — ≈ 60 s
+
+Règle commerciale interne (CONFIG SYSTÈME Airtable, 23/09/2026) : ne jamais promettre une « mise en conformité » automatique ni une « formation obligatoire ». Argument : « nous vous aidons à prouver les mesures prises ». ⚖️ IA Act art. 4 + RGPD art. 5.2 (principe de responsabilité, accountability).
+
+VISUEL : Deux lignes, la seconde en or, tout le reste vide. Effet « manifeste ».
+
+ANIMATION : Morphose. Ligne 1 en fondu ; ligne 2 en fondu lent (1,2 s) au clic suivant.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S21">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:3"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class="actif"><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">04</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S21] Nos formations — ≈ 10 s
+
+Transition.
+
+VISUEL : Même slide que S03, marqueur or sur « Nos formations ».
+
+ANIMATION : Morphose : le marqueur glisse. Option : insérer ici la vidéo Remotion « yeba-transition-formations.mp4 ».</aside>
+</section>
+<section data-auto-animate data-background-color="#0E2140" class="l-statement" id="S22">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">L&#x27;IMAGE À RETENIR</p>
+  <h2 class="titre statement etroit" data-id="titre"><span class="blanc">Votre entreprise est un moteur.</span><br>
+    <span class="or fragment fade-up">Nos formations en sont les pièces.</span></h2>
+  <img class="illu illu-jauge" src="../assets/illustrations/jauge-or.png" alt="Compte-tours doré"><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S22] Nos formations — ≈ 45 s
+
+Toutes les formations du catalogue portent un nom de pièce automobile : c&#x27;est mémorisable, dites-le. « Vous allez voir : on ne vend pas des modules, on règle votre moteur. »
+
+VISUEL : Fond bleu nuit. Jauge de compte-tours stylisée en or en arrière-plan à droite.
+
+ANIMATION : Morphose. L&#x27;aiguille de la jauge monte (VBA : rotation 120°).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-garage" id="S23">
+  <h2 class="titre-petit" data-id="titre">Le garage YEBA</h2>
+  <div class="garage"><div class="tuile" data-id="tuile-ALLUMAGE-TURBO" style="--c:#C9A84C"><span data-id="code-ALLUMAGE-TURBO">ALLUMAGE-TURBO</span></div><div class="tuile" data-id="tuile-PILOTE-AUTOMATIQUE" style="--c:#C9A84C"><span data-id="code-PILOTE-AUTOMATIQUE">PILOTE AUTOMATIQUE</span></div><div class="tuile" data-id="tuile-COPILOTE" style="--c:#C9A84C"><span data-id="code-COPILOTE">COPILOTE</span></div><div class="tuile" data-id="tuile-MOTEUR-FERME" style="--c:#C9A84C"><span data-id="code-MOTEUR-FERME">MOTEUR FERMÉ</span></div><div class="tuile" data-id="tuile-CARROSSERIE" style="--c:#FFFFFF"><span data-id="code-CARROSSERIE">CARROSSERIE</span></div><div class="tuile" data-id="tuile-INJECTION" style="--c:#FFFFFF"><span data-id="code-INJECTION">INJECTION</span></div><div class="tuile" data-id="tuile-REGLAGE-MOTEUR" style="--c:#FFFFFF"><span data-id="code-REGLAGE-MOTEUR">RÉGLAGE MOTEUR</span></div><div class="tuile" data-id="tuile-CONTROLE-TECHNIQUE" style="--c:#7FA7E0"><span data-id="code-CONTROLE-TECHNIQUE">CONTRÔLE TECHNIQUE</span></div><div class="tuile" data-id="tuile-TABLEAU-DE-BORD" style="--c:#7FA7E0"><span data-id="code-TABLEAU-DE-BORD">TABLEAU DE BORD</span></div><div class="tuile" data-id="tuile-TRACTION" style="--c:#B8BCC6"><span data-id="code-TRACTION">TRACTION</span></div><div class="tuile" data-id="tuile-EMBRAYAGE" style="--c:#B8BCC6"><span data-id="code-EMBRAYAGE">EMBRAYAGE</span></div><div class="tuile" data-id="tuile-SUR-MESURE" style="--c:#B8BCC6"><span data-id="code-SUR-MESURE">SUR-MESURE</span></div></div><div class="legende"><span><i style="background:#C9A84C"></i>IA</span><span><i style="background:#FFFFFF"></i>Web &amp; com</span><span><i style="background:#7FA7E0"></i>Gouvernance</span><span><i style="background:#B8BCC6"></i>Humain</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S23] Nos formations — ≈ 90 s
+
+Source : table CATALOGUE FORMATIONS, base Airtable « YEBA FORMATIONS - Centre de formation (Adaptable) », consultée le 28/09/2026. Exclues volontairement : FOR-0005 et FOR-0007 (sous-traitance en marque blanche : YEBA ne doit pas apparaître) et FOR-0001 (archivée). ⚠️ EMBRAYAGE (FOR-0008) : fiche en cours de rédaction, objectifs non formalisés (RNQ indicateur 1) — la citer comme « bientôt », ne pas en diffuser le programme ni la deviser. ⚠️ CPF : aucune formation n&#x27;est éligible (pas de code RNCP/RS) — ne JAMAIS dire « finançable CPF ».
+
+VISUEL : Grille 4 × 3 de tuiles ; chaque tuile porte un nom de code en capitales, bordure colorée selon la famille (légende en bas).
+
+ANIMATION : Morphose. Chaque tuile porte un nom !!tuile-XXX : sur les 4 slides suivantes, la tuile concernée s&#x27;agrandit jusqu&#x27;à devenir la slide (zoom Morphose).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-focus" id="S24">
+  <div class="bande" data-id="tuile-ALLUMAGE-TURBO" style="--c:#C9A84C">
+    <span class="code-vertical" data-id="code-ALLUMAGE-TURBO" style="font-size:73px">ALLUMAGE-TURBO</span></div>
+  <div class="focus">
+    <p class="kicker">IA générative</p>
+    <h2 class="titre focus-titre" data-id="titre"><span class="blanc">Comprendre. Produire.</span><br><span class="or">Prouver.</span></h2>
+    <ul class="puces"><li class="fragment fade-left"><span class="or">—</span> J1 · Bien demander</li><li class="fragment fade-left"><span class="or">—</span> J2 · Produire</li><li class="fragment fade-left"><span class="or">—</span> J3 · Automatiser &amp; prouver</li></ul>
+    <div class="chips"><span class="chip">3 jours · 24 h</span><span class="chip">4 à 10 pers.</span><span class="chip">Inter</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S24] Nos formations — ≈ 120 s
+
+FOR-0011. Public : tout salarié, manager, dirigeant qui utilise ou va utiliser l&#x27;IA générative. Atelier phare : « Le Tri de la Réserve » (je saisis / j&#x27;anonymise / je ne saisis jamais). Livrable : dossier de preuve des mesures IA + plan d&#x27;action à 30 jours. ⚖️ IA Act art. 4 (maîtrise de l&#x27;IA) et art. 50 (transparence) + RGPD. Rappel catalogue : ni diplôme, ni certification RNCP/RS. Prix : à trancher (incohérence notée dans CONFIG SYSTÈME, 23/09/2026) — ne pas l&#x27;afficher ce soir.
+
+VISUEL : La tuile ALLUMAGE-TURBO du garage devient la slide : bandeau or à gauche avec le nom de code vertical, contenu à droite.
+
+ANIMATION : Morphose (zoom depuis la tuile). Les 3 jours apparaissent comme les rapports d&#x27;une boîte de vitesses (VBA échelonné).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-focus" id="S25">
+  <div class="bande" data-id="tuile-PILOTE-AUTOMATIQUE" style="--c:#C9A84C">
+    <span class="code-vertical" data-id="code-PILOTE-AUTOMATIQUE" style="font-size:56px">PILOTE AUTOMATIQUE</span></div>
+  <div class="focus">
+    <p class="kicker">IA · niveau avancé</p>
+    <h2 class="titre focus-titre" data-id="titre"><span class="blanc">Des agents IA.</span><br><span class="or">Sous contrôle humain.</span></h2>
+    <ul class="puces"><li class="fragment fade-left"><span class="or">—</span> Autonomie mesurée</li><li class="fragment fade-left"><span class="or">—</span> Traçabilité</li><li class="fragment fade-left"><span class="or">—</span> Arrêt d&#x27;urgence</li></ul>
+    <div class="chips"><span class="chip">2 jours · 16 h</span><span class="chip">4 à 8 pers.</span><span class="chip">Avancé</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S25] Nos formations — ≈ 90 s
+
+FOR-0013. Pour dirigeants, référents IA, profils techniques. Point clé : un point d&#x27;arrêt humain obligatoire et une procédure d&#x27;arrêt d&#x27;urgence testée. ⚖️ IA Act : qualification des systèmes (interdit, haut risque, transparence, hors champ) + art. 14 (contrôle humain pour les systèmes à haut risque).
+
+VISUEL : Même gabarit que S24. Pictogramme volant/tableau de bord en filigrane.
+
+ANIMATION : Morphose (zoom depuis la tuile).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-focus" id="S26">
+  <div class="bande" data-id="tuile-CARROSSERIE" style="--c:#FFFFFF">
+    <span class="code-vertical" data-id="code-CARROSSERIE" style="font-size:74px">CARROSSERIE</span></div>
+  <div class="focus">
+    <p class="kicker">Internet à la voix</p>
+    <h2 class="titre focus-titre" data-id="titre"><span class="blanc">Votre site internet.</span><br><span class="or">À la voix. En 1 jour.</span></h2>
+    <ul class="puces"><li class="fragment fade-left"><span class="or">—</span> Dicter</li><li class="fragment fade-left"><span class="or">—</span> Corriger</li><li class="fragment fade-left"><span class="or">—</span> Publier conforme</li></ul>
+    <div class="chips"><span class="chip">1 jour · 8 h</span><span class="chip">Intra</span><span class="chip">Sans code</span></div>
+  </div><div class="onde" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S26] Nos formations — ≈ 90 s
+
+FOR-0009. Public : dirigeants de TPE, artisans, commerçants sans site ou dépendants de leur prestataire. Objectif 5 : maintenir le site seul. ⚖️ Mentions légales (LCEN art. 6), politique de confidentialité et traceurs (RGPD + art. 82 loi Informatique et Libertés, lignes directrices CNIL cookies), accessibilité. Si l&#x27;outil de génération est piloté par une IA : IA Act art. 50 (transparence sur les contenus générés, selon le cas).
+
+VISUEL : Même gabarit. Onde sonore stylisée en or qui se transforme en maquette de page web.
+
+ANIMATION : Morphose (zoom depuis la tuile). Onde sonore animée (Reveal.js / Remotion).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-focus" id="S27">
+  <div class="bande" data-id="tuile-INJECTION" style="--c:#FFFFFF">
+    <span class="code-vertical" data-id="code-INJECTION" style="font-size:74px">INJECTION</span></div>
+  <div class="focus">
+    <p class="kicker">Emailing · IA</p>
+    <h2 class="titre focus-titre" data-id="titre"><span class="blanc">Des emails</span><br><span class="or">qui obtiennent une réponse.</span></h2>
+    <ul class="puces"><li class="fragment fade-left"><span class="or">—</span> Segmenter</li><li class="fragment fade-left"><span class="or">—</span> Rédiger avec l&#x27;IA</li><li class="fragment fade-left"><span class="or">—</span> Mesurer</li></ul>
+    <div class="chips"><span class="chip">1 jour · 8 h</span><span class="chip">Intra</span><span class="chip">RGPD inclus</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S27] Nos formations — ≈ 90 s
+
+FOR-0010. Public : dirigeants, commerciaux, administratifs, communication. ⚖️ RGPD + prospection électronique : consentement préalable en B2C (CPCE art. L.34-5), information et droit d&#x27;opposition en B2B pour une offre en rapport avec la fonction ; lien de désinscription, identification de l&#x27;expéditeur. Outil d&#x27;envoi recommandé souverain : Brevo (France) — cohérent avec votre propre migration.
+
+VISUEL : Même gabarit. Enveloppe stylisée qui devient une flèche de réponse.
+
+ANIMATION : Morphose (zoom depuis la tuile).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-demo" id="S28">
+  <div class="live" data-id="live"><i></i>DÉMO LIVE</div>
+  <h2 class="titre demo" data-id="titre"><span class="blanc">Un site internet.</span><br><span class="or">Dicté. Devant vous.</span></h2><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S28] Nos formations — ≈ 240 s
+
+Moment « waouh » pour dirigeants : faire dicter par un invité volontaire le métier de son entreprise, générer la page en direct. Préparer un plan B (vidéo enregistrée) si le réseau du lieu est faible. ⚖️ RGPD : ne saisir aucune donnée réelle de l&#x27;invité sans son accord ; utiliser un outil hébergé dans l&#x27;UE ou une entreprise fictive. IA Act art. 50 : indiquer que le contenu est généré par IA.
+
+VISUEL : Fond noir, pastille rouge « LIVE » clignotante (seule couleur hors charte, volontaire), chronomètre stylisé.
+
+ANIMATION : Morphose. Puis bascule vers l&#x27;écran de démonstration.</aside>
+</section>
+<section data-auto-animate data-background-color="#1B3A6B" class="l-statement" id="S29">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">ET MAINTENANT</p>
+  <h2 class="titre statement" data-id="titre"><span class="blanc">Former, c&#x27;est bien.</span><br>
+    <span class="or fragment fade-up">Équiper, c&#x27;est mieux.</span></h2>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S29] Nos formations — ≈ 30 s
+
+Passage de relais vers la partie suivante (à construire).
+
+VISUEL : Phrase pivot, fond bleu. Prépare la partie « Applications &amp; sites web ».
+
+ANIMATION : Morphose vers l&#x27;agenda (marqueur sur « Applications &amp; sites web »).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S30" data-visibility="hidden">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:4"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class="actif"><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">05</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S30] Applications &amp; sites web — ≈ 10 s
+
+À CONSTRUIRE : Applications / Sites web.
+
+VISUEL : Slide masquée — partie à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S31" data-visibility="hidden">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:5"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class="actif"><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">06</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S31] Audit &amp; devis — ≈ 10 s
+
+À CONSTRUIRE : Audit / Devis.
+
+VISUEL : Slide masquée — partie à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" class="l-agenda" id="S32" data-visibility="hidden">
+  <h2 class="titre-petit" data-id="titre">Le fil de la soirée</h2>
+  <ol class="agenda" style="--actif:6"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">L&#x27;offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Audit &amp; devis</span></li><li class="actif"><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Mot de fin — offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">07</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S32] Mot de fin — offre soirée — ≈ 10 s
+
+À CONSTRUIRE : Mot de fin avec offre spéciale soirée.
+
+VISUEL : Slide masquée — partie à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+</div></div>
+<script src="vendor/reveal.js"></script>
+<script src="vendor/plugin/notes.js"></script>
+<script>
+Reveal.initialize({
+  width: 1600, height: 900, margin: 0, center: false, hash: true, controls: true, progress: true,
+  transition: 'fade', transitionSpeed: 'slow', autoAnimateDuration: 1.2,
+  autoAnimateEasing: 'cubic-bezier(.65,0,.35,1)', plugins: [RevealNotes]
+});
+// Compteur 7 → 8 sur la slide « 8 h »
+Reveal.on('slidechanged', ev => {
+  ev.currentSlide.querySelectorAll('.compteur').forEach(c => {
+    const de = +c.dataset.de, a = +c.dataset.a; c.textContent = de;
+    setTimeout(() => { c.textContent = a; }, 1300);
+  });
+});
+</script>
+</body>
+</html>

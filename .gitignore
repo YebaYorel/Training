@@ -15,3 +15,7 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Node (réinstallé automatiquement par .claude/hooks/session-start.sh)
+node_modules/
+soiree-lancement/remotion/out/

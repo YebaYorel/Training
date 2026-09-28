@@ -43,3 +43,17 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
+
+# Présentations YEBA FORMATIONS (soirée de lancement et suivantes)
+
+Outils toujours disponibles au démarrage (hook `.claude/hooks/session-start.sh`) :
+**python-pptx, Reveal.js, Remotion, VBA, Slides.com, Felo Slides** — un skill par outil dans
+`.claude/skills/`, orchestrés par le skill `presentation-yeba` (règles Mesaure/Slidor + charte).
+
+- Source unique du contenu : `soiree-lancement/contenu/slides.json`
+- Tout reconstruire : `bash soiree-lancement/build_all.sh` (`--videos` pour Remotion)
+- Charte : fond #121212 / #1B3A6B, texte blanc, or #C9A84C (jamais en texte sur blanc),
+  Montserrat, 15-20 mots/slide, titres ≥ 54 pt, texte ≥ 28 pt, aucun mot coupé ni barré.
+- Logo : version **sans œil** (`soiree-lancement/assets/`).
+- Marque blanche : pour un autre organisme, AUCUNE mention de YEBA FORMATIONS.
+- Toujours contrôler visuellement (PDF → PNG) avant de livrer.
