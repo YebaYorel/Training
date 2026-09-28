@@ -227,6 +227,12 @@ LAYOUTS = {
 
 
 def section(s):
+    notes_v = f"[{s['id']}] {s['partie']} — ≈ {s['duree_s']} s\n\n{s['notes']}"
+    if s["layout"] == "video":
+        cache = ' data-visibility="hidden"' if s.get("cache") else ""
+        return (f'<section data-background-color="#000" data-background-video="../{s["fichier"]}" '
+                f'data-background-size="cover" id="{s["id"]}"{cache}>'
+                f'<h2 class="sr-only">{e(s["titre"])}</h2>\n  <aside class="notes">{e(notes_v)}</aside>\n</section>')
     res = LAYOUTS[s["layout"]](s)
     fond, corps = res if isinstance(res, tuple) else ("noir", res)
     notes = (f"[{s['id']}] {s['partie']} — ≈ {s['duree_s']} s\n\n{s['notes']}\n\nVISUEL : {s['visuel']}\n\n"
@@ -246,6 +252,7 @@ html,body{background:var(--noir)}
 .reveal{font-family:Montserrat,system-ui,sans-serif;color:var(--blanc);font-size:46px}
 .reveal .slides section{height:100%;text-align:left;padding:0;box-sizing:border-box}
 .reveal h1,.reveal h2{font-family:Montserrat;font-weight:800;text-transform:none;letter-spacing:-.01em;margin:0;line-height:1.08;hyphens:none;word-break:keep-all;overflow-wrap:normal}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .blanc{color:var(--blanc)}.or{color:var(--or)}.centre{text-align:center!important}
 .kicker{position:absolute;left:158px;top:150px;font-weight:800;font-size:40px;letter-spacing:.3em;color:var(--or);margin:0;text-transform:uppercase}
 .petit-logo{position:absolute;right:48px;bottom:30px;width:112px;margin:0!important}

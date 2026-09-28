@@ -17,6 +17,7 @@ police Montserrat. Copier le bloc CSS de `revealjs/build_reveal.py` (variable `C
 
 | Slide | Texte projeté | Animation à régler |
 |---|---|---|
+| V1 | Vidéo — Introduction | Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante. |
 | S01 | SOIRÉE DE LANCEMENT Sous le baobab de la connaissance, les graines du savoir. [DATE] · [LIEU] · La Réunion | Précédée de la vidéo Remotion « yeba-intro.mp4 » (10 s) en plein écran. Transition Morphose vers S02 : le logo rétrécit et file en haut à gauche. |
 | S02 | CE SOIR Moins de bruit sur l'IA. Plus de décisions. | Morphose (le logo arrive en haut à gauche). Ligne 1 en fondu, ligne 2 en or 0,6 s après (VBA). |
 | S03 | Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée | Morphose. Ce même slide revient à chaque changement de partie : le marqueur or glisse sur l'étape suivante (effet « GPS »). |
@@ -31,6 +32,7 @@ police Montserrat. Copier le bloc CSS de `revealjs/build_reveal.py` (variable `C
 | S12 | 5 valeurs Transmission vivante Bienveillance engagée Allégresse & énergie Élévation collective Authenticité enracinée | Morphose. Chaque valeur apparaît au clic (VBA : apparition au clic, pas automatique) pour que l'orateur la commente. |
 | S13 | Le chemin Avril 2021 Création 2021 → 2025 Vente · Management · Soft skills 2026 IA · RGPD · IA Act Ce soir Nouvelle équipe | Morphose. La ligne or se trace de gauche à droite (VBA « Balayer »), les jalons s'allument un à un. |
 | S14 | Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée | Morphose : le marqueur glisse. |
+| V2 | Vidéo — Intelligence artificielle | Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante. |
 | S15 | QUESTION Vos équipes utilisent déjà l'IA. Avec quelles données ? | Morphose. Silence de 3 secondes avant la ligne or (apparition au clic). |
 | S16 | 3 métiers. 1 seul interlocuteur. Former Intra · Inter · Séminaires Implémenter Workflows · Sites · Applications Sécuriser RGPD · IA Act · Audit | Morphose. Colonnes en entrée échelonnée par le bas (VBA). |
 | S17 | 8 h par journée de formation. Le standard du marché : 7 h. | Morphose. Le chiffre compte de 7 à 8 (compteur Reveal.js / vidéo Remotion) ; en PowerPoint, zoom d'entrée. |
@@ -38,6 +40,7 @@ police Montserrat. Copier le bloc CSS de `revealjs/build_reveal.py` (variable `C
 | S19 | NOTRE LIGNE Souveraineté par défaut. Outils européens d'abord. | Morphose. Les 12 points or se placent en cercle (VBA : apparition « Roue »). |
 | S20 | NOTRE PROMESSE Nous ne vendons pas la conformité. Nous vous aidons à la prouver. | Morphose. Ligne 1 en fondu ; ligne 2 en fondu lent (1,2 s) au clic suivant. |
 | S21 | Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée | Morphose : le marqueur glisse. Option : insérer ici la vidéo Remotion « yeba-transition-formations.mp4 ». |
+| V3 | Vidéo — AI | Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante. |
 | S22 | L'IMAGE À RETENIR Votre entreprise est un moteur. Nos formations en sont les pièces. | Morphose. L'aiguille de la jauge monte (VBA : rotation 120°). |
 | S23 | Le garage YEBA ALLUMAGE-TURBO PILOTE AUTOMATIQUE COPILOTE MOTEUR FERMÉ CARROSSERIE INJECTION RÉGLAGE MOTEUR CONTRÔLE TECHNIQUE TABLEAU DE BORD TRACTION EMBRAYAGE SUR-MESURE | Morphose. Chaque tuile porte un nom !!tuile-XXX : sur les 4 slides suivantes, la tuile concernée s'agrandit jusqu'à devenir la slide (zoom Morphose). |
 | S24 | Comprendre. Produire. Prouver. J1 · Bien demander J2 · Produire J3 · Automatiser & prouver 3 jours · 24 h 4 à 10 pers. Inter | Morphose (zoom depuis la tuile). Les 3 jours apparaissent comme les rapports d'une boîte de vitesses (VBA échelonné). |

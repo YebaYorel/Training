@@ -17,6 +17,7 @@
 
 | # | Partie | Slide | Mots projetés | Durée |
 |---|---|---|---|---|
+| V1 | Présentation | Vidéo — Introduction | 2 | 8 s |
 | S01 | Présentation | Sous le baobab de la connaissance, | 17 | 60 s |
 | S02 | Présentation | Moins de bruit sur l'IA. | 10 | 60 s |
 | S03 | Présentation | Le fil de la soirée | 21 | 45 s |
@@ -31,6 +32,7 @@
 | S12 | Histoire | 5 valeurs | 12 | 90 s |
 | S13 | Histoire | Le chemin | 20 | 90 s |
 | S14 | L'offre YEBA | Le fil de la soirée | 21 | 10 s |
+| V2 | L'offre YEBA | Vidéo — Intelligence artificielle | 3 | 8 s |
 | S15 | L'offre YEBA | Vos équipes utilisent déjà l'IA. | 9 | 60 s |
 | S16 | L'offre YEBA | 3 métiers. | 18 | 90 s |
 | S17 | L'offre YEBA | 8 h | 12 | 45 s |
@@ -38,6 +40,7 @@
 | S19 | L'offre YEBA | Souveraineté par défaut. | 8 | 60 s |
 | S20 | L'offre YEBA | Nous ne vendons pas la conformité. | 14 | 60 s |
 | S21 | Nos formations | Le fil de la soirée | 21 | 10 s |
+| V3 | Nos formations | Vidéo — AI | 2 | 8 s |
 | S22 | Nos formations | Votre entreprise est un moteur. | 14 | 45 s |
 | S23 | Nos formations | Le garage YEBA | 21 | 90 s |
 | S24 | Nos formations | Comprendre. Produire. | 20 | 120 s |
@@ -49,6 +52,21 @@
 | S30 | Applications & sites web | Le fil de la soirée *(masquée — à construire)* | 21 | 10 s |
 | S31 | Audit & devis | Le fil de la soirée *(masquée — à construire)* | 21 | 10 s |
 | S32 | Mot de fin — offre soirée | Le fil de la soirée *(masquée — à construire)* | 21 | 10 s |
+| V4 | Mot de fin — offre soirée | Vidéo — Conclusion *(masquée — à construire)* | 2 | 8 s |
+
+## V1 — Présentation · gabarit `video`
+
+**1. Titre & texte ultra-court**
+
+> Vidéo — Introduction
+
+*(2 mots projetés)*
+
+**2. Idée visuelle / mise en page** — Plein écran : un livre lumineux s'ouvre au-dessus d'un cercle de savoir, titre « Introduction ».
+
+**3. Animation / transition** — Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.
+
+**Notes orateur (8 s)** — Lancer quand la salle est installée et les lumières baissées : c'est le « top départ ». Le livre qui s'ouvre annonce le fil rouge de la soirée (le savoir, YEBA). Enchaîner directement sur la slide de titre, sans parler pendant la vidéo. ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné).
 
 ## S01 — Présentation · gabarit `cover`
 
@@ -246,6 +264,20 @@
 
 **Notes orateur (10 s)** — Transition.
 
+## V2 — L'offre YEBA · gabarit `video`
+
+**1. Titre & texte ultra-court**
+
+> Vidéo — Intelligence artificielle
+
+*(3 mots projetés)*
+
+**2. Idée visuelle / mise en page** — Plein écran : ville numérique néon, une sphère d'énergie grossit, titre « Intelligence Artificielle ».
+
+**3. Animation / transition** — Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.
+
+**Notes orateur (8 s)** — Place : juste avant la question « Vos équipes utilisent déjà l'IA. Avec quelles données ? ». La vidéo met la salle dans l'ambiance IA ; la question qui suit la ramène à la réalité de leur entreprise. Laisser 1 seconde de silence après la vidéo. ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné).
+
 ## S15 — L'offre YEBA · gabarit `statement`
 
 **1. Titre & texte ultra-court**
@@ -343,6 +375,20 @@
 **3. Animation / transition** — Morphose : le marqueur glisse. Option : insérer ici la vidéo Remotion « yeba-transition-formations.mp4 ».
 
 **Notes orateur (10 s)** — Transition.
+
+## V3 — Nos formations · gabarit `video`
+
+**1. Titre & texte ultra-court**
+
+> Vidéo — AI
+
+*(2 mots projetés)*
+
+**2. Idée visuelle / mise en page** — Plein écran : couloir de circuits, les lettres « AI » dorées explosent de lumière — l'or rappelle la charte YEBA.
+
+**3. Animation / transition** — Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.
+
+**Notes orateur (8 s)** — Place : ouverture de la partie Formations, juste après l'agenda. L'or de la vidéo fait le lien avec « Le garage YEBA ». Dire en sortie de vidéo : « Maintenant, voyons comment on met ce moteur en route dans VOTRE entreprise. » ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné).
 
 ## S22 — Nos formations · gabarit `statement`
 

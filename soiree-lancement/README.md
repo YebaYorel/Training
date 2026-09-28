@@ -14,6 +14,7 @@ Parties à construire (slides déjà créées mais masquées) : Applications & s
 | `revealjs/index.html` | Version web hors ligne (Auto-Animate), vue orateur avec touche S | Reveal.js |
 | `dist/yeba-intro.mp4` | Vidéo d'ouverture 10 s (déjà insérée en slide 0 du PPTX) | Remotion |
 | `dist/yeba-transition-formations.mp4` | Transition « 04 · Nos formations » (compte-tours) | Remotion |
+| `assets/videos/clip-*.mp4` | 4 clips fournis (Grok), passés en 1920×1080 et volume harmonisé, intégrés au PPTX | — |
 | `dist/YEBA_Soiree_Lancement.pdf` | Export pour Slides.com / impression | LibreOffice |
 | `slides-com/plan_slides_com.md` | Plan de montage Slides.com | Slides.com |
 | `felo/prompt_felo_slides.md` | Prompt prêt à coller (sans donnée personnelle) | Felo Slides |
@@ -28,6 +29,17 @@ Parties à construire (slides déjà créées mais masquées) : Applications & s
 
 Modifier un texte : éditer `contenu/slides.json`, puis `bash build_all.sh` — le PPTX, le HTML, le storyboard,
 le prompt Felo et le plan Slides.com se mettent à jour ensemble.
+
+## Les 4 clips vidéo : où et pourquoi
+
+| Clip | Place | Rôle |
+|---|---|---|
+| Introduction (livre qui s'ouvre) | Slide 2, juste avant le titre | « Top départ » quand les lumières baissent ; le livre annonce le fil rouge : le savoir |
+| Intelligence Artificielle (sphère néon) | Juste avant « Vos équipes utilisent déjà l'IA ? » | Met la salle dans l'ambiance IA, la question qui suit la ramène à son entreprise |
+| AI (lettres dorées) | Ouverture de « Nos formations », après l'agenda | L'or fait le lien avec la charte et le « garage YEBA » |
+| Conclusion (anneau holographique) | Ouverture du « Mot de fin » (slide masquée tant que la partie n'est pas construite) | Annonce l'offre spéciale soirée |
+
+Lecture automatique, une seule fois, son inclus (macro VBA `YebaToutAppliquer`). Tester le son dans la salle.
 
 ## Choix d'expert (pourquoi ce déroulé fonctionne)
 
@@ -60,6 +72,7 @@ pitons de La Réunion — Sergey Zhesterev (https://unsplash.com/photos/VJlLx10O
 | Liste d'invités / émargement | RGPD art. 5, 6, 13 | Finalité, base légale, durée de conservation, mention d'information |
 | Démo live avec un invité | RGPD + IA Act art. 50 | Entreprise fictive ou accord ; dire que le contenu est généré par IA |
 | S19 « Souveraineté par défaut » | RGPD chap. V | Vrai seulement après votre migration Gmail → Brevo, Airtable → Baserow/OVHcloud |
+| Clips générés par IA (Grok, xAI) | IA Act art. 50 + conditions xAI | Le dire à l'oral ; vérifier l'autorisation d'usage commercial |
 | Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients |
 | Aucune formation RNCP/RS | C. conso L.121-2 | Ne jamais dire « finançable CPF » ni « formation obligatoire » |
 

@@ -39,6 +39,18 @@
   ],
   "slides": [
     {
+      "id": "V1",
+      "partie": "Présentation",
+      "layout": "video",
+      "titre": "Vidéo — Introduction",
+      "fichier": "assets/videos/clip-introduction.mp4",
+      "apercu": "assets/videos/clip-introduction-apercu.jpg",
+      "visuel": "Plein écran : un livre lumineux s'ouvre au-dessus d'un cercle de savoir, titre « Introduction ».",
+      "animation": "Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.",
+      "duree_s": 8,
+      "notes": "Lancer quand la salle est installée et les lumières baissées : c'est le « top départ ». Le livre qui s'ouvre annonce le fil rouge de la soirée (le savoir, YEBA). Enchaîner directement sur la slide de titre, sans parler pendant la vidéo. ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné)."
+    },
+    {
       "id": "S01",
       "partie": "Présentation",
       "layout": "cover",
@@ -264,6 +276,18 @@
       "notes": "Transition."
     },
     {
+      "id": "V2",
+      "partie": "L'offre YEBA",
+      "layout": "video",
+      "titre": "Vidéo — Intelligence artificielle",
+      "fichier": "assets/videos/clip-intelligence-artificielle.mp4",
+      "apercu": "assets/videos/clip-intelligence-artificielle-apercu.jpg",
+      "visuel": "Plein écran : ville numérique néon, une sphère d'énergie grossit, titre « Intelligence Artificielle ».",
+      "animation": "Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.",
+      "duree_s": 8,
+      "notes": "Place : juste avant la question « Vos équipes utilisent déjà l'IA. Avec quelles données ? ». La vidéo met la salle dans l'ambiance IA ; la question qui suit la ramène à la réalité de leur entreprise. Laisser 1 seconde de silence après la vidéo. ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné)."
+    },
+    {
       "id": "S15",
       "partie": "L'offre YEBA",
       "layout": "statement",
@@ -375,6 +399,18 @@
       "animation": "Morphose : le marqueur glisse. Option : insérer ici la vidéo Remotion « yeba-transition-formations.mp4 ».",
       "duree_s": 10,
       "notes": "Transition."
+    },
+    {
+      "id": "V3",
+      "partie": "Nos formations",
+      "layout": "video",
+      "titre": "Vidéo — AI",
+      "fichier": "assets/videos/clip-ai-or.mp4",
+      "apercu": "assets/videos/clip-ai-or-apercu.jpg",
+      "visuel": "Plein écran : couloir de circuits, les lettres « AI » dorées explosent de lumière — l'or rappelle la charte YEBA.",
+      "animation": "Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.",
+      "duree_s": 8,
+      "notes": "Place : ouverture de la partie Formations, juste après l'agenda. L'or de la vidéo fait le lien avec « Le garage YEBA ». Dire en sortie de vidéo : « Maintenant, voyons comment on met ce moteur en route dans VOTRE entreprise. » ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné)."
     },
     {
       "id": "S22",
@@ -617,6 +653,19 @@
       "animation": "Morphose.",
       "duree_s": 10,
       "notes": "À CONSTRUIRE : Mot de fin avec offre spéciale soirée."
+    },
+    {
+      "id": "V4",
+      "partie": "Mot de fin — offre soirée",
+      "layout": "video",
+      "titre": "Vidéo — Conclusion",
+      "fichier": "assets/videos/clip-conclusion.mp4",
+      "apercu": "assets/videos/clip-conclusion-apercu.jpg",
+      "visuel": "Plein écran : anneau holographique bleu et orange, titre « Conclusion ».",
+      "animation": "Lecture automatique à l'arrivée sur la slide (réglée par la macro VBA), une seule fois, son inclus. Transition Fondu en entrée, Morphose vers la slide suivante.",
+      "duree_s": 8,
+      "notes": "Place : ouverture du Mot de fin, juste après l'agenda (partie encore à construire, donc slide masquée pour l'instant). Elle annonce l'offre spéciale soirée : enchaîner immédiatement sur l'offre, c'est le moment de plus forte attention. ⚖️ IA Act art. 50 : vidéo générée par IA (Grok, xAI) — dire à l'oral « générique réalisé avec l'IA », c'est aussi une démonstration de votre savoir-faire. Pas de personne réelle représentée : ce n'est pas un hypertrucage. Éditeur américain : vérifier dans les conditions de xAI que l'usage commercial des vidéos générées est autorisé ; aucune donnée personnelle n'a été fournie pour les créer (RGPD non concerné).",
+      "cache": true
     }
   ]
 }

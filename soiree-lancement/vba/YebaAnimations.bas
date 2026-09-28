@@ -139,7 +139,8 @@ Public Sub YebaVideoAutomatique()
             If Commence(shp.Name, "!!video") Then
                 With shp.AnimationSettings.PlaySettings
                     .PlayOnEntry = msoTrue
-                    .LoopUntilStopped = msoTrue
+                    ' Seule la vidéo d'attente (Remotion) tourne en boucle ; les clips se jouent une fois
+                    .LoopUntilStopped = IIf(shp.Name = "!!video-intro", msoTrue, msoFalse)
                     .HideWhileNotPlaying = msoFalse
                 End With
             End If

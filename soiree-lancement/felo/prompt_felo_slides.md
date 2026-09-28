@@ -20,6 +20,7 @@ Règles de design impératives :
 - Transitions Morphose entre slides consécutives.
 
 Contenu, slide par slide :
+V1. [Présentation] Vidéo — Introduction  → visuel : Plein écran : un livre lumineux s'ouvre au-dessus d'un cercle de savoir, titre « Introduction ».
 S01. [Présentation] SOIRÉE DE LANCEMENT Sous le baobab de la connaissance, les graines du savoir. [DATE] · [LIEU] · La Réunion  → visuel : Fond noir. Logo YEBA (version fond sombre) centré en grand, qui « respire » (léger zoom). Slogan en dessous, la 2e ligne en or.
 S02. [Présentation] CE SOIR Moins de bruit sur l'IA. Plus de décisions.  → visuel : Grille asymétrique : phrase alignée à gauche sur les 2/3 de l'écran, bandeau or vertical à droite (objet !!barre).
 S03. [Présentation] Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée  → visuel : Chronologie verticale épurée des 7 étapes. Un marqueur or (!!marqueur) désigne l'étape en cours ; les étapes à venir sont en gris.
@@ -34,6 +35,7 @@ S11. [Histoire] Des racines. Un réseau. HÉRITAGE Afrique Baobab Transmission M
 S12. [Histoire] 5 valeurs Transmission vivante Bienveillance engagée Allégresse & énergie Élévation collective Authenticité enracinée  → visuel : Liste verticale de 5 lignes, numéro or géant à gauche (01 → 05), valeur en blanc.
 S13. [Histoire] Le chemin Avril 2021 Création 2021 → 2025 Vente · Management · Soft skills 2026 IA · RGPD · IA Act Ce soir Nouvelle équipe  → visuel : Chronologie horizontale épurée : 4 jalons sur une ligne or, dates en grand au-dessus de la ligne, texte en dessous (la ligne ne touche jamais le texte).
 S14. [L'offre YEBA] Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée  → visuel : Même slide que S03, marqueur or sur « L'offre YEBA ».
+V2. [L'offre YEBA] Vidéo — Intelligence artificielle  → visuel : Plein écran : ville numérique néon, une sphère d'énergie grossit, titre « Intelligence Artificielle ».
 S15. [L'offre YEBA] QUESTION Vos équipes utilisent déjà l'IA. Avec quelles données ?  → visuel : Fond bleu. Question en or, très grande. Aucun autre élément.
 S16. [L'offre YEBA] 3 métiers. 1 seul interlocuteur. Former Intra · Inter · Séminaires Implémenter Workflows · Sites · Applications Sécuriser RGPD · IA Act · Audit  → visuel : Trois colonnes, verbe géant en blanc, sous-ligne en or ; numéro 01/02/03 en filigrane.
 S17. [L'offre YEBA] 8 h par journée de formation. Le standard du marché : 7 h.  → visuel : Chiffre géant « 8 h » en or à gauche (2/3 de l'écran), texte à droite.
@@ -41,6 +43,7 @@ S18. [L'offre YEBA] Chez vous. Chez nous. Ou au vert. Intra Dans vos locaux Inte
 S19. [L'offre YEBA] NOTRE LIGNE Souveraineté par défaut. Outils européens d'abord.  → visuel : Fond noir, phrase centrée ; petit drapeau européen stylisé (12 points or en cercle) en haut à droite.
 S20. [L'offre YEBA] NOTRE PROMESSE Nous ne vendons pas la conformité. Nous vous aidons à la prouver.  → visuel : Deux lignes, la seconde en or, tout le reste vide. Effet « manifeste ».
 S21. [Nos formations] Le fil de la soirée Présentation Histoire L'offre YEBA Nos formations Applications & sites web Audit & devis Mot de fin — offre soirée  → visuel : Même slide que S03, marqueur or sur « Nos formations ».
+V3. [Nos formations] Vidéo — AI  → visuel : Plein écran : couloir de circuits, les lettres « AI » dorées explosent de lumière — l'or rappelle la charte YEBA.
 S22. [Nos formations] L'IMAGE À RETENIR Votre entreprise est un moteur. Nos formations en sont les pièces.  → visuel : Fond bleu nuit. Jauge de compte-tours stylisée en or en arrière-plan à droite.
 S23. [Nos formations] Le garage YEBA ALLUMAGE-TURBO PILOTE AUTOMATIQUE COPILOTE MOTEUR FERMÉ CARROSSERIE INJECTION RÉGLAGE MOTEUR CONTRÔLE TECHNIQUE TABLEAU DE BORD TRACTION EMBRAYAGE SUR-MESURE  → visuel : Grille 4 × 3 de tuiles ; chaque tuile porte un nom de code en capitales, bordure colorée selon la famille (légende en bas).
 S24. [Nos formations] Comprendre. Produire. Prouver. J1 · Bien demander J2 · Produire J3 · Automatiser & prouver 3 jours · 24 h 4 à 10 pers. Inter  → visuel : La tuile ALLUMAGE-TURBO du garage devient la slide : bandeau or à gauche avec le nom de code vertical, contenu à droite.

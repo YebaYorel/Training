@@ -518,11 +518,24 @@ def g_demo(sl, s):
     petit_logo(sl)
 
 
+def g_video(sl, s):
+    """Vidéo plein écran (clips fournis) : lecture automatique réglée par la macro VBA."""
+    fond(sl, "noir")
+    ph = sl.shapes.title  # titre hors champ : lu par les lecteurs d'écran, invisible à l'écran
+    ph.text = s["titre"]
+    ph.left = ph.top = Inches(-3)
+    ph.width = ph.height = Inches(1)
+    film = sl.shapes.add_movie(str(RACINE / s["fichier"]), 0, 0, Inches(W), Inches(H),
+                               poster_frame_image=str(RACINE / s["apercu"]), mime_type="video/mp4")
+    nommer(film, f"!!video-{s['id']}")
+    film._element.nvPicPr.cNvPr.set("descr", s["visuel"])
+
+
 GABARITS = {
     "cover": g_cover, "statement": g_statement, "agenda": g_agenda, "team": g_team, "badges": g_badges,
     "word": g_word, "quote": g_quote, "tree": g_tree, "baobab": g_baobab, "split": g_split, "values": g_values,
     "timeline": g_timeline, "bignumber": g_bignumber, "pillars": g_pillars, "formats": g_formats,
-    "garage": g_garage, "focus": g_focus, "demo": g_demo,
+    "garage": g_garage, "focus": g_focus, "demo": g_demo, "video": g_video,
 }
 
 
