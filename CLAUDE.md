@@ -43,3 +43,18 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
+
+## Skills obligatoires à chaque conversation
+
+Installés dans `.claude/skills/` (chargés automatiquement à chaque session sur ce dépôt) :
+
+- **Paperasse** (`romainsimon/paperasse`, licence MIT) : `comptable`, `controleur-fiscal`,
+  `commissaire-aux-comptes`, `fiscaliste`, `notaire`, `syndic`. À mobiliser dès qu'un sujet
+  touche la comptabilité, la TVA, la facturation (réforme e-facture 2026), la fiscalité,
+  le juridique ou l'audit — y compris pour chiffrer un devis de formation ou d'audit.
+  Particularité DOM : consulter `comptable/references/regional.md` (La Réunion).
+- **LinkedIn** : `linkedin-post` (rédaction + visuel) et `linkedin-reseau` (développement du réseau).
+
+Mise à jour de Paperasse : recloner le dépôt amont et recopier les six dossiers
+(sans liens symboliques, pour la compatibilité Windows).
+Les fichiers réels (`company.json`, `foyer.json`, `copros/*.json`) restent hors Git.

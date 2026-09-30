@@ -15,3 +15,12 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Paperasse — données comptables/bancaires réelles (RGPD art. 32, secret des affaires)
+company.json
+copros/*.json
+!copros.example.json
+foyer.json
+data/transactions/
+output/
+node_modules/
