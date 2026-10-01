@@ -178,7 +178,7 @@ Source : [qualiodocs.fr](https://qualiodocs.fr/blog/edof-inscrire-organisme-cata
 
 ## 5. Carte de visite et QR code ☐
 
-Maquettes : `cartes-de-visite/YEBA_cartes_3_pistes.png`
+Maquettes : `cartes-de-visite/V1_…png`, `V2_…png`, `V3_…png` (4 pistes S, A, B, C par version de charte)
 
 | Piste | Idée | Pour | Contre |
 |---|---|---|---|
@@ -211,3 +211,41 @@ Maquettes : `cartes-de-visite/YEBA_cartes_3_pistes.png`
 | Marque | Votre carte actuelle (crème / brun / doré, logo typographique) ≠ charte officielle (bleu / or, logo pitons) | ☐ question posée |
 | Accessibilité | Or sur fond clair = illisible (contraste 2,3:1) | Corrigé sur la maquette A (« FORMATIONS » en bleu) |
 | Écologique | La puce NFC (piste C) = PVC + électronique | Proposer un carton recyclé épais avec puce papier, ou A/B sans puce |
+
+---
+
+## 7. Décisions du 01/10/2026 (validées par A. LUMEKA)
+
+| Sujet | Décision |
+|---|---|
+| Coût hôtel | **1 500 € pour 2 jours, pour tout le groupe** ✅ |
+| Prix inter | **N1 IA Pilote : 790 €/pers. · N2 IA Architecte : 999 €/pers.** (2 jours, 14 h) ✅ — remplace les scénarios du §3.2 |
+| Charte | 3 versions à comparer : V1 Bleu nuit & or · V2 Héritage crème/brun/or · V3 Fusion ⏳ |
+| Carte de visite | Toutes les pistes (S Signature, A, B, C) dans les 3 chartes ⏳ |
+
+### 7.1 Ce que donnent 790 € / 999 €
+
+| | N1 — 790 € | N2 — 999 € |
+|---|---|---|
+| Recette à 8 / marge après hôtel et frais (1 800 €) | 6 320 € / **4 520 €** (≈ 2 260 €/jour) | 7 992 € / **6 192 €** (≈ 3 096 €/jour) |
+| Recette à 10 / marge | 7 900 € / 6 100 € | 9 990 € / 8 190 € |
+| Seuil pour couvrir l'hôtel et les frais | **3 inscrits** | **2 inscrits** |
+| Reste à charge pour une TPE à l'OPCO EP (≈ 25 €/h × 14 h = 350 €) | ≈ 440 € | ≈ 649 € |
+
+### 7.2 Ce que j'en déduis (à valider ☐)
+
+| Ligne | Proposition | Logique |
+|---|---|---|
+| **Intra N1** (2 j, ≤ 8 pers.) | **3 890 €** | = 5 inscrits inter environ : « dès 5 salariés, l'intra est plus avantageux » |
+| **Intra N2** (2 j, ≤ 8 pers.) | **4 990 €** | même logique (5 × 999 €) |
+| Personne supplémentaire intra (9 à 12) | N1 : 350 € · N2 : 450 € | |
+| **Duo N1 + N2** (4 jours, inter) | **1 590 €** au lieu de 1 789 € | fait monter en N2 |
+| **3e inscrit même entreprise** | −15 % | |
+| **Parcours CPF RS6776** (3 j, 21 h, certification comprise) | **1 490 €** | plafond CPF RS = 1 500 € ; à confirmer après devis INKREA |
+
+### 7.3 Autocritique de ce choix de prix
+
+- **Avantage :** prix aligné sur le haut du marché métropolitain (1 600-2 200 € pour un parcours certifiant, cf. §4.1). Il dit « expert » et non « petit prix local ». Session rentable dès 3 inscrits : **le risque d'annulation baisse fortement.**
+- **Risque commercial :** pour une TPE à l'OPCO EP, le reste à charge (≈ 440 € / 649 €) devient réel. **Le discours ne peut plus être « c'est gratuit pour vous »**, mais « c'est un investissement, votre OPCO en prend une partie, et voici le temps gagné ». → J'ajoute sur la grille un encart « **Retour sur investissement** » : 1 h gagnée par semaine × 46 semaines × coût horaire chargé.
+- **Incohérence à corriger :** l'heure CPF (1 490 € / 21 h ≈ 71 €/h) est **moins chère** que l'heure N2 inter (≈ 71 €/h) et à peine plus chère que N1 (≈ 56 €/h), alors que la certification est incluse. C'est acceptable, car le CPF ne concerne que des particuliers et indépendants (pas de concurrence avec l'inter entreprise). Mais il faut **le présenter comme une formule différente** (certifiante, 3 jours), jamais comme « le même N1, moins cher ».
+- **Levier pour garder le « 100 % » :** une **candidature aux actions collectives AKTO / OPCO EP** permettrait de proposer, en parallèle, une version catalogue OPCO au plafond de l'OPCO. Ce serait une ligne séparée de la grille, à étudier.

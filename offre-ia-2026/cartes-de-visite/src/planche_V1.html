@@ -1,0 +1,175 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="fonts-local.css">
+<style>
+@font-face{font-family:'Playfair Display';font-weight:400;src:url(fonts/playfair-display-latin-400-normal.woff2)}
+@font-face{font-family:'Playfair Display';font-weight:700;src:url(fonts/playfair-display-latin-700-normal.woff2)}
+@font-face{font-family:'Playfair Display';font-weight:900;src:url(fonts/playfair-display-latin-900-normal.woff2)}
+@font-face{font-family:'JetBrains Mono';font-weight:400;src:url(fonts/jetbrains-mono-latin-400-normal.woff2)}
+@font-face{font-family:'JetBrains Mono';font-weight:700;src:url(fonts/jetbrains-mono-latin-700-normal.woff2)}
+:root{--s1:#1B3A6B;--s2:#070F20;--clair:#F7F4EC;--encre:#1B3A6B;--or:#C9A84C;--or2:#E9D18B;--doux:#DBE3F0;
+--nom:'Montserrat',serif;--marque:'Montserrat',serif}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#E6E3DC;font-family:Inter,sans-serif;padding:50px;width:2300px;color:#222}
+.bandeau{background:var(--s2);color:var(--clair);border-radius:28px;padding:34px 44px;margin-bottom:20px;display:flex;gap:40px;align-items:center}
+.bandeau .code{font:900 110px/1 Montserrat;color:var(--or)}
+.bandeau h1{font:800 46px Montserrat;color:#fff}
+.bandeau p{font:400 26px Inter;color:var(--doux);margin-top:8px}
+.pal{display:flex;gap:14px;margin-left:auto}
+.pal span{width:86px;height:86px;border-radius:18px;border:2px solid rgba(255,255,255,.25);font:600 15px Inter;color:#fff;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;text-shadow:0 1px 2px #000}
+h2{font:800 36px Montserrat;color:#1d1d1d;margin:46px 0 4px}
+h2 small{font:600 24px Inter;color:#555}
+.row{display:flex;gap:56px;align-items:flex-start;margin-top:16px}
+.lab{font:700 18px Inter;color:#555;margin:12px 0 0 6px;text-transform:uppercase;letter-spacing:2px}
+.card{width:1020px;height:660px;border-radius:40px;position:relative;overflow:hidden;box-shadow:0 34px 70px -28px rgba(0,0,0,.5)}
+.v{width:660px;height:1020px}
+.note{font:400 24px/1.5 Inter;color:#333;max-width:560px} .note b{color:#111}
+.or-feuille{background:linear-gradient(115deg,#8A6A2A 0%,var(--or2) 28%,var(--or) 45%,#F6E4AE 58%,#A7832F 78%,var(--or2) 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.wm{display:flex;flex-direction:column;gap:4px}
+.wm-yeba{font-family:var(--marque);font-weight:800;line-height:.95;letter-spacing:2px}
+.wm-form{font:600 1em Inter;letter-spacing:.42em}
+.mono{font-family:'JetBrains Mono',monospace}
+/* --- SIGNATURE : votre modèle augmenté --- */
+.sig-r{background:var(--clair)}
+.sig-r .haut{position:absolute;left:64px;top:64px}
+.sig-r .nom{position:absolute;left:64px;top:370px;font:700 54px/1.08 var(--nom);color:var(--encre)}
+.sig-r .role{position:absolute;left:64px;top:500px;font:600 30px/1.35 Inter;color:var(--encre)}
+.sig-r .bande{position:absolute;left:0;top:610px;width:118px;height:330px;background:var(--s1);border-radius:0 40px 40px 0;display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:18px 0}
+.sig-r .bande svg{width:44px;height:44px}
+.sig-r ul{position:absolute;left:150px;top:622px;list-style:none;font:600 31px/1 Inter;color:var(--encre)}
+.sig-r li{height:78px;display:flex;flex-direction:column;justify-content:center}
+.sig-r li small{font:600 27px Inter;margin-top:6px}
+.sig-r .qr{position:absolute;right:52px;top:60px;width:170px}
+.sig-r .qr img{width:170px;display:block}
+.sig-r .qr div{font:700 22px Inter;color:var(--encre);text-align:center;margin-top:10px;letter-spacing:1px}
+.sig-v{background:radial-gradient(90% 120% at 50% 50%,var(--s1) 0%,var(--s2) 100%)}
+.sig-v .circuit{position:absolute;inset:0}
+.sig-v .centre{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.sig-v .yeba{font:800 190px/1 var(--marque);letter-spacing:6px}
+.sig-v .sous{font:600 30px Inter;color:var(--or);letter-spacing:.5em;margin-top:10px;margin-left:.5em}
+/* --- A --- */
+.a-r{background:radial-gradient(120% 140% at 15% 20%,var(--s1) 0%,var(--s2) 100%)}
+.a-r .net{position:absolute;inset:0;opacity:.6}
+.a-r .sym{position:absolute;left:70px;top:190px;width:330px}
+.a-r .nom{position:absolute;left:450px;top:170px;color:#fff;font:700 62px/1.05 var(--nom)}
+.a-r .bar{position:absolute;left:450px;top:330px;width:120px;height:5px;background:var(--or)}
+.a-r .tag{position:absolute;left:450px;top:360px;color:var(--doux);font:600 31px/1.45 Inter}
+.a-r .tag b{color:var(--or)}
+.a-v{background:var(--clair)}
+.a-v .haut{position:absolute;left:64px;top:56px}
+.a-v ul{position:absolute;left:64px;top:300px;list-style:none;color:var(--encre);font:600 32px/1.7 Inter}
+.a-v ul b{display:inline-block;width:52px;color:var(--encre)}
+.a-v .qrbox{position:absolute;right:56px;top:120px;width:320px;height:410px;background:var(--s1);border-radius:28px;padding:30px 30px 0}
+.a-v .qrbox img{width:260px;height:260px}
+.a-v .qrbox div{color:#fff;font:700 30px/1.25 Inter;text-align:center;margin-top:20px}
+.a-v .qrbox div b{color:var(--or)}
+.a-v .filet{position:absolute;left:0;bottom:0;height:16px;width:100%;background:linear-gradient(90deg,var(--s1),var(--or))}
+/* --- B --- */
+.b-r{background:#121212}
+.b-r .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.09) 1px,transparent 1px);background-size:34px 34px}
+.b-r .pts{position:absolute;left:64px;top:56px;display:flex;gap:14px}
+.b-r .pts i{width:22px;height:22px;border-radius:50%;background:#333} .b-r .pts i:first-child{background:var(--or)}
+.b-r .l1{position:absolute;left:64px;top:170px;color:var(--or);font-size:38px}
+.b-r .l2{position:absolute;left:64px;top:232px;color:#fff;font:700 76px var(--nom)}
+.b-r .l2 em{display:inline-block;width:38px;height:66px;background:var(--or);vertical-align:-6px;margin-left:12px}
+.b-r .l3{position:absolute;left:64px;top:370px;color:#D5D9E0;font-size:32px;line-height:1.6}
+.b-r .l3 b{color:var(--or);font-weight:400}
+.b-r .sym{position:absolute;right:56px;bottom:46px;width:200px}
+.b-v{background:linear-gradient(160deg,#121212 0%,var(--s2) 100%)}
+.b-v .scan{position:absolute;left:56px;top:110px;width:440px;height:440px}
+.b-v .scan img{position:absolute;left:60px;top:60px;width:320px;height:320px}
+.b-v .scan i{position:absolute;width:70px;height:70px;border:7px solid var(--or)}
+.b-v .scan i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0;border-radius:18px 0 0 0}
+.b-v .scan i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0;border-radius:0 18px 0 0}
+.b-v .scan i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0;border-radius:0 0 0 18px}
+.b-v .scan i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0;border-radius:0 0 18px 0}
+.b-v .txt{position:absolute;left:518px;top:86px}
+.b-v .k{color:var(--or);font-size:26px}
+.b-v .val{font:600 30px Inter;color:#fff;margin:4px 0 22px}
+/* --- C --- */
+.c-r{background:linear-gradient(180deg,var(--s1) 0%,var(--s2) 100%)}
+.c-r .centre{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px}
+.c-r .foil{font:600 30px Inter;color:var(--or);letter-spacing:.35em}
+.c-v{background:var(--clair)}
+.c-v .nom{position:absolute;left:64px;top:80px;color:var(--encre);font:700 58px/1.06 var(--nom)}
+.c-v .bar{position:absolute;left:64px;top:222px;width:110px;height:6px;background:var(--or)}
+.c-v .role{position:absolute;left:64px;top:252px;color:var(--encre);font:600 30px/1.4 Inter}
+.c-v ul{position:absolute;left:64px;top:420px;list-style:none;color:var(--encre);font:600 31px/1.62 Inter}
+.c-v .nfc{position:absolute;left:64px;bottom:60px;width:310px;height:200px;border-radius:24px;background:var(--s1);color:#fff;padding:24px;font:700 30px/1.25 Inter}
+.c-v .nfc b{color:var(--or);display:block;font:700 46px Montserrat}
+.c-v .qr{position:absolute;right:60px;bottom:60px;width:200px;height:200px;padding:14px;border:4px solid var(--encre);border-radius:24px}
+.c-v .qr img{width:100%}
+.pied{font:600 20px Inter;color:#777;margin-top:40px}
+</style></head><body>
+<div class="bandeau"><div class="code">V1</div><div><h1>VERSION 1 — Bleu nuit & or</h1><p>Charte officielle actuelle (site, réseaux sociaux, soirée de lancement). Logo pitons + réseau, sans l'œil.</p></div>
+ <div class="pal"><span style="background:#070F20">#070F20</span><span style="background:#1B3A6B">#1B3A6B</span><span style="background:#F7F4EC;color:#333;text-shadow:none">#F7F4EC</span><span style="background:#C9A84C">#C9A84C</span></div></div>
+
+<h2>V1-S · « Signature » — votre carte actuelle, augmentée IA <small>(format vertical + verso « X » transformé en circuit)</small></h2>
+<div class="row">
+ <div><div class="card v sig-r">
+  <div class="haut"><img class="logo-svg" style="width:326px" src="logo_V1_clair.svg" alt="YEBA FORMATIONS"></div>
+  <div class="qr"><img src="qr_V1_encre.svg" alt=""><div>TARIFS 2026</div></div>
+  <div class="nom">Aurélien<br>LUMEKA</div>
+  <div class="role">Dirigeant · Formateur IA<br>Conseil RGPD &amp; IA Act</div>
+  <div class="bande"><svg viewBox="0 0 26 26" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A18 18 0 0 1 5 5a2 2 0 0 1 2-2z"/></svg><svg viewBox="0 0 26 26" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="20" height="16" rx="2"/><path d="M3 7l10 7 10-7"/></svg><svg viewBox="0 0 26 26" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="13" r="10"/><path d="M3 13h20M13 3c3 3 4 6.5 4 10s-1 7-4 10c-3-3-4-6.5-4-10s1-7 4-10z"/></svg><svg viewBox="0 0 26 26" fill="none" stroke="var(--or)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 23s-8-7-8-13a8 8 0 0 1 16 0c0 6-8 13-8 13z"/><circle cx="13" cy="10" r="3"/></svg></div>
+  <ul><li>+262 6 93 32 24 45</li><li>contact@yebaformations.com</li><li>yebaformations.re</li><li>9 rue Françoise Châtelain<small>97490 Saint-Denis</small></li></ul>
+ </div><div class="lab">Recto</div></div>
+ <div><div class="card sig-v"><svg class="circuit" viewBox="0 0 1020 660"><defs><linearGradient id="gr" x1="0" x2="1"><stop offset="0" stop-color="var(--or)" stop-opacity=".95"/><stop offset=".5" stop-color="var(--or2)" stop-opacity=".35"/><stop offset="1" stop-color="var(--or)" stop-opacity=".95"/></linearGradient></defs><g fill="none" stroke="url(#gr)" stroke-width="2.4" stroke-linejoin="round"><path d="M-40,270 L200,330 L-40,390"/><path d="M1060,270 L840,330 L1060,390"/><path d="M-40,215 L170,330 L-40,445"/><path d="M1060,215 L870,330 L1060,445"/><path d="M-40,160 L140,330 L-40,500"/><path d="M1060,160 L900,330 L1060,500"/><path d="M-40,105 L110,330 L-40,555"/><path d="M1060,105 L930,330 L1060,555"/><path d="M-40,50 L80,330 L-40,610"/><path d="M1060,50 L960,330 L1060,610"/><path d="M-40,-5 L50,330 L-40,665"/><path d="M1060,-5 L990,330 L1060,665"/><path d="M-40,-60 L20,330 L-40,720"/><path d="M1060,-60 L1020,330 L1060,720"/><path d="M-40,-115 L-10,330 L-40,775"/><path d="M1060,-115 L1050,330 L1060,775"/><path d="M370,-30 L510,150 L650,-30"/><path d="M370,690 L510,510 L650,690"/><path d="M280,-30 L510,115 L740,-30"/><path d="M280,690 L510,545 L740,690"/><path d="M190,-30 L510,80 L830,-30"/><path d="M190,690 L510,580 L830,690"/><path d="M100,-30 L510,45 L920,-30"/><path d="M100,690 L510,615 L920,690"/><path d="M10,-30 L510,10 L1010,-30"/><path d="M10,690 L510,650 L1010,690"/></g><g fill="var(--or2)"><circle cx="200" cy="330" r="6"/><circle cx="840" cy="330" r="6"/><circle cx="170" cy="330" r="6"/><circle cx="870" cy="330" r="6"/><circle cx="140" cy="330" r="6"/><circle cx="900" cy="330" r="6"/><circle cx="110" cy="330" r="6"/><circle cx="930" cy="330" r="6"/><circle cx="80" cy="330" r="6"/><circle cx="960" cy="330" r="6"/><circle cx="50" cy="330" r="6"/><circle cx="990" cy="330" r="6"/><circle cx="20" cy="330" r="6"/><circle cx="1020" cy="330" r="6"/><circle cx="-10" cy="330" r="6"/><circle cx="1050" cy="330" r="6"/><circle cx="510" cy="150" r="6"/><circle cx="510" cy="510" r="6"/><circle cx="510" cy="115" r="6"/><circle cx="510" cy="545" r="6"/><circle cx="510" cy="80" r="6"/><circle cx="510" cy="580" r="6"/><circle cx="510" cy="45" r="6"/><circle cx="510" cy="615" r="6"/><circle cx="510" cy="10" r="6"/><circle cx="510" cy="650" r="6"/></g></svg>
+  <div class="centre"><div class="yeba or-feuille">YEBA</div><div class="sous">FORMATIONS</div></div>
+ </div><div class="lab">Verso — dorure à chaud sur les pistes et le nom</div>
+ <p class="note" style="max-width:1000px;margin-top:22px"><b>L'idée :</b> le « X » de chevrons de votre carte devient un <b>circuit électronique</b> : chaque chevron est une piste, chaque pointe un nœud (comme un réseau de neurones). On garde votre ADN et on ajoute l'IA.
+ <br><b>Finition proposée :</b> papier épais 600 g, <b>dorure à chaud</b> sur les pistes et « YEBA », <b>vernis 3D en relief</b> sur les nœuds (on les sent sous le doigt), <b>tranche dorée</b>.</p></div>
+</div>
+
+<h2>V1-A · « Réseau neuronal » <small>(sobre et premium)</small></h2>
+<div class="row">
+ <div><div class="card a-r">
+  <svg class="net" viewBox="0 0 1020 660"><g stroke="#C9A84C" stroke-width="1.8" fill="#C9A84C">
+   <line x1="430" y1="40" x2="620" y2="110"/><line x1="620" y1="110" x2="860" y2="50"/><line x1="860" y1="50" x2="985" y2="150"/><line x1="985" y1="150" x2="1005" y2="300"/>
+   <line x1="40" y1="590" x2="220" y2="620"/><line x1="220" y1="620" x2="430" y2="580"/><line x1="430" y1="580" x2="700" y2="625"/><line x1="700" y1="625" x2="930" y2="545"/><line x1="930" y1="545" x2="1005" y2="620"/>
+   <circle cx="620" cy="110" r="5"/><circle cx="860" cy="50" r="5"/><circle cx="985" cy="150" r="6"/><circle cx="220" cy="620" r="5"/><circle cx="430" cy="580" r="5"/><circle cx="700" cy="625" r="5"/><circle cx="930" cy="545" r="6"/></g></svg>
+  <img class="sym" src="sym_V1_sombre.svg" alt="">
+  <div class="nom">Aurélien<br>LUMEKA</div><div class="bar"></div>
+  <div class="tag">Formateur IA <b>·</b> RGPD <b>·</b> IA Act<br>Dirigeant YEBA FORMATIONS</div>
+ </div><div class="lab">Recto</div></div>
+ <div><div class="card a-v">
+  <div class="haut"><img class="logo-svg" style="width:238px" src="logo_V1_clair.svg" alt="YEBA FORMATIONS"></div>
+  <ul><li><b>T</b>+262 6 93 32 24 45</li><li><b>@</b>contact@yebaformations.com</li><li><b>W</b>yebaformations.re</li><li><b>⌖</b>Saint-Denis · La Réunion</li></ul>
+  <div class="qrbox"><img src="qr_V1_or.svg" alt=""><div>Offres &amp; tarifs <b>2026</b></div></div>
+  <div class="filet"></div>
+ </div><div class="lab">Verso — QR intégré</div></div>
+</div>
+
+<h2>V1-B · « Prompt » <small>(la plus « informatique nouvelle génération »)</small></h2>
+<div class="row">
+ <div><div class="card b-r"><div class="grid"></div><div class="pts"><i></i><i></i><i></i></div>
+  <div class="l1 mono">&gt; yeba --formateur</div>
+  <div class="l2">Aurélien LUMEKA<em></em></div>
+  <div class="l3 mono"><b>ia</b>.former()&nbsp; <b>rgpd</b>.proteger()<br><b>ia_act</b>.conformer()&nbsp; <b>974</b>.ancrer()</div>
+  <img class="sym" src="sym_V1_or.svg" alt="">
+ </div><div class="lab">Recto</div></div>
+ <div><div class="card b-v">
+  <div class="scan"><i></i><i></i><i></i><i></i><img src="qr_V1_or.svg" alt=""></div>
+  <div class="txt">
+   <div class="k mono">// appeler</div><div class="val">+262 6 93 32 24 45</div>
+   <div class="k mono">// écrire</div><div class="val">contact@yebaformations.com</div>
+   <div class="k mono">// explorer</div><div class="val">yebaformations.re</div>
+   <div class="k mono">// scanner</div><div class="val">Offres &amp; tarifs 2026</div>
+  </div>
+ </div><div class="lab">Verso — QR en « viseur de scan »</div></div>
+</div>
+
+<h2>V1-C · « Pitons lumineux » + puce NFC <small>(vertical, sans contact)</small></h2>
+<div class="row">
+ <div><div class="card v c-r"><div class="centre"><img class="logo-svg" style="width:510px" src="logo_V1_sombre.svg" alt="YEBA FORMATIONS"><div class="foil">IA · RGPD · IA ACT</div></div>
+ </div><div class="lab">Recto — dorure à chaud</div></div>
+ <div><div class="card v c-v">
+  <div class="nom">Aurélien<br>LUMEKA</div><div class="bar"></div>
+  <div class="role">Dirigeant · Formateur IA<br>Conseil RGPD &amp; IA Act</div>
+  <ul><li>+262 6 93 32 24 45</li><li>contact@yebaformations.com</li><li>yebaformations.re</li><li>9 rue Françoise Châtelain</li><li>97490 Saint-Denis</li></ul>
+  <div class="nfc"><b>((·))</b>Approchez<br>votre téléphone</div>
+  <div class="qr"><img src="qr_V1_encre.svg" alt=""></div>
+ </div><div class="lab">Verso — NFC + QR de secours</div></div>
+ <p class="note"><b>Le geste qui marque :</b> le prospect pose son téléphone sur la carte et votre page s'ouvre, sans appli. Le QR sert de secours.<br><br><b>RGPD :</b> la puce ne contient qu'une adresse web, sans aucun traceur.</p>
+</div>
+<p class="pied">Maquette de travail · Format 85 × 55 mm · textes ≥ 7,5 pt à l'impression · QR PROVISOIRE vers https://yebaformations.re/tarifs (à confirmer) · Ne pas imprimer en l'état.</p>
+</body></html>
