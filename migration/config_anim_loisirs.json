@@ -1,0 +1,15 @@
+{
+  "_commentaire": "Configuration de migration PASS LOISIRS 2.0 / Anim'Loisirs 974 (base Airtable appGyK0pp3tlRABVA). Toute exclusion = minimisation RGPD art. 5.1.c.",
+  "guard": {
+    "table": "Paramètres",
+    "key_field": "Clé",
+    "value_field": "Valeur",
+    "mode_key": "MODE_DONNEES",
+    "allow_key": "PASSAGE_REEL_AUTORISE"
+  },
+  "exclude_tables": [],
+  "exclude_field_patterns": ["DÉPRÉCIÉ", "OBSOLÈTE"],
+  "exclude_fields": [
+    "Paramètres::Valeur confidentielle (direction)"
+  ]
+}

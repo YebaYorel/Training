@@ -94,6 +94,14 @@ touchant à des données ou à de l'IA.)*
 
 ---
 
+## 6. Anim'Loisirs 974 — finalisation et migration
+
+- Dossier de finalisation (MFA, accès, région Airtable, relances, séquence) :
+  `docs/ANIM_LOISIRS_974_FINALISATION.md`
+- Migration sécurisée Airtable → Baserow : `migration/README.md`
+
+---
+
 ## Sources
 - Modèle d'authentification (JWT vs Database Token) :
   [baserow.io/user-docs/personal-api-tokens](https://baserow.io/user-docs/personal-api-tokens)

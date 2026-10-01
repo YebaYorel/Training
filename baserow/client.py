@@ -116,6 +116,15 @@ class BaserowClient:
             method, url, headers=headers, params=params, json=json_body, timeout=self.timeout
         )
 
+        # Limitation de débit / indisponibilité passagère → attente puis nouvel essai.
+        for wait in (2, 5, 15, 30):
+            if resp.status_code not in (429, 502, 503, 504):
+                break
+            time.sleep(wait)
+            resp = self._session.request(
+                method, url, headers=headers, params=params, json=json_body, timeout=self.timeout
+            )
+
         # JWT expiré → on se ré-authentifie une fois puis on retente.
         if resp.status_code == 401 and auth in ("jwt", "auto") and not _retried:
             self._jwt = None
@@ -159,12 +168,19 @@ class BaserowClient:
     def list_tables(self, database_id: int) -> List[Dict[str, Any]]:
         return self._request("GET", f"/api/database/tables/database/{database_id}/")
 
-    def create_table(self, database_id: int, name: str) -> Dict[str, Any]:
-        """Crée une table (avec un champ primaire 'Name' par défaut)."""
+    def create_table(
+        self, database_id: int, name: str, primary_field_name: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Crée une table.
+
+        Sans `primary_field_name` : champ primaire 'Name' + champs par défaut.
+        Avec : table VIDE (aucune ligne) dont l'unique champ, primaire, porte ce nom.
+        """
+        body: Dict[str, Any] = {"name": name}
+        if primary_field_name:
+            body.update({"data": [[primary_field_name]], "first_row_header": True})
         return self._request(
-            "POST",
-            f"/api/database/tables/database/{database_id}/",
-            json_body={"name": name},
+            "POST", f"/api/database/tables/database/{database_id}/", json_body=body
         )
 
     def delete_table(self, table_id: int) -> None:
@@ -241,8 +257,24 @@ class BaserowClient:
             json_body=values,
         )
 
+    def update_rows(self, table_id: int, rows: Iterable[Dict[str, Any]], user_field_names: bool = True) -> Dict[str, Any]:
+        """Mise à jour en lot (endpoint batch, 200 lignes max). Chaque ligne porte son 'id'."""
+        return self._request(
+            "PATCH",
+            f"/api/database/rows/table/{table_id}/batch/",
+            auth="auto",
+            params={"user_field_names": str(user_field_names).lower()},
+            json_body={"items": list(rows)},
+        )
+
     def delete_row(self, table_id: int, row_id: int) -> None:
         self._request("DELETE", f"/api/database/rows/table/{table_id}/{row_id}/", auth="auto")
+
+    # ==================================================================== FILES
+    def upload_file_via_url(self, url: str) -> Dict[str, Any]:
+        """Baserow télécharge lui-même le fichier depuis `url` (aucun passage par
+        le disque local). Renvoie l'objet fichier à placer dans un champ 'file'."""
+        return self._request("POST", "/api/user-files/upload-via-url/", json_body={"url": url})
 
     # ============================================================= COMMODITÉS
     def create_table_with_schema(

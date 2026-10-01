@@ -15,3 +15,6 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Migration : état (identifiants techniques), schémas et rapports locaux
+migration_state/
