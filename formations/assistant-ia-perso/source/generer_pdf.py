@@ -62,9 +62,9 @@ def programme():
     E += [Paragraph("Accessibilité et adaptations", s["h2"]), Paragraph(C.ADAPTATIONS, s["corps"])]
     E += [Paragraph("Délai et modalités d'accès", s["h2"]), Paragraph(C.DELAI_ACCES, s["corps"])]
     E += [Paragraph("Tarifs et financement", s["h2"]),
-          Paragraph("<b>Inter-entreprise</b> : 990 € par personne pour le parcours complet de 16 heures "
-                    "(495 € par jour et par personne).", s["corps"]),
-          Paragraph("<b>Intra-entreprise</b> : 3 290 € pour le groupe, jusqu'à 8 stagiaires (1 645 € par jour).",
+          Paragraph("<b>Inter-entreprise</b> : 1 780 € par personne pour le parcours complet de 16 heures "
+                    "(890 € par jour et par personne).", s["corps"]),
+          Paragraph("<b>Intra-entreprise</b> : 5 400 € pour le groupe, jusqu'à 8 stagiaires (2 700 € par jour).",
                     s["corps"]),
           Paragraph("Inclus : questionnaire de positionnement, environnement de démonstration, livret ressource, "
                     "kit « assistant sous contrôle » et classe virtuelle de suivi d'1 heure à J+30. Prix nets de "

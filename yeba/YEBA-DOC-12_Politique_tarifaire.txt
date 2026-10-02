@@ -1,0 +1,99 @@
+YEBA FORMATIONS — POLITIQUE TARIFAIRE
+Réf. YEBA-DOC-12 | Version 3.0 | Édition du 02/10/2026 | Révision annuelle
+Indicateur RNQ 1 (publication des tarifs). Document public, destiné au site internet.
+
+STATUT : GRILLE ARRÊTÉE SUR INSTRUCTION DU DIRIGEANT LE 02/10/2026 (inter de 690 € à 990 € par personne et par jour ; intra à partir de 2 300 € par jour). Elle remplace la version 2.0 du 22/09/2026, dont les montants inter ne concordaient pas avec les fiches du catalogue. Elle s'applique à tout devis émis à compter du 02/10/2026 ; les devis et conventions déjà signés restent au prix convenu.
+
+1. CE QUI A CHANGÉ DEPUIS LA VERSION 2.0
+• UNE SEULE SOURCE DE PRIX : les montants ci-dessous sont identiques à ceux des fiches du catalogue (table CATALOGUE FORMATIONS), qui alimentent le bloc public « TARIFS » de chaque fiche. L'écart constaté le 23/09/2026 entre la grille et les fiches est supprimé.
+• QUATRE NIVEAUX DE PRIX, LISIBLES : 690 €, 790 €, 890 € et 990 € par personne et par jour en inter ; 2 300 €, 2 500 €, 2 700 € et 2 900 € par jour pour un groupe en intra.
+• LES INTITULÉS SONT EXPLICITES : la gamme « automobile » est abandonnée (correspondance des anciens noms en annexe).
+• LE PARCOURS IA EST SIMPLIFIÉ : l'ancienne fiche TURBO (FOR-0012) est fusionnée dans « IA générative au travail » (FOR-0011, 3 jours). Deux actions nouvelles : « IA souveraine » (FOR-0015) et « Assistant IA perso » (FOR-0017).
+• Rappels inchangés : journée de 8 heures (08h00–17h00, pauses de 15 minutes à 10h00 et 15h00 incluses, pause méridienne 12h00–13h00 hors temps de formation) ; franchise en base de TVA.
+
+2. LES QUATRE NIVEAUX
+Prix nets de taxe — « TVA non applicable, article 293 B du code général des impôts ».
+• NIVEAU 1 — MÉTIERS (vente, management) — barème A : INTER 690 € par personne et par jour — INTRA 2 300 € par jour.
+• NIVEAU 2 — OUTILS NUMÉRIQUES — barème B : INTER 790 € — INTRA 2 500 € par jour.
+• NIVEAU 3 — EXPERTISE IA — barème C : INTER 890 € — INTRA 2 700 € par jour.
+• NIVEAU 4 — IA AVANCÉE, GOUVERNANCE ET DIRIGEANTS — barème C : INTER 990 € — INTRA 2 900 € par jour.
+
+3. LA GRILLE PAR ACTION
+Inter : prix par personne pour l'action complète. Intra : prix pour le groupe entier.
+NIVEAU 1
+• FOR-0004 — Vente & négociation : Découvrir le besoin, argumenter et conclure sans brader — 1 j / 8 h — INTER 690 € — INTRA 2 300 €
+• FOR-0008 — Manager au quotidien : Cadrer, déléguer et recadrer son équipe de proximité — 1 j / 8 h — INTER 690 € — INTRA 2 300 €
+NIVEAU 2
+• FOR-0009 — Site internet IA : Créer son site en le décrivant à voix haute — 1 j / 8 h — INTER 790 € — INTRA 2 500 €
+• FOR-0010 — Emailing IA : Rédiger des courriels et des séquences qui obtiennent une réponse — 1 j / 8 h — INTER 790 € — INTRA 2 500 €
+• FOR-0006 — Copilot Microsoft 365 : Utiliser l'IA dans Word, Excel, Outlook et Teams (méthode des 4 P) — 2 j / 16 h — INTER 1 580 € — INTRA 5 000 €
+NIVEAU 3
+• FOR-0011 — IA générative au travail : Gagner du temps chaque jour, en sécurité et avec des preuves — 3 j / 24 h — INTER 2 670 € — INTRA 8 100 €
+• FOR-0017 — Assistant IA perso : Piloter son activité en parlant à son téléphone — 2 j / 16 h — 4 à 8 — INTER 1 780 € — INTRA 5 400 €
+• FOR-0015 — IA souveraine : Faire tourner l'IA sur ses propres machines, sans donnée sortante — 2 j / 16 h — INTER 1 780 € — INTRA 5 400 €
+• FOR-0002 — Automatisation sans code : Relier ses outils et supprimer les tâches répétitives (n8n) — 2 j / 16 h — INTER 1 780 € — INTRA 5 400 €
+NIVEAU 4
+• FOR-0003 — Conformité RGPD & IA Act : Sécuriser ses usages de l'IA et prouver les mesures prises — 1 j / 8 h — INTER 990 € — INTRA 2 900 €
+• FOR-0013 — Agents IA : Déléguer des tâches à l'IA sous contrôle humain (niveau avancé) — 2 j / 16 h — 4 à 8 — INTER 1 980 € — INTRA 5 800 €
+• FOR-0014 — Séminaire dirigeants IA : Choisir les 3 tâches que l'IA fera pour vous (résidentiel) — 2 j / 16 h — 6 à 8 dirigeants — 1 980 € par dirigeant, hébergement en sus au réel — INTRA (équipe de direction d'une même entreprise) 5 800 €
+
+EFFECTIFS : inter, 4 participants minimum pour confirmation, 10 maximum (8 pour FOR-0013 et FOR-0017). En deçà de 4, la session est reportée ou remboursée intégralement (CGV, art. 6.3). Intra : jusqu'à 10 participants inclus (8 pour FOR-0013 et FOR-0017).
+PARTICIPANT SUPPLÉMENTAIRE au-delà de l'effectif intra inclus, par jour : barème A 120 €, barème B 130 €, barème C 150 €.
+FOR-0005 ET FOR-0007 NE FIGURENT PAS DANS CETTE GRILLE : actions réalisées en sous-traitance, tarification du donneur d'ordre, marque blanche (YEBA-DOC-07, volet B).
+FOR-0001 EST ARCHIVÉE.
+
+4. CONSEIL, AUDIT ET IMPLÉMENTATION
+• Journée de conseil, d'audit ou d'implémentation : 850 €
+• Demi-journée : 490 €
+• Diagnostic initial d'entreprise (environ 30 minutes, rapport sous 48 h ouvrées) : 100 €, déduits intégralement de la prestation suivante
+Ces prestations ne sont PAS des actions de formation : elles ne relèvent pas du financement au titre du plan de développement des compétences. Le dire au client avant qu'il ne le découvre auprès de son OPCO.
+
+5. FRAIS ANNEXES
+• Location de salle en établissement tiers : 200 € par jour, refacturés à l'identique
+• Restauration, goûter d'accueil et pauses : 60 € par jour et par personne, refacturés à l'identique
+• Déplacement hors zone Saint-Denis / Sainte-Marie / Sainte-Clotilde : forfait porté au devis
+• Intervention hors de La Réunion : transport et hébergement au réel, sur justificatifs, accord écrit préalable
+• Hébergement du séminaire résidentiel : au réel, facturé directement au client par l'établissement
+• SUPPORT IMPRIMÉ EN CORPS 16 POINTS : GRATUIT, SUR SIMPLE DEMANDE
+• Personnalisation lourde d'un programme existant : sur devis
+
+6. LES SEUILS À CONNAÎTRE AVANT DE NÉGOCIER
+Frais directs d'une session inter en établissement tiers : 200 € de salle par jour, plus 60 € par jour et par personne de restauration.
+• Vente & négociation (1 j) à 4 inscrits : 2 760 € encaissés, 440 € de frais directs. À 10 inscrits : 6 900 € encaissés, 800 € de frais.
+• Assistant IA perso (2 j) à 4 inscrits : 7 120 € encaissés, 880 € de frais. À 8 : 14 240 € encaissés, 1 360 € de frais.
+• Agents IA (2 j) à 4 inscrits : 7 920 € encaissés, 880 € de frais. À 8 : 15 840 € encaissés, 1 360 € de frais.
+CHAQUE INSCRIT SUPPLÉMENTAIRE EST UNE MARGE QUASI PURE : le coût d'animation est fixe, seule la restauration suit.
+INTER OU INTRA, LE CALCUL À FAIRE DEVANT LE CLIENT :
+• niveaux 1, 2 et 3 : jusqu'à 3 salariés, l'inter revient moins cher ; à partir de 4, l'intra est plus avantageux ;
+• niveau 4 : à partir de 3 salariés, l'intra est plus avantageux.
+Le dire avant qu'il ne le calcule est un argument de crédibilité.
+
+7. RÈGLE DE NÉGOCIATION
+La remise ne descend jamais en dessous de −15 % du tarif publié. Au-delà, on retire du contenu — jamais on ne brade la journée. Un prix cassé est un signal de faible valeur, et il se répand vite sur un marché insulaire.
+
+8. CE QUI N'EST PAS AU CATALOGUE, ET QUI NE DOIT PAS ÊTRE VENDU
+• Ni bilan de compétences, ni validation des acquis de l'expérience, ni apprentissage : la certification Qualiopi porte sur la seule catégorie « actions de formation ».
+• AUCUN FINANCEMENT PAR LE COMPTE PERSONNEL DE FORMATION : aucune certification RNCP ou RS n'est enregistrée à ce jour (code du travail, art. L.6323-6). L'annoncer serait une pratique commerciale trompeuse (code de la consommation, art. L.121-2).
+• Aucune formation n'est présentée comme « obligatoire » : l'argument est « nous vous aidons à prouver les mesures prises » (RNQ, indicateur 1 ; code de la consommation, art. L.121-2).
+• Ni test d'intrusion, ni audit de sécurité offensive : ce n'est pas le métier, et l'exercer sans mandat écrit engage pénalement.
+• Ni délégué à la protection des données externalisé, ni mise en conformité NIS2, ni analyse EBIOS RM : ces prestations ne sont pas couvertes par les certifications détenues ni, sauf vérification, par l'assurance de responsabilité civile professionnelle.
+• AUCUNE PROMESSE DE GAIN CHIFFRÉ : un « deux fois moins de temps » non mesuré chez le client est une allégation, pas un résultat.
+
+9. LA MÉCANIQUE COMMERCIALE, DANS CET ORDRE
+1. LA PREUVE DE RARETÉ, AVANT LE PRIX : « Certifié Qualiopi. Formateur certifié Google AI Specialist et Google Professional AI, SecNumacadémie de l'ANSSI, MOOC RGPD de la CNIL, référent handicap. Formation ET conseil en gouvernance : le même interlocuteur du diagnostic à la mise en œuvre. »
+2. LE PRIX AFFICHÉ, EN CLAIR : « À partir de 690 € par personne la journée de 8 heures. » Une grille publiée inspire confiance et elle est EXIGÉE PAR LE RÉFÉRENTIEL NATIONAL QUALITÉ (indicateur 1).
+3. LA LEVÉE D'OBSTACLE : « Prix nets de taxe. Finançable par votre OPCO selon les règles de votre branche. Nous montons le dossier avec vous. » NE JAMAIS PROMETTRE « ZÉRO EURO » sans avoir vérifié la branche, les plafonds de prise en charge et les fonds disponibles du client : avec cette grille, un reste à charge est probable — l'annoncer au devis.
+
+ANNEXE — CORRESPONDANCE DES ANCIENS INTITULÉS
+RÉGLAGE MOTEUR → FOR-0002 · CONTRÔLE TECHNIQUE → FOR-0003 · TRACTION → FOR-0004 · COPILOTE → FOR-0006 · EMBRAYAGE → FOR-0008 · CARROSSERIE → FOR-0009 · INJECTION → FOR-0010 · ALLUMAGE et TURBO → FOR-0011 · PILOTE AUTOMATIQUE → FOR-0013 · TABLEAU DE BORD → FOR-0014 · MOTEUR FERMÉ → FOR-0015.
+
+────────────────────
+YEBA FORMATIONS — Aurélien LUMEKA, directeur
+9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion
+Tél. 0693 32 24 45 — yebaformations@gmail.com
+SIRET 814 622 262 00032
+Déclaration d'activité n° 04973676397 auprès du Préfet de La Réunion.
+Cet enregistrement ne vaut pas agrément de l'État.
+Certification Qualiopi n° 25FOR02027.1 délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC).
+Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com
+────────────────────
