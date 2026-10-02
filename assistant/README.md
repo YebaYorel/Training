@@ -47,11 +47,18 @@ Pas de serveur à payer, pas d'API facturée à l'usage.
 | 4 | Documents à portée de main, remplissables | ✅ Oui | Connecteur Drive + table DOCUMENTS OFFICIELS YEBA ; l'assistant pré-remplit, vous signez | **RGPD** si le document est nominatif |
 | 5 | Mise à jour Qualiopi et BPF | ⚠️ Préparer, pas déposer | Compétence `controle-qualiopi-bpf` : pièces manquantes, chiffres du BPF. Dépôt par vous sur Mon Activité Formation | **RGPD** (chiffres agrégés) |
 | 6 | WhatsApp Business | ❌ Pas de connecteur | L'assistant rédige le message, vous le copiez. Une automatisation passe par l'interface professionnelle payante de Meta : non retenue (budget, données hors UE) | **RGPD** (Meta, hors UE) |
-| 7 | Site internet (formulaire, mails) | ⚠️ Dépend de l'hébergeur | Cible : formulaire → table Airtable → brouillon de réponse. **À préciser** : quel outil héberge le site aujourd'hui (CONFIG signale un site sur blink.new, cible OVHcloud) | **RGPD** : mention d'information sous le formulaire (art. 13) |
+| 7 | Site internet (formulaire, mails) | ⚠️ Pas de site à ce jour (02/10/2026) | À construire chez OVHcloud (décision CONFIG du 23/09/2026) : formulaire → table Airtable → brouillon de réponse. Vérifier le site « YEBA Formations Portal » sur blink.new signalé dans CONFIG | **RGPD** : mention d'information sous le formulaire (art. 13) ; mentions légales LCEN |
 | 8 | Trajets Google Maps | ❌ Pas de connecteur | L'assistant calcule l'heure de départ à partir de vos rendez-vous et d'une durée donnée ; l'application de cartes fait le trajet | **RGPD** (position = donnée personnelle) |
-| 9 | Suivi comptable (URSSAF, compta) | ⚠️ Préparer, pas déclarer | Depuis DEVIS & FACTURES : chiffre d'affaires encaissé, impayés, échéances. **À préciser** : votre logiciel comptable et votre expert-comptable | Ni RGPD ni IA Act sur les montants seuls |
+| 9 | Suivi comptable (URSSAF, compta) | ⚠️ Préparer, pas déclarer | Pas de logiciel à ce jour : choisir un outil de facturation relié à une **plateforme agréée** (facturation électronique). Depuis DEVIS & FACTURES : CA encaissé, impayés, échéances | **RGPD** si clients particuliers |
 | 10 | Abonnements : échéancier + prévisionnel | ✅ Oui | Compétence `echeancier-abonnements` + `outils/echeancier.py`. **La table CHARGES & ABONNEMENTS est vide** : la remplir d'abord | Aucune donnée personnelle |
 | + | Fuseaux horaires des interlocuteurs | ✅ Oui | Règle « deux heures » dans les instructions + `outils/fuseau.py` (heure d'été comprise) | — |
+
+## Routine programmée
+
+- **Brief du matin YEBA** : du lundi au vendredi à **7h28** (heure de La Réunion), notification
+  sur l'iPhone. Lecture seule. Identifiant : `trig_01LMngvJgESC3EEdjKssSoh6`.
+- ⚠️ Créée sans connecteurs : les ajouter (Gmail, Google Agenda, Airtable) dans la routine depuis
+  claude.ai, sinon le brief signalera qu'il ne peut pas lire les sources.
 
 ## Outils en ligne de commande
 

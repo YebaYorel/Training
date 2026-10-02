@@ -62,8 +62,13 @@ def programme():
     E += [Paragraph("Accessibilité et adaptations", s["h2"]), Paragraph(C.ADAPTATIONS, s["corps"])]
     E += [Paragraph("Délai et modalités d'accès", s["h2"]), Paragraph(C.DELAI_ACCES, s["corps"])]
     E += [Paragraph("Tarifs et financement", s["h2"]),
-          Paragraph("Tarifs : [À VALIDER PAR LE DIRIGEANT avant diffusion]. Prix nets de taxe — TVA non "
-                    "applicable, article 293 B du code général des impôts.", s["corps"]),
+          Paragraph("<b>Inter-entreprise</b> : 990 € par personne pour le parcours complet de 16 heures "
+                    "(495 € par jour et par personne).", s["corps"]),
+          Paragraph("<b>Intra-entreprise</b> : 3 290 € pour le groupe, jusqu'à 8 stagiaires (1 645 € par jour).",
+                    s["corps"]),
+          Paragraph("Inclus : questionnaire de positionnement, environnement de démonstration, livret ressource, "
+                    "kit « assistant sous contrôle » et classe virtuelle de suivi d'1 heure à J+30. Prix nets de "
+                    "taxe — TVA non applicable, article 293 B du code général des impôts.", s["corps"]),
           Paragraph("Financements possibles selon votre situation : OPCO, plan de développement des compétences, "
                     "France Travail (AIF), Région. Cette formation ne porte pas de code RNCP ou RS : elle n'est "
                     "<b>pas</b> éligible au CPF.", s["corps"])]

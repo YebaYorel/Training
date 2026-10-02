@@ -20,8 +20,8 @@ CATALOGUE FORMATIONS (statut « En développement »).
 
 ## Avant de diffuser
 
-1. **Tarifs** : à fixer (le programme affiche « [À VALIDER PAR LE DIRIGEANT] »), puis à reporter
-   dans la fiche Airtable.
+1. **Tarifs** (fixés le 02/10/2026) : 990 € par personne en inter, 3 290 € par groupe en intra
+   (8 stagiaires maximum). Aligné sur les autres formations IA de 2 jours du catalogue.
 2. **Liens des sources** : relevés le 02/10/2026, à revérifier avant chaque session.
 3. **Environnement de démonstration KAZ'MARKET** (messagerie, agenda, base) : à créer et tester
    à J-3 ; aucune donnée réelle de client en séance.
