@@ -1,0 +1,90 @@
+{
+  "_lisez_moi": "Définitions d'outils (format « function calling » compatible Mistral / Pipecat / LiveKit). Chaque appel d'outil est envoyé en POST à https://VOTRE-N8N/webhook/yeba-assistant-outils avec le corps {\"outil\": <name>, \"arguments\": {...}, \"appel_id\": \"...\", \"appelant\": \"+262...\"} et l'en-tête secret configuré dans n8n. La réponse JSON contient une « consigne » à suivre.",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "infos_formations",
+        "description": "Cherche dans le catalogue YEBA FORMATIONS (dates, durée, prix, objectifs, financements). À utiliser dès qu'on demande une information sur une formation.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "recherche": { "type": "string", "description": "Mot-clé : IA, RGPD, vente, management, intitulé…" }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "inscription",
+        "description": "Enregistre une DEMANDE d'inscription (jamais une inscription ferme). Appeler seulement après avoir récapitulé les informations et obtenu l'accord de l'appelant.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "nom": { "type": "string" },
+            "entreprise": { "type": "string" },
+            "telephone": { "type": "string" },
+            "email": { "type": "string" },
+            "formation": { "type": "string" },
+            "participants": { "type": "integer" },
+            "financement": { "type": "string", "enum": ["OPCO", "CPF", "Entreprise", "France Travail", "Ne sait pas"] },
+            "adaptation": { "type": "string", "description": "Seulement si la personne évoque spontanément un besoin d'adaptation (accessibilité). Ne jamais demander de diagnostic." }
+          },
+          "required": ["nom", "telephone", "formation"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "sous_traitance",
+        "description": "Enregistre une proposition de mission de sous-traitance d'un autre organisme et la SOUMET à Aurélien pour validation. Ne jamais confirmer une date.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "organisme": { "type": "string" },
+            "interlocuteur": { "type": "string" },
+            "telephone": { "type": "string" },
+            "email": { "type": "string" },
+            "theme": { "type": "string" },
+            "dates": { "type": "string", "description": "Dates telles que formulées par l'appelant" },
+            "date_debut": { "type": "string", "description": "ISO 8601 si connue, ex. 2026-11-16T08:00:00+04:00" },
+            "date_fin": { "type": "string" },
+            "lieu": { "type": "string" },
+            "stagiaires": { "type": "integer" },
+            "tarif": { "type": "string" }
+          },
+          "required": ["organisme", "interlocuteur", "telephone", "theme"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "infos_legales",
+        "description": "Résumé et lien des CGV, mentions légales ou politique de confidentialité.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "sujet": { "type": "string", "enum": ["cgv", "mentions", "confidentialite"] }
+          }
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "transfert",
+        "description": "Transfère l'appel à Aurélien : si l'appelant le demande, si tu ne sais pas répondre, si la question est juridique, financière ou sensible, ou si l'appelant est mécontent.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "motif": { "type": "string" }
+          },
+          "required": ["motif"]
+        }
+      }
+    }
+  ]
+}

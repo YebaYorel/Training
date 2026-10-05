@@ -1,0 +1,1102 @@
+{
+  "name": "YEBA – Assistant vocal (outils, validation, journal)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "yeba-assistant-outils",
+        "authentication": "headerAuth",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "3a462433-18ce-484c-87ab-5f0cefd9c7da",
+      "name": "Webhook outils assistant",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Secret assistant vocal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ⚙️ À PERSONNALISER UNE FOIS (IDs affichés par examples/creer_base_prospection.py)\nconst config = {\n  baserow_url: 'https://api.baserow.io',\n  table_formations: 0,\n  table_inscriptions: 0,\n  table_sous_traitance: 0,\n  table_journal: 0,\n  email_aurelien: 'contact@VOTRE-DOMAINE.re',\n  email_expediteur: 'assistant@VOTRE-DOMAINE.re',\n  numero_transfert: '+262XXXXXXXXX',          // mobile d'Aurélien (format E.164)\n  url_validation: 'https://VOTRE-N8N/webhook/yeba-validation',\n  caldav_calendrier: 'https://VOTRE-CALDAV/calendars/aurelien/formations/',\n  url_cgv: 'https://VOTRE-DOMAINE.re/cgv',\n  url_mentions: 'https://VOTRE-DOMAINE.re/mentions-legales',\n  url_confidentialite: 'https://VOTRE-DOMAINE.re/confidentialite',\n};\nconst body = $json.body || {};\nreturn [{ json: { ...config,\n  outil: String(body.outil || body.tool || '').trim(),\n  args: body.arguments || body.args || {},\n  appel_id: body.appel_id || body.call_id || '',\n  appelant: body.appelant || body.caller || '' } }];"
+      },
+      "id": "4978bdc9-11eb-4f9a-b17d-76b07d6b4f37",
+      "name": "Config",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 6,
+        "output": "={{ ([\"infos_formations\", \"inscription\", \"sous_traitance\", \"infos_legales\", \"transfert\"]).indexOf($json.outil) === -1 ? 5 : ([\"infos_formations\", \"inscription\", \"sous_traitance\", \"infos_legales\", \"transfert\"]).indexOf($json.outil) }}"
+      },
+      "id": "bb866492-28d1-4b65-b577-b51ee4e917a3",
+      "name": "Aiguillage outil",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Config').item.json.baserow_url }}/api/database/rows/table/{{ $('Config').item.json.table_formations }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            },
+            {
+              "name": "size",
+              "value": "100"
+            }
+          ]
+        }
+      },
+      "id": "d9e8c304-4b1c-4a79-91dd-e07d82ecb5dc",
+      "name": "Lire catalogue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const q = String($('Config').item.json.args.recherche || '').toLowerCase();\nconst rows = ($json.results || []).filter(r => r['Publié']);\nconst pick = rows.filter(r => !q || JSON.stringify(r).toLowerCase().includes(q)).slice(0, 5);\nconst fiche = r => ({\n  intitule: r['Intitulé'], domaine: r['Domaine']?.value, duree_heures: r['Durée (heures)'],\n  modalite: r['Modalité']?.value, prochaine_session: r['Prochaine session'], lieu: r['Lieu'],\n  prix_ht: r['Prix HT (€)'], objectifs: r['Objectifs'], public: r['Public et prérequis'],\n  financements: r['Financements possibles'] });\nreturn [{ json: { ok: true, formations: pick.map(fiche),\n  consigne: pick.length ? 'Résume oralement en 2-3 phrases, propose l\\'envoi du programme par email.'\n                        : 'Aucune formation trouvée : propose un rappel par Aurélien ou le transfert.' } }];"
+      },
+      "id": "cc016fd6-0731-4352-a1b2-de54527a78eb",
+      "name": "Formater catalogue",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "4fd49cc2-5a81-4117-809b-974bf1e22b63",
+      "name": "Réponse catalogue",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').item.json.baserow_url }}/api/database/rows/table/{{ $('Config').item.json.table_inscriptions }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ 'Nom': $('Config').item.json.args.nom || '', 'Entreprise': $('Config').item.json.args.entreprise || '', 'Téléphone': $('Config').item.json.args.telephone || $('Config').item.json.appelant || '', 'Email': $('Config').item.json.args.email || null, 'Formation souhaitée': $('Config').item.json.args.formation || '', 'Nombre de participants': $('Config').item.json.args.participants || 1, 'Financement envisagé': $('Config').item.json.args.financement || 'Ne sait pas', 'Besoin d\\'adaptation': $('Config').item.json.args.adaptation || '', 'Statut': 'À confirmer', 'Origine': 'Assistant vocal', 'Date de la demande': $now.toISO() }) }}"
+      },
+      "id": "5b7e7b20-2b0c-4bfb-bee6-7a3c5cb47d92",
+      "name": "Créer inscription",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        700,
+        180
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Config').item.json.email_expediteur }}",
+        "toEmail": "={{ $('Config').item.json.email_aurelien }}",
+        "subject": "=📝 Nouvelle demande d'inscription – {{ $('Config').item.json.args.formation }}",
+        "emailFormat": "html",
+        "html": "=<p><b>{{ $('Config').item.json.args.nom }}</b> ({{ $('Config').item.json.args.entreprise }}) – {{ $('Config').item.json.args.telephone || $('Config').item.json.appelant }} – {{ $('Config').item.json.args.email }}</p><p>Formation : {{ $('Config').item.json.args.formation }} · Participants : {{ $('Config').item.json.args.participants }} · Financement : {{ $('Config').item.json.args.financement }}</p><p>Adaptation demandée : {{ $('Config').item.json.args.adaptation || 'aucune' }}</p><p>Statut Baserow : À confirmer (ligne {{ $json.id }}).</p>",
+        "options": {}
+      },
+      "id": "8ad20949-179e-4ef2-8339-22301e00eedf",
+      "name": "Prévenir Aurélien (inscription)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        920,
+        180
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "SMTP YEBA (hébergeur UE)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, consigne: 'Confirme que la demande est enregistrée, qu\\'Aurélien rappelle sous 48 h ouvrées pour valider la place et le financement. Aucune place n\\'est garantie avant ce rappel.' }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "90e3054f-5ec6-477d-bcb6-9b4de89c5372",
+      "name": "Réponse inscription",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1140,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "let jeton;\ntry { jeton = require('crypto').randomUUID(); }\ncatch (e) { jeton = Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2); }\nreturn [{ json: { jeton } }];"
+      },
+      "id": "3c5a0188-8c17-4bac-8430-5f128a69e876",
+      "name": "Jeton de validation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Config').item.json.baserow_url }}/api/database/rows/table/{{ $('Config').item.json.table_sous_traitance }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ 'Organisme donneur d\\'ordre': $('Config').item.json.args.organisme || '', 'Interlocuteur': $('Config').item.json.args.interlocuteur || '', 'Téléphone': $('Config').item.json.args.telephone || $('Config').item.json.appelant || '', 'Email': $('Config').item.json.args.email || null, 'Thème': $('Config').item.json.args.theme || '', 'Dates proposées': $('Config').item.json.args.dates || '', 'Date début': $('Config').item.json.args.date_debut || null, 'Date fin': $('Config').item.json.args.date_fin || null, 'Lieu': $('Config').item.json.args.lieu || '', 'Nombre de stagiaires': $('Config').item.json.args.stagiaires || null, 'Programme reçu': false, 'Objectifs reçus': false, 'Tarif proposé': $('Config').item.json.args.tarif || '', 'Statut': 'En attente de validation', 'Jeton de validation': $json.jeton, 'Date de la demande': $now.toISO() }) }}"
+      },
+      "id": "ee49b835-ce82-4a7c-bbe4-1b7cb0295da8",
+      "name": "Créer demande sous-traitance",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        920,
+        360
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Config').item.json.email_expediteur }}",
+        "toEmail": "={{ $('Config').item.json.email_aurelien }}",
+        "subject": "=🤝 À VALIDER – Sous-traitance {{ $('Config').item.json.args.theme }} pour {{ $('Config').item.json.args.organisme }}",
+        "emailFormat": "html",
+        "html": "=<p><b>{{ $('Config').item.json.args.organisme }}</b> – {{ $('Config').item.json.args.interlocuteur }} – {{ $('Config').item.json.args.telephone || $('Config').item.json.appelant }} – {{ $('Config').item.json.args.email }}</p><ul><li>Thème : {{ $('Config').item.json.args.theme }}</li><li>Dates : {{ $('Config').item.json.args.dates }} ({{ $('Config').item.json.args.date_debut }} → {{ $('Config').item.json.args.date_fin }})</li><li>Lieu : {{ $('Config').item.json.args.lieu }}</li><li>Stagiaires : {{ $('Config').item.json.args.stagiaires }}</li><li>Tarif : {{ $('Config').item.json.args.tarif }}</li></ul><p>⚠️ Programme et objectifs demandés par email à l'interlocuteur : vérifie-les avant d'accepter (Qualiopi, indicateur 27 – sous-traitance).</p><p><a href=\"{{ $('Config').item.json.url_validation }}?id={{ $json.id }}&jeton={{ $('Jeton de validation').item.json.jeton }}&decision=accepter\">✅ ACCEPTER et poser en OPTION dans mon agenda</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=\"{{ $('Config').item.json.url_validation }}?id={{ $json.id }}&jeton={{ $('Jeton de validation').item.json.jeton }}&decision=refuser\">❌ REFUSER</a></p>",
+        "options": {}
+      },
+      "id": "7e7b23b7-e3b1-43e2-bf5f-c0ad6fa419e1",
+      "name": "Soumettre à Aurélien (sous-traitance)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1140,
+        360
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "SMTP YEBA (hébergeur UE)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, consigne: 'Remercie, demande d\\'envoyer le PROGRAMME et les OBJECTIFS pédagogiques par email à ' + $('Config').item.json.email_aurelien + '. Précise qu\\'aucune date n\\'est réservée : Aurélien valide personnellement et répond sous 48 h ouvrées.' }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "14b0e20e-4609-4da8-9395-367b0f0b1f79",
+      "name": "Réponse sous-traitance",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1360,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const c = $('Config').item.json;\nconst sujet = String(c.args.sujet || '').toLowerCase();\nconst docs = {\n  cgv: { titre: 'Conditions générales de vente', url: c.url_cgv,\n    resume: \"Inscription ferme à réception de la convention signée ; conditions d'annulation et de report détaillées dans les CGV.\" },\n  mentions: { titre: 'Mentions légales', url: c.url_mentions,\n    resume: \"YEBA FORMATIONS – SIRET 814 622 262 00032 – déclaration d'activité n° 04973676397 (ne vaut pas agrément de l'État) – certification Qualiopi n° 25FOF02027.1 au titre des actions de formation.\" },\n  confidentialite: { titre: 'Politique de confidentialité', url: c.url_confidentialite,\n    resume: \"Les données de l'appel servent uniquement à traiter votre demande ; vous pouvez demander accès, rectification ou effacement par email.\" },\n};\nconst cle = Object.keys(docs).find(k => sujet.includes(k)) || null;\nreturn [{ json: { ok: true, documents: cle ? [docs[cle]] : Object.values(docs),\n  consigne: \"Ne lis pas les textes juridiques en entier : donne le résumé, propose l'envoi du lien par email ou SMS. Pour toute question juridique précise, transfère à Aurélien.\" } }];"
+      },
+      "id": "7cc80c34-8c2b-4ec0-b1d6-e15517e75a9e",
+      "name": "Infos légales",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        700,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "50a43846-e89e-42db-8e1f-9244fa4ab24c",
+      "name": "Réponse infos légales",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        540
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Config').item.json.email_expediteur }}",
+        "toEmail": "={{ $('Config').item.json.email_aurelien }}",
+        "subject": "=📞 Appel transféré – {{ $('Config').item.json.appelant }}",
+        "emailFormat": "html",
+        "html": "=<p>Motif : {{ $('Config').item.json.args.motif || 'non précisé' }}</p><p>Appel {{ $('Config').item.json.appel_id }}</p>",
+        "options": {}
+      },
+      "id": "b3142700-b1f8-4885-b143-e2a4310b2db1",
+      "name": "Prévenir Aurélien (transfert)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        700,
+        720
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "SMTP YEBA (hébergeur UE)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, action: 'transfert', numero: $('Config').item.json.numero_transfert, si_injoignable: 'Propose un rappel et note nom, numéro, motif.' }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "ac9948d1-4fc4-4048-8f0a-a3442af2c134",
+      "name": "Réponse transfert",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        920,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "GET",
+        "path": "yeba-validation",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "92ee53d4-d81a-4e35-81c5-7faed25f852c",
+      "name": "Lien reçu par email (GET)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html><body style=\"font:24px sans-serif;padding:2em\"><form method=\"post\"><input type=\"hidden\" name=\"id\" value=\"{{ String($json.query.id || '').replace(/\\D/g, '') }}\"><input type=\"hidden\" name=\"jeton\" value=\"{{ String($json.query.jeton || '').replace(/[^a-z0-9-]/gi, '') }}\"><input type=\"hidden\" name=\"decision\" value=\"{{ $json.query.decision === 'accepter' ? 'accepter' : 'refuser' }}\"><p>Confirmer : <b>{{ $json.query.decision === 'accepter' ? 'ACCEPTER' : 'REFUSER' }}</b> la demande n° {{ String($json.query.id || '').replace(/\\D/g, '') }} ?</p><button style=\"font-size:28px;padding:.5em 1.5em\" type=\"submit\">Confirmer</button></form></body></html>",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "e1c9ce0e-4b6b-421e-92f3-7a6554db2452",
+      "name": "Page de confirmation",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        220,
+        820
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "yeba-validation",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "52bb6877-2fc0-41a6-8a90-c8f4412faed3",
+      "name": "Webhook validation",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// ⚙️ Mêmes valeurs que le nœud « Config »\nreturn [{ json: {\n  baserow_url: 'https://api.baserow.io',\n  table_sous_traitance: 0,\n  caldav_calendrier: 'https://VOTRE-CALDAV/calendars/aurelien/formations/',\n  email_expediteur: 'assistant@VOTRE-DOMAINE.re',\n  id: String($json.body.id || '').replace(/\\D/g, ''),\n  jeton: String($json.body.jeton || ''),\n  decision: $json.body.decision === 'accepter' ? 'accepter' : 'refuser' } }];"
+      },
+      "id": "fd34f4fe-ac27-4357-b40b-46697d2c28da",
+      "name": "Config validation",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $('Config validation').item.json.baserow_url }}/api/database/rows/table/{{ $('Config validation').item.json.table_sous_traitance }}/{{ $('Config validation').item.json.id }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "id": "effce150-78ec-4515-b8f8-54b14abbf4c9",
+      "name": "Lire demande",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        1000
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const c = $('Config validation').item.json;\nconst ok = c.jeton.length > 10 && $json['Jeton de validation'] === c.jeton\n        && $json['Statut']?.value === 'En attente de validation';\nreturn [{ json: { ...$json, valide: ok, decision: c.decision } }];"
+      },
+      "id": "f6a9b8cd-c39f-4aea-bc90-6a2af36c9f28",
+      "name": "Vérifier jeton",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "expression",
+        "numberOutputs": 3,
+        "output": "={{ !$json.valide ? 2 : ($json.decision === 'accepter' ? 0 : 1) }}"
+      },
+      "id": "05c7b467-9eeb-4169-911f-5b2683f76e04",
+      "name": "Décision",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [
+        880,
+        1000
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $('Config validation').item.json.baserow_url }}/api/database/rows/table/{{ $('Config validation').item.json.table_sous_traitance }}/{{ $('Config validation').item.json.id }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ 'Statut': 'Acceptée', 'Jeton de validation': '' }) }}"
+      },
+      "id": "7be96197-d931-4bef-b587-a672823b3751",
+      "name": "Marquer acceptée",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        880
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const d = $('Vérifier jeton').item.json;\nconst fmt = s => new Date(s).toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';\nconst debut = d['Date début'] || new Date(Date.now() + 7 * 864e5).toISOString();\nconst fin = d['Date fin'] || new Date(new Date(debut).getTime() + 7 * 36e5).toISOString();\nconst uid = 'yeba-st-' + d.id + '@yeba';\nconst esc = s => String(s || '').replace(/([,;\\\\])/g, '\\\\$1').replace(/\\n/g, '\\\\n');\nconst ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//YEBA//Assistant//FR','BEGIN:VEVENT',\n  'UID:' + uid, 'DTSTAMP:' + fmt(new Date()), 'DTSTART:' + fmt(debut), 'DTEND:' + fmt(fin),\n  'SUMMARY:' + esc('OPTION sous-traitance – ' + d['Thème'] + ' – ' + d[\"Organisme donneur d'ordre\"]),\n  'LOCATION:' + esc(d['Lieu']), 'STATUS:TENTATIVE',\n  'DESCRIPTION:' + esc('Dates évoquées : ' + d['Dates proposées'] + '\\nContact : ' + d['Interlocuteur'] + ' ' + d['Téléphone'] + ' ' + (d['Email'] || '')),\n  'END:VEVENT','END:VCALENDAR'].join('\\r\\n');\nreturn [{ json: { uid, ics, sans_dates: !d['Date début'] } }];"
+      },
+      "id": "442c290e-f7c0-4956-81cf-09afe1931e8e",
+      "name": "Construire événement",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $('Config validation').item.json.caldav_calendrier }}{{ $json.uid }}.ics",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "text/calendar; charset=utf-8",
+        "body": "={{ $json.ics }}",
+        "options": {}
+      },
+      "id": "3f0b76b2-5901-4700-b269-eed3ec938508",
+      "name": "Poser dans l'agenda (CalDAV)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        880
+      ],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "",
+          "name": "CalDAV agenda YEBA"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "={{ $('Config validation').item.json.email_expediteur }}",
+        "toEmail": "={{ $('Vérifier jeton').item.json['Email'] }}",
+        "subject": "=Votre demande de sous-traitance – {{ $('Vérifier jeton').item.json['Thème'] }}",
+        "emailFormat": "html",
+        "html": "=<p>Bonjour {{ $('Vérifier jeton').item.json['Interlocuteur'] }},</p><p>Aurélien LUMEKA a pris connaissance de votre demande et souhaite y donner suite. Il vous recontacte pour arrêter les dates, le tarif et la convention de sous-traitance.</p><p>Merci de nous transmettre le programme et les objectifs pédagogiques si ce n'est pas déjà fait.</p><p>YEBA FORMATIONS</p>",
+        "options": {}
+      },
+      "id": "f49cb1a1-8f9f-4319-a83a-631f048400a9",
+      "name": "Email au donneur d'ordre",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        1760,
+        880
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "",
+          "name": "SMTP YEBA (hébergeur UE)"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "=<html><body style=\"font:22px sans-serif;padding:2em\">✅ Acceptée. Option posée dans l'agenda{{ $('Construire événement').item.json.sans_dates ? ' (dates non fournies : créneau provisoire à J+7, à corriger)' : '' }}. Email envoyé au donneur d'ordre.</body></html>",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "05826d92-65ce-4717-8297-a486c1806aad",
+      "name": "Page OK acceptée",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1980,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $('Config validation').item.json.baserow_url }}/api/database/rows/table/{{ $('Config validation').item.json.table_sous_traitance }}/{{ $('Config validation').item.json.id }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ 'Statut': 'Refusée', 'Jeton de validation': '' }) }}"
+      },
+      "id": "f5018b21-bbca-4dc2-9117-5825e9cb23da",
+      "name": "Marquer refusée",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        1060
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<html><body style=\"font:22px sans-serif;padding:2em\">❌ Refusée. Aucun email n'a été envoyé au donneur d'ordre : réponds-lui toi-même.</body></html>",
+        "options": {
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "1307d610-89a8-44c0-b7c8-a71872088205",
+      "name": "Page OK refusée",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        1060
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<html><body style=\"font:22px sans-serif;padding:2em\">Lien invalide ou déjà utilisé.</body></html>",
+        "options": {
+          "responseCode": 403,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "text/html; charset=utf-8"
+              }
+            ]
+          }
+        }
+      },
+      "id": "17624d78-f6cb-4c58-b750-8a53076caf92",
+      "name": "Lien invalide",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1100,
+        1220
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "yeba-fin-appel",
+        "authentication": "headerAuth",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "e97bfa6c-9573-40c6-b055-8b87e8cd8afa",
+      "name": "Webhook fin d'appel",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        1500
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Secret assistant vocal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ⚙️ Mêmes valeurs que « Config ». Pas d'enregistrement audio, pas de transcription intégrale :\n// un résumé de 3 lignes suffit (minimisation RGPD). Suppression auto conseillée à 12 mois.\nconst b = $json.body || {};\nconst motifs = ['Infos formation','Inscription','Sous-traitance','CGV / mentions légales','Transfert','Autre'];\nreturn [{ json: { baserow_url: 'https://api.baserow.io', table_journal: 0,\n  ligne: { 'Identifiant appel': String(b.appel_id || ''), 'Date': new Date().toISOString(),\n    'Motif': motifs.includes(b.motif) ? b.motif : 'Autre',\n    'Résumé': String(b.resume || '').slice(0, 1000),\n    'Transféré à Aurélien': !!b.transfere, 'Durée (secondes)': Number(b.duree || 0) } } }];"
+      },
+      "id": "b86c7590-eb0e-47bb-b1d0-75bf5a0dab10",
+      "name": "Préparer journal",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $json.baserow_url }}/api/database/rows/table/{{ $json.table_journal }}/",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {},
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "user_field_names",
+              "value": "true"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.ligne) }}"
+      },
+      "id": "817b0110-9498-415e-8271-7d63c58bf475",
+      "name": "Écrire journal",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        1500
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Baserow Database Token"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook outils assistant": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Aiguillage outil",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aiguillage outil": {
+      "main": [
+        [
+          {
+            "node": "Lire catalogue",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Créer inscription",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Jeton de validation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Infos légales",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prévenir Aurélien (transfert)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Prévenir Aurélien (transfert)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lire catalogue": {
+      "main": [
+        [
+          {
+            "node": "Formater catalogue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Formater catalogue": {
+      "main": [
+        [
+          {
+            "node": "Réponse catalogue",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Créer inscription": {
+      "main": [
+        [
+          {
+            "node": "Prévenir Aurélien (inscription)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prévenir Aurélien (inscription)": {
+      "main": [
+        [
+          {
+            "node": "Réponse inscription",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Jeton de validation": {
+      "main": [
+        [
+          {
+            "node": "Créer demande sous-traitance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Créer demande sous-traitance": {
+      "main": [
+        [
+          {
+            "node": "Soumettre à Aurélien (sous-traitance)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Soumettre à Aurélien (sous-traitance)": {
+      "main": [
+        [
+          {
+            "node": "Réponse sous-traitance",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Infos légales": {
+      "main": [
+        [
+          {
+            "node": "Réponse infos légales",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prévenir Aurélien (transfert)": {
+      "main": [
+        [
+          {
+            "node": "Réponse transfert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lien reçu par email (GET)": {
+      "main": [
+        [
+          {
+            "node": "Page de confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook validation": {
+      "main": [
+        [
+          {
+            "node": "Config validation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config validation": {
+      "main": [
+        [
+          {
+            "node": "Lire demande",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Lire demande": {
+      "main": [
+        [
+          {
+            "node": "Vérifier jeton",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vérifier jeton": {
+      "main": [
+        [
+          {
+            "node": "Décision",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Décision": {
+      "main": [
+        [
+          {
+            "node": "Marquer acceptée",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Marquer refusée",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Lien invalide",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marquer acceptée": {
+      "main": [
+        [
+          {
+            "node": "Construire événement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Construire événement": {
+      "main": [
+        [
+          {
+            "node": "Poser dans l'agenda (CalDAV)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Poser dans l'agenda (CalDAV)": {
+      "main": [
+        [
+          {
+            "node": "Email au donneur d'ordre",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Email au donneur d'ordre": {
+      "main": [
+        [
+          {
+            "node": "Page OK acceptée",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Marquer refusée": {
+      "main": [
+        [
+          {
+            "node": "Page OK refusée",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook fin d'appel": {
+      "main": [
+        [
+          {
+            "node": "Préparer journal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer journal": {
+      "main": [
+        [
+          {
+            "node": "Écrire journal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Indian/Reunion",
+    "saveDataSuccessExecution": "none",
+    "saveDataErrorExecution": "all"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "pinData": {}
+}

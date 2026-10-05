@@ -102,3 +102,15 @@ touchant à des données ou à de l'IA.)*
 - RGPD, texte de référence : [cnil.fr](https://www.cnil.fr) (MOOC CNIL)
 - IA Act : Règlement (UE) 2024/1689 —
   [eur-lex.europa.eu](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+
+---
+
+## Modules prospection et assistant vocal (octobre 2026)
+
+| Dossier | Contenu |
+|---|---|
+| `prospection/README.md` | Article 4 IA Act après l'Omnibus, analyse VIAgence, ciblage 974, règles RGPD, Brevo et site |
+| `prospection/extraire_entreprises_974.py` | Extraction des entreprises et organismes de formation du 974 (API publique Recherche d'entreprises), export CSV ou Baserow |
+| `prospection/opportunites.md` | Sous-traitance, postes, marchés publics (Réunion, Mayotte, Maurice, Madagascar) |
+| `examples/creer_base_prospection.py` | Crée la base Baserow (7 tables) utilisée par les scripts et par n8n |
+| `assistant-vocal/` | Workflow n8n importable, prompt système, outils, architecture souveraine |
