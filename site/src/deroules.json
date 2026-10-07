@@ -1,29 +1,24 @@
 {
  "FOR-0002": {
-  "fichier": "programme-detaille-for-0002-automatisation-sans-code-n8n.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0002_Automatisation-sans-code.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0002_Automatisation-sans-code_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0002_Automatisation-sans-code_A4-paysage-impression.pdf",
   "deroule": [
    {
     "titre": "Diagnostiquer et concevoir",
-    "fil": "passer d'une tâche qui agace à un schéma d'automatisation chiffré et validé.",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:45",
-      "45 min",
-      "Séquence 0 « La chaîne humaine »",
-      "Jouer à la main un processus de devis, chronomètre en main ; recueillir les attentes ; information RGPD et transparence IA.",
-      "Jeu de rôle collectif, tour de table.",
-      "Cartes de rôle, chronomètre, paperboard."
+      "08h00-10h00",
+      "2 h",
+      "Qu'est-ce qui mérite d'être automatisé",
+      "Séquence 0 « La chaîne humaine » : un processus joué à la main par le groupe, chronométré. · Cadrage, attentes, information RGPD. · Les critères d'une bonne tâche à automatiser : fréquence, règles stables, volume, coût de l'erreur. · Cartographier son processus réel et le chiffrer en minutes par mois. · Livrable : la carte du processus cible, chiffrée.",
+      "-",
+      "-"
      ],
      [
-      "08:45-10:00",
-      "75 min",
-      "Ce qui mérite d'être automatisé (O1)",
-      "Les quatre critères ; cartographier son processus réel et le chiffrer en minutes par mois.",
-      "Apport court + atelier individuel.",
-      "Fiche « carte du processus »."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -31,47 +26,31 @@
       "-"
      ],
      [
-      "10:15-11:00",
-      "45 min",
-      "La grammaire d'un workflow (O2)",
-      "Déclencheur, conditions, actions, données qui circulent ; lire un workflow existant.",
-      "Démonstration commentée.",
-      "Instance n8n de formation."
+      "10h15-12h00",
+      "1 h 45",
+      "La grammaire d'un workflow",
+      "Déclencheur, conditions, actions, données qui circulent. · Dessiner avant de construire : schéma « Quand / Si / Alors » validé en binôme. · Livrable : le schéma validé, prêt à construire.",
+      "-",
+      "-"
      ],
      [
-      "11:00-12:00",
-      "60 min",
-      "Dessiner avant de construire (O2)",
-      "Schéma « Quand / Si / Alors » au crayon, validé en binôme sur trois questions.",
-      "Atelier en binômes + revue par les pairs.",
-      "Gabarit de schéma, feutres."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:45",
-      "45 min",
-      "Choisir son outil",
-      "Hébergement des données, coût réel la deuxième année, réversibilité, auto-hébergement possible avec n8n.",
-      "Comparaison guidée.",
-      "Grille de choix des outils."
+      "13h00-15h00",
+      "2 h",
+      "Le paysage des outils et la première construction",
+      "Outils no-code : critères de choix (hébergement des données, coût, réversibilité, auto-hébergement possible avec n8n). · Prise en main de n8n : nœuds, connexions, exécutions, historique. · Construction guidée : formulaire → tableur ou base de données → courriel de confirmation.",
+      "-",
+      "-"
      ],
      [
-      "13:45-15:00",
-      "75 min",
-      "Première construction guidée (O3)",
-      "Formulaire → tableur ou base → courriel de confirmation ; nœuds, connexions, exécutions, historique.",
-      "Démonstration « je montre, nous faisons, vous faites ».",
-      "n8n, formulaire et messagerie de test."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -79,50 +58,30 @@
       "-"
      ],
      [
-      "15:15-16:30",
-      "75 min",
-      "Construire son propre workflow (O3)",
-      "Chaque stagiaire construit le workflow de son schéma ; accompagnement individualisé.",
-      "Pratique individuelle accompagnée.",
-      "n8n, schéma validé du matin."
-     ],
-     [
-      "16:30-17:00",
-      "30 min",
-      "Point d'étape",
-      "Ce qui fonctionne, ce qui bloque ; consigne pour la journée 2 ; quiz flash.",
-      "Tour de table + quiz oral.",
-      "Mur des pannes (paperboard)."
+      "15h15-17h00",
+      "1 h 45",
+      "Construire son propre workflow (1/2)",
+      "Chaque stagiaire construit le workflow de son schéma ; accompagnement individualisé. · Point d'étape et consigne pour la journée 2.",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "carte du processus chiffrée",
-     "schéma « Quand / Si / Alors » validé",
-     "premier workflow exécuté"
     ]
    },
    {
     "titre": "Fiabiliser, sécuriser, mesurer",
-    "fil": "transformer un workflow qui marche une fois en un outil fiable, sûr et dont le gain est prouvé.",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:30",
-      "30 min",
-      "Réactivation",
-      "Quiz de reprise ; « le mur des pannes » de la veille, résolu en groupe.",
-      "Quiz oral + résolution collective.",
-      "Paperboard, diaporama."
+      "08h00-10h00",
+      "2 h",
+      "Conditions, branchements et données",
+      "Retour sur les blocages de la veille (« le mur des pannes »). · Conditions, boucles, transformation de données, gestion des erreurs.",
+      "-",
+      "-"
      ],
      [
-      "08:30-10:00",
-      "90 min",
-      "Conditions, boucles et données (O3)",
-      "Conditions multiples, boucles, transformation de données, valeurs manquantes.",
-      "Démonstration + atelier sur son workflow.",
-      "n8n, jeux de données fictifs."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -130,47 +89,31 @@
       "-"
      ],
      [
-      "10:15-11:15",
-      "60 min",
-      "Tester comme si ça devait casser (O5)",
-      "Cas limites, doublons, données absentes ; alerte en cas d'échec.",
-      "Atelier « casse-moi ça » en binômes croisés.",
-      "Fiche de tests, messagerie de test."
+      "10h15-12h00",
+      "1 h 45",
+      "Tester comme si ça devait casser",
+      "Cas limites, données manquantes, doublons ; alertes en cas d'échec. · Documenter son workflow pour qu'un collègue puisse le reprendre.",
+      "-",
+      "-"
      ],
      [
-      "11:15-12:00",
-      "45 min",
-      "Documenter pour un collègue (O5)",
-      "Le workflow doit pouvoir être repris par quelqu'un qui ne l'a pas construit.",
-      "Rédaction guidée + test du collègue.",
-      "Gabarit de documentation."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-14:00",
-      "60 min",
-      "Sécuriser les données (O4)",
-      "Où sont mes données, qui y accède, combien de temps ; identifiants ; sous-traitants (RGPD art. 28) ; registre (art. 30).",
-      "Étude de cas + fiche à compléter.",
-      "Fiche « données et accès », extrait de registre."
+      "13h00-15h00",
+      "2 h",
+      "Sécuriser et mesurer",
+      "Données, accès, identifiants : où sont mes données, qui y accède, combien de temps. · Les automatisations et le RGPD : minimisation, sous-traitants, registre. · Mesurer le gain réel en temps et en fiabilité. · Livrable : la fiche de gain, présentable à une direction ou à un financeur.",
+      "-",
+      "-"
      ],
      [
-      "14:00-15:00",
-      "60 min",
-      "Mesurer le gain réel (O5)",
-      "Temps avant / après, taux d'erreur, coût de l'outil ; la fiche de gain.",
-      "Calcul guidé sur ses chiffres.",
-      "Fiche de gain."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -178,63 +121,177 @@
       "-"
      ],
      [
-      "15:15-16:15",
-      "60 min",
-      "Évaluation finale",
-      "Défi final : présenter son workflow en service ; quiz de 10 questions.",
-      "Mise en situation notée sur grille.",
-      "Grille critériée, quiz."
+      "15h15-17h00",
+      "1 h 45",
+      "Évaluation et plan d'ancrage",
+      "Évaluation finale : le workflow construit, évalué sur grille d'évaluation ; QCM de 10 questions. · Rejeu de « la chaîne humaine » : temps avant / après. · Plan d'ancrage : les deux prochaines automatisations, questionnaire de satisfaction, clôture.",
+      "-",
+      "-"
+     ]
+    ]
+   }
+  ]
+ },
+ "FOR-0003": {
+  "fichier": "documents/programmes/Programme_FOR-0003_Conformite-RGPD-IA-Act.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0003_Conformite-RGPD-IA-Act_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0003_Conformite-RGPD-IA-Act_A4-paysage-impression.pdf",
+  "deroule": [
+   {
+    "titre": null,
+    "fil": "",
+    "livrables": [],
+    "lignes": [
+     [
+      "08h00-10h00",
+      "2 h",
+      "Qualifier : de quoi parle-t-on, et qui est responsable",
+      "Séquence 0 « La boîte à chaussures » : où dorment les données de l'entreprise (boîtes mail, clés USB, tableurs, outils d'IA). · Cadrage et attentes. Données personnelles, traitement, responsable de traitement, sous-traitant : les définitions qui comptent. · Cartographie express : les traitements réels de chaque participant, y compris les usages de l'IA générative. · Les contrats de sous-traitance à réclamer (art. 28) : hébergeur, logiciels, prestataires, outils d'IA. · Livrable : la liste de ses traitements et des contrats à réclamer.",
+      "-",
+      "-"
      ],
      [
-      "16:15-17:00",
-      "45 min",
-      "Plan d'ancrage",
-      "Rejeu de « la chaîne humaine » : temps avant / après ; les deux prochaines automatisations ; satisfaction.",
-      "Engagement individuel écrit.",
-      "Fiche plan d'action, questionnaire."
+      "10h00-10h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "10h15-12h00",
+      "1 h 45",
+      "Les 6 principes et le registre",
+      "Licéité, minimisation, exactitude, limitation de conservation, sécurité, responsabilité — appliqués à l'activité de chacun. · Choisir la bonne base légale : quiz « Quelle base légale ? ». · Le registre des traitements : rédiger ses premières fiches, durées de conservation comprises. · Livrable : les 3 premières fiches du registre, exploitables dès le retour en entreprise.",
+      "-",
+      "-"
+     ],
+     [
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-15h00",
+      "2 h",
+      "L'ia dans l'entreprise : ia act et usages sûrs",
+      "Ce que l'IA Act change pour une TPE-PME : usages interdits, haut risque, transparence (art. 50), maîtrise de l'IA (art. 4). · Qualifier ses propres usages de l'IA : grille simple, cas concrets du groupe. · Ce qu'on ne saisit jamais dans un outil d'IA ; choisir un outil (hébergement, contrat, réversibilité). · Répondre aux personnes : demandes d'accès, d'effacement, d'opposition. · Livrable : la charte d'usage de l'IA de l'entreprise (une page) et la trame de réponse aux demandes de droits.",
+      "-",
+      "-"
+     ],
+     [
+      "15h00-15h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "15h15-17h00",
+      "1 h 45",
+      "Sécuriser et réagir",
+      "Les menaces telles qu'elles sont : hameçonnage, rançongiciel, mots de passe, comptes partagés. · Les mesures qui protègent vraiment : double authentification, sauvegardes, mises à jour. · La violation de données : mesures immédiates, notification à la CNIL sous 72 heures, information des personnes. · Évaluation finale : étude de cas (fiche de registre + qualification d'un usage d'IA) notée sur grille ; QCM de 10 questions. · Plan d'action à 90 jours, questionnaire de satisfaction, clôture. · Livrable : la procédure « En cas de violation de données », en une page affichable.",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "workflow fiabilisé et documenté",
-     "fiche « données et accès »",
-     "fiche de gain chiffrée"
+    ]
+   }
+  ]
+ },
+ "FOR-0004": {
+  "fichier": "documents/programmes/Programme_FOR-0004_Vente-negociation.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0004_Vente-negociation_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0004_Vente-negociation_A4-paysage-impression.pdf",
+  "deroule": [
+   {
+    "titre": null,
+    "fil": "",
+    "livrables": [],
+    "lignes": [
+     [
+      "08h00-10h00",
+      "2 h",
+      "Structurer l'entretien de vente",
+      "Séquence 0 « Vendez-moi ce stylo » : ce que révèle le premier réflexe. · Cadrage et attentes. · Les étapes de l'entretien : préparation, prise de contact, découverte, argumentation, objections, conclusion. · Préparer un rendez-vous en 10 minutes. · Livrable : la fiche de préparation, réutilisable pour tout rendez-vous.",
+      "-",
+      "-"
+     ],
+     [
+      "10h00-10h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "10h15-12h00",
+      "1 h 45",
+      "Découvrir : la phase qui décide de tout",
+      "Questions ouvertes, fermées, de précision ; écoute active et reformulation. · Faire émerger le besoin réel, l'enjeu et le décideur. · Entraînement intensif en trios : vendeur, client, observateur avec grille.",
+      "-",
+      "-"
+     ],
+     [
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-15h00",
+      "2 h",
+      "Argumenter et annoncer son prix",
+      "Du produit au bénéfice : la méthode caractéristique → avantage → bénéfice pour ce client. · Construire sa proposition de valeur adaptée au besoin découvert. · Annoncer son prix sans s'excuser ; défendre sa marge plutôt que brader. · Livrable : l'argumentaire personnel, cinq bénéfices prêts à l'emploi.",
+      "-",
+      "-"
+     ],
+     [
+      "15h00-15h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "15h15-17h00",
+      "1 h 45",
+      "Objections, conclusion et suivi",
+      "Comprendre une objection avant d'y répondre : accueillir, questionner, reformuler, répondre. · Les objections courantes (prix, délai, « je vais réfléchir ») et leurs réponses. · Conclure et organiser le suivi client. · Évaluation finale : mise en situation filmée ou observée, notée sur grille ; QCM de 10 questions. · Rejeu de « Vendez-moi ce stylo », questionnaire de satisfaction, clôture.",
+      "-",
+      "-"
+     ]
     ]
    }
   ]
  },
  "FOR-0006": {
-  "fichier": "programme-detaille-for-0006-copilot-microsoft-365.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0006_Copilot-Microsoft-365.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0006_Copilot-Microsoft-365_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0006_Copilot-Microsoft-365_A4-paysage-impression.pdf",
   "deroule": [
    {
-    "titre": "Périmètre et Prompt",
-    "fil": "savoir ce que Copilot voit, puis lui demander ce qu'il faut, sur ses vrais documents.",
+    "titre": "Périmètre et prompt",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:30",
-      "30 min",
-      "Séquence 0 « La question qui dérange »",
-      "Qui a déjà demandé à une IA ce qu'elle sait de son entreprise ? Attentes ; information RGPD et transparence IA.",
-      "Tour de table + affichage des attentes.",
-      "Diaporama."
+      "08h00-10h00",
+      "2 h",
+      "Ce qu'est copilot, et ce qu'il voit",
+      "Séquence 0 « La question qui dérange » ; cadrage, attentes, information RGPD et transparence IA. · Ce qu'est une IA générative, sans jargon ; ce qui change quand elle est reliée aux données de l'entreprise. · P1 — Périmètre : ce que l'assistant voit, à partir des droits déjà en place. Atelier « Qui voit quoi ? ».",
+      "-",
+      "-"
      ],
      [
-      "08:30-09:15",
-      "45 min",
-      "Ce qui change avec Copilot (O1)",
-      "IA générative sans jargon ; ce qui change quand elle est reliée aux données de l'entreprise.",
-      "Démonstration comparée grand public / Copilot.",
-      "Poste formateur, comptes de démonstration."
-     ],
-     [
-      "09:15-10:00",
-      "45 min",
-      "P1 — Qui voit quoi ? (O2)",
-      "Droits de partage, équipes, sites ; 10 cas de documents à qualifier.",
-      "Atelier en binômes.",
-      "Cartes « cas », schéma des droits."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -242,47 +299,31 @@
       "-"
      ],
      [
-      "10:15-11:00",
-      "45 min",
-      "P2 — La demande complète (O3)",
-      "Objectif, contexte, sources désignées, format attendu.",
-      "Démonstration puis pratique.",
-      "Word, Outlook avec Copilot."
+      "10h15-12h00",
+      "1 h 45",
+      "P2 — LA DEMANDE COMPLÈTE",
+      "Construire une demande en désignant les sources à exploiter. · Cinq demandes métier testées dans Word et Outlook.",
+      "-",
+      "-"
      ],
      [
-      "11:00-12:00",
-      "60 min",
-      "Mes 5 demandes métier (O3)",
-      "Cinq demandes testées sur ses propres documents ; fiche de résultats.",
-      "Pratique individuelle accompagnée.",
-      "Fiche « Mes 5 demandes métier »."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-14:00",
-      "60 min",
-      "Quand la réponse ne convient pas (O4)",
-      "Les quatre correctifs : contexte, exemple, périmètre, question en retour ; atelier « Les 4 réponses ratées ».",
-      "Étude de cas + diagnostic en binômes.",
-      "4 réponses défaillantes fournies."
+      "13h00-15h00",
+      "2 h",
+      "Quand la réponse ne convient pas",
+      "Les quatre correctifs : contexte, exemple, périmètre, question en retour. · La consigne permanente et la bibliothèque de demandes de l'équipe.",
+      "-",
+      "-"
      ],
      [
-      "14:00-15:00",
-      "60 min",
-      "La consigne permanente",
-      "Instructions réutilisables et bibliothèque de demandes de l'équipe.",
-      "Atelier guidé.",
-      "Gabarit de bibliothèque."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -290,49 +331,30 @@
       "-"
      ],
      [
-      "15:15-16:30",
-      "75 min",
-      "Atelier « L'échange difficile »",
-      "Courriel délicat, compte rendu, réponse à une réclamation : produire, relire, assumer.",
-      "Pratique + revue par les pairs.",
-      "Outlook, Word, Teams."
-     ],
-     [
-      "16:30-17:00",
-      "30 min",
-      "Bilan et défi au poste (O1)",
-      "Restitution des 3 différences ; défi à réaliser au poste avant J2.",
-      "Restitution orale.",
-      "Fiche défi."
+      "15h15-17h00",
+      "1 h 45",
+      "Atelier « l'échange difficile »",
+      "Courriel délicat, compte rendu, réponse à une réclamation : produire, relire, assumer. · Bilan de la journée et défi à réaliser au poste.",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "fiche « Mes 5 demandes métier »",
-     "premières entrées de la bibliothèque de demandes"
     ]
    },
    {
-    "titre": "Production et Preuve",
-    "fil": "traiter des processus entiers, puis prouver ce qui a été vérifié et ce qui ne doit jamais être saisi.",
+    "titre": "Production et preuve",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:30",
-      "30 min",
-      "Le mur des retours",
-      "Retour sur les défis au poste ; quiz de réactivation.",
-      "Partage + quiz oral.",
-      "Paperboard."
+      "08h00-10h00",
+      "2 h",
+      "P3 — PARCOURS MÉTIER N° 1 ET N° 2",
+      "Retour des défis (« le mur des retours »). · Le dossier client de A à Z (Word, Outlook) ; la réunion Teams qui laisse une trace.",
+      "-",
+      "-"
      ],
      [
-      "08:30-10:00",
-      "90 min",
-      "P3 — Parcours 1 et 2 (O5)",
-      "Le dossier client de A à Z (Word, Outlook) ; la réunion Teams qui laisse une trace.",
-      "Atelier guidé, relecture humaine tracée.",
-      "Word, Outlook, Teams."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -340,47 +362,31 @@
       "-"
      ],
      [
-      "10:15-11:15",
-      "60 min",
-      "P3 — Parcours 3 : le point mensuel chiffré (O5)",
-      "Excel avec Copilot : analyser, synthétiser, recalculer chaque chiffre à la main.",
-      "Pratique individuelle.",
-      "Excel, tableau fictif."
+      "10h15-12h00",
+      "1 h 45",
+      "P3 — PARCOURS MÉTIER N° 3 : LE POINT MENSUEL CHIFFRÉ",
+      "Excel avec Copilot : analyser, synthétiser, vérifier chaque chiffre. · Faire travailler l'assistant pour les autres : modèles et livrables réutilisables.",
+      "-",
+      "-"
      ],
      [
-      "11:15-12:00",
-      "45 min",
-      "Livrable réutilisable (O6)",
-      "Modèle, consigne ou procédure que l'équipe pourra réutiliser.",
-      "Conception individuelle accompagnée.",
-      "Gabarit de livrable."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:45",
-      "45 min",
-      "P4 — Le Tri de la Réserve (O7)",
-      "20 cartes : je saisis / j'anonymise / je ne saisis jamais ; RGPD art. 5 et 6.",
-      "Jeu de tri en sous-groupes.",
-      "20 cartes de données."
+      "13h00-15h00",
+      "2 h",
+      "P4 — LA PREUVE : CONFIDENTIALITÉ, RGPD, IA ACT",
+      "Ce qu'on saisit, ce qu'on ne saisit pas ; vérifier et tracer. · Obligations de l'entreprise : charte d'usage, maîtrise de l'IA (IA Act, art. 4), transparence (art. 50).",
+      "-",
+      "-"
      ],
      [
-      "13:45-15:00",
-      "75 min",
-      "P4 — Gouvernance (O8)",
-      "Charte d'usage, maîtrise de l'IA (IA Act art. 4), transparence (art. 50), sous-traitance (RGPD art. 28), localisation des traitements.",
-      "Apport court + rédaction des 3 mesures.",
-      "Modèle de charte."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -388,63 +394,107 @@
       "-"
      ],
      [
-      "15:15-16:15",
-      "60 min",
-      "Évaluation finale",
-      "Processus complet sur cas concret, vérification documentée ; quiz de 10 questions.",
-      "Mise en situation notée.",
-      "Grille critériée, quiz."
+      "15h15-17h00",
+      "1 h 45",
+      "Évaluation et ancrage",
+      "Évaluation finale sur cas concret, notée sur grille critériée ; QCM de 10 questions. · Présentation du livrable de chaque stagiaire (3 minutes), plan d'ancrage, questionnaire de satisfaction, clôture.",
+      "-",
+      "-"
+     ]
+    ]
+   }
+  ]
+ },
+ "FOR-0008": {
+  "fichier": "documents/programmes/Programme_FOR-0008_Manager-au-quotidien.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0008_Manager-au-quotidien_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0008_Manager-au-quotidien_A4-paysage-impression.pdf",
+  "deroule": [
+   {
+    "titre": null,
+    "fil": "",
+    "livrables": [],
+    "lignes": [
+     [
+      "08h00-10h00",
+      "2 h",
+      "Le rôle et le cadre",
+      "Séquence 0 « Le premier lundi » : ce que l'équipe attend vraiment de son responsable. · Cadrage et attentes. · Les trois casquettes du manager de proximité : organiser, accompagner, décider. · Poser un cadre clair : règles du jeu, objectifs, priorités, ce qui se négocie et ce qui ne se négocie pas. · Livrable : la charte d'équipe en une page.",
+      "-",
+      "-"
      ],
      [
-      "16:15-17:00",
-      "45 min",
-      "Présentation des livrables et ancrage (O6)",
-      "3 minutes par stagiaire ; plan d'ancrage ; satisfaction.",
-      "Restitution + engagement écrit.",
-      "Fiche d'ancrage."
+      "10h00-10h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "10h15-12h00",
+      "1 h 45",
+      "Déléguer sans abandonner",
+      "Ce qui se délègue, à qui, avec quel niveau d'autonomie. · L'entretien de délégation : objectif, moyens, échéance, points de contrôle. · Entraînement en binômes sur les situations apportées. · Livrable : la grille de délégation de son équipe.",
+      "-",
+      "-"
+     ],
+     [
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-15h00",
+      "2 h",
+      "Recadrer et conduire un entretien difficile",
+      "Recadrer sans humilier : faits, impact, attente, engagement (méthode en 4 temps). · Gérer l'émotion (la sienne et celle de l'autre) ; désamorcer un conflit. · Mises en situation filmées ou observées, avec grille.",
+      "-",
+      "-"
+     ],
+     [
+      "15h00-15h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "15h15-17h00",
+      "1 h 45",
+      "Reconnaître et faire grandir",
+      "Reconnaître le travail bien fait : le feedback positif précis. · Le point individuel régulier : trame simple et efficace. · Évaluation finale : mise en situation d'entretien notée sur grille ; QCM de 10 questions. · Plan d'action à 30 jours, questionnaire de satisfaction, clôture. · Livrable : le plan d'action managérial à 30 jours.",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "trois parcours métier menés à terme",
-     "livrable réutilisable",
-     "trois mesures de gouvernance"
     ]
    }
   ]
  },
  "FOR-0009": {
-  "fichier": "programme-detaille-for-0009-site-internet-ia.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0009_Site-internet-IA.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0009_Site-internet-IA_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0009_Site-internet-IA_A4-paysage-impression.pdf",
   "deroule": [
    {
     "titre": null,
-    "fil": "passer d'une activité décrite à voix haute à un site publié, conforme et que l'on sait tenir seul.",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:30",
-      "30 min",
-      "Séquence 0 « Quinze secondes »",
-      "Deux sites projetés 15 secondes : que vend l'entreprise, où, comment la joindre ? Attentes ; information RGPD et transparence IA (art. 50).",
-      "Projection + vote à main levée.",
-      "Diaporama."
+      "08h00-10h00",
+      "2 h",
+      "Dire : le cahier des charges à voix haute",
+      "Séquence 0 « Quinze secondes » : deux sites projetés quinze secondes ; que vend l'entreprise, où, comment la joindre ? · Cadrage, attentes, information RGPD et transparence IA (règlement (UE) 2024/1689, art. 50). · Les quatre questions d'un site utile : qui êtes-vous, que proposez-vous, pour qui, que doit faire le visiteur maintenant. · Atelier « Les quatre phrases » : chaque stagiaire dicte ses réponses en 90 secondes, le voisin reformule. · L'arborescence au paperboard : 3 à 5 pages, une action attendue par page, les pages obligatoires. · Livrable : le cahier des charges dicté et l'arborescence, validés par un tiers.",
+      "-",
+      "-"
      ],
      [
-      "08:30-09:15",
-      "45 min",
-      "Les quatre phrases (O1)",
-      "Qui êtes-vous, que proposez-vous, pour qui, que doit faire le visiteur ; dictée de 90 secondes, le voisin reformule.",
-      "Atelier en binômes.",
-      "Micro-casque, fiche « 4 phrases »."
-     ],
-     [
-      "09:15-10:00",
-      "45 min",
-      "L'arborescence (O1)",
-      "3 à 5 pages, une action attendue par page, pages obligatoires.",
-      "Atelier au paperboard.",
-      "Paperboard, gabarit d'arborescence."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -452,55 +502,31 @@
       "-"
      ],
      [
-      "10:15-10:45",
-      "30 min",
-      "Choisir son outil",
-      "Coût réel la deuxième année, hébergement des données, propriété du nom de domaine, réversibilité.",
-      "Comparaison guidée.",
-      "Grille de choix."
+      "10h15-12h00",
+      "1 h 45",
+      "Piloter à la voix : générer et corriger",
+      "L'anatomie d'une consigne dictée : rôle, contexte, tâche, forme attendue, contraintes. · Choisir son outil : coût réel la deuxième année, hébergement des données, propriété du nom de domaine, réversibilité. · Première génération du site à partir du cahier des charges. · Les 4 leviers de correction : compléter le contexte, montrer un exemple, réduire la demande, demander ce qui manque. · Atelier « La chasse aux inventions » : surligner tout ce que l'outil a écrit sans qu'on le lui dise (tarifs, horaires, labels).",
+      "-",
+      "-"
      ],
      [
-      "10:45-11:20",
-      "35 min",
-      "Première génération (O2)",
-      "L'anatomie d'une consigne dictée ; générer le site à partir du cahier des charges.",
-      "Démonstration puis pratique.",
-      "Générateur de site."
-     ],
-     [
-      "11:20-12:00",
-      "40 min",
-      "Corriger et « chasse aux inventions » (O2, O3)",
-      "Les 4 leviers : compléter le contexte, montrer un exemple, réduire la demande, demander ce qui manque ; surligner ce que l'outil a inventé.",
-      "Atelier individuel accompagné.",
-      "Surligneur numérique, fiche leviers."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-14:15",
-      "75 min",
-      "Produire page par page (O3)",
-      "Textes utiles, titres qui disent quelque chose, images légales et légères, texte alternatif dicté avec l'image.",
-      "Production individuelle, correction individualisée.",
-      "Photos du stagiaire, banque d'images libres."
+      "13h00-15h00",
+      "2 h",
+      "Produire : textes, images, contact",
+      "Production page par page sur le projet réel, correction individualisée. · Textes utiles, titres qui disent quelque chose, images légales et légères, texte alternatif dicté en même temps que l'image. · La page contact : formulaire minimal (RGPD art. 5.1.c), mention d'information sous le formulaire (art. 13), case newsletter jamais pré-cochée. · Règle : aucune allégation (prix, diplôme, garantie) non vérifiée — pratique commerciale trompeuse (C. conso. L.121-2).",
+      "-",
+      "-"
      ],
      [
-      "14:15-15:00",
-      "45 min",
-      "La page contact (O3, O4)",
-      "Formulaire minimal (RGPD art. 5.1.c), information sous le formulaire (art. 13), case newsletter jamais pré-cochée.",
-      "Démonstration + application.",
-      "Modèle de mention d'information."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -508,72 +534,37 @@
       "-"
      ],
      [
-      "15:15-16:00",
-      "45 min",
-      "Publier en conformité (O4)",
-      "Mentions légales, politique de confidentialité, traceurs ; accessibilité : contrastes, titres, liens explicites, clavier ; mise en ligne et sauvegarde.",
-      "Checklist guidée.",
-      "Checklist de conformité."
-     ],
-     [
-      "16:00-16:45",
-      "45 min",
-      "Évaluation finale (O5)",
-      "Le site publié évalué sur la grille remise le matin ; une modification réalisée seul ; quiz de 10 questions.",
-      "Mise en situation + quiz.",
-      "Grille critériée, quiz."
-     ],
-     [
-      "16:45-17:00",
-      "15 min",
-      "Plan d'action à 30 jours",
-      "Fiche « faire évoluer mon site » ; satisfaction à chaud.",
-      "Engagement individuel.",
-      "Fiche d'action."
+      "15h15-17h00",
+      "1 h 45",
+      "Publier en conformité et tenir le site",
+      "Mentions légales, politique de confidentialité, traceurs : ce qui est obligatoire et ce qui suffit. · Accessibilité : contrastes, titres, liens explicites, lecture au clavier. · Mise en ligne, nom de domaine, sauvegarde ; faire évoluer le site seul. · Évaluation finale : le site publié évalué sur la grille critériée remise le matin ; QCM de 10 questions (seuil 7/10). · Plan d'action à 30 jours, questionnaire de satisfaction, clôture. · Livrable : le site en ligne, conforme, et la fiche « faire évoluer mon site ».",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "cahier des charges dicté",
-     "arborescence validée",
-     "site publié et conforme",
-     "fiche « faire évoluer mon site »"
     ]
    }
   ]
  },
  "FOR-0010": {
-  "fichier": "programme-detaille-for-0010-emailing-ia.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0010_Emailing-IA.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0010_Emailing-IA_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0010_Emailing-IA_A4-paysage-impression.pdf",
   "deroule": [
    {
     "titre": null,
-    "fil": "passer d'un fichier en désordre à une séquence prête à programmer, conforme et mesurable.",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:30",
-      "30 min",
-      "Séquence 0 « La boîte de réception »",
-      "Pourquoi 9 courriels sur 10 ne sont jamais lus ; attentes ; information RGPD et transparence IA.",
-      "Projection d'une boîte réelle anonymisée + vote.",
-      "Diaporama, liste d'objets imprimée."
+      "08h00-10h00",
+      "2 h",
+      "À qui : le fichier avant le texte",
+      "Séquence 0 « La boîte de réception » : pourquoi 9 courriels sur 10 ne sont jamais lus. · Cadrage, attentes, information RGPD et transparence IA. · Prospection électronique : ce que permettent le RGPD et le code des postes et des communications électroniques (B2B / B2C, consentement, opposition). · Assainir et segmenter son fichier : origine de chaque contact, doublons, segments utiles. · Livrable : le fichier assaini et segmenté, avec sa colonne « origine », et la fiche de registre « prospection ».",
+      "-",
+      "-"
      ],
      [
-      "08:30-09:15",
-      "45 min",
-      "Ce que la loi permet (O1)",
-      "Prospection B2B / B2C : consentement, information, opposition ; identité de l'annonceur.",
-      "Études de cas + quiz flash.",
-      "Cas B2C, B2B, associatif."
-     ],
-     [
-      "09:15-10:00",
-      "45 min",
-      "Assainir et segmenter son fichier (O1)",
-      "Origine de chaque contact, doublons, segments utiles ; fiche de registre « prospection ».",
-      "Atelier individuel sur son fichier (ou fichier fictif).",
-      "Tableur, fiche de registre."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -581,47 +572,31 @@
       "-"
      ],
      [
-      "10:15-11:00",
-      "45 min",
-      "La structure qui fonctionne (O2)",
-      "Objet, accroche, corps, appel à l'action ; analyse de deux courriels.",
-      "Apport dialogué + annotation collective.",
-      "Courriels annotés."
+      "10h15-12h00",
+      "1 h 45",
+      "Écrire avec l'ia : le courriel qui obtient une réponse",
+      "Objet, accroche, corps, appel à l'action : la structure qui fonctionne. · La consigne qui produit un texte utilisable : rôle, contexte, destinataire, objectif, contraintes, exemple. · Ce qu'on ne donne jamais à l'outil : données clients nominatives, informations confidentielles. · Relire ce que l'IA invente : chiffres, promesses, références. · Livrable : le courriel type personnalisé et la consigne réutilisable qui l'a produit.",
+      "-",
+      "-"
      ],
      [
-      "11:00-12:00",
-      "60 min",
-      "Écrire avec l'IA (O2)",
-      "La consigne : rôle, contexte, destinataire, objectif, contraintes, exemple ; relire ce que l'IA invente ; ce qu'on ne lui donne jamais.",
-      "Démonstration comparée + atelier en binômes.",
-      "Assistant d'IA (compte professionnel)."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-14:00",
-      "60 min",
-      "La séquence de trois courriels (O3)",
-      "Rythme, relance, sortie de séquence ; « Sept mots » pour l'objet.",
-      "Atelier individuel accompagné.",
-      "Gabarit de séquence."
+      "13h00-15h00",
+      "2 h",
+      "La séquence et la délivrabilité",
+      "Concevoir une séquence de trois courriels : rythme, relance, sortie de séquence. · Être reçu : expéditeur identifié, authentification du domaine, contenu qui évite les filtres. · Mentions obligatoires et lien de désinscription ; traiter une demande d'opposition. · Livrable : la séquence de trois courriels, datée et prête à programmer.",
+      "-",
+      "-"
      ],
      [
-      "14:00-15:00",
-      "60 min",
-      "Être reçu (O4)",
-      "Expéditeur identifié, authentification du domaine (SPF, DKIM, DMARC expliqués simplement), contenu, lien de désinscription ; traiter une opposition.",
-      "Démonstration + jeu de rôle « La demande embarrassante ».",
-      "Outil d'emailing de démonstration."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -629,57 +604,37 @@
       "-"
      ],
      [
-      "15:15-16:00",
-      "45 min",
-      "Mesurer et corriger (O5)",
-      "Ouverture, clic, désinscription, plainte : ce qu'on corrige selon chacun ; qui signe quand l'IA écrit.",
-      "Lecture de tableaux de bord réels anonymisés.",
-      "Tableau de bord type."
-     ],
-     [
-      "16:00-16:45",
-      "45 min",
-      "Évaluation finale",
-      "Séquence complète et fiche de registre notées sur la grille ; quiz de 10 questions.",
-      "Production autonome + quiz.",
-      "Grille critériée, quiz."
-     ],
-     [
-      "16:45-17:00",
-      "15 min",
-      "Plan d'action à 30 jours",
-      "Premier envoi, date, indicateur à suivre ; satisfaction à chaud.",
-      "Engagement individuel écrit.",
-      "Fiche plan d'action."
+      "15h15-17h00",
+      "1 h 45",
+      "Mesurer, corriger, évaluer",
+      "Les quatre indicateurs utiles : ouverture, clic, désinscription, plainte — et ce qu'on corrige selon chacun. · Quand l'IA écrit, qui signe : responsabilité de l'expéditeur. · Évaluation finale : séquence complète et fiche de registre notées sur grille ; QCM de 10 questions (seuil 7/10). · Plan d'action à 30 jours, questionnaire de satisfaction, clôture. · Livrable : le tableau de bord à quatre indicateurs, prêt à remplir après chaque envoi.",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "fichier assaini et segmenté",
-     "fiche de registre « prospection »",
-     "courriel type + consigne",
-     "séquence de trois courriels",
-     "tableau de bord à 4 indicateurs"
     ]
    }
   ]
  },
  "FOR-0011": {
-  "fichier": "programme-detaille-for-0011-ia-generative-au-travail.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0011_IA-generative-au-travail.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0011_IA-generative-au-travail_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0011_IA-generative-au-travail_A4-paysage-impression.pdf",
   "deroule": [
    {
     "titre": "Comprendre, demander, protéger",
-    "fil": "passer d'un usage au hasard à des demandes qui fonctionnent, sur des données que l'on a le droit de saisir.",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Comprendre (O1)",
-      "Séquence 0 : « qui a déjà collé un document client dans une IA ? » ; machine à probabilités ; trois limites : invention, date de connaissance, biais ; même question, trois outils.",
-      "Démonstration en direct + débat.",
-      "Trois outils projetés."
+      "08h00-10h00",
+      "2 h",
+      "Comprendre — Ce qu'il y a sous le capot",
+      "Séquence 0 : « qui a déjà collé un document client dans une IA ? » · Une machine à probabilités, pas une base de connaissances · Les trois limites structurelles : l'invention, la date de connaissance, le biais · Démonstration : la même question, trois outils, trois réponses",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -687,39 +642,31 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Bien demander (O2)",
-      "Méthode des 4 C ; atelier « Mes 6 demandes métier » ; relancer plutôt que recommencer ; image et vidéo générées : ce qui engage l'entreprise.",
-      "Atelier individuel sur son poste.",
-      "Fiche « 6 demandes »."
+      "10h15-12h00",
+      "1 h 45",
+      "Bien demander — La méthode des 4 C",
+      "Casquette, Contexte, Cadre, Contrôle · Atelier « Mes 6 demandes métier », sur son propre poste · Relancer plutôt que recommencer : la reprise en 2 temps",
+      "-",
+      "-"
      ],
      [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
-      "15 min",
-      "Réveil « Vrai ou inventé ? »",
-      "8 affirmations, le groupe tranche.",
-      "Jeu collectif.",
-      "Cartes."
+      "13h00-15h00",
+      "2 h",
+      "Garde-fous — Ce qui ne doit jamais sortir",
+      "Réveil « Vrai ou inventé ? » · Atelier « Le Tri de la Réserve » : 20 cartes, trois bacs · Minimisation (RGPD art. 5) et base légale (art. 6) par l'exemple · Comptes grand public contre comptes professionnels ; anonymiser en trois gestes",
+      "-",
+      "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Garde-fous (O3)",
-      "« Le Tri de la Réserve » : 20 cartes, trois bacs ; donnée personnelle, sensible, secret d'affaires ; minimisation (art. 5), base légale (art. 6) ; comptes grand public contre professionnels ; anonymiser en trois gestes.",
-      "Jeu de tri en sous-groupes.",
-      "20 cartes de données."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -727,34 +674,30 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "Vérifier, tracer, assumer (O4)",
-      "Atelier « Les 5 réponses ratées » ; première fiche de poste « usages IA » ; quiz d'étape de 10 questions.",
-      "Diagnostic en binômes + quiz.",
-      "5 réponses défaillantes."
+      "15h15-17h00",
+      "1 h 45",
+      "Vérifier — et l'assistant relié à l'entreprise",
+      "Atelier « Les 5 réponses ratées » : le défaut et sa source de vérification · Atelier « Qui voit quoi ? » : 10 cas de droits d'accès · Première fiche de poste « usages IA » ; quiz d'étape",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "6 demandes métier testées",
-     "tri des données maîtrisé",
-     "première fiche de poste « usages IA »"
     ]
    },
    {
-    "titre": "Produire dans l'entreprise",
-    "fil": "passer de demandes isolées à des processus entiers, dans la voie choisie, sans sur-partage.",
+    "titre": "Produire, automatiser, prouver",
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "L'assistant relié à l'entreprise (O5)",
-      "Ce que l'assistant voit déjà ; trois différences avec le grand public ; « Qui voit quoi ? » : 10 cas ; le sur-partage vient des droits, jamais de l'IA.",
-      "Atelier en binômes.",
-      "Cartes « cas »."
+      "08h00-10h00",
+      "2 h",
+      "Deux voies et le parcours métier complet",
+      "Voie américaine (Copilot, Gemini, Claude, ChatGPT) et voie européenne (Le Chat, Dust, Ollama) à parité · Du courriel client au devis ; de la réunion au compte rendu relu ; du tableau à la synthèse · La grille d'arbitrage YEBA",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -762,39 +705,31 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Deux voies, un même besoin (O8)",
-      "Voie américaine (Copilot, Gemini, Claude, ChatGPT) et européenne (Le Chat, Dust, Ollama) ; même compte rendu produit deux fois ; grille d'arbitrage YEBA.",
-      "Démonstration à parité.",
-      "Postes des deux voies."
+      "10h15-12h00",
+      "1 h 45",
+      "Bibliothèque de demandes et assistant personnalisé",
+      "10 demandes documentées et le test du collègue · Les 5 blocs de configuration d'un assistant dédié · Atelier : chacun construit l'assistant de son poste",
+      "-",
+      "-"
      ],
      [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
-      "15 min",
-      "Réveil « Le relais de prompt »",
-      "Une demande améliorée de main en main.",
-      "Jeu collectif.",
+      "13h00-15h00",
+      "2 h",
+      "Tableaux et gouvernance",
+      "Atelier « Les 4 erreurs cachées » : un chiffre qui part à la direction est recalculé à la main · RGPD art. 28 : l'éditeur d'IA sous-traitant ; localisation et transferts hors UE · IA Act art. 4 et art. 50 ; les trois mesures de gouvernance",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Parcours métier complets (O6)",
-      "Du courriel client au devis sans ressaisie ; de la réunion au compte rendu relu ; du tableau brut à la synthèse pour la direction.",
-      "Atelier guidé, relecture tracée.",
-      "Documents fictifs de KAZ'MARKET."
-     ],
-     [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -802,115 +737,37 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "La bibliothèque de demandes (O7)",
-      "Demande réutilisable : objectif, limite, contrôle humain ; 10 demandes documentées ; le test du collègue.",
-      "Production + test croisé.",
-      "Gabarit de bibliothèque."
+      "15h15-17h00",
+      "1 h 45",
+      "Restitution et évaluation",
+      "Présentation de l'assistant en 3 minutes, limites énoncées · Mise en situation notée sur la grille ; quiz de 10 questions (seuil 7/10) · Fiche de poste « usages IA » et plan d'action à 30 jours signés",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "trois parcours métier",
-     "bibliothèque de 10 demandes",
-     "arbitrage américain / européen"
-    ]
-   },
-   {
-    "titre": "Automatiser et prouver",
-    "fil": "passer de l'usage individuel à un assistant du poste et à des preuves que l'entreprise peut montrer.",
-    "lignes": [
-     [
-      "08:00-10:00",
-      "120 min",
-      "Assistants personnalisés (O9)",
-      "Les 5 blocs de configuration ; agents Copilot, Gems, Projets Claude ou agents Mistral et Dust ; chacun construit l'assistant de son poste.",
-      "Atelier long accompagné.",
-      "Licence nominative ou démonstration."
-     ],
-     [
-      "10:00-10:15",
-      "15 min",
-      "Pause",
-      "-",
-      "-",
-      "-"
-     ],
-     [
-      "10:15-12:00",
-      "105 min",
-      "Tableaux et données (O10)",
-      "« Les 4 erreurs cachées » ; un chiffre qui part à la direction est recalculé à la main ; connecter l'assistant à une base : ce que cela change juridiquement.",
-      "Audit individuel.",
-      "Tableau de bord piégé."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
-      "Pause méridienne",
-      "Hors temps de formation",
-      "-",
-      "-"
-     ],
-     [
-      "13:00-13:15",
-      "15 min",
-      "Réveil « L'assistant qui ment »",
-      "Repérer l'erreur volontaire.",
-      "Jeu collectif.",
-      "-"
-     ],
-     [
-      "13:15-15:00",
-      "105 min",
-      "Gouvernance (O11)",
-      "Éditeur sous-traitant (RGPD art. 28) ; localisation et transferts hors UE ; IA Act art. 4 et art. 50 ; trois mesures + dossier de preuve.",
-      "Apport + rédaction.",
-      "Modèles de mentions et de mesures."
-     ],
-     [
-      "15:00-15:15",
-      "15 min",
-      "Pause",
-      "-",
-      "-",
-      "-"
-     ],
-     [
-      "15:15-17:00",
-      "105 min",
-      "Restitution et évaluation (O12)",
-      "Assistant présenté en 3 minutes ; mise en situation notée ; quiz final de 10 questions ; fiche de poste et plan à 30 jours signés.",
-      "Mise en situation notée.",
-      "Grille critériée, quiz."
-     ]
-    ],
-    "livrables": [
-     "assistant personnalisé",
-     "deux mentions de transparence",
-     "trois mesures de gouvernance",
-     "dossier de preuve"
     ]
    }
   ]
  },
  "FOR-0013": {
-  "fichier": "programme-detaille-for-0013-agents-ia.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0013_Agents-IA.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0013_Agents-IA_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0013_Agents-IA_A4-paysage-impression.pdf",
   "deroule": [
    {
-    "titre": "Mettre en service un agent",
-    "fil": "passer d'un assistant qui répond à un agent qui exécute, dans les deux voies, avec un niveau d'autonomie justifié.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Qualification (O1)",
-      "Séquence 0 : un agent qui agit seul 4 minutes ; assistant, agent, système ; 10 situations à qualifier ; que se passe-t-il si l'agent se trompe et que personne ne regarde ?",
-      "Démonstration + atelier de qualification.",
-      "Cartes « situations »."
+      "08h00-10h00",
+      "2 h",
+      "Qualification — Assistant, agent, ou système ?",
+      "Séquence 0 : la démonstration qui inquiète — un agent qui agit seul pendant 4 minutes · Trois familles : l'assistant qui répond, l'agent qui exécute, le système qui coordonne · Atelier de qualification : 10 situations, quelle famille, que peut-elle décider seule ? · La question qui commande tout : que se passe-t-il si l'agent se trompe et que personne ne regarde ?",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -918,39 +775,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Premier agent, voie américaine (O2)",
-      "Agent dans le terminal : ce qu'il lit, écrit, exécute ; fichier d'instructions ; autorisations ; mise en service sur une tâche délimitée.",
-      "Démonstration puis atelier.",
-      "Claude Code ou Codex, dossier de travail fictif."
+      "10h15-12h00",
+      "1 h 45",
+      "Premier agent — Voie américaine",
+      "Claude Code et Codex : l'agent dans le terminal, ce qu'il lit, écrit et exécute · Le fichier d'instructions permanentes : donner à l'agent ses règles avant qu'il agisse · Les autorisations : ce que l'agent peut faire sans demander, ce qui exige un accord · Atelier : mise en service d'un agent sur une tâche réelle et délimitée",
+      "-",
+      "-"
      ],
      [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "13h00-13h15",
       "15 min",
-      "Réveil « L'agent sans garde-fou »",
-      "Ce qui aurait pu mal tourner ce matin.",
-      "Oral collectif.",
+      "Réveil pédagogique — « L'agent sans garde-fou »",
+      "-",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Premier agent, voie européenne (O2, O8)",
-      "Mistral Vibe CLI et Devstral sous licence ouverte ; modèle local avec Ollama ; n8n auto-hébergé ; même tâche, puis comparaison.",
-      "Atelier comparé.",
-      "Vibe CLI, Ollama, n8n."
+      "13h15-15h00",
+      "1 h 45",
+      "Premier agent — Voie européenne",
+      "Mistral Vibe CLI et Devstral 2 : l'équivalent souverain, sous licence ouverte Apache 2.0 · Modèle exécuté en local avec Ollama : la démonstration « zéro donnée sortante » · n8n auto-hébergé : l'agent sur un serveur que l'entreprise maîtrise · Atelier : la même tâche qu'en matinée, refaite dans la voie européenne, puis comparée",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -958,34 +815,30 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "Autonomie et risque (O4, O5)",
-      "Quatre niveaux d'autonomie ; atelier « Jusqu'où ? » sur 6 scénarios ; journal d'exécution lisible ; agent qui tourne trois fois sans intervention.",
-      "Atelier + validation de l'agent.",
-      "Fiche scénarios, modèle de journal."
+      "15h15-17h00",
+      "1 h 45",
+      "Autonomie et risque",
+      "Les quatre niveaux d'autonomie : propose, exécute sous accord, exécute et rend compte, décide seul · Atelier « Jusqu'où ? » : 6 scénarios, fixer le niveau et le justifier par le risque · La règle YEBA : le niveau d'autonomie se fixe sur le coût de l'erreur, jamais sur le confort d'usage · Journal d'exécution : rendre lisible ce que l'agent a fait, pour quelqu'un qui n'était pas là",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "agent en service (3 exécutions)",
-     "niveaux d'autonomie justifiés",
-     "premier journal d'exécution"
     ]
    },
    {
-    "titre": "Chaîner, encadrer, arbitrer",
-    "fil": "faire travailler deux agents ensemble sans perdre le contrôle, puis prouver qui répond de quoi.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Chaînes d'agents (O3)",
-      "Passage de relais et point de rupture ; où placer le contrôle humain ; construire une chaîne avec arrêt de validation ; boucle infinie, dérive, donnée absente.",
-      "Atelier long accompagné.",
-      "Outils des deux voies."
+      "08h00-10h00",
+      "2 h",
+      "Chaînes d'agents",
+      "Deux agents qui se transmettent un travail : le passage de relais et son point de rupture · Le point de contrôle humain obligatoire : où le placer pour qu'il serve à quelque chose · Atelier long : construire une chaîne de deux agents avec arrêt de validation · Ce qui casse en production : la boucle infinie, la dérive de consigne, la donnée absente",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -993,39 +846,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "L'IA qui travaille seule (O7)",
-      "Déclencheurs ; exécution programmée avec compte rendu obligatoire ; procédure d'arrêt d'urgence rédigée puis testée par un autre stagiaire ; plafonds de consommation.",
-      "Atelier + test croisé.",
-      "Modèle de procédure."
+      "10h15-12h00",
+      "1 h 45",
+      "L'ia qui travaille seule",
+      "Déclencheurs : horaire, événement, réception d'un message — l'agent sans humain devant · Atelier : programmer une exécution automatique et son compte rendu obligatoire · Procédure d'arrêt d'urgence et de reprise manuelle — rédigée, puis testée par un autre stagiaire · Le coût réel : facturation à l'usage, dérive de consommation, plafonds à poser d'emblée",
+      "-",
+      "-"
      ],
      [
-      "12:00-13:00",
-      "60 min",
+      "12h00-13h00",
+      "1 h",
       "Pause méridienne",
-      "Hors temps de formation",
+      "-",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "13h00-13h15",
       "15 min",
-      "Réveil « Qui signe ? »",
-      "Trois questions de reprise.",
-      "Oral collectif.",
+      "Réveil pédagogique — « Qui signe ? »",
+      "-",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Qualification juridique et gouvernance (O6)",
-      "IA Act : interdit (art. 5), haut risque (annexe III), transparence (art. 50) ; le piège RH ; RGPD art. 22 ; 8 cas ; dossier de preuve.",
-      "Atelier de qualification.",
-      "Fiches cas, textes officiels."
+      "13h15-15h00",
+      "1 h 45",
+      "Qualification juridique et gouvernance",
+      "AI Act : pratiques interdites (art. 5), haut risque (annexe III — obligations applicables au 02/12/2027 depuis le règlement (UE) 2026/1744), transparence (art. 50) · Le piège des ressources humaines : tri de candidatures et évaluation des salariés relèvent du haut risque · RGPD art. 22 : une décision produisant un effet juridique ne peut être entièrement automatisée · Atelier de qualification : 8 cas, quel régime, quel article · Le dossier de preuve : inventaire des systèmes, charte d'usage, registre, journaux d'exécution",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -1033,40 +886,37 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "Arbitrage et évaluation (O8)",
-      "Note d'arbitrage sur un cas réel ; restitution de 5 minutes, chaîne démontrée en direct ; quiz de 10 questions.",
-      "Mise en situation notée.",
-      "Grille critériée, quiz."
+      "15h15-17h00",
+      "1 h 45",
+      "Arbitrage et évaluation",
+      "Note d'arbitrage : architecture américaine ou européenne, sur un cas réel de l'entreprise · Restitution : 5 minutes par stagiaire, chaîne d'agents démontrée en direct · Mise en situation finale notée sur la grille critériée · Quiz individuel de 10 questions — seuil 7 sur 10",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "chaîne de deux agents",
-     "procédure d'arrêt testée",
-     "kit de gouvernance",
-     "note d'arbitrage"
     ]
    }
   ]
  },
  "FOR-0014": {
-  "fichier": "programme-detaille-for-0014-seminaire-dirigeants-ia.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0014_Seminaire-dirigeants-IA.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0014_Seminaire-dirigeants-IA_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0014_Seminaire-dirigeants-IA_A4-paysage-impression.pdf",
   "deroule": [
    {
-    "titre": "Choisir et qualifier",
-    "fil": "passer de « l'IA, il faudrait s'y mettre » à trois tâches chiffrées, qualifiées et dont le risque est connu.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Où vous en êtes vraiment (O1)",
-      "Séquence 0 : les cinq tâches qui mangent les semaines ; ce qui a déjà été tenté ; les trois erreurs de déploiement les plus coûteuses en TPE-PME.",
-      "Tour de table à huis clos + chiffrage individuel.",
-      "Fiche « 5 tâches », paperboard."
+      "08h00-10h00",
+      "2 h",
+      "Où vous en êtes vraiment",
+      "Séquence 0 : chaque dirigeant annonce les cinq tâches qui lui mangent ses semaines · Le tour de table sans langue de bois : ce qui a déjà été tenté, et pourquoi cela a échoué · Les trois erreurs de déploiement les plus coûteuses constatées en TPE-PME · Ce que la concurrence fait déjà — et ce qu'elle raconte qu'elle fait",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -1074,39 +924,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Qualifier avant d'acheter (O2)",
-      "Assistant, agent, système ; IA Act : interdit (art. 5), haut risque (annexe III), transparence (art. 50) ; le cas du tri de candidatures.",
-      "Atelier : trois tâches qualifiées, article à l'appui.",
-      "Grille de qualification."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
-      "Pause méridienne",
-      "Hors temps de formation",
+      "10h15-12h00",
+      "1 h 45",
+      "Qualifier avant d'acheter",
+      "Assistant, agent, système : ce que chacun peut décider sans personne · Qualification AI Act : interdit (art. 5), haut risque (annexe III), transparence (art. 50) · Atelier : les trois tâches de chacun, qualifiées une par une, article à l'appui · Le cas qui piège tout le monde : le tri de candidatures (annexe III)",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
       "15 min",
       "Réveil pédagogique",
-      "Trois questions de reprise, sans note.",
-      "Oral collectif.",
+      "Trois questions de reprise sur la matinée, à main levée — aucune note, aucun classement",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Le coût de l'erreur (O3)",
-      "Quatre niveaux d'autonomie ; chiffrer l'erreur en euros et en réputation ; placer le point d'arrêt avant la première action irréversible.",
-      "Atelier sur son propre cas.",
-      "Fiche « coût de l'erreur »."
+      "13h15-15h00",
+      "1 h 45",
+      "Le coût de l'erreur",
+      "Quatre niveaux d'autonomie : propose · exécute sous accord · exécute et rend compte · décide seul · Atelier : chiffrer le coût d'une erreur en euros ET en réputation, sur son propre cas · Un groupe qui ne chiffre pas surestime systématiquement l'autonomie acceptable · Où placer le point d'arrêt humain : juste avant la première action irréversible",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -1114,34 +964,30 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "Démonstrations comparées (O5)",
-      "La même tâche en voie américaine, européenne, puis locale réseau coupé ; grille : coût complet, souveraineté, dépendance, compétence, réversibilité.",
-      "Démonstration + arbitrage provisoire noté.",
-      "Postes de démonstration, grille d'arbitrage."
+      "15h15-17h00",
+      "1 h 45",
+      "Démonstrations comparées",
+      "La même tâche montée devant le groupe en voie américaine, puis en voie européenne · Puis en local, réseau coupé : la donnée ne sort pas de la salle · La grille d'arbitrage YEBA : coût complet · souveraineté · dépendance · compétence · réversibilité · Chaque dirigeant note son arbitrage provisoire, qu'il révisera le lendemain",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "trois tâches chiffrées et qualifiées",
-     "niveaux d'autonomie justifiés",
-     "arbitrage provisoire"
     ]
    },
    {
-    "titre": "Planifier et s'engager",
-    "fil": "transformer les choix de la veille en documents signables : plan, responsables, charte, budget.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Le plan d'agents (O4)",
-      "Périmètre, séquence, point d'arrêt, responsable ; un seul agent en production les trois premiers mois ; relecture par un autre dirigeant.",
-      "Rédaction individuelle accompagnée + relecture croisée.",
-      "Gabarit de plan."
+      "08h00-10h00",
+      "2 h",
+      "Le plan d'agents",
+      "Rédaction individuelle, accompagnée : périmètre, séquence, point d'arrêt, responsable · La règle des trois premiers mois : un seul agent en production, pas trois · Ce qui fait échouer un plan : aucun responsable nommé, ou un responsable sans temps alloué · Chaque plan est relu par un autre dirigeant avant d'être présenté",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -1149,39 +995,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Qui signe ? (O6, O7)",
-      "Tableau de responsabilité ; RGPD art. 22 ; registre et inventaire des systèmes ; rédaction de la charte d'usage.",
-      "Atelier guidé.",
-      "Gabarits tableau et charte."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
-      "Pause méridienne",
-      "Hors temps de formation",
+      "10h15-12h00",
+      "1 h 45",
+      "Qui signe ?",
+      "Tableau de responsabilité : une ligne par système, un nom par ligne, aucune case vide · RGPD art. 22 : l'IA ne décide pas seule dès qu'un effet significatif touche une personne · Le registre des traitements et l'inventaire des systèmes : deux documents, deux logiques · Rédaction de la charte d'usage : permis, interdit, qui arbitre les cas non prévus",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
       "15 min",
       "Réveil pédagogique",
-      "Trois questions de reprise.",
-      "Oral collectif.",
+      "Trois questions de reprise sur la matinée, à main levée",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Budget, calendrier, seuil d'arrêt (O8)",
-      "Licences, temps interne, formation, maintenance ; jalons ; critère d'abandon ; ce que finance l'opérateur de compétences.",
-      "Calcul guidé.",
-      "Tableur de budget."
+      "13h15-15h00",
+      "1 h 45",
+      "Budget, calendrier, seuil d'arrêt",
+      "Chiffrage à 12 mois : licences, temps interne, formation, maintenance · Jalons datés, et le critère qui déclenche l'abandon du projet — écrit à l'avance · Financement : ce que l'opérateur de compétences prend, ce qu'il ne prend pas · Ce que l'on ne lance pas cette année, et pourquoi le dire est une décision",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -1189,48 +1035,37 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
+      "15h15-17h00",
+      "1 h 45",
       "Soutenance et engagement",
-      "Plan présenté en 8 minutes, deux objections ; livrables notés ; quiz de 10 questions ; première action à 30 jours et son responsable.",
-      "Soutenance notée.",
-      "Grille critériée, quiz."
+      "Chaque dirigeant présente son plan en 8 minutes et répond à deux objections du groupe · Évaluation : le plan, le tableau de responsabilité, la charte et le budget sont les livrables notés · Engagement écrit : la première action lancée dans les 30 jours, et son responsable · Point de contact pour l'évaluation à froid à 60 jours",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "plan d'agents",
-     "tableau de responsabilité",
-     "charte d'usage",
-     "budget à 12 mois"
     ]
    }
   ]
  },
  "FOR-0015": {
-  "fichier": "programme-detaille-for-0015-ia-souveraine.pdf",
+  "fichier": "documents/programmes/Programme_FOR-0015_IA-souveraine.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0015_IA-souveraine_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0015_IA-souveraine_A4-paysage-impression.pdf",
   "deroule": [
    {
-    "titre": "Installer et prouver",
-    "fil": "passer d'une promesse (« vos données ne sortent pas ») à une preuve faite de ses propres mains.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-08:45",
-      "45 min",
-      "Séquence 0 : trois outils, trois trajets",
-      "La même question posée à trois outils : où part la donnée ? Attentes ; information RGPD.",
-      "Démonstration + débat.",
-      "Schéma des flux."
+      "08h00-10h00",
+      "2 h",
+      "Où part la donnée ?",
+      "Séquence 0 : la même question posée à trois outils — et trois trajets de données différents · Appel distant, hébergement européen, exécution locale : ce que chacun expose vraiment · Atelier « Où part la donnée ? » : 10 situations de l'entreprise à classer · Ce que l'on gagne et ce que l'on perd en gardant l'IA en local — le dire avant d'installer",
+      "-",
+      "-"
      ],
      [
-      "08:45-10:00",
-      "75 min",
-      "Où part la donnée ? (O1)",
-      "Appel distant, hébergement européen, exécution locale ; ce que l'on gagne et perd en local ; 10 situations à classer.",
-      "Atelier en binômes.",
-      "Cartes « situations »."
-     ],
-     [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -1238,39 +1073,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
-      "Installation du modèle local (O2)",
-      "Installer Ollama, vérifier la version, télécharger, lancer et lister un modèle ; poids sur le disque ; ne jamais télécharger le jour J.",
-      "Pas à pas écran par écran.",
-      "Terminal, modèles pré-téléchargés."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
-      "Pause méridienne",
-      "Hors temps de formation",
+      "10h15-12h00",
+      "1 h 45",
+      "Installation du modèle local",
+      "Geste LOC-G1 : installer le moteur d'exécution locale, écran par écran (ollama.com, ollama --version, ollama pull, ollama run, ollama list) · Vérifier la version, télécharger un premier modèle, lui parler · Lister ce qui est installé, et savoir ce que chaque fichier pèse sur le disque · L'erreur qui gâche un déploiement : lancer le téléchargement le jour J",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
       "15 min",
       "Réveil pédagogique",
-      "Trois questions de reprise à main levée, sans note.",
-      "Oral collectif.",
+      "Trois questions de reprise sur la matinée, à main levée — aucune note, aucun classement",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "La preuve par le câble (O3)",
-      "Vérifier l'écoute en local (port 11434), couper le réseau, saisir une donnée fictive sensible, rétablir et contrôler l'absence de transmission différée ; le piège de l'interface.",
-      "Démonstration puis réalisation par chacun.",
-      "Moniteur réseau, données fictives."
+      "13h15-15h00",
+      "1 h 45",
+      "La preuve par le câble",
+      "Geste LOC-G2 : vérifier que le service écoute en local (localhost, port 11434), puis couper le réseau · Poser une question contenant une donnée fictive sensible, réseau coupé · Rétablir la connexion et contrôler l'absence de transmission différée · Le piège : le moteur est local, l'interface posée par-dessus ne l'est pas forcément",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -1278,34 +1113,30 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "La machine peut-elle suivre ? (O4)",
-      "Relever mémoire et carte graphique ; deux tailles de modèle, même demande métier, deux chronomètres ; au-delà de 10 s, l'utilisateur abandonne.",
-      "Mesure comparée + justification écrite.",
-      "Chronomètre, fiche comparative."
+      "15h15-17h00",
+      "1 h 45",
+      "La machine peut-elle suivre ?",
+      "Geste LOC-G3 : relever mémoire vive et carte graphique de la machine cible · Deux tailles de modèle, le même prompt métier, deux chronomètres · Au-delà de dix secondes de réponse, l'utilisateur abandonne l'outil : le constater · Choisir sur la vitesse ET la qualité, jamais sur le nombre de paramètres annoncé",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "modèle local installé",
-     "preuve « réseau coupé » commentée",
-     "comparatif de deux modèles"
     ]
    },
    {
-    "titre": "Brancher, chiffrer, arbitrer",
-    "fil": "relier le modèle aux documents de l'entreprise sans sur-partage, puis décider par écrit.",
+    "titre": null,
+    "fil": "",
+    "livrables": [],
     "lignes": [
      [
-      "08:00-10:00",
-      "120 min",
-      "Brancher sur l'entreprise (O5)",
-      "Constituer un fonds documentaire maîtrisé, y connecter le moteur ; question dont la réponse n'existe que dans ces documents ; vérifier la source citée ; le sur-partage.",
-      "Atelier guidé + contrôle croisé.",
-      "Fonds documentaire fictif."
+      "08h00-10h00",
+      "2 h",
+      "Brancher sur l'entreprise",
+      "Geste LOC-G4 : rassembler un fonds documentaire maîtrisé, puis y connecter le moteur · Poser une question dont la réponse n'existe QUE dans ces documents · Vérifier que la réponse cite le bon document — et refaire l'exercice quand elle se trompe · Le sur-partage revient par la fenêtre : un dossier trop large donne accès aux dossiers du personnel",
+      "-",
+      "-"
      ],
      [
-      "10:00-10:15",
+      "10h00-10h15",
       "15 min",
       "Pause",
       "-",
@@ -1313,39 +1144,39 @@
       "-"
      ],
      [
-      "10:15-12:00",
-      "105 min",
+      "10h15-12h00",
+      "1 h 45",
       "Ce que le local ne sait pas faire",
-      "Raisonnement long, actualité, volumes, langues rares ; architecture mixte ; continuité : mises à jour, sauvegarde, reprise.",
-      "Apport + étude de cas.",
-      "Matrice local / distant."
-     ],
-     [
-      "12:00-13:00",
-      "60 min",
-      "Pause méridienne",
-      "Hors temps de formation",
+      "Les limites réelles : raisonnement long, actualité, volumes, langues rares · L'architecture mixte : local pour le sensible, distant pour le reste, règle écrite · Continuité : qui met à jour le modèle, qui sauvegarde, qui reprend si la machine tombe · Dire ce que la solution ne fera pas est ce qui rend l'arbitrage crédible",
       "-",
       "-"
      ],
      [
-      "13:00-13:15",
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
       "15 min",
       "Réveil pédagogique",
-      "Trois questions de reprise.",
-      "Oral collectif.",
+      "Trois questions de reprise sur la matinée, à main levée",
+      "-",
       "-"
      ],
      [
-      "13:15-15:00",
-      "105 min",
-      "Coût réel et registre (O6, O7)",
-      "Deux colonnes sur 36 mois avec ses chiffres ; dépendance tarifaire contre obsolescence ; entrée de registre (RGPD art. 30) ; mesures de sécurité (art. 32).",
-      "Calcul guidé + rédaction.",
-      "Tableur, modèle d'entrée de registre."
+      "13h15-15h00",
+      "1 h 45",
+      "Le coût réel et le registre",
+      "Geste LOC-G5 : deux colonnes, 36 mois, avec les chiffres réels du stagiaire · Ce qui ne se voit pas : dépendance au tarif de l'éditeur d'un côté, obsolescence du matériel de l'autre · Geste LOC-G6 : inscrire le traitement local au registre (RGPD, art. 30) · Mesures de sécurité à décrire : chiffrement du disque, contrôle d'accès, sauvegardes (RGPD, art. 32) · « Local » ne veut pas dire « hors RGPD » : c'est l'inverse, et il faut savoir le dire au dirigeant",
+      "-",
+      "-"
      ],
      [
-      "15:00-15:15",
+      "15h00-15h15",
       "15 min",
       "Pause",
       "-",
@@ -1353,19 +1184,162 @@
       "-"
      ],
      [
-      "15:15-17:00",
-      "105 min",
-      "Note d'arbitrage et évaluation (O8)",
-      "Note d'une page ; présentation et réponse à deux objections ; quiz de 10 questions ; plan à 30 jours.",
-      "Mise en situation notée.",
-      "Grille critériée, quiz."
+      "15h15-17h00",
+      "1 h 45",
+      "Note d'arbitrage et évaluation",
+      "Rédaction de la note d'une page remise à sa direction : recommandation tranchée et conditions · Mise en situation notée : présenter sa note et répondre à deux objections du groupe · Quiz de 10 questions, puis correction commentée · Plan d'action à 30 jours, et point de contact pour l'évaluation à froid à 60 jours",
+      "-",
+      "-"
      ]
-    ],
-    "livrables": [
-     "recherche documentaire locale contrôlée",
-     "coût complet sur 36 mois",
-     "entrée de registre",
-     "note d'arbitrage"
+    ]
+   }
+  ]
+ },
+ "FOR-0017": {
+  "fichier": "documents/programmes/Programme_FOR-0017_Assistant-IA-perso.pdf",
+  "livretA5": "documents/livrets/Livret-accueil_FOR-0017_Assistant-IA-perso_A5-portrait.pdf",
+  "livretA4": "documents/livrets/Livret-accueil_FOR-0017_Assistant-IA-perso_A4-paysage-impression.pdf",
+  "deroule": [
+   {
+    "titre": null,
+    "fil": "",
+    "livrables": [],
+    "lignes": [
+     [
+      "08h00-10h00",
+      "2 h",
+      "Démarrage — De la conversation à l'assistant",
+      "Accueil, règles du groupe, recueil des attentes et des besoins d'aménagement · Tour de table chronométré : « ma tâche la plus chronophage de la semaine » · Démonstration : 10 minutes de la journée d'un dirigeant pilotées à la voix · Chatbot, assistant connecté, agent : qui fait quoi, qui décide · Jeu 1 — « Assistant ou pas ? » (cartes, debout)",
+      "-",
+      "-"
+     ],
+     [
+      "10h00-10h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "10h15-12h00",
+      "1 h 45",
+      "Configurer — Son assistant sur smartphone",
+      "Installer l'application, activer le mode vocal, régler la confidentialité (historique, entraînement) · La méthode C.A.D.R.E. : Contexte, Attentes, Données autorisées, Règles de confirmation, Exclusions · Projet et documents de référence : donner à l'assistant ce qu'il doit savoir de l'entreprise · Atelier : rédiger son C.A.D.R.E., puis tester 3 demandes vocales réelles",
+      "-",
+      "-"
+     ],
+     [
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
+      "15 min",
+      "Énergiseur — Jeu 2 « Le téléphone arabe de l'IA »",
+      "Une consigne vocale floue circule, se déforme, puis est réécrite selon C.A.D.R.E.",
+      "-",
+      "-"
+     ],
+     [
+      "13h15-15h00",
+      "1 h 45",
+      "Connecter — Messagerie, agenda, documents",
+      "Connecteurs : principe, autorisations demandées, révocation en un geste · Messagerie : trier, résumer, préparer des brouillons — jamais d'envoi sans validation · Agenda : créer, déplacer, inviter ; fuseaux horaires (La Réunion UTC+4 sans heure d'été) · Atelier sur la boîte et l'agenda de démonstration KAZ'MARKET",
+      "-",
+      "-"
+     ],
+     [
+      "15h00-15h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "15h15-17h00",
+      "1 h 45",
+      "Centraliser — Base de données et documents",
+      "La base de données métier : clients, sessions, abonnements, documents (Airtable, Baserow) · Interroger sa base à la voix : « Quelles factures sont en retard ? » · Documents remplissables et modèles : l'assistant prépare, l'humain signe · Atelier : brancher la base KAZ'MARKET et obtenir 3 réponses chiffrées · Bilan J1 : quiz flash à main levée, météo de la journée",
+      "-",
+      "-"
+     ]
+    ]
+   },
+   {
+    "titre": null,
+    "fil": "",
+    "livrables": [],
+    "lignes": [
+     [
+      "08h00-10h00",
+      "2 h",
+      "Automatiser — Les routines",
+      "Retour sur J1 : ce que chacun a fait de son assistant depuis la veille · L'atelier de l'assistant : Claude Code, le fichier d'instructions permanentes, les compétences · Routine 1 — Brief du matin : courriels urgents + agenda + tâches du jour · Routine 2 — Échéancier des abonnements et prévisionnel du mois suivant · Atelier : programmer une routine et lire son compte rendu",
+      "-",
+      "-"
+     ],
+     [
+      "10h00-10h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "10h15-12h00",
+      "1 h 45",
+      "Exploiter — Cas métiers",
+      "Obligations récurrentes de son métier : exemple d'un organisme de formation (indicateurs qualité, bilan annuel) · Comptabilité : préparer et rapprocher pour l'expert-comptable — jamais déclarer à sa place · Site internet : formulaire de contact → base → brouillon de réponse · Ce qui ne se branche pas (encore) : messageries instantanées, cartographie, banques — et pourquoi · Jeu 3 — « Qui veut gagner des minutes ? »",
+      "-",
+      "-"
+     ],
+     [
+      "12h00-13h00",
+      "1 h",
+      "Pause méridienne",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "13h00-13h15",
+      "15 min",
+      "Énergiseur — Jeu 4 « Bingo RGPD »",
+      "Grille de 16 cases, situations vécues",
+      "-",
+      "-"
+     ],
+     [
+      "13h15-15h00",
+      "1 h 45",
+      "Sécuriser — RGPD, IA Act, sécurité",
+      "Qui est responsable des données qui passent par l'assistant ? Sous-traitants, transferts hors UE · Voie européenne : Le Chat (Mistral AI), Baserow, hébergement en France — comparaison honnête · IA Act : risque minimal, transparence (art. 50), maîtrise de l'IA (art. 4), piège des ressources humaines · Sécurité : double authentification, injection de consignes par courriel, révocation · Jeu 5 — Escape game « L'assistant qui en faisait trop » (5 failles à trouver) · Atelier : fiche de registre + charte d'usage de son assistant",
+      "-",
+      "-"
+     ],
+     [
+      "15h00-15h15",
+      "15 min",
+      "Pause",
+      "-",
+      "-",
+      "-"
+     ],
+     [
+      "15h15-17h00",
+      "1 h 45",
+      "Évaluer — Démonstration et quiz",
+      "Note d'arbitrage américaine / européenne pour son propre usage · Démonstration individuelle de 5 minutes, notée sur la grille à 5 critères · Quiz individuel de 10 questions — seuil de réussite 7/10 — correction commentée · Plan d'action à 30 jours, évaluation de satisfaction à chaud",
+      "-",
+      "-"
+     ]
     ]
    }
   ]

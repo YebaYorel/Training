@@ -572,8 +572,8 @@ function Chiffres() {
         <TitreAnime id="titre-chiffres" texte="Une journée de formation qui en donne plus." />
         <div className="chiffres">
           <Reveal className="chiffre" delay={0}>
-            <Compteur vers={8} suffixe=" h" />
-            <span>de formation par journée, là où beaucoup en comptent 7.</span>
+            <Compteur vers={7} suffixe=" h" />
+            <span>de formation effective par journée, pauses non comptées.</span>
           </Reveal>
           <Reveal className="chiffre" delay={0.1}>
             <Compteur vers={15} />
@@ -870,7 +870,7 @@ function DerouleStructure({ d }) {
       {d.deroule.map((j, k) => (
         <div key={k} className="deroule-jour">
           <h4>{d.deroule.length > 1 ? `Jour ${k + 1}` : 'La journée'}{j.titre ? ` — ${j.titre}` : ''}</h4>
-          <p className="deroule-fil">{j.fil.charAt(0).toUpperCase() + j.fil.slice(1)}</p>
+          {j.fil && <p className="deroule-fil">{j.fil.charAt(0).toUpperCase() + j.fil.slice(1)}</p>}
           <ol>
             {j.lignes.map(([heure, duree, seq, contenu, methode], i) =>
               /^pause/i.test(seq) ? (
@@ -1080,9 +1080,16 @@ function FicheFormation({ f, onFermer }) {
               {onglet === 'deroule' && (
                 <>
                   {DEROULES[f.ref]?.fichier && (
-                    <a className="btn btn-bleu btn-petit lien-pdf" href={'programmes/' + DEROULES[f.ref].fichier} target="_blank" rel="noopener">
-                      <FileDown size={18} aria-hidden="true" /> Télécharger le programme complet (PDF)
-                    </a>
+                    <div className="liens-pdf">
+                      <a className="btn btn-bleu btn-petit lien-pdf" href={DEROULES[f.ref].fichier} target="_blank" rel="noopener">
+                        <FileDown size={18} aria-hidden="true" /> Programme complet (PDF)
+                      </a>
+                      {DEROULES[f.ref].livretA5 && (
+                        <a className="btn btn-contour-bleu btn-petit lien-pdf" href={DEROULES[f.ref].livretA5} target="_blank" rel="noopener">
+                          <FileDown size={18} aria-hidden="true" /> Livret d’accueil (PDF)
+                        </a>
+                      )}
+                    </div>
                   )}
                   <Deroule texte={f.programme} refFormation={f.ref} />
                   <p className="discret">
@@ -1099,7 +1106,7 @@ function FicheFormation({ f, onFermer }) {
                   <h4>Délai et modalités d’accès</h4>
                   <Paragraphes texte={f.acces} />
                   <h4>Horaires</h4>
-                  <p>08h00–12h00 / 13h00–17h00, pauses de 10h et 15h incluses : 8 heures de formation par jour.</p>
+                  <p>08h00–12h00 / 13h00–17h00, pauses de 10h00 et 15h00, pause méridienne de 12h00 à 13h00 : 7 heures de formation par jour.</p>
                 </>
               )}
               {onglet === 'evaluation' && (
@@ -1382,7 +1389,7 @@ function FluxMobile() {
 /* ---------- Méthode : ligne de temps tracée au défilement ---------- */
 const ETAPES = [
   ['Diagnostic', 'On part de votre réalité : les tâches qui vous coûtent du temps, les données que vous manipulez, vos contraintes.'],
-  ['Formation', 'Vos équipes apprennent sur leurs propres dossiers, en journées de 8 heures, en groupe réduit.'],
+  ['Formation', 'Vos équipes apprennent sur leurs propres dossiers, en journées de 7 heures, en groupe réduit.'],
   ['Mise en place', 'On construit les outils avec vous : workflows, assistants, bases de données, sites.'],
   ['Preuve', 'Charte d’usage, registre, dossier de preuve des mesures prises : vous êtes prêts si on vous le demande.'],
 ]

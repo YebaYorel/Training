@@ -90,6 +90,13 @@ function lireTarifs(bloc, f = {}) {
   return tarifs.interTotal || tarifs.intraTotal ? tarifs : null
 }
 
+// Totaux recalculés : prix par jour × nombre de jours de 7 heures.
+function totaux(t, heures) {
+  if (!t || typeof heures !== 'number') return t
+  const j = Math.max(1, Math.round(heures / 7))
+  return { ...t, interTotal: t.interJour ? t.interJour * j : t.interTotal, intraTotal: t.intraJour ? t.intraJour * j : t.intraTotal }
+}
+
 export function transformer(catalogue, sessions, aujourdHui = new Date()) {
   const refParId = {}
   const formations = []
@@ -104,7 +111,8 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
       type: nom(f[C.type]) || null,
       public: textePublic(f[C.public]),
       heures: f[C.heures] ?? null,
-      jours: typeof f[C.jours] === 'number' ? f[C.jours] : null,
+      // Règle YEBA : 7 heures de formation par jour (DEETS / OPCO), quel que soit le calcul Airtable.
+      jours: typeof f[C.heures] === 'number' ? Math.max(1, Math.round(f[C.heures] / 7)) : null,
       prerequis: textePublic(f[C.prerequis]),
       methodes: noms(f[C.methodes]),
       evaluation: textePublic(f[C.evaluation]),
@@ -112,7 +120,7 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
       adaptations: textePublic(f[C.adaptations]),
       financements: noms(f[C.financements]),
       certification: texte(f[C.rncp]) || null,
-      tarifs: lireTarifs(f[C.tarifs], f),
+      tarifs: totaux(lireTarifs(f[C.tarifs], f), f[C.heures]),
       domaine: nom(f[C.domaine]) || null,
       objectifs: textePublic(f[C.objectifs]),
       programme: textePublic(f[C.programme]),

@@ -1244,6 +1244,7 @@ html.intro-active, html.intro-active body { overflow: hidden; }
 .deroule-creneau p { margin-top: 4px; }
 .deroule-methode { font-size: 0.88rem; color: #4b5b73; }
 .lien-pdf { justify-self: start; }
+.liens-pdf { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1rem; }
 .prix-col small + strong + small { white-space: normal; font-weight: 400; font-size: 0.74rem; }
 
 /* ================= Bibliothèque RGPD & IA Act ================= */

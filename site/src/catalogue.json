@@ -6,7 +6,7 @@
       "titre": "Automatisation sans code : Relier ses outils et supprimer les tâches répétitives (n8n)",
       "type": "Inter-entreprise",
       "public": "Dirigeants de TPE/PME, indépendants et fonctions administratives souhaitant gagner du temps et fiabiliser leurs processus.",
-      "heures": 16,
+      "heures": 14,
       "jours": 2,
       "prerequis": "Utilisation courante des outils bureautiques et web. Aucune compétence en développement requise.",
       "methodes": [
@@ -49,7 +49,7 @@
       "titre": "Conformité RGPD & IA Act : Sécuriser ses usages de l'IA et prouver les mesures prises",
       "type": "Inter-entreprise",
       "public": "Dirigeants, responsables administratifs, et tout salarié manipulant des données personnelles (RH, commercial, gestion).",
-      "heures": 8,
+      "heures": 7,
       "jours": 1,
       "prerequis": "Aucun prérequis technique. Utilisation courante d'un ordinateur et d'une messagerie électronique.",
       "methodes": [
@@ -92,7 +92,7 @@
       "titre": "Vente & négociation : Découvrir le besoin, argumenter et conclure sans brader",
       "type": "Inter-entreprise",
       "public": "Créateurs d'entreprise, indépendants, commerciaux débutants, et toute personne amenée à vendre un produit ou un service.",
-      "heures": 8,
+      "heures": 7,
       "jours": 1,
       "prerequis": "Aucun prérequis.",
       "methodes": [
@@ -135,7 +135,7 @@
       "titre": "Copilot Microsoft 365 : Utiliser l'IA dans Word, Excel, Outlook et Teams (méthode des 4 P)",
       "type": "Intra-entreprise",
       "public": "Salariés et dirigeants équipés de Microsoft 365 qui produisent chaque semaine des documents, des analyses ou des courriels : fonctions administratives, commerciales, RH, encadrement de proximité, direction de TPE-PME.\nUn second public est visé par la journée 2 : la personne qui devra répondre en interne à la question « est-ce qu'on a le droit ? » — dirigeant, référent informatique ou référent RGPD.\nEffectif : 4 à 8 stagiaires, un poste par stagiaire — 1 formateur.",
-      "heures": 16,
+      "heures": 14,
       "jours": 2,
       "prerequis": "Aucun prérequis technique de niveau. Savoir créer un document, saisir des données dans un tableur et gérer sa messagerie. Aucune compétence en programmation.\n\nCONDITIONS MATÉRIELLES BLOQUANTES, vérifiées par écrit avec le client au plus tard 5 jours ouvrés avant la session :\n1. Un poste à jour par stagiaire, avec accès réseau non filtré vers les services Microsoft 365 ;\n2. Un compte nominatif ET une licence Copilot active, vérifiée individuellement pour chaque stagiaire ;\n3. DES DOCUMENTS PROFESSIONNELS RÉELS accessibles depuis ce compte. C'est la condition que tout le monde oublie : sans contenu à exploiter, Copilot n'a rien à se mettre sous la dent et deux jours d'ateliers tombent à plat ;\n4. Le point de contact administrateur du client, joignable pendant la session.\n\nSi l'une de ces quatre conditions n'est pas réunie, la session est reportée. Elle n'est pas dégradée.",
       "methodes": [
@@ -178,7 +178,7 @@
       "titre": "Manager au quotidien : Cadrer, déléguer et recadrer son équipe de proximité",
       "type": "Inter-entreprise",
       "public": "Encadrants de proximité, chefs d'équipe, responsables de rayon ou de service, dirigeants de TPE qui encadrent directement. Aucun prérequis. Effectif : 4 à 10 stagiaires.",
-      "heures": 8,
+      "heures": 7,
       "jours": 1,
       "prerequis": "Aucun prérequis. Exercer, ou s'apprêter à exercer, une fonction d'encadrement direct.",
       "methodes": [
@@ -221,7 +221,7 @@
       "titre": "Site internet IA : Créer son site en le décrivant à voix haute",
       "type": "Intra-entreprise",
       "public": "Dirigeants de TPE, artisans, commerçants, indépendants et créateurs d'entreprise qui n'ont pas de site internet, ou qui en ont un dont ils ne peuvent pas modifier une ligne sans rappeler leur prestataire.\nConvient aussi aux fonctions administratives chargées de faire vivre le site d'une petite structure.",
-      "heures": 8,
+      "heures": 7,
       "jours": 1,
       "prerequis": "Utilisation courante d'un ordinateur, d'un navigateur web et d'une messagerie électronique. Aucune compétence en développement, en graphisme ni en référencement n'est requise.\nSavoir formuler une demande à l'oral de façon structurée est un atout — c'est précisément ce que la formation travaille.\nLe stagiaire vient avec SON projet réel : son activité, ses tarifs, ses photos, ses textes existants s'il en a.",
       "methodes": [
@@ -264,7 +264,7 @@
       "titre": "Emailing IA : Rédiger des courriels et des séquences qui obtiennent une réponse",
       "type": "Intra-entreprise",
       "public": "Dirigeants de TPE-PME, indépendants, commerciaux, fonctions administratives et chargés de communication amenés à écrire à des clients ou à des prospects — qu'il s'agisse d'une campagne ou de courriels quotidiens.",
-      "heures": 8,
+      "heures": 7,
       "jours": 1,
       "prerequis": "Utilisation courante d'une messagerie électronique et d'un tableur simple. Aucune compétence technique ni expérience du marketing n'est requise.\nLe stagiaire vient avec SA situation réelle : son fichier de contacts s'il en a un, un courriel qu'il a déjà envoyé, et l'offre qu'il souhaite promouvoir.",
       "methodes": [
@@ -306,8 +306,8 @@
       "titre": "IA générative au travail : Gagner du temps chaque jour, en sécurité et avec des preuves (3 jours)",
       "type": "Inter-entreprise",
       "public": "Tout salarié, manager, dirigeant ou indépendant qui utilise — ou va utiliser — un outil d'IA générative dans son travail : accueil, administratif, commerce, RH, comptabilité, communication, encadrement, direction de TPE-PME.\nLa journée 3 vise en outre la personne qui devra répondre en interne à la question « est-ce qu'on a le droit ? ».\nEffectif : 4 à 10 stagiaires, 1 formateur. Un poste par stagiaire.\n\nCE QUE CETTE FORMATION N'EST PAS : ni un diplôme, ni une certification enregistrée au RNCP ou au RS, ni une « mise en conformité » automatique. Elle aide l'entreprise à PROUVER les mesures prises pour favoriser la maîtrise de l'IA de ses équipes (règlement (UE) 2024/1689, art. 4, dans sa rédaction issue du règlement (UE) 2026/1744).",
-      "heures": 24,
-      "jours": 3,
+      "heures": 14,
+      "jours": 2,
       "prerequis": "Aucun prérequis technique pour les journées 1 et 2 : savoir utiliser un navigateur internet et une messagerie.\nChaque stagiaire dispose d'un poste connecté et d'un compte PROFESSIONNEL sur l'outil d'IA retenu par son employeur — jamais un compte personnel.\nPour la journée 3 (assistants personnalisés) : licence active et nominative pour l'une des deux voies — Microsoft 365 Copilot ou Google Workspace avec Gemini (voie américaine), Mistral Le Chat Pro ou Dust (voie européenne). À défaut, un environnement de démonstration est fourni par YEBA FORMATIONS. La vérification écrite de ces accès est faite lors de l'entretien préalable.",
       "methodes": [
         "Présentiel"
@@ -324,9 +324,9 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 2370,
+        "interTotal": 1580,
         "interJour": 790,
-        "intraTotal": 7200,
+        "intraTotal": 4800,
         "intraJour": 2400,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
@@ -349,7 +349,7 @@
       "titre": "Agents IA : Déléguer des tâches à l'IA sous contrôle humain (niveau avancé, 2 jours)",
       "type": "Inter-entreprise",
       "public": "Dirigeants, responsables informatiques, référents IA, chefs de projet et profils techniques d'entreprise ayant un usage avancé de l'IA générative, ou ayant suivi « IA générative au travail » (FOR-0011). La journée 2 vise en outre la personne qui devra répondre en interne à la question « qui est responsable ? ».\nEffectif : 4 à 8 stagiaires, 1 formateur — effectif réduit imposé par la nature technique des ateliers.\n\nCE QUE CETTE FORMATION N'EST PAS : ni un diplôme, ni une certification RNCP/RS, ni une « mise en conformité » automatique au règlement (UE) 2024/1689. Elle donne aux stagiaires les moyens de déployer des agents sous contrôle humain et de documenter les mesures prises.",
-      "heures": 16,
+      "heures": 14,
       "jours": 2,
       "prerequis": "Usage avancé de l'IA générative, ou « IA générative au travail » (FOR-0011) acquis. Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation n'est exigée, mais le stagiaire doit accepter de travailler dans un terminal. Poste avec droits d'installation, ou machine virtuelle fournie par YEBA FORMATIONS. Checklist technique transmise 10 jours avant : débit réseau vérifié sur le lieu, comptes et clés d'accès aux outils retenus. Entretien de cadrage de 20 minutes avec le responsable avant l'inscription.",
       "methodes": [
@@ -392,7 +392,7 @@
       "titre": "Séminaire dirigeants IA : Choisir les 3 tâches que l'IA fera pour vous (résidentiel, 2 jours)",
       "type": "Inter-entreprise",
       "public": "Dirigeants, gérants, directeurs généraux et associés de TPE-PME réunionnaises de 3 à 50 salariés, seuls décisionnaires de l'engagement budgétaire de leur structure. Un seul dirigeant par entreprise. Deux entreprises directement concurrentes ne sont jamais inscrites sur la même session : la règle est écrite dans la convention.\n\nEffectif : 6 à 8 dirigeants, à huis clos.",
-      "heures": 16,
+      "heures": 14,
       "jours": 2,
       "prerequis": "Aucun prérequis technique. Le dirigeant vient avec trois éléments : la liste de ses cinq tâches les plus chronophages, son chiffre d'affaires et son effectif, et la liste des outils numériques déjà en place. Ces éléments sont demandés au moment de l'inscription et conditionnent la personnalisation des ateliers.",
       "methodes": [
@@ -432,7 +432,7 @@
       "titre": "IA souveraine : Faire tourner l'IA sur ses propres machines, sans donnée sortante",
       "type": "Inter-entreprise",
       "public": "Dirigeants, responsables informatiques, référents IA et prestataires informatiques de TPE-PME qui traitent des données sensibles ou couvertes par le secret : cabinets comptables et juridiques, santé, ressources humaines, bureaux d'études, collectivités. Également ouvert aux structures dont l'activité impose une continuité de service hors connexion.\n\nEffectif : 4 à 8 stagiaires (effectif réduit imposé par la nature technique).",
-      "heures": 16,
+      "heures": 14,
       "jours": 2,
       "prerequis": "Usage courant de l'IA générative (ou niveau « IA générative au travail » (FOR-0011) acquis). Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation exigée, mais le stagiaire doit accepter de travailler dans un terminal. Un poste avec droits d'administration est nécessaire : 16 Go de mémoire vive recommandés, 8 Go au minimum, et 20 Go d'espace disque libre. Les modèles sont téléchargés par le formateur AVANT la session.",
       "methodes": [
