@@ -104,7 +104,7 @@ td.p.i{color:var(--navy);font-weight:800}
 .consult .note{color:#AFC0DC}
 
 .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm;margin:3.6mm 12mm 0}
-.fact{background:#fff;border:1px solid var(--line);border-radius:2.4mm;padding:2.4mm 2.6mm;font-size:7.5pt;line-height:1.32;color:var(--muted)}
+.fact{background:#fff;border:1px solid var(--line);border-radius:2.4mm;padding:2.4mm 2.6mm;font-size:8.2pt;line-height:1.32;color:var(--muted)}
 .fact b{display:block;font-family:Montserrat;font-weight:800;font-size:8.6pt;color:var(--ink);margin-bottom:.6mm}
 .fact .ic{display:inline-block;width:5mm;height:5mm;vertical-align:-1.4mm;margin-right:1.2mm}
 
@@ -118,6 +118,27 @@ td.p.i{color:var(--navy);font-weight:800}
 .foot{position:absolute;left:12mm;right:12mm;bottom:5mm;font-size:6.3pt;line-height:1.38;color:var(--muted);border-top:1px solid var(--line);padding-top:1.8mm;display:flex;gap:5mm}
 .foot div:first-child{flex:1.35}.foot div:last-child{flex:1}
 .foot b{color:var(--ink)}
+
+.card .tagline{font-family:"Mono";font-weight:700;font-size:8pt;letter-spacing:.12em;color:var(--navy)}
+.card.l4 .tagline{color:var(--gold-hi)}
+.card .dès{display:flex;gap:3mm;margin-top:2.2mm}
+.card .dès div{flex:1;border-radius:2mm;padding:1.6mm 2.4mm;background:#EEF2F9}
+.card.l4 .dès div{background:rgba(255,255,255,.08);border:1px solid rgba(226,196,110,.35)}
+.card .dès small{display:block;font-size:7pt;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.card.l4 .dès small{color:#C8D4EA}
+.card .dès b{font-family:Montserrat;font-weight:900;font-size:15pt;color:var(--navy);line-height:1.1}
+.card.l4 .dès b{color:var(--gold-hi)}
+.reg{border-radius:3.2mm;padding:3.4mm 4.2mm;background:#fff;border:1.4px solid var(--gold)}
+.reg .mono{font-size:7.4pt;color:var(--navy);font-weight:700}
+.reg ul{list-style:none;margin-top:1.4mm}
+.reg li{font-size:8.6pt;line-height:1.32;color:var(--muted);padding:1mm 0;border-top:1px solid #E6EBF3}
+.reg li:first-child{border-top:0}
+.reg li b{color:var(--ink)}
+th.c{text-align:center}
+td.p{width:17mm}
+th .u{font-weight:600;text-transform:none;letter-spacing:0;font-size:6.4pt}
+.card table{font-size:10pt}
+.card h3{margin-bottom:.6mm}
 </style></head>
 <body>
 
@@ -144,7 +165,7 @@ td.p.i{color:var(--navy);font-weight:800}
   <div class="content">
     <h1>Passez à l’IA.<br><span class="g">Gardez la main.</span></h1>
     <div class="kw">Former<i>·</i>Automatiser<i>·</i>Sécuriser RGPD &amp; IA Act</div>
-    <div class="pill"><small>dès</small><b>690 €</b><small>/ personne · journée de 8 h</small></div>
+    <div class="pill"><small>dès</small><b>690 €</b><small>/ stagiaire · journée de 7 h</small></div>
   </div>
 
   <div class="proofs">
@@ -173,66 +194,41 @@ td.p.i{color:var(--navy);font-weight:800}
     <img class="logo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
     <div class="ttl">
       <div class="mono">Grille tarifaire · 2026</div>
-      <h2>4 niveaux. 1 objectif :<br>du temps gagné.</h2>
-      <div class="sub"><b>Prix nets de taxe</b> · TVA non applicable, art. 293 B du CGI · <b>Journée = 8 h</b></div>
+      <h2>4 univers. 1 objectif :<br>du temps gagné.</h2>
+      <div class="sub"><b>Prix nets de taxe</b> · TVA non applicable, art. 293 B du CGI · <b>Journée = 7 h</b></div>
     </div>
   </header>
 
-  <div class="legend"><span><b>Inter</b> = prix par personne, action complète</span><span><b>Intra</b> = prix pour le groupe, action complète</span></div>
+  <div class="legend"><span><b>Inter</b> = par stagiaire et par jour</span><span><b>Intra</b> = par groupe et par jour</span><span><b>6 à 8</b> stagiaires</span></div>
 
   <div class="grid">
-    <!-- NIVEAU 1 -->
     <article class="card l1">
-      <div class="top"><span class="lv">NIVEAU 1</span><span class="sig"><i class="on"></i><i></i><i></i><i></i></span></div>
-      <h3>Métiers · Vente &amp; management</h3>
-      <div class="rate"><div><b>690 €</b><small>inter · / pers. / jour</small></div><div><b>2 300 €</b><small>intra · / groupe / jour</small></div></div>
-      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
-        <tr><td class="n">Vente &amp; négociation</td><td class="d">1 j</td><td class="p i">690 €</td><td class="p">2 300 €</td></tr>
-        <tr><td class="n">Manager au quotidien</td><td class="d">1 j</td><td class="p i">690 €</td><td class="p">2 300 €</td></tr>
-      </table>
-    </article>
-    <!-- NIVEAU 2 -->
-    <article class="card l2">
-      <div class="top"><span class="lv">NIVEAU 2</span><span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+      <div class="tagline">01 · MÉTIERS</div>
+      <h3>Vente &amp; management</h3>
+      <table><tr><th>Formation</th><th class="c">Durée</th><th>Inter<br><span class="u">/ stagiaire / j</span></th><th>Intra<br><span class="u">/ groupe / j</span></th></tr><tr><td class="n">Vente &amp; négociation</td><td class="d">1 j · 7 h</td><td class="p i">690 €</td><td class="p">2 100 €</td></tr><tr><td class="n">Manager au quotidien</td><td class="d">1 j · 7 h</td><td class="p i">790 €</td><td class="p">2 400 €</td></tr></table>
+    </article><article class="card l2">
+      <div class="tagline">02 · OUTILS NUMÉRIQUES</div>
       <h3>Outils numériques IA</h3>
-      <div class="rate"><div><b>790 €</b><small>inter · / pers. / jour</small></div><div><b>2 500 €</b><small>intra · / groupe / jour</small></div></div>
-      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
-        <tr><td class="n">Site internet IA</td><td class="d">1 j</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr>
-        <tr><td class="n">Emailing IA</td><td class="d">1 j</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr>
-        <tr><td class="n">Copilot Microsoft 365</td><td class="d">2 j</td><td class="p i">1 580 €</td><td class="p">5 000 €</td></tr>
-      </table>
-    </article>
-    <!-- NIVEAU 3 -->
-    <article class="card l3">
-      <div class="top"><span class="lv">NIVEAU 3</span><span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+      <table><tr><th>Formation</th><th class="c">Durée</th><th>Inter<br><span class="u">/ stagiaire / j</span></th><th>Intra<br><span class="u">/ groupe / j</span></th></tr><tr><td class="n">Site internet IA</td><td class="d">1 j · 7 h</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr><tr><td class="n">Emailing IA</td><td class="d">1 j · 7 h</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr><tr><td class="n">Copilot Microsoft 365</td><td class="d">2 j · 14 h</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr></table>
+    </article><article class="card l3">
+      <div class="tagline">03 · EXPERTISE IA</div>
       <h3>Expertise IA</h3>
-      <div class="rate"><div><b>890 €</b><small>inter · / pers. / jour</small></div><div><b>2 700 €</b><small>intra · / groupe / jour</small></div></div>
-      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
-        <tr><td class="n">IA générative au travail</td><td class="d">3 j</td><td class="p i">2 670 €</td><td class="p">8 100 €</td></tr>
-        <tr><td class="n">Automatisation sans code</td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
-        <tr><td class="n">IA souveraine<span class="new">NOUVEAU</span></td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
-        <tr><td class="n">Assistant IA perso<span class="new">NOUVEAU</span></td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
-      </table>
-    </article>
-    <!-- NIVEAU 4 -->
-    <article class="card l4">
-      <div class="top"><span class="lv">NIVEAU 4 · PREMIUM</span><span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
-      <h3>IA avancée · Gouvernance · Dirigeants</h3>
-      <div class="rate"><div><b>990 €</b><small>inter · / pers. / jour</small></div><div><b>2 900 €</b><small>intra · / groupe / jour</small></div></div>
-      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
-        <tr><td class="n">Conformité RGPD &amp; IA Act</td><td class="d">1 j</td><td class="p i">990 €</td><td class="p">2 900 €</td></tr>
-        <tr><td class="n">Agents IA</td><td class="d">2 j</td><td class="p i">1 980 €</td><td class="p">5 800 €</td></tr>
-        <tr><td class="n">Séminaire dirigeants IA*</td><td class="d">2 j</td><td class="p i">1 980 €</td><td class="p">5 800 €</td></tr>
-      </table>
-      <div class="note">* Résidentiel, prix par dirigeant · hébergement en sus, au réel.</div>
+      <table><tr><th>Formation</th><th class="c">Durée</th><th>Inter<br><span class="u">/ stagiaire / j</span></th><th>Intra<br><span class="u">/ groupe / j</span></th></tr><tr><td class="n">IA générative au travail</td><td class="d">2 j · 14 h</td><td class="p i">790 €</td><td class="p">2 400 €</td></tr><tr><td class="n">IA souveraine<span class="new">NOUVEAU</span></td><td class="d">2 j · 14 h</td><td class="p i">890 €</td><td class="p">2 700 €</td></tr><tr><td class="n">Automatisation sans code (n8n)</td><td class="d">2 j · 14 h</td><td class="p i">990 €</td><td class="p">2 900 €</td></tr></table>
+    </article><article class="card l4">
+      <div class="tagline">04 · PREMIUM</div>
+      <h3>Gouvernance · IA avancée · Dirigeants</h3>
+      <table><tr><th>Formation</th><th class="c">Durée</th><th>Inter<br><span class="u">/ stagiaire / j</span></th><th>Intra<br><span class="u">/ groupe / j</span></th></tr><tr><td class="n">Conformité RGPD &amp; IA Act</td><td class="d">1 j · 7 h</td><td class="p i">690 €</td><td class="p">2 100 €</td></tr><tr><td class="n">Agents IA</td><td class="d">2 j · 14 h</td><td class="p i">990 €</td><td class="p">2 900 €</td></tr><tr><td class="n">Séminaire dirigeants IA*</td><td class="d">2 j · 14 h</td><td class="p i">990 €</td><td class="p">2 900 €</td></tr></table><div class="note">* Résidentiel · hébergement en sus, au réel.</div>
     </article>
   </div>
 
   <div class="row2">
-    <div class="calc">
-      <div class="mono">⚡ Inter ou intra ? Le bon calcul</div>
-      <p>Dès <b>4 salariés</b> : l’intra est moins cher.<br>Niveau 4 : dès <b>3 salariés</b>.</p>
-      <div class="ex">Exemple niveau 1 : 4 × 690 € = 2 760 € en inter, contre 2 300 € en intra.</div>
+    <div class="reg">
+      <div class="mono">🔒 Réglementation · RGPD · IA Act</div>
+      <ul>
+        <li><b>RGPD</b> — données des stagiaires limitées à la gestion de la formation ; information remise à l’inscription (art. 13).</li>
+        <li><b>IA Act</b> (règlement UE 2024/1689) — usages de l’IA abordés sous l’angle des risques et du contrôle humain.</li>
+        <li><b>Qualiopi</b> — programme, évaluation et attestation remis à chaque stagiaire.</li>
+      </ul>
     </div>
     <div class="consult">
       <div class="mono">Conseil · Audit · Implémentation IA</div>
@@ -246,20 +242,20 @@ td.p.i{color:var(--navy);font-weight:800}
   </div>
 
   <div class="facts">
-    <div class="fact"><b>Effectifs</b>Inter : 4 à 10. Intra : jusqu’à 10 inclus (8 : Agents IA, Assistant IA perso).</div>
-    <div class="fact"><b>Participant +</b>Par jour, au-delà de l’effectif intra : 120 € · 130 € · 150 € (niv. 1 · 2 · 3-4).</div>
+    <div class="fact"><b>Effectif</b>6 stagiaires minimum, 8 maximum, en inter comme en intra.</div>
+    <div class="fact"><b>Lieu</b>Communiqué par le formateur 15 jours avant la formation.</div>
+    <div class="fact"><b>Handicap</b>Référent handicap : Aurélien LUMEKA. Adaptations étudiées dès l’inscription. Support en corps 16 gratuit.</div>
     <div class="fact"><b>Financement</b>Votre OPCO, selon les règles de votre branche. Dossier monté avec vous.</div>
-    <div class="fact"><b>Accessibilité</b>Référent handicap. Support imprimé en corps 16 : gratuit.</div>
   </div>
 
   <div class="cta">
-    <div class="l">Votre diagnostic IA en 30 minutes<small>Délai d’accès : 15 jours ouvrés minimum · Horaires 08h–17h</small></div>
+    <div class="l">Votre diagnostic IA en 30 minutes<small>Délai d’accès : 15 jours ouvrés minimum · 08h30–12h00 / 13h00–16h30</small></div>
     <div class="r">0693 32 24 45<small>yebaformations@gmail.com</small></div>
   </div>
 
   <footer class="foot">
     <div><b>YEBA FORMATIONS</b> — Aurélien LUMEKA, directeur · 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion · Tél. 0693 32 24 45 · yebaformations@gmail.com · SIRET 814 622 262 00032 · Déclaration d’activité n° 04973676397 auprès du Préfet de La Réunion. Cet enregistrement ne vaut pas agrément de l’État.</div>
-    <div>Certification Qualiopi n° <b>25FOR02027.1</b> délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA. Frais refacturés à l’identique : salle 200 €/j, restauration 60 €/j/pers. Grille YEBA-DOC-12 v3.0, devis émis à compter du 02/10/2026.</div>
+    <div>Certification Qualiopi n° <b>25FOR02027.1</b> délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com. Frais refacturés à l’identique : salle 200 €/j, restauration 60 €/j/pers. Tarifs au 07/10/2026.</div>
   </footer>
 </section>
 </body></html>
