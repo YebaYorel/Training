@@ -133,7 +133,7 @@ def contenu(f):
         ['Avant', 'Test de positionnement et analyse du besoin', 'Le niveau de départ, la situation réelle et les attentes du participant'],
         ['Pendant', 'Grille critériée remise dès l\'ouverture', 'L\'acquisition de chaque objectif, atelier par atelier'],
         ['Fin de formation', 'Mise en situation notée + quiz de 10 questions (seuil 7/10)', 'Les compétences opérationnelles acquises'],
-        ['Après', 'Questionnaire de satisfaction à chaud, puis à froid', 'La mise en pratique réelle au poste de travail'],
+        ['Après', 'Questionnaire de satisfaction à chaud, puis à froid à J+30', 'La mise en pratique réelle au poste de travail'],
     ], [1, 1.6, 2.4]))
 
     e += sec('Prérequis')

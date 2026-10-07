@@ -187,7 +187,7 @@ def contenu(f, sommaire):
         ['Pendant', 'Observation pendant les ateliers, avec une grille critériée remise dès l\'ouverture'],
         ['En fin de formation', 'Mise en situation notée et quiz de 10 questions (réussite à partir de 7/10)'],
         ['17h00, dernier jour', 'Questionnaire de satisfaction « à chaud »'],
-        ['À 60 jours', 'Questionnaire « à froid » : ce qui a changé au quotidien'],
+        ['À 30 jours (J+30)', 'Questionnaire « à froid » : ce qui a changé au quotidien'],
     ], [0.9, 2]))
 
     e += rub('Documents remis')
@@ -257,7 +257,7 @@ def contenu(f, sommaire):
                 'Vous pouvez demander l\'explication de votre résultat et le contester auprès du formateur.'])
 
     e += rub('Avis et réclamations')
-    e += puces(['Votre avis compte : questionnaire de satisfaction en fin de formation, puis questionnaire « à froid » à 60 jours.',
+    e += puces(['Votre avis compte : questionnaire de satisfaction en fin de formation, puis questionnaire « à froid » à 30 jours (J+30).',
                 f"Réclamation : oralement au formateur, ou par e-mail à {ENTREPRISE['email']}.",
                 'Accusé de réception sous 48 heures ouvrées, réponse motivée sous 15 jours ouvrés (règlement intérieur, art. 24).',
                 'Chaque avis et chaque réclamation sont analysés pour améliorer nos formations.'])
