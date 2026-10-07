@@ -14,11 +14,11 @@ Exclues : FOR-0005 et FOR-0007 (marque blanche), FOR-0001 (archivée), FOR-0017 
 6 stagiaires minimum, 8 maximum, en inter comme en intra ; lieu communiqué par le formateur 15 jours avant ;
 FOR-0011 sur 2 jours (14 h).
 
-## Restant à aligner dans Airtable
-- CONFIG SYSTÈME « Horaires standard de session » : encore 08h00–17h00 (8 h).
-- CONFIG SYSTÈME barèmes A, B et C, et YEBA-DOC-12 v3.0 : montants et effectifs antérieurs.
-- FOR-0011 : intitulé encore « (3 jours) ».
-- Champ « Durée en jours » : formule divisant par 8 (affiche 0,9 j pour 7 h).
+## Airtable aligné le 07/10/2026
+- CONFIG SYSTÈME : horaires (08h30–12h00 / 13h00–16h30, 7 h) et barèmes A, B, C.
+- CATALOGUE : formule « Durée en jours » = heures ÷ 7 ; FOR-0011 renommée « (2 jours) ».
+- YEBA-DOC-12 : prix par jour du catalogue, 7 h, 6 à 8 participants, seuils recalculés.
+- YEBA-DOC-03 (CGV) art. 6.3 : en deçà de 6 inscrits, report ; remboursement intégral si l'effectif n'est pas atteint un mois après la date initiale.
 
 ## Régénérer
 Dans `source/` : `npm i playwright @fontsource/montserrat @fontsource/jetbrains-mono`,
