@@ -1239,3 +1239,37 @@ html.intro-active, html.intro-active body { overflow: hidden; }
 @keyframes intro-sortie { to { opacity: 0; } }
 @keyframes logo-sortie { to { transform: translateY(-4vh) scale(0.86); opacity: 0; } }
 .studio .garantie a, .studio-note a { color: var(--or-clair); font-weight: 700; }
+.deroule-fil { font-style: italic; font-size: 0.95rem; margin: 0 0 6px; }
+.deroule-creneau time small { display: block; font-family: var(--corps); font-weight: 700; color: var(--texte-clair); font-size: 0.8rem; }
+.deroule-creneau p { margin-top: 4px; }
+.deroule-methode { font-size: 0.88rem; color: #4b5b73; }
+.lien-pdf { justify-self: start; }
+.prix-col small + strong + small { white-space: normal; font-weight: 400; font-size: 0.74rem; }
+
+/* ================= Bibliothèque RGPD & IA Act ================= */
+.gouv-lien {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 0; border: 0; background: none; text-align: left;
+  color: #fff; font: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: rgba(201, 168, 76, 0.6);
+  text-underline-offset: 4px;
+}
+.gouv-lien:hover, .gouv-lien:focus-visible { color: var(--or-clair); }
+.gouv-lien svg { flex: none; color: var(--or); }
+.gouv-biblio { margin-top: 56px; }
+.gouv-biblio-tete h3 { display: flex; align-items: center; gap: 12px; color: #fff; font-size: clamp(1.35rem, 2.4vw, 1.8rem); }
+.gouv-biblio-tete h3 svg { color: var(--or); }
+.gouv-biblio-tete p { margin-top: 8px; color: var(--texte-sombre); max-width: 70ch; }
+.gouv-filtres { margin-top: 22px; }
+.gouv-filtres .filtre { border-color: rgba(255, 255, 255, 0.6); color: #fff; }
+.gouv-filtres .filtre[aria-pressed='true'] { background: var(--or); border-color: var(--or); color: var(--bleu-nuit); }
+.gouv-docs { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-top: 24px; padding: 0; }
+.gouv-doc {
+  display: flex; flex-direction: column; gap: 8px; padding: 22px; border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(201, 168, 76, 0.3);
+}
+.gouv-doc h4 { color: #fff; font-family: var(--titre); font-size: 1.08rem; line-height: 1.3; }
+.gouv-doc p { color: var(--texte-sombre); font-size: 0.95rem; }
+.gouv-doc .btn { margin-top: auto; align-self: flex-start; }
+.gouv-doc-ref { font-family: var(--titre); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; color: #b9c6db !important; }
+.gouv-theme { align-self: flex-start; padding: 4px 10px; border-radius: 999px; font-family: var(--titre); font-weight: 800; font-size: 0.75rem; }
+.gouv-theme.rgpd { background: #dbe7f7; color: var(--bleu-nuit); }
+.gouv-theme.iaact { background: var(--or); color: var(--bleu-nuit); }

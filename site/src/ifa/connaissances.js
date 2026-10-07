@@ -67,8 +67,8 @@ function trouverFormation(t, mots) {
 
 function prixDe(f) {
   const t = f.tarifs
-  if (t?.interTotal) return `inter ${euros(t.interTotal)} par personne${t.intraTotal ? ` ; intra ${euros(t.intraTotal)} pour un groupe dans vos locaux` : ''}`
-  if (t?.intraTotal) return `${euros(t.intraTotal)} pour un groupe en intra`
+  if (t?.interJour) return `inter ${euros(t.interJour)} par jour et par stagiaire${t.intraJour ? ` ; intra ${euros(t.intraJour)} par jour pour le groupe, dans vos locaux` : ''} (6 à 8 participants)`
+  if (t?.intraJour) return `${euros(t.intraJour)} par jour pour le groupe en intra (6 à 8 participants)`
   return 'sur devis'
 }
 
@@ -164,11 +164,11 @@ const INTENTIONS = [
     rep: (t, _, mots) => {
       const f = trouverFormation(t, mots)
       if (f) return { texte: ficheCourte(f), suggestions: ['Le financement', 'Être rappelé'], formation: f }
-      const prix = FORMATIONS.map((x) => x.tarifs?.interTotal).filter(Boolean)
+      const prix = FORMATIONS.map((x) => x.tarifs?.interJour).filter(Boolean)
       return {
         texte: [
-          `Nos formations vont de ${euros(Math.min(...prix))} à ${euros(Math.max(...prix))} par personne en inter-entreprises, prix nets (TVA non applicable, art. 293 B du CGI).`,
-          'En intra, dans vos locaux, le prix est fixé pour tout le groupe. Quelle formation vous intéresse ?',
+          `En inter-entreprises, nos formations vont de ${euros(Math.min(...prix))} à ${euros(Math.max(...prix))} par jour et par stagiaire, prix nets (TVA non applicable, art. 293 B du CGI).`,
+          'En intra, dans vos locaux, le prix est fixé par jour pour tout le groupe, de 6 à 8 personnes. Quelle formation vous intéresse ?',
         ],
         suggestions: FORMATIONS.slice(0, 4).map((x) => x.nom),
       }

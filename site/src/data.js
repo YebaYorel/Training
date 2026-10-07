@@ -42,7 +42,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0011',
     cat: 'ia',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     badge: 'Le socle',
     public: 'Tout salarié, manager ou dirigeant qui utilise, ou va utiliser, un outil d’IA générative.',
     cles: ['Bien demander', 'Trier les données', 'Détecter les erreurs', 'Assistant sur mesure'],
@@ -60,7 +60,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0006',
     cat: 'ia',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     public: 'Équipes équipées de Microsoft 365 qui produisent chaque semaine documents, analyses, courriels.',
     cles: ['Périmètre', 'Prompt', 'Production', 'Preuve'],
     objectifs: [
@@ -74,7 +74,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0009',
     cat: 'ia',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     public: 'Artisans, commerçants, indépendants : sans site, ou dépendants d’un prestataire pour chaque ligne.',
     cles: ['Cahier des charges à l’oral', 'Génération guidée', 'Site conforme', 'Autonomie'],
     objectifs: [
@@ -88,7 +88,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0015',
     cat: 'ia',
-    effectif: '4 à 8 stagiaires',
+    effectif: '6 à 8 stagiaires',
     badge: 'Souveraineté',
     public: 'Cabinets comptables et juridiques, santé, RH, bureaux d’études, collectivités : données sensibles.',
     cles: ['IA sur votre poste', 'Réseau coupé', 'Vos documents', 'Coût sur 36 mois'],
@@ -120,7 +120,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0002',
     cat: 'auto',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     badge: 'Sans code',
     public: 'Dirigeants de TPE-PME, indépendants et fonctions administratives.',
     cles: ['Déclencheur', 'Conditions', 'Actions', 'Temps gagné'],
@@ -135,7 +135,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0013',
     cat: 'auto',
-    effectif: '4 à 8 stagiaires',
+    effectif: '6 à 8 stagiaires',
     badge: 'Avancé',
     public: 'Dirigeants, référents IA, chefs de projet et profils techniques, ou anciens stagiaires de « IA générative au travail ».',
     cles: ['Agents autonomes', 'Point d’arrêt humain', 'Traçabilité', 'Arrêt d’urgence'],
@@ -152,7 +152,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0010',
     cat: 'auto',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     public: 'Dirigeants, commerciaux, chargés de communication qui écrivent à des clients ou prospects.',
     cles: ['Base conforme', 'Objet qui accroche', 'Séquences', 'Délivrabilité'],
     objectifs: [
@@ -166,7 +166,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0004',
     cat: 'vente',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     public: 'Créateurs d’entreprise, indépendants, commerciaux débutants.',
     cles: ['Découverte', 'Proposition de valeur', 'Objections', 'Conclusion'],
     objectifs: [
@@ -180,7 +180,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0008',
     cat: 'vente',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     public: 'Encadrants de proximité, chefs d’équipe, dirigeants de TPE qui encadrent directement.',
     cles: ['Poser un cadre', 'Déléguer', 'Recadrer', 'Reconnaître'],
     objectifs: [
@@ -194,7 +194,7 @@ const EDITORIAL = [
   {
     ref: 'FOR-0003',
     cat: 'gouv',
-    effectif: '4 à 10 stagiaires',
+    effectif: '6 à 8 stagiaires',
     badge: 'Gouvernance',
     public: 'Dirigeants, responsables administratifs, et tout salarié qui manipule des données personnelles.',
     cles: ['6 principes', 'Registre', 'Charte IA', 'Violation : 72 h'],
@@ -387,7 +387,7 @@ export const FAQ = [
   ],
   [
     'Intra ou inter, quelle différence ?',
-    'En intra, nous venons dans vos locaux, pour votre équipe, sur vos cas. En inter, vous rejoignez d’autres entreprises en salle de séminaire : idéal pour une ou deux personnes.',
+    'En intra, nous venons dans vos locaux, pour votre équipe, sur vos cas. En inter, vous rejoignez d’autres entreprises en salle de séminaire : idéal pour une ou deux personnes. Dans les deux cas, le groupe compte 6 participants minimum et 8 au maximum.',
   ],
   [
     'Nos données sont-elles en sécurité pendant la formation ?',

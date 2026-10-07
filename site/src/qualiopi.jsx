@@ -235,14 +235,14 @@ function Texte({ texte }) {
   return texte.split('\n').map((l, k) => {
     const t = l.trim()
     if (!t || /^─+$/.test(t)) return null
-    if (/^(TITRE|ACCUSÉ)/.test(t) || (t === t.toUpperCase() && /[A-Z]/.test(t) && t.length > 12)) return <h4 key={k}>{t}</h4>
+    if (/^(TITRE|ACCUSÉ)/.test(t) || (t === t.toUpperCase() && /[A-Z]/.test(t) && t.length > 4 && !/^[•\-]/.test(t))) return <h4 key={k}>{t}</h4>
     if (/^Article \d+/.test(t)) return <h5 key={k}>{t}</h5>
     if (/^[•\-]\s/.test(t)) return <p key={k} className="q-puce">{t.replace(/^[•\-]\s*/, '')}</p>
     return <p key={k}>{t}</p>
   })
 }
 
-function Lecteur({ d, onFermer }) {
+export function Lecteur({ d, onFermer }) {
   const ref = useRef(null)
   useEffect(() => {
     const avant = document.activeElement

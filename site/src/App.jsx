@@ -16,6 +16,7 @@ import {
   ArrowDown,
   ArrowRight,
   BadgeCheck,
+  BookOpen,
   Bot,
   Building2,
   CalendarClock,
@@ -23,6 +24,7 @@ import {
   Clock,
   Cpu,
   Database,
+  FileDown,
   Globe,
   GraduationCap,
   HeartHandshake,
@@ -46,9 +48,11 @@ import { AGENDA, CERTIFS, CONSEIL_GOUVERNANCE, ENTREPRISE, FILTRES, FINANCEURS, 
 import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } from './anim.jsx'
 import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 import Lanceur from './ifa/Lanceur.jsx'
-import Qualiopi from './qualiopi.jsx'
+import Qualiopi, { Lecteur } from './qualiopi.jsx'
+import { DOCS_GOUVERNANCE } from './gouvernance-docs.js'
 import Studio from './studio.jsx'
 import { useIntroTerminee } from './intro.jsx'
+import DEROULES from './deroules.json'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
@@ -576,8 +580,8 @@ function Chiffres() {
             <span>jours ouvrés minimum entre l’inscription et le démarrage.</span>
           </Reveal>
           <Reveal className="chiffre" delay={0.2}>
-            <Compteur vers={10} />
-            <span>stagiaires au plus par groupe : chacun sur son poste.</span>
+            <Compteur vers={8} />
+            <span>stagiaires au plus par groupe, 6 au minimum : chacun est suivi.</span>
           </Reveal>
           <Reveal className="chiffre" delay={0.3}>
             <Compteur vers={FORMATIONS.length} />
@@ -626,8 +630,8 @@ function Catalogue({ profil, onEffacerProfil }) {
         <TitreAnime id="titre-formations" texte="Des formations qui disent ce qu’elles vous apportent." accent={[5, 6]} />
         <Reveal>
           <p className="intro">
-            Le nom dit ce que vous saurez faire. Sur chaque carte : le prix inter (par personne) et le prix intra (pour votre
-            groupe), côte à côte, et le matériel à prévoir. Sur chaque fiche : le programme heure par heure.
+            Le nom dit ce que vous saurez faire. Sur chaque carte : le prix inter (par jour et par stagiaire) et le prix intra (par
+            jour pour votre groupe), côte à côte, et le matériel à prévoir. Sur chaque fiche : le programme heure par heure.
           </p>
         </Reveal>
         <LayoutGroup>
@@ -687,8 +691,8 @@ function Catalogue({ profil, onEffacerProfil }) {
         <Agenda />
         <Reveal>
           <p className="note" style={{ marginTop: 28 }}>
-            Inter : prix par personne, en salle avec d’autres entreprises (4 à 10 participants). Intra : prix pour votre groupe,
-            dans vos locaux, jusqu’à 10 personnes. Prix nets de taxe : TVA non applicable, article 293 B du code général des
+            Inter : prix par jour et par stagiaire, en salle avec d’autres entreprises. Intra : prix par jour pour votre groupe,
+            dans vos locaux. Dans les deux cas, 6 participants minimum et 8 au maximum. Prix nets de taxe : TVA non applicable, article 293 B du code général des
             impôts. Informations issues de notre base de formation, mise à jour le {new Date(SYNCHRO).toLocaleDateString('fr-FR')}.
           </p>
         </Reveal>
@@ -780,7 +784,7 @@ function CarteFormation({ f, onOuvrir, vedette }) {
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       aria-haspopup="dialog"
-      aria-label={`${f.nom} : ${f.sousTitre}. ${t?.interTotal ? `Inter ${euros(t.interTotal)} par personne. ` : ''}${t?.intraTotal ? `Intra ${euros(t.intraTotal)} pour le groupe. ` : ''}Voir la fiche complète`}
+      aria-label={`${f.nom} : ${f.sousTitre}. ${t?.interJour ? `Inter ${euros(t.interJour)} par jour et par stagiaire. ` : ''}${t?.intraJour ? `Intra ${euros(t.intraJour)} par jour pour le groupe. ` : ''}Voir la fiche complète`}
     >
       <motion.div className="formation-tete" layoutId={'tete-' + f.ref}>
         {f.badge && <span className="badge">{f.badge}</span>}
@@ -808,12 +812,14 @@ function CarteFormation({ f, onOuvrir, vedette }) {
           {t ? (
             <div className="prix-duo">
               <span className="prix-col">
-                <small>Inter · par pers.</small>
-                <strong>{t.interTotal ? euros(t.interTotal) : '—'}</strong>
+                <small>Inter</small>
+                <strong>{t.interJour ? euros(t.interJour) : '—'}</strong>
+                <small>par jour et par stagiaire</small>
               </span>
               <span className="prix-col intra">
-                <small>Intra · le groupe</small>
-                <strong>{t.intraTotal ? euros(t.intraTotal) : 'Sur devis'}</strong>
+                <small>Intra</small>
+                <strong>{t.intraJour ? euros(t.intraJour) : 'Sur devis'}</strong>
+                <small>par jour pour le groupe</small>
               </span>
             </div>
           ) : (
@@ -857,7 +863,49 @@ function lireProgramme(texte) {
   return { intro, jours }
 }
 
-function Deroule({ texte }) {
+/* Déroulé structuré (même source que le programme PDF) : horaires, séquences, contenus, méthodes. */
+function DerouleStructure({ d }) {
+  return (
+    <div className="deroule">
+      {d.deroule.map((j, k) => (
+        <div key={k} className="deroule-jour">
+          <h4>{d.deroule.length > 1 ? `Jour ${k + 1}` : 'La journée'}{j.titre ? ` — ${j.titre}` : ''}</h4>
+          <p className="deroule-fil">{j.fil.charAt(0).toUpperCase() + j.fil.slice(1)}</p>
+          <ol>
+            {j.lignes.map(([heure, duree, seq, contenu, methode], i) =>
+              /^pause/i.test(seq) ? (
+                <li key={i} className="deroule-pause">
+                  <time>{heure.replace('-', '–')}</time> <span>{seq}{contenu !== '-' ? ` · ${contenu.toLowerCase()}` : ''}</span>
+                </li>
+              ) : (
+                <li key={i} className="deroule-creneau">
+                  <time>
+                    {heure.replace('-', '–')}
+                    <small>{duree}</small>
+                  </time>
+                  <div>
+                    <strong>{seq}</strong>
+                    <p>{contenu}</p>
+                    {methode !== '-' && <p className="deroule-methode">Méthode : {methode}</p>}
+                  </div>
+                </li>
+              ),
+            )}
+          </ol>
+          {j.livrables?.length > 0 && (
+            <p className="livrable">
+              <Check size={16} aria-hidden="true" /> Vous repartez avec : {j.livrables.join(' · ')}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Deroule({ texte, refFormation }) {
+  const structure = DEROULES[refFormation]
+  if (structure) return <DerouleStructure d={structure} />
   const { intro, jours } = lireProgramme(texte)
   if (!jours.length) return <p>Programme détaillé sur demande.</p>
   return (
@@ -1031,7 +1079,12 @@ function FicheFormation({ f, onFermer }) {
               )}
               {onglet === 'deroule' && (
                 <>
-                  <Deroule texte={f.programme} />
+                  {DEROULES[f.ref]?.fichier && (
+                    <a className="btn btn-bleu btn-petit lien-pdf" href={'programmes/' + DEROULES[f.ref].fichier} target="_blank" rel="noopener">
+                      <FileDown size={18} aria-hidden="true" /> Télécharger le programme complet (PDF)
+                    </a>
+                  )}
+                  <Deroule texte={f.programme} refFormation={f.ref} />
                   <p className="discret">
                     {f.titre} — réf. {f.ref}
                     {f.revision && `, version du ${new Date(f.revision).toLocaleDateString('fr-FR')}`}. Ce programme est
@@ -1061,28 +1114,28 @@ function FicheFormation({ f, onFermer }) {
                 <>
                   {t ? (
                     <div className="tarifs">
-                      {t.interTotal && (
+                      {t.interJour && (
                         <div>
                           <span>Inter-entreprises</span>
-                          <strong>{euros(t.interTotal)}</strong>
-                          <small>par personne · soit {euros(t.interJour)} / jour</small>
+                          <strong>{euros(t.interJour)}</strong>
+                          <small>par jour et par stagiaire</small>
                         </div>
                       )}
-                      {t.intraTotal && (
+                      {t.intraJour && (
                         <div>
                           <span>Intra-entreprise</span>
-                          <strong>{euros(t.intraTotal)}</strong>
-                          <small>
-                            pour le groupe, jusqu’à 10 personnes
-                            {t.supplement ? ` · +${euros(t.supplement)} / pers. / jour au-delà` : ''}
-                          </small>
+                          <strong>{euros(t.intraJour)}</strong>
+                          <small>par jour pour le groupe, dans vos locaux</small>
                         </div>
                       )}
                     </div>
                   ) : (
                     <p>Tarif sur devis.</p>
                   )}
-                  {t?.mentionTva && <p className="discret">Prix nets de taxe — {t.mentionTva}.</p>}
+                  <p className="discret">
+                    Durée : {f.jours} jour{f.jours > 1 ? 's' : ''} ({f.heures} heures). Effectif : 6 participants minimum, 8 au maximum, en
+                    inter comme en intra.{t?.mentionTva && ` Prix nets de taxe — ${t.mentionTva}.`}
+                  </p>
                   <h4>Financements possibles</h4>
                   <ul className="financeurs">
                     {(f.financements ?? []).map((n) => (
@@ -1380,18 +1433,13 @@ function Methode() {
 
 /* ---------- Gouvernance ---------- */
 function Gouvernance() {
+  const [lu, setLu] = useState(null)
+  const [theme, setTheme] = useState('tous')
   const listes = [
-    {
-      titre: 'RGPD',
-      ref: 'Règlement (UE) 2016/679',
-      items: ['Registre des traitements', 'Durées de conservation', 'Tri des données saisies dans l’IA', 'Procédure en cas de violation'],
-    },
-    {
-      titre: 'IA Act',
-      ref: 'Règlement (UE) 2024/1689',
-      items: ['Inventaire de vos usages d’IA', 'Niveau de risque de chaque usage', 'Mentions de transparence', 'Supervision humaine documentée'],
-    },
+    { titre: 'RGPD', ref: 'Règlement (UE) 2016/679' },
+    { titre: 'IA Act', ref: 'Règlement (UE) 2024/1689' },
   ]
+  const docs = DOCS_GOUVERNANCE.filter((d) => theme === 'tous' || d.theme === theme)
   return (
     <section id="gouvernance" className="sombre" aria-labelledby="titre-gouv">
       <Pitons couleur="var(--bleu-nuit)" fond="var(--creme)" />
@@ -1403,7 +1451,7 @@ function Gouvernance() {
         <Reveal>
           <p className="intro">
             Nous ne vendons pas de « mise en conformité » miracle. Nous vous aidons à savoir ce que vous faites, à le
-            documenter et à prouver les mesures prises.
+            documenter et à prouver les mesures prises. Chaque point ci-dessous ouvre le document de travail correspondant.
           </p>
         </Reveal>
         <div className="gouv">
@@ -1414,9 +1462,9 @@ function Gouvernance() {
               </h3>
               <span className="ref">{l.ref}</span>
               <ul className="coches">
-                {l.items.map((it, k) => (
+                {DOCS_GOUVERNANCE.filter((d) => d.theme === l.titre && d.item).map((d, k) => (
                   <motion.li
-                    key={it}
+                    key={d.ref}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 1 }}
@@ -1431,13 +1479,51 @@ function Gouvernance() {
                     >
                       <Check size={20} strokeWidth={3} aria-hidden="true" />
                     </motion.span>
-                    {it}
+                    <button className="gouv-lien" onClick={() => setLu(d)}>
+                      {d.item} <ArrowRight size={16} aria-hidden="true" />
+                    </button>
                   </motion.li>
                 ))}
               </ul>
             </Reveal>
           ))}
         </div>
+
+        <div className="gouv-biblio" aria-labelledby="titre-biblio-gouv">
+          <div className="gouv-biblio-tete">
+            <h3 id="titre-biblio-gouv">
+              <BookOpen size={28} aria-hidden="true" /> Bibliothèque de documents RGPD & IA Act
+            </h3>
+            <p>{DOCS_GOUVERNANCE.length} modèles et fiches pratiques, en lecture libre. À adapter à votre entreprise : ils ne remplacent pas un conseil juridique.</p>
+          </div>
+          <div className="filtres gouv-filtres" role="group" aria-label="Filtrer par réglementation">
+            {[
+              ['tous', 'Tous'],
+              ['RGPD', 'RGPD'],
+              ['IA Act', 'IA Act'],
+            ].map(([id, l]) => (
+              <button key={id} className="filtre" aria-pressed={theme === id} onClick={() => setTheme(id)}>
+                <span>{l}</span>
+              </button>
+            ))}
+          </div>
+          <ul className="gouv-docs">
+            {docs.map((d) => (
+              <li key={d.ref} className="gouv-doc">
+                <span className={'gouv-theme ' + (d.theme === 'RGPD' ? 'rgpd' : 'iaact')}>{d.theme}</span>
+                <p className="gouv-doc-ref">
+                  {d.ref} · v{d.version}
+                </p>
+                <h4>{d.titre}</h4>
+                <p>{d.resume}</p>
+                <button className="btn btn-or btn-petit" onClick={() => setLu(d)}>
+                  <BookOpen size={18} aria-hidden="true" /> Lire en ligne
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <Reveal className="souverain">
           <Globe size={48} color="#C9A84C" aria-hidden="true" />
           <p>
@@ -1447,6 +1533,7 @@ function Gouvernance() {
         </Reveal>
       </div>
       <Pitons couleur="var(--creme)" fond="var(--bleu-nuit)" />
+      <AnimatePresence>{lu && <Lecteur d={lu} onFermer={() => setLu(null)} />}</AnimatePresence>
     </section>
   )
 }
