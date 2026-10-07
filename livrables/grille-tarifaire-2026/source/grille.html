@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Grille tarifaire 2026 — YEBA FORMATIONS</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+@page{size:210mm 297mm;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#222}
+body{font-family:Inter,"Montserrat",sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+.mono{font-family:"Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
+
+/* ============ COUVERTURE ============ */
+.cover{background:var(--night);color:#fff}
+.cover .hero{position:absolute;inset:0 0 auto 0;height:178mm;background:url(assets/ia.jpg) 50% 50%/cover no-repeat}
+.cover .hero::after{content:"";position:absolute;inset:0;
+  background:
+   linear-gradient(180deg,rgba(6,18,42,.85) 0%,rgba(6,18,42,0) 16%,rgba(6,18,42,0) 58%,rgba(6,18,42,.75) 82%,var(--night) 100%),
+   radial-gradient(120% 70% at 50% 45%,rgba(6,18,42,0) 55%,rgba(6,18,42,.6) 100%)}
+.hud{position:absolute;top:9mm;left:12mm;right:12mm;display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--gold-hi);z-index:3}
+.hud .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);margin-right:6px;vertical-align:1px}
+.hud-line{position:absolute;top:16mm;left:12mm;right:12mm;height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.15) 40%,rgba(69,211,245,.15) 60%,var(--cyan));z-index:3}
+.year{position:absolute;top:22mm;right:12mm;z-index:3;text-align:right}
+.year b{display:block;font-family:Montserrat;font-weight:900;font-size:13pt;letter-spacing:.18em;color:#fff}
+.year span{font-size:8pt;color:#C7D3E8}
+.net{position:absolute;left:0;right:0;top:120mm;height:80mm;z-index:2;opacity:.9}
+.cover .logo{position:absolute;top:146mm;left:50%;transform:translateX(-50%);width:66mm;z-index:4;filter:drop-shadow(0 0 18px rgba(6,18,42,.9))}
+.cover .content{position:absolute;left:14mm;right:14mm;top:208mm;text-align:center;z-index:4}
+.cover h1{font-family:Montserrat;font-weight:900;font-size:34pt;line-height:1.02;letter-spacing:-.01em}
+.cover h1 .g{color:var(--gold-hi)}
+.cover .kw{margin-top:4.5mm;font-family:Montserrat;font-weight:600;font-size:12.5pt;color:#DCE5F4;letter-spacing:.02em}
+.cover .kw i{font-style:normal;color:var(--cyan);padding:0 2.2mm}
+.pill{display:inline-flex;align-items:baseline;gap:3mm;margin-top:6mm;padding:3mm 7mm;border:1.4px solid var(--gold);border-radius:40px;
+  background:linear-gradient(90deg,rgba(201,168,76,.18),rgba(27,58,107,.55));box-shadow:0 0 24px rgba(201,168,76,.25)}
+.pill small{font-family:Montserrat;font-weight:600;font-size:11pt;color:#E8EEF8}
+.pill b{font-family:Montserrat;font-weight:900;font-size:22pt;color:var(--gold-hi)}
+.proofs{position:absolute;left:10mm;right:10mm;bottom:12mm;display:flex;flex-wrap:wrap;justify-content:center;gap:2mm;z-index:4}
+.chip{font-size:7.6pt;padding:1.6mm 3mm;border:1px solid rgba(201,168,76,.55);border-radius:3px;color:#E9EEF7;background:rgba(27,58,107,.45)}
+.chip b{color:var(--gold-hi);font-weight:700}
+.next{position:absolute;bottom:5mm;left:0;right:0;text-align:center;font-size:7pt;color:#8FA2C2;z-index:4}
+
+/* ============ TARIFS ============ */
+.prices{background:var(--paper)}
+.ph{position:relative;height:40mm;background:linear-gradient(115deg,var(--night) 0%,var(--navy) 70%,#24497F 100%);color:#fff;padding:7mm 12mm 0 12mm;overflow:hidden}
+.ph .circuit{position:absolute;right:0;top:0;height:100%;opacity:.55}
+.ph .logo{position:absolute;left:12mm;top:7mm;width:25mm}
+.ph .ttl{position:absolute;left:44mm;top:8.5mm}
+.ph .ttl .mono{font-size:8pt;color:var(--gold-hi)}
+.ph h2{font-family:Montserrat;font-weight:900;font-size:25pt;line-height:1.05;margin-top:1.4mm}
+.ph .sub{margin-top:1.6mm;font-size:9.5pt;color:#D5DFEF;font-weight:500}
+.ph .sub b{color:#fff}
+.legend{display:flex;justify-content:flex-end;gap:5mm;margin:4mm 12mm 0;font-size:8pt;color:var(--muted);font-weight:600}
+.legend span b{color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:3.6mm;margin:2.4mm 12mm 0}
+.card{background:#fff;border:1px solid var(--line);border-radius:3.2mm;padding:3.6mm 4mm 3mm;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1.6mm;background:var(--navy)}
+.card.l4{background:linear-gradient(160deg,var(--navy),var(--night));color:#fff;border-color:var(--navy)}
+.card.l4::before{background:var(--gold)}
+.card .top{display:flex;justify-content:space-between;align-items:center}
+.card .lv{font-family:"Mono";font-weight:700;font-size:8pt;letter-spacing:.12em;color:var(--navy)}
+.card.l4 .lv{color:var(--gold-hi)}
+.sig{display:flex;gap:1mm;align-items:flex-end;height:4.2mm}
+.sig i{width:1.6mm;border-radius:1px;background:#CAD4E5}
+.sig i:nth-child(1){height:35%}.sig i:nth-child(2){height:58%}.sig i:nth-child(3){height:80%}.sig i:nth-child(4){height:100%}
+.sig i.on{background:var(--gold)}
+.card.l4 .sig i{background:rgba(255,255,255,.25)} .card.l4 .sig i.on{background:var(--gold-hi)}
+.card h3{font-family:Montserrat;font-weight:800;font-size:13.5pt;margin-top:1.2mm;line-height:1.1}
+.rate{display:flex;gap:3mm;margin-top:2.4mm}
+.rate div{flex:1;border-radius:2mm;padding:1.8mm 2.4mm;background:#EEF2F9}
+.card.l4 .rate div{background:rgba(255,255,255,.08);border:1px solid rgba(226,196,110,.35)}
+.rate b{display:block;font-family:Montserrat;font-weight:900;font-size:17pt;color:var(--navy);line-height:1}
+.card.l4 .rate b{color:var(--gold-hi)}
+.rate small{display:block;margin-top:.8mm;font-size:7.4pt;font-weight:600;color:var(--muted)}
+.card.l4 .rate small{color:#C8D4EA}
+table{width:100%;border-collapse:collapse;margin-top:2.4mm;font-size:8.6pt}
+th{font-size:6.8pt;font-weight:700;color:var(--muted);text-align:right;padding:0 0 1mm;letter-spacing:.04em;text-transform:uppercase}
+th:first-child{text-align:left}
+.card.l4 th{color:#B9C7E0}
+td{padding:1.35mm 0;border-top:1px solid #E6EBF3;vertical-align:baseline}
+.card.l4 td{border-top-color:rgba(255,255,255,.14)}
+td.n{font-weight:700;line-height:1.15}
+td.d{white-space:nowrap;color:var(--muted);font-weight:600;font-size:7.8pt;text-align:center;width:9mm}
+.card.l4 td.d{color:#C8D4EA}
+td.p{text-align:right;white-space:nowrap;font-weight:700;width:15mm;font-variant-numeric:tabular-nums}
+td.p.i{color:var(--navy);font-weight:800}
+.card.l4 td.p.i{color:var(--gold-hi)}
+.new{display:inline-block;margin-left:1.4mm;font-size:6pt;font-weight:800;letter-spacing:.06em;padding:.4mm 1.3mm;border-radius:1mm;background:var(--navy);color:#fff;vertical-align:1px}
+.note{font-size:6.8pt;color:var(--muted);margin-top:1.4mm;line-height:1.3}
+.card.l4 .note{color:#C8D4EA}
+
+.row2{display:grid;grid-template-columns:1.12fr 1fr;gap:3.6mm;margin:3.6mm 12mm 0}
+.calc{border-radius:3.2mm;padding:3.4mm 4.2mm;background:#fff;border:1.4px solid var(--gold);position:relative}
+.calc .mono{font-size:7.4pt;color:var(--navy);font-weight:700}
+.calc p{font-family:Montserrat;font-weight:800;font-size:11.5pt;line-height:1.2;margin-top:1.4mm}
+.calc p b{color:var(--navy);background:linear-gradient(transparent 62%,rgba(201,168,76,.45) 62%)}
+.calc .ex{margin-top:1.6mm;font-size:7.6pt;color:var(--muted);line-height:1.35}
+.consult{border-radius:3.2mm;padding:3.4mm 4.2mm;background:var(--ink);color:#fff}
+.consult .mono{font-size:7.4pt;color:var(--gold-hi);font-weight:700}
+.consult ul{list-style:none;margin-top:1.6mm}
+.consult li{display:flex;justify-content:space-between;align-items:baseline;font-size:9pt;padding:1mm 0;border-top:1px solid rgba(255,255,255,.12);font-weight:600}
+.consult li:first-child{border-top:0}
+.consult li b{font-family:Montserrat;font-weight:900;font-size:11.5pt;color:var(--gold-hi)}
+.consult .note{color:#AFC0DC}
+
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:2.4mm;margin:3.6mm 12mm 0}
+.fact{background:#fff;border:1px solid var(--line);border-radius:2.4mm;padding:2.4mm 2.6mm;font-size:7.5pt;line-height:1.32;color:var(--muted)}
+.fact b{display:block;font-family:Montserrat;font-weight:800;font-size:8.6pt;color:var(--ink);margin-bottom:.6mm}
+.fact .ic{display:inline-block;width:5mm;height:5mm;vertical-align:-1.4mm;margin-right:1.2mm}
+
+.cta{display:flex;align-items:center;justify-content:space-between;margin:3.6mm 12mm 0;padding:3mm 4.5mm;border-radius:3.2mm;
+  background:linear-gradient(90deg,var(--navy),#24497F);color:#fff}
+.cta .l{font-family:Montserrat;font-weight:800;font-size:11.5pt}
+.cta .l small{display:block;font-family:Inter;font-weight:500;font-size:8pt;color:#D5DFEF;margin-top:.6mm}
+.cta .r{text-align:right;font-family:Montserrat;font-weight:800;font-size:12pt;color:var(--gold-hi)}
+.cta .r small{display:block;font-family:Inter;font-size:8.4pt;color:#fff;font-weight:600}
+
+.foot{position:absolute;left:12mm;right:12mm;bottom:5mm;font-size:6.3pt;line-height:1.38;color:var(--muted);border-top:1px solid var(--line);padding-top:1.8mm;display:flex;gap:5mm}
+.foot div:first-child{flex:1.35}.foot div:last-child{flex:1}
+.foot b{color:var(--ink)}
+</style></head>
+<body>
+
+<!-- ===================== PAGE 1 — COUVERTURE ===================== -->
+<section class="page cover">
+  <div class="hero" role="img" aria-label="Couloir lumineux de circuits bleus et dorés convergeant vers les lettres AI"></div>
+  <div class="hud mono"><span><span class="dot"></span>YEBA FORMATIONS · Système IA</span><span>974 · La Réunion</span></div>
+  <div class="hud-line"></div>
+  <div class="year"><b>TARIFS 2026</b><span class="mono">Grille officielle</span></div>
+
+  <svg class="net" viewBox="0 0 794 302" preserveAspectRatio="none" aria-hidden="true">
+    <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#45D3F5" stop-opacity=".0"/><stop offset=".25" stop-color="#45D3F5" stop-opacity=".55"/><stop offset=".75" stop-color="#C9A84C" stop-opacity=".55"/><stop offset="1" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs>
+    <g stroke="url(#lg)" stroke-width="1" fill="none">
+      <path d="M0 210 L90 170 L170 205 L255 150 L330 190"/>
+      <path d="M464 190 L540 150 L625 205 L705 168 L794 212"/>
+      <path d="M90 170 L120 255 L170 205 M255 150 L230 250 M540 150 L565 250 M705 168 L675 255 L625 205"/>
+    </g>
+    <g fill="#E2C46E"><circle cx="90" cy="170" r="3"/><circle cx="255" cy="150" r="3"/><circle cx="540" cy="150" r="3"/><circle cx="705" cy="168" r="3"/></g>
+    <g fill="#45D3F5"><circle cx="170" cy="205" r="2.4"/><circle cx="625" cy="205" r="2.4"/><circle cx="120" cy="255" r="2"/><circle cx="675" cy="255" r="2"/><circle cx="230" cy="250" r="2"/><circle cx="565" cy="250" r="2"/></g>
+  </svg>
+
+  <img class="logo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+
+  <div class="content">
+    <h1>Passez à l’IA.<br><span class="g">Gardez la main.</span></h1>
+    <div class="kw">Former<i>·</i>Automatiser<i>·</i>Sécuriser RGPD &amp; IA Act</div>
+    <div class="pill"><small>dès</small><b>690 €</b><small>/ personne · journée de 8 h</small></div>
+  </div>
+
+  <div class="proofs">
+    <span class="chip"><b>Qualiopi</b> · actions de formation</span>
+    <span class="chip"><b>Google</b> AI Specialist</span>
+    <span class="chip"><b>Google</b> Professional AI</span>
+    <span class="chip"><b>ANSSI</b> SecNumacadémie</span>
+    <span class="chip"><b>CNIL</b> MOOC RGPD</span>
+    <span class="chip"><b>Référent</b> handicap</span>
+  </div>
+  <div class="next mono">Tous les tarifs en page 2 →</div>
+</section>
+
+<!-- ===================== PAGE 2 — TARIFS ===================== -->
+<section class="page prices">
+  <header class="ph">
+    <svg class="circuit" viewBox="0 0 300 150" aria-hidden="true">
+      <g fill="none" stroke-width="1.2">
+        <path d="M300 22 H210 L190 42 H120" stroke="#45D3F5" stroke-opacity=".7"/>
+        <path d="M300 58 H240 L222 76 H150" stroke="#C9A84C" stroke-opacity=".8"/>
+        <path d="M300 94 H200 L180 114 H110" stroke="#45D3F5" stroke-opacity=".5"/>
+        <path d="M300 128 H250 L236 140 H170" stroke="#C9A84C" stroke-opacity=".6"/>
+      </g>
+      <g fill="#E2C46E"><circle cx="120" cy="42" r="3"/><circle cx="150" cy="76" r="3"/><circle cx="110" cy="114" r="3"/><circle cx="170" cy="140" r="3"/></g>
+    </svg>
+    <img class="logo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+    <div class="ttl">
+      <div class="mono">Grille tarifaire · 2026</div>
+      <h2>4 niveaux. 1 objectif :<br>du temps gagné.</h2>
+      <div class="sub"><b>Prix nets de taxe</b> · TVA non applicable, art. 293 B du CGI · <b>Journée = 8 h</b></div>
+    </div>
+  </header>
+
+  <div class="legend"><span><b>Inter</b> = prix par personne, action complète</span><span><b>Intra</b> = prix pour le groupe, action complète</span></div>
+
+  <div class="grid">
+    <!-- NIVEAU 1 -->
+    <article class="card l1">
+      <div class="top"><span class="lv">NIVEAU 1</span><span class="sig"><i class="on"></i><i></i><i></i><i></i></span></div>
+      <h3>Métiers · Vente &amp; management</h3>
+      <div class="rate"><div><b>690 €</b><small>inter · / pers. / jour</small></div><div><b>2 300 €</b><small>intra · / groupe / jour</small></div></div>
+      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
+        <tr><td class="n">Vente &amp; négociation</td><td class="d">1 j</td><td class="p i">690 €</td><td class="p">2 300 €</td></tr>
+        <tr><td class="n">Manager au quotidien</td><td class="d">1 j</td><td class="p i">690 €</td><td class="p">2 300 €</td></tr>
+      </table>
+    </article>
+    <!-- NIVEAU 2 -->
+    <article class="card l2">
+      <div class="top"><span class="lv">NIVEAU 2</span><span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span></div>
+      <h3>Outils numériques IA</h3>
+      <div class="rate"><div><b>790 €</b><small>inter · / pers. / jour</small></div><div><b>2 500 €</b><small>intra · / groupe / jour</small></div></div>
+      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
+        <tr><td class="n">Site internet IA</td><td class="d">1 j</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr>
+        <tr><td class="n">Emailing IA</td><td class="d">1 j</td><td class="p i">790 €</td><td class="p">2 500 €</td></tr>
+        <tr><td class="n">Copilot Microsoft 365</td><td class="d">2 j</td><td class="p i">1 580 €</td><td class="p">5 000 €</td></tr>
+      </table>
+    </article>
+    <!-- NIVEAU 3 -->
+    <article class="card l3">
+      <div class="top"><span class="lv">NIVEAU 3</span><span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div>
+      <h3>Expertise IA</h3>
+      <div class="rate"><div><b>890 €</b><small>inter · / pers. / jour</small></div><div><b>2 700 €</b><small>intra · / groupe / jour</small></div></div>
+      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
+        <tr><td class="n">IA générative au travail</td><td class="d">3 j</td><td class="p i">2 670 €</td><td class="p">8 100 €</td></tr>
+        <tr><td class="n">Automatisation sans code</td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
+        <tr><td class="n">IA souveraine<span class="new">NOUVEAU</span></td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
+        <tr><td class="n">Assistant IA perso<span class="new">NOUVEAU</span></td><td class="d">2 j</td><td class="p i">1 780 €</td><td class="p">5 400 €</td></tr>
+      </table>
+    </article>
+    <!-- NIVEAU 4 -->
+    <article class="card l4">
+      <div class="top"><span class="lv">NIVEAU 4 · PREMIUM</span><span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <h3>IA avancée · Gouvernance · Dirigeants</h3>
+      <div class="rate"><div><b>990 €</b><small>inter · / pers. / jour</small></div><div><b>2 900 €</b><small>intra · / groupe / jour</small></div></div>
+      <table><tr><th>Formation</th><th style="text-align:center">Durée</th><th>Inter</th><th>Intra</th></tr>
+        <tr><td class="n">Conformité RGPD &amp; IA Act</td><td class="d">1 j</td><td class="p i">990 €</td><td class="p">2 900 €</td></tr>
+        <tr><td class="n">Agents IA</td><td class="d">2 j</td><td class="p i">1 980 €</td><td class="p">5 800 €</td></tr>
+        <tr><td class="n">Séminaire dirigeants IA*</td><td class="d">2 j</td><td class="p i">1 980 €</td><td class="p">5 800 €</td></tr>
+      </table>
+      <div class="note">* Résidentiel, prix par dirigeant · hébergement en sus, au réel.</div>
+    </article>
+  </div>
+
+  <div class="row2">
+    <div class="calc">
+      <div class="mono">⚡ Inter ou intra ? Le bon calcul</div>
+      <p>Dès <b>4 salariés</b> : l’intra est moins cher.<br>Niveau 4 : dès <b>3 salariés</b>.</p>
+      <div class="ex">Exemple niveau 1 : 4 × 690 € = 2 760 € en inter, contre 2 300 € en intra.</div>
+    </div>
+    <div class="consult">
+      <div class="mono">Conseil · Audit · Implémentation IA</div>
+      <ul>
+        <li><span>Diagnostic express · 30 min</span><b>100 €</b></li>
+        <li><span>Demi-journée</span><b>490 €</b></li>
+        <li><span>Journée</span><b>850 €</b></li>
+      </ul>
+      <div class="note">Diagnostic déduit de la prestation suivante. Le conseil n’est pas une action de formation.</div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="fact"><b>Effectifs</b>Inter : 4 à 10. Intra : jusqu’à 10 inclus (8 : Agents IA, Assistant IA perso).</div>
+    <div class="fact"><b>Participant +</b>Par jour, au-delà de l’effectif intra : 120 € · 130 € · 150 € (niv. 1 · 2 · 3-4).</div>
+    <div class="fact"><b>Financement</b>Votre OPCO, selon les règles de votre branche. Dossier monté avec vous.</div>
+    <div class="fact"><b>Accessibilité</b>Référent handicap. Support imprimé en corps 16 : gratuit.</div>
+  </div>
+
+  <div class="cta">
+    <div class="l">Votre diagnostic IA en 30 minutes<small>Délai d’accès : 15 jours ouvrés minimum · Horaires 08h–17h</small></div>
+    <div class="r">0693 32 24 45<small>yebaformations@gmail.com</small></div>
+  </div>
+
+  <footer class="foot">
+    <div><b>YEBA FORMATIONS</b> — Aurélien LUMEKA, directeur · 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion · Tél. 0693 32 24 45 · yebaformations@gmail.com · SIRET 814 622 262 00032 · Déclaration d’activité n° 04973676397 auprès du Préfet de La Réunion. Cet enregistrement ne vaut pas agrément de l’État.</div>
+    <div>Certification Qualiopi n° <b>25FOR02027.1</b> délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA. Frais refacturés à l’identique : salle 200 €/j, restauration 60 €/j/pers. Grille YEBA-DOC-12 v3.0, devis émis à compter du 02/10/2026.</div>
+  </footer>
+</section>
+</body></html>

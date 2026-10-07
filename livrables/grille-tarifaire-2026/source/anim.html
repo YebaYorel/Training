@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Tarifs 2026 animés — YEBA FORMATIONS</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#06122A}
+body{font-family:Inter,sans-serif}
+#stage{width:640px;height:960px;position:relative;overflow:hidden;background:var(--night);color:#fff}
+.scene{position:absolute;inset:0;will-change:transform,opacity}
+.mono{font-family:"Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+
+/* ---- couverture ---- */
+#hero{position:absolute;left:0;top:0;width:640px;height:640px;background:url(assets/ia.jpg) 50% 50%/cover no-repeat;transform-origin:50% 42%}
+#heroShade{position:absolute;left:0;top:0;width:640px;height:640px;
+  background:linear-gradient(180deg,rgba(6,18,42,.85) 0%,rgba(6,18,42,0) 15%,rgba(6,18,42,0) 55%,rgba(6,18,42,.8) 82%,#06122A 100%)}
+#sweep{position:absolute;left:0;top:0;width:640px;height:640px;mix-blend-mode:screen;
+  background:linear-gradient(100deg,transparent 40%,rgba(255,226,150,.0) 44%,rgba(255,226,150,.28) 50%,rgba(69,211,245,.0) 56%,transparent 60%);background-size:300% 100%}
+#glow{position:absolute;left:220px;top:230px;width:200px;height:150px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,215,120,.55),transparent);mix-blend-mode:screen}
+.hud{position:absolute;top:22px;left:28px;right:28px;display:flex;justify-content:space-between;font-size:12px;color:var(--gold-hi)}
+.hud .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);margin-right:7px;vertical-align:0}
+.hline{position:absolute;top:46px;left:28px;right:28px;height:1px;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.15) 40%,rgba(69,211,245,.15) 60%,var(--cyan))}
+.year{position:absolute;top:62px;right:28px;text-align:right}
+.year b{display:block;font-family:Montserrat;font-weight:900;font-size:20px;letter-spacing:.18em}
+#net{position:absolute;left:0;top:430px;width:640px;height:220px}
+#cLogo{position:absolute;left:50%;top:440px;width:210px;transform:translateX(-50%);filter:drop-shadow(0 0 16px rgba(6,18,42,.95))}
+#cText{position:absolute;left:20px;right:20px;top:640px;text-align:center}
+#cText h1{font-family:Montserrat;font-weight:900;font-size:46px;line-height:1.02}
+#cText h1 .g{color:var(--gold-hi)}
+.kw{margin-top:14px;font-family:Montserrat;font-weight:600;font-size:18px;color:#DCE5F4}
+.kw i{font-style:normal;color:var(--cyan);padding:0 7px}
+.pill{position:relative;overflow:hidden;display:inline-flex;align-items:baseline;gap:10px;margin-top:20px;padding:10px 26px;border:2px solid var(--gold);border-radius:40px;background:linear-gradient(90deg,rgba(201,168,76,.18),rgba(27,58,107,.6))}
+.pill small{font-family:Montserrat;font-weight:600;font-size:16px;color:#E8EEF8}
+.pill b{font-family:Montserrat;font-weight:900;font-size:32px;color:var(--gold-hi)}
+#shine{position:absolute;top:0;bottom:0;width:60px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg)}
+.proofs{position:absolute;left:16px;right:16px;bottom:22px;display:flex;flex-wrap:wrap;justify-content:center;gap:7px}
+.chip{font-size:12.5px;padding:5px 9px;border:1px solid rgba(201,168,76,.6);border-radius:4px;color:#E9EEF7;background:rgba(27,58,107,.5)}
+.chip b{color:var(--gold-hi)}
+
+/* ---- tarifs ---- */
+#prices{background:linear-gradient(180deg,#071733 0%,#06122A 100%)}
+.gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(69,211,245,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(69,211,245,.06) 1px,transparent 1px);background-size:32px 32px}
+.ph{position:absolute;left:28px;right:28px;top:26px;display:flex;gap:18px;align-items:center}
+.ph img{width:96px}
+.ph .mono{font-size:12px;color:var(--gold-hi)}
+.ph h2{font-family:Montserrat;font-weight:900;font-size:29px;line-height:1.05;margin-top:4px}
+.sub{position:absolute;left:28px;right:28px;top:150px;font-size:14px;color:#C9D5EA;font-weight:500}
+.sub b{color:#fff}
+.lvl{position:absolute;left:28px;right:28px;height:136px;border-radius:14px;padding:14px 18px;display:flex;gap:14px;
+  background:rgba(27,58,107,.55);border:1px solid rgba(120,150,200,.35);overflow:hidden}
+.lvl::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--cyan)}
+.lvl.l4{background:linear-gradient(120deg,rgba(201,168,76,.28),rgba(27,58,107,.7));border-color:var(--gold)}
+.lvl.l4::before{background:var(--gold)}
+.lvl .info{flex:1;min-width:0}
+.lvl .tag{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--gold-hi);font-weight:700}
+.sig{display:flex;gap:3px;align-items:flex-end;height:15px}
+.sig i{width:5px;border-radius:1px;background:rgba(255,255,255,.22)}
+.sig i:nth-child(1){height:35%}.sig i:nth-child(2){height:58%}.sig i:nth-child(3){height:80%}.sig i:nth-child(4){height:100%}
+.sig i.on{background:var(--gold-hi)}
+.lvl h3{font-family:Montserrat;font-weight:800;font-size:21px;margin-top:5px;line-height:1.1}
+.lvl p{margin-top:6px;font-size:14px;color:#C9D5EA;line-height:1.35}
+.lvl .pr{width:178px;text-align:right;display:flex;flex-direction:column;justify-content:center}
+.lvl .pr b{font-family:Montserrat;font-weight:900;font-size:34px;color:var(--gold-hi);line-height:1}
+.lvl .pr small{font-size:13px;color:#DCE5F4;font-weight:600;margin-top:3px}
+.lvl .pr em{font-style:normal;font-family:Montserrat;font-weight:800;font-size:17px;color:#fff;margin-top:8px}
+.lvl .pr em span{font-family:Inter;font-weight:600;font-size:12.5px;color:#C9D5EA}
+#calc{position:absolute;left:28px;right:28px;top:795px;text-align:center;font-family:Montserrat;font-weight:800;font-size:19px}
+#calc b{color:var(--gold-hi)}
+#cta{position:absolute;left:28px;right:28px;top:836px;height:70px;border-radius:14px;background:linear-gradient(90deg,var(--gold),#E2C46E);color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px}
+#cta .l{font-family:Montserrat;font-weight:900;font-size:19px}
+#cta .l small{display:block;font-family:Inter;font-weight:600;font-size:13px}
+#cta .r{font-family:Montserrat;font-weight:900;font-size:22px;color:var(--ink)}
+.legal{position:absolute;left:20px;right:20px;bottom:14px;text-align:center;font-size:11px;color:#9FB1CF}
+</style></head>
+<body>
+<div id="stage">
+  <!-- SCÈNE 1 : COUVERTURE -->
+  <section class="scene" id="cover">
+    <div style="position:absolute;left:0;top:0;width:640px;height:640px;overflow:hidden"><div id="hero"></div></div><div id="glow"></div><div id="sweep"></div><div id="heroShade"></div>
+    <div class="hud mono"><span><span class="dot"></span>YEBA FORMATIONS · Système IA</span><span>974</span></div>
+    <div class="hline"></div>
+    <div class="year"><b>TARIFS 2026</b></div>
+    <svg id="net" viewBox="0 0 640 220" aria-hidden="true">
+      <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#45D3F5" stop-opacity="0"/><stop offset=".25" stop-color="#45D3F5" stop-opacity=".6"/><stop offset=".75" stop-color="#C9A84C" stop-opacity=".6"/><stop offset="1" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs>
+      <g stroke="url(#lg)" stroke-width="1.2" fill="none">
+        <path d="M0 120 L70 85 L140 118 L200 70 L240 100"/><path d="M400 100 L440 70 L500 118 L570 85 L640 120"/>
+        <path d="M70 85 L95 170 L140 118 M200 70 L185 165 M440 70 L455 165 M570 85 L545 170 L500 118"/>
+      </g>
+      <g class="node" fill="#E2C46E"><circle cx="70" cy="85" r="4"/><circle cx="200" cy="70" r="4"/><circle cx="440" cy="70" r="4"/><circle cx="570" cy="85" r="4"/></g>
+      <g class="node2" fill="#45D3F5"><circle cx="140" cy="118" r="3"/><circle cx="500" cy="118" r="3"/><circle cx="95" cy="170" r="2.5"/><circle cx="545" cy="170" r="2.5"/><circle cx="185" cy="165" r="2.5"/><circle cx="455" cy="165" r="2.5"/></g>
+    </svg>
+    <img id="cLogo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+    <div id="cText">
+      <h1>Passez à l’IA.<br><span class="g">Gardez la main.</span></h1>
+      <div class="kw">Former<i>·</i>Automatiser<i>·</i>RGPD &amp; IA Act</div>
+      <div class="pill"><small>dès</small><b>690 €</b><small>/ pers. · journée de 8 h</small><span id="shine"></span></div>
+    </div>
+    <div class="proofs">
+      <span class="chip"><b>Qualiopi</b> 25FOR02027.1</span>
+      <span class="chip"><b>Google</b> AI Specialist</span>
+      <span class="chip"><b>ANSSI</b> SecNumacadémie</span>
+      <span class="chip"><b>CNIL</b> MOOC RGPD</span>
+    </div>
+  </section>
+
+  <!-- SCÈNE 2 : TARIFS -->
+  <section class="scene" id="prices">
+    <div class="gridbg"></div>
+    <div class="ph"><img src="assets/logo-dark.png" alt="YEBA FORMATIONS"><div><div class="mono">Grille tarifaire · 2026</div><h2>4 niveaux.<br>1 objectif : du temps gagné.</h2></div></div>
+    <div class="sub"><b>Inter</b> = par personne et par jour · <b>Intra</b> = par groupe et par jour</div>
+    <div class="lvl l1" style="top:182px"><div class="info"><div class="tag mono">Niveau 1 <span class="sig"><i class="on"></i><i></i><i></i><i></i></span></div><h3>Vente &amp; management</h3><p>Vente &amp; négociation · Manager au quotidien</p></div>
+      <div class="pr"><b data-v="690">690 €</b><small>inter / pers. / jour</small><em>2 300 € <span>intra / jour</span></em></div></div>
+    <div class="lvl l2" style="top:334px"><div class="info"><div class="tag mono">Niveau 2 <span class="sig"><i class="on"></i><i class="on"></i><i></i><i></i></span></div><h3>Outils numériques IA</h3><p>Site internet IA · Emailing IA · Copilot M365</p></div>
+      <div class="pr"><b data-v="790">790 €</b><small>inter / pers. / jour</small><em>2 500 € <span>intra / jour</span></em></div></div>
+    <div class="lvl l3" style="top:486px"><div class="info"><div class="tag mono">Niveau 3 <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span></div><h3>Expertise IA</h3><p>IA générative · Automatisation n8n · IA souveraine · Assistant IA perso</p></div>
+      <div class="pr"><b data-v="890">890 €</b><small>inter / pers. / jour</small><em>2 700 € <span>intra / jour</span></em></div></div>
+    <div class="lvl l4" style="top:638px"><div class="info"><div class="tag mono">Niveau 4 · Premium <span class="sig"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span></div><h3>IA avancée · Gouvernance</h3><p>RGPD &amp; IA Act · Agents IA · Séminaire dirigeants</p></div>
+      <div class="pr"><b data-v="990">990 €</b><small>inter / pers. / jour</small><em>2 900 € <span>intra / jour</span></em></div></div>
+    <div id="calc">Dès <b>4 salariés</b> : l’intra est moins cher.</div>
+    <div id="cta"><div class="l">Diagnostic IA · 30 min<small>100 € · déduit de la suite</small></div><div class="r">0693 32 24 45</div></div>
+    <div class="legal">Prix nets de taxe · TVA non applicable, art. 293 B du CGI · Détail complet dans la grille PDF</div>
+  </section>
+</div>
+<script>
+// Timeline déterministe : setT(t) en secondes. Boucle de 14 s.
+const D = 14; const LITE = /lite/.test(location.hash);
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const cl = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ease = x => { x = cl(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
+const out = x => 1 - Math.pow(1 - cl(x), 3);
+const span = (t, a, b) => cl((t - a) / (b - a));
+const fmt = n => Math.round(n).toLocaleString('fr-FR').replace(/ | /g, ' ') + ' €';
+function setT(t) {
+  t = ((t % D) + D) % D;
+  // --- couverture (0–5,2 s), retour (13–14 s)
+  const toPrices = LITE ? ease(span(t, 5.0, 5.4)) : ease(span(t, 5.0, 5.9)), back = LITE ? ease(span(t, 13.6, 14.0)) : ease(span(t, 13.0, 14.0));
+  const coverOut = toPrices * (1 - back);
+  $('#cover').style.transform = `translateY(${-coverOut * 120}px) scale(${1 - coverOut * .06})`;
+  $('#cover').style.opacity = 1 - coverOut;
+  $('#prices').style.opacity = coverOut;
+  $('#prices').style.transform = `translateY(${(1 - coverOut) * 140}px)`;
+  const z = t < 6 ? t / 6 : 0;
+  if (!LITE) $('#hero').style.transform = `scale(${1 + .06 * Math.sin(z * Math.PI / 2)})`;
+  $('#sweep').style.backgroundPosition = `${100 - (LITE ? span(t, .8, 2.0) : span(t, .6, 3.2)) * 100}% 0`;
+  $('#glow').style.opacity = .35 + .45 * Math.pow(Math.sin(t * Math.PI / 1.4), 2);
+  if (!LITE) $$('.node circle').forEach((c, i) => c.setAttribute('r', 4 + 2.2 * Math.pow(Math.sin(t * 2.2 + i), 2)));
+  if (!LITE) $$('.node2 circle').forEach((c, i) => c.style.opacity = .35 + .65 * Math.pow(Math.sin(t * 1.8 + i * .9), 2));
+  $('#shine').style.left = (-80 + span(t, 2.6, 3.6) * 520) + 'px';
+  // --- tarifs : entrée en cascade (6–9 s)
+  $$('.lvl').forEach((el, i) => {
+    const k = out(span(t, 5.9 + i * .45, 6.7 + i * .45)) * (1 - back);
+    el.style.opacity = k; el.style.transform = `translateX(${(1 - k) * -60}px)`;
+    const v = +el.querySelector('b').dataset.v;
+    const c = span(t, 6.0 + i * .45, 7.1 + i * .45);
+    el.querySelector('b').textContent = fmt(t > 13 ? v : v * out(c));
+    el.querySelectorAll('.sig i.on').forEach((s, j) => s.style.opacity = t > 6.5 + i * .45 + j * .12 ? 1 : .15);
+  });
+  const k2 = out(span(t, 8.3, 8.9)) * (1 - back);
+  $('#calc').style.opacity = k2; $('#calc').style.transform = `translateY(${(1 - k2) * 16}px)`;
+  const k3 = out(span(t, 8.8, 9.4)) * (1 - back);
+  const pulse = !LITE && t > 9.6 && t < 13 ? 1 + .025 * Math.pow(Math.sin((t - 9.6) * Math.PI / .9), 2) : 1;
+  $('#cta').style.opacity = k3; $('#cta').style.transform = `translateY(${(1 - k3) * 20}px) scale(${pulse})`;
+}
+window.setT = setT;
+if (!/capture/.test(location.hash)) { const t0 = performance.now(); (function f(){ setT((performance.now() - t0) / 1000); requestAnimationFrame(f); })(); }
+else setT(0);
+</script>
+</body></html>
