@@ -2,7 +2,7 @@
 // • catalogue.json est GÉNÉRÉ depuis Airtable (npm run sync) : il décide QUELLES formations sont publiées
 //   (Active + marque YEBA obligatoire, jamais de marque blanche) et porte les informations réglementaires
 //   (durée, tarifs, prérequis, évaluation, accès, handicap, financements, indicateurs — RNQ ind. 1 et 2).
-// • EDITORIAL ci-dessous n'apporte que la mise en scène : nom court, accroche, mots-clés, badge, filtre.
+// • EDITORIAL ci-dessous n'apporte que la mise en scène : module, mots-clés, badge, objectifs reformulés.
 // Jamais de mention « finançable CPF » (aucune certification RNCP/RS) ni « formation obligatoire ».
 import catalogue from './catalogue.json'
 
@@ -19,25 +19,30 @@ export const ENTREPRISE = {
   certificateur: 'Qualitia (accrédité COFRAC)',
 }
 
-export const FILTRES = [
-  { id: 'tout', label: 'Tout voir' },
-  { id: 'ia', label: 'IA générative' },
-  { id: 'auto', label: 'Automatisation' },
-  { id: 'gouv', label: 'RGPD & IA Act' },
-  { id: 'dirigeants', label: 'Dirigeants' },
-  { id: 'metiers', label: 'Vente & management' },
+// Les quatre modules du catalogue, dans l'ordre d'affichage.
+export const MODULES = [
+  { id: 'ia', label: 'Intelligence artificielle', court: 'IA', texte: 'Utiliser l’IA au quotidien, en sécurité, et choisir où elle vous fait gagner du temps.' },
+  { id: 'auto', label: 'Automatisation', court: 'Automatisation', texte: 'Relier vos outils, confier des tâches à des agents, supprimer les ressaisies.' },
+  { id: 'vente', label: 'Vente et management', court: 'Vente & management', texte: 'Vendre sans brader, encadrer une équipe au quotidien.' },
+  { id: 'gouv', label: 'Conseils de gouvernance en entreprise', court: 'Gouvernance', texte: 'RGPD et IA Act : se mettre en règle et prouver les mesures prises.' },
 ]
+export const FILTRES = [{ id: 'tout', label: 'Tout voir' }, ...MODULES.map((m) => ({ id: m.id, label: m.court }))]
 
+// Matériel du stagiaire (champ Airtable) → libellé court affiché sur la carte
+export const MATERIEL = {
+  'Ordinateur portable requis': { court: 'Venir avec son PC portable', niveau: 'requis' },
+  'Ordinateur portable requis — configuration spécifique': { court: 'PC portable requis · configuration précise', niveau: 'specifique' },
+  'Ordinateur conseillé': { court: 'PC portable conseillé', niveau: 'conseille' },
+  'Aucun matériel requis': { court: 'Aucun PC nécessaire', niveau: 'aucun' },
+  'À confirmer': { court: 'Matériel précisé à l’inscription', niveau: 'inconnu' },
+}
+
+// Mise en scène uniquement. Nom et sous-titre viennent du titre Airtable (« Nom : promesse »).
 const EDITORIAL = [
   {
     ref: 'FOR-0011',
-    nom: 'ALLUMAGE-TURBO',
-    sousTitre: "L'IA générative au travail : usages, sécurité, preuves",
     cat: 'ia',
-    jours: 3,
-    heures: 24,
     effectif: '4 à 10 stagiaires',
-    format: 'Inter-entreprise',
     badge: 'Le socle',
     public: 'Tout salarié, manager ou dirigeant qui utilise, ou va utiliser, un outil d’IA générative.',
     cles: ['Bien demander', 'Trier les données', 'Détecter les erreurs', 'Assistant sur mesure'],
@@ -53,36 +58,37 @@ const EDITORIAL = [
     ],
   },
   {
-    ref: 'FOR-0013',
-    nom: 'PILOTE AUTOMATIQUE',
-    sousTitre: 'Agents IA sous contrôle humain — niveau avancé',
+    ref: 'FOR-0006',
     cat: 'ia',
-    jours: 2,
-    heures: 16,
-    effectif: '4 à 8 stagiaires',
-    format: 'Inter-entreprise',
-    badge: 'Avancé',
-    public: 'Dirigeants, référents IA, chefs de projet et profils techniques, ou anciens d’ALLUMAGE-TURBO.',
-    cles: ['Agents autonomes', 'Point d’arrêt humain', 'Traçabilité', 'Arrêt d’urgence'],
+    effectif: '4 à 10 stagiaires',
+    public: 'Équipes équipées de Microsoft 365 qui produisent chaque semaine documents, analyses, courriels.',
+    cles: ['Périmètre', 'Prompt', 'Production', 'Preuve'],
     objectifs: [
-      'Distinguer assistant, agent et système multi-agents',
-      'Mettre en service un agent qui exécute une tâche de bout en bout',
-      'Chaîner deux agents avec une validation humaine obligatoire',
-      'Fixer le niveau d’autonomie acceptable selon le risque',
-      'Tracer qui a décidé, quand, sur quelle donnée',
-      'Qualifier un système au regard de l’IA Act',
-      'Rédiger la procédure d’arrêt d’urgence et de reprise manuelle',
+      'Savoir ce que l’assistant voit, à partir des droits en place',
+      'Construire une demande en désignant ses sources',
+      'Diagnostiquer une réponse décevante et la corriger',
+      'Enchaîner plusieurs applications sur un processus complet',
+      'Argumenter trois mesures de gouvernance pour sa structure',
+    ],
+  },
+  {
+    ref: 'FOR-0009',
+    cat: 'ia',
+    effectif: '4 à 10 stagiaires',
+    public: 'Artisans, commerçants, indépendants : sans site, ou dépendants d’un prestataire pour chaque ligne.',
+    cles: ['Cahier des charges à l’oral', 'Génération guidée', 'Site conforme', 'Autonomie'],
+    objectifs: [
+      'Formuler à l’oral un cahier des charges exploitable',
+      'Piloter à la voix un outil de génération de site',
+      'Vérifier chaque contenu : textes, tarifs, coordonnées',
+      'Mettre en ligne un site conforme : mentions, cookies, accessibilité',
+      'Faire évoluer son site seul',
     ],
   },
   {
     ref: 'FOR-0015',
-    nom: 'MOTEUR FERMÉ',
-    sousTitre: 'IA locale souveraine : vos données ne sortent pas',
     cat: 'ia',
-    jours: 2,
-    heures: 16,
     effectif: '4 à 8 stagiaires',
-    format: 'Inter-entreprise',
     badge: 'Souveraineté',
     public: 'Cabinets comptables et juridiques, santé, RH, bureaux d’études, collectivités : données sensibles.',
     cles: ['IA sur votre poste', 'Réseau coupé', 'Vos documents', 'Coût sur 36 mois'],
@@ -96,33 +102,26 @@ const EDITORIAL = [
     ],
   },
   {
-    ref: 'FOR-0006',
-    nom: 'COPILOTE',
-    sousTitre: 'Microsoft 365 par la méthode des 4 P',
+    ref: 'FOR-0014',
     cat: 'ia',
-    jours: 2,
-    heures: 16,
-    effectif: '4 à 8 stagiaires',
-    format: 'Intra-entreprise',
-    public: 'Équipes équipées de Microsoft 365 qui produisent chaque semaine documents, analyses, courriels.',
-    cles: ['Périmètre', 'Prompt', 'Production', 'Preuve'],
+    effectif: '6 à 8 dirigeants, huis clos',
+    badge: 'Dirigeants · résidentiel',
+    public: 'Dirigeants de TPE-PME réunionnaises de 3 à 50 salariés. Jamais deux concurrents sur la même session.',
+    cles: ['3 tâches à confier à l’IA', 'Plan d’agents', 'Charte IA', 'Budget 12 mois'],
     objectifs: [
-      'Savoir ce que l’assistant voit, à partir des droits en place',
-      'Construire une demande en désignant ses sources',
-      'Diagnostiquer une réponse décevante et la corriger',
-      'Enchaîner plusieurs applications sur un processus complet',
-      'Argumenter trois mesures de gouvernance pour sa structure',
+      'Identifier les trois tâches qui libèrent le plus de temps de dirigeant',
+      'Les qualifier au regard de l’IA Act',
+      'Fixer le niveau d’autonomie de chaque agent envisagé',
+      'Construire le plan d’agents de son entreprise',
+      'Rédiger la charte d’usage de l’IA, diffusable dès le retour',
+      'Établir budget, calendrier à 12 mois et critère d’arrêt',
     ],
   },
   {
     ref: 'FOR-0002',
-    nom: 'RÉGLAGE MOTEUR',
-    sousTitre: 'Automatiser sans coder avec n8n',
     cat: 'auto',
-    jours: 2,
-    heures: 16,
-    effectif: 'Jusqu’à 10 stagiaires',
-    format: 'Inter-entreprise',
+    effectif: '4 à 10 stagiaires',
+    badge: 'Sans code',
     public: 'Dirigeants de TPE-PME, indépendants et fonctions administratives.',
     cles: ['Déclencheur', 'Conditions', 'Actions', 'Temps gagné'],
     objectifs: [
@@ -134,33 +133,26 @@ const EDITORIAL = [
     ],
   },
   {
-    ref: 'FOR-0009',
-    nom: 'CARROSSERIE',
-    sousTitre: 'Produire son site internet à la voix',
+    ref: 'FOR-0013',
     cat: 'auto',
-    jours: 1,
-    heures: 8,
-    effectif: 'Jusqu’à 10 stagiaires',
-    format: 'Intra-entreprise',
-    public: 'Artisans, commerçants, indépendants : sans site, ou dépendants d’un prestataire pour chaque ligne.',
-    cles: ['Cahier des charges oral', 'Génération guidée', 'Site conforme', 'Autonomie'],
+    effectif: '4 à 8 stagiaires',
+    badge: 'Avancé',
+    public: 'Dirigeants, référents IA, chefs de projet et profils techniques, ou anciens stagiaires de « IA générative au travail ».',
+    cles: ['Agents autonomes', 'Point d’arrêt humain', 'Traçabilité', 'Arrêt d’urgence'],
     objectifs: [
-      'Formuler à l’oral un cahier des charges exploitable',
-      'Piloter à la voix un outil de génération de site',
-      'Vérifier chaque contenu : textes, tarifs, coordonnées',
-      'Mettre en ligne un site conforme : mentions, cookies, accessibilité',
-      'Faire évoluer son site seul',
+      'Distinguer assistant, agent et système multi-agents',
+      'Mettre en service un agent qui exécute une tâche de bout en bout',
+      'Chaîner deux agents avec une validation humaine obligatoire',
+      'Fixer le niveau d’autonomie acceptable selon le risque',
+      'Tracer qui a décidé, quand, sur quelle donnée',
+      'Qualifier un système au regard de l’IA Act',
+      'Rédiger la procédure d’arrêt d’urgence et de reprise manuelle',
     ],
   },
   {
     ref: 'FOR-0010',
-    nom: 'INJECTION',
-    sousTitre: 'Emailing professionnel assisté par l’IA',
     cat: 'auto',
-    jours: 1,
-    heures: 8,
-    effectif: 'Jusqu’à 10 stagiaires',
-    format: 'Intra-entreprise',
+    effectif: '4 à 10 stagiaires',
     public: 'Dirigeants, commerciaux, chargés de communication qui écrivent à des clients ou prospects.',
     cles: ['Base conforme', 'Objet qui accroche', 'Séquences', 'Délivrabilité'],
     objectifs: [
@@ -172,55 +164,9 @@ const EDITORIAL = [
     ],
   },
   {
-    ref: 'FOR-0003',
-    nom: 'CONTRÔLE TECHNIQUE',
-    sousTitre: 'Gouvernance RGPD et IA Act',
-    cat: 'gouv',
-    jours: 1,
-    heures: 8,
-    effectif: 'Jusqu’à 10 stagiaires',
-    format: 'Inter-entreprise',
-    badge: 'Gouvernance',
-    public: 'Dirigeants, responsables administratifs, et tout salarié qui manipule des données personnelles.',
-    cles: ['6 principes', 'Registre', 'Menaces cyber', 'Violation : 72 h'],
-    objectifs: [
-      'Identifier les données personnelles et traitements de son activité',
-      'Appliquer les 6 principes clés du RGPD',
-      'Constituer et tenir à jour un registre des traitements',
-      'Prévenir hameçonnage, rançongiciel, mots de passe faibles',
-      'Réagir à une violation de données : mesures + notification CNIL sous 72 h',
-    ],
-  },
-  {
-    ref: 'FOR-0014',
-    nom: 'TABLEAU DE BORD',
-    sousTitre: 'Séminaire dirigeants en résidentiel',
-    cat: 'dirigeants',
-    jours: 2,
-    heures: 16,
-    effectif: '6 à 8 dirigeants, huis clos',
-    format: 'Inter-entreprise',
-    badge: 'Dirigeants',
-    public: 'Dirigeants de TPE-PME réunionnaises de 3 à 50 salariés. Jamais deux concurrents sur la même session.',
-    cles: ['3 tâches à automatiser', 'Plan d’agents', 'Charte IA', 'Budget 12 mois'],
-    objectifs: [
-      'Identifier les trois tâches qui libèrent le plus de temps de dirigeant',
-      'Les qualifier au regard de l’IA Act',
-      'Fixer le niveau d’autonomie de chaque agent envisagé',
-      'Construire le plan d’agents de son entreprise',
-      'Rédiger la charte d’usage de l’IA, diffusable dès le retour',
-      'Établir budget, calendrier à 12 mois et critère d’arrêt',
-    ],
-  },
-  {
     ref: 'FOR-0004',
-    nom: 'TRACTION',
-    sousTitre: 'Vendre et négocier',
-    cat: 'metiers',
-    jours: 1,
-    heures: 8,
-    effectif: 'Jusqu’à 10 stagiaires',
-    format: 'Inter-entreprise',
+    cat: 'vente',
+    effectif: '4 à 10 stagiaires',
     public: 'Créateurs d’entreprise, indépendants, commerciaux débutants.',
     cles: ['Découverte', 'Proposition de valeur', 'Objections', 'Conclusion'],
     objectifs: [
@@ -233,19 +179,42 @@ const EDITORIAL = [
   },
   {
     ref: 'FOR-0008',
-    nom: 'EMBRAYAGE',
-    sousTitre: 'Manager au quotidien',
-    cat: 'metiers',
-    jours: 1,
-    heures: 8,
+    cat: 'vente',
     effectif: '4 à 10 stagiaires',
-    format: 'Inter-entreprise',
-    badge: 'Bientôt',
     public: 'Encadrants de proximité, chefs d’équipe, dirigeants de TPE qui encadrent directement.',
     cles: ['Poser un cadre', 'Déléguer', 'Recadrer', 'Reconnaître'],
-    objectifs: null, // programme en cours de finalisation : ne pas diffuser d'objectifs (RNQ ind. 1)
+    objectifs: [
+      'Poser un cadre clair à son équipe : règles, objectifs, priorités',
+      'Déléguer en fixant objectif, moyens, échéance et points de contrôle',
+      'Conduire un recadrage fondé sur les faits, sans dévaloriser',
+      'Désamorcer une tension ou un conflit dans l’équipe',
+      'Reconnaître un travail précis et tenir un point individuel régulier',
+    ],
+  },
+  {
+    ref: 'FOR-0003',
+    cat: 'gouv',
+    effectif: '4 à 10 stagiaires',
+    badge: 'Gouvernance',
+    public: 'Dirigeants, responsables administratifs, et tout salarié qui manipule des données personnelles.',
+    cles: ['6 principes', 'Registre', 'Charte IA', 'Violation : 72 h'],
+    objectifs: [
+      'Identifier les données personnelles et traitements de son activité',
+      'Appliquer les 6 principes clés du RGPD',
+      'Constituer et tenir à jour un registre des traitements',
+      'Prévenir hameçonnage, rançongiciel, mots de passe faibles',
+      'Réagir à une violation de données : mesures + notification CNIL sous 72 h',
+      'Classer ses usages d’IA selon l’IA Act et rédiger la charte d’usage',
+    ],
   },
 ]
+
+// Prestation de conseil (pas une action de formation : jamais de prise en charge « formation » annoncée)
+export const CONSEIL_GOUVERNANCE = {
+  titre: 'Audit et accompagnement RGPD & IA Act',
+  texte: 'Diagnostic de vos traitements et de vos usages d’IA, registre, charte, contrats sous-traitants, plan d’action priorisé. Dans vos locaux, à votre rythme.',
+  cles: ['Diagnostic sur site', 'Registre & charte', 'Plan d’action', 'Preuves en cas de contrôle'],
+}
 
 export const CERTIFS = [
   'Certifié Qualiopi — actions de formation',
@@ -259,14 +228,27 @@ export const CERTIFS = [
 
 /* ---------- Fusion Airtable + éditorial ---------- */
 const CAT_PAR_DEFAUT = 'ia'
+const DOMAINE_VERS_MODULE = { 'IA Générative': 'ia', Automatisation: 'auto', Vente: 'vente', Management: 'vente', 'RGPD & Cybersécurité': 'gouv' }
+/** « Agents IA : Déléguer… (niveau avancé, 2 jours) » → nom « Agents IA », sous-titre « Déléguer… ». */
+export function decouperTitre(titre) {
+  const sansDuree = titre.replace(/\s*\([^)]*\bjours?\b[^)]*\)\s*$/i, '').trim()
+  const i = sansDuree.indexOf(' : ')
+  return i < 0 ? { nom: sansDuree, sousTitre: '' } : { nom: sansDuree.slice(0, i), sousTitre: sansDuree.slice(i + 3) }
+}
 function fusionner(fiche, edito) {
-  const [nomCourt, ...reste] = fiche.titre.split(' — ')
+  const { nom, sousTitre } = decouperTitre(fiche.titre)
   return {
-    ...(edito ?? { nom: nomCourt, sousTitre: reste.join(' — '), cat: CAT_PAR_DEFAUT, cles: [], objectifs: null }),
+    cles: [],
+    objectifs: null,
+    ...edito,
+    cat: edito?.cat ?? DOMAINE_VERS_MODULE[fiche.domaine] ?? CAT_PAR_DEFAUT,
+    nom,
+    sousTitre,
+    titre: fiche.titre,
     ref: fiche.ref,
-    jours: fiche.jours ?? edito?.jours,
-    heures: fiche.heures ?? edito?.heures,
-    format: fiche.type ?? edito?.format,
+    jours: fiche.jours,
+    heures: fiche.heures,
+    format: fiche.type,
     public: edito?.public || fiche.public,
     prerequis: fiche.prerequis,
     evaluation: fiche.evaluation,
@@ -274,6 +256,9 @@ function fusionner(fiche, edito) {
     adaptations: fiche.adaptations,
     financements: fiche.financements,
     tarifs: fiche.tarifs,
+    programme: fiche.programme,
+    materiel: fiche.materiel,
+    precisionMateriel: fiche.precisionMateriel,
     indicateurs: fiche.indicateurs,
     revision: fiche.revision,
   }

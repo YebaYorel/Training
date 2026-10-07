@@ -40,7 +40,7 @@ export default function Studio() {
             <p className="accroche">L’IA qui fait rentrer l’argent des OPCO.</p>
             <p>Émargement manquant, certificat de réalisation oublié, facture supérieure à l’accord, dépôt hors délai, relance jamais envoyée : CARBURANT le voit <strong>avant</strong> le financeur, chiffre l’argent en jeu et rédige la relance à votre place.</p>
             <p className="prix-vitrine"><strong>{c.premierMois} €</strong> le premier mois, puis <strong>{c.prix} €/mois</strong>, tarif gelé à vie.</p>
-            <p className="garantie"><ShieldCheck size={18} aria-hidden="true" /> Garantie « 10× » : s’il ne vous signale pas au moins 10 fois son prix en sommes à sécuriser sur 12 mois, l’année vous est remboursée (conditions dans nos CGV).</p>
+            <p className="garantie"><ShieldCheck size={18} aria-hidden="true" /> Garantie « 10× » : s’il ne vous signale pas au moins 10 fois son prix en sommes à sécuriser sur 12 mois, l’année vous est remboursée (conditions dans nos <a href="cgv-logiciels.html#garantie">CGV logiciels</a>).</p>
             <a className="btn btn-or" href={STUDIO_URL} target="_blank" rel="noopener">Voir CARBURANT en action <ArrowRight size={18} aria-hidden="true" /></a>
           </motion.article>
 
@@ -84,7 +84,7 @@ export default function Studio() {
           <button className="btn btn-contour" onClick={() => allerA('#contact')}>Une démonstration avec Aurélien</button>
         </div>
         <p className="studio-note">
-          Pour comparaison, les logiciels de gestion du marché affichent de 49 € à plus de 300 € HT par mois, parfois avec plus de 1 400 € de frais de démarrage (tarifs publics relevés en septembre 2026). Prix YEBA nets de taxe : TVA non applicable, art. 293 B du CGI. Une licence = un utilisateur sur un poste. Outils d’aide : la déclaration BPF et la conformité Qualiopi restent sous la responsabilité de l’organisme.
+          Pour comparaison, les logiciels de gestion du marché affichent de 49 € à plus de 300 € HT par mois, parfois avec plus de 1 400 € de frais de démarrage (tarifs publics relevés en septembre 2026). Prix YEBA nets de taxe : TVA non applicable, art. 293 B du CGI. Une licence = un utilisateur sur un poste. Outils d’aide : la déclaration BPF et la conformité Qualiopi restent sous la responsabilité de l’organisme. <a href="cgv-logiciels.html">Conditions générales de vente des logiciels</a>.
         </p>
       </div>
     </section>

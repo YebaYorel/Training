@@ -29,12 +29,12 @@ const formateurs = {
 }
 
 const sessions = [
-  { id: 's1', formation: 'CONTRÔLE TECHNIQUE — Gouvernance RGPD et IA Act', type: 'Intra-entreprise', debut: '2026-03-12', fin: '2026-03-12', heures: 8, jours: 1, lieu: 'Saint-Denis — dans les locaux du client', statut: 'Terminée', formateurs: ['f1'], client: 'c1', coutFormateur: 0, places: 8, n: 6 },
-  { id: 's2', formation: 'ALLUMAGE-TURBO — L’IA générative au travail', type: 'Inter-entreprise', debut: '2026-06-08', fin: '2026-06-10', heures: 24, jours: 3, lieu: 'Saint-Gilles — salle de séminaire', statut: 'Terminée', formateurs: ['f1', 'f2'], client: 'c2', coutFormateur: 1200, places: 10, n: 8 },
-  { id: 's3', formation: 'EMBRAYAGE — Manager au quotidien', type: 'Sur mesure', debut: '2026-05-05', fin: '2026-05-05', heures: 8, jours: 1, lieu: 'Saint-Pierre', statut: 'Terminée', formateurs: ['f1'], client: 'c4', coutFormateur: 0, places: 6, n: 4 },
-  { id: 's4', formation: 'TRACTION — Vendre et négocier', type: 'Intra-entreprise', debut: '2026-09-24', fin: '2026-09-24', heures: 8, jours: 1, lieu: 'Le Port — dans les locaux du client', statut: 'Terminée', formateurs: ['f1'], client: 'c3', coutFormateur: 0, places: 10, n: 5 },
-  { id: 's5', formation: 'RÉGLAGE MOTEUR — Automatiser sans coder (n8n)', type: 'Inter-entreprise', debut: '2026-10-19', fin: '2026-10-20', heures: 16, jours: 2, lieu: 'Sainte-Clotilde — salle de formation', statut: 'Confirmée', formateurs: ['f1'], client: 'c5', coutFormateur: 0, places: 10, n: 5 },
-  { id: 's6', formation: 'COPILOTE — Microsoft 365 par la méthode des 4 P', type: 'Intra-entreprise', debut: '2026-11-16', fin: '2026-11-17', heures: 16, jours: 2, lieu: 'Saint-Paul — dans les locaux du client', statut: 'Planifiée', formateurs: ['f1'], client: 'c5', coutFormateur: 0, places: 8, n: 3 },
+  { id: 's1', formation: 'Conformité RGPD & IA Act — Sécuriser ses usages de l’IA', type: 'Intra-entreprise', debut: '2026-03-12', fin: '2026-03-12', heures: 8, jours: 1, lieu: 'Saint-Denis — dans les locaux du client', statut: 'Terminée', formateurs: ['f1'], client: 'c1', coutFormateur: 0, places: 8, n: 6 },
+  { id: 's2', formation: 'IA générative au travail — Gagner du temps chaque jour', type: 'Inter-entreprise', debut: '2026-06-08', fin: '2026-06-10', heures: 24, jours: 3, lieu: 'Saint-Gilles — salle de séminaire', statut: 'Terminée', formateurs: ['f1', 'f2'], client: 'c2', coutFormateur: 1200, places: 10, n: 8 },
+  { id: 's3', formation: 'Manager au quotidien — Cadrer, déléguer, recadrer', type: 'Sur mesure', debut: '2026-05-05', fin: '2026-05-05', heures: 8, jours: 1, lieu: 'Saint-Pierre', statut: 'Terminée', formateurs: ['f1'], client: 'c4', coutFormateur: 0, places: 6, n: 4 },
+  { id: 's4', formation: 'Vente & négociation — Conclure sans brader', type: 'Intra-entreprise', debut: '2026-09-24', fin: '2026-09-24', heures: 8, jours: 1, lieu: 'Le Port — dans les locaux du client', statut: 'Terminée', formateurs: ['f1'], client: 'c3', coutFormateur: 0, places: 10, n: 5 },
+  { id: 's5', formation: 'Automatisation sans code — Relier ses outils (n8n)', type: 'Inter-entreprise', debut: '2026-10-19', fin: '2026-10-20', heures: 16, jours: 2, lieu: 'Sainte-Clotilde — salle de formation', statut: 'Confirmée', formateurs: ['f1'], client: 'c5', coutFormateur: 0, places: 10, n: 5 },
+  { id: 's6', formation: 'Copilot Microsoft 365 — La méthode des 4 P', type: 'Intra-entreprise', debut: '2026-11-16', fin: '2026-11-17', heures: 16, jours: 2, lieu: 'Saint-Paul — dans les locaux du client', statut: 'Planifiée', formateurs: ['f1'], client: 'c5', coutFormateur: 0, places: 8, n: 3 },
 ].map((s) => ({ ...s, nom: `${s.formation.split(' — ')[0]} · ${new Date(s.debut).toLocaleDateString('fr-FR')}`, sousTraiteeA: null }))
 
 function jours(debut, fin) {

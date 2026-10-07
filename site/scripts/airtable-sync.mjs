@@ -34,6 +34,9 @@ const C = {
   acces: 'fldbsvcmvRBqUysLD', adaptations: 'fldADYnLuEBfmqnI9', financements: 'fld0grIzQO2B1Vhlq',
   satisfaction: 'fldOOz2pqtG4YpV5Z', reussite: 'fldqIJ1fMpImp1d9x', sessions: 'fldRVW750ot7ierMJ',
   formes: 'fldivCa49hCqSugPe', tarifs: 'fldoIGoiOTyCsZ57q', revision: 'fldpNLAhe2tUe5vOt', rncp: 'fld3WJqOymGw8R35b',
+  programme: 'fld8GlwffOYDcNKMl', objectifs: 'fldUTrd3hxOnHY53h', domaine: 'fldSIGD4tyrbWRnyn',
+  interJour: 'fldaty410G5hlJmvL', intraJour: 'fldFqIXtNjUWKoZeq', interTotal: 'fldJYUhGvdFFTWHR2', intraTotal: 'fld4goilFvLlV4kk8',
+  materiel: 'fldNPJWYxtO8GBdkC', precisionMateriel: 'fld0dqAPIkUmQIFlc',
 }
 const S = {
   formation: 'fldXgTjZg5EtYosdJ', type: 'fldMF7SFMhwYFz7K5', debut: 'fldZYdDetuJDMTNsF', fin: 'fldaTV5honw4xJqQL',
@@ -67,18 +70,20 @@ function textePublic(v) {
 }
 
 /** Extrait les montants du bloc « TARIFS (bloc public auto) ». */
-function lireTarifs(bloc) {
+function lireTarifs(bloc, f = {}) {
   const t = texte(bloc)
   if (!t || t.startsWith('⛔')) return null
+  // Les champs numériques Airtable font foi ; le bloc texte sert de repli et pour le supplément.
+  const num = (id) => (typeof f[id] === 'number' && f[id] > 0 ? f[id] : null)
   const n = (re) => {
     const m = t.match(re)
     return m ? Number(m[1].replace(/\s/g, '')) : null
   }
   const tarifs = {
-    interTotal: n(/INTER-ENTREPRISES\s*:\s*([\d\s]+)\s*€/),
-    interJour: n(/INTER-ENTREPRISES[^\n]*soit\s*([\d\s]+)\s*€/),
-    intraTotal: n(/INTRA-ENTREPRISE\s*:\s*([\d\s]+)\s*€/),
-    intraJour: n(/INTRA-ENTREPRISE[^\n]*soit\s*([\d\s]+)\s*€/),
+    interTotal: num(C.interTotal) ?? n(/INTER-ENTREPRISES\s*:\s*([\d\s]+)\s*€/),
+    interJour: num(C.interJour) ?? n(/INTER-ENTREPRISES[^\n]*soit\s*([\d\s]+)\s*€/),
+    intraTotal: num(C.intraTotal) ?? n(/INTRA-ENTREPRISE\s*:\s*([\d\s]+)\s*€/),
+    intraJour: num(C.intraJour) ?? n(/INTRA-ENTREPRISE[^\n]*soit\s*([\d\s]+)\s*€/),
     supplement: n(/au-delà de \d+, par jour\s*:\s*([\d\s]+)\s*€/),
     mentionTva: /293 B/.test(t) ? 'TVA non applicable, art. 293 B du CGI' : null,
   }
@@ -107,7 +112,12 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
       adaptations: textePublic(f[C.adaptations]),
       financements: noms(f[C.financements]),
       certification: texte(f[C.rncp]) || null,
-      tarifs: lireTarifs(f[C.tarifs]),
+      tarifs: lireTarifs(f[C.tarifs], f),
+      domaine: nom(f[C.domaine]) || null,
+      objectifs: textePublic(f[C.objectifs]),
+      programme: textePublic(f[C.programme]),
+      materiel: nom(f[C.materiel]) || 'À confirmer',
+      precisionMateriel: textePublic(f[C.precisionMateriel]),
       indicateurs: {
         satisfaction: pourcent(f[C.satisfaction]),
         reussite: pourcent(f[C.reussite]),

@@ -1,11 +1,11 @@
 {
-  "synchronise": "2026-09-25T20:06:41.009Z",
+  "synchronise": "2026-10-07T10:45:39.575Z",
   "formations": [
     {
       "ref": "FOR-0002",
-      "titre": "RÉGLAGE MOTEUR — Automatiser sans coder (n8n)",
+      "titre": "Automatisation sans code : Relier ses outils et supprimer les tâches répétitives (n8n)",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Dirigeants de TPE/PME, indépendants et fonctions administratives souhaitant gagner du temps et fiabiliser leurs processus.",
       "heures": 16,
       "jours": 2,
       "prerequis": "Utilisation courante des outils bureautiques et web. Aucune compétence en développement requise.",
@@ -24,26 +24,31 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 990,
-        "interJour": 495,
-        "intraTotal": 3690,
-        "intraJour": 1845,
+        "interTotal": 1980,
+        "interJour": 990,
+        "intraTotal": 5800,
+        "intraJour": 2900,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "Automatisation",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Identifier dans son activité les tâches répétitives automatisables ;\n2. Concevoir un workflow simple (déclencheur → conditions → actions) ;\n3. Mettre en place une automatisation no-code (ex. formulaire → base de données → e-mail) ;\n4. Sécuriser les données traitées et respecter le RGPD dans ses automatisations ;\n5. Mesurer le gain de temps et fiabiliser le processus.",
+      "programme": "PROGRAMME — AUTOMATISATION SANS CODE : RELIER SES OUTILS ET SUPPRIMER LES TÂCHES RÉPÉTITIVES (n8n)\nDurée : 16 heures (2 jours). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : un ordinateur portable par stagiaire (inter : apporter le sien) avec un navigateur à jour ; les comptes de démonstration sont fournis. Venir avec une tâche répétitive réelle de son activité.\n\n═════ JOUR 1 — DIAGNOSTIQUER ET CONCEVOIR ═════\n\n── 08h00–10h00 · QU'EST-CE QUI MÉRITE D'ÊTRE AUTOMATISÉ ──\n• Séquence 0 « La chaîne humaine » : un processus joué à la main par le groupe, chronométré.\n• Cadrage, attentes, information RGPD.\n• Les critères d'une bonne tâche à automatiser : fréquence, règles stables, volume, coût de l'erreur.\n• Cartographier son processus réel et le chiffrer en minutes par mois.\nLIVRABLE : la carte du processus cible, chiffrée.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · LA GRAMMAIRE D'UN WORKFLOW ──\n• Déclencheur, conditions, actions, données qui circulent.\n• Dessiner avant de construire : schéma « Quand / Si / Alors » validé en binôme.\nLIVRABLE : le schéma validé, prêt à construire.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · LE PAYSAGE DES OUTILS ET LA PREMIÈRE CONSTRUCTION ──\n• Outils no-code : critères de choix (hébergement des données, coût, réversibilité, auto-hébergement possible avec n8n).\n• Prise en main de n8n : nœuds, connexions, exécutions, historique.\n• Construction guidée : formulaire → tableur ou base de données → courriel de confirmation.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · CONSTRUIRE SON PROPRE WORKFLOW (1/2) ──\n• Chaque stagiaire construit le workflow de son schéma ; accompagnement individualisé.\n• Point d'étape et consigne pour la journée 2.\n\n═════ JOUR 2 — FIABILISER, SÉCURISER, MESURER ═════\n\n── 08h00–10h00 · CONDITIONS, BRANCHEMENTS ET DONNÉES ──\n• Retour sur les blocages de la veille (« le mur des pannes »).\n• Conditions, boucles, transformation de données, gestion des erreurs.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · TESTER COMME SI ÇA DEVAIT CASSER ──\n• Cas limites, données manquantes, doublons ; alertes en cas d'échec.\n• Documenter son workflow pour qu'un collègue puisse le reprendre.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · SÉCURISER ET MESURER ──\n• Données, accès, identifiants : où sont mes données, qui y accède, combien de temps.\n• Les automatisations et le RGPD : minimisation, sous-traitants, registre.\n• Mesurer le gain réel en temps et en fiabilité.\nLIVRABLE : la fiche de gain, présentable à une direction ou à un financeur.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · ÉVALUATION ET PLAN D'ANCRAGE ──\n• Évaluation finale : le workflow construit, évalué sur grille d'évaluation ; QCM de 10 questions.\n• Rejeu de « la chaîne humaine » : temps avant / après.\n• Plan d'ancrage : les deux prochaines automatisations, questionnaire de satisfaction, clôture.",
+      "materiel": "Ordinateur portable requis",
+      "precisionMateriel": "Inter : venir avec son ordinateur portable (navigateur à jour). Comptes de démonstration fournis.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": "2026-09-10"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0003",
-      "titre": "CONTRÔLE TECHNIQUE — Gouvernance RGPD et IA Act",
+      "titre": "Conformité RGPD & IA Act : Sécuriser ses usages de l'IA et prouver les mesures prises",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Dirigeants, responsables administratifs, et tout salarié manipulant des données personnelles (RH, commercial, gestion).",
       "heures": 8,
       "jours": 1,
       "prerequis": "Aucun prérequis technique. Utilisation courante d'un ordinateur et d'une messagerie électronique.",
@@ -62,26 +67,31 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 890,
-        "interJour": 890,
-        "intraTotal": 1690,
-        "intraJour": 1690,
+        "interTotal": 690,
+        "interJour": 690,
+        "intraTotal": 2100,
+        "intraJour": 2100,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "RGPD & Cybersécurité",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Identifier les données personnelles et les traitements soumis au RGPD dans son activité ;\n2. Appliquer les 6 principes clés (licéité, minimisation, exactitude, limitation de conservation, sécurité, responsabilité) ;\n3. Constituer et tenir à jour un registre des traitements ;\n4. Reconnaître et prévenir les principales menaces cyber (hameçonnage, rançongiciel, mots de passe faibles) ;\n5. Réagir en cas de violation de données (mesures conservatoires + notification CNIL sous 72 h) ;\n6. Qualifier ses usages de l'IA au regard de l'IA Act (interdit, haut risque, transparence) et rédiger la charte d'usage de l'IA de l'entreprise.",
+      "programme": "PROGRAMME — CONFORMITÉ RGPD & IA ACT : SÉCURISER SES USAGES DE L'IA ET PROUVER LES MESURES PRISES\nDurée : 8 heures (1 jour). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : aucun ordinateur obligatoire ; un ordinateur portable est utile pour démarrer son registre en séance.\n\n── 08h00–10h00 · QUALIFIER : DE QUOI PARLE-T-ON, ET QUI EST RESPONSABLE ──\n• Séquence 0 « La boîte à chaussures » : où dorment les données de l'entreprise (boîtes mail, clés USB, tableurs, outils d'IA).\n• Cadrage et attentes. Données personnelles, traitement, responsable de traitement, sous-traitant : les définitions qui comptent.\n• Cartographie express : les traitements réels de chaque participant, y compris les usages de l'IA générative.\n• Les contrats de sous-traitance à réclamer (art. 28) : hébergeur, logiciels, prestataires, outils d'IA.\nLIVRABLE : la liste de ses traitements et des contrats à réclamer.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · LES 6 PRINCIPES ET LE REGISTRE ──\n• Licéité, minimisation, exactitude, limitation de conservation, sécurité, responsabilité — appliqués à l'activité de chacun.\n• Choisir la bonne base légale : quiz « Quelle base légale ? ».\n• Le registre des traitements : rédiger ses premières fiches, durées de conservation comprises.\nLIVRABLE : les 3 premières fiches du registre, exploitables dès le retour en entreprise.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · L'IA DANS L'ENTREPRISE : IA ACT ET USAGES SÛRS ──\n• Ce que l'IA Act change pour une TPE-PME : usages interdits, haut risque, transparence (art. 50), maîtrise de l'IA (art. 4).\n• Qualifier ses propres usages de l'IA : grille simple, cas concrets du groupe.\n• Ce qu'on ne saisit jamais dans un outil d'IA ; choisir un outil (hébergement, contrat, réversibilité).\n• Répondre aux personnes : demandes d'accès, d'effacement, d'opposition.\nLIVRABLE : la charte d'usage de l'IA de l'entreprise (une page) et la trame de réponse aux demandes de droits.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · SÉCURISER ET RÉAGIR ──\n• Les menaces telles qu'elles sont : hameçonnage, rançongiciel, mots de passe, comptes partagés.\n• Les mesures qui protègent vraiment : double authentification, sauvegardes, mises à jour.\n• La violation de données : mesures immédiates, notification à la CNIL sous 72 heures, information des personnes.\n• Évaluation finale : étude de cas (fiche de registre + qualification d'un usage d'IA) notée sur grille ; QCM de 10 questions.\n• Plan d'action à 90 jours, questionnaire de satisfaction, clôture.\nLIVRABLE : la procédure « En cas de violation de données », en une page affichable.",
+      "materiel": "À confirmer",
+      "precisionMateriel": "Proposition : ordinateur conseillé (pour démarrer le registre en séance), non obligatoire. À valider.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": "2026-09-10"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0004",
-      "titre": "TRACTION — Vendre et négocier",
+      "titre": "Vente & négociation : Découvrir le besoin, argumenter et conclure sans brader",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Créateurs d'entreprise, indépendants, commerciaux débutants, et toute personne amenée à vendre un produit ou un service.",
       "heures": 8,
       "jours": 1,
       "prerequis": "Aucun prérequis.",
@@ -102,24 +112,29 @@
       "tarifs": {
         "interTotal": 690,
         "interJour": 690,
-        "intraTotal": 1390,
-        "intraJour": 1390,
+        "intraTotal": 2100,
+        "intraJour": 2100,
         "supplement": 120,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "Vente",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Dérouler les étapes d'un entretien de vente (préparation, prise de contact, découverte, argumentation, traitement des objections, conclusion) ;\n2. Mener une découverte client par un questionnement structuré ;\n3. Construire et présenter une proposition de valeur adaptée au besoin ;\n4. Traiter les objections courantes avec méthode ;\n5. Conclure la vente et organiser le suivi client.",
+      "programme": "PROGRAMME — VENTE & NÉGOCIATION : DÉCOUVRIR LE BESOIN, ARGUMENTER ET CONCLURE SANS BRADER\nDurée : 8 heures (1 jour). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : aucun ordinateur nécessaire. Venir avec un produit ou un service que l'on vend réellement.\n\n── 08h00–10h00 · STRUCTURER L'ENTRETIEN DE VENTE ──\n• Séquence 0 « Vendez-moi ce stylo » : ce que révèle le premier réflexe.\n• Cadrage et attentes.\n• Les étapes de l'entretien : préparation, prise de contact, découverte, argumentation, objections, conclusion.\n• Préparer un rendez-vous en 10 minutes.\nLIVRABLE : la fiche de préparation, réutilisable pour tout rendez-vous.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · DÉCOUVRIR : LA PHASE QUI DÉCIDE DE TOUT ──\n• Questions ouvertes, fermées, de précision ; écoute active et reformulation.\n• Faire émerger le besoin réel, l'enjeu et le décideur.\n• Entraînement intensif en trios : vendeur, client, observateur avec grille.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · ARGUMENTER ET ANNONCER SON PRIX ──\n• Du produit au bénéfice : la méthode caractéristique → avantage → bénéfice pour ce client.\n• Construire sa proposition de valeur adaptée au besoin découvert.\n• Annoncer son prix sans s'excuser ; défendre sa marge plutôt que brader.\nLIVRABLE : l'argumentaire personnel, cinq bénéfices prêts à l'emploi.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · OBJECTIONS, CONCLUSION ET SUIVI ──\n• Comprendre une objection avant d'y répondre : accueillir, questionner, reformuler, répondre.\n• Les objections courantes (prix, délai, « je vais réfléchir ») et leurs réponses.\n• Conclure et organiser le suivi client.\n• Évaluation finale : mise en situation filmée ou observée, notée sur grille ; QCM de 10 questions.\n• Rejeu de « Vendez-moi ce stylo », questionnaire de satisfaction, clôture.",
+      "materiel": "Aucun matériel requis",
+      "precisionMateriel": "Venir avec un produit ou un service réellement vendu.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": 8
       },
-      "revision": "2026-09-10"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0006",
-      "titre": "COPILOTE — Microsoft 365 par la méthode des 4 P",
+      "titre": "Copilot Microsoft 365 : Utiliser l'IA dans Word, Excel, Outlook et Teams (méthode des 4 P)",
       "type": "Intra-entreprise",
-      "public": "",
+      "public": "Salariés et dirigeants équipés de Microsoft 365 qui produisent chaque semaine des documents, des analyses ou des courriels : fonctions administratives, commerciales, RH, encadrement de proximité, direction de TPE-PME.\nUn second public est visé par la journée 2 : la personne qui devra répondre en interne à la question « est-ce qu'on a le droit ? » — dirigeant, référent informatique ou référent RGPD.\nEffectif : 4 à 8 stagiaires, un poste par stagiaire — 1 formateur.",
       "heures": 16,
       "jours": 2,
       "prerequis": "Aucun prérequis technique de niveau. Savoir créer un document, saisir des données dans un tableur et gérer sa messagerie. Aucune compétence en programmation.\n\nCONDITIONS MATÉRIELLES BLOQUANTES, vérifiées par écrit avec le client au plus tard 5 jours ouvrés avant la session :\n1. Un poste à jour par stagiaire, avec accès réseau non filtré vers les services Microsoft 365 ;\n2. Un compte nominatif ET une licence Copilot active, vérifiée individuellement pour chaque stagiaire ;\n3. DES DOCUMENTS PROFESSIONNELS RÉELS accessibles depuis ce compte. C'est la condition que tout le monde oublie : sans contenu à exploiter, Copilot n'a rien à se mettre sous la dent et deux jours d'ateliers tombent à plat ;\n4. Le point de contact administrateur du client, joignable pendant la session.\n\nSi l'une de ces quatre conditions n'est pas réunie, la session est reportée. Elle n'est pas dégradée.",
@@ -138,33 +153,38 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 990,
-        "interJour": 495,
-        "intraTotal": 2890,
-        "intraJour": 1445,
+        "interTotal": 1580,
+        "interJour": 790,
+        "intraTotal": 5000,
+        "intraJour": 2500,
         "supplement": 130,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "OBJECTIFS PÉDAGOGIQUES — taxonomie de BLOOM et formulation SMART\nLes quatre domaines suivent la méthode des 4 P : PÉRIMÈTRE, PROMPT, PRODUCTION, PREUVE.\n\n── P1 — PÉRIMÈTRE : savoir ce que l'outil voit ──\nO1 (Bloom : Comprendre) — Expliquer pourquoi un assistant relié aux données de l'entreprise ne se pilote pas comme un outil grand public.\n  SMART : en fin de journée 1, restituer à l'oral en 3 minutes, sans support, les trois différences structurantes. Critère de réussite : 3 sur 3.\nO2 (Bloom : Analyser) — Déterminer, pour un document donné, si l'assistant peut l'atteindre, en raisonnant à partir des droits déjà en place.\n  SMART : qualifier correctement au moins 8 des 10 cas de l'atelier « Qui voit quoi ? ».\n\n── P2 — PROMPT : savoir formuler la demande ──\nO3 (Bloom : Appliquer) — Construire une demande complète en désignant explicitement les sources à exploiter.\n  SMART : produire et tester 5 demandes métier au cours de la journée 1, dont au moins 4 donnent un résultat exploitable en 2 reprises maximum.\nO4 (Bloom : Évaluer) — Diagnostiquer une réponse décevante et choisir le correctif adapté parmi les quatre étudiés.\n  SMART : sur 4 réponses défaillantes fournies, identifier la cause et proposer le bon correctif dans au moins 3 cas.\n\n── P3 — PRODUCTION : savoir traiter un processus entier ──\nO5 (Bloom : Appliquer) — Conduire de bout en bout un processus professionnel complet en enchaînant plusieurs applications.\n  SMART : mener à terme, en journée 2, les trois parcours métier de l'atelier, chacun atteignant au moins le niveau « Acquis » sur la grille critériée.\nO6 (Bloom : Créer) — Concevoir, à partir d'un besoin réel de son poste, un livrable réutilisable par d'autres.\n  SMART : disposer en fin de journée 2 d'un livrable fonctionnel, présenté au groupe en 3 minutes avec ses limites énoncées.\n\n── P4 — PREUVE : savoir vérifier et assumer ──\nO7 (Bloom : Analyser) — Classer une information en trois niveaux — je saisis / j'anonymise d'abord / je ne saisis jamais — au regard du RGPD et des règles internes.\n  SMART : trier correctement au moins 16 des 20 cartes de l'atelier « Le Tri de la Réserve ».\nO8 (Bloom : Évaluer) — Argumenter trois mesures de gouvernance à mettre en place dans sa structure.\n  SMART : rédiger trois mesures justifiées, dont une portant sur les droits d'accès et une sur la localisation des traitements.",
+      "programme": "PROGRAMME — COPILOT MICROSOFT 365 : UTILISER L'IA DANS WORD, EXCEL, OUTLOOK ET TEAMS (MÉTHODE DES 4 P)\nPérimètre · Prompt · Production · Preuve\nDurée : 16 heures (2 jours). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel (conditions bloquantes, vérifiées par écrit 5 jours ouvrés avant) : un poste à jour par stagiaire, un compte nominatif avec licence Copilot active, des documents professionnels réels accessibles, et le contact de l'administrateur du client. Sinon, la session est reportée.\n\n═════ JOUR 1 — PÉRIMÈTRE ET PROMPT ═════\n\n── 08h00–10h00 · CE QU'EST COPILOT, ET CE QU'IL VOIT ──\n• Séquence 0 « La question qui dérange » ; cadrage, attentes, information RGPD et transparence IA.\n• Ce qu'est une IA générative, sans jargon ; ce qui change quand elle est reliée aux données de l'entreprise.\n• P1 — Périmètre : ce que l'assistant voit, à partir des droits déjà en place. Atelier « Qui voit quoi ? ».\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · P2 — LA DEMANDE COMPLÈTE ──\n• Construire une demande en désignant les sources à exploiter.\n• Cinq demandes métier testées dans Word et Outlook.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · QUAND LA RÉPONSE NE CONVIENT PAS ──\n• Les quatre correctifs : contexte, exemple, périmètre, question en retour.\n• La consigne permanente et la bibliothèque de demandes de l'équipe.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · ATELIER « L'ÉCHANGE DIFFICILE » ──\n• Courriel délicat, compte rendu, réponse à une réclamation : produire, relire, assumer.\n• Bilan de la journée et défi à réaliser au poste.\n\n═════ JOUR 2 — PRODUCTION ET PREUVE ═════\n\n── 08h00–10h00 · P3 — PARCOURS MÉTIER N° 1 ET N° 2 ──\n• Retour des défis (« le mur des retours »).\n• Le dossier client de A à Z (Word, Outlook) ; la réunion Teams qui laisse une trace.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · P3 — PARCOURS MÉTIER N° 3 : LE POINT MENSUEL CHIFFRÉ ──\n• Excel avec Copilot : analyser, synthétiser, vérifier chaque chiffre.\n• Faire travailler l'assistant pour les autres : modèles et livrables réutilisables.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · P4 — LA PREUVE : CONFIDENTIALITÉ, RGPD, IA ACT ──\n• Ce qu'on saisit, ce qu'on ne saisit pas ; vérifier et tracer.\n• Obligations de l'entreprise : charte d'usage, maîtrise de l'IA (IA Act, art. 4), transparence (art. 50).\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · ÉVALUATION ET ANCRAGE ──\n• Évaluation finale sur cas concret, notée sur grille critériée ; QCM de 10 questions.\n• Présentation du livrable de chaque stagiaire (3 minutes), plan d'ancrage, questionnaire de satisfaction, clôture.",
+      "materiel": "Ordinateur portable requis — configuration spécifique",
+      "precisionMateriel": "Poste à jour + compte nominatif avec licence Copilot active + documents professionnels réels. Vérifié par écrit 5 jours ouvrés avant.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": "2026-09-10"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0008",
-      "titre": "EMBRAYAGE — Manager au quotidien",
+      "titre": "Manager au quotidien : Cadrer, déléguer et recadrer son équipe de proximité",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Encadrants de proximité, chefs d'équipe, responsables de rayon ou de service, dirigeants de TPE qui encadrent directement. Aucun prérequis. Effectif : 4 à 10 stagiaires.",
       "heures": 8,
       "jours": 1,
       "prerequis": "Aucun prérequis. Exercer, ou s'apprêter à exercer, une fonction d'encadrement direct.",
       "methodes": [
         "Présentiel"
       ],
-      "evaluation": "",
+      "evaluation": "Positionnement à l'entrée (questionnaire sur les situations managériales vécues) ; évaluation formative pendant les mises en situation ; évaluation finale par mise en situation d'entretien notée sur grille critériée et QCM de 10 questions (seuil de réussite 7/10) ; attestation de fin de formation mentionnant les objectifs, la durée et les résultats de l'évaluation des acquis.",
       "acces": "Inscription jusqu'à 15 jours ouvrés avant le début de la session, sous réserve de places disponibles et d'accord de financement. Accessibilité : tout besoin d'aménagement peut être signalé dès l'inscription auprès du référent handicap Aurélien LUMEKA (yebaformations@gmail.com), sans supplément de prix.",
       "adaptations": "Support projeté en corps 26 points minimum, contrastes vérifiés WCAG 2.1. Support imprimé en corps 16 points sur simple demande. Mises en situation adaptables : observation écrite plutôt qu'orale, temps de préparation majoré, binômage. Aucun aménagement n'est facturé.",
       "financements": [
@@ -176,26 +196,31 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 690,
-        "interJour": 690,
-        "intraTotal": 1390,
-        "intraJour": 1390,
+        "interTotal": 790,
+        "interJour": 790,
+        "intraTotal": 2400,
+        "intraJour": 2400,
         "supplement": 120,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "Management",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Poser un cadre de fonctionnement clair à son équipe (règles, objectifs, priorités) ;\n2. Déléguer une tâche en fixant objectif, moyens, échéance et points de contrôle ;\n3. Conduire un entretien de recadrage fondé sur les faits, sans dévaloriser la personne ;\n4. Désamorcer une tension ou un conflit au sein de l'équipe ;\n5. Formuler une reconnaissance précise et conduire un point individuel régulier.",
+      "programme": "PROGRAMME — MANAGER AU QUOTIDIEN : CADRER, DÉLÉGUER ET RECADRER SON ÉQUIPE DE PROXIMITÉ\nDurée : 8 heures (1 jour). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : aucun ordinateur nécessaire. Venir avec une situation managériale réelle (délégation, tension, recadrage).\n\n── 08h00–10h00 · LE RÔLE ET LE CADRE ──\n• Séquence 0 « Le premier lundi » : ce que l'équipe attend vraiment de son responsable.\n• Cadrage et attentes.\n• Les trois casquettes du manager de proximité : organiser, accompagner, décider.\n• Poser un cadre clair : règles du jeu, objectifs, priorités, ce qui se négocie et ce qui ne se négocie pas.\nLIVRABLE : la charte d'équipe en une page.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · DÉLÉGUER SANS ABANDONNER ──\n• Ce qui se délègue, à qui, avec quel niveau d'autonomie.\n• L'entretien de délégation : objectif, moyens, échéance, points de contrôle.\n• Entraînement en binômes sur les situations apportées.\nLIVRABLE : la grille de délégation de son équipe.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · RECADRER ET CONDUIRE UN ENTRETIEN DIFFICILE ──\n• Recadrer sans humilier : faits, impact, attente, engagement (méthode en 4 temps).\n• Gérer l'émotion (la sienne et celle de l'autre) ; désamorcer un conflit.\n• Mises en situation filmées ou observées, avec grille.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · RECONNAÎTRE ET FAIRE GRANDIR ──\n• Reconnaître le travail bien fait : le feedback positif précis.\n• Le point individuel régulier : trame simple et efficace.\n• Évaluation finale : mise en situation d'entretien notée sur grille ; QCM de 10 questions.\n• Plan d'action à 30 jours, questionnaire de satisfaction, clôture.\nLIVRABLE : le plan d'action managérial à 30 jours.",
+      "materiel": "Aucun matériel requis",
+      "precisionMateriel": "Venir avec une situation managériale réelle.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": null
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0009",
-      "titre": "CARROSSERIE — Produire un site internet à la voix",
+      "titre": "Site internet IA : Créer son site en le décrivant à voix haute",
       "type": "Intra-entreprise",
-      "public": "",
+      "public": "Dirigeants de TPE, artisans, commerçants, indépendants et créateurs d'entreprise qui n'ont pas de site internet, ou qui en ont un dont ils ne peuvent pas modifier une ligne sans rappeler leur prestataire.\nConvient aussi aux fonctions administratives chargées de faire vivre le site d'une petite structure.",
       "heures": 8,
       "jours": 1,
       "prerequis": "Utilisation courante d'un ordinateur, d'un navigateur web et d'une messagerie électronique. Aucune compétence en développement, en graphisme ni en référencement n'est requise.\nSavoir formuler une demande à l'oral de façon structurée est un atout — c'est précisément ce que la formation travaille.\nLe stagiaire vient avec SON projet réel : son activité, ses tarifs, ses photos, ses textes existants s'il en a.",
@@ -216,24 +241,29 @@
       "tarifs": {
         "interTotal": 790,
         "interJour": 790,
-        "intraTotal": 1590,
-        "intraJour": 1590,
+        "intraTotal": 2500,
+        "intraJour": 2500,
         "supplement": 130,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Formuler à l'oral un cahier des charges exploitable : objectif du site, pages, contenus, action attendue du visiteur ;\n2. Piloter à la voix un outil de génération de site et corriger le résultat par itérations successives ;\n3. Produire et vérifier les contenus du site — textes, titres, tarifs, coordonnées — en contrôlant chaque information ;\n4. Mettre en ligne un site juridiquement conforme : mentions légales, politique de confidentialité, gestion des traceurs, accessibilité ;\n5. Maintenir et faire évoluer le site seul, sans dépendre d'un prestataire extérieur.",
+      "programme": "PROGRAMME — SITE INTERNET IA : CRÉER SON SITE EN LE DÉCRIVANT À VOIX HAUTE\nDurée : 8 heures (1 jour). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : un ordinateur portable par stagiaire (inter : apporter le sien), micro-casque fourni. Chaque stagiaire repart avec son site en ligne.\n\n── 08h00–10h00 · DIRE : LE CAHIER DES CHARGES À VOIX HAUTE ──\n• Séquence 0 « Quinze secondes » : deux sites projetés quinze secondes ; que vend l'entreprise, où, comment la joindre ?\n• Cadrage, attentes, information RGPD et transparence IA (règlement (UE) 2024/1689, art. 50).\n• Les quatre questions d'un site utile : qui êtes-vous, que proposez-vous, pour qui, que doit faire le visiteur maintenant.\n• Atelier « Les quatre phrases » : chaque stagiaire dicte ses réponses en 90 secondes, le voisin reformule.\n• L'arborescence au paperboard : 3 à 5 pages, une action attendue par page, les pages obligatoires.\nLIVRABLE : le cahier des charges dicté et l'arborescence, validés par un tiers.\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · PILOTER À LA VOIX : GÉNÉRER ET CORRIGER ──\n• L'anatomie d'une consigne dictée : rôle, contexte, tâche, forme attendue, contraintes.\n• Choisir son outil : coût réel la deuxième année, hébergement des données, propriété du nom de domaine, réversibilité.\n• Première génération du site à partir du cahier des charges.\n• Les 4 leviers de correction : compléter le contexte, montrer un exemple, réduire la demande, demander ce qui manque.\n• Atelier « La chasse aux inventions » : surligner tout ce que l'outil a écrit sans qu'on le lui dise (tarifs, horaires, labels).\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · PRODUIRE : TEXTES, IMAGES, CONTACT ──\n• Production page par page sur le projet réel, correction individualisée.\n• Textes utiles, titres qui disent quelque chose, images légales et légères, texte alternatif dicté en même temps que l'image.\n• La page contact : formulaire minimal (RGPD art. 5.1.c), mention d'information sous le formulaire (art. 13), case newsletter jamais pré-cochée.\n• Règle : aucune allégation (prix, diplôme, garantie) non vérifiée — pratique commerciale trompeuse (C. conso. L.121-2).\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · PUBLIER EN CONFORMITÉ ET TENIR LE SITE ──\n• Mentions légales, politique de confidentialité, traceurs : ce qui est obligatoire et ce qui suffit.\n• Accessibilité : contrastes, titres, liens explicites, lecture au clavier.\n• Mise en ligne, nom de domaine, sauvegarde ; faire évoluer le site seul.\n• Évaluation finale : le site publié évalué sur la grille critériée remise le matin ; QCM de 10 questions (seuil 7/10).\n• Plan d'action à 30 jours, questionnaire de satisfaction, clôture.\nLIVRABLE : le site en ligne, conforme, et la fiche « faire évoluer mon site ».",
+      "materiel": "Ordinateur portable requis",
+      "precisionMateriel": "Inter : venir avec son ordinateur portable. Micro-casque fourni. Apporter ses textes, photos et tarifs.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": "2026-09-11"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0010",
-      "titre": "INJECTION — Emailing professionnel assisté par l'IA",
+      "titre": "Emailing IA : Rédiger des courriels et des séquences qui obtiennent une réponse",
       "type": "Intra-entreprise",
-      "public": "",
+      "public": "Dirigeants de TPE-PME, indépendants, commerciaux, fonctions administratives et chargés de communication amenés à écrire à des clients ou à des prospects — qu'il s'agisse d'une campagne ou de courriels quotidiens.",
       "heures": 8,
       "jours": 1,
       "prerequis": "Utilisation courante d'une messagerie électronique et d'un tableur simple. Aucune compétence technique ni expérience du marketing n'est requise.\nLe stagiaire vient avec SA situation réelle : son fichier de contacts s'il en a un, un courriel qu'il a déjà envoyé, et l'offre qu'il souhaite promouvoir.",
@@ -253,24 +283,29 @@
       "tarifs": {
         "interTotal": 790,
         "interJour": 790,
-        "intraTotal": 1590,
-        "intraJour": 1590,
+        "intraTotal": 2500,
+        "intraJour": 2500,
         "supplement": 130,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "À l'issue de la formation, le stagiaire sera capable de :\n1. Constituer et segmenter une base de contacts conforme au RGPD et aux règles de la prospection électronique ;\n2. Rédiger avec l'assistance de l'IA un courriel professionnel qui obtient une réponse — objet, accroche, corps, appel à l'action ;\n3. Concevoir une séquence de plusieurs courriels et en régler le rythme ;\n4. Paramétrer l'envoi pour être reçu : délivrabilité, lien de désinscription, identification de l'expéditeur ;\n5. Mesurer et corriger à partir des indicateurs réels — ouverture, clic, désinscription, plainte.",
+      "programme": "PROGRAMME — EMAILING IA : RÉDIGER DES COURRIELS ET DES SÉQUENCES QUI OBTIENNENT UNE RÉPONSE\nDurée : 8 heures (1 jour). Horaires : 08h00–12h00 / 13h00–17h00. Deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation ; pause méridienne de 12h00 à 13h00 hors temps de formation. Soit 8 heures de formation par journée.\nMéthodes : 30 % d'apports, 70 % de pratique sur la situation réelle de chaque stagiaire. Effectif : 4 à 10 participants.\nMatériel : un ordinateur portable par stagiaire (inter : apporter le sien), avec accès à sa messagerie professionnelle. Venir avec son fichier de contacts (s'il existe), un courriel déjà envoyé et l'offre à promouvoir.\n\n── 08h00–10h00 · À QUI : LE FICHIER AVANT LE TEXTE ──\n• Séquence 0 « La boîte de réception » : pourquoi 9 courriels sur 10 ne sont jamais lus.\n• Cadrage, attentes, information RGPD et transparence IA.\n• Prospection électronique : ce que permettent le RGPD et le code des postes et des communications électroniques (B2B / B2C, consentement, opposition).\n• Assainir et segmenter son fichier : origine de chaque contact, doublons, segments utiles.\nLIVRABLE : le fichier assaini et segmenté, avec sa colonne « origine », et la fiche de registre « prospection ».\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · ÉCRIRE AVEC L'IA : LE COURRIEL QUI OBTIENT UNE RÉPONSE ──\n• Objet, accroche, corps, appel à l'action : la structure qui fonctionne.\n• La consigne qui produit un texte utilisable : rôle, contexte, destinataire, objectif, contraintes, exemple.\n• Ce qu'on ne donne jamais à l'outil : données clients nominatives, informations confidentielles.\n• Relire ce que l'IA invente : chiffres, promesses, références.\nLIVRABLE : le courriel type personnalisé et la consigne réutilisable qui l'a produit.\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–15h00 · LA SÉQUENCE ET LA DÉLIVRABILITÉ ──\n• Concevoir une séquence de trois courriels : rythme, relance, sortie de séquence.\n• Être reçu : expéditeur identifié, authentification du domaine, contenu qui évite les filtres.\n• Mentions obligatoires et lien de désinscription ; traiter une demande d'opposition.\nLIVRABLE : la séquence de trois courriels, datée et prête à programmer.\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · MESURER, CORRIGER, ÉVALUER ──\n• Les quatre indicateurs utiles : ouverture, clic, désinscription, plainte — et ce qu'on corrige selon chacun.\n• Quand l'IA écrit, qui signe : responsabilité de l'expéditeur.\n• Évaluation finale : séquence complète et fiche de registre notées sur grille ; QCM de 10 questions (seuil 7/10).\n• Plan d'action à 30 jours, questionnaire de satisfaction, clôture.\nLIVRABLE : le tableau de bord à quatre indicateurs, prêt à remplir après chaque envoi.",
+      "materiel": "Ordinateur portable requis",
+      "precisionMateriel": "Inter : venir avec son ordinateur portable et l'accès à sa messagerie professionnelle.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
         "sessions": null,
         "stagiaires": null
       },
-      "revision": "2026-09-11"
+      "revision": "2026-10-07"
     },
     {
       "ref": "FOR-0011",
-      "titre": "ALLUMAGE-TURBO — L'IA générative au travail : usages, sécurité et preuves (3 jours)",
+      "titre": "IA générative au travail : Gagner du temps chaque jour, en sécurité et avec des preuves (3 jours)",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Tout salarié, manager, dirigeant ou indépendant qui utilise — ou va utiliser — un outil d'IA générative dans son travail : accueil, administratif, commerce, RH, comptabilité, communication, encadrement, direction de TPE-PME.\nLa journée 3 vise en outre la personne qui devra répondre en interne à la question « est-ce qu'on a le droit ? ».\nEffectif : 4 à 10 stagiaires, 1 formateur. Un poste par stagiaire.\n\nCE QUE CETTE FORMATION N'EST PAS : ni un diplôme, ni une certification enregistrée au RNCP ou au RS, ni une « mise en conformité » automatique. Elle aide l'entreprise à PROUVER les mesures prises pour favoriser la maîtrise de l'IA de ses équipes (règlement (UE) 2024/1689, art. 4, dans sa rédaction issue du règlement (UE) 2026/1744).",
       "heures": 24,
       "jours": 3,
       "prerequis": "Aucun prérequis technique pour les journées 1 et 2 : savoir utiliser un navigateur internet et une messagerie.\nChaque stagiaire dispose d'un poste connecté et d'un compte PROFESSIONNEL sur l'outil d'IA retenu par son employeur — jamais un compte personnel.\nPour la journée 3 (assistants personnalisés) : licence active et nominative pour l'une des deux voies — Microsoft 365 Copilot ou Google Workspace avec Gemini (voie américaine), Mistral Le Chat Pro ou Dust (voie européenne). À défaut, un environnement de démonstration est fourni par YEBA FORMATIONS. La vérification écrite de ces accès est faite lors de l'entretien préalable.",
@@ -289,13 +324,18 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 1680,
-        "interJour": 560,
-        "intraTotal": 4380,
-        "intraJour": 1460,
+        "interTotal": 2370,
+        "interJour": 790,
+        "intraTotal": 7200,
+        "intraJour": 2400,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "OBJECTIFS PÉDAGOGIQUES — taxonomie de Bloom, formulation SMART\n\nBLOC 1 — COMPRENDRE ET BIEN DEMANDER (jour 1)\nO1 (Comprendre) — Expliquer, avec ses mots, ce que fait un modèle de langage et ce qu'il ne fait pas.\n  SMART : restituer à l'oral en 2 minutes les trois limites structurelles étudiées. Réussite : 3 sur 3.\nO2 (Appliquer) — Formuler une demande complète : rôle, contexte, format attendu, contrainte.\n  SMART : produire et tester 6 demandes métier, dont au moins 5 donnent un résultat exploitable en 2 reprises maximum.\nO3 (Analyser) — Classer une information en trois niveaux : je saisis / j'anonymise d'abord / je ne saisis jamais.\n  SMART : trier correctement au moins 16 des 20 cartes de l'atelier « Le Tri de la Réserve ».\nO4 (Évaluer) — Détecter une réponse fausse, inventée ou biaisée, et documenter la vérification.\n  SMART : sur 5 réponses défaillantes, identifier le défaut et la source de vérification dans au moins 4 cas.\n\nBLOC 2 — PRODUIRE DANS L'ENTREPRISE (jour 2)\nO5 (Analyser) — Déterminer si l'assistant relié à l'entreprise peut atteindre un document, en raisonnant sur les droits d'accès.\n  SMART : qualifier correctement au moins 8 des 10 cas de l'atelier « Qui voit quoi ? ».\nO6 (Appliquer) — Conduire de bout en bout un processus professionnel complet assisté par l'IA.\n  SMART : mener à terme les trois parcours métier, chacun au niveau « Acquis » minimum sur la grille.\nO7 (Créer) — Constituer une bibliothèque de demandes métier documentées pour son service.\n  SMART : 10 demandes documentées (objectif, limite, contrôle humain), exploitables par un collègue.\nO8 (Évaluer) — Comparer une solution américaine et une solution européenne sur un même besoin, et motiver le choix.\n  SMART : arbitrage écrit de 10 lignes citant coût, souveraineté des données, dépendance et compétence interne.\n\nBLOC 3 — AUTOMATISER ET PROUVER (jour 3)\nO9 (Créer) — Construire un assistant personnalisé réutilisable, à partir d'un besoin réel de son poste.\n  SMART : assistant fonctionnel en fin de J3, présenté en 3 minutes, limites énoncées.\nO10 (Analyser) — Auditer un tableau produit avec l'IA et identifier ce qui doit être recalculé à la main.\n  SMART : sur un tableau comportant 4 erreurs, en détecter au moins 3 et justifier la méthode de contrôle.\nO11 (Appliquer) — Appliquer les obligations de transparence de l'art. 50 et rédiger les mesures de gouvernance de sa structure.\n  SMART : rédiger les deux mentions de l'art. 50 sans modèle, et trois mesures justifiées dont une sur les droits d'accès et une sur la localisation des traitements.\nO12 (Créer) — Constituer le « dossier de preuve des mesures IA » de son poste et de sa structure.\n  SMART : repartir avec une fiche de poste « usages IA » (3 usages, limites, contrôle humain) et un plan d'action à 30 jours signé.",
+      "programme": "MÉTHODES : 30 % d'apport, 70 % de pratique. Ateliers en sous-groupes et mises en situation sur poste. Les deux voies — américaine et européenne — sont enseignées à parité à partir du jour 2 : le stagiaire choisit sa voie, le formateur démontre les deux. YEBA FORMATIONS ne vend aucun outil et ne perçoit aucune commission d'éditeur.\n\nFIL ROUGE : KAZ'MARKET, supérette de quartier à Sainte-Clotilde (9 salariés), et sa centrale d'achat HYPER PÉI. Chaque atelier part d'un de leurs documents.\n\nLE + YEBA (inclus dans le prix) :\n• AVANT : entretien de cadrage de 20 minutes avec le responsable (analyse du besoin, outils en place, licences) + test de positionnement.\n• PENDANT : grille critériée remise dès l'ouverture ; livret ressource en corps 16 sur demande.\n• APRÈS : classe virtuelle de suivi d'1 heure à J+30 (hors durée de formation) pour vérifier ce qui est installé au poste ; évaluation à froid à 60 jours.\n• POUR L'ENTREPRISE : un « dossier de preuve des mesures IA » prêt à classer — programme, émargements, attestations, fiches de poste « usages IA », mesures de gouvernance rédigées.\n\nHORAIRES : 08h00–17h00 les trois jours. Deux pauses de 15 minutes à 10h00 et 15h00, incluses dans le temps de formation. Pause méridienne de 12h00 à 13h00, hors temps de formation. Soit 8 heures par journée, 24 heures au total.\n\n══ JOUR 1 — COMPRENDRE, DEMANDER, PROTÉGER ══\n\n── 08h00–10h00 · COMPRENDRE — Ce qu'il y a sous le capot ──\n  • Séquence 0 : la question qui dérange — « qui a déjà collé un document client dans une IA ? »\n  • Ce qu'est réellement un modèle de langage : une machine à probabilités, pas une base de connaissances\n  • Les trois limites structurelles : l'invention, la date de connaissance, le biais\n  • Démonstration en direct : la même question, trois outils, trois réponses différentes\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · BIEN DEMANDER — Formuler une demande qui fonctionne ──\n  • La méthode des 4 C : Casquette, Contexte, Cadre, Contrôle\n  • Atelier « Mes 6 demandes métier » — chacun part de son propre poste\n  • Relancer plutôt que recommencer : la reprise en 2 temps\n  • Image et vidéo générées : ce qui est permis, ce qui engage la responsabilité de l'entreprise\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–13h15 · RÉVEIL PÉDAGOGIQUE — « Vrai ou inventé ? » (8 affirmations, le groupe tranche) ──\n\n── 13h15–15h00 · GARDE-FOUS — Ce qui ne doit jamais sortir ──\n  • Atelier « Le Tri de la Réserve » : 20 cartes de données, trois bacs\n  • Donnée personnelle, donnée sensible, secret d'affaires : les reconnaître en 10 secondes\n  • RGPD : minimisation (art. 5) et base légale (art. 6) expliquées par l'exemple\n  • Comptes grand public contre comptes professionnels : ce que l'éditeur fait de vos saisies\n  • Le réflexe d'anonymisation en trois gestes\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · VÉRIFICATION — Vérifier, tracer, assumer ──\n  • Atelier « Les 5 réponses ratées » : diagnostiquer le défaut, nommer la source de vérification\n  • Première fiche de poste « usages IA » (complétée en J3)\n  • Quiz d'étape : 10 questions, correction commentée\n\n══ JOUR 2 — PRODUIRE DANS L'ENTREPRISE ══\n\n── 08h00–10h00 · DIAGNOSTIC — L'assistant relié à l'entreprise ──\n  • Ce que votre assistant voit déjà de vos dossiers, et que vous ignorez\n  • Assistant grand public contre assistant relié aux données : trois différences structurantes\n  • Atelier « Qui voit quoi ? » — 10 cas de documents\n  • Le sur-partage : le problème vient des droits d'accès, jamais de l'IA\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · DEUX VOIES, UN MÊME BESOIN ──\n  • VOIE AMÉRICAINE : Copilot pour Microsoft 365, Gemini pour Google Workspace, Claude, ChatGPT\n  • VOIE EUROPÉENNE : Mistral Le Chat, Dust, bureautique libre assistée, modèle local via Ollama\n  • Démonstration à parité : le même compte rendu produit deux fois, côte à côte\n  • La grille d'arbitrage YEBA : coût complet, souveraineté, dépendance, compétence interne, réversibilité\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–13h15 · RÉVEIL PÉDAGOGIQUE — « Le relais de prompt » ──\n\n── 13h15–15h00 · ATELIER — Le parcours métier complet ──\n  • Du courriel client au devis, sans ressaisie\n  • De la réunion au compte rendu diffusé, avec relecture humaine tracée\n  • Du tableau brut à la synthèse commentée pour la direction\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · LA BIBLIOTHÈQUE DE DEMANDES ──\n  • Construire une demande réutilisable : objectif, limite connue, contrôle humain obligatoire\n  • Atelier : 10 demandes métier documentées, versées au patrimoine du service\n  • Le test du collègue : une demande qui ne marche que pour son auteur n'a aucune valeur\n\n══ JOUR 3 — AUTOMATISER ET PROUVER ══\n\n── 08h00–10h00 · ASSISTANTS PERSONNALISÉS ──\n  • Les 5 blocs de configuration d'un assistant dédié à une tâche récurrente\n  • Voie américaine : agents Copilot, Gems Gemini, Projets Claude, GPT personnalisés\n  • Voie européenne : agents Mistral, agents Dust connectés aux données internes\n  • Atelier long : chaque stagiaire construit l'assistant de son poste\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · TABLEAUX ET DONNÉES ──\n  • Atelier « Les 4 erreurs cachées » : un tableau de bord piégé à auditer\n  • La règle YEBA : un chiffre qui part à la direction est un chiffre recalculé à la main\n  • Connecter l'assistant à une base existante : ce que cela change juridiquement\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–13h15 · RÉVEIL PÉDAGOGIQUE — « L'assistant qui ment » ──\n\n── 13h15–15h00 · GOUVERNANCE — Ce que l'entreprise doit écrire et pouvoir prouver ──\n  • RGPD art. 28 : votre éditeur d'IA est un sous-traitant. Le contrat existe-t-il ?\n  • Localisation des traitements et transferts hors UE : la question à poser à l'éditeur\n  • AI Act art. 4 (nouvelle rédaction du 27/07/2026) : « prendre des mesures pour favoriser » la maîtrise de l'IA — lesquelles, et comment les prouver\n  • AI Act art. 50 : les deux mentions de transparence à mettre en place\n  • Atelier : les trois mesures de gouvernance de sa structure + le dossier de preuve\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · RESTITUTION ET ÉVALUATION ──\n  • Présentation de l'assistant construit : 3 minutes par stagiaire, limites énoncées\n  • Mise en situation finale notée sur la grille critériée\n  • Quiz final : 10 questions, seuil 7/10\n  • Fiche de poste « usages IA » finalisée + plan d'action à 30 jours signé, remis au responsable\n\n══ RESSOURCES À CONSULTER — liens vérifiés le 22/09/2026 ══\nConsultation en ligne auprès des éditeurs. YEBA FORMATIONS ne redistribue pas ces contenus.\n• CNIL — « Comment déployer un système d'IA générative : les premières préconisations » — https://video.cnil.fr/w/wXUgWCbt1fze2rBiFYazRj\n• Elements of AI (français) — https://www.elementsofai.fr/ (chapitre 1 en amont, avec le test de positionnement)\n• Commission européenne — FAQ « Maîtrise de l'IA » (art. 4), mise à jour du 27/07/2026 — https://digital-strategy.ec.europa.eu/fr/faqs/ai-literacy-questions-answers\n• CNIL — Questions-réponses sur l'utilisation d'un système d'IA générative — https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative\n• Microsoft Learn — « Microsoft 365 Copilot » — https://learn.microsoft.com/fr-fr/training/paths/get-started-with-microsoft-365-copilot/ (voie américaine)\n• Mistral AI — documentation — https://docs.mistral.ai/ (voie européenne)\n• Dust — documentation — https://docs.dust.tt/ (voie européenne)",
+      "materiel": "Ordinateur portable requis",
+      "precisionMateriel": "Poste connecté + compte PROFESSIONNEL sur l'outil d'IA de l'employeur. Jour 3 : licence nominative (Copilot, Gemini, Le Chat Pro ou Dust) ou environnement de démonstration fourni.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
@@ -306,12 +346,12 @@
     },
     {
       "ref": "FOR-0013",
-      "titre": "PILOTE AUTOMATIQUE — Agents IA sous contrôle humain (niveau avancé, 2 jours)",
+      "titre": "Agents IA : Déléguer des tâches à l'IA sous contrôle humain (niveau avancé, 2 jours)",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Dirigeants, responsables informatiques, référents IA, chefs de projet et profils techniques d'entreprise ayant un usage avancé de l'IA générative, ou ayant suivi « IA générative au travail » (FOR-0011). La journée 2 vise en outre la personne qui devra répondre en interne à la question « qui est responsable ? ».\nEffectif : 4 à 8 stagiaires, 1 formateur — effectif réduit imposé par la nature technique des ateliers.\n\nCE QUE CETTE FORMATION N'EST PAS : ni un diplôme, ni une certification RNCP/RS, ni une « mise en conformité » automatique au règlement (UE) 2024/1689. Elle donne aux stagiaires les moyens de déployer des agents sous contrôle humain et de documenter les mesures prises.",
       "heures": 16,
       "jours": 2,
-      "prerequis": "Usage avancé de l'IA générative, ou ALLUMAGE-TURBO acquis. Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation n'est exigée, mais le stagiaire doit accepter de travailler dans un terminal. Poste avec droits d'installation, ou machine virtuelle fournie par YEBA FORMATIONS. Checklist technique transmise 10 jours avant : débit réseau vérifié sur le lieu, comptes et clés d'accès aux outils retenus. Entretien de cadrage de 20 minutes avec le responsable avant l'inscription.",
+      "prerequis": "Usage avancé de l'IA générative, ou « IA générative au travail » (FOR-0011) acquis. Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation n'est exigée, mais le stagiaire doit accepter de travailler dans un terminal. Poste avec droits d'installation, ou machine virtuelle fournie par YEBA FORMATIONS. Checklist technique transmise 10 jours avant : débit réseau vérifié sur le lieu, comptes et clés d'accès aux outils retenus. Entretien de cadrage de 20 minutes avec le responsable avant l'inscription.",
       "methodes": [
         "Présentiel"
       ],
@@ -327,13 +367,18 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 990,
-        "interJour": 495,
-        "intraTotal": 3690,
-        "intraJour": 1845,
+        "interTotal": 1980,
+        "interJour": 990,
+        "intraTotal": 5800,
+        "intraJour": 2900,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "OBJECTIFS PÉDAGOGIQUES — taxonomie de Bloom, formulation SMART\n\nO1 (Comprendre) — Distinguer un assistant, un agent et un système multi-agents, et énoncer ce que chacun peut décider seul.\n  SMART : classer correctement 9 des 10 situations de l'atelier de qualification.\n\nO2 (Appliquer) — Mettre en service un agent capable d'exécuter une tâche de bout en bout sur un périmètre délimité.\n  SMART : agent fonctionnel en fin de J1, exécutant sa tâche trois fois de suite sans intervention.\n\nO3 (Créer) — Concevoir une chaîne de deux agents qui se transmettent un travail, avec un point de contrôle humain obligatoire.\n  SMART : chaîne opérationnelle en J2, comportant au moins un arrêt exigeant une validation humaine explicite.\n\nO4 (Évaluer) — Déterminer le niveau d'autonomie acceptable d'un agent au regard du risque encouru.\n  SMART : sur 6 scénarios, fixer le niveau d'autonomie et le justifier par le risque, dans au moins 5 cas.\n\nO5 (Analyser) — Établir la traçabilité d'une action conduite par un agent : qui a décidé, quand, sur quelle donnée.\n  SMART : produire le journal d'exécution d'un agent et y désigner le responsable de chaque décision.\n\nO6 (Évaluer) — Qualifier un système au regard de l'AI Act : interdit, haut risque, transparence, ou hors champ.\n  SMART : qualifier correctement 7 des 8 cas soumis, en citant l'article ou l'annexe applicable.\n\nO7 (Créer) — Rédiger la procédure d'arrêt d'urgence et de reprise manuelle d'un agent déployé.\n  SMART : procédure écrite, testée en séance, exécutable par une personne qui n'a pas construit l'agent.\n\nO8 (Évaluer) — Arbitrer entre une architecture américaine et une architecture européenne pour un déploiement donné.\n  SMART : note d'arbitrage argumentée citant coût, souveraineté, réversibilité, compétence interne et continuité de service.",
+      "programme": "MÉTHODES : 30 % d'apport, 70 % de pratique. Effectif limité à 8. Chaque atelier est conduit dans les deux voies — américaine et européenne — puis comparé par les stagiaires eux-mêmes. YEBA FORMATIONS ne vend aucun outil et ne perçoit aucune commission d'éditeur.\n\nFIL ROUGE : KAZ'MARKET, HYPER PÉI et RUN'ATTITUDE. Les agents construits en séance traitent leurs flux de commande et de réclamation.\n\nLE + YEBA (inclus dans le prix) :\n• AVANT : entretien de cadrage de 20 minutes (cas réel de l'entreprise, contraintes techniques) + checklist technique à J-10.\n• APRÈS : « revue de mise en production » en classe virtuelle d'1 heure à J+30 (hors durée de formation) : l'agent tourne-t-il, avec quel journal, quel point d'arrêt, quel responsable ?\n• POUR L'ENTREPRISE : kit de gouvernance des agents — fiche d'inventaire du système, niveau d'autonomie justifié, journal d'exécution type, procédure d'arrêt d'urgence testée.\n\nHORAIRES : 08h00–17h00 les deux jours. Deux pauses de 15 minutes à 10h00 et 15h00, incluses dans le temps de formation. Pause méridienne de 12h00 à 13h00, hors temps de formation. Soit 8 heures par journée, 16 heures au total.\n\n══ JOURNÉE 1 ══\n\n── 08h00–10h00 · QUALIFICATION — Assistant, agent, ou système ? ──\n  • Séquence 0 : la démonstration qui inquiète — un agent qui agit seul pendant 4 minutes\n  • Trois familles : l'assistant qui répond, l'agent qui exécute, le système qui coordonne\n  • Atelier de qualification : 10 situations, quelle famille, que peut-elle décider seule ?\n  • La question qui commande tout : que se passe-t-il si l'agent se trompe et que personne ne regarde ?\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · PREMIER AGENT — Voie américaine ──\n  • Claude Code et Codex : l'agent dans le terminal, ce qu'il lit, écrit et exécute\n  • Le fichier d'instructions permanentes : donner à l'agent ses règles avant qu'il agisse\n  • Les autorisations : ce que l'agent peut faire sans demander, ce qui exige un accord\n  • Atelier : mise en service d'un agent sur une tâche réelle et délimitée\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–13h15 · RÉVEIL PÉDAGOGIQUE — « L'agent sans garde-fou » ──\n\n── 13h15–15h00 · PREMIER AGENT — Voie européenne ──\n  • Mistral Vibe CLI et Devstral 2 : l'équivalent souverain, sous licence ouverte Apache 2.0\n  • Modèle exécuté en local avec Ollama : la démonstration « zéro donnée sortante »\n  • n8n auto-hébergé : l'agent sur un serveur que l'entreprise maîtrise\n  • Atelier : la même tâche qu'en matinée, refaite dans la voie européenne, puis comparée\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · AUTONOMIE ET RISQUE ──\n  • Les quatre niveaux d'autonomie : propose, exécute sous accord, exécute et rend compte, décide seul\n  • Atelier « Jusqu'où ? » : 6 scénarios, fixer le niveau et le justifier par le risque\n  • La règle YEBA : le niveau d'autonomie se fixe sur le coût de l'erreur, jamais sur le confort d'usage\n  • Journal d'exécution : rendre lisible ce que l'agent a fait, pour quelqu'un qui n'était pas là\n\n══ JOURNÉE 2 ══\n\n── 08h00–10h00 · CHAÎNES D'AGENTS ──\n  • Deux agents qui se transmettent un travail : le passage de relais et son point de rupture\n  • Le point de contrôle humain obligatoire : où le placer pour qu'il serve à quelque chose\n  • Atelier long : construire une chaîne de deux agents avec arrêt de validation\n  • Ce qui casse en production : la boucle infinie, la dérive de consigne, la donnée absente\n\n── 10h00–10h15 · PAUSE ──\n\n── 10h15–12h00 · L'IA QUI TRAVAILLE SEULE ──\n  • Déclencheurs : horaire, événement, réception d'un message — l'agent sans humain devant\n  • Atelier : programmer une exécution automatique et son compte rendu obligatoire\n  • Procédure d'arrêt d'urgence et de reprise manuelle — rédigée, puis testée par un autre stagiaire\n  • Le coût réel : facturation à l'usage, dérive de consommation, plafonds à poser d'emblée\n\n── 12h00–13h00 · PAUSE MÉRIDIENNE ──\n\n── 13h00–13h15 · RÉVEIL PÉDAGOGIQUE — « Qui signe ? » ──\n\n── 13h15–15h00 · QUALIFICATION JURIDIQUE ET GOUVERNANCE ──\n  • AI Act : pratiques interdites (art. 5), haut risque (annexe III — obligations applicables au 02/12/2027 depuis le règlement (UE) 2026/1744), transparence (art. 50)\n  • Le piège des ressources humaines : tri de candidatures et évaluation des salariés relèvent du haut risque\n  • RGPD art. 22 : une décision produisant un effet juridique ne peut être entièrement automatisée\n  • Atelier de qualification : 8 cas, quel régime, quel article\n  • Le dossier de preuve : inventaire des systèmes, charte d'usage, registre, journaux d'exécution\n\n── 15h00–15h15 · PAUSE ──\n\n── 15h15–17h00 · ARBITRAGE ET ÉVALUATION ──\n  • Note d'arbitrage : architecture américaine ou européenne, sur un cas réel de l'entreprise\n  • Restitution : 5 minutes par stagiaire, chaîne d'agents démontrée en direct\n  • Mise en situation finale notée sur la grille critériée\n  • Quiz individuel de 10 questions — seuil 7 sur 10\n\n══ RESSOURCES À CONSULTER — liens vérifiés le 22/09/2026 ══\nConsultation en ligne auprès des éditeurs. YEBA FORMATIONS ne redistribue pas ces contenus.\n• Anthropic Academy — https://anthropic.skilljar.com/ (voie américaine, « Claude Code in Action »)\n• OpenAI — vidéos Codex — https://developers.openai.com/codex/videos (voie américaine)\n• Mistral AI — Devstral 2 et Vibe CLI — https://mistral.ai/news/devstral-2-vibe-cli/ (voie européenne)\n• n8n — agents IA et auto-hébergement — https://docs.n8n.io/advanced-ai/ (voie européenne)\n• Ollama — https://ollama.com/ (voie européenne, « zéro donnée sortante »)\n• CNIL — Questions-réponses IA générative — https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative\n• Commission européenne — FAQ « Maîtrise de l'IA » (art. 4), mise à jour du 27/07/2026 — https://digital-strategy.ec.europa.eu/fr/faqs/ai-literacy-questions-answers",
+      "materiel": "Ordinateur portable requis — configuration spécifique",
+      "precisionMateriel": "Poste avec droits d'installation (ou machine virtuelle fournie). Checklist technique envoyée 10 jours avant.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
@@ -344,9 +389,9 @@
     },
     {
       "ref": "FOR-0014",
-      "titre": "TABLEAU DE BORD — Séminaire dirigeants en résidentiel",
+      "titre": "Séminaire dirigeants IA : Choisir les 3 tâches que l'IA fera pour vous (résidentiel, 2 jours)",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Dirigeants, gérants, directeurs généraux et associés de TPE-PME réunionnaises de 3 à 50 salariés, seuls décisionnaires de l'engagement budgétaire de leur structure. Un seul dirigeant par entreprise. Deux entreprises directement concurrentes ne sont jamais inscrites sur la même session : la règle est écrite dans la convention.\n\nEffectif : 6 à 8 dirigeants, à huis clos.",
       "heures": 16,
       "jours": 2,
       "prerequis": "Aucun prérequis technique. Le dirigeant vient avec trois éléments : la liste de ses cinq tâches les plus chronophages, son chiffre d'affaires et son effectif, et la liste des outils numériques déjà en place. Ces éléments sont demandés au moment de l'inscription et conditionnent la personnalisation des ateliers.",
@@ -362,13 +407,18 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 1690,
-        "interJour": 845,
-        "intraTotal": 3380,
-        "intraJour": 1690,
+        "interTotal": 1980,
+        "interJour": 990,
+        "intraTotal": 5800,
+        "intraJour": 2900,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "Mix",
+      "objectifs": "O1 — [Analyser] Identifier, dans son entreprise, les trois tâches dont l'automatisation dégagerait le plus de temps de dirigeant.\n   Critère de réussite : trois tâches nommées, chiffrées en heures par mois et classées par gain attendu.\n\nO2 — [Évaluer] Qualifier chacune de ces tâches au regard de l'AI Act : usage interdit, haut risque, transparence, ou sans obligation particulière.\n   Critère de réussite : les trois tâches qualifiées, avec l'article invoqué pour chacune.\n\nO3 — [Évaluer] Fixer le niveau d'autonomie acceptable de chaque agent envisagé, en fonction du coût de l'erreur.\n   Critère de réussite : quatre niveaux distingués et un niveau attribué, chiffré en euros et en réputation.\n\nO4 — [Créer] Construire le plan d'agents de son entreprise : périmètre, séquence de déploiement, point d'arrêt humain, responsable désigné.\n   Critère de réussite : plan écrit de deux pages, présenté au groupe et soutenu face à deux objections.\n\nO5 — [Évaluer] Arbitrer entre solution américaine, européenne et locale sur son cas réel, avec la grille des cinq critères.\n   Critère de réussite : arbitrage écrit et daté, comportant les conditions dans lesquelles il devrait être révisé.\n\nO6 — [Appliquer] Désigner, dans son organigramme, qui répond de chaque système d'IA déployé.\n   Critère de réussite : tableau de responsabilité nominatif, une ligne par système, sans case vide.\n\nO7 — [Créer] Rédiger la charte d'usage de l'IA de son entreprise, diffusable dès le retour.\n   Critère de réussite : charte d'une page produite en séance — ce qui est permis, ce qui est interdit, qui arbitre.\n\nO8 — [Évaluer] Établir son budget et son calendrier à 12 mois, et le seuil auquel le projet s'arrête.\n   Critère de réussite : budget chiffré, jalons datés, et critère d'abandon écrit noir sur blanc.",
+      "programme": "Format résidentiel à huis clos, en établissement hôtelier. 2 jours — 16 heures. Journée de 8 heures : 08h00–17h00, deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation, pause méridienne de 12h00 à 13h00 hors temps de formation.\n\nJ1 · 08h00–10h00 · OÙ VOUS EN ÊTES VRAIMENT\n   • Séquence 0 : chaque dirigeant annonce les cinq tâches qui lui mangent ses semaines\n   • Le tour de table sans langue de bois : ce qui a déjà été tenté, et pourquoi cela a échoué\n   • Les trois erreurs de déploiement les plus coûteuses constatées en TPE-PME\n   • Ce que la concurrence fait déjà — et ce qu'elle raconte qu'elle fait\n10h00–10h15 — PAUSE\nJ1 · 10h15–12h00 · QUALIFIER AVANT D'ACHETER\n   • Assistant, agent, système : ce que chacun peut décider sans personne\n   • Qualification AI Act : interdit (art. 5), haut risque (annexe III), transparence (art. 50)\n   • Atelier : les trois tâches de chacun, qualifiées une par une, article à l'appui\n   • Le cas qui piège tout le monde : le tri de candidatures (annexe III)\n12h00–13h00 — PAUSE MÉRIDIENNE\nJ1 · 13h00–13h15 · RÉVEIL PÉDAGOGIQUE\n   • Trois questions de reprise sur la matinée, à main levée — aucune note, aucun classement\nJ1 · 13h15–15h00 · LE COÛT DE L'ERREUR\n   • Quatre niveaux d'autonomie : propose · exécute sous accord · exécute et rend compte · décide seul\n   • Atelier : chiffrer le coût d'une erreur en euros ET en réputation, sur son propre cas\n   • Un groupe qui ne chiffre pas surestime systématiquement l'autonomie acceptable\n   • Où placer le point d'arrêt humain : juste avant la première action irréversible\n15h00–15h15 — PAUSE\nJ1 · 15h15–17h00 · DÉMONSTRATIONS COMPARÉES\n   • La même tâche montée devant le groupe en voie américaine, puis en voie européenne\n   • Puis en local, réseau coupé : la donnée ne sort pas de la salle\n   • La grille d'arbitrage YEBA : coût complet · souveraineté · dépendance · compétence · réversibilité\n   • Chaque dirigeant note son arbitrage provisoire, qu'il révisera le lendemain\n\nJ2 · 08h00–10h00 · LE PLAN D'AGENTS\n   • Rédaction individuelle, accompagnée : périmètre, séquence, point d'arrêt, responsable\n   • La règle des trois premiers mois : un seul agent en production, pas trois\n   • Ce qui fait échouer un plan : aucun responsable nommé, ou un responsable sans temps alloué\n   • Chaque plan est relu par un autre dirigeant avant d'être présenté\n10h00–10h15 — PAUSE\nJ2 · 10h15–12h00 · QUI SIGNE ?\n   • Tableau de responsabilité : une ligne par système, un nom par ligne, aucune case vide\n   • RGPD art. 22 : l'IA ne décide pas seule dès qu'un effet significatif touche une personne\n   • Le registre des traitements et l'inventaire des systèmes : deux documents, deux logiques\n   • Rédaction de la charte d'usage : permis, interdit, qui arbitre les cas non prévus\n12h00–13h00 — PAUSE MÉRIDIENNE\nJ2 · 13h00–13h15 · RÉVEIL PÉDAGOGIQUE\n   • Trois questions de reprise sur la matinée, à main levée\nJ2 · 13h15–15h00 · BUDGET, CALENDRIER, SEUIL D'ARRÊT\n   • Chiffrage à 12 mois : licences, temps interne, formation, maintenance\n   • Jalons datés, et le critère qui déclenche l'abandon du projet — écrit à l'avance\n   • Financement : ce que l'opérateur de compétences prend, ce qu'il ne prend pas\n   • Ce que l'on ne lance pas cette année, et pourquoi le dire est une décision\n15h00–15h15 — PAUSE\nJ2 · 15h15–17h00 · SOUTENANCE ET ENGAGEMENT\n   • Chaque dirigeant présente son plan en 8 minutes et répond à deux objections du groupe\n   • Évaluation : le plan, le tableau de responsabilité, la charte et le budget sont les livrables notés\n   • Engagement écrit : la première action lancée dans les 30 jours, et son responsable\n   • Point de contact pour l'évaluation à froid à 60 jours",
+      "materiel": "À confirmer",
+      "precisionMateriel": "À préciser par la direction : ordinateur utile pour les démonstrations comparées ?",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,
@@ -379,12 +429,12 @@
     },
     {
       "ref": "FOR-0015",
-      "titre": "MOTEUR FERMÉ — IA locale souveraine",
+      "titre": "IA souveraine : Faire tourner l'IA sur ses propres machines, sans donnée sortante",
       "type": "Inter-entreprise",
-      "public": "",
+      "public": "Dirigeants, responsables informatiques, référents IA et prestataires informatiques de TPE-PME qui traitent des données sensibles ou couvertes par le secret : cabinets comptables et juridiques, santé, ressources humaines, bureaux d'études, collectivités. Également ouvert aux structures dont l'activité impose une continuité de service hors connexion.\n\nEffectif : 4 à 8 stagiaires (effectif réduit imposé par la nature technique).",
       "heures": 16,
       "jours": 2,
-      "prerequis": "Usage courant de l'IA générative (ou niveau ALLUMAGE acquis). Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation exigée, mais le stagiaire doit accepter de travailler dans un terminal. Un poste avec droits d'administration est nécessaire : 16 Go de mémoire vive recommandés, 8 Go au minimum, et 20 Go d'espace disque libre. Les modèles sont téléchargés par le formateur AVANT la session.",
+      "prerequis": "Usage courant de l'IA générative (ou niveau « IA générative au travail » (FOR-0011) acquis). Aisance avec les outils numériques de son entreprise. Aucune compétence en programmation exigée, mais le stagiaire doit accepter de travailler dans un terminal. Un poste avec droits d'administration est nécessaire : 16 Go de mémoire vive recommandés, 8 Go au minimum, et 20 Go d'espace disque libre. Les modèles sont téléchargés par le formateur AVANT la session.",
       "methodes": [
         "Présentiel"
       ],
@@ -397,13 +447,18 @@
       ],
       "certification": null,
       "tarifs": {
-        "interTotal": 990,
-        "interJour": 495,
-        "intraTotal": 3690,
-        "intraJour": 1845,
+        "interTotal": 1780,
+        "interJour": 890,
+        "intraTotal": 5400,
+        "intraJour": 2700,
         "supplement": 150,
         "mentionTva": "TVA non applicable, art. 293 B du CGI"
       },
+      "domaine": "IA Générative",
+      "objectifs": "O1 — [Comprendre] Distinguer un modèle exécuté en local d'un modèle appelé à distance, et énoncer ce que chacun expose réellement comme données.\n   Critère : classer correctement 8 des 10 situations de l'atelier « Où part la donnée ? ».\n\nO2 — [Appliquer] Installer un moteur d'exécution locale et faire répondre un modèle sur son propre poste.\n   Critère : modèle installé et première réponse obtenue en autonomie, en moins de 30 minutes.\n\nO3 — [Analyser] Démontrer, réseau coupé, qu'aucune donnée saisie ne quitte la machine.\n   Critère : démonstration conduite et commentée par le stagiaire devant le groupe, sans aide du formateur.\n\nO4 — [Évaluer] Choisir la taille de modèle que le matériel du client peut réellement porter.\n   Critère : deux modèles comparés, temps de réponse chronométrés, choix justifié par écrit.\n\nO5 — [Appliquer] Brancher le modèle local sur un fonds documentaire d'entreprise et contrôler l'étendue des droits.\n   Critère : réponse exacte obtenue sur une question dont la réponse n'existe que dans les documents fournis.\n\nO6 — [Évaluer] Chiffrer le coût complet d'une solution locale sur 36 mois, face à un abonnement.\n   Critère : tableau à deux colonnes complété avec les chiffres réels du stagiaire, et conclusion écrite datée.\n\nO7 — [Appliquer] Inscrire le traitement local au registre des activités de traitement de l'entreprise.\n   Critère : entrée de registre rédigée en séance — finalité, données, durée, destinataires, mesures de sécurité.\n\nO8 — [Créer] Rédiger la note d'arbitrage « local ou distant » remise à sa direction.\n   Critère : note d'une page produite en séance, comportant une recommandation tranchée et ses conditions.",
+      "programme": "2 jours — 16 heures. Journée de 8 heures : 08h00–17h00, deux pauses de 15 minutes (10h00 et 15h00) incluses dans le temps de formation, pause méridienne de 12h00 à 13h00 hors temps de formation.\n\nJ1 · 08h00–10h00 · OÙ PART LA DONNÉE ?\n   • Séquence 0 : la même question posée à trois outils — et trois trajets de données différents\n   • Appel distant, hébergement européen, exécution locale : ce que chacun expose vraiment\n   • Atelier « Où part la donnée ? » : 10 situations de l'entreprise à classer\n   • Ce que l'on gagne et ce que l'on perd en gardant l'IA en local — le dire avant d'installer\n10h00–10h15 — PAUSE\nJ1 · 10h15–12h00 · INSTALLATION DU MODÈLE LOCAL\n   • Geste LOC-G1 : installer le moteur d'exécution locale, écran par écran (ollama.com, ollama --version, ollama pull, ollama run, ollama list)\n   • Vérifier la version, télécharger un premier modèle, lui parler\n   • Lister ce qui est installé, et savoir ce que chaque fichier pèse sur le disque\n   • L'erreur qui gâche un déploiement : lancer le téléchargement le jour J\n12h00–13h00 — PAUSE MÉRIDIENNE\nJ1 · 13h00–13h15 · RÉVEIL PÉDAGOGIQUE\n   • Trois questions de reprise sur la matinée, à main levée — aucune note, aucun classement\nJ1 · 13h15–15h00 · LA PREUVE PAR LE CÂBLE\n   • Geste LOC-G2 : vérifier que le service écoute en local (localhost, port 11434), puis couper le réseau\n   • Poser une question contenant une donnée fictive sensible, réseau coupé\n   • Rétablir la connexion et contrôler l'absence de transmission différée\n   • Le piège : le moteur est local, l'interface posée par-dessus ne l'est pas forcément\n15h00–15h15 — PAUSE\nJ1 · 15h15–17h00 · LA MACHINE PEUT-ELLE SUIVRE ?\n   • Geste LOC-G3 : relever mémoire vive et carte graphique de la machine cible\n   • Deux tailles de modèle, le même prompt métier, deux chronomètres\n   • Au-delà de dix secondes de réponse, l'utilisateur abandonne l'outil : le constater\n   • Choisir sur la vitesse ET la qualité, jamais sur le nombre de paramètres annoncé\n\nJ2 · 08h00–10h00 · BRANCHER SUR L'ENTREPRISE\n   • Geste LOC-G4 : rassembler un fonds documentaire maîtrisé, puis y connecter le moteur\n   • Poser une question dont la réponse n'existe QUE dans ces documents\n   • Vérifier que la réponse cite le bon document — et refaire l'exercice quand elle se trompe\n   • Le sur-partage revient par la fenêtre : un dossier trop large donne accès aux dossiers du personnel\n10h00–10h15 — PAUSE\nJ2 · 10h15–12h00 · CE QUE LE LOCAL NE SAIT PAS FAIRE\n   • Les limites réelles : raisonnement long, actualité, volumes, langues rares\n   • L'architecture mixte : local pour le sensible, distant pour le reste, règle écrite\n   • Continuité : qui met à jour le modèle, qui sauvegarde, qui reprend si la machine tombe\n   • Dire ce que la solution ne fera pas est ce qui rend l'arbitrage crédible\n12h00–13h00 — PAUSE MÉRIDIENNE\nJ2 · 13h00–13h15 · RÉVEIL PÉDAGOGIQUE\n   • Trois questions de reprise sur la matinée, à main levée\nJ2 · 13h15–15h00 · LE COÛT RÉEL ET LE REGISTRE\n   • Geste LOC-G5 : deux colonnes, 36 mois, avec les chiffres réels du stagiaire\n   • Ce qui ne se voit pas : dépendance au tarif de l'éditeur d'un côté, obsolescence du matériel de l'autre\n   • Geste LOC-G6 : inscrire le traitement local au registre (RGPD, art. 30)\n   • Mesures de sécurité à décrire : chiffrement du disque, contrôle d'accès, sauvegardes (RGPD, art. 32)\n   • « Local » ne veut pas dire « hors RGPD » : c'est l'inverse, et il faut savoir le dire au dirigeant\n15h00–15h15 — PAUSE\nJ2 · 15h15–17h00 · NOTE D'ARBITRAGE ET ÉVALUATION\n   • Rédaction de la note d'une page remise à sa direction : recommandation tranchée et conditions\n   • Mise en situation notée : présenter sa note et répondre à deux objections du groupe\n   • Quiz de 10 questions, puis correction commentée\n   • Plan d'action à 30 jours, et point de contact pour l'évaluation à froid à 60 jours",
+      "materiel": "Ordinateur portable requis — configuration spécifique",
+      "precisionMateriel": "Droits d'administration, 16 Go de mémoire vive recommandés (8 Go minimum), 20 Go d'espace disque libre.",
       "indicateurs": {
         "satisfaction": null,
         "reussite": null,

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { BadgeCheck, Clipboard, CreditCard, KeyRound, Mail, Sparkles } from 'lucide-react'
 import { OFFRES } from './licence.js'
-import { commander, sante } from './api.js'
+import { CGV_URL, commander, sante } from './api.js'
 import { ecrire, lire } from './stockage.js'
 
 export const EMAIL_YEBA = 'yebaformations@gmail.com'
@@ -17,7 +17,7 @@ const PROMESSES = {
 
 export function lienCommandeEmail(offre, poste, organisme = {}) {
   const o = OFFRES[offre]
-  const corps = `Bonjour,\n\nJe souhaite acheter : ${o.nom} (${o.libellePrix}).\n\nCode poste : ${poste}\nOrganisme : ${organisme.nom || ''}\nSIRET : ${organisme.siret || ''}\nUtilisateur (nom, prénom) :\nEmail :\n\nMerci de m’envoyer le lien de paiement puis ma licence.`
+  const corps = `Bonjour,\n\nJe souhaite acheter : ${o.nom} (${o.libellePrix}).\n\nCode poste : ${poste}\nOrganisme : ${organisme.nom || ''}\nSIRET : ${organisme.siret || ''}\nUtilisateur (nom, prénom) :\nEmail :\n\nJ’accepte les conditions générales de vente des logiciels (${new URL(CGV_URL, location.href).href}) et je demande l’accès immédiat au logiciel.\n\nMerci de m’envoyer le lien de paiement puis ma licence.`
   return `mailto:${EMAIL_YEBA}?subject=${encodeURIComponent('Commande YEBA Studio — ' + o.nom)}&body=${encodeURIComponent(corps)}`
 }
 
@@ -122,7 +122,11 @@ export default function Licences({ poste, licences, essai, ajouterLicence, organ
                         <input id={'a-' + c} type={c === 'email' ? 'email' : 'text'} value={infos[c]} onChange={(e) => setInfos({ ...infos, [c]: e.target.value })} required maxLength={120} />
                       </label>
                     ))}
-                    <p className="note">Paiement sécurisé par Mollie (Pays-Bas). Votre licence s’active automatiquement au retour.</p>
+                    <label className="champ-case">
+                      <input type="checkbox" required />{' '}
+                      J’accepte les <a href={CGV_URL} target="_blank" rel="noopener">conditions générales de vente des logiciels</a> et je demande l’accès immédiat au logiciel.
+                    </label>
+                    <p className="note">Paiement sécurisé par Mollie (Pays-Bas). Votre licence s’active automatiquement au retour. Aucun prélèvement automatique.</p>
                     <button className="bouton large" disabled={attente}><CreditCard size={18} aria-hidden="true" /> {attente ? 'Redirection…' : `Payer ${o.libellePrix.split(' —')[0]}`}</button>
                   </form>
                 ) : (
@@ -135,7 +139,7 @@ export default function Licences({ poste, licences, essai, ajouterLicence, organ
           ))}
         </section>
       </div>
-      <p className="note">Prix nets de taxe (TVA non applicable, art. 293 B du CGI). Licences soumises aux conditions générales de vente de YEBA FORMATIONS.</p>
+      <p className="note">Prix nets de taxe (TVA non applicable, art. 293 B du CGI). Licences soumises aux <a href={CGV_URL} target="_blank" rel="noopener">conditions générales de vente des logiciels</a> de YEBA FORMATIONS.</p>
     </div>
   )
 }

@@ -32,6 +32,7 @@ export default defineConfig(({ mode }) => ({
               main: resolve(__dirname, 'site/index.html'),
               mentions: resolve(__dirname, 'site/mentions-legales.html'),
               confidentialite: resolve(__dirname, 'site/confidentialite.html'),
+              cgvLogiciels: resolve(__dirname, 'site/cgv-logiciels.html'),
             },
           },
   },

@@ -67,7 +67,7 @@ function trouverFormation(t, mots) {
 
 function prixDe(f) {
   const t = f.tarifs
-  if (t?.interTotal) return `${euros(t.interTotal)} par personne en inter${t.intraTotal ? `, ou ${euros(t.intraTotal)} pour un groupe dans vos locaux` : ''}`
+  if (t?.interTotal) return `inter ${euros(t.interTotal)} par personne${t.intraTotal ? ` ; intra ${euros(t.intraTotal)} pour un groupe dans vos locaux` : ''}`
   if (t?.intraTotal) return `${euros(t.intraTotal)} pour un groupe en intra`
   return 'sur devis'
 }
@@ -76,12 +76,20 @@ function ficheCourte(f) {
   return [
     `${f.nom} — ${f.sousTitre}.`,
     `Durée : ${f.jours} jour${f.jours > 1 ? 's' : ''} (${f.heures} h). Tarif : ${prixDe(f)}.`,
+    f.materiel === 'Aucun matériel requis' ? 'Aucun ordinateur nécessaire.' : /requis/.test(f.materiel || '') ? 'Venez avec votre ordinateur portable.' : '',
     f.public ? `Pour qui : ${f.public.split('\n')[0]}` : '',
   ].filter(Boolean)
 }
 
 // Questions de suivi sur la dernière formation évoquée (« et le prix ? », « c'est pour qui ? »…)
 const SUIVIS = [
+  {
+    mots: ['ordinateur', 'pc', 'materiel', 'portable', 'apporter', 'laptop'],
+    rep: (f) => [
+      f.materiel === 'Aucun matériel requis' ? `${f.nom} : aucun ordinateur nécessaire.` : f.materiel === 'À confirmer' ? `${f.nom} : le matériel vous est précisé à l’inscription.` : `${f.nom} : ${f.materiel.toLowerCase()}.`,
+      f.precisionMateriel ? f.precisionMateriel.split('\n')[0] : '',
+    ].filter(Boolean),
+  },
   { mots: ['duree', 'combien de jours', 'combien d heures', 'long'], rep: (f) => [`${f.nom} dure ${f.jours} jour${f.jours > 1 ? 's' : ''}, soit ${f.heures} heures.`] },
   { mots: ['prix', 'tarif', 'cout', 'coute', 'combien', 'cher'], rep: (f) => [`${f.nom} : ${prixDe(f)}. TVA non applicable, art. 293 B du CGI.`] },
   { mots: ['pour qui', 'public', 'qui peut', 'concerne'], rep: (f) => [f.public ? `${f.nom} s’adresse à : ${f.public.split('\n')[0]}` : 'Le public visé est détaillé sur la fiche.'] },
@@ -252,9 +260,9 @@ const INTENTIONS = [
     rep: () => ({
       texte: [
         'Nous accompagnons les entreprises sur le RGPD et l’IA Act : inventaire des usages d’IA, registre des traitements, charte d’usage, transparence.',
-        'Pas de « mise en conformité » miracle : nous vous aidons à prouver les mesures prises. La formation CONTRÔLE TECHNIQUE couvre l’essentiel en une journée.',
+        'Pas de « mise en conformité » miracle : nous vous aidons à prouver les mesures prises. Deux voies : un audit et un accompagnement sur site, sur devis, ou la formation « Conformité RGPD & IA Act » en une journée.',
       ],
-      suggestions: ['Contrôle technique', 'Être rappelé'],
+      suggestions: ['Formation conformité RGPD', 'Être rappelé'],
     }),
   },
   {
@@ -273,8 +281,8 @@ const INTENTIONS = [
     id: 'catalogue',
     mots: ['formation', 'catalogue', 'liste', 'proposez', 'offre', 'thematique', 'programme'],
     rep: () => ({
-      texte: ['Voici notre catalogue :', ...FORMATIONS.map((f) => `• ${f.nom} — ${f.sousTitre} (${f.jours} j)`), 'Laquelle voulez-vous découvrir ?'],
-      suggestions: ['Allumage-Turbo', 'Contrôle technique', 'Tableau de bord', 'Être rappelé'],
+      texte: ['Voici notre catalogue, en quatre modules (IA, automatisation, vente et management, gouvernance) :', ...FORMATIONS.map((f) => `• ${f.nom} — ${f.sousTitre} (${f.jours} j)`), 'Laquelle voulez-vous découvrir ?'],
+      suggestions: ['IA générative au travail', 'Conformité RGPD', 'Séminaire dirigeants', 'Être rappelé'],
     }),
   },
   { id: 'attestation', mots: ['attestation', 'certificat', 'diplome', 'a la fin', 'rncp'], rep: () => ({ texte: [faq('Qu’est-ce que je reçois')] }) },
@@ -353,7 +361,11 @@ export function repondre(question, ctx = {}) {
   if (suivi && (f || mots.length <= 7) && !['rappel', 'financement', 'cpf', 'dates'].includes(intention?.id)) {
     return avec({ texte: suivi.rep(cible), suggestions: ['Le financement', 'Être rappelé'], lien: '#formations', formation: cible })
   }
-  if (f && (!intention || !['prix', 'rappel'].includes(intention.id))) {
+  // Un mot isolé (« rgpd », « automatisation ») vise d'abord le sujet ; la fiche s'impose si l'on parle de formation.
+  const parleFormation = /formation|stage|programme|session/.test(t)
+  const nomComplet = f && motsFormation(f).every((c) => contient(t, mots, c, 1))
+  const sujet = intention && ['gouvernance', 'solutions'].includes(intention.id) && !parleFormation && !nomComplet
+  if (f && !sujet && (!intention || !['prix', 'rappel'].includes(intention.id))) {
     return avec({ texte: ficheCourte(f), suggestions: ['C’est pour qui ?', 'Le programme', 'Être rappelé'], lien: '#formations', formation: f })
   }
   if (intention) return avec(intention.rep(t, ton, mots))

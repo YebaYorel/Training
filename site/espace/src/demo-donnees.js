@@ -3,14 +3,14 @@
 import { DEMO } from './demo.js'
 import { donneesVides } from './modele.js'
 
-const PRIX = { 'CONTRÔLE TECHNIQUE': 890, 'ALLUMAGE-TURBO': 1680, EMBRAYAGE: 690, TRACTION: 690, 'RÉGLAGE MOTEUR': 990, COPILOTE: 990 }
+const PRIX = { 'Conformité RGPD & IA Act': 890, 'IA générative au travail': 1680, 'Manager au quotidien': 690, 'Vente & négociation': 690, 'Automatisation sans code': 990, 'Copilot Microsoft 365': 990 }
 const OBJECTIFS = {
-  'CONTRÔLE TECHNIQUE': 'Cartographier les usages de l’IA et les données personnelles de son entreprise\nRédiger une charte d’usage de l’IA\nIdentifier les obligations RGPD et IA Act applicables',
-  'ALLUMAGE-TURBO': 'Utiliser un assistant d’IA générative sur des tâches réelles\nRédiger des consignes efficaces et vérifiables\nProtéger les données de l’entreprise',
-  EMBRAYAGE: 'Conduire un entretien individuel\nDéléguer avec des objectifs clairs\nDésamorcer un conflit',
-  TRACTION: 'Préparer un rendez-vous de vente\nTraiter les objections\nConclure et relancer',
-  'RÉGLAGE MOTEUR': 'Cartographier un processus à automatiser\nConstruire un workflow sans coder\nTester et documenter l’automatisation',
-  COPILOTE: 'Utiliser Copilot dans Word, Excel et Outlook\nAppliquer la méthode des 4 P\nMesurer le temps gagné',
+  'Conformité RGPD & IA Act': 'Cartographier les usages de l’IA et les données personnelles de son entreprise\nRédiger une charte d’usage de l’IA\nIdentifier les obligations RGPD et IA Act applicables',
+  'IA générative au travail': 'Utiliser un assistant d’IA générative sur des tâches réelles\nRédiger des consignes efficaces et vérifiables\nProtéger les données de l’entreprise',
+  'Manager au quotidien': 'Conduire un entretien individuel\nDéléguer avec des objectifs clairs\nDésamorcer un conflit',
+  'Vente & négociation': 'Préparer un rendez-vous de vente\nTraiter les objections\nConclure et relancer',
+  'Automatisation sans code': 'Cartographier un processus à automatiser\nConstruire un workflow sans coder\nTester et documenter l’automatisation',
+  'Copilot Microsoft 365': 'Utiliser Copilot dans Word, Excel et Outlook\nAppliquer la méthode des 4 P\nMesurer le temps gagné',
 }
 
 export function demoDonnees() {

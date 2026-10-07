@@ -1,6 +1,8 @@
 // Liaison avec le serveur YEBA Studio (paiement Mollie, licences, IA Mistral).
 // Sans serveur configuré (VITE_STUDIO_API vide), le logiciel fonctionne quand même : achat par e-mail,
 // licence collée à la main, et modèles de textes à la place de l'IA générative.
+// Conditions générales de vente : page du site (le Studio est servi dans /studio/)
+export const CGV_URL = import.meta.env?.VITE_STUDIO_CGV || '../cgv-logiciels.html'
 export const API = (import.meta.env?.VITE_STUDIO_API || '').replace(/\/$/, '')
 
 async function appel(chemin, options = {}) {

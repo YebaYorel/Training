@@ -26,34 +26,40 @@ import {
   Globe,
   GraduationCap,
   HeartHandshake,
+  Info,
+  Laptop,
   LayoutDashboard,
   Mail,
   MapPin,
-  Menu,
+  NotebookPen,
   Phone,
+  ScanSearch,
   ShieldCheck,
+  Sparkles,
   Timer,
   Users,
+  Wallet,
   Workflow,
   X,
 } from 'lucide-react'
-import { AGENDA, CERTIFS, ENTREPRISE, FILTRES, FINANCEURS, FORMATIONS, PROFILS, SYNCHRO, euros } from './data.js'
+import { AGENDA, CERTIFS, CONSEIL_GOUVERNANCE, ENTREPRISE, FILTRES, FINANCEURS, FORMATIONS, MATERIEL, MODULES, PROFILS, SYNCHRO, euros } from './data.js'
 import { CarteInclinee, Compteur, Pitons, ReseauPitons, Reveal, TitreAnime } from './anim.jsx'
 import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 import Lanceur from './ifa/Lanceur.jsx'
 import Qualiopi from './qualiopi.jsx'
 import Studio from './studio.jsx'
+import { useIntroTerminee } from './intro.jsx'
 
 const EASE = [0.22, 1, 0.36, 1]
 const SECTIONS = [
-  { id: 'diagnostic', label: 'Diagnostic' },
-  { id: 'formations', label: 'Formations' },
-  { id: 'implementation', label: 'Solutions IA' },
-  { id: 'gouvernance', label: 'RGPD & IA Act' },
-  { id: 'qualiopi', label: 'Qualiopi' },
-  { id: 'studio', label: 'Logiciels' },
-  { id: 'financement', label: 'Financement' },
-  { id: 'contact', label: 'Contact' },
+  { id: 'diagnostic', label: 'Diagnostic', Icone: ScanSearch, info: '6 questions, 3 formations conseillées' },
+  { id: 'formations', label: 'Formations', Icone: GraduationCap, info: 'IA · Automatisation · Vente · Gouvernance' },
+  { id: 'implementation', label: 'Solutions IA', Icone: Workflow, info: 'Workflows, agents, sites, bases de données' },
+  { id: 'gouvernance', label: 'RGPD & IA Act', Icone: ShieldCheck, info: 'Audit, registre, charte, preuves' },
+  { id: 'qualiopi', label: 'Qualiopi', Icone: BadgeCheck, info: 'Nos engagements et nos indicateurs' },
+  { id: 'studio', label: 'Logiciels', Icone: LayoutDashboard, info: 'YEBA Studio : Qualiopi, BPF, CARBURANT' },
+  { id: 'financement', label: 'Financement', Icone: Wallet, info: 'OPCO, plan de développement, France Travail' },
+  { id: 'contact', label: 'Contact', Icone: Mail, info: 'Téléphone, courriel ou rappel' },
 ]
 
 /** Défile vers une ancre, avec Lenis s'il est actif. */
@@ -172,6 +178,8 @@ function Progression() {
 function Nav() {
   const [ouvert, setOuvert] = useState(false)
   const [actif, setActif] = useState('')
+  const panneau = useRef(null)
+  const bouton = useRef(null)
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entrees) => entrees.forEach((e) => e.isIntersecting && setActif(e.target.id)),
@@ -183,6 +191,20 @@ function Nav() {
     })
     return () => obs.disconnect()
   }, [])
+  // Menu ouvert : Échap ou clic extérieur le ferment, le focus entre dans le menu puis revient au bouton
+  useEffect(() => {
+    if (!ouvert) return
+    const t = setTimeout(() => panneau.current?.querySelector('a')?.focus(), 60)
+    const touche = (e) => e.key === 'Escape' && (setOuvert(false), bouton.current?.focus())
+    const clic = (e) => !panneau.current?.contains(e.target) && !bouton.current?.contains(e.target) && setOuvert(false)
+    document.addEventListener('keydown', touche)
+    document.addEventListener('pointerdown', clic)
+    return () => {
+      clearTimeout(t)
+      document.removeEventListener('keydown', touche)
+      document.removeEventListener('pointerdown', clic)
+    }
+  }, [ouvert])
   return (
     <motion.nav
       className="nav"
@@ -194,10 +216,10 @@ function Nav() {
       <a className="nav-logo" href="#" aria-label="YEBA FORMATIONS — retour en haut">
         <img src="media/logo-yeba.png" alt="YEBA FORMATIONS" width="54" height="46" style={{ width: 'auto' }} />
       </a>
-      <ul className={'nav-liens' + (ouvert ? ' ouvert' : '')} id="menu">
+      <ul className="nav-liens">
         {SECTIONS.map((s) => (
           <li key={s.id}>
-            <a href={'#' + s.id} aria-current={actif === s.id} onClick={() => setOuvert(false)}>
+            <a href={'#' + s.id} aria-current={actif === s.id}>
               {s.label}
             </a>
           </li>
@@ -207,15 +229,95 @@ function Nav() {
         Parlons-en <ArrowRight size={18} aria-hidden="true" />
       </a>
       <button
-        className="nav-burger"
+        ref={bouton}
+        className={'nav-burger' + (ouvert ? ' ouvert' : '')}
         aria-expanded={ouvert}
-        aria-controls="menu"
+        aria-controls="menu-ia"
         aria-label={ouvert ? 'Fermer le menu' : 'Ouvrir le menu'}
         onClick={() => setOuvert((o) => !o)}
       >
-        {ouvert ? <X size={26} /> : <Menu size={26} />}
+        <span className="burger-traits" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
       </button>
+      <AnimatePresence>
+        {ouvert && (
+          <motion.div
+            ref={panneau}
+            id="menu-ia"
+            className="menu-ia"
+            data-lenis-prevent
+            initial={{ opacity: 0, y: -14, scale: 0.97, clipPath: 'inset(0 0 100% 0 round 28px)' }}
+            animate={{ opacity: 1, y: 0, scale: 1, clipPath: 'inset(0 0 0% 0 round 28px)' }}
+            exit={{ opacity: 0, y: -10, scale: 0.98, clipPath: 'inset(0 0 100% 0 round 28px)' }}
+            transition={{ duration: 0.5, ease: EASE }}
+          >
+            <ReseauMenu />
+            <div className="menu-ia-tete">
+              <span className="menu-ia-puce" aria-hidden="true">
+                <Sparkles size={16} />
+              </span>
+              <p>
+                <span className="menu-ia-statut">Navigation assistée</span>
+                <span className="menu-ia-question">Où voulez-vous aller ?<span className="curseur" aria-hidden="true" /></span>
+              </p>
+            </div>
+            <ul className="menu-ia-liste">
+              {SECTIONS.map(({ id, label, Icone, info }, k) => (
+                <motion.li
+                  key={id}
+                  initial={{ opacity: 0, x: -18, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+                  transition={{ duration: 0.45, delay: 0.12 + k * 0.045, ease: EASE }}
+                >
+                  <a href={'#' + id} aria-current={actif === id} onClick={() => setOuvert(false)}>
+                    <span className="menu-ia-icone" aria-hidden="true">
+                      <Icone size={22} />
+                    </span>
+                    <span className="menu-ia-texte">
+                      <strong>{label}</strong>
+                      <small>{info}</small>
+                    </span>
+                    <ArrowRight className="menu-ia-fleche" size={20} aria-hidden="true" />
+                  </a>
+                </motion.li>
+              ))}
+            </ul>
+            <motion.div className="menu-ia-pied" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.55 }}>
+              <a className="btn btn-or btn-petit" href="#diagnostic" onClick={() => setOuvert(false)}>
+                <ScanSearch size={18} aria-hidden="true" /> Diagnostic IA en 2 minutes
+              </a>
+              <a className="btn btn-contour btn-petit" href={ENTREPRISE.telLien}>
+                <Phone size={18} aria-hidden="true" /> {ENTREPRISE.telAffiche}
+              </a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
+  )
+}
+
+/* Réseau neuronal du menu : des signaux lumineux circulent entre les nœuds (décor, figé si animations réduites). */
+const MENU_NOEUDS = [[30, 40], [120, 20], [210, 70], [300, 30], [380, 90], [60, 150], [170, 160], [260, 140], [350, 190], [40, 260], [140, 280], [240, 250], [330, 300], [90, 380], [200, 360], [310, 400], [380, 340]]
+const MENU_LIENS = [[0, 1], [1, 2], [2, 3], [3, 4], [0, 5], [1, 6], [2, 6], [2, 7], [3, 7], [4, 8], [5, 6], [6, 7], [7, 8], [5, 9], [6, 10], [7, 11], [8, 12], [9, 10], [10, 11], [11, 12], [9, 13], [10, 14], [11, 14], [12, 15], [12, 16], [13, 14], [14, 15], [15, 16]]
+function ReseauMenu() {
+  return (
+    <svg className="menu-ia-reseau" viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      {MENU_LIENS.map(([a, b], k) => (
+        <g key={k}>
+          <line x1={MENU_NOEUDS[a][0]} y1={MENU_NOEUDS[a][1]} x2={MENU_NOEUDS[b][0]} y2={MENU_NOEUDS[b][1]} className="fil" />
+          {k % 3 === 0 && (
+            <line x1={MENU_NOEUDS[a][0]} y1={MENU_NOEUDS[a][1]} x2={MENU_NOEUDS[b][0]} y2={MENU_NOEUDS[b][1]} pathLength="1" className="signal" style={{ animationDelay: (k % 7) * 0.45 + 's' }} />
+          )}
+        </g>
+      ))}
+      {MENU_NOEUDS.map(([x, y], k) => (
+        <circle key={k} cx={x} cy={y} r={k % 4 === 0 ? 3.5 : 2.5} className="noeud" style={{ animationDelay: (k % 5) * 0.6 + 's' }} />
+      ))}
+    </svg>
   )
 }
 
@@ -227,6 +329,7 @@ function Hero({ calmeForce }) {
   const video = useRef(null)
   const systemeCalme = useReducedMotion()
   const calme = calmeForce || systemeCalme
+  const pret = useIntroTerminee()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const echelle = useTransform(scrollYProgress, [0, 1], [1, 1.25])
   const yTexte = useTransform(scrollYProgress, [0, 1], ['0%', '35%'])
@@ -274,7 +377,7 @@ function Hero({ calmeForce }) {
           className="surtitre"
           style={{ color: 'var(--or)' }}
           initial={{ opacity: 0, x: -30 }}
-          animate={{ opacity: 1, x: 0 }}
+          animate={pret ? { opacity: 1, x: 0 } : undefined}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           Formation · IA · Gouvernance — La Réunion
@@ -285,7 +388,7 @@ function Hero({ calmeForce }) {
               <motion.span
                 className={'mot' + (k >= 6 ? ' accent' : '')}
                 initial={{ y: '110%', rotate: 4 }}
-                animate={{ y: '0%', rotate: 0 }}
+                animate={pret ? { y: '0%', rotate: 0 } : undefined}
                 transition={{ duration: 1, delay: 0.5 + k * 0.08, ease: EASE }}
               >
                 {m}
@@ -296,7 +399,7 @@ function Hero({ calmeForce }) {
         <motion.div
           className="hero-rotateur"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={pret ? { opacity: 1 } : undefined}
           transition={{ delay: 1.4, duration: 0.8 }}
         >
           <span className="fixe">Nous venons</span>
@@ -318,7 +421,7 @@ function Hero({ calmeForce }) {
         <motion.p
           className="accroche"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={pret ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: 1.6, duration: 0.8 }}
         >
           Formation, mise en place de solutions d’IA et gouvernance RGPD &amp; IA Act pour les TPE-PME de La Réunion.
@@ -327,7 +430,7 @@ function Hero({ calmeForce }) {
         <motion.div
           className="hero-actions"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={pret ? { opacity: 1, y: 0 } : undefined}
           transition={{ delay: 1.8, duration: 0.8 }}
         >
           <a className="btn btn-or" href="#formations">
@@ -342,7 +445,7 @@ function Hero({ calmeForce }) {
         className="hero-defiler"
         href="#metiers"
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        animate={pret ? { opacity: 1 } : undefined}
         transition={{ delay: 2.4 }}
       >
         Découvrir
@@ -492,20 +595,39 @@ function Catalogue({ profil, onEffacerProfil }) {
   const [filtre, setFiltre] = useState('tout')
   const [ouverte, setOuverte] = useState(null)
   const profilActif = PROFILS.find((p) => p.id === profil)
-  const liste = profilActif
-    ? profilActif.refs.map((r) => FORMATIONS.find((f) => f.ref === r)).filter(Boolean)
-    : FORMATIONS.filter((f) => filtre === 'tout' || f.cat === filtre)
+  const selection = profilActif ? profilActif.refs.map((r) => FORMATIONS.find((f) => f.ref === r)).filter(Boolean) : null
+  const modules = MODULES.filter((m) => filtre === 'tout' || m.id === filtre)
+  const grille = (liste, extra) => (
+    <motion.ul className="grille-formations" layout style={{ listStyle: 'none' }}>
+      <AnimatePresence mode="popLayout">
+        {liste.map((f, k) => (
+          <motion.li
+            key={f.ref}
+            layout
+            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92 }}
+            transition={{ duration: 0.45, ease: EASE, delay: k * 0.05 }}
+            style={{ display: 'flex' }}
+          >
+            <CarteFormation f={f} onOuvrir={() => setOuverte(f)} vedette={f.badge === 'Le socle'} />
+          </motion.li>
+        ))}
+        {extra}
+      </AnimatePresence>
+    </motion.ul>
+  )
   return (
     <section id="formations" className="bloc clair" aria-labelledby="titre-formations" style={{ paddingTop: 40 }}>
       <div className="conteneur">
         <Reveal>
-          <p className="surtitre">Le garage à compétences</p>
+          <p className="surtitre">Le catalogue · {MODULES.length} modules</p>
         </Reveal>
-        <TitreAnime id="titre-formations" texte="Votre entreprise est un moteur. On la règle." accent={[4]} />
+        <TitreAnime id="titre-formations" texte="Des formations qui disent ce qu’elles vous apportent." accent={[5, 6]} />
         <Reveal>
           <p className="intro">
-            Allumage, turbo, pilote automatique… Chaque formation porte le nom de la pièce qu’elle améliore. Tarifs,
-            prérequis et modalités sont affichés en clair sur chaque fiche.
+            Le nom dit ce que vous saurez faire. Sur chaque carte : le prix inter (par personne) et le prix intra (pour votre
+            groupe), côte à côte, et le matériel à prévoir. Sur chaque fiche : le programme heure par heure.
           </p>
         </Reveal>
         <LayoutGroup>
@@ -519,7 +641,7 @@ function Catalogue({ profil, onEffacerProfil }) {
               </button>
             </div>
           ) : (
-            <div className="filtres" role="group" aria-label="Filtrer les formations">
+            <div className="filtres" role="group" aria-label="Choisir un module">
               {FILTRES.map((f) => (
                 <button key={f.id} className="filtre" aria-pressed={filtre === f.id} onClick={() => setFiltre(f.id)}>
                   {filtre === f.id && (
@@ -530,34 +652,87 @@ function Catalogue({ profil, onEffacerProfil }) {
               ))}
             </div>
           )}
-          <motion.ul className="grille-formations" layout style={{ listStyle: 'none' }} aria-live="polite">
-            <AnimatePresence mode="popLayout">
-              {liste.map((f, k) => (
-                <motion.li
-                  key={f.ref}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.45, ease: EASE, delay: profilActif ? k * 0.06 : 0 }}
-                  style={{ display: 'flex' }}
-                >
-                  <CarteFormation f={f} onOuvrir={() => setOuverte(f)} vedette={f.badge === 'Le socle'} />
-                </motion.li>
-              ))}
-            </AnimatePresence>
-          </motion.ul>
+          <div aria-live="polite">
+            {selection
+              ? grille(selection)
+              : modules.map((m) => {
+                  const liste = FORMATIONS.filter((f) => f.cat === m.id)
+                  const rang = MODULES.indexOf(m) + 1
+                  return (
+                    <motion.section key={m.id} layout className="module-groupe" aria-labelledby={'module-' + m.id}>
+                      <header className="module-tete">
+                        <span className="module-num" aria-hidden="true">{String(rang).padStart(2, '0')}</span>
+                        <div>
+                          <h3 id={'module-' + m.id}>{m.label}</h3>
+                          <p>{m.texte}</p>
+                        </div>
+                        <span className="module-compte">
+                          {liste.length} formation{liste.length > 1 ? 's' : ''}
+                          {m.id === 'gouv' ? ' + conseil' : ''}
+                        </span>
+                      </header>
+                      {grille(
+                        liste,
+                        m.id === 'gouv' && (
+                          <motion.li key="conseil" layout initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} style={{ display: 'flex' }}>
+                            <CarteConseil />
+                          </motion.li>
+                        ),
+                      )}
+                    </motion.section>
+                  )
+                })}
+          </div>
         </LayoutGroup>
         <Agenda />
         <Reveal>
           <p className="note" style={{ marginTop: 28 }}>
-            Prix nets de taxe : TVA non applicable, article 293 B du code général des impôts. Informations issues de notre
-            base de formation, mise à jour le {new Date(SYNCHRO).toLocaleDateString('fr-FR')}.
+            Inter : prix par personne, en salle avec d’autres entreprises (4 à 10 participants). Intra : prix pour votre groupe,
+            dans vos locaux, jusqu’à 10 personnes. Prix nets de taxe : TVA non applicable, article 293 B du code général des
+            impôts. Informations issues de notre base de formation, mise à jour le {new Date(SYNCHRO).toLocaleDateString('fr-FR')}.
           </p>
         </Reveal>
       </div>
       <AnimatePresence>{ouverte && <FicheFormation f={ouverte} onFermer={() => setOuverte(null)} />}</AnimatePresence>
     </section>
+  )
+}
+
+/* La prestation de conseil, à côté de la formation : jamais présentée comme finançable « formation ». */
+function CarteConseil() {
+  const c = CONSEIL_GOUVERNANCE
+  return (
+    <article className="formation conseil">
+      <div className="formation-tete">
+        <span className="badge">Conseil · sur devis</span>
+        <h3>{c.titre}</h3>
+        <p>{c.texte}</p>
+      </div>
+      <div className="formation-corps">
+        <ul className="cles">
+          {c.cles.map((k) => (
+            <li key={k}>{k}</li>
+          ))}
+        </ul>
+        <div className="formation-pied">
+          <span className="prix-conseil">Sur devis, après un premier échange</span>
+          <button className="btn btn-bleu btn-petit" onClick={() => allerA('#contact')}>
+            En parler <ArrowRight size={18} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+const ICONE_MATERIEL = { requis: Laptop, specifique: Laptop, conseille: Laptop, aucun: NotebookPen, inconnu: Info }
+function Materiel({ f, long }) {
+  const m = MATERIEL[f.materiel] ?? MATERIEL['À confirmer']
+  const Icone = ICONE_MATERIEL[m.niveau]
+  return (
+    <span className={'materiel materiel-' + m.niveau}>
+      <Icone size={16} aria-hidden="true" /> {long ? f.materiel : m.court}
+    </span>
   )
 }
 
@@ -597,7 +772,7 @@ function Agenda() {
 }
 
 function CarteFormation({ f, onOuvrir, vedette }) {
-  const prix = f.tarifs?.interTotal ?? f.tarifs?.intraTotal
+  const t = f.tarifs
   return (
     <motion.button
       className={'formation' + (vedette ? ' vedette' : '')}
@@ -605,7 +780,7 @@ function CarteFormation({ f, onOuvrir, vedette }) {
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       aria-haspopup="dialog"
-      aria-label={`${f.nom} — ${f.sousTitre}. Voir la fiche complète`}
+      aria-label={`${f.nom} : ${f.sousTitre}. ${t?.interTotal ? `Inter ${euros(t.interTotal)} par personne. ` : ''}${t?.intraTotal ? `Intra ${euros(t.intraTotal)} pour le groupe. ` : ''}Voir la fiche complète`}
     >
       <motion.div className="formation-tete" layoutId={'tete-' + f.ref}>
         {f.badge && <span className="badge">{f.badge}</span>}
@@ -623,22 +798,27 @@ function CarteFormation({ f, onOuvrir, vedette }) {
             </span>
           )}
         </div>
+        <Materiel f={f} />
         <ul className="cles">
           {f.cles.map((c) => (
             <li key={c}>{c}</li>
           ))}
         </ul>
         <div className="formation-pied">
-          <span className="prix">
-            {prix ? (
-              <>
-                <small>{f.tarifs.interTotal ? 'Inter, par personne' : 'Intra, par groupe'}</small>
-                {euros(prix)}
-              </>
-            ) : (
-              'Voir la fiche'
-            )}
-          </span>
+          {t ? (
+            <div className="prix-duo">
+              <span className="prix-col">
+                <small>Inter · par pers.</small>
+                <strong>{t.interTotal ? euros(t.interTotal) : '—'}</strong>
+              </span>
+              <span className="prix-col intra">
+                <small>Intra · le groupe</small>
+                <strong>{t.intraTotal ? euros(t.intraTotal) : 'Sur devis'}</strong>
+              </span>
+            </div>
+          ) : (
+            <span className="prix">Voir la fiche</span>
+          )}
           <span className="fleche">
             <ArrowRight size={22} aria-hidden="true" />
           </span>
@@ -648,8 +828,83 @@ function CarteFormation({ f, onOuvrir, vedette }) {
   )
 }
 
+/* Programme Airtable (« ═ JOUR », « ── 08h00–10h00 · TITRE ── », « • », « LIVRABLE : ») → déroulé lisible */
+function lireProgramme(texte) {
+  const intro = []
+  const jours = []
+  let jour = null
+  let creneau = null
+  for (const brut of (texte || '').split('\n')) {
+    const l = brut.trim()
+    if (!l || /^PROGRAMME\s—/.test(l)) continue
+    const j = l.match(/^═+\s*(.+?)\s*═+$/)
+    const c = l.match(/^──\s*(.+?)\s*──$/)
+    if (j) {
+      jour = { titre: j[1], creneaux: [] }
+      jours.push(jour)
+      creneau = null
+    } else if (c) {
+      if (!jour) jours.push((jour = { titre: null, creneaux: [] }))
+      const [heure, ...reste] = c[1].split(' · ')
+      const titre = reste.join(' · ') || heure
+      creneau = { heure: reste.length ? heure : '', titre, pause: /^PAUSE|RÉVEIL/.test(titre), points: [], livrables: [] }
+      jour.creneaux.push(creneau)
+    } else if (creneau) {
+      if (/^LIVRABLE/i.test(l)) creneau.livrables.push(l.replace(/^LIVRABLES?\s*:\s*/i, ''))
+      else creneau.points.push(l.replace(/^[•\-–]\s*/, ''))
+    } else intro.push(l)
+  }
+  return { intro, jours }
+}
+
+function Deroule({ texte }) {
+  const { intro, jours } = lireProgramme(texte)
+  if (!jours.length) return <p>Programme détaillé sur demande.</p>
+  return (
+    <div className="deroule">
+      {intro.map((l, k) => (
+        <p key={k} className="deroule-intro">{l}</p>
+      ))}
+      {jours.map((j, k) => (
+        <div key={k} className="deroule-jour">
+          {j.titre && <h4>{j.titre.replace(/^JOUR\s*(\d)/i, 'Jour $1')}</h4>}
+          <ol>
+            {j.creneaux.map((c, i) =>
+              c.pause && !c.points.length ? (
+                <li key={i} className="deroule-pause">
+                  <time>{c.heure}</time> <span>{c.titre.charAt(0) + c.titre.slice(1).toLowerCase()}</span>
+                </li>
+              ) : (
+                <li key={i} className="deroule-creneau">
+                  <time>{c.heure}</time>
+                  <div>
+                    <strong>{c.titre}</strong>
+                    {c.points.length > 0 && (
+                      <ul>
+                        {c.points.map((p, n) => (
+                          <li key={n}>{p}</li>
+                        ))}
+                      </ul>
+                    )}
+                    {c.livrables.map((v, n) => (
+                      <p key={n} className="livrable">
+                        <Check size={16} aria-hidden="true" /> Vous repartez avec : {v}
+                      </p>
+                    ))}
+                  </div>
+                </li>
+              ),
+            )}
+          </ol>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 const ONGLETS = [
-  ['programme', 'Programme'],
+  ['programme', 'Objectifs'],
+  ['deroule', 'Programme détaillé'],
   ['acces', 'Prérequis & accès'],
   ['evaluation', 'Évaluation'],
   ['tarifs', 'Tarifs & financement'],
@@ -767,9 +1022,20 @@ function FicheFormation({ f, onFermer }) {
                   ) : (
                     <p className="note">Objectifs détaillés en cours de finalisation. Contactez-nous pour être prévenu.</p>
                   )}
+                  <h4>Matériel à prévoir</h4>
+                  <p>
+                    <Materiel f={f} long />
+                  </p>
+                  {f.precisionMateriel && <Paragraphes texte={f.precisionMateriel} />}
+                </>
+              )}
+              {onglet === 'deroule' && (
+                <>
+                  <Deroule texte={f.programme} />
                   <p className="discret">
-                    Programme détaillé sur demande — réf. {f.ref}
-                    {f.revision && `, version du ${new Date(f.revision).toLocaleDateString('fr-FR')}`}.
+                    {f.titre} — réf. {f.ref}
+                    {f.revision && `, version du ${new Date(f.revision).toLocaleDateString('fr-FR')}`}. Ce programme est
+                    celui de votre devis ; en intra, il est ajusté à vos cas réels sans changer les objectifs.
                   </p>
                 </>
               )}
@@ -837,7 +1103,7 @@ function FicheFormation({ f, onFermer }) {
             </motion.div>
           </AnimatePresence>
           <div className="modal-actions">
-            <a className="btn btn-bleu" href={`mailto:${ENTREPRISE.email}?subject=${encodeURIComponent('Demande — ' + f.nom + ' (' + f.ref + ')')}`}>
+            <a className="btn btn-bleu" href={`mailto:${ENTREPRISE.email}?subject=${encodeURIComponent('Demande de devis — ' + f.titre + ' (' + f.ref + ')')}`}>
               Demander un devis <ArrowRight size={20} aria-hidden="true" />
             </a>
             <button className="btn btn-contour-bleu" onClick={onFermer}>
@@ -1367,6 +1633,7 @@ function Pied() {
         <nav className="pied-liens" aria-label="Informations légales">
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="confidentialite.html">Politique de confidentialité</a>
+          <a href="cgv-logiciels.html">CGV logiciels</a>
           <span>Site sans cookie ni traceur publicitaire.</span>
           <span>Vidéo d’ambiance et portrait réalisés avec l’aide de l’IA.</span>
         </nav>
