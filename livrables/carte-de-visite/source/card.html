@@ -3,49 +3,63 @@
 <title>Carte de visite — Aurélien LUMEKA · YEBA FORMATIONS</title>
 <style>
 @font-face{font-family:"Montserrat";font-weight:600;src:url(fontsource/montserrat/files/montserrat-latin-600-normal.woff2)}
-@font-face{font-family:"Montserrat";font-weight:700;src:url(fontsource/montserrat/files/montserrat-latin-700-normal.woff2)}
 @font-face{font-family:"Montserrat";font-weight:800;src:url(fontsource/montserrat/files/montserrat-latin-800-normal.woff2)}
+@font-face{font-family:"Montserrat";font-weight:900;src:url(fontsource/montserrat/files/montserrat-latin-900-normal.woff2)}
 @font-face{font-family:"Mono";font-weight:500;src:url(fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2)}
-:root{--navy:#1B3A6B;--gold:#C9A84C;--gold-hi:#E2C46E;--ink:#121212;--paper:#F7F7F5;--grey:#5A5F6A;--mm:3.7795px}
+@font-face{font-family:"Mono";font-weight:700;src:url(fontsource/jetbrains-mono/files/jetbrains-mono-latin-700-normal.woff2)}
+:root{--navy:#1B3A6B;--gold:#C9A84C;--ink:#121212;--paper:#F7F7F5;--grey:#5A5F6A;--mm:3.7795px}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:#2a2a2a}
 body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-
-/* Une face = 91 x 61 mm (85 x 55 + 3 mm de fond perdu). Tout est exprimé en --mm pour changer d'échelle. */
+.u{--m:var(--mm)}
+/* Une face = 91 x 61 mm (85 x 55 + 3 mm de fond perdu). Tout est en --mm. */
 .face{position:relative;width:calc(91*var(--mm));height:calc(61*var(--mm));overflow:hidden}
 .trim{position:relative;width:calc(85*var(--mm));height:calc(55*var(--mm));overflow:hidden;border-radius:calc(var(--r,0)*var(--mm))}
 .trim>.face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
 
-/* ---------- RECTO : bleu YEBA uni, logo blanc, rails dorés hors zone de protection ---------- */
-.recto{background:var(--navy)}
-.recto .logo{position:absolute;width:calc(30*var(--mm));left:calc(30.5*var(--mm));top:calc(17.5*var(--mm))}
-.recto svg.rail{position:absolute;top:0;height:100%;width:calc(16.5*var(--mm))}
-.recto svg.rail.l{left:0}.recto svg.rail.r{right:0;transform:scaleX(-1)}
+/* ================= RECTO : le couloir « IA », YEBA FORMATIONS à la place de AI ================= */
+.recto{background:#06101F url(clean2x.jpg) 50% 50%/auto 100% no-repeat}
+.recto .veil{position:absolute;left:calc(22*var(--mm));top:calc(19*var(--mm));width:calc(47*var(--mm));height:calc(22*var(--mm));background:radial-gradient(closest-side,rgba(4,10,22,.78),rgba(4,10,22,.45) 55%,transparent);filter:blur(calc(1*var(--mm)))}
+.recto .word{position:absolute;left:0;right:0;top:calc(23*var(--mm));text-align:center;padding-left:calc(.4*var(--mm))}
+.gold{background:linear-gradient(180deg,#FFF6CF 0%,#F3D98A 28%,#E2BE5F 52%,#C99A3A 78%,#9C7424 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.recto .yeba{position:relative;display:block;font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));line-height:1;letter-spacing:.01em;filter:drop-shadow(0 calc(.3*var(--mm)) calc(.4*var(--mm)) rgba(0,0,0,.6))}
+.recto .form{position:relative;display:block;margin-top:calc(1.1*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(2.75*var(--mm));letter-spacing:.32em;padding-left:.3em;line-height:1}
+/* halo : copie floue derrière le texte doré */
+.recto .glow{position:absolute;inset:0;color:#FFD47A;filter:blur(calc(.8*var(--mm)));opacity:.9}
+.recto .glow2{position:absolute;inset:0;color:#FFB84A;filter:blur(calc(3*var(--mm)));opacity:.55}
+.recto .edge{position:absolute;inset:0;color:transparent;-webkit-text-stroke:calc(.07*var(--mm)) rgba(255,246,210,.75)}
+/* reflet au sol */
+.recto .refl{position:absolute;left:0;right:0;top:calc(38.8*var(--mm));text-align:center;transform:scaleY(-1);opacity:.16;filter:blur(calc(.5*var(--mm)));
+  -webkit-mask-image:linear-gradient(0deg,#000,transparent 70%);mask-image:linear-gradient(0deg,#000,transparent 70%)}
+.recto .refl span{font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));color:#F3D98A;line-height:1}
 .recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
-  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
 
-/* ---------- VERSO : blanc cassé, texte bleu/noir, or en surfaces uniquement ---------- */
+/* ================= VERSO : épuré, technique ================= */
 .verso{background:var(--paper);color:var(--ink)}
-.verso .who{position:absolute;left:calc(8*var(--mm));top:calc(8*var(--mm))}
-.verso .name{font-family:Montserrat;font-weight:800;font-size:calc(4.1*var(--mm));color:var(--navy);letter-spacing:.01em;line-height:1}
+.verso .grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,58,107,.16) calc(.13*var(--mm)),transparent calc(.15*var(--mm)));background-size:calc(2.5*var(--mm)) calc(2.5*var(--mm));background-position:calc(.5*var(--mm)) calc(.5*var(--mm));
+  -webkit-mask-image:linear-gradient(115deg,transparent 45%,#000 85%);mask-image:linear-gradient(115deg,transparent 45%,#000 85%)}
+.verso .tick{position:absolute;width:calc(2.2*var(--mm));height:calc(2.2*var(--mm));border-color:var(--grey);border-style:solid;border-width:0;opacity:.55}
+.verso .tick.tl{left:calc(7*var(--mm));top:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
+.verso .tick.tr{right:calc(7*var(--mm));top:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
+.verso .tick.bl{left:calc(7*var(--mm));bottom:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
+.verso .tick.br{right:calc(7*var(--mm));bottom:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
+.mono{font-family:Mono,monospace;text-transform:uppercase}
+.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.4*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.18em;color:var(--grey)}
+.verso .hdr b{color:var(--navy);font-weight:700}
+.verso .node{width:calc(5.2*var(--mm));height:calc(5.2*var(--mm))}
+.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.3*var(--mm));color:var(--navy);line-height:1;letter-spacing:.005em}
 .verso .name span{font-weight:600}
-.verso .title{margin-top:calc(1.6*var(--mm));font-family:Montserrat;font-weight:600;font-size:calc(2.55*var(--mm));color:var(--grey)}
-.verso .org{margin-top:calc(1.4*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(2.2*var(--mm));letter-spacing:.16em;color:var(--navy)}
-.verso .rule{margin-top:calc(2.2*var(--mm));width:calc(16*var(--mm));height:calc(.7*var(--mm));background:var(--gold);border-radius:2px}
-.verso ul{position:absolute;left:calc(8*var(--mm));top:calc(28.2*var(--mm));list-style:none}
-.verso li{display:flex;align-items:center;gap:calc(2*var(--mm));font-size:calc(2.55*var(--mm));font-weight:600;line-height:1;height:calc(4.3*var(--mm));color:var(--ink);white-space:nowrap}
-.verso li.cont{padding-left:calc(5.2*var(--mm));margin-top:calc(-1*var(--mm))}
-.verso li svg{width:calc(3.2*var(--mm));height:calc(3.2*var(--mm));flex:none}
-.verso .qr{position:absolute;right:calc(7*var(--mm));top:calc(9*var(--mm));width:calc(23*var(--mm));text-align:center}
-.verso .qr .box{width:calc(23*var(--mm));height:calc(23*var(--mm));padding:calc(1.5*var(--mm));background:#fff;border-radius:calc(1.2*var(--mm));box-shadow:0 0 0 calc(.35*var(--mm)) var(--gold)}
-.verso .qr .box svg{width:100%;height:100%;display:block}
-.verso .qr small{display:block;margin-top:calc(1.5*var(--mm));font-family:Montserrat;font-weight:700;font-size:calc(2*var(--mm));color:var(--navy);letter-spacing:.02em}
-.verso .brand{position:absolute;right:calc(7*var(--mm));top:calc(7.6*var(--mm));width:calc(25*var(--mm));text-align:center;font-family:Montserrat;font-weight:800;font-size:calc(2.5*var(--mm));letter-spacing:.14em;color:var(--navy)}
-.verso .band{position:absolute;left:0;right:0;bottom:0;height:calc(9.6*var(--mm));background:var(--navy);display:flex;align-items:center;justify-content:center;gap:calc(2.2*var(--mm));padding:0 calc(6*var(--mm)) calc(3*var(--mm));
-  font-family:Montserrat;font-weight:700;font-size:calc(1.8*var(--mm));color:var(--gold-hi);letter-spacing:.03em;white-space:nowrap}
-.verso .band i{font-style:normal;color:rgba(255,255,255,.55)}
-
-/* ---------- MODES ---------- */
+.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(20.6*var(--mm));font-size:calc(1.9*var(--mm));letter-spacing:.12em;color:var(--grey)}
+.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.1*var(--mm));width:calc(10*var(--mm));height:calc(.45*var(--mm));background:var(--gold)}
+.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(26.8*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
+.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:var(--navy)}
+.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:var(--ink);line-height:1.05;white-space:nowrap}
+.verso .qr{position:absolute;right:calc(9.6*var(--mm));top:calc(23.4*var(--mm));width:calc(20*var(--mm))}
+.verso .qr svg{display:block;width:100%;height:auto}
+.verso .qr .cap{margin-top:calc(1.1*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.1em;color:var(--grey)}
+.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.6*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(90,95,106,.45);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.12em;color:var(--grey)}
+.verso .foot b{color:var(--navy);font-weight:700}
 body.print{background:#fff}
 body.print .face{page-break-after:always;break-after:page}
 @page{size:91mm 61mm;margin:0}
@@ -53,54 +67,48 @@ body.print .face{page-break-after:always;break-after:page}
 <body>
 <template id="tRecto">
   <div class="face recto">
-    <svg class="rail l" viewBox="0 0 165 610" preserveAspectRatio="none" aria-hidden="true">
-      <g fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lines">
-        <path d="M0 95 H55 L95 135 V250"/><path d="M0 300 H40 L80 260 H120"/><path d="M0 470 H70 L110 430 V350"/><path d="M60 610 V540 L100 500 H140"/><path d="M0 200 H25"/>
-      </g>
-      <g fill="#E2C46E" class="nodes"><circle cx="95" cy="250" r="7"/><circle cx="120" cy="260" r="7"/><circle cx="110" cy="350" r="7"/><circle cx="140" cy="500" r="7"/><circle cx="25" cy="200" r="5"/></g>
-    </svg>
-    <svg class="rail r" viewBox="0 0 165 610" preserveAspectRatio="none" aria-hidden="true">
-      <g fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lines">
-        <path d="M0 140 H60 L100 180 V280"/><path d="M0 380 H50 L90 340 H125"/><path d="M80 0 V60 L115 95 H140"/><path d="M0 520 H80 L115 485"/>
-      </g>
-      <g fill="#E2C46E" class="nodes"><circle cx="100" cy="280" r="7"/><circle cx="125" cy="340" r="7"/><circle cx="140" cy="95" r="7"/><circle cx="115" cy="485" r="7"/></g>
-    </svg>
-    <img class="logo" src="../build/assets/logo-white.png" alt="YEBA FORMATIONS">
+    <div class="veil"></div>
+    <div class="refl"><span>YEBA</span></div>
+    <div class="word">
+      <span class="yeba"><span class="glow2">YEBA</span><span class="glow">YEBA</span><span class="gold" style="position:relative">YEBA</span></span>
+      <span class="form"><span class="glow" style="filter:blur(calc(.5*var(--mm)))">FORMATIONS</span><span class="gold" style="position:relative">FORMATIONS</span></span>
+    </div>
     <div class="shine"></div>
   </div>
 </template>
 <template id="tVerso">
   <div class="face verso">
-    <div class="who">
-      <div class="name">AURÉLIEN <span>LUMEKA</span></div>
-      <div class="title">Directeur · Formateur &amp; consultant IA</div>
-      <div class="org">YEBA FORMATIONS</div>
-      <div class="rule"></div>
+    <div class="grid"></div>
+    <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+    <div class="hdr mono"><span><b>YEBA FORMATIONS</b> · 974</span>
+      <svg class="node" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="22" r="6.5"/><path d="M14.6 18.6 7 13M25.4 18.6 33 13M20 15.5V6"/></g><g fill="#C9A84C"><circle cx="7" cy="13" r="3"/><circle cx="33" cy="13" r="3"/><circle cx="20" cy="6" r="3"/></g><circle cx="20" cy="22" r="2.4" fill="#1B3A6B"/></svg>
     </div>
-    <ul>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+262 693 32 24 45</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>yebaformations@gmail.com</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>www.yebaformations.re</li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>9 rue Françoise Châtelain</li>
-      <li class="cont">97490 Sainte-Clotilde, La Réunion</li>
-    </ul>
-        <div class="qr"><div class="box">__QR__</div><small>SCANNEZ-MOI</small></div>
-    <div class="band">QUALIOPI — ACTIONS DE FORMATION<i>·</i>GOOGLE AI<i>·</i>ANSSI<i>·</i>CNIL</div>
+    <div class="name">Aurélien <span>LUMEKA</span></div>
+    <div class="role mono">Directeur · Formateur &amp; consultant IA</div>
+    <div class="rule"></div>
+    <dl>
+      <dt>TEL</dt><dd>+262 693 32 24 45</dd>
+      <dt>MAIL</dt><dd>yebaformations@gmail.com</dd>
+      <dt>WEB</dt><dd>www.yebaformations.re</dd>
+      <dt>ADR</dt><dd>9 rue Françoise Châtelain<br>97490 Sainte-Clotilde</dd>
+    </dl>
+    <div class="qr">__QR__<div class="cap mono"><span>vCard</span><span>scan →</span></div></div>
+    <div class="foot mono"><span><b>QUALIOPI</b> · ACTIONS DE FORMATION</span><span>RGPD · IA ACT</span></div>
   </div>
 </template>
 <div id="root"></div>
 <script src="qr.js"></script>
 <script>
 async function build(mode, opts = {}) {
-  const qr = window.QRSVG;
-  const R = document.getElementById('tRecto').innerHTML, V = document.getElementById('tVerso').innerHTML.replace('__QR__', qr);
+  const R = document.getElementById('tRecto').innerHTML, V = document.getElementById('tVerso').innerHTML.replace('__QR__', window.QRSVG);
   const root = document.getElementById('root');
   document.body.className = mode;
   if (opts.mm) document.documentElement.style.setProperty('--mm', opts.mm + 'px');
   if (mode === 'print') root.innerHTML = R + V;
   else root.innerHTML = `<div class="trim" id="tr" style="--r:${opts.r || 0}">${R}</div><div style="height:20px"></div><div class="trim" id="tv" style="--r:${opts.r || 0}">${V}</div>`;
   await document.fonts.ready;
-  await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+  await new Promise(r => { const i = new Image(); i.onload = i.onerror = r; i.src = 'clean2x.jpg'; });
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
 }
 window.build = build;
 </script>

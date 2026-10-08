@@ -9,4 +9,6 @@
 | `Aurelien-LUMEKA-YEBA.vcf` | Fiche contact (vCard) à envoyer en pièce jointe : s'ajoute aux contacts en un geste |
 
 **QR code :** il contient la vCard elle-même (aucun serveur, aucun traceur). Testé et décodé à 600, 300 et 200 dpi.
-**Charte YEBA-IDENT-2026 :** logo blanc sur bleu #1B3A6B uni, zone de protection respectée, or uniquement en filets ou sur fond sombre, texte bleu/noir sur fond clair.
+**Recto (version du 08/10/2026) :** le couloir « IA », lettres « AI » effacées (retouche) et remplacées par « YEBA FORMATIONS » en or lumineux (Montserrat, police du logo). Image source : 1376 × 752 px, environ 320 dpi au format carte.
+**Verso :** blanc cassé #F7F7F5, bleu #1B3A6B, gris #5A5F6A, filet or ; nœud de connexion de la charte, repères de coupe, trame de points, étiquettes en police mono (TEL / MAIL / WEB / ADR).
+**QR code :** 20 mm, vCard hors ligne, décodé à 600, 300, 200 et 171 dpi et dans le PDF imprimeur.

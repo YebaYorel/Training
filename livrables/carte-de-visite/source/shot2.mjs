@@ -16,7 +16,7 @@ if (mode === 'photo') {
   const st = await p.$('#stage');
   for (let i = 0; i < times.length; i++) {
     await p.evaluate(t => setT(t), times[i]);
-    await p.evaluate(() => new Promise(r => { const u = getComputedStyle(document.getElementById('bg')).backgroundImage.match(/url\("?(.*?)"?\)/); if (!u) return r(); const im = new Image(); im.onload = im.onerror = () => requestAnimationFrame(() => r()); im.src = u[1]; }));
+    
     await st.screenshot({ path: `${dir}/frames/f${String(i).padStart(4, '0')}.png` });
   }
 }
