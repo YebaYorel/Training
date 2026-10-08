@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+import path from 'path';
+const dir = path.dirname(new URL(import.meta.url).pathname);
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
+const p = await b.newPage({ viewport: { width: 1123, height: 794 }, deviceScaleFactor: 2 });
+await p.goto('file://' + dir + '/catalogue.html');
+await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(400);
+await p.pdf({ path: dir + '/out/catalogue.pdf', width: '297mm', height: '210mm', printBackground: true, preferCSSPageSize: true });
+const pages = await p.$$('.page');
+for (let i = 0; i < pages.length; i++) await pages[i].screenshot({ path: `${dir}/out/p${String(i + 1).padStart(2, '0')}.png` });
+const ov = await p.evaluate(() => [...document.querySelectorAll('.card, .tile, .blk, .band, .sleft, .tleft, .tright, .bband, .cards')].filter(e => e.scrollHeight > e.clientHeight + 2).map(e => (e.closest('.page').dataset.p) + ':' + e.className + ':' + (e.scrollHeight - e.clientHeight)));
+console.log('débordements', ov);
+await b.close();
