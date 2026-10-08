@@ -32,132 +32,108 @@ body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-a
 .recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
   background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
 
-/* ================= VERSO : épuré, technique ================= */
-.verso{background:var(--paper);color:var(--ink)}
-.verso .grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,58,107,.16) calc(.13*var(--mm)),transparent calc(.15*var(--mm)));background-size:calc(2.5*var(--mm)) calc(2.5*var(--mm));background-position:calc(.5*var(--mm)) calc(.5*var(--mm));
-  -webkit-mask-image:linear-gradient(115deg,transparent 45%,#000 85%);mask-image:linear-gradient(115deg,transparent 45%,#000 85%)}
-.verso .tick{position:absolute;width:calc(2.2*var(--mm));height:calc(2.2*var(--mm));border-color:var(--grey);border-style:solid;border-width:0;opacity:.55}
-.verso .tick.tl{left:calc(7*var(--mm));top:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.tr{right:calc(7*var(--mm));top:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.bl{left:calc(7*var(--mm));bottom:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.verso .tick.br{right:calc(7*var(--mm));bottom:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
+/* ================= VERSO SOMBRE : accordé au couloir « IA » ================= */
+.verso{color:#F4F6FA;background:
+  radial-gradient(ellipse 75% 55% at 50% 122%,rgba(69,211,245,.26),transparent 62%),
+  radial-gradient(ellipse 55% 45% at 88% -12%,rgba(226,196,110,.20),transparent 62%),
+  linear-gradient(160deg,#0C1B32 0%,#07101E 55%,#040A14 100%)}
+.verso .floor{position:absolute;left:0;right:0;bottom:0;height:calc(24*var(--mm));opacity:.55;
+  -webkit-mask-image:linear-gradient(0deg,#000 10%,transparent 95%);mask-image:linear-gradient(0deg,#000 10%,transparent 95%)}
+.verso .traces{position:absolute;right:calc(3*var(--mm));top:calc(3*var(--mm));width:calc(26*var(--mm));height:calc(14*var(--mm));opacity:.55}
+.verso .frame{position:absolute;inset:calc(6.4*var(--mm));border:calc(.14*var(--mm)) solid rgba(226,196,110,.42)}
+.verso .frame i{position:absolute;width:calc(1.1*var(--mm));height:calc(1.1*var(--mm));background:#E2C46E;box-shadow:0 0 calc(.8*var(--mm)) rgba(226,196,110,.8)}
+.verso .frame i:nth-child(1){left:calc(-.62*var(--mm));top:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(2){right:calc(-.62*var(--mm));top:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(3){left:calc(-.62*var(--mm));bottom:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(4){right:calc(-.62*var(--mm));bottom:calc(-.62*var(--mm))}
 .mono{font-family:Mono,monospace;text-transform:uppercase}
-.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.4*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.18em;color:var(--grey)}
-.verso .hdr b{color:var(--navy);font-weight:700}
-.verso .node{width:calc(5.2*var(--mm));height:calc(5.2*var(--mm))}
-.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.3*var(--mm));color:var(--navy);line-height:1;letter-spacing:.005em}
+.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.6*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.2em;color:#8FA2C2}
+.verso .hdr b{color:#E2C46E;font-weight:700}
+.verso .node{width:calc(5.4*var(--mm));height:calc(5.4*var(--mm));filter:drop-shadow(0 0 calc(.6*var(--mm)) rgba(69,211,245,.55))}
+.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.5*var(--mm));line-height:1.05;letter-spacing:.005em;filter:drop-shadow(0 0 calc(.9*var(--mm)) rgba(226,190,95,.35))}
 .verso .name span{font-weight:600}
-.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(20.6*var(--mm));font-size:calc(1.9*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.1*var(--mm));width:calc(10*var(--mm));height:calc(.45*var(--mm));background:var(--gold)}
-.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(26.8*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
-.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:var(--navy)}
-.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:var(--ink);line-height:1.05;white-space:nowrap}
-.verso .qr{position:absolute;right:calc(9.6*var(--mm));top:calc(23.4*var(--mm));width:calc(20*var(--mm))}
+.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(21*var(--mm));font-size:calc(1.8*var(--mm));letter-spacing:.06em;color:#B5C3DA}
+.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.4*var(--mm));width:calc(12*var(--mm));height:calc(.4*var(--mm));background:linear-gradient(90deg,#F3D98A,#C99A3A 70%,transparent)}
+.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(27.2*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
+.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:#6FDCF7}
+.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:#F4F6FA;line-height:1.05;white-space:nowrap}
+.verso .qr{position:absolute;right:calc(9.8*var(--mm));top:calc(24.2*var(--mm));width:calc(22.6*var(--mm))}
+.verso .qr .plate{padding:calc(1.3*var(--mm));background:#F7F7F5;box-shadow:0 0 0 calc(.3*var(--mm)) #C9A84C,0 0 calc(2.2*var(--mm)) rgba(226,196,110,.35)}
 .verso .qr svg{display:block;width:100%;height:auto}
-.verso .qr .cap{margin-top:calc(1.1*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.1em;color:var(--grey)}
-.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.6*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(90,95,106,.45);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .foot b{color:var(--navy);font-weight:700}
+.verso .qr .cap{margin-top:calc(1.2*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.12em;color:#8FA2C2}
+.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.4*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(143,162,194,.35);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.14em;color:#8FA2C2}
+.verso .foot b{color:#E2C46E;font-weight:700}
 body.print{background:#fff}
 body.print .face{page-break-after:always;break-after:page}
 @page{size:91mm 61mm;margin:0}
 
-html,body{background:#2a2a2a}
-body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.u{--m:var(--mm)}
-/* Une face = 91 x 61 mm (85 x 55 + 3 mm de fond perdu). Tout est en --mm. */
-.face{position:relative;width:calc(91*var(--mm));height:calc(61*var(--mm));overflow:hidden}
-.trim{position:relative;width:calc(85*var(--mm));height:calc(55*var(--mm));overflow:hidden;border-radius:calc(var(--r,0)*var(--mm))}
-.trim>.face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
-
-/* ================= RECTO : le couloir « IA », YEBA FORMATIONS à la place de AI ================= */
-.recto{background:#06101F url(clean2x.jpg) 50% 50%/auto 100% no-repeat}
-.recto .veil{position:absolute;left:calc(22*var(--mm));top:calc(19*var(--mm));width:calc(47*var(--mm));height:calc(22*var(--mm));background:radial-gradient(closest-side,rgba(4,10,22,.78),rgba(4,10,22,.45) 55%,transparent);filter:blur(calc(1*var(--mm)))}
-.recto .word{position:absolute;left:0;right:0;top:calc(23*var(--mm));text-align:center;padding-left:calc(.4*var(--mm))}
-.gold{background:linear-gradient(180deg,#FFF6CF 0%,#F3D98A 28%,#E2BE5F 52%,#C99A3A 78%,#9C7424 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.recto .yeba{position:relative;display:block;font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));line-height:1;letter-spacing:.01em;filter:drop-shadow(0 calc(.3*var(--mm)) calc(.4*var(--mm)) rgba(0,0,0,.6))}
-.recto .form{position:relative;display:block;margin-top:calc(1.1*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(2.75*var(--mm));letter-spacing:.32em;padding-left:.3em;line-height:1}
-/* halo : copie floue derrière le texte doré */
-.recto .glow{position:absolute;inset:0;color:#FFD47A;filter:blur(calc(.8*var(--mm)));opacity:.9}
-.recto .glow2{position:absolute;inset:0;color:#FFB84A;filter:blur(calc(3*var(--mm)));opacity:.55}
-.recto .edge{position:absolute;inset:0;color:transparent;-webkit-text-stroke:calc(.07*var(--mm)) rgba(255,246,210,.75)}
-/* reflet au sol */
-.recto .refl{position:absolute;left:0;right:0;top:calc(38.8*var(--mm));text-align:center;transform:scaleY(-1);opacity:.16;filter:blur(calc(.5*var(--mm)));
-  -webkit-mask-image:linear-gradient(0deg,#000,transparent 70%);mask-image:linear-gradient(0deg,#000,transparent 70%)}
-.recto .refl span{font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));color:#F3D98A;line-height:1}
-.recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
-  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
-
-/* ================= VERSO : épuré, technique ================= */
-.verso{background:var(--paper);color:var(--ink)}
-.verso .grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,58,107,.16) calc(.13*var(--mm)),transparent calc(.15*var(--mm)));background-size:calc(2.5*var(--mm)) calc(2.5*var(--mm));background-position:calc(.5*var(--mm)) calc(.5*var(--mm));
-  -webkit-mask-image:linear-gradient(115deg,transparent 45%,#000 85%);mask-image:linear-gradient(115deg,transparent 45%,#000 85%)}
-.verso .tick{position:absolute;width:calc(2.2*var(--mm));height:calc(2.2*var(--mm));border-color:var(--grey);border-style:solid;border-width:0;opacity:.55}
-.verso .tick.tl{left:calc(7*var(--mm));top:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.tr{right:calc(7*var(--mm));top:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.bl{left:calc(7*var(--mm));bottom:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.verso .tick.br{right:calc(7*var(--mm));bottom:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.mono{font-family:Mono,monospace;text-transform:uppercase}
-.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.4*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.18em;color:var(--grey)}
-.verso .hdr b{color:var(--navy);font-weight:700}
-.verso .node{width:calc(5.2*var(--mm));height:calc(5.2*var(--mm))}
-.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.3*var(--mm));color:var(--navy);line-height:1;letter-spacing:.005em}
-.verso .name span{font-weight:600}
-.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(20.6*var(--mm));font-size:calc(1.9*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.1*var(--mm));width:calc(10*var(--mm));height:calc(.45*var(--mm));background:var(--gold)}
-.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(26.8*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
-.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:var(--navy)}
-.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:var(--ink);line-height:1.05;white-space:nowrap}
-.verso .qr{position:absolute;right:calc(10*var(--mm));top:calc(24.6*var(--mm));width:calc(17.4*var(--mm))}
-.verso .qr svg{display:block;width:100%;height:auto}
-.verso .qr .cap{margin-top:calc(1.1*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.1em;color:var(--grey)}
-.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.6*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(90,95,106,.45);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .foot b{color:var(--navy);font-weight:700}
-body.print{background:#fff}
-body.print .face{page-break-after:always;break-after:page}
-@page{size:91mm 61mm;margin:0}
+.rectoA{background:#06101F}
+.rectoA .bgimg{position:absolute;inset:0;background:url(clean2x.jpg) 50% 50%/auto 100% no-repeat;transform-origin:50% 57.7%}
+.rectoA .streaks{position:absolute;inset:0;width:100%;height:100%;mix-blend-mode:screen;opacity:.75}
+.rectoA .flare{position:absolute;left:calc(25.5*var(--mm));top:calc(30.2*var(--mm));width:calc(40*var(--mm));height:calc(10*var(--mm));border-radius:50%;background:radial-gradient(closest-side,rgba(140,235,255,.85),rgba(69,211,245,.25) 55%,transparent);mix-blend-mode:screen}
+.rectoA .veilA{position:absolute;left:calc(19*var(--mm));top:calc(12*var(--mm));width:calc(53*var(--mm));height:calc(34*var(--mm));background:radial-gradient(closest-side,rgba(4,10,22,.85),rgba(4,10,22,.5) 55%,transparent)}
+.rectoA .burst{position:absolute;left:calc(5.5*var(--mm));top:calc(-11.5*var(--mm));width:calc(80*var(--mm));height:calc(80*var(--mm));border-radius:50%;
+  background:repeating-conic-gradient(from 0deg,rgba(255,214,120,.0) 0deg 5deg,rgba(255,214,120,.55) 6deg,rgba(255,214,120,0) 9deg 14deg);
+  -webkit-mask-image:radial-gradient(closest-side,#000 18%,transparent 72%);mask-image:radial-gradient(closest-side,#000 18%,transparent 72%);mix-blend-mode:screen}
+.rectoA .logoA{position:absolute;left:calc(30.5*var(--mm));top:calc(15.6*var(--mm));width:calc(30*var(--mm));transform-origin:50% 50%}
 
 html,body{background:#121212}
-#stage{width:1080px;height:1920px;position:relative;overflow:hidden;background:#121212;--mm:10.588px}
-#bg{position:absolute;inset:-60px;background:url(clean.png) 50% 50%/cover;filter:blur(18px) saturate(1.15);opacity:.5}
-#shade{position:absolute;inset:0;background:radial-gradient(75% 45% at 50% 42%,rgba(18,18,18,.2),rgba(18,18,18,.9) 75%,#121212)}
-.top{position:absolute;top:120px;left:0;right:0;text-align:center;font-family:Mono,monospace;font-size:26px;letter-spacing:.22em;color:#E2C46E;text-transform:uppercase}
-.top i{display:inline-block;width:12px;height:12px;border-radius:50%;background:#45D3F5;box-shadow:0 0 14px #45D3F5;margin-right:14px;vertical-align:2px}
+#stage{width:1080px;height:1920px;position:relative;overflow:hidden;background:#0A0F18;--mm:10.588px}
+#bg{position:absolute;inset:-80px;background:url(clean.png) 50% 50%/cover;filter:blur(22px) saturate(1.15);opacity:.55}
+#shade{position:absolute;inset:0;background:radial-gradient(80% 48% at 50% 42%,rgba(8,12,20,.15),rgba(8,12,20,.9) 75%,#080C14)}
+.top{position:absolute;top:118px;left:0;right:0;text-align:center;font-family:Mono,monospace;font-size:25px;letter-spacing:.24em;color:#E2C46E;text-transform:uppercase}
+.top i{display:inline-block;width:11px;height:11px;border-radius:50%;background:#45D3F5;box-shadow:0 0 14px #45D3F5;margin-right:14px;vertical-align:2px}
+.top2{position:absolute;top:166px;left:0;right:0;text-align:center;font-family:Mono,monospace;font-size:20px;letter-spacing:.3em;color:#7F90AE}
 #scene{position:absolute;left:90px;top:520px;width:900px;height:582px;perspective:2600px}
 #card{position:absolute;inset:0;transform-style:preserve-3d}
-#card .side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:26px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06)}
+#card .side{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px;overflow:hidden;box-shadow:0 46px 90px rgba(0,0,0,.7),0 0 0 1px rgba(226,196,110,.18)}
 #card .side.back{transform:rotateY(180deg)}
 #card .side .face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
-#floor{position:absolute;left:180px;right:180px;top:1150px;height:60px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.65),transparent)}
-.cap{position:absolute;left:60px;right:60px;top:1250px;text-align:center}
-.cap h1{font-family:Montserrat;font-weight:800;font-size:58px;color:#fff}
+#floor{position:absolute;left:170px;right:170px;top:1160px;height:56px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.75),transparent)}
+#halo{position:absolute;left:140px;right:140px;top:1150px;height:70px;border-radius:50%;background:radial-gradient(closest-side,rgba(69,211,245,.35),transparent);filter:blur(10px)}
+.cap{position:absolute;left:60px;right:60px;top:1262px;text-align:center}
+.cap h1{font-family:Montserrat;font-weight:800;font-size:60px;letter-spacing:.01em}
 .cap h1 span{font-weight:600}
-.cap p{margin-top:18px;font-family:Montserrat;font-weight:600;font-size:32px;color:#E2C46E}
-.cap2{position:absolute;left:60px;right:60px;top:1250px;text-align:center;opacity:0}
-.cap2 h2{font-family:Montserrat;font-weight:800;font-size:46px;color:#fff;line-height:1.2}
-.cap2 h2 b{color:#E2C46E}
-.cap2 p{margin-top:20px;font-size:30px;color:#C9D3E3;font-weight:500}
-.foot{position:absolute;left:0;right:0;bottom:150px;text-align:center;font-family:Montserrat;font-weight:800;font-size:34px;color:#fff}
-.foot small{display:block;margin-top:14px;font-family:Inter;font-weight:500;font-size:24px;color:#9AA6BA}
+.cap p{margin-top:20px;font-family:Mono,monospace;font-size:24px;letter-spacing:.16em;color:#B5C3DA;text-transform:uppercase}
+.cap2{position:absolute;left:60px;right:60px;top:1262px;text-align:center;opacity:0}
+.cap2 h2{font-family:Montserrat;font-weight:800;font-size:46px;color:#fff;line-height:1.22}
+.cap2 h2 b{font-weight:800}
+.cap2 p{margin-top:22px;font-size:28px;color:#B5C3DA;font-weight:500}
+.foot{position:absolute;left:0;right:0;bottom:150px;text-align:center;font-family:Montserrat;font-weight:800;font-size:36px;color:#fff;letter-spacing:.02em}
+.foot small{display:block;margin-top:14px;font-family:Mono,monospace;font-weight:500;font-size:21px;letter-spacing:.12em;color:#8FA2C2}
+.foot i{display:block;margin:0 auto 26px;width:120px;height:2px;background:linear-gradient(90deg,transparent,#E2C46E,transparent)}
 </style></head><body>
-<template id="tRecto">
-  <div class="face recto">
-    <div class="veil"></div>
-    <div class="refl"><span>YEBA</span></div>
-    <div class="word">
-      <span class="yeba"><span class="glow2">YEBA</span><span class="glow">YEBA</span><span class="gold" style="position:relative">YEBA</span></span>
-      <span class="form"><span class="glow" style="filter:blur(calc(.5*var(--mm)))">FORMATIONS</span><span class="gold" style="position:relative">FORMATIONS</span></span>
-    </div>
-    <div class="shine"></div>
-  </div>
-</template>
+<template id="tRectoA"><div class="face rectoA">
+  <div class="bgimg"></div>
+  <svg class="streaks" viewBox="0 0 91 61" preserveAspectRatio="none" aria-hidden="true"><g stroke-linecap="round"><line x1="45.50" y1="35.20" x2="9.70" y2="79.56" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="3.6 122.0" data-o="6.1" /><line x1="45.50" y1="35.20" x2="80.14" y2="-9.51" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="3.5 122.0" data-o="7.3" /><line x1="45.50" y1="35.20" x2="-34.41" y2="32.88" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="2.3 122.0" data-o="52.7" /><line x1="45.50" y1="35.20" x2="-30.42" y2="19.56" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="5.3 122.0" data-o="15.6" /><line x1="45.50" y1="35.20" x2="-10.20" y2="-0.40" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="4.3 122.0" data-o="50.0" /><line x1="45.50" y1="35.20" x2="124.61" y2="27.83" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="4.2 122.0" data-o="16.8" /><line x1="45.50" y1="35.20" x2="-24.40" y2="59.33" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="2.5 122.0" data-o="38.9" /><line x1="45.50" y1="35.20" x2="77.79" y2="-10.18" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="2.4 122.0" data-o="72.0" /><line x1="45.50" y1="35.20" x2="75.94" y2="81.07" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="4.2 122.0" data-o="7.9" /><line x1="45.50" y1="35.20" x2="119.96" y2="53.34" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="4.0 122.0" data-o="67.0" /><line x1="45.50" y1="35.20" x2="59.12" y2="-13.68" stroke="#F3D98A" stroke-width="0.25" stroke-dasharray="4.3 122.0" data-o="57.1" /><line x1="45.50" y1="35.20" x2="67.52" y2="-12.48" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="5.1 122.0" data-o="10.3" /><line x1="45.50" y1="35.20" x2="-34.46" y2="36.72" stroke="#45D3F5" stroke-width="0.25" stroke-dasharray="4.9 122.0" data-o="36.3" /><line x1="45.50" y1="35.20" x2="124.88" y2="29.04" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="4.0 122.0" data-o="20.8" /><line x1="45.50" y1="35.20" x2="1.76" y2="76.73" stroke="#F3D98A" stroke-width="0.25" stroke-dasharray="3.7 122.0" data-o="121.2" /><line x1="45.50" y1="35.20" x2="116.17" y2="58.44" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="4.3 122.0" data-o="110.3" /><line x1="45.50" y1="35.20" x2="14.31" y2="80.87" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="3.4 122.0" data-o="62.6" /><line x1="45.50" y1="35.20" x2="68.73" y2="-12.26" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="5.4 122.0" data-o="119.0" /><line x1="45.50" y1="35.20" x2="-33.44" y2="43.24" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="2.3 122.0" data-o="92.1" /><line x1="45.50" y1="35.20" x2="16.23" y2="81.36" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="6.0 122.0" data-o="103.6" /><line x1="45.50" y1="35.20" x2="-14.77" y2="67.82" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="3.4 122.0" data-o="118.5" /><line x1="45.50" y1="35.20" x2="-3.72" y2="74.30" stroke="#45D3F5" stroke-width="0.32" stroke-dasharray="2.5 122.0" data-o="7.4" /><line x1="45.50" y1="35.20" x2="54.64" y2="-14.07" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="5.0 122.0" data-o="50.1" /><line x1="45.50" y1="35.20" x2="114.82" y2="10.44" stroke="#45D3F5" stroke-width="0.25" stroke-dasharray="2.3 122.0" data-o="56.6" /><line x1="45.50" y1="35.20" x2="-30.67" y2="20.04" stroke="#45D3F5" stroke-width="0.18" stroke-dasharray="5.3 122.0" data-o="108.9" /><line x1="45.50" y1="35.20" x2="-23.44" y2="60.37" stroke="#45D3F5" stroke-width="0.25" stroke-dasharray="4.7 122.0" data-o="47.9" /><line x1="45.50" y1="35.20" x2="114.87" y2="59.91" stroke="#F3D98A" stroke-width="0.18" stroke-dasharray="2.9 122.0" data-o="29.4" /></g></svg>
+  <div class="flare"></div>
+  <div class="veilA"></div>
+  <div class="burst"></div>
+  <img class="logoA" src="logo-white.png" alt="YEBA FORMATIONS">
+  <div class="shine"></div>
+</div></template>
 <template id="tVerso">
   <div class="face verso">
-    <div class="grid"></div>
-    <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+    <svg class="floor" viewBox="0 0 910 240" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="none" stroke-width="1.1">
+        <g stroke="#45D3F5" stroke-opacity=".55"><path d="M455 0 L-200 240"/><path d="M455 0 L40 240"/><path d="M455 0 L250 240"/><path d="M455 0 L660 240"/><path d="M455 0 L870 240"/><path d="M455 0 L1110 240"/></g>
+        <g stroke="#E2C46E" stroke-opacity=".45"><path d="M455 0 L-80 240"/><path d="M455 0 L150 240"/><path d="M455 0 L760 240"/><path d="M455 0 L990 240"/></g>
+        <g stroke="#45D3F5" stroke-opacity=".28"><path d="M0 120 H910"/><path d="M0 170 H910"/><path d="M0 214 H910"/></g>
+      </g>
+    </svg>
+    <svg class="traces" viewBox="0 0 260 140" aria-hidden="true">
+      <g fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M260 22 H190 L170 42 H120" stroke="#E2C46E" stroke-opacity=".7"/>
+        <path d="M260 60 H210 L192 78 H150" stroke="#45D3F5" stroke-opacity=".6"/>
+        <path d="M220 0 V12 L206 26" stroke="#45D3F5" stroke-opacity=".4"/>
+      </g>
+      <g fill="#E2C46E"><circle cx="120" cy="42" r="3"/></g><g fill="#45D3F5"><circle cx="150" cy="78" r="2.6"/></g>
+    </svg>
+    <div class="frame"><i></i><i></i><i></i><i></i></div>
     <div class="hdr mono"><span><b>YEBA FORMATIONS</b> · 974</span>
-      <svg class="node" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="22" r="6.5"/><path d="M14.6 18.6 7 13M25.4 18.6 33 13M20 15.5V6"/></g><g fill="#C9A84C"><circle cx="7" cy="13" r="3"/><circle cx="33" cy="13" r="3"/><circle cx="20" cy="6" r="3"/></g><circle cx="20" cy="22" r="2.4" fill="#1B3A6B"/></svg>
+      <svg class="node" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="#E2C46E" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="22" r="6.5"/><path d="M14.6 18.6 7 13M25.4 18.6 33 13M20 15.5V6"/></g><g fill="#45D3F5"><circle cx="7" cy="13" r="3"/><circle cx="33" cy="13" r="3"/><circle cx="20" cy="6" r="3"/></g><circle cx="20" cy="22" r="2.4" fill="#E2C46E"/></svg>
     </div>
-    <div class="name">Aurélien <span>LUMEKA</span></div>
+    <div class="name gold">Aurélien <span>LUMEKA</span></div>
     <div class="role mono">Directeur · Formateur &amp; consultant IA</div>
     <div class="rule"></div>
     <dl>
@@ -166,36 +142,50 @@ html,body{background:#121212}
       <dt>WEB</dt><dd>www.yebaformations.re</dd>
       <dt>ADR</dt><dd>9 rue Françoise Châtelain<br>97490 Sainte-Clotilde</dd>
     </dl>
-    <div class="qr">__QR__<div class="cap mono"><span>vCard</span><span>scan →</span></div></div>
+    <div class="qr"><div class="plate">__QR__</div></div>
     <div class="foot mono"><span><b>QUALIOPI</b> · ACTIONS DE FORMATION</span><span>RGPD · IA ACT</span></div>
   </div>
 </template>
-
 <div id="stage">
   <div id="bg"></div><div id="shade"></div>
-  <div class="top"><i></i>Carte de visite · YEBA FORMATIONS</div>
-  <div id="floor"></div>
+  <div class="top"><i></i>YEBA FORMATIONS</div>
+  <div class="top2">FORMATION · IA · RGPD &amp; IA ACT</div>
+  <div id="halo"></div><div id="floor"></div>
   <div id="scene"><div id="card"><div class="side front" id="front"></div><div class="side back" id="back"></div></div></div>
-  <div class="cap" id="cap1"><h1>Aurélien <span>LUMEKA</span></h1><p>Formation · IA · Gouvernance RGPD &amp; IA Act</p></div>
-  <div class="cap2" id="cap2"><h2>Scannez le QR code :<br><b>mon contact s’enregistre</b></h2><p>Aucune application, aucune donnée transmise à un tiers</p></div>
-  <div class="foot">+262 693 32 24 45<small>www.yebaformations.re · yebaformations@gmail.com</small></div>
+  <div class="cap" id="cap1"><h1 class="gold">Aurélien <span>LUMEKA</span></h1><p>Directeur · Formateur &amp; consultant IA</p></div>
+  <div class="cap2" id="cap2"><h2>Scannez le QR code :<br><b class="gold">mon contact s’enregistre</b></h2><p>Sans application · aucune donnée envoyée à un tiers</p></div>
+  <div class="foot"><i></i>+262 693 32 24 45<small>www.yebaformations.re</small></div>
 </div>
 <script src="qr.js"></script>
 <script>
-const D = 10, $ = s => document.querySelector(s);
+const D = 12, $ = s => document.querySelector(s);
 const cl=(x,a=0,b=1)=>Math.min(b,Math.max(a,x)), span=(t,a,b)=>cl((t-a)/(b-a));
 const ease = x => { x = cl(x); return x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2; };
-$('#front').innerHTML = document.getElementById('tRecto').innerHTML;
+const out = x => 1 - Math.pow(1 - cl(x), 3);
+$('#front').innerHTML = document.getElementById('tRectoA').innerHTML;
 $('#back').innerHTML = document.getElementById('tVerso').innerHTML.replace('__QR__', window.QRSVG);
+const L = [...document.querySelectorAll('#front .streaks line')].map(l => [l, +l.dataset.o]);
 function setT(t){
   t = ((t % D) + D) % D;
-  const flip = 180*ease(span(t,3.0,3.9)) + 180*ease(span(t,7.8,8.7));
-  $('#card').style.transform = `rotateY(${flip + 4*Math.sin(t/D*2*Math.PI)}deg) rotateX(${2.5*Math.sin(t/D*4*Math.PI)}deg)`;
-  const sh = $('#front .shine'); sh.style.opacity = 1; sh.style.backgroundPosition = `${100 - span(t,0.7,2.3)*100}% 0`;
-  const gp = .75 + .25*Math.sin(t/D*6*Math.PI);
-  document.querySelectorAll('#front .glow, #front .glow2').forEach(g => g.style.opacity = gp);
-  [...document.querySelectorAll('#back .name, #back .role, #back .rule, #back dl > *, #back .qr')].forEach((el,i)=>{ const k = t>8.6||t<3.4 ? 1 : ease(span(t,3.7+i*.08,4.2+i*.08)); el.style.opacity = k; });
-  const v2 = ease(span(t,3.4,3.9)) * (1-ease(span(t,7.7,8.2)));
+  // Recto : progression p (0 → 1 pendant l'entrée, remise à zéro pendant que le verso est visible)
+  const p = t < 6.5 ? out(span(t, 0.15, 4.4)) : 0;
+  $('#front .bgimg').style.transform = `scale(${1 + .22*p})`;
+  const ls = .58 + .42*p;
+  $('#front .logoA').style.transform = `scale(${ls})`;
+  const glow = 4 + 10*p + 6*Math.max(0, Math.sin((t-3.4)/1.4*Math.PI))*(t>3.4&&t<4.8);
+  $('#front .logoA').style.filter = `drop-shadow(0 0 ${glow*.35}px rgba(255,214,120,.95)) drop-shadow(0 0 ${glow}px rgba(255,190,90,.6))`;
+  const b = t < 6.5 ? (.9*Math.exp(-Math.pow((t-4.0)/.55,2)) + .22*p) : 0;
+  $('#front .burst').style.opacity = b; $('#front .burst').style.transform = `rotate(${t*6}deg) scale(${.8 + .3*p})`;
+  $('#front .veilA').style.opacity = .55 + .35*p;
+  $('#front .flare').style.opacity = .55 + .3*Math.sin(t/D*8*Math.PI)**2;
+  for (const [l, o] of L) l.setAttribute('stroke-dashoffset', (o - t*84*(1+.6*p)) % 126);
+  const sh = $('#front .shine'); sh.style.opacity = 1; sh.style.backgroundPosition = `${100 - span(t,4.4,5.4)*100}% 0`;
+  // Retournements
+  const flip = 180*ease(span(t,5.0,5.9)) + 180*ease(span(t,10.4,11.3));
+  $('#card').style.transform = `rotateY(${flip + 3*Math.sin(t/D*2*Math.PI)}deg) rotateX(${2*Math.sin(t/D*4*Math.PI)}deg)`;
+  [...document.querySelectorAll('#back .name, #back .role, #back .rule, #back dl > *, #back .qr, #back .foot')].forEach((el,i)=>{ const k = (t>10.3||t<5.4) ? 1 : ease(span(t,5.7+i*.08,6.2+i*.08)); el.style.opacity = k; });
+  const pl = span(t,7.0,8.8); $('#back .qr .plate').style.boxShadow = `0 0 0 calc(.3*var(--mm)) #C9A84C, 0 0 calc(2.2*var(--mm)) rgba(226,196,110,.35), 0 0 0 ${pl*36}px rgba(226,196,110,${.3*(1-pl)})`;
+  const v2 = ease(span(t,5.4,5.9)) * (1-ease(span(t,10.3,10.8)));
   $('#cap1').style.opacity = 1 - v2; $('#cap2').style.opacity = v2; $('#cap2').style.transform = `translateY(${(1-v2)*20}px)`;
   $('#floor').style.transform = `scaleX(${.85 + .15*Math.abs(Math.cos(flip*Math.PI/180))})`;
   $('#bg').style.transform = `scale(${1.05 + .04*Math.sin(t/D*2*Math.PI)})`;

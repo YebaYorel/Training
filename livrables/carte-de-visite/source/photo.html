@@ -32,98 +32,50 @@ body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-a
 .recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
   background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
 
-/* ================= VERSO : épuré, technique ================= */
-.verso{background:var(--paper);color:var(--ink)}
-.verso .grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,58,107,.16) calc(.13*var(--mm)),transparent calc(.15*var(--mm)));background-size:calc(2.5*var(--mm)) calc(2.5*var(--mm));background-position:calc(.5*var(--mm)) calc(.5*var(--mm));
-  -webkit-mask-image:linear-gradient(115deg,transparent 45%,#000 85%);mask-image:linear-gradient(115deg,transparent 45%,#000 85%)}
-.verso .tick{position:absolute;width:calc(2.2*var(--mm));height:calc(2.2*var(--mm));border-color:var(--grey);border-style:solid;border-width:0;opacity:.55}
-.verso .tick.tl{left:calc(7*var(--mm));top:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.tr{right:calc(7*var(--mm));top:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.bl{left:calc(7*var(--mm));bottom:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.verso .tick.br{right:calc(7*var(--mm));bottom:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
+/* ================= VERSO SOMBRE : accordé au couloir « IA » ================= */
+.verso{color:#F4F6FA;background:
+  radial-gradient(ellipse 75% 55% at 50% 122%,rgba(69,211,245,.26),transparent 62%),
+  radial-gradient(ellipse 55% 45% at 88% -12%,rgba(226,196,110,.20),transparent 62%),
+  linear-gradient(160deg,#0C1B32 0%,#07101E 55%,#040A14 100%)}
+.verso .floor{position:absolute;left:0;right:0;bottom:0;height:calc(24*var(--mm));opacity:.55;
+  -webkit-mask-image:linear-gradient(0deg,#000 10%,transparent 95%);mask-image:linear-gradient(0deg,#000 10%,transparent 95%)}
+.verso .traces{position:absolute;right:calc(3*var(--mm));top:calc(3*var(--mm));width:calc(26*var(--mm));height:calc(14*var(--mm));opacity:.55}
+.verso .frame{position:absolute;inset:calc(6.4*var(--mm));border:calc(.14*var(--mm)) solid rgba(226,196,110,.42)}
+.verso .frame i{position:absolute;width:calc(1.1*var(--mm));height:calc(1.1*var(--mm));background:#E2C46E;box-shadow:0 0 calc(.8*var(--mm)) rgba(226,196,110,.8)}
+.verso .frame i:nth-child(1){left:calc(-.62*var(--mm));top:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(2){right:calc(-.62*var(--mm));top:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(3){left:calc(-.62*var(--mm));bottom:calc(-.62*var(--mm))}
+.verso .frame i:nth-child(4){right:calc(-.62*var(--mm));bottom:calc(-.62*var(--mm))}
 .mono{font-family:Mono,monospace;text-transform:uppercase}
-.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.4*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.18em;color:var(--grey)}
-.verso .hdr b{color:var(--navy);font-weight:700}
-.verso .node{width:calc(5.2*var(--mm));height:calc(5.2*var(--mm))}
-.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.3*var(--mm));color:var(--navy);line-height:1;letter-spacing:.005em}
+.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.6*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.2em;color:#8FA2C2}
+.verso .hdr b{color:#E2C46E;font-weight:700}
+.verso .node{width:calc(5.4*var(--mm));height:calc(5.4*var(--mm));filter:drop-shadow(0 0 calc(.6*var(--mm)) rgba(69,211,245,.55))}
+.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.5*var(--mm));line-height:1.05;letter-spacing:.005em;filter:drop-shadow(0 0 calc(.9*var(--mm)) rgba(226,190,95,.35))}
 .verso .name span{font-weight:600}
-.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(20.6*var(--mm));font-size:calc(1.9*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.1*var(--mm));width:calc(10*var(--mm));height:calc(.45*var(--mm));background:var(--gold)}
-.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(26.8*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
-.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:var(--navy)}
-.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:var(--ink);line-height:1.05;white-space:nowrap}
-.verso .qr{position:absolute;right:calc(9.6*var(--mm));top:calc(23.4*var(--mm));width:calc(20*var(--mm))}
+.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(21*var(--mm));font-size:calc(1.8*var(--mm));letter-spacing:.06em;color:#B5C3DA}
+.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.4*var(--mm));width:calc(12*var(--mm));height:calc(.4*var(--mm));background:linear-gradient(90deg,#F3D98A,#C99A3A 70%,transparent)}
+.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(27.2*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
+.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:#6FDCF7}
+.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:#F4F6FA;line-height:1.05;white-space:nowrap}
+.verso .qr{position:absolute;right:calc(9.8*var(--mm));top:calc(24.2*var(--mm));width:calc(22.6*var(--mm))}
+.verso .qr .plate{padding:calc(1.3*var(--mm));background:#F7F7F5;box-shadow:0 0 0 calc(.3*var(--mm)) #C9A84C,0 0 calc(2.2*var(--mm)) rgba(226,196,110,.35)}
 .verso .qr svg{display:block;width:100%;height:auto}
-.verso .qr .cap{margin-top:calc(1.1*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.1em;color:var(--grey)}
-.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.6*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(90,95,106,.45);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .foot b{color:var(--navy);font-weight:700}
-body.print{background:#fff}
-body.print .face{page-break-after:always;break-after:page}
-@page{size:91mm 61mm;margin:0}
-
-html,body{background:#2a2a2a}
-body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.u{--m:var(--mm)}
-/* Une face = 91 x 61 mm (85 x 55 + 3 mm de fond perdu). Tout est en --mm. */
-.face{position:relative;width:calc(91*var(--mm));height:calc(61*var(--mm));overflow:hidden}
-.trim{position:relative;width:calc(85*var(--mm));height:calc(55*var(--mm));overflow:hidden;border-radius:calc(var(--r,0)*var(--mm))}
-.trim>.face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
-
-/* ================= RECTO : le couloir « IA », YEBA FORMATIONS à la place de AI ================= */
-.recto{background:#06101F url(clean2x.jpg) 50% 50%/auto 100% no-repeat}
-.recto .veil{position:absolute;left:calc(22*var(--mm));top:calc(19*var(--mm));width:calc(47*var(--mm));height:calc(22*var(--mm));background:radial-gradient(closest-side,rgba(4,10,22,.78),rgba(4,10,22,.45) 55%,transparent);filter:blur(calc(1*var(--mm)))}
-.recto .word{position:absolute;left:0;right:0;top:calc(23*var(--mm));text-align:center;padding-left:calc(.4*var(--mm))}
-.gold{background:linear-gradient(180deg,#FFF6CF 0%,#F3D98A 28%,#E2BE5F 52%,#C99A3A 78%,#9C7424 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.recto .yeba{position:relative;display:block;font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));line-height:1;letter-spacing:.01em;filter:drop-shadow(0 calc(.3*var(--mm)) calc(.4*var(--mm)) rgba(0,0,0,.6))}
-.recto .form{position:relative;display:block;margin-top:calc(1.1*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(2.75*var(--mm));letter-spacing:.32em;padding-left:.3em;line-height:1}
-/* halo : copie floue derrière le texte doré */
-.recto .glow{position:absolute;inset:0;color:#FFD47A;filter:blur(calc(.8*var(--mm)));opacity:.9}
-.recto .glow2{position:absolute;inset:0;color:#FFB84A;filter:blur(calc(3*var(--mm)));opacity:.55}
-.recto .edge{position:absolute;inset:0;color:transparent;-webkit-text-stroke:calc(.07*var(--mm)) rgba(255,246,210,.75)}
-/* reflet au sol */
-.recto .refl{position:absolute;left:0;right:0;top:calc(38.8*var(--mm));text-align:center;transform:scaleY(-1);opacity:.16;filter:blur(calc(.5*var(--mm)));
-  -webkit-mask-image:linear-gradient(0deg,#000,transparent 70%);mask-image:linear-gradient(0deg,#000,transparent 70%)}
-.recto .refl span{font-family:Montserrat;font-weight:900;font-size:calc(9.4*var(--mm));color:#F3D98A;line-height:1}
-.recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
-  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
-
-/* ================= VERSO : épuré, technique ================= */
-.verso{background:var(--paper);color:var(--ink)}
-.verso .grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(27,58,107,.16) calc(.13*var(--mm)),transparent calc(.15*var(--mm)));background-size:calc(2.5*var(--mm)) calc(2.5*var(--mm));background-position:calc(.5*var(--mm)) calc(.5*var(--mm));
-  -webkit-mask-image:linear-gradient(115deg,transparent 45%,#000 85%);mask-image:linear-gradient(115deg,transparent 45%,#000 85%)}
-.verso .tick{position:absolute;width:calc(2.2*var(--mm));height:calc(2.2*var(--mm));border-color:var(--grey);border-style:solid;border-width:0;opacity:.55}
-.verso .tick.tl{left:calc(7*var(--mm));top:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.tr{right:calc(7*var(--mm));top:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-top-width:calc(.18*var(--mm))}
-.verso .tick.bl{left:calc(7*var(--mm));bottom:calc(7*var(--mm));border-left-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.verso .tick.br{right:calc(7*var(--mm));bottom:calc(7*var(--mm));border-right-width:calc(.18*var(--mm));border-bottom-width:calc(.18*var(--mm))}
-.mono{font-family:Mono,monospace;text-transform:uppercase}
-.verso .hdr{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));top:calc(9.4*var(--mm));display:flex;justify-content:space-between;align-items:center;font-size:calc(1.85*var(--mm));letter-spacing:.18em;color:var(--grey)}
-.verso .hdr b{color:var(--navy);font-weight:700}
-.verso .node{width:calc(5.2*var(--mm));height:calc(5.2*var(--mm))}
-.verso .name{position:absolute;left:calc(10*var(--mm));top:calc(15*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(4.3*var(--mm));color:var(--navy);line-height:1;letter-spacing:.005em}
-.verso .name span{font-weight:600}
-.verso .role{position:absolute;left:calc(10*var(--mm));top:calc(20.6*var(--mm));font-size:calc(1.9*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .rule{position:absolute;left:calc(10*var(--mm));top:calc(24.1*var(--mm));width:calc(10*var(--mm));height:calc(.45*var(--mm));background:var(--gold)}
-.verso dl{position:absolute;left:calc(10*var(--mm));top:calc(26.8*var(--mm));display:grid;grid-template-columns:calc(8.5*var(--mm)) auto;row-gap:calc(1.25*var(--mm));align-items:baseline}
-.verso dt{font-family:Mono,monospace;font-weight:700;font-size:calc(1.85*var(--mm));letter-spacing:.14em;color:var(--navy)}
-.verso dd{font-size:calc(2.5*var(--mm));font-weight:500;color:var(--ink);line-height:1.05;white-space:nowrap}
-.verso .qr{position:absolute;right:calc(10*var(--mm));top:calc(24.6*var(--mm));width:calc(17.4*var(--mm))}
-.verso .qr svg{display:block;width:100%;height:auto}
-.verso .qr .cap{margin-top:calc(1.1*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.1em;color:var(--grey)}
-.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.6*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(90,95,106,.45);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.12em;color:var(--grey)}
-.verso .foot b{color:var(--navy);font-weight:700}
+.verso .qr .cap{margin-top:calc(1.2*var(--mm));display:flex;justify-content:space-between;font-size:calc(1.55*var(--mm));letter-spacing:.12em;color:#8FA2C2}
+.verso .foot{position:absolute;left:calc(10*var(--mm));right:calc(10*var(--mm));bottom:calc(9.4*var(--mm));padding-top:calc(1.2*var(--mm));border-top:calc(.12*var(--mm)) solid rgba(143,162,194,.35);display:flex;justify-content:space-between;font-size:calc(1.6*var(--mm));letter-spacing:.14em;color:#8FA2C2}
+.verso .foot b{color:#E2C46E;font-weight:700}
 body.print{background:#fff}
 body.print .face{page-break-after:always;break-after:page}
 @page{size:91mm 61mm;margin:0}
 
 html,body{background:#ddd}
-#photo{width:2400px;height:1600px;position:relative;overflow:hidden;--mm:11.765px;background:radial-gradient(120% 90% at 30% 20%,#F4F5F7 0%,#E3E6EB 55%,#CDD2DA 100%)}
-#photo .noise{position:absolute;inset:0;opacity:.18;mix-blend-mode:multiply}
-.pc{position:absolute;border-radius:calc(2.5*var(--mm));overflow:hidden;width:calc(85*var(--mm));height:calc(55*var(--mm))}
+#photo{width:2400px;height:1600px;position:relative;overflow:hidden;--mm:11.765px;background:radial-gradient(120% 95% at 28% 18%,#F3F2EF 0%,#E2E0DB 55%,#C9C6BF 100%)}
+#photo .noise{position:absolute;inset:0;opacity:.2;mix-blend-mode:multiply}
+.pc{position:absolute;overflow:hidden;width:calc(85*var(--mm));height:calc(55*var(--mm))}
 .pc .face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
-.pc .lit{position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.14),rgba(255,255,255,0) 40%,rgba(0,0,0,.06));pointer-events:none}
-#p1{left:250px;top:250px;transform:rotate(-7deg);box-shadow:0 2px 3px rgba(0,0,0,.25),0 30px 60px rgba(20,30,50,.30),0 60px 120px rgba(20,30,50,.18)}
-#p2{left:1150px;top:640px;transform:rotate(5deg);box-shadow:0 2px 3px rgba(0,0,0,.22),0 30px 60px rgba(20,30,50,.28),0 60px 120px rgba(20,30,50,.16)}
+.pc .lit{position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.12),rgba(255,255,255,0) 38%,rgba(0,0,0,.08));pointer-events:none}
+.pc .edge{position:absolute;inset:0;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.10)}
+#p1{left:240px;top:230px;transform:rotate(-7deg);box-shadow:0 2px 3px rgba(0,0,0,.28),0 30px 60px rgba(30,25,15,.32),0 70px 130px rgba(30,25,15,.20)}
+#p2{left:1160px;top:650px;transform:rotate(5deg);box-shadow:0 2px 3px rgba(0,0,0,.28),0 30px 60px rgba(30,25,15,.32),0 70px 130px rgba(30,25,15,.20)}
 </style></head><body>
 <template id="tRecto">
   <div class="face recto">
@@ -138,12 +90,26 @@ html,body{background:#ddd}
 </template>
 <template id="tVerso">
   <div class="face verso">
-    <div class="grid"></div>
-    <i class="tick tl"></i><i class="tick tr"></i><i class="tick bl"></i><i class="tick br"></i>
+    <svg class="floor" viewBox="0 0 910 240" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="none" stroke-width="1.1">
+        <g stroke="#45D3F5" stroke-opacity=".55"><path d="M455 0 L-200 240"/><path d="M455 0 L40 240"/><path d="M455 0 L250 240"/><path d="M455 0 L660 240"/><path d="M455 0 L870 240"/><path d="M455 0 L1110 240"/></g>
+        <g stroke="#E2C46E" stroke-opacity=".45"><path d="M455 0 L-80 240"/><path d="M455 0 L150 240"/><path d="M455 0 L760 240"/><path d="M455 0 L990 240"/></g>
+        <g stroke="#45D3F5" stroke-opacity=".28"><path d="M0 120 H910"/><path d="M0 170 H910"/><path d="M0 214 H910"/></g>
+      </g>
+    </svg>
+    <svg class="traces" viewBox="0 0 260 140" aria-hidden="true">
+      <g fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M260 22 H190 L170 42 H120" stroke="#E2C46E" stroke-opacity=".7"/>
+        <path d="M260 60 H210 L192 78 H150" stroke="#45D3F5" stroke-opacity=".6"/>
+        <path d="M220 0 V12 L206 26" stroke="#45D3F5" stroke-opacity=".4"/>
+      </g>
+      <g fill="#E2C46E"><circle cx="120" cy="42" r="3"/></g><g fill="#45D3F5"><circle cx="150" cy="78" r="2.6"/></g>
+    </svg>
+    <div class="frame"><i></i><i></i><i></i><i></i></div>
     <div class="hdr mono"><span><b>YEBA FORMATIONS</b> · 974</span>
-      <svg class="node" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="#1B3A6B" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="22" r="6.5"/><path d="M14.6 18.6 7 13M25.4 18.6 33 13M20 15.5V6"/></g><g fill="#C9A84C"><circle cx="7" cy="13" r="3"/><circle cx="33" cy="13" r="3"/><circle cx="20" cy="6" r="3"/></g><circle cx="20" cy="22" r="2.4" fill="#1B3A6B"/></svg>
+      <svg class="node" viewBox="0 0 40 40" aria-hidden="true"><g fill="none" stroke="#E2C46E" stroke-width="2.2" stroke-linecap="round"><circle cx="20" cy="22" r="6.5"/><path d="M14.6 18.6 7 13M25.4 18.6 33 13M20 15.5V6"/></g><g fill="#45D3F5"><circle cx="7" cy="13" r="3"/><circle cx="33" cy="13" r="3"/><circle cx="20" cy="6" r="3"/></g><circle cx="20" cy="22" r="2.4" fill="#E2C46E"/></svg>
     </div>
-    <div class="name">Aurélien <span>LUMEKA</span></div>
+    <div class="name gold">Aurélien <span>LUMEKA</span></div>
     <div class="role mono">Directeur · Formateur &amp; consultant IA</div>
     <div class="rule"></div>
     <dl>
@@ -152,17 +118,17 @@ html,body{background:#ddd}
       <dt>WEB</dt><dd>www.yebaformations.re</dd>
       <dt>ADR</dt><dd>9 rue Françoise Châtelain<br>97490 Sainte-Clotilde</dd>
     </dl>
-    <div class="qr">__QR__<div class="cap mono"><span>vCard</span><span>scan →</span></div></div>
+    <div class="qr"><div class="plate">__QR__</div></div>
     <div class="foot mono"><span><b>QUALIOPI</b> · ACTIONS DE FORMATION</span><span>RGPD · IA ACT</span></div>
   </div>
 </template>
 
 <div id="photo">
-  <svg class="noise" width="2400" height="1600"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+  <svg class="noise" width="2400" height="1600"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .5  0 0 0 0 .48  0 0 0 0 .45  0 0 0 .55 0"/></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
   <div class="pc" id="p1"></div><div class="pc" id="p2"></div>
 </div>
 <script src="qr.js"></script>
 <script>
-document.getElementById('p1').innerHTML = document.getElementById('tRecto').innerHTML + '<div class="lit"></div>';
-document.getElementById('p2').innerHTML = document.getElementById('tVerso').innerHTML.replace('__QR__', window.QRSVG) + '<div class="lit"></div>';
+document.getElementById('p1').innerHTML = document.getElementById('tRecto').innerHTML + '<div class="lit"></div><div class="edge"></div>';
+document.getElementById('p2').innerHTML = document.getElementById('tVerso').innerHTML.replace('__QR__', window.QRSVG) + '<div class="lit"></div><div class="edge"></div>';
 </script></body></html>

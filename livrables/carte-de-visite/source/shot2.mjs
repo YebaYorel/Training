@@ -12,7 +12,7 @@ if (mode === 'photo') {
   fs.rmSync(dir + '/frames', { recursive: true, force: true }); fs.mkdirSync(dir + '/frames');
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   await p.goto('file://' + dir + '/cardanim.html'); await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(500);
-  const fps = 30, times = only ? only.split(',').map(Number) : [...Array(fps * 10).keys()].map(i => i / fps);
+  const fps = 30, times = only ? only.split(',').map(Number) : [...Array(fps * 12).keys()].map(i => i / fps);
   const st = await p.$('#stage');
   for (let i = 0; i < times.length; i++) {
     await p.evaluate(t => setT(t), times[i]);
