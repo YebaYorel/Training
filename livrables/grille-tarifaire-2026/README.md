@@ -1,10 +1,10 @@
-# Grille tarifaire 2026 — YEBA FORMATIONS (mise à jour du 07/10/2026)
+# Grille tarifaire 2026 — YEBA FORMATIONS (mise à jour du 08/10/2026)
 
 | Fichier | Usage |
 |---|---|
 | `YEBA-grille-tarifaire-2026.pdf` | PDF A4, 2 pages (couverture + tarifs) — pièce jointe, impression |
-| `YEBA-tarifs-2026-email.gif` | Version animée **pour le corps du mail** (600 px, 14 s en boucle, 2,4 Mo) |
-| `YEBA-tarifs-2026-anime.mp4` | Version animée HD (1280×1920) — WhatsApp, LinkedIn, écran salon |
+| `YEBA-tarifs-2026-email.gif` | Version animée **pour le corps du mail** (600 px, 14 s en boucle, 3,3 Mo) — couverture = vidéo « IA » |
+| `YEBA-tarifs-2026-anime.mp4` | Version animée HD (1280×1920) — WhatsApp, LinkedIn, écran salon — couverture = vidéo « IA » |
 
 **Source des prix :** Airtable, table CATALOGUE FORMATIONS (champs « Tarif inter HT / jour / personne »
 et « Tarif intra HT / jour / groupe »), relevés le 07/10/2026.
@@ -20,6 +20,12 @@ FOR-0011 sur 2 jours (14 h).
 - YEBA-DOC-12 : prix par jour du catalogue, 7 h, 6 à 8 participants, seuils recalculés.
 - YEBA-DOC-03 (CGV) art. 6.3 : en deçà de 6 inscrits, report ; remboursement intégral si l'effectif n'est pas atteint un mois après la date initiale.
 
+## 08/10/2026
+- Frais de salle et de restauration retirés de la plaquette et de YEBA-DOC-12 (v3.1).
+- Charte YEBA-IDENT-2026 appliquée : logo monochrome blanc sur fond uni (#121212 / #1B3A6B), plus de logo sur photo ni dégradé.
+- Mention de transparence IA (règlement (UE) 2024/1689, art. 50) ajoutée en pied de page.
+- Animation : l'image fixe de couverture est remplacée par la vidéo « IA » (source/assets/ia-anim.mp4).
+
 ## Régénérer
 Dans `source/` : `npm i playwright @fontsource/montserrat @fontsource/jetbrains-mono`,
-puis `node render.mjs .` (PDF) et `node capture.mjs` + ffmpeg (animation ; `LITE=1 FPS=10 DSF=1` pour le GIF e-mail).
+extraire les images de la vidéo (`ffmpeg -i assets/ia-anim.mp4 -q:v 2 assets/vf/f%03d.jpg`), puis `node render.mjs .` (PDF) et `node capture.mjs` + ffmpeg (animation ; `LITE=1 FPS=10 DSF=1` pour le GIF e-mail).

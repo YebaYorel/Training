@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Carte de visite — Aurélien LUMEKA · YEBA FORMATIONS</title>
+<style>
+@font-face{font-family:"Montserrat";font-weight:600;src:url(fontsource/montserrat/files/montserrat-latin-600-normal.woff2)}
+@font-face{font-family:"Montserrat";font-weight:700;src:url(fontsource/montserrat/files/montserrat-latin-700-normal.woff2)}
+@font-face{font-family:"Montserrat";font-weight:800;src:url(fontsource/montserrat/files/montserrat-latin-800-normal.woff2)}
+@font-face{font-family:"Mono";font-weight:500;src:url(fontsource/jetbrains-mono/files/jetbrains-mono-latin-500-normal.woff2)}
+:root{--navy:#1B3A6B;--gold:#C9A84C;--gold-hi:#E2C46E;--ink:#121212;--paper:#F7F7F5;--grey:#5A5F6A;--mm:3.7795px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#2a2a2a}
+body{font-family:Inter,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+/* Une face = 91 x 61 mm (85 x 55 + 3 mm de fond perdu). Tout est exprimé en --mm pour changer d'échelle. */
+.face{position:relative;width:calc(91*var(--mm));height:calc(61*var(--mm));overflow:hidden}
+.trim{position:relative;width:calc(85*var(--mm));height:calc(55*var(--mm));overflow:hidden;border-radius:calc(var(--r,0)*var(--mm))}
+.trim>.face{position:absolute;left:calc(-3*var(--mm));top:calc(-3*var(--mm))}
+
+/* ---------- RECTO : bleu YEBA uni, logo blanc, rails dorés hors zone de protection ---------- */
+.recto{background:var(--navy)}
+.recto .logo{position:absolute;width:calc(30*var(--mm));left:calc(30.5*var(--mm));top:calc(17.5*var(--mm))}
+.recto svg.rail{position:absolute;top:0;height:100%;width:calc(16.5*var(--mm))}
+.recto svg.rail.l{left:0}.recto svg.rail.r{right:0;transform:scaleX(-1)}
+.recto .shine{position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.0) 42%,rgba(255,255,255,.22) 50%,rgba(255,255,255,0) 58%,transparent 65%);background-size:300% 100%}
+
+/* ---------- VERSO : blanc cassé, texte bleu/noir, or en surfaces uniquement ---------- */
+.verso{background:var(--paper);color:var(--ink)}
+.verso .who{position:absolute;left:calc(8*var(--mm));top:calc(8*var(--mm))}
+.verso .name{font-family:Montserrat;font-weight:800;font-size:calc(4.1*var(--mm));color:var(--navy);letter-spacing:.01em;line-height:1}
+.verso .name span{font-weight:600}
+.verso .title{margin-top:calc(1.6*var(--mm));font-family:Montserrat;font-weight:600;font-size:calc(2.55*var(--mm));color:var(--grey)}
+.verso .org{margin-top:calc(1.4*var(--mm));font-family:Montserrat;font-weight:800;font-size:calc(2.2*var(--mm));letter-spacing:.16em;color:var(--navy)}
+.verso .rule{margin-top:calc(2.2*var(--mm));width:calc(16*var(--mm));height:calc(.7*var(--mm));background:var(--gold);border-radius:2px}
+.verso ul{position:absolute;left:calc(8*var(--mm));top:calc(28.2*var(--mm));list-style:none}
+.verso li{display:flex;align-items:center;gap:calc(2*var(--mm));font-size:calc(2.55*var(--mm));font-weight:600;line-height:1;height:calc(4.3*var(--mm));color:var(--ink);white-space:nowrap}
+.verso li.cont{padding-left:calc(5.2*var(--mm));margin-top:calc(-1*var(--mm))}
+.verso li svg{width:calc(3.2*var(--mm));height:calc(3.2*var(--mm));flex:none}
+.verso .qr{position:absolute;right:calc(7*var(--mm));top:calc(9*var(--mm));width:calc(23*var(--mm));text-align:center}
+.verso .qr .box{width:calc(23*var(--mm));height:calc(23*var(--mm));padding:calc(1.5*var(--mm));background:#fff;border-radius:calc(1.2*var(--mm));box-shadow:0 0 0 calc(.35*var(--mm)) var(--gold)}
+.verso .qr .box svg{width:100%;height:100%;display:block}
+.verso .qr small{display:block;margin-top:calc(1.5*var(--mm));font-family:Montserrat;font-weight:700;font-size:calc(2*var(--mm));color:var(--navy);letter-spacing:.02em}
+.verso .brand{position:absolute;right:calc(7*var(--mm));top:calc(7.6*var(--mm));width:calc(25*var(--mm));text-align:center;font-family:Montserrat;font-weight:800;font-size:calc(2.5*var(--mm));letter-spacing:.14em;color:var(--navy)}
+.verso .band{position:absolute;left:0;right:0;bottom:0;height:calc(9.6*var(--mm));background:var(--navy);display:flex;align-items:center;justify-content:center;gap:calc(2.2*var(--mm));padding:0 calc(6*var(--mm)) calc(3*var(--mm));
+  font-family:Montserrat;font-weight:700;font-size:calc(1.8*var(--mm));color:var(--gold-hi);letter-spacing:.03em;white-space:nowrap}
+.verso .band i{font-style:normal;color:rgba(255,255,255,.55)}
+
+/* ---------- MODES ---------- */
+body.print{background:#fff}
+body.print .face{page-break-after:always;break-after:page}
+@page{size:91mm 61mm;margin:0}
+</style></head>
+<body>
+<template id="tRecto">
+  <div class="face recto">
+    <svg class="rail l" viewBox="0 0 165 610" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lines">
+        <path d="M0 95 H55 L95 135 V250"/><path d="M0 300 H40 L80 260 H120"/><path d="M0 470 H70 L110 430 V350"/><path d="M60 610 V540 L100 500 H140"/><path d="M0 200 H25"/>
+      </g>
+      <g fill="#E2C46E" class="nodes"><circle cx="95" cy="250" r="7"/><circle cx="120" cy="260" r="7"/><circle cx="110" cy="350" r="7"/><circle cx="140" cy="500" r="7"/><circle cx="25" cy="200" r="5"/></g>
+    </svg>
+    <svg class="rail r" viewBox="0 0 165 610" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="none" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="lines">
+        <path d="M0 140 H60 L100 180 V280"/><path d="M0 380 H50 L90 340 H125"/><path d="M80 0 V60 L115 95 H140"/><path d="M0 520 H80 L115 485"/>
+      </g>
+      <g fill="#E2C46E" class="nodes"><circle cx="100" cy="280" r="7"/><circle cx="125" cy="340" r="7"/><circle cx="140" cy="95" r="7"/><circle cx="115" cy="485" r="7"/></g>
+    </svg>
+    <img class="logo" src="../build/assets/logo-white.png" alt="YEBA FORMATIONS">
+    <div class="shine"></div>
+  </div>
+</template>
+<template id="tVerso">
+  <div class="face verso">
+    <div class="who">
+      <div class="name">AURÉLIEN <span>LUMEKA</span></div>
+      <div class="title">Directeur · Formateur &amp; consultant IA</div>
+      <div class="org">YEBA FORMATIONS</div>
+      <div class="rule"></div>
+    </div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+262 693 32 24 45</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>yebaformations@gmail.com</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>www.yebaformations.re</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#1B3A6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>9 rue Françoise Châtelain</li>
+      <li class="cont">97490 Sainte-Clotilde, La Réunion</li>
+    </ul>
+        <div class="qr"><div class="box">__QR__</div><small>SCANNEZ-MOI</small></div>
+    <div class="band">QUALIOPI — ACTIONS DE FORMATION<i>·</i>GOOGLE AI<i>·</i>ANSSI<i>·</i>CNIL</div>
+  </div>
+</template>
+<div id="root"></div>
+<script src="qr.js"></script>
+<script>
+async function build(mode, opts = {}) {
+  const qr = window.QRSVG;
+  const R = document.getElementById('tRecto').innerHTML, V = document.getElementById('tVerso').innerHTML.replace('__QR__', qr);
+  const root = document.getElementById('root');
+  document.body.className = mode;
+  if (opts.mm) document.documentElement.style.setProperty('--mm', opts.mm + 'px');
+  if (mode === 'print') root.innerHTML = R + V;
+  else root.innerHTML = `<div class="trim" id="tr" style="--r:${opts.r || 0}">${R}</div><div style="height:20px"></div><div class="trim" id="tv" style="--r:${opts.r || 0}">${V}</div>`;
+  await document.fonts.ready;
+  await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+}
+window.build = build;
+</script>
+</body></html>

@@ -4,16 +4,15 @@
 <link rel="stylesheet" href="fonts.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#06122A}
+html,body{background:#121212}
 body{font-family:Inter,sans-serif}
-#stage{width:640px;height:960px;position:relative;overflow:hidden;background:var(--night);color:#fff}
+#stage{width:640px;height:960px;position:relative;overflow:hidden;background:#121212;color:#fff}
 .scene{position:absolute;inset:0;will-change:transform,opacity}
 .mono{font-family:"Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
 
 /* ---- couverture ---- */
-#hero{position:absolute;left:0;top:0;width:640px;height:640px;background:url(assets/ia.jpg) 50% 50%/cover no-repeat;transform-origin:50% 42%}
-#heroShade{position:absolute;left:0;top:0;width:640px;height:640px;
-  background:linear-gradient(180deg,rgba(6,18,42,.85) 0%,rgba(6,18,42,0) 15%,rgba(6,18,42,0) 55%,rgba(6,18,42,.8) 82%,#06122A 100%)}
+#vid{position:absolute;left:0;top:0;width:640px;height:470px;object-fit:cover;object-position:50% 50%}
+#heroShade{position:absolute;left:0;top:0;width:640px;height:470px;background:linear-gradient(180deg,rgba(18,18,18,.85) 0%,rgba(18,18,18,0) 17%,rgba(18,18,18,0) 60%,rgba(18,18,18,.8) 88%,#121212 100%)}
 #sweep{position:absolute;left:0;top:0;width:640px;height:640px;mix-blend-mode:screen;
   background:linear-gradient(100deg,transparent 40%,rgba(255,226,150,.0) 44%,rgba(255,226,150,.28) 50%,rgba(69,211,245,.0) 56%,transparent 60%);background-size:300% 100%}
 #glow{position:absolute;left:220px;top:230px;width:200px;height:150px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,215,120,.55),transparent);mix-blend-mode:screen}
@@ -23,8 +22,8 @@ body{font-family:Inter,sans-serif}
 .year{position:absolute;top:62px;right:28px;text-align:right}
 .year b{display:block;font-family:Montserrat;font-weight:900;font-size:20px;letter-spacing:.18em}
 #net{position:absolute;left:0;top:430px;width:640px;height:220px}
-#cLogo{position:absolute;left:50%;top:440px;width:210px;transform:translateX(-50%);filter:drop-shadow(0 0 16px rgba(6,18,42,.95))}
-#cText{position:absolute;left:20px;right:20px;top:640px;text-align:center}
+#cLogo{position:absolute;left:50%;top:478px;width:168px;transform:translateX(-50%)}
+#cText{position:absolute;left:20px;right:20px;top:650px;text-align:center}
 #cText h1{font-family:Montserrat;font-weight:900;font-size:46px;line-height:1.02}
 #cText h1 .g{color:var(--gold-hi)}
 .kw{margin-top:14px;font-family:Montserrat;font-weight:600;font-size:18px;color:#DCE5F4}
@@ -38,8 +37,8 @@ body{font-family:Inter,sans-serif}
 .chip b{color:var(--gold-hi)}
 
 /* ---- tarifs ---- */
-#prices{background:linear-gradient(180deg,#071733 0%,#06122A 100%)}
-.gridbg{position:absolute;inset:0;background-image:linear-gradient(rgba(69,211,245,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(69,211,245,.06) 1px,transparent 1px);background-size:32px 32px}
+#prices{background:#121212}
+.gridbg{position:absolute;inset:140px 0 0 0;background-image:linear-gradient(rgba(69,211,245,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(69,211,245,.06) 1px,transparent 1px);background-size:32px 32px}
 .ph{position:absolute;left:28px;right:28px;top:26px;display:flex;gap:18px;align-items:center}
 .ph img{width:96px}
 .ph .mono{font-size:12px;color:var(--gold-hi)}
@@ -77,20 +76,11 @@ body{font-family:Inter,sans-serif}
 <div id="stage">
   <!-- SCÈNE 1 : COUVERTURE -->
   <section class="scene" id="cover">
-    <div style="position:absolute;left:0;top:0;width:640px;height:640px;overflow:hidden"><div id="hero"></div></div><div id="glow"></div><div id="sweep"></div><div id="heroShade"></div>
+    <div style="position:absolute;left:0;top:0;width:640px;height:470px;overflow:hidden"><img id="vid" src="assets/vf/f001.jpg" alt=""></div><div id="heroShade"></div>
     <div class="hud mono"><span><span class="dot"></span>YEBA FORMATIONS · Système IA</span><span>974</span></div>
     <div class="hline"></div>
     <div class="year"><b>TARIFS 2026</b></div>
-    <svg id="net" viewBox="0 0 640 220" aria-hidden="true">
-      <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#45D3F5" stop-opacity="0"/><stop offset=".25" stop-color="#45D3F5" stop-opacity=".6"/><stop offset=".75" stop-color="#C9A84C" stop-opacity=".6"/><stop offset="1" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs>
-      <g stroke="url(#lg)" stroke-width="1.2" fill="none">
-        <path d="M0 120 L70 85 L140 118 L200 70 L240 100"/><path d="M400 100 L440 70 L500 118 L570 85 L640 120"/>
-        <path d="M70 85 L95 170 L140 118 M200 70 L185 165 M440 70 L455 165 M570 85 L545 170 L500 118"/>
-      </g>
-      <g class="node" fill="#E2C46E"><circle cx="70" cy="85" r="4"/><circle cx="200" cy="70" r="4"/><circle cx="440" cy="70" r="4"/><circle cx="570" cy="85" r="4"/></g>
-      <g class="node2" fill="#45D3F5"><circle cx="140" cy="118" r="3"/><circle cx="500" cy="118" r="3"/><circle cx="95" cy="170" r="2.5"/><circle cx="545" cy="170" r="2.5"/><circle cx="185" cy="165" r="2.5"/><circle cx="455" cy="165" r="2.5"/></g>
-    </svg>
-    <img id="cLogo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+    <img id="cLogo" src="assets/logo-white.png" alt="YEBA FORMATIONS">
     <div id="cText">
       <h1>Passez à l’IA.<br><span class="g">Gardez la main.</span></h1>
       <div class="kw">Former<i>·</i>Automatiser<i>·</i>RGPD &amp; IA Act</div>
@@ -107,7 +97,7 @@ body{font-family:Inter,sans-serif}
   <!-- SCÈNE 2 : TARIFS -->
   <section class="scene" id="prices">
     <div class="gridbg"></div>
-    <div class="ph"><img src="assets/logo-dark.png" alt="YEBA FORMATIONS"><div><div class="mono">Grille tarifaire · 2026</div><h2>4 univers.<br>1 objectif : du temps gagné.</h2></div></div>
+    <div class="ph"><img src="assets/logo-white.png" alt="YEBA FORMATIONS"><div><div class="mono">Grille tarifaire · 2026</div><h2>4 univers.<br>1 objectif : du temps gagné.</h2></div></div>
     <div class="sub"><b>Inter</b> = par stagiaire et par jour · <b>Intra</b> = par groupe et par jour</div>
     <div class="lvl l1" style="top:182px"><div class="info"><div class="tag mono">01 · Métiers</div><h3>Vente &amp; management</h3><p>Vente &amp; négociation · Manager au quotidien</p></div>
       <div class="pr"><small>inter dès</small><b data-v="690">690 €</b><small>/ stagiaire / jour</small><em>dès 2 100 € <span>intra / jour</span></em></div></div>
@@ -140,12 +130,6 @@ function setT(t) {
   $('#cover').style.opacity = 1 - coverOut;
   $('#prices').style.opacity = coverOut;
   $('#prices').style.transform = `translateY(${(1 - coverOut) * 140}px)`;
-  const z = t < 6 ? t / 6 : 0;
-  if (!LITE) $('#hero').style.transform = `scale(${1 + .06 * Math.sin(z * Math.PI / 2)})`;
-  $('#sweep').style.backgroundPosition = `${100 - (LITE ? span(t, .8, 2.0) : span(t, .6, 3.2)) * 100}% 0`;
-  $('#glow').style.opacity = .35 + .45 * Math.pow(Math.sin(t * Math.PI / 1.4), 2);
-  if (!LITE) $$('.node circle').forEach((c, i) => c.setAttribute('r', 4 + 2.2 * Math.pow(Math.sin(t * 2.2 + i), 2)));
-  if (!LITE) $$('.node2 circle').forEach((c, i) => c.style.opacity = .35 + .65 * Math.pow(Math.sin(t * 1.8 + i * .9), 2));
   $('#shine').style.left = (-80 + span(t, 2.6, 3.6) * 520) + 'px';
   // --- tarifs : entrée en cascade (6–9 s)
   $$('.lvl').forEach((el, i) => {
@@ -163,7 +147,16 @@ function setT(t) {
   $('#cta').style.opacity = k3; $('#cta').style.transform = `translateY(${(1 - k3) * 20}px) scale(${pulse})`;
 }
 window.setT = setT;
-if (!/capture/.test(location.hash)) { const t0 = performance.now(); (function f(){ setT((performance.now() - t0) / 1000); requestAnimationFrame(f); })(); }
-else setT(0);
+// Vidéo « IA » (145 images à 24 i/s) : jouée une fois sur la couverture (0 → 5,4 s), dernière image tenue ensuite.
+const vid = document.getElementById('vid'), NF = 145;
+if (LITE) vid.style.filter = 'blur(1.1px) saturate(1.1)';
+function frameAt(t) { t = ((t % D) + D) % D; return Math.min(NF, 1 + Math.floor(t / 5.4 * (NF - 1))); }
+window.setTAsync = async t => {
+  setT(t);
+  const src = 'assets/vf/f' + String(frameAt(t)).padStart(3, '0') + '.jpg';
+  if (!vid.src.endsWith(src)) { vid.src = src; await vid.decode(); }
+};
+if (!/capture/.test(location.hash)) { const t0 = performance.now(); (function g(){ setTAsync((performance.now() - t0) / 1000); requestAnimationFrame(g); })(); }
+else setTAsync(0);
 </script>
 </body></html>

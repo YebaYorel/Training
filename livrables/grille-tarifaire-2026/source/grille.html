@@ -12,11 +12,11 @@ body{font-family:Inter,"Montserrat",sans-serif;color:var(--ink);-webkit-print-co
 .mono{font-family:"Mono",monospace;letter-spacing:.08em;text-transform:uppercase}
 
 /* ============ COUVERTURE ============ */
-.cover{background:var(--night);color:#fff}
-.cover .hero{position:absolute;inset:0 0 auto 0;height:178mm;background:url(assets/ia.jpg) 50% 50%/cover no-repeat}
+.cover{background:#121212;color:#fff}
+.cover .hero{position:absolute;inset:0 0 auto 0;height:148mm;background:url(assets/ia.jpg) 50% 50%/cover no-repeat}
 .cover .hero::after{content:"";position:absolute;inset:0;
   background:
-   linear-gradient(180deg,rgba(6,18,42,.85) 0%,rgba(6,18,42,0) 16%,rgba(6,18,42,0) 58%,rgba(6,18,42,.75) 82%,var(--night) 100%),
+   linear-gradient(180deg,rgba(18,18,18,.85) 0%,rgba(18,18,18,0) 18%,rgba(18,18,18,0) 62%,rgba(18,18,18,.8) 88%,#121212 100%),
    radial-gradient(120% 70% at 50% 45%,rgba(6,18,42,0) 55%,rgba(6,18,42,.6) 100%)}
 .hud{position:absolute;top:9mm;left:12mm;right:12mm;display:flex;justify-content:space-between;align-items:center;font-size:8.5pt;color:var(--gold-hi);z-index:3}
 .hud .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);margin-right:6px;vertical-align:1px}
@@ -25,7 +25,7 @@ body{font-family:Inter,"Montserrat",sans-serif;color:var(--ink);-webkit-print-co
 .year b{display:block;font-family:Montserrat;font-weight:900;font-size:13pt;letter-spacing:.18em;color:#fff}
 .year span{font-size:8pt;color:#C7D3E8}
 .net{position:absolute;left:0;right:0;top:120mm;height:80mm;z-index:2;opacity:.9}
-.cover .logo{position:absolute;top:146mm;left:50%;transform:translateX(-50%);width:66mm;z-index:4;filter:drop-shadow(0 0 18px rgba(6,18,42,.9))}
+.cover .logo{position:absolute;top:153mm;left:50%;transform:translateX(-50%);width:52mm;z-index:4}
 .cover .content{position:absolute;left:14mm;right:14mm;top:208mm;text-align:center;z-index:4}
 .cover h1{font-family:Montserrat;font-weight:900;font-size:34pt;line-height:1.02;letter-spacing:-.01em}
 .cover h1 .g{color:var(--gold-hi)}
@@ -42,7 +42,7 @@ body{font-family:Inter,"Montserrat",sans-serif;color:var(--ink);-webkit-print-co
 
 /* ============ TARIFS ============ */
 .prices{background:var(--paper)}
-.ph{position:relative;height:40mm;background:linear-gradient(115deg,var(--night) 0%,var(--navy) 70%,#24497F 100%);color:#fff;padding:7mm 12mm 0 12mm;overflow:hidden}
+.ph{position:relative;height:40mm;background:var(--navy);color:#fff;padding:7mm 12mm 0 12mm;overflow:hidden}
 .ph .circuit{position:absolute;right:0;top:0;height:100%;opacity:.55}
 .ph .logo{position:absolute;left:12mm;top:7mm;width:25mm}
 .ph .ttl{position:absolute;left:44mm;top:8.5mm}
@@ -149,18 +149,7 @@ th .u{font-weight:600;text-transform:none;letter-spacing:0;font-size:6.4pt}
   <div class="hud-line"></div>
   <div class="year"><b>TARIFS 2026</b><span class="mono">Grille officielle</span></div>
 
-  <svg class="net" viewBox="0 0 794 302" preserveAspectRatio="none" aria-hidden="true">
-    <defs><linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#45D3F5" stop-opacity=".0"/><stop offset=".25" stop-color="#45D3F5" stop-opacity=".55"/><stop offset=".75" stop-color="#C9A84C" stop-opacity=".55"/><stop offset="1" stop-color="#C9A84C" stop-opacity="0"/></linearGradient></defs>
-    <g stroke="url(#lg)" stroke-width="1" fill="none">
-      <path d="M0 210 L90 170 L170 205 L255 150 L330 190"/>
-      <path d="M464 190 L540 150 L625 205 L705 168 L794 212"/>
-      <path d="M90 170 L120 255 L170 205 M255 150 L230 250 M540 150 L565 250 M705 168 L675 255 L625 205"/>
-    </g>
-    <g fill="#E2C46E"><circle cx="90" cy="170" r="3"/><circle cx="255" cy="150" r="3"/><circle cx="540" cy="150" r="3"/><circle cx="705" cy="168" r="3"/></g>
-    <g fill="#45D3F5"><circle cx="170" cy="205" r="2.4"/><circle cx="625" cy="205" r="2.4"/><circle cx="120" cy="255" r="2"/><circle cx="675" cy="255" r="2"/><circle cx="230" cy="250" r="2"/><circle cx="565" cy="250" r="2"/></g>
-  </svg>
-
-  <img class="logo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+  <img class="logo" src="assets/logo-white.png" alt="YEBA FORMATIONS">
 
   <div class="content">
     <h1>Passez à l’IA.<br><span class="g">Gardez la main.</span></h1>
@@ -191,7 +180,7 @@ th .u{font-weight:600;text-transform:none;letter-spacing:0;font-size:6.4pt}
       </g>
       <g fill="#E2C46E"><circle cx="120" cy="42" r="3"/><circle cx="150" cy="76" r="3"/><circle cx="110" cy="114" r="3"/><circle cx="170" cy="140" r="3"/></g>
     </svg>
-    <img class="logo" src="assets/logo-dark.png" alt="YEBA FORMATIONS">
+    <img class="logo" src="assets/logo-white.png" alt="YEBA FORMATIONS">
     <div class="ttl">
       <div class="mono">Grille tarifaire · 2026</div>
       <h2>4 univers. 1 objectif :<br>du temps gagné.</h2>
@@ -255,7 +244,7 @@ th .u{font-weight:600;text-transform:none;letter-spacing:0;font-size:6.4pt}
 
   <footer class="foot">
     <div><b>YEBA FORMATIONS</b> — Aurélien LUMEKA, directeur · 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion · Tél. 0693 32 24 45 · yebaformations@gmail.com · SIRET 814 622 262 00032 · Déclaration d’activité n° 04973676397 auprès du Préfet de La Réunion. Cet enregistrement ne vaut pas agrément de l’État.</div>
-    <div>Certification Qualiopi n° <b>25FOR02027.1</b> délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com. Frais refacturés à l’identique : salle 200 €/j, restauration 60 €/j/pers. Tarifs au 07/10/2026.</div>
+    <div>Certification Qualiopi n° <b>25FOR02027.1</b> délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com. Tarifs au 08/10/2026 (politique tarifaire YEBA-DOC-12 v3.1).<br><i>Ce document a été conçu par le formateur avec l’assistance d’un système d’IA générative (règlement (UE) 2024/1689, art. 50). Son contenu a été vérifié et validé par un humain, qui en assume la responsabilité.</i></div>
   </footer>
 </section>
 </body></html>

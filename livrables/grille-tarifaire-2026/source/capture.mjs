@@ -12,7 +12,7 @@ await p.waitForTimeout(400);
 const stage = await p.$('#stage');
 const times = only ? only.split(',').map(Number) : [...Array(fps * D).keys()].map(i => i / fps);
 for (let i = 0; i < times.length; i++) {
-  await p.evaluate(t => setT(t), times[i]);
+  await p.evaluate(t => window.setTAsync ? setTAsync(t) : setT(t), times[i]);
   await stage.screenshot({ path: `${dir}/frames/f${String(i).padStart(4, '0')}.png` });
 }
 await b.close();
