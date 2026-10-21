@@ -15,3 +15,6 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Dossiers stagiaires remplis (données personnelles) — ne jamais committer
+dossier-conformite-2026/dossiers-remplis/
