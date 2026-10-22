@@ -59,15 +59,15 @@ def note():
         ["Économique", "Risque de sortie de franchise de TVA", "Action datée dans le plan PIL-01 ; avertissement dans le budget"],
         ["Faisabilité", "Audit Qualiopi pendant la 1re promotion", "Préparation dès mars 2027 avec la matrice QUA-02"],
         ["Souveraineté", "Airtable et Gmail hébergés hors UE", "Migration déjà décidée (Baserow chez OVHcloud, Brevo) ; numéro de sécurité sociale et RIB hors Airtable"],
-        ["Identité", "Deux logos possibles (PNG transmis, SVG de la charte)", "PNG utilisé ; à confirmer"],
+        ["Identité", "Deux logos coexistaient (PNG transmis, SVG de la charte)", "PNG retenu et décliné : fond clair (FORMATIONS en bleu), fond bleu, carré réseaux sociaux, icône"],
         ["Sécurité", "Dossiers remplis contenant des données personnelles", "Jamais dans Git ; espace chiffré hébergé dans l'UE"],
     ], [3, 6.5, 7.5])
     d.h1("7. Ce qu'il me manque encore")
     d.numeros([
         "Le REAC et le référentiel d'évaluation RPMS millésime 08 (2023).",
-        "Le prix de vente par titre et par CCP, et l'effectif cible par promotion.",
-        "Le logo officiel : le PNG transmis ou le fichier « logo-yeba-sans-oeil.svg » de votre charte ?",
-        "Les accès au Secrétariat Center (lignes de bus, stationnement).",
+        "Votre décision sur les prix : trois scénarios dans l'étude TAR-01 (recommandation : 4 900 € MEM, 4 950 € RPMS).",
+        "Le seuil de maintien d'une session (nombre minimal de stagiaires) une fois le prix choisi.",
+        "Votre vérification sur place des lignes de bus, des temps de marche et des prix des restaurants (fiche LIEU-01).",
         "Les livrets réalisés pour un autre organisme, quand vous voudrez (sans mêler les deux marques).",
     ])
     d.h1("8. Sources")

@@ -321,6 +321,26 @@ def classeur():
         ws[f"D{tot}"], ws[f"E{tot}"], ws[f"F{tot}"] = "TOTAL", f"=SUM(E2:E{tot - 1})", f"=SUM(F2:F{tot - 1})"
         for ref in (f"D{tot}", f"E{tot}", f"F{tot}"):
             ws[ref].font = GRAS
+    ws = wb.create_sheet("Scénarios tarifaires")
+    _feuille(ws, ["Titre", "Scénario", "Prix par stagiaire", "Heures en centre", "€ / heure", "Stagiaires", "Chiffre d'affaires", "Location de salle", "Après salle"], [], [12, 18, 18, 16, 12, 12, 18, 18, 16])
+    r = 2
+    for code, prix in (("MEM", (4200, 4900, 5600)), ("RPMS", (4300, 4950, 5900))):
+        t = PROMOTIONS[code]["titre"]
+        hc = heures_centre(t)
+        for nom, p in zip(("A — Accessible", "B — Recommandé", "C — Premium"), prix):
+            for col, v in zip("ABCDF", (code, nom, p, hc, 10)):
+                ws[f"{col}{r}"] = v
+            ws[f"E{r}"] = f"=C{r}/D{r}"
+            ws[f"G{r}"] = f"=C{r}*F{r}"
+            ws[f"H{r}"] = f"=D{r}/7*{H['location_jour']}"
+            ws[f"I{r}"] = f"=G{r}-H{r}"
+            for col in "CGHI":
+                ws[f"{col}{r}"].number_format = EUROS
+            ws[f"E{r}"].number_format = '0.00 "€"'
+            for col in "ABCDEFGHI":
+                ws[f"{col}{r}"].font, ws[f"{col}{r}"].border = NORMAL, BORD
+            ws[f"F{r}"].fill = SAISIE_F
+            r += 1
     ws = wb.create_sheet("Indicateurs")
     _feuille(ws, ["Indicateur", "MEM", "RPMS", "Formule ou source"], [
         ["Inscrits", None, None, "Saisie"], ["Entrés en formation", None, None, "Saisie"], ["Abandons", None, None, "Saisie"],

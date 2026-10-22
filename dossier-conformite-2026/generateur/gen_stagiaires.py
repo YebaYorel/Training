@@ -146,7 +146,7 @@ def conditions_particulieres():
     d.p("Les CGV YEBA-DOC-03 s'appliquent. Les présentes conditions particulières les complètent pour les parcours certifiants "
         "(titres professionnels MEM et RPMS) ; en cas de contradiction, elles prévalent pour ces parcours.")
     for titre, texte in [
-        ("1. Effectif", "Par dérogation à l'article 6.3 des CGV : [À COMPLÉTER : minimum et maximum, par exemple 8 à 12 stagiaires]. "
+        ("1. Effectif", "Par dérogation à l'article 6.3 des CGV : 10 stagiaires par promotion ; seuil de maintien de la session : [À COMPLÉTER : nombre minimal, voir le classeur PIL-03]. "
                         "En deçà du minimum 15 jours ouvrés avant le démarrage, la session est reportée ; les stagiaires et financeurs en sont informés immédiatement."),
         ("2. Horaires et lieu", f"{HORAIRE_TXT}. Lieu : {O['lieu']} ; {O['lieu_equipement']}."),
         ("3. Période en entreprise", "La période en entreprise est obligatoire pour se présenter à l'examen (280 heures pour le MEM, 210 heures pour le RPMS). "

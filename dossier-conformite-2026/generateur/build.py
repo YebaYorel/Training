@@ -7,11 +7,13 @@ import subprocess
 import sys
 
 import gen_deets
+import gen_html
 import gen_note
 import gen_organisme
 import gen_pilotage
 import gen_rgpd
 import gen_stagiaires
+import gen_tarifs
 import gen_titres
 from lib import ERREURS_MISE_EN_PAGE, SORTIE
 
@@ -19,7 +21,7 @@ if __name__ == "__main__":
     if SORTIE.exists():
         shutil.rmtree(SORTIE)
     fichiers = [gen_note.note()]
-    for module in (gen_deets, gen_titres, gen_stagiaires, gen_rgpd, gen_pilotage, gen_organisme):
+    for module in (gen_deets, gen_titres, gen_stagiaires, gen_rgpd, gen_pilotage, gen_tarifs, gen_organisme, gen_html):
         fichiers += module.tout()
     if ERREURS_MISE_EN_PAGE:
         print("Mots coupés ou largeurs incorrectes :\n" + "\n".join(ERREURS_MISE_EN_PAGE))

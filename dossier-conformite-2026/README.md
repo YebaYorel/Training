@@ -18,13 +18,15 @@ Tout « l'à-côté » de la formation (hors supports de cours, ressources et gr
 |---|---|
 | `00_NOTE_DE_SYNTHESE` | Décisions, changements, autocritique, questions, sources |
 | `01_Reponse_DEETS` | Courriels A/B, dossier des 18 pièces (entreprise individuelle) |
-| `02_MEM`, `02_RPMS` | Programme, décorticage du référentiel, déroulé jour par jour, calendrier réel, livret d'accueil, guide de la période en entreprise |
+| `02_MEM`, `02_RPMS` | Programme, décorticage du référentiel, déroulé jour par jour, calendrier réel, guide de la période en entreprise, livret d'accueil en A5 (écran) et A4 (impression en livret plié) |
 | `03_Parcours_stagiaire` | 17 documents propres aux parcours certifiants, en complément des documents officiels YEBA |
 | `04_RGPD_IA_Act` | Complément au registre YEBA-DOC-16 et règles IA Act des parcours |
-| `05_Pilotage_annuel` | Plan d'actions daté, pièces par financeur, budget et trésorerie (Excel) |
-| `06_Organisme` | Présentation du centre, matrice Qualiopi, organisation de l'examen, socle documentaire et écarts à corriger (SOC-04) |
+| `05_Pilotage_annuel` | Plan d'actions daté, pièces par financeur, étude tarifaire (TAR-01), budget, scénarios et trésorerie (Excel) |
+| `06_Organisme` | Présentation du centre, fiche « Votre lieu de formation » (LIEU-01), matrice Qualiopi, organisation de l'examen, socle documentaire et écarts (SOC-04) |
 
-Chaque document existe en `.docx` (modifiable) et en `.pdf`.
+Chaque document existe en `.docx` (modifiable) et en `.pdf`. Les livrets et la fiche lieu sont mis en page en HTML puis imprimés par Chromium (comme le livret Marilyn).
+
+Logo : `assets/logo/` — `logo_yeba_fond_clair*.png` (FORMATIONS en bleu, pour fond blanc), `logo_yeba_fond_bleu*.png`, carrés 1080 px pour les réseaux sociaux, icônes 32/180/512 px.
 
 ## Articulation avec Airtable
 
@@ -42,6 +44,7 @@ python3 build.py   # python-docx, openpyxl, Pillow, python-dateutil et LibreOffi
 - Modules, séquences et heures : `generateur/titres.py`.
 - Dates de démarrage, jours fériés, fermetures : `generateur/calendrier.py`.
 - Horaires, lieu, coordonnées : `generateur/lib.py` (`ORGANISME`, `HORAIRES`).
+- Bus, restauration, accessibilité du lieu : `generateur/lieu.py`.
 
 La génération s'arrête si un mot ne tient pas dans une colonne de tableau (aucun mot coupé).
 

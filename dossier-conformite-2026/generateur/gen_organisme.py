@@ -182,7 +182,7 @@ ECARTS = [
     ("CPF", "CONFIG SYSTÈME : « NON éligible — aucune certification RNCP/RS »",
      "Les titres MEM et RPMS sont des certifications RNCP : à mettre à jour dès leur publication sur Mon Compte Formation"),
     ("Logo", "La charte désigne le fichier « logo-yeba-sans-oeil.svg » (nœud de connexion) ; le dossier utilise le logo PNG transmis",
-     "Confirmer le logo officiel ; un seul fichier pour tous les supports"),
+     "Tranché le 22/10/2026 : logo PNG décliné (assets/logo) ; mettre à jour la charte YEBA-IDENT-2026 et CONFIG SYSTÈME"),
     ("Assurance — IA", "Exclusion « intelligence artificielle » dans les conditions particulières Hiscox",
      "Obtenir du courtier une confirmation écrite que le module IA des parcours et le conseil sont couverts"),
 ]

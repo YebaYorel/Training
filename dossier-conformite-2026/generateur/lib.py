@@ -19,7 +19,7 @@ from docx.shared import Cm, Pt, RGBColor
 from PIL import ImageFont
 
 RACINE = Path(__file__).resolve().parents[1]
-LOGO = RACINE / "assets" / "logo_yeba_formations.png"
+LOGO = RACINE / "assets" / "logo" / "logo_yeba_fond_clair_1000.png"
 SORTIE = RACINE / "livrables"
 
 BLEU = RGBColor(0x1B, 0x3A, 0x6B)
@@ -46,8 +46,8 @@ ORGANISME = {
     "dirigeant": "Aurélien LUMEKA",
     "siege": "9 rue Françoise Châtelain, bâtiment A, entrée 1, porte 0042, 97490 Sainte-Clotilde (Saint-Denis)",
     "siege_court": "9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion",
-    "lieu": "Secrétariat Center — 7 rue Henri Cornu — 97490 Saint-Denis",
-    "lieu_equipement": "entrée accessible aux personnes à mobilité réduite, sanitaires, salle de pause, vidéoprojecteur et tableau",
+    "lieu": "Secrétariat Center — Immeuble Rodrigues 2 — 7 rue Henri Cornu — Parc Technor — 97490 Saint-Denis",
+    "lieu_equipement": "entrée, parking, sièges et toilettes accessibles en fauteuil roulant, salle de pause, vidéoprojecteur et tableau",
     "tel": "0693 32 24 45",
     "mail": "yebaformations@gmail.com",
     "ref_handicap": "Aurélien LUMEKA, référent handicap certifié",

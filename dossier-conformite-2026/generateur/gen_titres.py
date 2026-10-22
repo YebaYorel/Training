@@ -143,7 +143,7 @@ def programme(t):
         ["Pauses", f"{H['pauses']} ; déjeuner {H['dejeuner']}"],
         ["Lieu", O["lieu"]],
         ["Locaux", f"{O['lieu_equipement'].capitalize()}"],
-        ["Effectif", "[À COMPLÉTER : minimum et maximum, par exemple 8 à 12 stagiaires]"],
+        ["Effectif", "10 stagiaires par promotion"],
         ["Modalité", "Présentiel"],
     ], [4.5, 12.5])
     d.h1("5. Contenu")
@@ -464,7 +464,7 @@ def guide_pae(t):
 def tout():
     out = []
     for t in (MEM, RPMS):
-        out += [programme(t), decorticage(t), deroule(t), calendrier_doc(t), livret(t), guide_pae(t)]
+        out += [programme(t), decorticage(t), deroule(t), calendrier_doc(t), guide_pae(t)]
     return out
 
 
