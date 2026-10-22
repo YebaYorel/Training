@@ -42,7 +42,7 @@ def registre():
 def mentions_et_violation():
     d = Doc("Information des personnes et violations de données", "Articles 13, 14, 33 et 34 du RGPD", code="RGPD-02")
     d.h2("1. Mention d'information complète — stagiaires et candidats")
-    d.p(f"**Qui ?** {O['nom']}, {O['adresse']}, responsable de traitement. Contact : {O['contact_rgpd']}.")
+    d.p(f"**Qui ?** {O['nom']}, {O['siege']}, responsable de traitement. Contact : {O['contact_rgpd']}.")
     d.p("**Pourquoi ?** Étudier votre candidature, organiser votre formation et votre examen, suivre votre présence et vos progrès, "
         "répondre aux obligations envers les financeurs, le ministère du Travail et l'auditeur Qualiopi, mesurer l'insertion à 6 mois.")
     d.p("**Sur quelle base ?** Mesures précontractuelles et contrat ; obligations légales ; votre consentement pour l'image et les données de santé.")

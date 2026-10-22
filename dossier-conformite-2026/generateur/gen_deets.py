@@ -7,19 +7,19 @@ DOSSIER = "01_Reponse_DEETS"
 
 def courriels():
     d = Doc("Réponse à la DEETS — deux versions de courriel", "Service régional de contrôle — DEETS de La Réunion", code="DEETS-00")
-    d.encadre("⚖️ Recommandation", [
+    d.encadre("Recommandation", [
         "Votre objectif est la formation continue. Les titres professionnels MEM et RPMS se préparent en formation continue et en contrat de professionnalisation "
         "sans être CFA : l'extension à l'apprentissage n'est pas nécessaire.",
         "→ Envoyez la **version A** avant l'expiration du délai de 12 jours. Elle évite une instruction incomplète (et donc un refus inscrit au dossier) et laisse la porte ouverte.",
         "→ Gardez la **version B** et le dossier des 18 pièces pour le jour où vous déciderez de vous lancer dans l'apprentissage.",
-        "Délai : [À COMPLÉTER : date de réception du courriel + 12 jours = date limite].",
+        "Délai : courriel reçu le mardi 20 octobre 2026 ; 12 jours mènent au dimanche 1er novembre 2026 (Toussaint). **Envoyez au plus tard le vendredi 30 octobre 2026**, idéalement dès cette semaine, et gardez une copie de l'envoi.",
     ])
     d.h2("Version A (recommandée) — suspension de la demande d'extension")
-    d.p("**Objet :** Votre courriel du [date] — demande d'extension de la déclaration d'activité à l'apprentissage — NDA " + O["nda"])
+    d.p("**Objet :** Votre courriel du 20 octobre 2026 — demande d'extension de la déclaration d'activité à l'apprentissage — NDA " + O["nda"])
     for par in [
         "Madame,",
         "Je vous remercie pour notre échange téléphonique et pour la liste des pièces nécessaires à l'instruction d'une extension de notre déclaration d'activité à l'apprentissage (article L.6351-5 du code du travail).",
-        f"Après analyse, {O['nom']} (SIRET {O['siret']}, NDA {O['nda']}) a décidé de développer en priorité son activité de formation professionnelle continue, notamment des parcours certifiants préparant aux titres professionnels du ministère du Travail (Manager d'établissement marchand — RNCP41853, Responsable de petite ou moyenne structure — RNCP38575), à destination des demandeurs d'emploi et des salariés, en lien avec France Travail et les Missions Locales.",
+        f"Après analyse, {O['nom']} (entreprise individuelle, SIRET {O['siret']}, NDA {O['nda']}) a décidé de développer en priorité son activité de formation professionnelle continue, notamment des parcours certifiants préparant aux titres professionnels du ministère du Travail (Manager d'établissement marchand — RNCP41853, Responsable de petite ou moyenne structure — RNCP38575), à destination des demandeurs d'emploi et des salariés, en lien avec France Travail et les Missions Locales.",
         "Je vous informe donc que je ne donne pas suite, à ce stade, à la demande d'extension à l'apprentissage. Je vous solliciterai de nouveau lorsque l'ensemble des conditions (moyens dédiés, locaux, accompagnement des apprentis, extension de la certification Qualiopi) seront réunies.",
         "Par ailleurs, pourriez-vous me confirmer le service à contacter pour l'agrément permettant d'organiser des sessions de validation des titres professionnels (article R.338-8 du code de l'éducation et arrêté du 21 juillet 2016), ainsi que les délais d'instruction pratiqués à La Réunion ?",
         "Je reste à votre disposition et vous prie d'agréer, Madame, mes salutations distinguées.",
@@ -29,7 +29,7 @@ def courriels():
     d.h2("Version B — transmission du dossier d'extension (si vous choisissez l'apprentissage)")
     for par in [
         "Madame,",
-        "Suite à notre entretien téléphonique et à votre courriel du [date], je vous prie de trouver ci-joint les pièces nécessaires à l'instruction de la modification de notre déclaration d'activité afin d'étendre notre activité à l'apprentissage (article L.6351-5 du code du travail).",
+        "Suite à notre entretien téléphonique et à votre courriel du 20 octobre 2026, je vous prie de trouver ci-joint les pièces nécessaires à l'instruction de la modification de notre déclaration d'activité afin d'étendre notre activité à l'apprentissage (article L.6351-5 du code du travail).",
         "Le dossier comprend 18 pièces numérotées selon l'ordre de votre courriel (bordereau joint). Les pièces signalées « à transmettre après la première promotion » le seront à l'issue de celle-ci.",
         "Je vous informe également que l'extension de notre certification Qualiopi à la catégorie « actions de formation par apprentissage » est [À COMPLÉTER : engagée auprès de l'organisme certificateur / prévue le …].",
         "Je reste à votre disposition et vous prie d'agréer, Madame, mes salutations distinguées.",
@@ -43,9 +43,9 @@ def courriels():
 
 PIECES = [
     ("Statuts faisant mention de l'apprentissage", [
-        "**Si YEBA FORMATIONS est une société** : décision de l'associé unique / AGE modifiant l'objet social, par exemple : « … la réalisation d'actions de formation professionnelle continue, de bilans de compétences, d'actions de VAE et d'actions de formation par apprentissage au sens de l'article L.6313-1 du code du travail… », puis dépôt au greffe et statuts mis à jour certifiés conformes.",
-        "**Si YEBA FORMATIONS est une entreprise individuelle** : pas de statuts — joindre l'extrait INSEE / RNE et une attestation sur l'honneur décrivant l'activité. [À VÉRIFIER : forme juridique de YEBA FORMATIONS.]",
-        "Pièce : statuts à jour ou extrait + procès-verbal de décision."]),
+        "YEBA FORMATIONS est une **entreprise individuelle** : elle n'a pas de statuts. Ce point est à expliquer à la DEETS.",
+        "Pièces de remplacement : extrait d'immatriculation au registre national des entreprises (RNE) ou avis de situation INSEE de moins de 3 mois, et attestation sur l'honneur du dirigeant décrivant l'activité (formation continue, et formation par apprentissage si l'extension est demandée).",
+        "Vérifier que le code d'activité et la description de l'activité au RNE mentionnent la formation ; les mettre à jour si besoin sur le guichet unique des formalités d'entreprises."]),
     ("Bulletin n° 3 du casier judiciaire du dirigeant", [
         "À demander en ligne sur casier-judiciaire.justice.gouv.fr (gratuit, délivré sous quelques jours).",
         f"Concerne : {O['dirigeant']} et toute autre personne exerçant une fonction de direction.",
@@ -54,7 +54,8 @@ PIECES = [
         "Bail (ou convention de mise à disposition / contrat de location de salle), attestation d'assurance des locaux, plan des locaux.",
         "Photos datées : salles de formation, toilettes, salle de pause / restauration, accès PMR, affichage sécurité et consignes cycloniques.",
         "Registre public d'accessibilité de l'établissement recevant du public (ERP) et attestation d'accessibilité [À VÉRIFIER : catégorie ERP].",
-        "Pièce : dossier « Locaux » [À COMPLÉTER : adresse, surface, capacité d'accueil]."]),
+        "Lieu actuel : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis, loué à la journée (100 € par jour). Joindre le contrat ou les conditions de location et une attestation du bailleur décrivant la salle, les sanitaires et l'espace de pause [À COMPLÉTER : surface, capacité, accessibilité].",
+        "Vigilance : une location à la journée peut être jugée insuffisante pour un CFA (accueil permanent des apprentis). Elle convient à la formation continue."]),
     ("Titres et qualités des formateurs", [
         "Pour chaque intervenant : CV daté et signé, diplômes et certifications, justificatifs d'expérience professionnelle dans le métier visé (au moins [À COMPLÉTER] ans), contrat de travail ou de prestation.",
         f"{O['dirigeant']} : CV, certifications (Google AI Specialist, Google Professional AI, référent handicap, SecNumacadémie ANSSI, MOOC CNIL), expérience de formateur vente et management depuis 2021 et antérieure.",
@@ -98,7 +99,7 @@ PIECES = [
         "Formation de 7 h proposée à chaque maître d'apprentissage (rôle, pédagogie de la transmission, évaluation, droit de l'apprenti, accueil du handicap) ; guide du maître d'apprentissage ; réunions annuelles.",
         "État récapitulatif à tenir : nom, entreprise, date, durée, émargement."]),
     ("Emplois du temps prévisionnels par titre", [
-        "Joindre les plannings PLN-MEM et PLN-RPMS, adaptés au rythme de l'alternance (ex. 1 semaine en centre / 3 semaines en entreprise) [À COMPLÉTER : rythme choisi avec les entreprises]."]),
+        "Joindre les calendriers CAL-MEM et CAL-RPMS et les déroulés DP-MEM et DP-RPMS, adaptés au rythme de l'alternance (ex. 1 semaine en centre / 3 semaines en entreprise) [À COMPLÉTER : rythme choisi avec les entreprises]."]),
 ]
 
 
@@ -106,7 +107,7 @@ def dossier_18():
     d = Doc("Dossier d'extension de la déclaration d'activité à l'apprentissage", "Article L.6351-5 du code du travail — 18 pièces", code="DEETS-01")
     d.p("Bordereau et contenu des notices, dans l'ordre exact du courriel de la DEETS. Chaque notice est un document signé et daté par le dirigeant.")
     d.tableau(["N°", "Pièce", "État"], [[str(i + 1), p[0], "☐ prête   ☐ à compléter"] for i, p in enumerate(PIECES)], [1.2, 11, 4.8])
-    d.encadre("⚠️ Points de vigilance avant tout envoi", [
+    d.encadre("Points de vigilance avant tout envoi", [
         "Qualiopi : la certification doit couvrir la catégorie « actions de formation par apprentissage » — extension à demander à votre certificateur (audit).",
         "Moyens : la DEETS vérifiera l'existence réelle des moyens décrits (salarié dédié, locaux, partenariats). Ne décrivez que ce qui existe ou est contractualisé.",
         "Le financement de l'apprentissage repose sur les niveaux de prise en charge (NPEC) versés par les OPCO, par échéances : vérifiez le calendrier de versement et l'impact des ruptures sur votre trésorerie [À VÉRIFIER : règles 2026].",

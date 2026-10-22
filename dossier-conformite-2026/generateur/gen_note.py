@@ -1,114 +1,88 @@
-"""Note d'expertise : choix des RNCP, financement, trésorerie, stratégie DEETS."""
-from lib import Doc, ORGANISME
-from titres import MEM, RPMS, heures_centre
+"""Note de synthèse : décisions, raisonnement, autocritique, questions."""
+from calendrier import fmt, fmt_court, planifier, session_examen
+from lib import HORAIRES, ORGANISME, Doc
+from titres import MEM, RPMS, heures_centre, jours_centre
 
-O = ORGANISME
+O, H = ORGANISME, HORAIRES
 
 
 def note():
-    d = Doc("Note d'expertise — Formation continue certifiante niveau 5",
-            "Choix des RNCP, financement, trésorerie, réponse DEETS, conformité RGPD et IA Act — octobre 2026", code="NOTE-00")
-    d.h1("1. Synthèse en 6 décisions")
+    m_j, _ = planifier("MEM")
+    r_j, _ = planifier("RPMS")
+    m_s, _ = session_examen("MEM")
+    r_s, _ = session_examen("RPMS")
+    loc_m = sum(1 for j in m_j if j[1] == "Centre") * H["location_jour"]
+    loc_r = sum(1 for j in r_j if j[1] == "Centre") * H["location_jour"]
+    d = Doc("Note de synthèse", "Votre année de formation continue avec les titres MEM et RPMS — version 2", code="NOTE-00",
+            couverture=True, version="2026-10-v2")
+    d.h1("1. Les décisions à retenir")
     d.numeros([
-        "**Rester organisme de formation continue** : les deux titres se préparent en formation continue et en contrat de professionnalisation sans statut de CFA (fiches RNCP41853 et RNCP38575 : voies d'accès « formation continue » et « contrat de professionnalisation » ouvertes).",
-        "**Répondre à la DEETS avant le délai de 12 jours** par la version A (suspension de la demande d'extension) ; garder le dossier des 18 pièces prêt.",
-        "**Ouvrir d'abord le TP Manager d'établissement marchand (MEM)** pour les publics France Travail et Missions Locales ; **puis le TP Responsable de petite ou moyenne structure (RPMS)** pour les salariés, créateurs et repreneurs (CPF, OPCO).",
-        "**Ajouter le module IA (42 h)** dans chaque parcours : c'est votre avantage concurrentiel, et il répond à l'obligation de maîtrise de l'IA (IA Act, art. 4).",
-        "**Obtenir l'agrément DEETS pour organiser les sessions d'examen**, ou signer un partenariat avec un centre agréé en attendant (prévoir au moins 7 mois avant la première session).",
-        "**Sécuriser la trésorerie** en combinant plusieurs financeurs et des formations courtes en intra-entreprise (IA, RGPD) qui financent le démarrage des parcours longs.",
+        "**DEETS** : envoyer la version A (suspension de l'extension à l'apprentissage) **au plus tard le vendredi 30 octobre 2026**. Le courriel est daté du 20 octobre ; le 12e jour tombe le dimanche 1er novembre (Toussaint).",
+        f"**MEM — promotion 1** : du {fmt(m_j[0][0])} au {fmt(m_j[-1][0])} ; examen la semaine du {fmt_court(m_s)}.",
+        f"**RPMS — promotion 1** : du {fmt(r_j[0][0])} au {fmt(r_j[-1][0])} ; examen la semaine du {fmt_court(r_s)}.",
+        "**Examen** : passer par un centre déjà agréé pour la 1re session MEM, puis demander votre propre agrément.",
+        "**Avant tout envoi** : compléter les champs en or foncé et vérifier les mentions « À VÉRIFIER ».",
     ])
-    d.h1("2. Raisonnement étape par étape")
-    d.h2("Étape 1 — Contraintes")
-    d.tableau(["Contrainte", "Conséquence"], [
-        ["Formation continue, pas d'apprentissage", "Pas de NPEC OPCO ; financeurs : CPF, France Travail, Région, OPCO (plan, Pro-A, contrat de professionnalisation), Transitions Pro, particuliers"],
-        ["Niveau 5 avec responsabilité et IA", "Titres de management de niveau 5 ; l'IA n'apparaît dans aucun des deux référentiels → module complémentaire de l'organisme"],
-        ["Faible taux d'abandon", "Sélection à l'entrée, rémunération du stagiaire pendant la formation, alternance courte centre / entreprise, suivi social"],
-        ["Missions Locales et France Travail", "Public demandeur d'emploi, souvent jeune et peu expérimenté → titre accessible sans expérience de direction"],
-        ["Trésorerie", "Éviter la dépendance à un seul financeur payé à terme échu ; facturer par étapes"],
-        ["La Réunion", "Marchés publics de la Région, Carif-Oref Réunion, DEETS 974, réalités locales (cyclones, mobilité, insularité)"],
-    ], [5.5, 11.5])
-    d.h2("Étape 2 — Comparaison des deux titres que vous avez transmis")
-    d.tableau(["Critère", "MEM — RNCP41853", "RPMS — RNCP38575"], [
-        ["Version", "Nouvelle version : parcours à partir du 03/03/2026, jusqu'au 02/03/2031", "Parcours depuis le 08/02/2024, jusqu'au 08/02/2029"],
-        ["Public type", "Demandeurs d'emploi, jeunes avec expérience commerciale, employés de commerce", "Salariés expérimentés, créateurs et repreneurs, responsables associatifs"],
-        ["Adéquation Missions Locales", "Forte (métier accessible, secteur recruteur)", "Faible à moyenne (demande de la maturité professionnelle)"],
-        ["Épreuve", "7 h 55 : mise en situation 4 h sur poste informatique + entretiens + 2 productions", "1 h 35 : présentation d'un projet + entretiens"],
-        ["Exigence matérielle pour être centre d'examen", "Élevée (postes, maquettes, surveillant)", "Faible"],
-        ["Période en entreprise minimale", "280 h (arrêté du 4 décembre 2025, art. 6)", "210 h selon plusieurs organismes — [À VÉRIFIER dans l'arrêté]"],
-        ["Insertion nationale (6 mois, global)", "76 % (2024)", "69 % (2022)"],
-        ["Lien avec votre expertise", "Vente, management, soft skills", "Management, gouvernance, IA, RGPD : très fort"],
-        ["Volume horaire proposé", f"{heures_centre(MEM)} h centre + {MEM['pae']} h entreprise", f"{heures_centre(RPMS)} h centre + {RPMS['pae']} h entreprise"],
-    ], [4, 6.5, 6.5])
-    d.h2("Étape 3 — Décision")
-    d.p("Les deux titres sont complémentaires et non concurrents. Le MEM répond à votre objectif « Missions Locales / France Travail / faible abandon » ; "
-        "le RPMS valorise votre positionnement unique (direction de TPE-PME + IA + gouvernance des données), sur un marché de salariés et de dirigeants "
-        "plus solvable (CPF, OPCO). Ordre conseillé : MEM en premier (volume), RPMS en second (marge et image).")
-    d.p("Autres titres de niveau 5 qui pourraient compléter l'offre plus tard : je ne les recommande pas sans vérification de leur fiche RNCP active et de la demande locale "
-        "(France Travail BMO, Carif-Oref Réunion). [À VÉRIFIER ensemble avant toute décision.] Pour l'IA, envisagez d'associer au parcours une certification du "
-        "répertoire spécifique (RS) dédiée aux usages de l'IA, finançable par le CPF, à sélectionner sur francecompetences.fr.")
-    d.h1("3. Financement et trésorerie")
-    d.tableau(["Financeur", "Public", "Points clés de trésorerie"], [
-        ["CPF (Caisse des Dépôts)", "Salariés, demandeurs d'emploi", "Paiement après déclaration de service fait ; acomptes ou facturation intermédiaire [À VÉRIFIER : CGU EDOF en vigueur]. Le reste à charge forfaitaire ne s'applique pas aux demandeurs d'emploi."],
-        ["France Travail (AIF, AFC, POEI)", "Demandeurs d'emploi", "Rémunération du stagiaire maintenue (ARE ou rémunération de formation) → levier anti-abandon majeur. Modalités de paiement de l'organisme [À VÉRIFIER auprès de la direction régionale]."],
-        ["Région Réunion (marché public)", "Demandeurs d'emploi", "Le code de la commande publique prévoit une avance et des acomptes (R.2191-3 et suivants) — taux et rythme fixés par le marché [À VÉRIFIER]."],
-        ["OPCO (plan, Pro-A, contrat de professionnalisation)", "Salariés, nouveaux embauchés", "Contrat de professionnalisation : salarié rémunéré par l'employeur (faible abandon), forfait horaire de branche, sans statut de CFA."],
-        ["Particuliers", "Tous", "Acompte de 30 % maximum après le délai de rétractation de 10 jours (art. L.6353-6), solde échelonné."],
-        ["Intra-entreprise courte (IA, RGPD, management)", "TPE-PME", "Facturation rapide, marge élevée : finance le démarrage des parcours longs."],
-    ], [4.2, 3.8, 9])
-    d.p("Règle d'or : un échéancier contractuel par étape (entrée / mi-parcours / fin) pour chaque convention, et un fonds de roulement couvrant 3 mois de charges avant d'ouvrir la première session longue.")
-    d.h1("4. Réponse au courriel de la DEETS")
-    d.p("Ce courriel liste les conditions de l'article L.6351-5 du code du travail pour étendre une déclaration d'activité à l'apprentissage. "
-        "Ces 18 pièces reprennent les missions des CFA (art. L.6231-2). Elles ne sont pas exigées pour la formation continue. "
-        "Deux options :")
-    d.tableau(["Option", "Avantages", "Risques"], [
-        ["A — Suspendre la demande (recommandée)", "Cohérent avec votre stratégie ; évite un dossier incomplet ; aucune nouvelle obligation", "Aucun : vous pourrez redemander plus tard"],
-        ["B — Envoyer le dossier complet", "Ouvre l'apprentissage", "Exige l'extension Qualiopi, des moyens réels (salarié dédié aux relations entreprises, locaux), le respect des missions CFA ; contrôle renforcé"],
-    ], [5, 6, 6])
-    d.h1("5. Ce que contient le dossier")
-    d.tableau(["Dossier", "Contenu"], [
-        ["01_Reponse_DEETS", "Courriels versions A et B ; dossier des 18 pièces"],
-        ["02_MEM et 02_RPMS", "Programme (Qualiopi ind. 1-2), déroulé pédagogique + grilles critériées, décomposition des heures semaine par semaine + rétroplanning"],
-        ["03_Parcours_stagiaire", "15 documents, de l'inscription au suivi à 6 mois"],
-        ["04_RGPD_IA_Act", "Registre des traitements, information, conservation, violations, charte IA et cartographie IA Act"],
-        ["05_Pilotage_annuel", "Pièces par financeur et contrôleur, calendrier annuel, tableau de bord Excel (heures, indicateurs, absences)"],
-    ], [5, 12])
-    d.h1("6. Autocritique et corrections apportées")
-    d.tableau(["Angle", "Faille identifiée", "Correction"], [
-        ["Juridique", "Les durées de conservation des financeurs (notamment FSE+) peuvent dépasser 5 ans", "Signalé [À VÉRIFIER] dans le registre ; aligner sur chaque convention"],
-        ["Juridique", "Durée de la période en entreprise du RPMS non confirmée par un texte officiel consulté", "Marquée [À VÉRIFIER] ; ne pas diffuser le programme RPMS avant vérification"],
-        ["Juridique", "Calendrier IA Act des systèmes à haut risque possiblement reporté", "Signalé dans la charte ; la politique YEBA (aucune IA décisionnelle) reste valable quel que soit le calendrier"],
-        ["Faisabilité", "Le MEM impose un plateau informatique pour l'examen", "Partenariat avec un centre agréé en attendant l'agrément ; investissement progressif"],
-        ["Faisabilité", "Vous êtes souvent en retard sur votre programme", "Rétroplanning à cocher, semaines incomplètes servant de rattrapage, préparation 2 semaines avant chaque module"],
-        ["Économique", "Paiement à terme échu des financeurs publics", "Diversification des financeurs + intra courtes + échéanciers"],
-        ["Social", "Public Missions Locales : freins périphériques", "Plan anti-décrochage, rémunération vérifiée avant l'entrée, alternance courte"],
-        ["Sécurité", "Dossiers stagiaires sensibles (identité, NIR, handicap)", "Outils hébergés dans l'UE, chiffrement, accès restreint, dossier handicap séparé"],
-        ["Écologique", "Impression des dossiers", "Dématérialisation (sauf pièces d'examen imprimées exigées), supports numériques accessibles"],
-        ["Politique", "Dépendance aux appels d'offres régionaux", "Présence parallèle sur le CPF et l'intra-entreprise"],
-        ["Technologique", "Données de l'entreprise non récupérées automatiquement", "Accès réseau à entreprise.api.gouv.fr indisponible ici, et cette API exige une habilitation : champs [À COMPLÉTER] à remplir à partir de votre avis de situation INSEE / extrait RNE"],
-    ], [3, 7, 7])
-    d.h1("7. Questions à trancher")
-    d.numeros([
-        "Forme juridique de YEBA FORMATIONS (société avec statuts ou entreprise individuelle) ?",
-        "Date de réception du courriel de la DEETS (pour calculer la date limite de 12 jours) ?",
-        "Périmètre exact du certificat Qualiopi 25FOR02027.1 (catégories couvertes) et date de l'audit de surveillance ?",
-        "Rythme retenu par titre : option A (35 h), B (21 h) ou C (par blocs) ?",
-        "Horaires, pauses, adresse des locaux, capacité, équipement informatique ?",
-        "Tarifs envisagés par titre et par CCP ?",
-        "Le logo transmis est-il bien la version « sans l'œil » ? (c'est ce fichier qui est utilisé dans tous les documents)",
-        "Souhaitez-vous viser l'agrément de centre d'examen dès 2027, ou d'abord un partenariat ?",
-    ])
-    d.h1("8. Sources")
+    d.h1("2. Ce qui a changé depuis la version 1")
+    d.tableau(["Sujet", "Changement"], [
+        ["Statut", "Entreprise individuelle : pas de statuts ; extrait RNE ou avis INSEE et attestation sur l'honneur (pièce 1 de la DEETS)."],
+        ["Horaires et lieu", f"{H['journee']}, pauses {H['pauses']}, déjeuner 12 h – 13 h ; {O['lieu']} ; location {H['location_jour']} € par jour."],
+        ["Référentiel MEM", "Décorticage ligne par ligne sur le REAC v09 et le référentiel d'évaluation v09 : 10 compétences, critères officiels, productions exigées."],
+        ["Référentiel RPMS", "Les documents transmis datent de 2016 (ancienne version) : le décorticage suit les 9 compétences officielles de la fiche RNCP38575."],
+        ["Déroulé", f"Jour par jour avec dates réelles : MEM {jours_centre(MEM)} jours ({heures_centre(MEM)} h), RPMS {jours_centre(RPMS)} jours ({heures_centre(RPMS)} h)."],
+        ["Livrets", "Un livret d'accueil par titre, avec le déroulé de l'année, les jalons, les épreuves et les productions."],
+        ["Nouveaux outils", "Guides de période en entreprise, plan d'actions daté, budget et trésorerie, matrice Qualiopi, présentation du centre, organisation de l'examen, convocation, fiche de liaison prescripteur, fiche santé-sécurité, contenu du dossier stagiaire."],
+        ["Retirés à votre demande", "Grilles d'évaluation, questions de positionnement et notations (elles viendront avec les supports de cours)."],
+        ["Charte graphique", "Bleu marine et or du logo, aucune couleur parasite, couverture avec logo, contrôle automatique : aucun mot coupé dans les tableaux."],
+    ], [4, 13])
+    d.h1("3. Ce que nous apprend le REAC MEM v09")
     d.puces([
-        "Fiche RNCP41853 — TP Manager d'établissement marchand, francecompetences.fr (fiche PDF transmise, consultée le 21/10/2026).",
-        "Fiche RNCP38575 — TP Responsable de petite ou moyenne structure, francecompetences.fr (fiche PDF transmise, consultée le 21/10/2026).",
-        "Durée de la période en entreprise RPMS (210 h) : extraits des sites icademie.com et etudis.net — source secondaire, à confirmer.",
-        "Agrément des sessions de titres professionnels : formulaires DREETS (Corse, Normandie, Auvergne-Rhône-Alpes) et démarche « DEETS 974 — demande d'agrément pour organiser des sessions » sur demarche.numerique.gouv.fr.",
-        "Code du travail : articles L.6351-5, L.6353-1 à L.6353-7, L.6354-1, R.6352-1 à R.6352-15, L.6222-12-1, L.6222-18-2, L.8222-1.",
-        "Règlement (UE) 2016/679 (RGPD) ; règlement (UE) 2024/1689 (IA Act), articles 4, 5, 50 et annexe III.",
+        "Le MEM est un manager de proximité : les prévisions économiques relèvent désormais du niveau 6 (Responsable d'établissement marchand).",
+        "Les évaluations passées en cours de formation sont prises en compte par le jury : elles doivent être tracées dès le premier module.",
+        "Les productions d'examen (deux documents et deux diaporamas) se construisent à partir de la période en entreprise : d'où le guide GPE et le choix de deux périodes de 140 h.",
+        "L'épreuve se fait sur poste informatique (étude de cas de 4 h) : prévoir des ordinateurs portables dès le module T2 (budget).",
+        "Le marché est porteur : tension de 3,7 sur les postes de manager de proximité (REAC v09, début 2025).",
+        "Un concurrent réunionnais (ICCI Formations) diffuse déjà le REAC MEM v09 : différenciez-vous par l'IA, l'accompagnement individuel et l'accessibilité.",
     ])
-    d.rgpd(["RGPD : toutes les données de stagiaires, candidats et prospects de ce dossier relèvent du RGPD (registre RGPD-01).",
-            "IA Act : la formation professionnelle relève de l'annexe III (haut risque) pour l'admission, l'évaluation et la surveillance des examens. La politique de YEBA FORMATIONS exclut ces usages."])
-    return d.save("00_NOTE_EXPERT_Choix_RNCP_et_strategie.docx")
+    d.h1("4. Votre budget de salle")
+    d.p(f"Location au Secrétariat Center : MEM {loc_m:,} € ; RPMS {loc_r:,} € (hors informations collectives, jury blanc et examen). ".replace(",", " ")
+        + "Le classeur PIL-03 calcule le seuil de rentabilité et la trésorerie mois par mois dès que vous saisissez votre prix et vos effectifs.")
+    d.p("Point d'attention : une location à la journée suffit pour la formation continue, mais elle serait fragile pour un CFA (accueil permanent) ou un agrément de centre d'examen (le site doit être stable).")
+    d.h1("5. Autocritique et corrections")
+    d.tableau(["Angle", "Faille", "Correction"], [
+        ["Juridique", "RPMS bâti sans le REAC v08 officiel", "Signalé dans chaque document RPMS ; à confronter dès réception du REAC v08"],
+        ["Juridique", "Indicateurs Qualiopi en libellés abrégés", "Renvoi au référentiel national qualité pour la formulation exacte"],
+        ["Faisabilité", "Périodes en entreprise qui commencent en milieu de semaine", "Acceptable pour les entreprises ; ajustable en décalant la date de démarrage"],
+        ["Faisabilité", "RPMS en décembre–février, pleine saison cyclonique", "Plan de continuité et formation à distance prévus ; décaler à août si vous préférez"],
+        ["Économique", "Prix de vente inconnu", "Budget paramétrable ; aucun chiffre inventé"],
+        ["Social", "Public Missions Locales sur un parcours de 6 mois", "Alternance courte, bilan de mi-parcours, fiche de liaison, réaction le jour même"],
+        ["Sécurité", "Données des stagiaires dans des documents remplis", "Ne jamais les committer : dossier « dossiers-remplis » exclu de Git, stockage UE chiffré"],
+        ["Écologique", "Impression des dossiers", "Dématérialisation, sauf travaux d'examen à imprimer selon le référentiel"],
+        ["Politique", "Dépendance aux appels d'offres régionaux", "Mix CPF, France Travail, OPCO et formations courtes en intra"],
+    ], [3, 6.5, 7.5])
+    d.h1("6. Ce qu'il me manque")
+    d.numeros([
+        "Le certificat Qualiopi : la pièce jointe annoncée n'est pas arrivée (seuls les référentiels ont été reçus). J'en ai besoin pour le périmètre et la date d'audit.",
+        "Le REAC et le référentiel d'évaluation RPMS millésime 08 (2023).",
+        "Téléphone, e-mail, site, adresse du siège (si différente du Secrétariat Center).",
+        "Accessibilité du Secrétariat Center (PMR, sanitaires, salle de pause) et équipement (vidéoprojecteur, connexion).",
+        "Prix de vente par titre et par CCP, effectif cible.",
+        "Les dates de démarrage proposées vous conviennent-elles (MEM le 1er mars 2027, RPMS le 6 septembre 2027) ?",
+        "Les livrets réalisés pour Marilyn Institut : je n'ai pas accès à cette conversation. Si vous me les transmettez, j'aligne la présentation (sans jamais mêler les deux marques).",
+    ])
+    d.h1("7. Sources")
+    d.puces([
+        "REAC Manager d'établissement marchand, TP-00136, millésime 09 du 10/12/2025 (document transmis).",
+        "Référentiel d'évaluation Manager d'établissement marchand, millésime 09 du 10/12/2025 (document transmis).",
+        "Fiches France Compétences RNCP41853 et RNCP38575 (documents transmis, consultés le 21/10/2026).",
+        "REAC et RC Responsable de petite et moyenne structure, RNCP35646, millésime 07 de 2016 (documents transmis — version remplacée).",
+        "Période en entreprise RPMS de 210 h : référentiel d'évaluation RPMS v08 cité par plusieurs organismes (medef.nc, icademie.com, etudis.net).",
+        "Agrément des sessions : démarche « DEETS 974 — demande d'agrément pour organiser des sessions » (demarche.numerique.gouv.fr).",
+        "Code du travail ; RGPD (règlement UE 2016/679) ; IA Act (règlement UE 2024/1689).",
+    ])
+    d.rgpd(["RGPD : tous les modèles contiennent une information des personnes et respectent la minimisation ; registre et durées de conservation dans 04_RGPD_IA_Act.",
+            "IA Act : aucun usage d'IA pour admettre, évaluer ou surveiller les stagiaires (annexe III, haut risque) ; formation de l'équipe à la maîtrise de l'IA (article 4)."])
+    return d.save("00_NOTE_DE_SYNTHESE.docx")
 
 
 if __name__ == "__main__":

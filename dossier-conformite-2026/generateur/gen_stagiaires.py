@@ -18,7 +18,7 @@ MENTION_COURTE = (
 def fiche_inscription():
     d = Doc("Fiche d'inscription", "Dossier de candidature — formation certifiante", code="FI-01")
     d.p(f"Formation souhaitée : {TITRES}")
-    d.p("Session : [À COMPLÉTER : dates]   •   Lieu : [À COMPLÉTER]")
+    d.p("Session : [À COMPLÉTER : dates]   •   Lieu : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis")
     d.h2("1. Identité")
     d.champs(["Nom", "Prénom", "Date de naissance", "Adresse", "Code postal / Commune", "Téléphone", "E-mail"])
     d.h2("2. Situation actuelle")
@@ -47,48 +47,34 @@ def fiche_inscription():
 
 
 def positionnement():
-    d = Doc("Test de positionnement et entretien d'admission", "Avant l'entrée en formation (Qualiopi indicateurs 4 et 8)", code="POS-02")
-    d.p("Objectif : mesurer les acquis pour individualiser le parcours. Ce test n'est pas éliminatoire à lui seul ; la décision d'admission "
-        "est prise par une personne de l'équipe pédagogique après l'entretien.")
-    d.h2("Partie A — Expression écrite (20 min)")
-    d.p("Rédigez en 10 lignes un message à votre équipe pour annoncer une opération commerciale le samedi suivant.")
-    d.h2("Partie B — Calculs professionnels (20 min)")
-    d.numeros([
-        "Un article est acheté 8 € HT et vendu 12 € HT. Calculez la marge brute unitaire et le taux de marque.",
-        "Le chiffre d'affaires passe de 40 000 € à 46 000 €. Quelle est l'évolution en % ?",
-        "Un rayon réalise 300 ventes pour 1 200 visiteurs. Quel est le taux de transformation ?",
-        "Une équipe de 6 personnes travaille 35 h. Combien d'heures disponibles sur une semaine ?",
-    ])
-    d.h2("Partie C — Situations de management (15 min)")
-    d.numeros([
-        "Un collaborateur arrive en retard pour la 3e fois. Que faites-vous ?",
-        "Deux collègues se disputent devant un client. Que faites-vous ?",
-        "Une cliente en fauteuil roulant ne peut pas atteindre un produit. Que faites-vous ?",
-    ])
-    d.h2("Partie D — Numérique et IA (10 min)")
-    d.cases(["Je sais utiliser un tableur (formules simples)", "J'ai déjà utilisé un outil d'IA générative",
-             "Je sais pourquoi il ne faut pas saisir de données personnelles dans un outil d'IA non validé"])
-    d.h2("Grille d'entretien (rempli par l'organisme)")
-    d.tableau(["Critère", "Observations", "Niveau (0-3)"], [
-        ["Projet professionnel clair et réaliste", "", ""], ["Motivation et disponibilité sur toute la durée", "", ""],
-        ["Freins périphériques (mobilité, garde, logement)", "", ""], ["Résultats tests A, B, C, D", "", ""],
-        ["Besoins d'aménagement (renvoi référent handicap)", "", ""], ["Financement identifié", "", ""],
-    ], [6.5, 7.5, 3])
-    d.p("Décision : ☐ Admis   ☐ Admis avec parcours adapté (préciser) : __________   ☐ Réorientation conseillée vers : __________")
-    d.p("Décision prise par (nom, fonction) : __________  — motifs communiqués au candidat par écrit en cas de refus.")
-    d.rgpd(["Les résultats sont conservés dans le dossier du stagiaire (durée : formation + 5 ans) ou supprimés 2 ans après le dernier contact pour un candidat non retenu.",
-            "IA Act annexe III, point 3 : utiliser une IA pour décider de l'admission ou du niveau serait un système à haut risque. YEBA FORMATIONS ne le fait pas."])
-    return d.save(f"{DOSSIER}/POS-02_Positionnement_et_admission.docx")
-
+    d = Doc("Procédure d'admission et de positionnement", "Avant l'entrée en formation (Qualiopi indicateurs 4 et 8)", code="POS-02")
+    d.p("Objectif : vérifier l'adéquation entre le projet du candidat et la formation, puis individualiser le parcours. "
+        "La décision d'admission est prise par une personne de l'équipe pédagogique, jamais par un outil automatisé.")
+    d.h2("Les étapes")
+    d.tableau(["Étape", "Contenu", "Délai", "Trace conservée"], [
+        ["1. Information collective", "Présentation du métier, du titre, du rythme, des financements", "3 à 1 mois avant", "Feuille de présence"],
+        ["2. Dossier de candidature", "Fiche d'inscription FI-01, CV, justificatif de situation", "Avant l'entretien", "Dossier candidat"],
+        ["3. Positionnement", "Situation des acquis par rapport au référentiel (outil à concevoir avec les supports)", "Jour de l'entretien", "Résultat du positionnement"],
+        ["4. Entretien individuel", "Projet, motivation, disponibilité, freins, financement, besoins d'adaptation", "Jour de l'entretien", "Compte rendu d'entretien"],
+        ["5. Décision", "Admis, admis avec parcours adapté, ou réorientation motivée", "Sous 10 jours ouvrés", "Courrier ou e-mail au candidat"],
+        ["6. Parcours individualisé", "Ajustements du parcours selon le positionnement", "Avant l'entrée", "Plan de parcours individualisé"],
+    ], [3.6, 6.4, 3.2, 3.8])
+    d.h2("Compte rendu d'entretien d'admission")
+    d.champs(["Candidat (nom, prénom)", "Formation visée", "Projet professionnel", "Disponibilité sur toute la durée",
+              "Freins identifiés (mobilité, garde, logement)", "Financement identifié", "Besoin d'entretien avec le référent handicap (oui / non)",
+              "Décision et motif", "Décision prise par (nom, fonction), date"])
+    d.rgpd(["Candidat non retenu : données supprimées 2 ans après le dernier contact. Candidat admis : dossier stagiaire.",
+            "IA Act, annexe III point 3 : utiliser une IA pour décider de l'admission serait un usage à haut risque. YEBA FORMATIONS ne le fait pas."])
+    return d.save(f"{DOSSIER}/POS-02_Procedure_admission.docx")
 
 def convention():
     d = Doc("Convention de formation professionnelle", "Articles L.6353-1 et L.6353-2 du code du travail", code="CONV-03")
     d.p("**Entre** l'organisme de formation " + f"{O['nom']}, SIRET {O['siret']}, NDA {O['nda']} (enregistré auprès du préfet de région Réunion), "
-        f"représenté par {O['dirigeant']}, directeur, {O['adresse']},")
+        f"entreprise individuelle représentée par {O['dirigeant']}, {O['siege']},")
     d.p("**Et** [À COMPLÉTER : raison sociale du client / financeur, SIRET, adresse, représentant].")
     for titre, texte in [
         ("Article 1 — Objet", "Le client inscrit le(s) bénéficiaire(s) désigné(s) en annexe à l'action de formation : [À COMPLÉTER : intitulé, RNCP], ayant pour objectif l'obtention du titre professionnel ou de certificats de compétences professionnelles (CCP). Type d'action : action concourant au développement des compétences — action de formation (art. L.6313-1 1° du code du travail)."),
-        ("Article 2 — Programme, durée, dates, lieu", "Programme joint (PRG). Durée : [À COMPLÉTER] heures en centre + [À COMPLÉTER] heures en entreprise. Du [À COMPLÉTER] au [À COMPLÉTER], horaires [À COMPLÉTER]. Lieu : [À COMPLÉTER]."),
+        ("Article 2 — Programme, durée, dates, lieu", "Programme joint (PRG). Durée : [À COMPLÉTER] heures en centre + [À COMPLÉTER] heures en entreprise. Du [À COMPLÉTER] au [À COMPLÉTER]. Horaires : 8 h 00 – 12 h 00 et 13 h 00 – 16 h 00. Lieu : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis."),
         ("Article 3 — Moyens et modalités", "Moyens pédagogiques et techniques, modalités de suivi (feuilles d'émargement par demi-journée signées par le stagiaire et le formateur) et d'évaluation décrits au programme."),
         ("Article 4 — Sanction", "Session de validation du titre organisée selon l'arrêté du 22 décembre 2015 modifié. Remise d'une attestation de fin de formation et d'un certificat de réalisation."),
         ("Article 5 — Prix et paiement", "Coût : [À COMPLÉTER] € (exonéré de TVA — [À VÉRIFIER : attestation d'exonération]). Échéancier : [À COMPLÉTER : ex. 30 % à l'entrée, 40 % à mi-parcours, 30 % à la fin, sur présentation des émargements]."),
@@ -109,7 +95,7 @@ def contrat_particulier():
     for titre, texte in [
         ("Article 1 — Objet", "Formation : [À COMPLÉTER : intitulé, RNCP]. Objectifs, programme, moyens, et modalités d'évaluation : voir programme joint."),
         ("Article 2 — Niveau requis", "Prérequis et conditions d'admission : voir programme. Le stagiaire a passé le positionnement le [À COMPLÉTER]."),
-        ("Article 3 — Durée et dates", "[À COMPLÉTER : heures, dates, horaires, lieu]."),
+        ("Article 3 — Durée, dates et lieu", "[À COMPLÉTER : heures et dates]. Horaires : 8 h 00 – 12 h 00 et 13 h 00 – 16 h 00. Lieu : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis."),
         ("Article 4 — Délai de rétractation", "Le stagiaire dispose de **10 jours** à compter de la signature pour se rétracter, par lettre recommandée avec accusé de réception (art. L.6353-5). Aucune somme ne peut être exigée avant l'expiration de ce délai (art. L.6353-6)."),
         ("Article 5 — Prix et paiement", "Prix total : [À COMPLÉTER] €. À l'issue du délai de rétractation, un acompte de 30 % maximum peut être demandé (art. L.6353-6) ; le solde est échelonné au fur et à mesure du déroulement de la formation : [À COMPLÉTER : échéancier]."),
         ("Article 6 — Interruption", "En cas d'abandon pour force majeure dûment reconnue, seules les prestations effectivement dispensées sont dues au prorata (art. L.6354-1). Dans les autres cas : [À COMPLÉTER]."),
@@ -145,7 +131,7 @@ def reglement_interieur():
     for titre, texte in [
         ("Article 1 — Objet et champ", "Le présent règlement s'applique à toute personne inscrite à une action de formation de l'organisme, pendant toute sa durée, dans les locaux et lors des activités extérieures."),
         ("Article 2 — Hygiène et sécurité", "Respect des consignes de sécurité, d'incendie et d'évacuation affichées. Interdiction de fumer et de vapoter dans les locaux, d'y introduire de l'alcool ou des substances illicites. Tout accident, même bénin, est signalé immédiatement. Consignes cycloniques : en alerte orange, la formation est maintenue ou passe à distance selon décision de l'organisme ; en alerte rouge, les locaux sont fermés."),
-        ("Article 3 — Horaires, absences, retards", "Horaires : [À COMPLÉTER]. Émargement obligatoire par demi-journée. Toute absence est justifiée sous 48 h. Le financeur est informé des absences conformément à ses règles. À partir de [À COMPLÉTER : ex. 2] absences injustifiées, un entretien de suivi est organisé."),
+        ("Article 3 — Horaires, absences, retards", "Horaires : 8 h 00 – 12 h 00 et 13 h 00 – 16 h 00 ; pauses de 10 h 00 à 10 h 15 et de 15 h 00 à 15 h 15. Émargement obligatoire par demi-journée. Toute absence est justifiée sous 48 h. Le financeur est informé des absences conformément à ses règles. À partir de [À COMPLÉTER : ex. 2] absences injustifiées, un entretien de suivi est organisé."),
         ("Article 4 — Comportement", "Respect des personnes, des opinions et des biens. Toute forme de harcèlement, de discrimination ou de violence est interdite et signalée. Téléphones en mode silencieux."),
         ("Article 5 — Usage du numérique et de l'IA", "Utilisation des outils d'IA uniquement selon la charte IA de l'organisme. Interdiction de saisir des données personnelles (clients, collègues, entreprise d'accueil) dans un outil d'IA non validé. Les productions d'examen doivent être personnelles ; tout usage d'IA est déclaré."),
         ("Article 6 — Sanctions", "Tout manquement peut donner lieu à : avertissement écrit, blâme, exclusion temporaire ou définitive. Le financeur est informé de toute sanction (art. R.6352-8)."),
@@ -165,44 +151,14 @@ def reglement_interieur():
     return d.save(f"{DOSSIER}/RI-06_Reglement_interieur_et_PV_delegues.docx")
 
 
-def livret_accueil():
-    d = Doc("Livret d'accueil du stagiaire", "Bienvenue chez YEBA FORMATIONS", code="LA-07")
-    d.h2("Qui sommes-nous ?")
-    d.p(f"{O['nom']}, organisme de formation créé en 2021 à La Réunion, dirigé par {O['dirigeant']}. Certifié Qualiopi ({O['qualiopi']}) "
-        "au titre des actions de formation. Domaines : vente, management, compétences comportementales, intelligence artificielle, gouvernance des données (RGPD, IA Act).")
-    d.h2("Vos interlocuteurs")
-    d.tableau(["Rôle", "Nom", "Contact"], [
-        ["Direction / responsable pédagogique", O["dirigeant"], O["tel"]],
-        ["Référent handicap", O["dirigeant"], O["tel"]],
-        ["Référent administratif", "[À COMPLÉTER]", "[À COMPLÉTER]"],
-        ["Formateurs", "[À COMPLÉTER]", "[À COMPLÉTER]"],
-        ["Contact données personnelles", "—", O["contact_rgpd"]],
-    ], [6, 5, 6])
-    d.h2("Infos pratiques")
-    d.puces(["Adresse et plan d'accès : [À COMPLÉTER] — arrêts de bus Car Jaune / réseau urbain les plus proches : [À COMPLÉTER]",
-             "Stationnement : [À COMPLÉTER]", "Restauration : [À COMPLÉTER : salle de pause, micro-ondes, commerces proches]",
-             "Horaires : [À COMPLÉTER]", "Accessibilité PMR : [À COMPLÉTER]", "Consignes cyclones et évacuation : affichées dans chaque salle"])
-    d.h2("Votre parcours en 6 étapes")
-    d.numeros(["Accueil et positionnement", "Modules en centre", "Période(s) en entreprise", "Préparation du dossier professionnel",
-               "Épreuves blanches", "Session de validation du titre, puis suivi à 6 mois"])
-    d.h2("Vos droits et devoirs")
-    d.puces(["Règlement intérieur remis et expliqué le premier jour", "Élection de vos délégués (formation > 500 h)",
-             "Droit de réclamation : formulaire disponible, réponse sous 15 jours ouvrés",
-             "Droits sur vos données (RGPD) et charte d'usage de l'IA",
-             "Santé et sécurité : voir la fiche « Vos droits en santé et sécurité »"])
-    d.h2("Aides et partenaires utiles")
-    d.puces(["Mission Locale, France Travail, Cap emploi, Agefiph, MDPH", "CAF (aides à la garde d'enfants)", "Aides à la mobilité : [À COMPLÉTER : dispositifs locaux en vigueur]"])
-    return d.save(f"{DOSSIER}/LA-07_Livret_accueil.docx")
-
-
 def emargement():
     d = Doc("Feuille d'émargement", "À signer par demi-journée par le stagiaire et le formateur", code="EMG-08", paysage=True)
     d.p("Formation : [À COMPLÉTER]   •   Semaine du ____ au ____   •   Module : ____   •   Formateur : ____")
     d.tableau(["Nom Prénom", "Lundi matin", "Lundi a-m", "Mardi matin", "Mardi a-m", "Mercredi matin", "Mercredi a-m"],
-              [[""] * 7 for _ in range(12)], [5.7, 3.3, 3.3, 3.3, 3.3, 3.3, 3.3])
+              [[""] * 7 for _ in range(12)], [5.9, 3.3, 3.3, 3.3, 3.3, 3.3, 3.3])
     d.tableau(["Nom Prénom", "Jeudi matin", "Jeudi a-m", "Vendredi matin", "Vendredi a-m", "Heures semaine", "Observations"],
               [[""] * 7 for _ in range(12)], [5.7, 3.3, 3.3, 3.3, 3.3, 3.3, 3.5])
-    d.p("Signature du formateur (chaque demi-journée) : ______________________")
+    d.p("Matin : 8 h 00 – 12 h 00 (4 h). Après-midi : 13 h 00 – 16 h 00 (3 h). Signature du formateur à chaque demi-journée : ______________________")
     d.rgpd(["Document justificatif pour les financeurs et contrôles DEETS : conservé 5 ans après la fin de l'action (ou durée exigée par le financeur, si plus longue).",
             "En cas d'émargement électronique : outil hébergé dans l'UE, horodatage, pas de géolocalisation ni de biométrie (reconnaissance faciale interdite)."])
     return d.save(f"{DOSSIER}/EMG-08_Feuille_emargement.docx")
@@ -214,7 +170,7 @@ def attestations():
     d.p(f"Je soussigné {O['dirigeant']}, directeur de {O['nom']}, atteste que M./Mme __________ est entré(e) en formation "
         "« __________ » (RNCP ______) le ____ pour une durée prévue de ____ heures en centre et ____ heures en entreprise.")
     d.signatures(["Le directeur"])
-    d.h2("B. Attestation d'assiduité (période du ____ au ____)")
+    d.h2("B. Attestation mensuelle de présence (mois de ____________)")
     d.p("Heures prévues : ____   Heures réalisées : ____   Absences justifiées : ____   Absences injustifiées : ____")
     d.signatures(["Le directeur"])
     d.saut()
@@ -341,10 +297,9 @@ def convention_pae():
     ])
     d.signatures(["Organisme de formation", "Entreprise d'accueil", "Stagiaire"])
     d.saut()
-    d.h2("Fiche de suivi et d'évaluation de la période en entreprise")
-    d.tableau(["Compétence observée", "Activités réalisées", "Appréciation du tuteur (0-3)"],
-              [["CCP1", "", ""], ["CCP2", "", ""], ["CCP3", "", ""], ["Savoir-être (ponctualité, posture, initiative)", "", ""]], [6, 7, 4])
-    d.p("Visite / appel de suivi le ____ par ____ — Observations : ______")
+    d.h2("Fiche de suivi de la période en entreprise")
+    d.champs(["Date de l'appel ou de la visite", "Interlocuteurs", "Activités réalisées par le stagiaire",
+              "Points forts observés", "Difficultés éventuelles", "Actions décidées", "Suivi assuré par"])
     d.h2("Attestation de période en entreprise")
     d.p("L'entreprise ______ atteste que M./Mme ______ a effectué une période en entreprise du ____ au ____, soit ____ heures.")
     d.signatures(["Le tuteur / représentant de l'entreprise"])
@@ -364,9 +319,85 @@ def droit_image():
     return d.save(f"{DOSSIER}/IMG-15_Autorisation_droit_image.docx")
 
 
+def convocation():
+    d = Doc("Convocation à l'entrée en formation", "À envoyer 15 jours avant le démarrage", code="CONVOC-16")
+    d.p("Madame, Monsieur [À COMPLÉTER : nom],")
+    d.p("Nous avons le plaisir de vous confirmer votre admission à la formation « [À COMPLÉTER : intitulé du titre] ». "
+        "Vous êtes attendu(e) le **[À COMPLÉTER : date] à 7 h 45** pour l'accueil (début de la formation à 8 h 00).")
+    d.tableau(["", ""], [
+        ["Lieu", O["lieu"]],
+        ["Horaires", "8 h 00 – 12 h 00 et 13 h 00 – 16 h 00"],
+        ["Pauses", "10 h 00 – 10 h 15 et 15 h 00 – 15 h 15 ; déjeuner de 12 h 00 à 13 h 00"],
+        ["Durée", "[À COMPLÉTER : heures en centre + heures en entreprise]"],
+        ["Contact", f"{O['dirigeant']} — {O['tel']}"],
+    ], [4, 13])
+    d.p("**Documents joints :** programme, livret d'accueil, règlement intérieur, charte IA, mention d'information sur vos données.")
+    d.p("**À apporter :** pièce d'identité, de quoi prendre des notes, CV à jour, identifiant France Travail le cas échéant.")
+    d.p("En cas d'empêchement, prévenez-nous au plus tôt. Si vous avez besoin d'un aménagement, le référent handicap est à votre écoute en toute confidentialité.")
+    d.p(f"{O['dirigeant']}, directeur de {O['nom']}")
+    return d.save(f"{DOSSIER}/CONVOC-16_Convocation.docx")
+
+
+def fiche_liaison():
+    d = Doc("Fiche de liaison avec le prescripteur", "Mission Locale • France Travail • Cap emploi", code="LIAI-17")
+    d.p("À compléter à l'entrée, à mi-parcours et à la sortie. Transmise au conseiller uniquement avec l'accord écrit du stagiaire.")
+    d.champs(["Stagiaire (nom, prénom)", "Prescripteur (structure, conseiller, contact)", "Formation et dates",
+              "Étape (entrée / mi-parcours / sortie / alerte)", "Assiduité (heures réalisées / prévues)",
+              "Progression (sans note détaillée)", "Freins signalés par le stagiaire et accord pour les partager",
+              "Action attendue du prescripteur", "Date et signature YEBA FORMATIONS"])
+    d.p("Accord du stagiaire pour la transmission de cette fiche :  ☐ Oui   ☐ Non     Signature : ____________")
+    d.rgpd(["Base légale : exécution de la mission de suivi convenue avec le prescripteur et accord du stagiaire pour les informations sur ses freins personnels.",
+            "Minimisation : aucune information de santé ; transmission par messagerie sécurisée ou plateforme du prescripteur."])
+    return d.save(f"{DOSSIER}/LIAI-17_Fiche_liaison_prescripteur.docx")
+
+
+def sante_securite():
+    d = Doc("Vos droits en santé et sécurité", "Fiche remise à chaque stagiaire le premier jour", code="SST-18")
+    d.h2("Au centre de formation")
+    d.puces(["Repérez les sorties de secours et le point de rassemblement du Secrétariat Center.",
+             "Signalez immédiatement tout accident, malaise ou situation dangereuse.",
+             "Alerte cyclonique orange : vous êtes informé par SMS ou e-mail de la suite. Alerte rouge : ne vous déplacez pas, les locaux sont fermés.",
+             "Fortes pluies : ne traversez jamais une ravine ou un radier submergé."])
+    d.h2("En entreprise")
+    d.puces(["L'entreprise doit vous informer des risques du poste et vous fournir les équipements de protection (chaussures, gants…).",
+             "Vous avez un droit d'alerte et de retrait en cas de danger grave et imminent : prévenez votre tuteur et le centre.",
+             "Gestes et postures : utilisez les aides à la manutention ; ne portez pas de charges excessives.",
+             "Harcèlement, discrimination, violence : vous n'êtes pas seul. Parlez-en au centre ; vous pouvez aussi saisir l'inspection du travail ou le Défenseur des droits."])
+    d.h2("Numéros utiles")
+    d.tableau(["Service", "Numéro"], [["SAMU", "15"], ["Pompiers", "18"], ["Police", "17"], ["Urgence européenne", "112"],
+                                       ["Urgence par SMS (personnes sourdes ou malentendantes)", "114"],
+                                       ["YEBA FORMATIONS", O["tel"]]], [11, 6])
+    return d.save(f"{DOSSIER}/SST-18_Droits_sante_securite.docx")
+
+
+def checklist_dossier():
+    d = Doc("Contenu du dossier de chaque stagiaire", "Liste de contrôle — preuves pour les financeurs, la DEETS et Qualiopi", code="CHK-19")
+    d.tableau(["Moment", "Pièce", "Présente"], [
+        ["Avant", "Fiche d'inscription et pièces justificatives", "☐"],
+        ["Avant", "Compte rendu d'entretien d'admission et résultat du positionnement", "☐"],
+        ["Avant", "Accord de financement (EDOF, KAIROS, OPCO, Région…) ou contrat de formation", "☐"],
+        ["Avant", "Convention ou contrat signé ; convocation envoyée", "☐"],
+        ["Entrée", "Attestation d'entrée ; accusé de réception du livret, du règlement et de la charte IA", "☐"],
+        ["Entrée", "Contrat d'engagement réciproque ; autorisation d'image (facultative)", "☐"],
+        ["Pendant", "Feuilles d'émargement par demi-journée ; attestations mensuelles de présence", "☐"],
+        ["Pendant", "Suivi des absences et actions menées", "☐"],
+        ["Pendant", "Conventions de période en entreprise, fiches de suivi, attestations de période", "☐"],
+        ["Pendant", "Bilan de mi-parcours ; fiches de liaison prescripteur", "☐"],
+        ["Fin", "Évaluation de satisfaction à chaud", "☐"],
+        ["Fin", "Attestation de fin de formation ; certificat de réalisation", "☐"],
+        ["Fin", "Convocation et résultat de la session de validation", "☐"],
+        ["Après", "Questionnaire à froid ; enquête d'insertion à 6 mois", "☐"],
+        ["Séparé", "Dossier handicap confidentiel (si concerné)", "☐"],
+    ], [2.6, 11.9, 2.5])
+    d.rgpd(["Conservation : durée de la formation + 5 ans, ou durée exigée par le financeur si elle est plus longue.",
+            "Stockage dans un espace chiffré hébergé dans l'Union européenne, accès limité aux personnes habilitées."])
+    return d.save(f"{DOSSIER}/CHK-19_Contenu_dossier_stagiaire.docx")
+
+
 def tout():
-    return [f() for f in (fiche_inscription, positionnement, convention, contrat_particulier, cgv, reglement_interieur, livret_accueil,
-                          emargement, attestations, evaluations, reclamations, handicap, decrochage, convention_pae, droit_image)]
+    return [f() for f in (fiche_inscription, positionnement, convention, contrat_particulier, cgv, reglement_interieur,
+                          emargement, attestations, evaluations, reclamations, handicap, decrochage, convention_pae, droit_image,
+                          convocation, fiche_liaison, sante_securite, checklist_dossier)]
 
 
 if __name__ == "__main__":
