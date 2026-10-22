@@ -126,7 +126,13 @@
 
 - **RGPD — votre fichier de prospection** : les coordonnées professionnelles nominatives (nom, email pro, téléphone) d'un interlocuteur sont des **données personnelles**. Prospection B2B par email possible sans consentement préalable si le message est **en rapport avec la fonction** de la personne, avec **information** et **lien d'opposition** à chaque envoi (position CNIL). Base légale : intérêt légitime. Durée de conservation : 3 ans après le dernier contact (référentiel CNIL). Le CSV joint ne contient **que des organisations** (pas de données personnelles).
 - **Outil** : stocker le fichier dans **Baserow cloud UE** (déjà configuré dans ce dépôt) — pas dans un outil hébergé hors UE.
-- **IA Act — argument commercial** : l'article 4 (maîtrise de l'IA, applicable depuis le 2 février 2025) oblige les fournisseurs et déployeurs d'IA à assurer un niveau suffisant de maîtrise de l'IA de leur personnel. **[À VÉRIFIER avant de l'affirmer]** : la proposition « Digital Omnibus » de la Commission (fin 2025) envisageait d'alléger cette obligation et de décaler les obligations « haut risque » ; vérifiez le texte adopté à date avant chaque rendez-vous pour ne pas présenter comme obligation ce qui ne le serait plus.
+- **IA Act — mise à jour (octobre 2026)** : le « Digital Omnibus » est adopté (règlement UE 2026/1744, publié le 24/07/2026, en vigueur le 27/07/2026). Conséquences pour vos arguments :
+  - **Article 4** réécrit : il ne s'agit plus de *garantir un niveau suffisant* de maîtrise de l'IA, mais de *prendre des mesures* pour la favoriser (obligation allégée, mais toujours là). Ne dites plus « vous êtes obligé de former tout le monde ».
+  - **Haut risque (annexe III : formation, emploi, services publics)** reporté au **2 décembre 2027**.
+  - **Article 50 (transparence : chatbots, contenus générés)** applicable depuis le **2 août 2026** → c'est votre argument le plus actuel, surtout auprès des collectivités.
+  - Sources : blogs juridiques spécialisés (spicyadvisory.com, aiactinsight.eu) — **vérifier le texte sur EUR-Lex** avant de le citer à un client.
+
+> Le classeur `Prospection_Acteurs_Formation_Reunion.xlsx` (même dossier) complète ce document : coordonnées, décideurs, accroches, missions longues, chiffrage, OPCO et preuves.
 
 ---
 

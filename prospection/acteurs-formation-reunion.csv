@@ -1,24 +1,235 @@
-Acteur,Catégorie,Rôle,Douleur principale,Angle d'attaque,Offre à pousser,RGPD,IA Act,Priorité,Statut,À vérifier
-Région Réunion - Direction formation professionnelle,Financeur public,PRF (marchés) / AF2R / CPRDFOP / Contrat Filière Numérique,Résultats visibles exigés + objectif 8 000 TPE-PME numériques,Exécuter l'objectif numérique : IA + RGPD/IA Act accessibles,Formation IA TPE-PME / groupement PRF,Oui (sous-traitant art. 28),Oui si IA de sélection/évaluation (annexe III-3),1,À contacter,Pas de démarchage sur marché en cours
-France Travail - Direction régionale,Financeur public,AIF / POEI / POEC / AFPR / AAP,Crédits -12 % et chômage 19 % au T2 2026,POEI clé en main avec employeur déjà identifié,Vente-relation client + IA du quotidien,Oui (données bénéficiaires parfois sensibles),Oui si tri algorithmique (annexe III-4/5),1,À contacter,
-Département de La Réunion,Financeur public,Insertion RSA / Plan départemental d'insertion,Volume RSA + obligation d'activité loi plein emploi,Modules courts remobilisation + inclusion numérique,Soft skills / smartphone & IA pour l'emploi,Oui (données sociales),Non par défaut,2,À contacter,Contenu du nouveau PDI
-DEETS Réunion,État / prescripteur,NDA / PRIC / liste métiers porteurs,Fin FNE et Transco ; OF peu sérieux,OF exemplaire (Qualiopi + handicap + ANSSI + CNIL),Image / veille métiers porteurs,Non,Non,3,À contacter,
-Agefiph - Délégation Réunion,Financeur public,Compensation handicap / aides alternance,Peu d'OF réellement accessibles,Supports basse vision + Référent handicap,Parcours IA/numérique accessibles,Oui (donnée de santé art. 9),Non,1,À contacter,
-Transitions Pro Réunion,Financeur paritaire,PTP reconversion salariés,Budgets contraints / dossiers incohérents,Parcours alignés métiers porteurs,Reconversion numérique / commercial,Oui,Non,2,À contacter,Conditions locales et chiffres 2026
-AKTO (+ Atlas et OPCO 2i en délégation),OPCO,Financement PDC / alternance,Enveloppes resserrées,Référencement actions collectives + recommandation TPE,HCR : vente additionnelle + IA avis clients,Non (organisation),Non,1,À contacter,
-OPCO EP,OPCO,Entreprises de proximité (54 branches),TPE qui ne consomment pas leurs droits,Dossiers simples prêts à financer (+15 % DROM),IA gain de temps artisans/commerçants + RGPD fichier clients,Non (organisation),Non,1,À contacter,Bonus DROM 2026
-"Uniformation, OPCO Santé, OCAPIAT, Constructys, AFDAS, OPCO Mobilités, L'Opcommerce",OPCO,Financement PDC par branche,Enveloppes resserrées,À qualifier un par un,Selon branche,Non (organisation),Non,2,À qualifier,Présence locale
-CNFPT Réunion,Formation fonction publique,Formation agents territoriaux (marchés),Agents utilisant des IA grand public sans cadre,IA conforme + charte d'usage,IA & RGPD agents publics,Oui (DPO obligatoire art. 37),Oui (maîtrise de l'IA art. 4),2,À contacter,Organisation locale
-"Communes et EPCI (CINOR, CIREST, TCO, CIVIS, CASUD)",Collectivités,Achat direct conseil/formation,Fuite de données administrés via IA,Audit + charte IA + formation agents,Conseil gouvernance RGPD/IA Act,Oui (DPO obligatoire art. 37),Oui (art. 4 ; haut risque si services essentiels),1,À contacter,
-Missions locales,Prescripteur,Jeunes 16-25 ans / CEJ,26 % NEET ; décrochage en formation longue,Modules courts ludiques,1er job / IA pour CV / savoir-être,Oui (mineurs possibles),Non,2,À contacter,Nombre et périmètres
-Cap emploi Réunion,Prescripteur,Accompagnement personnes handicapées,Manque de formations accessibles,Supports basse vision + Référent handicap,Parcours accessibles,Oui (art. 9),Non,1,À contacter,
-Opérateur CEP Réunion,Prescripteur,Conseil en évolution professionnelle actifs,Projets de reconversion fragiles,Parcours cohérents métiers porteurs,Reconversion,Oui,Non,3,À identifier,Nom de l'opérateur
-"RSMA-R, E2C, SIAE",Prescripteur / sous-traitance,Insertion publics éloignés,Illettrisme ; publics très éloignés,Sous-traitance modules (marque blanche si contrat),Soft skills / numérique,Oui,Non,2,À contacter,
-CARIF-OREF Réunion,Référencement,Base de l'offre de formation,Offre peu lisible,Enregistrer toutes les sessions,Visibilité,Non,Non,1,À faire,
-CCI Réunion,Réseau entreprises,TPE-PME commerce/services,Peur de l'IA ; RGPD méconnu,Conférence petit-déjeuner IA & RGPD 2026,Inter puis intra,Non (organisation),Oui (art. 4 argument),1,À contacter,
-CMA Réunion,Réseau entreprises,Artisans,Manque de temps ; administratif,3 automatisations IA pour artisan,Demi-journée IA,Non (organisation),Non,1,À contacter,
-Chambre d'agriculture,Réseau entreprises,Exploitants agricoles,Commercialisation / vente directe,Vente + IA communication,Vente directe,Non (organisation),Non,3,À contacter,
-"MEDEF Réunion, CPME Réunion, U2P",Réseau entreprises,Dirigeants,Recrutement et management,Ateliers dirigeants management + IA,Management,Non (organisation),Non,2,À contacter,
-ADIR,Réseau entreprises,Industriels,Productivité / management de proximité,Intra management + IA production,Management,Non (organisation),Non,2,À contacter,
-"Digital Réunion, La Réunion Développement, Solidarnum",Écosystème numérique,Acteurs du Contrat de Filière Numérique,Atteindre 8 000 TPE-PME,Être le bras formation du contrat,Partenariat déploiement,Non (organisation),Oui,1,À contacter,
-Ordre des experts-comptables / cabinets,Prescripteur TPE,Conseil aux TPE,Clients TPE non conformes ; maîtrise IA du cabinet,Formation cabinet + recommandation clients,IA & RGPD cabinets et clients,Oui,Oui (art. 4),1,À contacter,
+N°,Priorité,Acteur,Catégorie,OPCO / financeur à mobiliser,Décideur identifié,Fonction,"Fiabilité du nom (source, date)",Service / porte d'entrée,Adresse,Téléphone,Email / site,Douleur n°1 (preuve chiffrée),Accroche prête à l'emploi (email / 1er appel),Objection probable → votre réponse,Offre à proposer,Mission longue (onglet),Voie d'achat / financement,RGPD,IA Act,Statut,Prochain contact (date),Notes,Sources
+1,1,Région Réunion,Financeur public,"Région (PRF, AF2R) + FSE+ ; Contrat de Filière Numérique","Karine NABENESA
+(Huguette BELLO, Présidente)",4e Vice-présidente déléguée à la formation professionnelle et à l'apprentissage,"Monographie Centre Inffo, déc. 2025 — à reconfirmer",Direction de la formation professionnelle (réf. marchés « DFP ») + service pilote du Contrat de Filière Numérique [À VÉRIFIER],"Hôtel de Région Pierre Lagourgue, avenue René Cassin, Moufia, 97490 Sainte-Clotilde — Courrier : BP 7190, 97719 Saint-Denis Cedex 9","02 62 48 70 00 (standard, avis 2012) [À VÉRIFIER]",marches@cr-reunion.fr (avis 2017) [À VÉRIFIER] — regionreunion.com,"Dépenses formation 70,3 M€ (2022) → 113,8 M€ (2024), mais chômage remonté à 19 % au T2 2026. Objectif signé le 18/02/2026 : transformer numériquement 8 000 TPE-PME d'ici 2028. Marchés PRF 2026 jugés d'abord sur le prix (volet 3 : 22 lots).","Madame la Vice-présidente,
+
+Le 18 février, la Région a signé un Contrat de Filière Numérique qui engage la transformation de 8 000 TPE-PME d'ici 2028. Dans le même temps, le chômage est remonté à 19 % au 2e trimestre. Le défi n'est plus de financer des heures : c'est de prouver des résultats.
+
+Je vous propose un programme de 24 mois qui forme les dirigeants et salariés de TPE-PME à une IA utile ET conforme (RGPD, IA Act), avec des supports accessibles aux personnes malvoyantes et un indicateur simple : chaque stagiaire repart avec un cas d'usage IA en production dans son entreprise et son registre RGPD simplifié.
+
+Organisme Qualiopi, Référent handicap, formé par l'ANSSI et la CNIL, certifié Google AI : je suis aujourd'hui l'un des rares sur l'île à réunir IA, conformité et accessibilité.
+
+Puis-je vous présenter ce programme en 20 minutes, la semaine du … ou celle du … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous achetons par marchés publics (PRF) » → « Justement : je ne vous demande aucune commande aujourd'hui. Le Code de la commande publique (art. R2111-1) vous autorise à consulter des entreprises en amont : 20 minutes de sourcing pour que le prochain volet intègre un lot « IA & conformité ». Sur un gros lot, je candidaterai en groupement. »",Programme « IA utile & conforme — TPE-PME 974 » + formation des agents régionaux,"M1, M2",Marchés PRF (volets 3 et 5 2026 en cours : ne pas en parler aux acheteurs) ; sourcing R2111-1 ; volets suivants en groupement ; financement Contrat de filière [À VÉRIFIER],Oui — titulaire = sous-traitant (art. 28) pour les données stagiaires. Contact nominatif : intérêt légitime B2B + information art. 14 au 1er contact.,"Sélection/évaluation automatisée de stagiaires = haut risque (annexe III-3), applicable au 02/12/2027 (Omnibus 2026/1744). Art. 50 (transparence) en vigueur depuis le 02/08/2026.",À contacter,,,"centre-inffo.fr (monographies 12/2025 et 03/2026, Contrat Filière Numérique) ; ted.europa.eu ; boamp.fr 26-8510 ; marchesonline.com 2026-DFP-0512"
+2,1,France Travail — Direction régionale La Réunion,Financeur public,"France Travail (POEI, AFPR, AIF) + OPCO de l'employeur (POEC)","Francicia COURTOIS
+(Astrid COMBEMOREL, adjointe)",Directrice régionale depuis le 01/04/2026 (adjointe : DR adjointe chargée des opérations),Bulletin officiel France Travail 2026 (décision DG 2026-3 du 12/01/2026),Service achats/marchés de la DR + responsables Formation et Relation entreprises [À VÉRIFIER] ; agences locales pour les POEI,"Centre d'affaires Cadjee, Bât. C, 62 bd du Chaudron, CS 52008, 97744 Saint-Denis Cedex 9",39 95 (employeurs) / 39 49 (candidats),marches.97410@francetravail.fr (avis BOAMP 2025) — francetravail.fr,"Crédits 2026 en baisse de 12 % (subvention 1,16 Md€ vs 1,35 Md€) ; chômage 19 % au T2 2026 (+3 pts en un an) ; loi plein emploi : accompagnement intensif de tous les inscrits.","Madame la Directrice régionale,
+
+Avec 19 % de chômage au 2e trimestre et des crédits en baisse de 12 %, chaque euro de formation doit produire une embauche. Je vous propose un dispositif sur 18 mois où j'apporte les deux bouts de la chaîne : les employeurs TPE-PME que je prospecte chaque semaine, avec leurs offres d'emploi, et des parcours courts « relation client + outils IA du quotidien » qui rendent vos candidats opérationnels dès le premier jour.
+
+Vous gardez la main sur l'indicateur : un taux de sortie en emploi fixé avec vous et mesuré à 6 mois, cohorte par cohorte.
+
+Pouvons-nous en parler 30 minutes avec vos responsables formation et relation entreprises, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nos achats sont encadrés / nationaux » → « La POEI et l'AFPR se décident en agence, offre par offre : je vous apporte l'offre d'emploi déjà validée par l'employeur. Vous ne lancez rien : vous signez une embauche. »",« Embauche augmentée 974 » (POEI/POEC) + ateliers recruteurs TPE,"M3, M4","POEI / AFPR (agence, sur offre d'emploi) ; POEC (avec l'OPCO) ; AIF ; appels à projets régionaux ; marchés FT","Oui — données des candidats (dont RQTH = donnée de santé, art. 9) : convention, minimisation, canal sécurisé.",Profilage/orientation de demandeurs d'emploi = haut risque (annexe III-4 et III-5) au 02/12/2027.,À contacter,,,bo.francetravail.org (BO 2026) ; assemblee-nationale.fr (CF1896) ; boamp.fr ; insee.fr ; outremers360.com
+3,2,Département de La Réunion (Conseil départemental),Financeur public,Département (Plan départemental d'insertion) + FSE+,Cyrille MELCHIOR,Président du Conseil départemental,Wikipédia (non daté) [À VÉRIFIER],Direction de l'insertion / pilotage du PDI et des appels à projets [À VÉRIFIER],"Hôtel du Département (Palais de la Source), 2 rue de la Source, 97400 Saint-Denis",Non vérifié [À VÉRIFIER],departement974.fr,Plan d'insertion 2022-2024 : 99 000 actions pour les bénéficiaires du RSA ; loi plein emploi (18/12/2023) : durée d'activité hebdomadaire minimale ; illettrisme ≈ 3 fois la métropole.,"Monsieur le Président,
+
+La loi pour le plein emploi impose désormais une activité hebdomadaire réelle pour les bénéficiaires du RSA. Le Département a porté 99 000 actions sur son précédent plan d'insertion : le défi n'est plus le volume, c'est la remise en mouvement durable.
+
+Je vous propose un parcours de 12 mois, par micro-région, qui combine confiance en soi, codes de l'entreprise et autonomie numérique (smartphone, démarches en ligne, IA pour chercher un emploi), avec une pédagogie par le jeu et des supports accessibles. Indicateur suivi chaque mois : taux de présence et entrées en emploi ou en formation qualifiante.
+
+Qui, dans vos services, pilote le prochain appel à projets insertion ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous avons déjà des prestataires » → « Je ne remplace personne : je propose un pilote sur un territoire et une cohorte, avec des indicateurs mensuels. Vous comparez sur pièces. »",« Remobilisation & autonomie numérique » bénéficiaires RSA,M5,Appels à projets PDI ; pilote < 60 000 € HT sans procédure ; FSE+ [À VÉRIFIER],"Oui — données sociales (RSA), très sensibles : convention de traitement, accès restreint.",Non par défaut.,À contacter,,,outremers360.com (PDI) ; insee.fr ; monumentum.fr (adresse)
+4,2,DEETS La Réunion (État),État / prescripteur,"État : FSE+ (volet État), PRIC",Arnaud POULY,"Directeur de l'économie, de l'emploi, du travail et des solidarités",Acteurs publics (09/2024) + fiche Centre Inffo (02/2026),Service FSE+ ; mission Mutations économiques ; service contrôle de la formation,"112 rue de la République, 97488 Saint-Denis Cedex",02 62 94 07 07,Site de la DEETS (préfecture) [À VÉRIFIER],Fin/reconfiguration du FNE-Formation et de Transco ; 967 organismes de formation sur l'île ; liste de 63 métiers porteurs à pourvoir.,"Monsieur le Directeur,
+
+Avec 967 organismes de formation sur l'île et la fin du FNE-Formation, les entreprises en mutation manquent d'interlocuteurs fiables. Je souhaite vous présenter une offre IA & conformité portée par un organisme Qualiopi, Référent handicap, formé par l'ANSSI et la CNIL.
+
+Une question précise : parmi vos 63 métiers porteurs, sur lesquels voyez-vous aujourd'hui un manque d'offre ? Je construis la réponse et je la présente à votre service FSE+.
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous ne finançons pas directement » → « Je le sais : je vous demande votre diagnostic, pas un financement. Et la porte d'entrée FSE+ si un appel à projets s'ouvre. »",Veille métiers porteurs + candidature FSE+,—,Appels à projets FSE+ [À VÉRIFIER],Non (organisation).,Non.,À contacter,,,acteurspublics.fr ; centre-inffo.fr ; choisirleservicepublic.gouv.fr
+5,1,Agefiph — Délégation régionale Réunion-Mayotte,Financeur public,Agefiph (aides à l'adaptation des formations) + Cap emploi,Aïda PERICHON,Déléguée régionale Réunion-Mayotte,Rapport d'activité Agefiph 2025 (publié 07/2026) [À VÉRIFIER],Délégation régionale — chargés d'études et de développement,"Centre d'affaires Cadjee, 62 bd du Chaudron, Bât. C, 2e étage, 97495 Sainte-Clotilde [À VÉRIFIER]",02 62 20 98 11 [À VÉRIFIER] — national 0 800 11 10 09,dr974@agefiph.asso.fr [À VÉRIFIER] — agefiph.fr,Démarche « Transform'Action » lancée fin 2025 pour clarifier « qui fait quoi » ; très peu d'organismes de formation réellement accessibles.,"Madame la Déléguée régionale,
+
+Vous avez lancé Transform'Action pour clarifier qui fait quoi sur le territoire. Je vous propose d'occuper une case encore vide : l'IA et le numérique accessibles. Mes supports sont conçus dès le départ pour la basse vision (gros caractères, mots-clés, contrastes), je suis Référent handicap en organisme de formation, et j'adapte les évaluations.
+
+Concrètement : un parcours « IA accessible » de 12 mois pour demandeurs d'emploi et salariés en situation de handicap, co-construit avec Cap emploi.
+
+Puis-je vous le présenter le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous ne finançons pas des organismes » → « Je ne vous demande pas de me financer : je vous demande de me référencer comme organisme accessible, pour que vos aides individuelles trouvent une offre adaptée. »",« IA accessible » (avec Cap emploi),M9,Aides Agefiph (adaptation des situations de formation) ; appels à projets innovation [À VÉRIFIER],"Oui — handicap = donnée de santé (art. 9) : ne collecter que le nécessaire, base légale explicite.",Non.,À contacter,,,agefiph.fr (rapport 2025) ; annuaire-administration.com ; fiphfp.fr
+6,2,Transitions Pro La Réunion (ATPro),Financeur paritaire,Transitions Pro (PTP),Non identifié [À VÉRIFIER],Direction,Aucune source trouvée,Service instruction des PTP,Non vérifié — annuaire national transitionspro.fr [À VÉRIFIER],Non vérifié [À VÉRIFIER],transitionspro.fr (annuaire),"Budgets contraints, dossiers PTP refusés faute de cohérence projet / formation / métier porteur.","Madame, Monsieur,
+
+La DEETS a publié la liste des 63 métiers porteurs, et vos conseillers s'en servent pour orienter les reconversions. Je vous propose des parcours alignés sur cette liste (commercial, assistant IA en entreprise, métiers du numérique), avec un livrable qui sécurise vos dossiers : une promesse d'embauche ou une étude de marché locale par stagiaire.
+
+Qui instruit les PTP numériques et commerciaux chez vous ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous ne référençons pas d'organismes » → « Je vous demande seulement de connaître l'offre, pour que vos conseillers aient une solution cohérente quand le projet s'y prête. »",Parcours de reconversion « métiers porteurs »,—,PTP (dossier du salarié),Oui (données des salariés).,Non.,À contacter,,,centre-inffo.fr (métiers porteurs)
+7,2,CNFPT — Délégation La Réunion,Fonction publique territoriale,CNFPT (cotisation des collectivités),Karine AH-SON,Directrice régionale,Page contacts cnfpt.fr (non datée) [À VÉRIFIER],Conseillers formation (domaine numérique / management),"4 rue Camille Vergoz, CS 81037, 97404 Saint-Denis Cedex [À VÉRIFIER]",02 62 90 28 28 [À VÉRIFIER],cnfpt.fr,Obligations de transparence IA Act depuis le 02/08/2026 ; agents utilisant des IA grand public ; DPO obligatoire dans chaque collectivité (art. 37 RGPD).,"Madame la Directrice régionale,
+
+Depuis le 2 août 2026, les collectivités sont concernées par les obligations de transparence de l'IA Act, et leurs agents utilisent déjà l'IA, souvent sans cadre. Je vous propose un itinéraire de formation « IA responsable dans le service public local » : gagner du temps sur les courriers et les comptes rendus, sans jamais exposer les données des administrés.
+
+Je peux intervenir dès le prochain semestre de votre offre. Quel conseiller formation pilote le domaine numérique ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Notre offre est construite à l'année » → « Alors je vous propose de préparer avec vous la programmation 2027, sur un domaine où la demande des collectivités explose. »",Itinéraire « IA responsable agents territoriaux »,M7,Marchés CNFPT / référencement d'intervenants [À VÉRIFIER],Oui — formation à la protection des données des administrés.,Oui — art. 4 (mesures de maîtrise de l'IA) et art. 50.,À contacter,,,cnfpt.fr ; annuaire-administration.com
+8,1,"CINOR (Nord : Saint-Denis, Sainte-Marie, Sainte-Suzanne)",Collectivité,Budget propre + CNFPT,Jacques LOWINSKY,Président (élu le 08/04/2026),Outremers 360 (04/2026),DGS + DPO + DRH,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site officiel [À VÉRIFIER],Nouvelle mandature ; art. 50 IA Act en vigueur ; DPO obligatoire.,"Monsieur le Président,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour la CINOR : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours,M6,"< 60 000 € HT : dispense de procédure (R2122-8, décret 2025-1386)",Oui — DPO obligatoire (art. 37) ; données d'administrés.,Oui — art. 50 et art. 4.,À contacter,,,outremers360.com
+9,1,Territoire de l'Ouest (ex-TCO),Collectivité,Budget propre + CNFPT,Emmanuel SÉRAPHIN,"Président (réélu le 07/04/2026), maire de Saint-Paul",Communiqué TCO du 07/04/2026,DGS + DPO + DRH,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],tco.re,Nouvelle mandature ; art. 50 IA Act en vigueur ; DPO obligatoire.,"Monsieur le Président,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour le Territoire de l'Ouest : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours,M6,< 60 000 € HT : dispense de procédure (R2122-8),Oui — DPO obligatoire (art. 37).,Oui — art. 50 et art. 4.,À contacter,,,tco.re ; outremers360.com
+10,1,CIREST (Est),Collectivité,Budget propre + CNFPT,Joé BÉDIER,"Président (élu le 09/04/2026), maire de Saint-André",Outremers 360 (04/2026),DGS + DPO + DRH,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site officiel [À VÉRIFIER],Nouvelle mandature (« nouveau chapitre ») ; art. 50 IA Act ; DPO obligatoire.,"Monsieur le Président,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour la CIREST : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours,M6,< 60 000 € HT : dispense de procédure (R2122-8),Oui — DPO obligatoire (art. 37).,Oui — art. 50 et art. 4.,À contacter,,,outremers360.com
+11,1,CIVIS (Sud-Ouest),Collectivité,Budget propre + CNFPT,David LORION,"Président (réélu en 2026), maire de Saint-Pierre",Outremers 360 (2026),DGS + DPO + DRH,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],civis.re,Nouvelle mandature ; art. 50 IA Act ; DPO obligatoire.,"Monsieur le Président,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour la CIVIS : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours,M6,< 60 000 € HT : dispense de procédure (R2122-8),Oui — DPO obligatoire (art. 37).,Oui — art. 50 et art. 4.,À contacter,,,outremers360.com ; civis.re
+12,2,CASUD (Sud),Collectivité,Budget propre + CNFPT,Non identifié [À VÉRIFIER],Président(e),Aucune source trouvée,DGS + DPO + DRH,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site officiel [À VÉRIFIER],Nouvelle mandature ; art. 50 IA Act ; DPO obligatoire.,"Madame, Monsieur le Président,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour la CASUD : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours,M6,< 60 000 € HT : dispense de procédure (R2122-8),Oui — DPO obligatoire (art. 37).,Oui — art. 50 et art. 4.,À contacter,,,—
+13,2,Les 24 communes de La Réunion,Collectivité,Budget propre + CNFPT,Maire + DGS + DPO de chaque commune,Équipes municipales élues en mars 2026,Municipales de mars 2026,DGS + DPO,Mairies,—,—,"Même douleur que les intercommunalités, avec moins de moyens internes (souvent un DPO mutualisé).","Madame, Monsieur le Maire,
+
+Une nouvelle mandature commence, et elle arrive avec deux obligations très concrètes pour votre commune : depuis le 2 août 2026, les obligations de transparence de l'IA Act (art. 50) s'appliquent — un chatbot ou un contenu généré par IA mis à disposition du public doit être signalé comme tel ; et le RGPD vous impose déjà un DPO (art. 37). Or, comme dans la plupart des collectivités, des agents utilisent probablement des IA grand public avec des données d'administrés, sans cadre.
+
+Je vous propose un « Plan IA responsable » en 90 jours : audit des usages, charte IA validée par votre DPO, formation de vos agents à une IA qui fait gagner du temps sans exposer la collectivité. Le montant reste sous le seuil de 60 000 € HT de dispense de procédure : la décision peut se prendre rapidement, dans le respect de la commande publique.
+
+Puis-je présenter ce plan 30 minutes à votre DGS et à votre DPO, le … ou le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous verrons plus tard / ce n'est pas prioritaire » → « L'art. 50 s'applique depuis le 2 août : plus tard, c'est déjà en retard. Je vous propose de commencer par l'audit des usages (3 jours) : vous saurez exactement où vous êtes exposé. »",Plan IA responsable 90 jours (format commune),M6,"< 60 000 € HT : dispense de procédure (R2122-8), sans fractionnement artificiel",Oui — DPO obligatoire (art. 37).,Oui — art. 50 et art. 4.,À contacter,,,—
+14,2,"Missions locales (Nord, Est, Ouest, Sud) + ARML",Prescripteur,Uniformation (formation des salariés des Missions locales) ; Région / FSE+ pour les jeunes [À VÉRIFIER],Directions non identifiées [À VÉRIFIER],Directeurs / présidents élus,—,Direction + responsables de l'offre de services,"Nord : 6 bis av. Desbassyns, BP 30339, 97494 Sainte-Clotilde Cedex [À VÉRIFIER] — Sud : 69-71 rue des Bons Enfants, Saint-Pierre [À VÉRIFIER]",Non vérifié [À VÉRIFIER],Sites des Missions locales [À VÉRIFIER],"Crédits d'État en baisse d'environ 15 % en 2025-2026, nouvelle baisse dans le PLF 2027 ; 28 153 jeunes accompagnés en 2025, dont 14 769 vers l'emploi, la formation, l'alternance ou l'immersion.","Madame, Monsieur le Directeur,
+
+Vos élus l'ont dit à Bras-Panon le 15 octobre : les crédits baissent encore en 2027, alors que vous avez accompagné 28 153 jeunes en 2025. Je ne viens pas vous demander de budget. Je vous propose deux choses : former vos conseillers à l'IA pour leur rendre du temps d'accompagnement (financement de votre OPCO, Uniformation), et des modules courts pour les jeunes (« décrocher son premier job », « l'IA pour son CV ») financés hors de votre enveloppe.
+
+Pouvons-nous en parler 20 minutes le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Pas de budget » → « Justement : le plan de formation de vos salariés passe par Uniformation, pas par vos crédits d'accompagnement. »",« Conseiller augmenté » + modules jeunes,M8,Plan de développement des compétences (Uniformation) ; Région / FSE+ pour les jeunes [À VÉRIFIER],"Oui — jeunes, parfois mineurs : vigilance renforcée.",Art. 4 (mesures de maîtrise) pour les conseillers.,À contacter,,,outremers360.com (15/10/2026) ; banquedesterritoires.fr ; questions.assemblee-nationale.fr ; annuaire-administration.com
+15,1,Cap emploi Réunion,Prescripteur,Agefiph,Non identifié [À VÉRIFIER],Direction,—,Conseillers formation,Agence Nord à Saint-Denis (source 2021) [À VÉRIFIER],Non vérifié [À VÉRIFIER],capemploi974.fr (2021) [À VÉRIFIER],Manque de formations réellement accessibles aux personnes handicapées.,"Madame, Monsieur,
+
+Vos conseillers cherchent des formations où une personne malvoyante ou en situation de handicap peut réellement suivre et réussir. Mes supports sont conçus pour cela dès le départ, et je suis Référent handicap. Je vous propose de tester une session « IA du quotidien pour l'emploi » avec 6 à 8 de vos bénéficiaires.
+
+Quel conseiller puis-je rencontrer ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",« Nous travaillons déjà avec des organismes » → « Testez une session : vos bénéficiaires jugeront. »,Session pilote « IA du quotidien pour l'emploi »,M9,Aides Agefiph / France Travail,Oui — art. 9 (santé).,Non.,À contacter,,,univ-reunion.fr (offre 2021)
+16,1,Réunion Prospective Compétences (RPC — Carif-Oref),Référencement,—,Non identifié [À VÉRIFIER],Direction,—,Service offre de formation + organisation des Rencontres,Non vérifié [À VÉRIFIER],02 62 83 00 40,contact@rpc.re — rpc.re,"Ses Rencontres de l'orientation du 19/11/2025 ont traité du RGPD et de l'IA dans l'orientation : le sujet est demandé, peu d'organismes le maîtrisent.","Madame, Monsieur,
+
+Vos Rencontres professionnelles de l'orientation de novembre 2025 ont abordé le RGPD et l'IA dans l'orientation. Je vous propose d'animer un atelier pratique lors de la prochaine édition : « IA et RGPD : ce qu'un conseiller peut faire, ce qu'il ne doit jamais faire ». Je souhaite aussi vérifier que toutes mes sessions sont correctement référencées dans votre base.
+
+À qui dois-je m'adresser ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Programme déjà bouclé » → « Alors pour l'édition suivante, et en attendant un webinaire pour votre réseau. »",Atelier aux Rencontres + référencement de toutes les sessions,—,Visibilité (gratuit),Non (organisation).,Sujet de l'atelier.,À contacter,,,centre-inffo.fr (dépliant réseaux 06/2024 ; Rencontres 2025)
+17,1,CCI Réunion,Réseau entreprises,OPCO de chaque adhérent (voir onglet OPCO),Pierrick ROBERT,Président,Outremers 360 (non daté) [À VÉRIFIER] — élections consulaires à surveiller,Service formation / appui aux entreprises,"5 bis rue de Paris, CS 31023, 97400 Saint-Denis [À VÉRIFIER]",Non vérifié [À VÉRIFIER],Site CCI Réunion [À VÉRIFIER],TPE inquiètes face à l'IA ; obligations RGPD et IA Act mal connues ; 80 % du tissu = TPE-PME.,"Monsieur le Président,
+
+Vos ressortissants entendent parler d'IA tous les jours, mais peu savent ce qui leur fait réellement gagner du temps, et encore moins ce que le RGPD et l'IA Act leur imposent. Je vous propose un cycle de 6 petits-déjeuners « IA & conformité : ce qui est obligatoire en 2026 », dans chaque micro-région, avec un livrable concret pour chaque participant : sa check-list de conformité.
+
+Vous apportez le réseau, j'apporte le contenu. Pouvons-nous caler un premier rendez-vous le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous avons notre propre offre de formation » → « Je ne la concurrence pas : je vous apporte un sujet que vous n'avez pas encore, en co-marquage ou en marque blanche. »",Cycle de 6 petits-déjeuners → intra en entreprise,M10,Partenariat ; formations financées par les OPCO,Non (organisation).,Oui — argument art. 4 / art. 50.,À contacter,,,les-aides.fr ; outremers360.com
+18,1,Chambre de Métiers et de l'Artisanat (CMA) Réunion,Réseau entreprises,OPCO EP (artisanat) ; Constructys (BTP),Non identifié [À VÉRIFIER],Président(e),— (élections CMA à surveiller) [À VÉRIFIER],Service formation continue des artisans,"42 rue Jean Cocteau, 97490 Sainte-Clotilde (Saint-Denis)",02 62 21 04 35,Site CMA Réunion [À VÉRIFIER],Artisans sans temps ni service administratif ; convention de partenariat 2026-2028 signée avec Les Entrepreneurs en août 2026.,"Madame, Monsieur le Président,
+
+Un artisan n'a pas de service administratif : il fait ses devis le soir. Je vous propose une demi-journée concrète, « 3 automatisations IA qui rendent 5 heures par semaine à un artisan » (devis, réponses clients, avis Google), avec la conformité RGPD de son fichier clients en bonus. Financement OPCO EP possible.
+
+Puis-je la présenter à votre service formation le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nos artisans ne viennent pas en formation » → « Parce qu'on leur prend une journée. Ici : une demi-journée, un résultat le soir même. »",Demi-journée « 3 automatisations IA »,M10,Plan de développement des compétences (OPCO EP),Oui — fichier clients des artisans.,Non (usage courant).,À contacter,,,acceslibre.beta.gouv.fr ; outremers360.com
+19,1,MEDEF Réunion,Réseau entreprises,Selon adhérent (onglet OPCO),Katy HOARAU,"Présidente (élue le 19/06/2025) — experte-comptable, vice-présidente du Conseil national de l'Ordre des experts-comptables",Leader Réunion (06/2025) ; Outremers 360 (01/2026),Commission formation / emploi [À VÉRIFIER],Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site MEDEF Réunion [À VÉRIFIER],Priorité 2026 affichée : « construire ensemble une économie plus robuste » ; recrutement et productivité.,"Madame la Présidente,
+
+Vous portez pour 2026 l'ambition d'une économie réunionnaise plus robuste, et vous connaissez mieux que personne, en tant qu'experte-comptable, la réalité de la conformité dans les TPE. Je vous propose un atelier dirigeants « IA, RGPD, IA Act : gagner en productivité sans prendre de risque juridique », réservé à vos adhérents, suivi d'un diagnostic gratuit pour les volontaires.
+
+Puis-je vous le présenter 20 minutes le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nos adhérents sont sollicités de partout » → « D'où un format court, concret, et un diagnostic qui leur dit exactement où ils en sont. »",Atelier dirigeants + diagnostic,M10,Partenariat ; intra financé par l'OPCO de l'adhérent,Non (organisation).,Oui — argument art. 4 / 50.,À contacter,,,leaderreunion.fr ; outremers360.com
+20,1,Les Entrepreneurs (ex-CPME Réunion),Réseau entreprises,Selon adhérent (onglet OPCO),Pascal PLANTE,Président,Leader Réunion ; Outremers 360 (08/2026),Commission formation [À VÉRIFIER],Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site officiel [À VÉRIFIER],250 chefs d'entreprise à la rentrée du 27/08/2026 ; partenariat 2026-2028 avec la CMA ; TPE-PME sous pression.,"Monsieur le Président,
+
+Vous avez réuni plus de 250 chefs d'entreprise fin août et signé avec la CMA une convention 2026-2028. Je vous propose d'y ajouter un contenu que vos adhérents réclament : l'IA qui fait gagner du temps, et la conformité qui évite les ennuis. Format : ateliers de 3 heures, puis accompagnement en entreprise financé par l'OPCO.
+
+Puis-je vous rencontrer le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous avons déjà des partenaires formation » → « Sur l'IA et l'IA Act ? Je complète, je ne remplace pas. »",Ateliers 3 h → intra,M10,Partenariat ; OPCO des adhérents,Non (organisation).,Oui — argument.,À contacter,,,outremers360.com ; leaderreunion.fr
+21,2,ADIR (industriels),Réseau entreprises,OPCO 2i (via AKTO à La Réunion),Michel DIJOUX,Président (mandat soumis au vote en octobre 2026),Outremers 360 (2026) [À VÉRIFIER],Secrétariat général,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site ADIR [À VÉRIFIER],"185 adhérents ; défense des outils fiscaux, emploi, export ; productivité et management de proximité.","Monsieur le Président,
+
+Vos industriels doivent produire plus avec des équipes qui vieillissent et un recrutement difficile. Je vous propose un programme « management de proximité + IA en atelier » : des chefs d'équipe qui savent animer et des outils IA sûrs pour la qualité, la maintenance et le reporting. Financement OPCO 2i via AKTO.
+
+Puis-je le présenter à votre bureau ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« L'IA en industrie, c'est pour les grands groupes » → « Pas les cas d'usage que je montre : reporting, consignes, maintenance. Gain mesurable dès le premier mois. »",Intra management + IA,M10,OPCO 2i (via AKTO),Non (organisation).,Vérifier si IA en sécurité des machines (annexe I).,À contacter,,,outremers360.com ; leaderreunion.fr
+22,2,Technopole de La Réunion,Écosystème numérique,—,Jean-Marie LE BOURVELLEC,Président (élu le 17/11/2025),Outremers 360 (11/2025),Accompagnement des start-up,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site Technopole [À VÉRIFIER],Start-up qui intègrent l'IA sans connaître leurs obligations IA Act.,"Monsieur le Président,
+
+Vos start-up intègrent l'IA dans leurs produits, souvent sans savoir si elles sont « fournisseur » au sens de l'IA Act, ni ce que cela implique. Je vous propose une masterclass « IA Act et RGPD pour start-up : ce qu'il faut faire avant de lever ou de vendre ».
+
+Puis-je vous la présenter ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",« Ce n'est pas notre priorité » → « Un investisseur ou un grand compte le demandera. Mieux vaut l'anticiper. »,Masterclass IA Act start-up,—,Partenariat,Non (organisation).,Oui — qualification fournisseur / déployeur.,À contacter,,,outremers360.com
+23,2,Digital Réunion (cluster numérique),Écosystème numérique,Atlas (numérique),Philippe ARNAUD,Président,Article non daté [À VÉRIFIER],Bureau,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site Digital Réunion [À VÉRIFIER],Signataire du Contrat de Filière Numérique : il doit contribuer à l'objectif des 8 000 TPE-PME.,"Monsieur le Président,
+
+Digital Réunion est signataire du Contrat de Filière Numérique et de son objectif de 8 000 TPE-PME transformées. Vos membres construisent les solutions, mais quelqu'un doit former les utilisateurs pour qu'ils les adoptent. Je vous propose d'être ce « bras formation » : IA, conformité et accessibilité.
+
+Puis-je vous rencontrer le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nos membres forment déjà leurs clients » → « À leur outil, oui. Moi, à la conformité et aux usages transverses : c'est complémentaire. »",Partenariat de déploiement Contrat de filière,M1,Partenariat ; Région,Non (organisation).,Oui.,À contacter,,,centre-inffo.fr ; solutions-numeriques.com
+24,1,Ordre des experts-comptables Réunion (CROEC),Prescripteur TPE,Atlas (cabinets comptables),Président(e) du CROEC non identifié(e) [À VÉRIFIER],"(Katy HOARAU : vice-présidente du Conseil national, présidente du MEDEF Réunion)",Outremers 360 [À VÉRIFIER],Commission formation continue,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site du CROEC [À VÉRIFIER],Les cabinets traitent les données de toutes les TPE de l'île et utilisent l'IA ; leurs clients ne sont pas conformes au RGPD.,"Madame, Monsieur le Président,
+
+Vos confrères traitent chaque mois les données de presque toutes les TPE de l'île, et l'IA entre dans les cabinets. Je vous propose deux choses : une formation « IA en cabinet, sans risque RGPD » (financement Atlas), et une offre que vos cabinets peuvent recommander à leurs clients TPE pour leur mise en conformité.
+
+Puis-je la présenter à votre commission formation ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Nous avons la formation continue obligatoire » → « Elle couvre la technique comptable, pas l'IA Act : c'est un complément. »",Formation cabinets + offre recommandée aux TPE,M10,Atlas ; intra cabinets,Oui — les cabinets traitent des données de clients.,Oui — art. 4.,À contacter,,,outremers360.com
+25,1,OPCO EP — Délégation La Réunion,OPCO,OPCO EP,Brice VIRGINIUS,"Délégué régional (Didier MAZEAU, U2P : président de la commission paritaire régionale)",Communiqué OPCO EP (03/2025) [À VÉRIFIER],Conseillers entreprises,Implantations : Sainte-Clotilde et Saint-Leu (Piton Saint-Leu) [À VÉRIFIER],0 970 838 837 (ligne entreprises),opcoep.fr,Enveloppes resserrées ; TPE qui ne consomment pas leurs droits ; +15 % DROM sur le coût pédagogique (fiche 2025).,"Monsieur le Délégué,
+
+Vos TPE ont des droits qu'elles n'utilisent pas, faute de temps et de projet clair. Je vous propose des formations courtes, « clé en main », alignées sur les critères de vos branches : IA gain de temps et RGPD du fichier clients, pour artisans, commerçants de proximité et professions libérales. Je monte les dossiers complets côté entreprise.
+
+Pouvons-nous étudier une action collective 2027 ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)","« Les fonds sont limités » → « Raison de plus pour financer des formations courtes au résultat mesurable, plutôt que des dossiers qui ne seront jamais consommés. »",Actions collectives 2027 + dossiers clé en main,M10,Plan de développement des compétences ; actions collectives,Non (organisation).,Non.,À contacter,,,"opcoep.fr (communiqués, plaquette DROM 2025)"
+26,1,AKTO — Délégation La Réunion (et Atlas / OPCO 2i en délégation),OPCO,AKTO ; Atlas et OPCO 2i via AKTO,François HAQUIN,Directeur régional,AKTO (2022) ; portrait régional 2023 [À VÉRIFIER],Conseillers entreprises,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],akto.fr,"Conventions avec Atlas et OPCO 2i renouvelées pour 3 ans (01/01/2026) ; HCR, propreté, intérim : turnover et relation client.","Monsieur le Directeur,
+
+Dans l'hôtellerie-restauration, la propreté et les services, vos entreprises perdent du chiffre d'affaires par manque de compétences commerciales et de temps. Je vous propose un module « accueil, vente additionnelle et IA pour les avis clients », court et directement rentable, finançable dans vos critères.
+
+Pouvons-nous l'étudier pour une action collective ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",« Nous avons déjà un catalogue » → « Sur la vente additionnelle combinée à l'IA ? C'est le module qui manque. »,Module HCR / services + intra,M10,Plan de développement des compétences ; actions collectives,Non (organisation).,Non.,À contacter,,,akto.fr ; observatoire.akto.fr
+27,2,L'Opcommerce — Délégation territoriale,OPCO,L'Opcommerce,Anne-Laure HOARAU,Déléguée territoriale,Leader Réunion (non daté) [À VÉRIFIER],Conseillers entreprises,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],Site L'Opcommerce [À VÉRIFIER],"Commerce de détail : concurrence en ligne, besoin de vente et de fidélisation.","Madame la Déléguée,
+
+Vos commerces affrontent la concurrence en ligne avec des équipes réduites. Je vous propose un module « vendre plus en magasin + IA pour la fidélisation », animé par un formateur qui a dirigé des équipes commerciales pendant 15 ans.
+
+Pouvons-nous en parler le … ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",« Nos branches ont déjà défini leurs priorités » → « Alors montrez-moi les priorités : je cale le module dessus. »,Module vente + fidélisation IA,M10,Plan de développement des compétences,Non (organisation).,Non.,À contacter,,,leaderreunion.fr
+28,3,Uniformation — Réunion-Mayotte,OPCO,"Uniformation (ESS, associations, Missions locales)",Non identifié [À VÉRIFIER],Délégation,—,Conseillers,Non vérifié [À VÉRIFIER],02 62 56 78 78 (livret 2019) [À VÉRIFIER],uniformation.fr,Associations et structures d'insertion en tension budgétaire.,"Madame, Monsieur,
+
+Les associations et les Missions locales doivent faire plus avec moins. Je vous propose de former leurs salariés à l'IA qui rend du temps d'accompagnement, dans le respect du RGPD.
+
+Qui pilote les actions collectives ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",—,« Conseiller augmenté »,M8,Plan de développement des compétences,Non (organisation).,Non.,À contacter,,,uniformation.fr (livret 2019)
+29,3,Constructys — Association régionale paritaire Réunion,OPCO,Constructys (BTP),Non identifié [À VÉRIFIER],Direction,—,Conseillers,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],constructys.fr,"BTP : encadrement de chantier, sécurité, recrutement.","Madame, Monsieur,
+
+Vos chefs de chantier sont d'excellents techniciens, rarement formés au management. Je vous propose « manager une équipe de chantier » + IA pour les comptes rendus et les devis.
+
+Qui puis-je rencontrer ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",—,Management de chantier + IA,M10,Plan de développement des compétences,Non (organisation).,Non.,À contacter,,,centre-inffo.fr (arrêtés 2018-2020) ; constructys.fr
+30,3,"RSMA-R, E2C, structures d'insertion (SIAE)",Prescripteur / sous-traitance,Selon structure,Non identifié [À VÉRIFIER],Directions,—,Responsables pédagogiques,Non vérifié [À VÉRIFIER],Non vérifié [À VÉRIFIER],—,"Publics très éloignés de l'emploi, illettrisme.","Madame, Monsieur,
+
+Vos stagiaires ont besoin de reprendre confiance avant d'apprendre un métier. Je vous propose des modules ludiques de savoir-être et d'autonomie numérique, en sous-traitance et en marque blanche si votre contrat l'exige.
+
+Qui puis-je rencontrer ?
+
+Aurélien LUMEKA — Directeur, YEBA FORMATIONS (Qualiopi 25FOR02027.1 — NDA 04973676397)",—,Sous-traitance soft skills / numérique,—,Sous-traitance,Oui.,Non.,À contacter,,,—
