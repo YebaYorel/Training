@@ -14,12 +14,14 @@ def presentation():
         ["Raison sociale", f"{O['nom']} — {O['forme']}"],
         ["SIRET", O["siret"]],
         ["Déclaration d'activité", f"NDA {O['nda']} — préfet de région de La Réunion"],
-        ["Certification qualité", f"Qualiopi n° {O['qualiopi']} — catégorie : actions de formation [À VÉRIFIER : autres catégories]"],
+        ["Certification qualité", f"Qualiopi n° {O['qualiopi']} ({O['certificateur']}), {O['qualiopi_validite']} — catégories : {O['qualiopi_categories']}"],
         ["Dirigeant", f"{O['dirigeant']}, fondateur, directeur et formateur"],
         ["Création", "Avril 2021"],
         ["Lieu de formation", O["lieu"]],
         ["Siège", O["siege"]],
-        ["Contact", f"{O['tel']} — {O['mail']} — {O['site']}"],
+        ["Régime de TVA", O["tva"]],
+        ["Assurance", O["assurance"]],
+        ["Contact", f"{O['tel']} — {O['mail']}"],
     ], [5, 12])
     d.h1("2. Notre mission")
     d.p("Former des professionnels réunionnais opérationnels en vente, en management et dans l'usage responsable de l'intelligence artificielle, "
@@ -46,7 +48,7 @@ def presentation():
     ])
     d.h1("6. Organisation pratique")
     d.tableau(["", ""], [["Horaires", H["journee"]], ["Pauses", H["pauses"]], ["Déjeuner", H["dejeuner"]],
-                         ["Lieu", O["lieu"]], ["Accessibilité", "[À VÉRIFIER : accès PMR du Secrétariat Center]"]], [4, 13])
+                         ["Lieu", O["lieu"]], ["Équipements", O["lieu_equipement"].capitalize()]], [4, 13])
     d.h1("7. Pièces administratives disponibles sur demande")
     d.puces(["Avis de situation INSEE / extrait RNE", "Récépissé de déclaration d'activité", "Certificat Qualiopi",
              "Attestation de vigilance URSSAF", "Attestation d'assurance", "Programmes, livret d'accueil, règlement intérieur, CGV"])
@@ -56,7 +58,7 @@ def presentation():
 
 # Indicateurs du référentiel national qualité : (n°, libellé abrégé, applicabilité, preuves YEBA)
 INDICATEURS = [
-    (1, "Information du public sur les prestations, délais d'accès et résultats", "Oui", "PRG-MEM, PRG-RPMS, PRES-01, site internet"),
+    (1, "Information du public sur les prestations, délais d'accès et résultats", "Oui", "PRG-MEM, PRG-RPMS, PRES-01, CGV YEBA-DOC-03, site internet"),
     (2, "Indicateurs de résultats publiés", "Oui", "PIL-03 (indicateurs), page résultats du site"),
     (3, "Taux d'obtention des certifications", "Oui", "PIL-03, PRG (résultats nationaux puis YEBA)"),
     (4, "Analyse du besoin du bénéficiaire", "Oui", "FI-01, POS-02 (compte rendu d'entretien)"),
@@ -64,39 +66,40 @@ INDICATEURS = [
     (6, "Contenus et modalités adaptés aux objectifs", "Oui", "DP-MEM, DP-RPMS"),
     (7, "Adéquation du contenu aux exigences de la certification", "Oui", "REAC-MEM, REAC-RPMS (correspondance CP / modules / épreuves)"),
     (8, "Positionnement à l'entrée", "Oui", "POS-02"),
-    (9, "Information sur les conditions de déroulement", "Oui", "LIV-MEM, LIV-RPMS, CONVOC-16, RI-06"),
+    (9, "Information sur les conditions de déroulement", "Oui", "LIV-MEM, LIV-RPMS, CONVOC-16, YEBA-DOC-04 et avenant RI-06"),
     (10, "Adaptation de la prestation, accompagnement et suivi", "Oui", "ABS-13, LIAI-17, bilan de mi-parcours (T6)"),
     (11, "Évaluation de l'atteinte des objectifs", "Oui", "Évaluations formatives (à concevoir avec les supports), épreuves blanches T5"),
     (12, "Engagement des bénéficiaires et prévention des abandons", "Oui", "ABS-13, PIL-03 (absences)"),
     (13, "Coordination centre / entreprise en alternance", "Oui (périodes en entreprise)", "GPE-MEM, GPE-RPMS, PAE-14"),
-    (14, "Exercice de la citoyenneté (apprentis)", "Non (CFA uniquement)", "—"),
-    (15, "Droits et devoirs des apprentis", "Non (CFA uniquement)", "—"),
+    (14, "Exercice de la citoyenneté (apprentis)", "Non (apprentis)", "—"),
+    (15, "Droits et devoirs des apprentis", "Non (apprentis)", "—"),
     (16, "Conditions de présentation à la certification", "Oui", "PRG, LIV (épreuves et productions), AGR-03"),
-    (17, "Moyens humains, techniques et locaux", "Oui", "PRES-01, conditions de location du Secrétariat Center"),
+    (17, "Moyens humains, techniques et locaux", "Oui", "PRES-01, fiche site tiers YEBA-DOC-15 remplie pour le Secrétariat Center"),
     (18, "Coordination des intervenants", "Oui", "Planning des intervenants, réunions pédagogiques (comptes rendus)"),
     (19, "Ressources pédagogiques mises à disposition", "Oui", "Supports de cours (à produire)"),
-    (20, "Référents mobilité, handicap, conseil de perfectionnement (CFA)", "Non (CFA uniquement)", "—"),
+    (20, "Référents mobilité, handicap, conseil de perfectionnement (CFA)", "Non (apprentis)", "—"),
     (21, "Compétences des intervenants", "Oui", "CV, diplômes et certifications des formateurs"),
-    (22, "Développement des compétences des intervenants", "Oui", "Plan de formation des formateurs, attestations"),
+    (22, "Développement des compétences des intervenants", "Oui", "Plan de formation des formateurs, charte IA YEBA-DOC-11 signée"),
     (23, "Veille légale et réglementaire", "Oui", "Registre de veille (textes, arrêtés des titres)"),
     (24, "Veille sur les emplois, métiers et compétences", "Oui", "Registre de veille (REAC, données emploi)"),
     (25, "Veille sur les innovations pédagogiques et technologiques", "Oui", "Registre de veille (IA, outils)"),
-    (26, "Accueil des personnes en situation de handicap", "Oui", "HAND-12, référent handicap certifié"),
-    (27, "Respect du référentiel en cas de sous-traitance", "Si sous-traitance", "Contrats de sous-traitance, clause RGPD"),
+    (26, "Accueil des personnes en situation de handicap", "Oui", "YEBA-DOC-08, HAND-12, convention ou contact Agefiph / RHF"),
+    (27, "Respect du référentiel en cas de sous-traitance", "Si sous-traitance", "Convention de sous-traitance YEBA-DOC-07"),
     (28, "Mobilisation des acteurs du milieu professionnel (alternance)", "Oui (périodes en entreprise)", "Vivier d'entreprises d'accueil, GPE"),
-    (29, "Insertion professionnelle (CFA)", "Non (CFA uniquement)", "—"),
+    (29, "Insertion professionnelle (CFA)", "Non (apprentis)", "—"),
     (30, "Recueil des appréciations des parties prenantes", "Oui", "EVAL-10"),
-    (31, "Traitement des réclamations et difficultés", "Oui", "REC-11"),
-    (32, "Mesures d'amélioration continue", "Oui", "REC-11 (registre), revue annuelle"),
+    (31, "Traitement des réclamations et difficultés", "Oui", "YEBA-DOC-09, table ALERTES & TÂCHES"),
+    (32, "Mesures d'amélioration continue", "Oui", "YEBA-DOC-09 (actions correctives), revue annuelle"),
 ]
 
 
 def matrice_qualiopi():
     d = Doc("Matrice des preuves Qualiopi", "Quel document prouve quel indicateur", code="QUA-02", paysage=True)
     d.p(f"Certificat {O['qualiopi']}. Libellés abrégés : se référer au référentiel national qualité et à son guide de lecture pour la formulation exacte. "
-        "[À VÉRIFIER : périmètre du certificat — la pièce jointe annoncée n'a pas été reçue.]")
+        f"Périmètre : {O['qualiopi_categories']} ; validité {O['qualiopi_validite']}. "
+        "Audit de surveillance à prévoir entre le 14e et le 22e mois, soit entre le 17/04/2027 et le 17/12/2027 [À VÉRIFIER avec Qualitia].")
     d.tableau(["N°", "Indicateur (libellé abrégé)", "Applicable", "Preuves dans le dossier", "Prête"],
-              [[n, lib, app, preuve, "☐" if app != "Non (CFA uniquement)" else "—"] for n, lib, app, preuve in INDICATEURS],
+              [[n, lib, app, preuve, "☐" if app != "Non (apprentis)" else "—"] for n, lib, app, preuve in INDICATEURS],
               [1.4, 9, 4.3, 9, 2])
     return d.save(f"{DOSSIER}/QUA-02_Matrice_preuves_Qualiopi.docx")
 
@@ -138,12 +141,66 @@ def checklist_examen():
     d.h1("5. Pour une convention de partenariat (option B)")
     d.cases(["Identifier les centres agréés pour le MEM et le RPMS à La Réunion", "Comparer coût par candidat, dates et lieu",
              "Signer une convention précisant : dates, coût, transmission des dossiers, rôle de chaque partie, protection des données"])
+    d.p("Le site certifié Qualiopi est le siège (9 rue Françoise Châtelain). La formation au Secrétariat Center est une salle louée : "
+        "remplir la fiche site tiers YEBA-DOC-15 et informer Qualitia lors de l'audit de surveillance [À VÉRIFIER : besoin d'extension de périmètre de site pour un centre d'examen].")
     d.rgpd(["Les dossiers des candidats transmis au centre d'examen ou à la DEETS contiennent des données personnelles : transmission sécurisée et limitée au nécessaire."])
     return d.save(f"{DOSSIER}/AGR-03_Organiser_la_session_examen.docx")
 
 
+SOCLE = [
+    ("YEBA-DOC-02", "Politique de confidentialité", "En vigueur", "Remise à l'inscription ; annexe de la convention"),
+    ("YEBA-DOC-03", "Conditions générales de vente", "Incomplet", "Annexe de la convention, avec les conditions particulières CP-05"),
+    ("YEBA-DOC-04", "Règlement intérieur", "En vigueur", "Remis avant l'entrée, avec l'avenant RI-06 ; affiché dans la salle"),
+    ("YEBA-DOC-05", "Convention de formation (formations courtes)", "Incomplet", "Remplacée par CONV-03 pour les parcours certifiants"),
+    ("YEBA-DOC-06", "Contrat particulier (formations courtes)", "Incomplet", "Remplacé par CTR-04 pour les parcours certifiants"),
+    ("YEBA-DOC-08", "Politique handicap et accessibilité", "En vigueur", "Remise à l'inscription ; complétée par HAND-12"),
+    ("YEBA-DOC-09", "Procédure de réclamation", "Incomplet", "Remise à l'entrée ; annexe de la convention"),
+    ("YEBA-DOC-11", "Charte d'usage de l'IA", "En vigueur", "Remise à l'entrée ; signée par les formateurs"),
+    ("YEBA-DOC-14", "Procédure violences, harcèlement, discriminations", "À valider", "Citée dans SST-18 ; à valider avant la 1re promotion"),
+    ("YEBA-DOC-15", "Fiche site d'accueil tiers", "En vigueur", "À remplir pour le Secrétariat Center avant la 1re session"),
+    ("YEBA-DOC-16", "Registre des traitements", "Incomplet", "À compléter avec RGPD-01"),
+    ("YEBA-DOC-17", "Attestation de fin de formation", "En vigueur", "Remise en fin de parcours (heures centre et entreprise, résultats par CCP)"),
+    ("YEBA-DOC-18", "Certificat de réalisation", "En vigueur", "Remis au financeur"),
+]
+
+ECARTS = [
+    ("Qualiopi — catégories", "Le bloc-marque de la charte et de tous les documents officiels indique « catégorie actions de formation »",
+     "Le certificat couvre les 4 catégories : mettre à jour le bloc-marque (charte, DOC-02 à DOC-18, CONFIG SYSTÈME)"),
+    ("Qualiopi — validité", "CONFIG SYSTÈME et DOC-10 indiquent une échéance au 16/02/2027",
+     "Le certificat est valable jusqu'au 16/02/2029 ; audit de surveillance entre le 17/04/2027 et le 17/12/2027"),
+    ("TVA", "DOC-05 et DOC-06 indiquent « exonération, art. 261-4-4° a du CGI »",
+     "Remplacer par « TVA non applicable — article 293 B du CGI » (règle de CONFIG SYSTÈME et des CGV)"),
+    ("Assurance", "DOC-05, article 10, garde des crochets [ASSUREUR]",
+     "Reporter les données Hiscox (police HRCP300980) déjà présentes dans CONFIG SYSTÈME et les CGV"),
+    ("Horaires", "Horaires standard 8 h 30 – 16 h 30 dans DOC-04, DOC-05, DOC-06",
+     "Conserver pour les formations courtes ; les parcours certifiants suivent 8 h 00 – 16 h 00 (avenant RI-06)"),
+    ("Délégués", "DOC-04, article 23 : « l'ensemble des formations du catalogue » dure moins de 500 heures",
+     "Ajouter les titres professionnels (plus de 500 heures) à l'article 22, ou s'appuyer sur l'avenant RI-06"),
+    ("Mention EI", "Le bloc-marque ne porte pas la mention « entrepreneur individuel »",
+     "Ajouter « EI » ou « entrepreneur individuel » sur les factures, devis, site et courriels (loi n° 2022-172)"),
+    ("Médiateur", "Aucun médiateur de la consommation désigné", "Adhérer avant toute signature d'un contrat avec un particulier"),
+    ("CPF", "CONFIG SYSTÈME : « NON éligible — aucune certification RNCP/RS »",
+     "Les titres MEM et RPMS sont des certifications RNCP : à mettre à jour dès leur publication sur Mon Compte Formation"),
+    ("Logo", "La charte désigne le fichier « logo-yeba-sans-oeil.svg » (nœud de connexion) ; le dossier utilise le logo PNG transmis",
+     "Confirmer le logo officiel ; un seul fichier pour tous les supports"),
+    ("Assurance — IA", "Exclusion « intelligence artificielle » dans les conditions particulières Hiscox",
+     "Obtenir du courtier une confirmation écrite que le module IA des parcours et le conseil sont couverts"),
+]
+
+
+def socle_et_ecarts():
+    d = Doc("Socle documentaire et écarts à corriger", "Articulation avec les documents officiels YEBA et la base Airtable", code="SOC-04", paysage=True)
+    d.p("La table « DOCUMENTS OFFICIELS YEBA » d'Airtable reste la source unique de vérité. Les documents du présent dossier la complètent "
+        "pour les parcours certifiants, sans la dupliquer.")
+    d.h1("1. Quel document officiel utiliser, et quand")
+    d.tableau(["Référence", "Document", "Statut", "Usage dans les parcours certifiants"], [list(x) for x in SOCLE], [3.4, 7.5, 3, 11.8])
+    d.h1("2. Écarts relevés le 22/10/2026")
+    d.tableau(["Sujet", "Constat", "Correction proposée"], [list(x) for x in ECARTS], [3.8, 10, 11.9])
+    return d.save(f"{DOSSIER}/SOC-04_Socle_documentaire_et_ecarts.docx")
+
+
 def tout():
-    return [presentation(), matrice_qualiopi(), checklist_examen()]
+    return [presentation(), matrice_qualiopi(), checklist_examen(), socle_et_ecarts()]
 
 
 if __name__ == "__main__":

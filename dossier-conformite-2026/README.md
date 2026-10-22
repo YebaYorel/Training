@@ -19,12 +19,18 @@ Tout « l'à-côté » de la formation (hors supports de cours, ressources et gr
 | `00_NOTE_DE_SYNTHESE` | Décisions, changements, autocritique, questions, sources |
 | `01_Reponse_DEETS` | Courriels A/B, dossier des 18 pièces (entreprise individuelle) |
 | `02_MEM`, `02_RPMS` | Programme, décorticage du référentiel, déroulé jour par jour, calendrier réel, livret d'accueil, guide de la période en entreprise |
-| `03_Parcours_stagiaire` | 18 documents, de l'inscription au suivi à 6 mois |
-| `04_RGPD_IA_Act` | Registre, information, conservation, violations, charte IA |
+| `03_Parcours_stagiaire` | 17 documents propres aux parcours certifiants, en complément des documents officiels YEBA |
+| `04_RGPD_IA_Act` | Complément au registre YEBA-DOC-16 et règles IA Act des parcours |
 | `05_Pilotage_annuel` | Plan d'actions daté, pièces par financeur, budget et trésorerie (Excel) |
-| `06_Organisme` | Présentation du centre, matrice des preuves Qualiopi, organisation de l'examen |
+| `06_Organisme` | Présentation du centre, matrice Qualiopi, organisation de l'examen, socle documentaire et écarts à corriger (SOC-04) |
 
 Chaque document existe en `.docx` (modifiable) et en `.pdf`.
+
+## Articulation avec Airtable
+
+La table « DOCUMENTS OFFICIELS YEBA » de la base Airtable reste la source unique de vérité (règlement intérieur, CGV, politiques).
+`sources/airtable_documents_officiels.json` en conserve un instantané du 22/10/2026. Le dossier applique la charte YEBA-IDENT-2026
+(texte bleu ou noir, or réservé aux filets, bloc-marque et mention de transparence IA en fin de document).
 
 ## Régénérer
 

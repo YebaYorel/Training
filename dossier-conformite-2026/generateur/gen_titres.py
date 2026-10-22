@@ -121,7 +121,7 @@ def programme(t):
     d.puces([
         "Informations collectives : au moins deux, entre 3 et 1 mois avant le démarrage.",
         "Réponse écrite à chaque candidature sous 10 jours ouvrés après l'entretien.",
-        "Inscription possible jusqu'à 10 jours ouvrés avant le démarrage, sous réserve de places et de financement.",
+        "Délai d'accès : 15 jours ouvrés minimum entre l'inscription et le démarrage, sous réserve de places et de financement.",
         "Financement CPF : respect du délai imposé par Mon Compte Formation entre la proposition et l'entrée [À VÉRIFIER : délai en vigueur].",
     ])
     d.h1("3. Objectifs de la formation")
@@ -142,7 +142,7 @@ def programme(t):
         ["Horaires", f"{H['journee']} — matin {H['matin']}, après-midi {H['apres_midi']}"],
         ["Pauses", f"{H['pauses']} ; déjeuner {H['dejeuner']}"],
         ["Lieu", O["lieu"]],
-        ["Accessibilité", "[À VÉRIFIER : accès PMR, toilettes adaptées et salle de pause du Secrétariat Center]"],
+        ["Locaux", f"{O['lieu_equipement'].capitalize()}"],
         ["Effectif", "[À COMPLÉTER : minimum et maximum, par exemple 8 à 12 stagiaires]"],
         ["Modalité", "Présentiel"],
     ], [4.5, 12.5])
@@ -156,7 +156,7 @@ def programme(t):
         "Pédagogie active : études de cas réunionnais, jeux de rôle, simulations, ateliers, travail en sous-groupes.",
         "Alternance entre le centre et l'entreprise ; les productions d'examen sont construites à partir de la période en entreprise.",
         "Supports projetés en gros caractères et contrastés, transmis en version numérique accessible.",
-        "Salle de formation équipée au Secrétariat Center [À COMPLÉTER : vidéoprojecteur, connexion, postes ou ordinateurs portables].",
+        f"Salle de formation au Secrétariat Center : {O['lieu_equipement']} ; ordinateurs portables pour les ateliers de bureautique [À COMPLÉTER : achat ou location].",
         "Formateurs : professionnels du management, du commerce et de la gestion (CV et justificatifs tenus à disposition).",
     ])
     d.h1("7. Évaluation et validation")
@@ -172,7 +172,7 @@ def programme(t):
              "Région Réunion : programme régional de formation [À VÉRIFIER : dispositif ouvert]",
              "OPCO de l'employeur : plan de développement des compétences, Pro-A, contrat de professionnalisation",
              "Transitions Pro Réunion : projet de transition professionnelle", "Agefiph : aides complémentaires"])
-    d.p("Tarif : [À COMPLÉTER : prix du parcours complet, prix par CCP, coût horaire]. TVA : [À VÉRIFIER : exonération formation professionnelle].")
+    d.p(f"Tarif : [À COMPLÉTER : prix du parcours complet, prix par CCP, coût horaire]. {O['tva']}.")
     d.h1("9. Accessibilité et handicap")
     d.p(f"Référent handicap : {O['ref_handicap']} — {O['tel']}. Un entretien confidentiel est proposé avant l'entrée pour étudier les "
         "aménagements de parcours et d'examen, avec l'Agefiph, Cap emploi et la MDPH.")
@@ -183,8 +183,8 @@ def programme(t):
     d.h1("11. Contact")
     d.p(f"{O['nom']} — {O['dirigeant']} — {O['tel']} — {O['mail']}")
     d.p(O["nda_mention"], italic=True)
-    d.rgpd(["RGPD : les données collectées à l'inscription servent uniquement à la gestion de la formation et aux obligations envers les financeurs.",
-            "IA Act : aucune décision d'admission, d'orientation ou d'évaluation n'est prise par un système d'intelligence artificielle."])
+    d.rgpd(["RGPD : les données collectées à l'inscription servent uniquement à la gestion de la formation et aux obligations envers les financeurs (politique de confidentialité YEBA-DOC-02).",
+            "IA Act : aucun système d'IA n'est utilisé pour évaluer, noter, classer ou sélectionner les stagiaires. La correction est réalisée exclusivement par le formateur."])
     return d.save(f"{_dossier(t)}/PRG-{t['code']}_Programme_de_formation.docx")
 
 
@@ -332,7 +332,7 @@ def livret(t):
     d.tableau(["Rôle", "Nom", "Contact"], [
         ["Directeur et responsable pédagogique", O["dirigeant"], O["tel"]],
         ["Référent handicap", O["dirigeant"], O["tel"]],
-        ["Formateurs", "[À COMPLÉTER]", "[À COMPLÉTER]"],
+        ["Formateurs", O["dirigeant"], O["mail"]],
         ["Données personnelles", "—", O["contact_rgpd"]],
         ["Vos délégués des stagiaires", "Élus entre la 20e et la 40e heure", "—"],
     ], [6, 5, 6])
@@ -345,7 +345,8 @@ def livret(t):
         ["Pauses", H["pauses"]],
         ["Déjeuner", H["dejeuner"]],
         ["Accès", "[À COMPLÉTER : lignes de bus, stationnement]"],
-        ["Repas", "[À COMPLÉTER : salle de pause, micro-ondes, commerces proches]"],
+        ["Équipements", O["lieu_equipement"].capitalize()],
+        ["Repas", "Salle de pause sur place ; repas interdits dans la salle de formation"],
     ], [4, 13])
     d.h1("4. Le déroulé de votre année de formation")
     d.p(f"Début : **{fmt(jours[0][0])}** — fin : **{fmt(jours[-1][0])}** — examen : **semaine du {fmt_court(s1)}** [À VÉRIFIER].")
@@ -370,6 +371,12 @@ def livret(t):
     d.p(f"Durée totale de l'épreuve : {t['session']}.")
     d.p("**À préparer avant l'examen :**")
     d.puces(t["productions"])
+    d.h2("Les documents qui vous sont remis")
+    d.puces(["Le programme et ce livret d'accueil",
+             "Le règlement intérieur (YEBA-DOC-04) et son avenant pour les parcours certifiants (RI-06)",
+             "La politique de confidentialité (YEBA-DOC-02) et la charte d'usage de l'IA (YEBA-DOC-11)",
+             "La politique handicap et accessibilité (YEBA-DOC-08) et la procédure de réclamation (YEBA-DOC-09)",
+             "La fiche « Vos droits en santé et sécurité » (SST-18)"])
     d.h1("6. Vos droits et vos devoirs")
     d.puces([
         "Être présent et ponctuel ; signer la feuille d'émargement chaque demi-journée.",
@@ -382,7 +389,7 @@ def livret(t):
     d.h1("7. Santé et sécurité")
     d.puces([
         "Consignes d'évacuation affichées dans la salle ; repérez les sorties de secours.",
-        "Alerte cyclonique orange : vous êtes informé de la suite (maintien, report ou formation à distance). Alerte rouge : les locaux sont fermés, restez chez vous.",
+        "Alerte cyclonique orange ou alerte rouge forte pluie : la session est suspendue immédiatement et vous regagnez votre domicile. Alerte rouge : aucun déplacement. La journée est reportée sans frais (règlement intérieur YEBA-DOC-04, article 5).",
         "En entreprise : respect des consignes de sécurité, port des équipements de protection, droit d'alerte et de retrait en cas de danger grave et imminent.",
         "Tout accident, même léger, est signalé immédiatement au centre.",
     ])

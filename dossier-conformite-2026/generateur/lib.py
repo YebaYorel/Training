@@ -1,7 +1,8 @@
 """Mise en forme commune des documents YEBA FORMATIONS (DOCX accessibles).
 
-Charte : bleu marine #1B3A6B, or #C9A94D (couleurs du logo), police Arial
-12 pt minimum, fort contraste, aucun texte en image. Chaque tableau est
+Charte YEBA-IDENT-2026 : bleu #1B3A6B pour les titres, noir #121212 pour le texte,
+or #C9A84C réservé aux filets et aplats (jamais de texte or sur fond blanc),
+Arial 12 pt minimum, interligne 1,3, bloc-marque normalisé en fin de document. Chaque tableau est
 contrôlé : si un mot ne tient pas dans sa colonne (mot coupé à l'affichage),
 la génération s'arrête avec la liste des cellules fautives.
 """
@@ -22,29 +23,39 @@ LOGO = RACINE / "assets" / "logo_yeba_formations.png"
 SORTIE = RACINE / "livrables"
 
 BLEU = RGBColor(0x1B, 0x3A, 0x6B)
-OR = RGBColor(0xC9, 0xA9, 0x4D)
-OR_FONCE = RGBColor(0x8A, 0x6D, 0x1F)  # or assombri : lisible sur fond blanc (contraste AA)
+OR = RGBColor(0xC9, 0xA8, 0x4C)
+NOIR = RGBColor(0x12, 0x12, 0x12)  # corps de texte (charte YEBA-IDENT-2026)
+GRIS = RGBColor(0x5A, 0x5F, 0x6A)  # mentions secondaires
 BLANC = RGBColor(0xFF, 0xFF, 0xFF)
-BLEU_HEX, OR_HEX = "1B3A6B", "C9A94D"
+BLEU_HEX, OR_HEX = "1B3A6B", "C9A84C"
 FOND_BLEU, FOND_OR = "E8EEF7", "FBF6E9"
 
 ORGANISME = {
     "nom": "YEBA FORMATIONS",
-    "forme": "Entreprise individuelle",
+    "forme": "Entrepreneur individuel (EI)",
     "siret": "814 622 262 00032",
     "siren": "814 622 262",
     "nda": "04973676397",
-    "nda_mention": ("Déclaration d'activité enregistrée sous le n° 04973676397 auprès du préfet de région de "
-                    "La Réunion. Cet enregistrement ne vaut pas agrément de l'État."),
+    "nda_mention": ("Déclaration d'activité n° 04973676397 auprès du Préfet de La Réunion. "
+                    "Cet enregistrement ne vaut pas agrément de l'État."),
     "qualiopi": "25FOR02027.1",
+    "qualiopi_validite": "du 17/02/2026 au 16/02/2029, sous réserve de l'audit de surveillance",
+    "qualiopi_categories": ("actions de formation, bilans de compétences, actions permettant de faire valider les acquis "
+                            "de l'expérience, actions de formation par apprentissage"),
+    "certificateur": "Qualitia (accrédité COFRAC)",
     "dirigeant": "Aurélien LUMEKA",
+    "siege": "9 rue Françoise Châtelain, bâtiment A, entrée 1, porte 0042, 97490 Sainte-Clotilde (Saint-Denis)",
+    "siege_court": "9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion",
     "lieu": "Secrétariat Center — 7 rue Henri Cornu — 97490 Saint-Denis",
-    "siege": "[À COMPLÉTER : adresse du siège si différente du lieu de formation]",
-    "tel": "[À COMPLÉTER : téléphone]",
-    "mail": "[À COMPLÉTER : e-mail de contact]",
-    "site": "[À COMPLÉTER : site internet]",
+    "lieu_equipement": "entrée accessible aux personnes à mobilité réduite, sanitaires, salle de pause, vidéoprojecteur et tableau",
+    "tel": "0693 32 24 45",
+    "mail": "yebaformations@gmail.com",
     "ref_handicap": "Aurélien LUMEKA, référent handicap certifié",
-    "contact_rgpd": "[À COMPLÉTER : e-mail dédié aux données personnelles]",
+    "contact_rgpd": "yebaformations@gmail.com",
+    "tva": "TVA non applicable — article 293 B du code général des impôts",
+    "assurance": ("HISCOX SA (succursale France, 49 avenue de l'Opéra, 75002 Paris), par l'intermédiaire de Add Value Assurances — "
+                  "police n° HRCP300980 — responsabilité civile professionnelle 100 000 € par année d'assurance ; responsabilité civile "
+                  "exploitation 10 000 000 € par sinistre — validité du 10/09/2026 au 09/09/2027 — monde entier, sauf États-Unis et Canada"),
 }
 
 HORAIRES = {
@@ -122,12 +133,12 @@ def _runs(par, texte, bold=False, color=None, size=None):
             if size:
                 r.font.size = Pt(size)
             if PLACEHOLDER.fullmatch(sous) and not sous.startswith("_"):
-                r.bold, r.italic = True, True
-                r.font.color.rgb = OR_FONCE
+                r.bold, r.italic, r.underline = True, True, True
+                r.font.color.rgb = BLEU
 
 
 class Doc:
-    def __init__(self, titre, sous_titre="", code="", paysage=False, couverture=False, version="2026-10"):
+    def __init__(self, titre, sous_titre="", code="", paysage=False, couverture=False, version="2026-10-v3"):
         self.titre, self.code, self.version = titre, code, version
         self.paysage = paysage
         self.d = Document()
@@ -144,9 +155,10 @@ class Doc:
         st.font.name = "Arial"
         st.element.rPr.rFonts.set(qn("w:eastAsia"), "Arial")
         st.font.size = Pt(12)
+        st.font.color.rgb = NOIR
         st.paragraph_format.space_after = Pt(6)
-        st.paragraph_format.line_spacing = 1.15
-        for niv, taille, coul in ((1, 20, BLEU), (2, 16, BLEU), (3, 14, OR_FONCE)):
+        st.paragraph_format.line_spacing = 1.3
+        for niv, taille, coul in ((1, 20, BLEU), (2, 16, BLEU), (3, 14, BLEU)):
             h = self.d.styles[f"Heading {niv}"]
             h.font.name, h.font.size, h.font.bold = "Arial", Pt(taille), True
             h.font.color.rgb = coul
@@ -201,7 +213,7 @@ class Doc:
         if sous_titre:
             p = self.d.add_paragraph()
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            _runs(p, sous_titre, bold=True, color=OR_FONCE, size=16)
+            _runs(p, sous_titre, bold=True, color=BLEU, size=16)
         self.filet()
         for ligne in (ORGANISME["lieu"], f"SIRET {ORGANISME['siret']}  •  NDA {ORGANISME['nda']}  •  Qualiopi {ORGANISME['qualiopi']}"):
             p = self.d.add_paragraph()
@@ -214,7 +226,7 @@ class Doc:
         _runs(p, titre, bold=True, color=BLEU, size=22)
         if sous_titre:
             p = self.d.add_paragraph()
-            _runs(p, sous_titre, color=OR_FONCE, size=14, bold=True)
+            _runs(p, sous_titre, color=BLEU, size=14, bold=True)
         self.filet()
 
     def filet(self):
@@ -346,7 +358,31 @@ class Doc:
     def saut(self):
         self.d.add_page_break()
 
+    def bloc_marque(self):
+        """Bloc-marque normalisé (charte YEBA-IDENT-2026, § 4) et mention de transparence IA (§ 7)."""
+        self.filet()
+        o = ORGANISME
+        for i, ligne in enumerate([
+            f"{o['nom']} — {o['dirigeant']}, entrepreneur individuel (EI), directeur",
+            o["siege_court"],
+            f"Tél. {o['tel']} — {o['mail']}",
+            f"SIRET {o['siret']}",
+            o["nda_mention"],
+            f"Certification Qualiopi n° {o['qualiopi']} délivrée au titre des catégories : {o['qualiopi_categories']} — "
+            f"organisme certificateur {o['certificateur']}.",
+            f"Référent handicap : {o['dirigeant']} — {o['mail']}. Document disponible en 16 points sur simple demande.",
+        ]):
+            par = self.d.add_paragraph()
+            par.paragraph_format.space_after = Pt(0)
+            par.paragraph_format.keep_with_next = True
+            _runs(par, ligne, bold=(i == 0), color=BLEU if i == 0 else NOIR, size=10)
+        par = self.d.add_paragraph()
+        par.paragraph_format.space_before = Pt(6)
+        _runs(par, "Ce document a été conçu par le formateur avec l'assistance d'un système d'IA générative (règlement (UE) 2024/1689, "
+                   "art. 50). Son contenu a été vérifié et validé par un humain, qui en assume la responsabilité.", color=GRIS, size=9)
+
     def save(self, chemin_rel):
+        self.bloc_marque()
         out = SORTIE / chemin_rel
         out.parent.mkdir(parents=True, exist_ok=True)
         self.d.save(out)

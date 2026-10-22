@@ -35,10 +35,17 @@ def jalons():
     """Plan d'actions daté de l'organisme, de novembre 2026 à la fin de la promotion RPMS."""
     out = [
         (dt.date(2026, 10, 30), "DEETS", "Envoyer la réponse version A à la DEETS (date limite pratique : vendredi 30 octobre 2026)"),
-        (dt.date(2026, 11, 6), "Qualité", "Vérifier le périmètre et la date d'audit de surveillance du certificat Qualiopi 25FOR02027.1"),
+        (dt.date(2026, 11, 6), "Qualité", "Corriger dans Airtable les écarts listés dans SOC-04 (catégories et validité Qualiopi, TVA, assurance, mention EI)"),
+        (dt.date(2026, 11, 13), "Assurance", "Faire confirmer par écrit au courtier ELASSUR que le module IA et le conseil sont couverts (exclusion « intelligence artificielle »)"),
+        (dt.date(2026, 11, 27), "Fiscalité", "Avec l'expert-comptable : seuil de franchise de TVA applicable à La Réunion et demande de l'attestation 3511-SD avant les premières recettes des parcours"),
+        (dt.date(2026, 12, 11), "Juridique", "Désigner un médiateur de la consommation (obligatoire avant tout contrat avec un particulier)"),
+        (dt.date(2027, 1, 15), "Handicap", "Formaliser une convention ou un contact référencé avec l'Agefiph Océan Indien ou la Ressource Handicap Formation"),
+        (dt.date(2027, 2, 12), "Locaux", "Remplir la fiche site tiers YEBA-DOC-15 pour le Secrétariat Center (sécurité, évacuation, accessibilité)"),
+        (dt.date(2027, 3, 15), "Qualité", "Préparer l'audit de surveillance Qualiopi (fenêtre du 17/04/2027 au 17/12/2027) : matrice QUA-02, preuves de la promotion MEM"),
+        (dt.date(2027, 7, 9), "Assurance", "Décider du renouvellement de la RC Pro Hiscox (échéance 10/09/2027, préavis de 2 mois)"),
         (dt.date(2026, 11, 13), "Référentiels", "Obtenir le REAC et le référentiel d'évaluation RPMS millésime 08 (DEETS ou ministère du Travail)"),
         (dt.date(2026, 11, 20), "Examen", "Décider : agrément de centre d'examen ou partenariat avec un centre agréé (document AGR-03)"),
-        (dt.date(2026, 11, 27), "Locaux", "Réserver au Secrétariat Center les journées de la promotion MEM ; vérifier accessibilité, sanitaires, salle de pause"),
+        (dt.date(2026, 11, 27), "Locaux", "Réserver au Secrétariat Center les 80 journées de la promotion MEM (100 € par jour)"),
         (dt.date(2026, 11, 30), "Sécurité", "Plan de continuité cyclonique : contacts, formation à distance, procédure d'information des stagiaires"),
     ]
     for code, p in PROMOTIONS.items():
@@ -93,13 +100,13 @@ def doc_plan():
 SOCLE = [
     "Avis de situation INSEE ou extrait RNE de moins de 3 mois (entreprise individuelle)",
     f"Récépissé de déclaration d'activité (NDA {O['nda']})",
-    f"Certificat Qualiopi en cours de validité ({O['qualiopi']}) et périmètre (catégories)",
+    f"Certificat Qualiopi {O['qualiopi']} (valable jusqu'au 16/02/2029, 4 catégories dont apprentissage)",
     "Attestation de vigilance URSSAF de moins de 6 mois (obligatoire pour tout contrat d'au moins 5 000 € HT)",
     "Attestation de régularité fiscale (marchés publics)",
-    "Attestation d'assurance responsabilité civile professionnelle",
+    "Attestation d'assurance responsabilité civile professionnelle Hiscox n° HRCP300980 (valable jusqu'au 09/09/2027)",
     "RIB au nom de l'entreprise",
     "Dernier bilan pédagogique et financier déposé",
-    "Attestation d'exonération de TVA [À VÉRIFIER]",
+    "Mention « TVA non applicable — article 293 B du CGI » ; attestation 3511-SD si elle est obtenue",
     "CV et justificatifs des formateurs ; contrats de sous-traitance",
     "Conditions de location du Secrétariat Center (lieu de formation)",
     "Programme, livret d'accueil, règlement intérieur, CGV, procédures handicap et réclamations",
@@ -188,6 +195,9 @@ def _budget(wb, code):
     ws["A1"].font = Font(size=14, bold=True, name="Arial", color="1B3A6B")
     ws["A2"] = "Cases beiges = à saisir. Cases bleues = calculées."
     ws["A2"].font = Font(size=11, italic=True, name="Arial")
+    ws["A3"] = ("TVA : franchise en base (art. 293 B du CGI). Si le chiffre d'affaires annuel dépasse le seuil de franchise, "
+                "la formation reste sans TVA uniquement avec l'attestation 3511-SD — à voir avec l'expert-comptable.")
+    ws["A3"].font = Font(size=11, italic=True, name="Arial", color="1B3A6B")
     _entete(ws, 4, ["Hypothèses", "Valeur", "Commentaire"])
     hyp = [
         ("Nombre de stagiaires", 10, "Saisir l'effectif prévu", SAISIE_F, "0"),

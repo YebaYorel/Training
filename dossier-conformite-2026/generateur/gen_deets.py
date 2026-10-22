@@ -20,7 +20,7 @@ def courriels():
         "Madame,",
         "Je vous remercie pour notre échange téléphonique et pour la liste des pièces nécessaires à l'instruction d'une extension de notre déclaration d'activité à l'apprentissage (article L.6351-5 du code du travail).",
         f"Après analyse, {O['nom']} (entreprise individuelle, SIRET {O['siret']}, NDA {O['nda']}) a décidé de développer en priorité son activité de formation professionnelle continue, notamment des parcours certifiants préparant aux titres professionnels du ministère du Travail (Manager d'établissement marchand — RNCP41853, Responsable de petite ou moyenne structure — RNCP38575), à destination des demandeurs d'emploi et des salariés, en lien avec France Travail et les Missions Locales.",
-        "Je vous informe donc que je ne donne pas suite, à ce stade, à la demande d'extension à l'apprentissage. Je vous solliciterai de nouveau lorsque l'ensemble des conditions (moyens dédiés, locaux, accompagnement des apprentis, extension de la certification Qualiopi) seront réunies.",
+        "Je vous informe donc que je ne donne pas suite, à ce stade, à la demande d'extension à l'apprentissage. Je vous solliciterai de nouveau lorsque l'ensemble des moyens dédiés à l'apprentissage (accompagnement des apprentis, relations entreprises, locaux) seront réunis. Notre certification Qualiopi n° 25FOR02027.1, délivrée le 17/02/2026, couvre déjà la catégorie « actions de formation par apprentissage ».",
         "Par ailleurs, pourriez-vous me confirmer le service à contacter pour l'agrément permettant d'organiser des sessions de validation des titres professionnels (article R.338-8 du code de l'éducation et arrêté du 21 juillet 2016), ainsi que les délais d'instruction pratiqués à La Réunion ?",
         "Je reste à votre disposition et vous prie d'agréer, Madame, mes salutations distinguées.",
         f"{O['dirigeant']}\nDirecteur — {O['nom']}\n{O['tel']}",
@@ -31,7 +31,7 @@ def courriels():
         "Madame,",
         "Suite à notre entretien téléphonique et à votre courriel du 20 octobre 2026, je vous prie de trouver ci-joint les pièces nécessaires à l'instruction de la modification de notre déclaration d'activité afin d'étendre notre activité à l'apprentissage (article L.6351-5 du code du travail).",
         "Le dossier comprend 18 pièces numérotées selon l'ordre de votre courriel (bordereau joint). Les pièces signalées « à transmettre après la première promotion » le seront à l'issue de celle-ci.",
-        "Je vous informe également que l'extension de notre certification Qualiopi à la catégorie « actions de formation par apprentissage » est [À COMPLÉTER : engagée auprès de l'organisme certificateur / prévue le …].",
+        "Notre certification Qualiopi n° 25FOR02027.1 (Qualitia, valable du 17/02/2026 au 16/02/2029) couvre déjà la catégorie « actions de formation par apprentissage » ; le certificat est joint.",
         "Je reste à votre disposition et vous prie d'agréer, Madame, mes salutations distinguées.",
         f"{O['dirigeant']}\nDirecteur — {O['nom']}",
     ]:
@@ -54,7 +54,7 @@ PIECES = [
         "Bail (ou convention de mise à disposition / contrat de location de salle), attestation d'assurance des locaux, plan des locaux.",
         "Photos datées : salles de formation, toilettes, salle de pause / restauration, accès PMR, affichage sécurité et consignes cycloniques.",
         "Registre public d'accessibilité de l'établissement recevant du public (ERP) et attestation d'accessibilité [À VÉRIFIER : catégorie ERP].",
-        "Lieu actuel : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis, loué à la journée (100 € par jour). Joindre le contrat ou les conditions de location et une attestation du bailleur décrivant la salle, les sanitaires et l'espace de pause [À COMPLÉTER : surface, capacité, accessibilité].",
+        "Siège et site certifié Qualiopi : 9 rue Françoise Châtelain, bâtiment A, entrée 1, porte 0042, 97490 Sainte-Clotilde. Lieu de formation : Secrétariat Center, 7 rue Henri Cornu, 97490 Saint-Denis, loué à la journée (100 € par jour). Joindre le contrat ou les conditions de location et une attestation du bailleur décrivant la salle, les sanitaires et l'espace de pause [À COMPLÉTER : surface, capacité, accessibilité].",
         "Vigilance : une location à la journée peut être jugée insuffisante pour un CFA (accueil permanent des apprentis). Elle convient à la formation continue."]),
     ("Titres et qualités des formateurs", [
         "Pour chaque intervenant : CV daté et signé, diplômes et certifications, justificatifs d'expérience professionnelle dans le métier visé (au moins [À COMPLÉTER] ans), contrat de travail ou de prestation.",
@@ -108,7 +108,7 @@ def dossier_18():
     d.p("Bordereau et contenu des notices, dans l'ordre exact du courriel de la DEETS. Chaque notice est un document signé et daté par le dirigeant.")
     d.tableau(["N°", "Pièce", "État"], [[str(i + 1), p[0], "☐ prête   ☐ à compléter"] for i, p in enumerate(PIECES)], [1.2, 11, 4.8])
     d.encadre("Points de vigilance avant tout envoi", [
-        "Qualiopi : la certification doit couvrir la catégorie « actions de formation par apprentissage » — extension à demander à votre certificateur (audit).",
+        "Qualiopi : bonne nouvelle, le certificat 25FOR02027.1 couvre déjà la catégorie « actions de formation par apprentissage ». Joindre le certificat.",
         "Moyens : la DEETS vérifiera l'existence réelle des moyens décrits (salarié dédié, locaux, partenariats). Ne décrivez que ce qui existe ou est contractualisé.",
         "Le financement de l'apprentissage repose sur les niveaux de prise en charge (NPEC) versés par les OPCO, par échéances : vérifiez le calendrier de versement et l'impact des ruptures sur votre trésorerie [À VÉRIFIER : règles 2026].",
     ])
