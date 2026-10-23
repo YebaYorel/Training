@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalogue YEBA 2026</title>
+<meta name="description" content="YEBA FORMATIONS — Catalogue 2026 : formations IA, automatisation, RGPD & IA Act, vente & management, et offre d'automatisation clé en main.">
+<style>
+/* Polices système uniquement (aucun CDN : pas de transfert d'IP du lecteur hors UE). */
+:root{
+  --bg:#060b15; --navy:#0a1628; --card:#0c1c33; --card2:#0f2340; --line:#1f3456;
+  --gold:#e6c36a; --gold2:#f6dc95; --cyan:#35c9f2; --cyan2:#8fe3ff; --text:#eef3fa; --muted:#a9b8cd;
+  --head:"Montserrat","Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --mono:"JetBrains Mono","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:19px;line-height:1.55;overflow-x:hidden}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+a{color:var(--cyan2)}
+.wrap{max-width:1280px;margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{font-family:var(--head);font-weight:800;line-height:1.12}
+.kicker{font-family:var(--mono);font-size:15px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.c{color:var(--cyan)} .g{color:var(--gold)}
+
+/* ---------- Couverture ---------- */
+#cover{min-height:100vh;display:grid;grid-template-columns:minmax(320px,.9fr) 1.1fr;background:#0d0d10;position:relative;overflow:hidden}
+#cover .left{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;gap:26px;position:relative;z-index:2}
+#cover .left img{width:230px}
+#cover h1{font-size:clamp(44px,5.6vw,78px);line-height:1.05}
+#cover h1 span{display:block;opacity:0;transform:translateX(-30px);animation:in .8s cubic-bezier(.2,.8,.2,1) forwards}
+#cover h1 span:nth-child(1){animation-delay:.3s}#cover h1 span:nth-child(2){animation-delay:.5s}#cover h1 span:nth-child(3){animation-delay:.7s;color:var(--gold)}#cover h1 span:nth-child(4){animation-delay:.9s}
+@keyframes in{to{opacity:1;transform:none}}
+#cover ul{list-style:none;display:grid;gap:10px;font-size:20px;font-weight:600}
+#cover li{display:flex;align-items:center;gap:12px;opacity:0;animation:in .6s forwards}
+#cover li:nth-child(1){animation-delay:1.1s}#cover li:nth-child(2){animation-delay:1.2s}#cover li:nth-child(3){animation-delay:1.3s}#cover li:nth-child(4){animation-delay:1.4s}
+.dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 12px currentColor;background:currentColor;flex:none}
+#cover .right{position:relative;background:url(assets/cover.jpg) center/cover;animation:kb 18s ease-in-out infinite alternate}
+#cover .right:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0d0d10 0,rgba(13,13,16,.2) 30%,transparent 60%)}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.foot{font-family:var(--mono);font-size:14px;letter-spacing:.2em;color:var(--muted)}
+
+/* ---------- Navigation collante + légende ---------- */
+#nav{position:sticky;top:0;z-index:40;background:rgba(6,11,21,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+#nav .wrap{display:flex;align-items:center;gap:10px;min-height:64px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+#nav a.p{text-decoration:none;color:var(--text);font-weight:700;font-size:16px;padding:8px 12px;border-radius:8px;border-bottom:3px solid transparent}
+#nav a.p:hover,#nav a.p.act{background:var(--card)}
+#nav a.p.cy.act{border-bottom-color:var(--cyan)} #nav a.p.go.act{border-bottom-color:var(--gold)}
+#nav a.offer{margin-left:auto;text-decoration:none;background:var(--gold);color:#081120;font:800 16px var(--head);padding:10px 16px;border-radius:999px}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--muted);padding:6px 0 10px}
+.badge{display:inline-flex;align-items:center;gap:6px;font:800 12.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;border-radius:6px}
+.badge.f{background:rgba(255,255,255,.08);color:var(--text);border:1px solid #3a5278}
+.badge.f:before{content:"";width:9px;height:9px;border-radius:2px;background:var(--text)}
+.badge.a{background:var(--gold);color:#081120}
+.badge.a:before{content:"⚡"}
+.badge.k{background:rgba(53,201,242,.16);color:var(--cyan2);border:1px solid rgba(53,201,242,.5)}
+.badge.k:before{content:"◆"}
+
+section{padding:80px 0;position:relative}
+.sec-head{display:grid;grid-template-columns:330px 1fr;gap:40px}
+.sec-side{position:sticky;top:150px;align-self:start}
+.sec-side .ico{font-size:54px;line-height:1}
+.sec-side h2{font-size:clamp(38px,4vw,52px);margin:10px 0 14px}
+.sec-side p{color:var(--muted);font-size:19px}
+.sec-side ul{list-style:none;margin-top:18px;display:grid;gap:8px;color:var(--muted);font-size:16.5px}
+.sec-side li:before{content:"■ ";color:var(--accent,var(--cyan))}
+.bar{position:absolute;top:0;left:0;height:5px;width:22%;background:var(--accent,var(--cyan))}
+
+/* ---------- Sommaire ---------- */
+#sommaire h2{font-size:clamp(38px,4.6vw,58px)}
+.poles{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:30px}
+.pole{display:block;text-decoration:none;color:var(--text);background:var(--card);border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:14px;padding:24px;transition:transform .25s,box-shadow .25s}
+.pole:hover{transform:translateY(-6px);box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.pole .n{font-family:var(--mono);color:var(--accent);font-size:15px}
+.pole h3{font-size:28px;margin:6px 0 8px}
+.pole p{color:var(--muted);font-size:17px}
+.pole ul{list-style:none;margin:12px 0;display:grid;gap:5px;font-size:17px}
+.pole li:before{content:"– ";color:var(--accent)}
+.pole .bottom{display:flex;justify-content:space-between;gap:10px;font:700 13.5px var(--mono);letter-spacing:.08em;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
+.proofs{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.proofs span{border:1px solid rgba(230,195,106,.45);padding:7px 12px;border-radius:6px;font-size:16px}
+.proofs b{color:var(--gold)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px;max-width:640px}
+.stats strong{display:block;font:900 38px var(--head);color:var(--gold)}
+.stats span{color:var(--muted);font-size:15.5px}
+
+/* ---------- Cartes formation ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}
+.fc{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.fc .top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:700 14px var(--mono);color:var(--accent)}
+.fc .dur{margin-left:auto;border:1px solid var(--line);padding:4px 9px;border-radius:6px;color:var(--text);font-size:13.5px}
+.new{background:var(--cyan);color:#081120;padding:3px 8px;border-radius:5px;font-size:12px}
+.fc h3{font-size:27px}
+.fc .sub{color:var(--accent);font-size:18px;margin-top:-4px}
+.lbl{font:700 13px var(--mono);letter-spacing:.2em;color:var(--muted);text-transform:uppercase;margin-top:4px}
+.fc p,.fc li{font-size:17.5px}
+.fc ul{list-style:none;display:grid;gap:6px}
+.fc li{padding-left:18px;position:relative}
+.fc li:before{content:"";position:absolute;left:0;top:.7em;width:9px;height:3px;background:var(--accent)}
+.prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto;padding-top:8px}
+.prices div{border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(0,0,0,.18)}
+.prices strong{display:block;font:900 32px var(--head);color:var(--gold)}
+.prices span{font-size:14.5px;color:var(--muted)}
+.fund{display:flex;flex-wrap:wrap;gap:6px}
+.fund span{font:700 12.5px var(--mono);letter-spacing:.06em;background:rgba(255,255,255,.07);padding:4px 8px;border-radius:5px;color:#cfd9e8}
+.extra{font-size:15px;color:var(--muted)}
+
+/* ---------- Bloc Automatisation clé en main ---------- */
+.auto{margin-top:46px;border-radius:20px;border:2px solid var(--gold);background:radial-gradient(ellipse at 0 0,rgba(230,195,106,.16),transparent 60%),radial-gradient(ellipse at 100% 100%,rgba(53,201,242,.12),transparent 60%),var(--navy);padding:34px;position:relative;overflow:hidden}
+.auto:after{content:"";position:absolute;inset:-2px;border-radius:20px;pointer-events:none;background:linear-gradient(110deg,transparent 30%,rgba(246,220,149,.25) 50%,transparent 70%);background-size:250% 100%;animation:sheen 5s linear infinite}
+@keyframes sheen{from{background-position:150% 0}to{background-position:-100% 0}}
+.auto h3{font-size:clamp(30px,3.4vw,42px);margin:10px 0 8px}
+.auto .lead{color:var(--muted);font-size:19px;max-width:820px}
+.diag{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin:24px 0;padding:18px 22px;border-radius:14px;background:rgba(230,195,106,.12);border:1px dashed var(--gold)}
+.diag strong{font:900 46px var(--head);color:var(--gold)}
+.diag .stamp{margin-left:auto;background:var(--gold);color:#081120;font:900 18px var(--head);padding:10px 14px;border-radius:10px;transform:rotate(-3deg)}
+.ptable{width:100%;border-collapse:collapse;margin-top:10px}
+.ptable caption{text-align:left;font:800 21px var(--head);padding:18px 0 8px;color:var(--text)}
+.ptable caption .badge{margin-left:8px;vertical-align:middle}
+.ptable th,.ptable td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);font-size:17.5px;vertical-align:top}
+.ptable th{font:700 13px var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.ptable td.pr{text-align:right;font:900 24px var(--head);color:var(--gold);white-space:nowrap}
+.ptable td small{display:block;color:var(--muted);font-size:15px}
+.ptable tr.hot td{background:rgba(230,195,106,.07)}
+.cta{display:inline-block;margin-top:22px;background:var(--gold);color:#081120;text-decoration:none;font:800 19px var(--head);padding:14px 26px;border-radius:999px;box-shadow:0 10px 36px rgba(230,195,106,.35)}
+
+/* ---------- Déroulé ---------- */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-top:30px}
+.flow div{position:relative;padding-top:58px}
+.flow b{position:absolute;top:0;left:0;width:44px;height:44px;border:2px solid var(--gold);color:var(--gold);display:grid;place-items:center;font:800 19px var(--head)}
+.flow div:not(:last-child):after{content:"";position:absolute;top:22px;left:52px;right:-8px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--gold));transform-origin:left;transform:scaleX(0);transition:transform 1s .3s}
+.flow.on div:after{transform:scaleX(1)}
+.flow h4{font-size:21px;margin-bottom:6px}
+.flow p{color:var(--muted);font-size:16.5px}
+.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.infos div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+.infos h4{font:700 14px var(--mono);letter-spacing:.2em;color:var(--gold);margin-bottom:8px;text-transform:uppercase}
+.infos p{font-size:17.5px}
+
+/* ---------- Tarifs ---------- */
+.tt{width:100%;border-collapse:collapse}
+.tt th,.tt td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left;font-size:17.5px}
+.tt th{font:700 13px var(--mono);letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.tt td.n{text-align:right;font:900 21px var(--head);color:var(--gold);white-space:nowrap}
+.tt th.n{text-align:right}
+.tt tr.grp td{font:800 21px var(--head);padding-top:26px;border-bottom:none}
+.tt code{font:600 13px var(--mono);color:var(--muted);margin-right:8px}
+.tarif-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:start}
+.tarif-grid>*{min-width:0}
+.boxed{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--card)}
+.boxed.gold{border:2px solid var(--gold)}
+
+/* ---------- Contact ---------- */
+#contact{padding:0}
+#contact .hero{height:62vh;min-height:360px;background:url(assets/corridor.jpg) center/cover;display:grid;place-items:center;position:relative}
+#contact .hero img{width:min(320px,60vw);filter:drop-shadow(0 0 30px rgba(143,227,255,.6));animation:glow 3s ease-in-out infinite alternate}
+@keyframes glow{to{filter:drop-shadow(0 0 60px rgba(246,220,149,.85))}}
+.contact{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px;padding:34px 0;align-items:center}
+.contact strong{font:800 30px var(--head);color:var(--gold)}
+.legal{color:var(--muted);font-size:14px;padding-bottom:40px;line-height:1.6}
+
+/* ---------- Animations d'apparition ---------- */
+.rv{opacity:0;transform:translateY(28px) scale(.98);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.on{opacity:1;transform:none}
+.cards .rv:nth-child(2){transition-delay:.12s}.cards .rv:nth-child(3){transition-delay:.24s}
+
+@media (max-width:980px){
+  #cover{grid-template-columns:1fr}#cover .right{min-height:46vh;order:-1}
+  .sec-head,.tarif-grid{grid-template-columns:1fr}.sec-side{position:static}
+  .flow{grid-template-columns:1fr 1fr}.flow div:after{display:none}
+  .infos,.contact{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:18px}.wrap{padding:0 16px}#cover .left{padding:40px 16px}
+  .stats{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}
+  .ptable th:nth-child(2),.ptable td:nth-child(2),#tt th:nth-child(2),#tt td:nth-child(2){display:none}
+  .tt td,.tt th{padding:10px 6px;font-size:16px}.tt td.n{font-size:18px}.tt code{display:block}
+  #nav a.p{padding:6px 8px;font-size:15px}
+  .auto{padding:22px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .rv,#cover h1 span,#cover li{opacity:1!important;transform:none!important}
+}
+@media print{
+  #nav{display:none}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .rv,#cover h1 span,#cover li{opacity:1!important;transform:none!important}
+  section,.fc,.auto{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header id="cover">
+  <div class="left">
+    <img src="assets/logo.png" alt="YEBA FORMATIONS">
+    <div class="kicker">Catalogue des formations · 2026</div>
+    <h1><span>Former.</span><span>Automatiser.</span><span>Protéger.</span><span>Vendre.</span></h1>
+    <ul>
+      <li><i class="dot c"></i>IA</li>
+      <li><i class="dot g"></i>Automatisation <span class="badge a" style="margin-left:6px">Nouveau : offre clé en main</span></li>
+      <li><i class="dot c"></i>RGPD & IA Act</li>
+      <li><i class="dot g"></i>Vente & Management</li>
+    </ul>
+    <div class="foot">LA RÉUNION · 974 &nbsp;|&nbsp; <span class="g">QUALIOPI</span> · ACTIONS DE FORMATION</div>
+  </div>
+  <div class="right" role="img" aria-label="Couloir lumineux de données"></div>
+</header>
+
+<nav id="nav" aria-label="Pôles du catalogue">
+  <div class="wrap">
+    <a class="p" href="#sommaire">Sommaire</a>
+    <a class="p cy" href="#ia">01 · IA</a>
+    <a class="p go" href="#automatisation">02 · Automatisation</a>
+    <a class="p cy" href="#rgpd">03 · RGPD & IA Act</a>
+    <a class="p go" href="#vente">04 · Vente & Management</a>
+    <a class="p" href="#tarifs">Tarifs</a>
+    <a class="offer" href="#cle-en-main">⚡ Automatisation clé en main</a>
+  </div>
+  <div class="wrap legend" aria-label="Légende">
+    <span><span class="badge f">Formation</span> finançable OPCO</span>
+    <span><span class="badge a">Automatisation</span> nous le faisons pour vous</span>
+    <span><span class="badge k">Conseil</span> audit et gouvernance</span>
+  </div>
+</nav>
+
+<main>
+<section id="sommaire">
+  <div class="wrap">
+    <div class="kicker rv">Sommaire</div>
+    <h2 class="rv">Quatre pôles. <span class="g">Un seul interlocuteur.</span></h2>
+    <p class="rv" style="color:var(--muted);max-width:760px;margin-top:12px">De la formation au conseil, le même formateur vous accompagne du diagnostic à la mise en œuvre : en vente et management comme en intelligence artificielle et en gouvernance des données.</p>
+    <div class="poles">
+      <a class="pole rv" href="#ia" style="--accent:var(--cyan)"><span class="n">01</span><h3>IA</h3><p>Gagner du temps avec l'IA générative, en sécurité.</p>
+        <ul><li>IA générative au travail</li><li>IA souveraine</li><li>Séminaire dirigeants IA</li><li>Site internet IA</li><li>Emailing IA</li><li>Copilot Microsoft 365</li></ul>
+        <div class="bottom"><span><span class="badge f">6 formations</span></span><span>DÈS 790 €</span></div></a>
+      <a class="pole rv" href="#automatisation" style="--accent:var(--gold)"><span class="n">02</span><h3>Automatisation</h3><p>Relier ses outils, déléguer aux agents, sous contrôle humain.</p>
+        <ul><li>Automatisation sans code (n8n)</li><li>Agents IA</li><li><strong>Automatisation clé en main</strong></li></ul>
+        <div class="bottom"><span><span class="badge f">2 formations</span> <span class="badge a">Clé en main</span></span><span>DÈS 590 €</span></div></a>
+      <a class="pole rv" href="#rgpd" style="--accent:var(--cyan)"><span class="n">03</span><h3>RGPD & IA Act</h3><p>Sécuriser ses usages et prouver les mesures prises.</p>
+        <ul><li>Conformité RGPD & IA Act</li><li>Audit & conseil en gouvernance</li></ul>
+        <div class="bottom"><span><span class="badge f">1 formation</span> <span class="badge k">Audit</span></span><span>DÈS 100 €</span></div></a>
+      <a class="pole rv" href="#vente" style="--accent:var(--gold)"><span class="n">04</span><h3>Vente & Management</h3><p>Vendre sans brader, encadrer sans s'épuiser.</p>
+        <ul><li>Vente & négociation</li><li>Manager au quotidien</li><li>Format intra</li></ul>
+        <div class="bottom"><span><span class="badge f">2 formations</span></span><span>DÈS 690 €</span></div></a>
+    </div>
+    <div class="kicker rv" style="margin-top:40px;color:var(--muted)">Preuves de compétence</div>
+    <div class="proofs rv"><span><b>Qualiopi</b> · actions de formation</span><span><b>Anthropic</b> · 5 certifications</span><span><b>Google</b> AI ×2</span><span><b>ANSSI</b> SecNumacadémie</span><span><b>CNIL</b> MOOC RGPD</span><span><b>Référent</b> handicap</span></div>
+    <div class="stats rv"><div><strong>7 h</strong><span>par journée</span></div><div><strong>6 à 8</strong><span>stagiaires</span></div><div><strong>15 j</strong><span>ouvrés d'accès</span></div><div><strong>70 %</strong><span>de pratique</span></div></div>
+  </div>
+</section>
+
+<section id="ia" style="--accent:var(--cyan)"><div class="bar"></div>
+  <div class="wrap sec-head">
+    <aside class="sec-side rv"><div class="kicker c">Pôle 01</div><div class="ico" aria-hidden="true">☀</div><h2>Intelligence artificielle</h2><p>Gagner du temps chaque jour avec l'IA générative, sans exposer vos données et en gardant la main.</p>
+      <ul><li>Outils américains et européens enseignés à parité</li><li>Aucune commission d'éditeur</li><li>Ateliers sur vos vrais dossiers</li></ul></aside>
+    <div class="cards" data-pole="ia"></div>
+  </div>
+</section>
+
+<section id="automatisation" style="--accent:var(--gold)"><div class="bar"></div>
+  <div class="wrap sec-head">
+    <aside class="sec-side rv"><div class="kicker">Pôle 02</div><div class="ico g" aria-hidden="true">⚡</div><h2>Automa&shy;tisation</h2><p>Supprimer les tâches répétitives, puis déléguer à des agents, toujours sous contrôle humain.</p>
+      <ul><li>Workflows sans code (n8n)</li><li>Agents avec point d'arrêt humain</li><li>Ou : nous le faisons pour vous</li></ul></aside>
+    <div>
+      <div class="cards" data-pole="auto"></div>
+
+      <div class="auto rv" id="cle-en-main">
+        <span class="badge a">Automatisation clé en main</span> <span class="badge k">Prestation · hors financement formation</span>
+        <h3>Nous concevons, hébergeons en France et surveillons <span class="g">vos workflows.</span></h3>
+        <p class="lead">n8n installé sur un serveur OVHcloud en France, ouvert à votre nom. Vous êtes propriétaire de tout ; nous assurons la mise en place et le suivi.</p>
+        <div class="diag"><strong>100 €</strong><div><b>Diagnostic express · 30 min</b><br><span style="color:var(--muted)">Rapport écrit sous 48 heures ouvrées</span></div><span class="stamp">100 % DÉDUIT dès le devis signé</span></div>
+
+        <table class="ptable">
+          <caption>Création de workflows <span class="badge a">Paiement unique</span></caption>
+          <thead><tr><th>Formule</th><th>Exemple</th><th style="text-align:right">Prix HT</th></tr></thead>
+          <tbody>
+            <tr><td><b>Flash</b><small>1 outil · 1 déclencheur · ≈ 5 j ouvrés</small></td><td>Formulaire → e-mail de confirmation</td><td class="pr">590 €</td></tr>
+            <tr class="hot"><td><b>Standard ★</b><small>2 à 4 outils, conditions · ≈ 10 j ouvrés</small></td><td>Dossier → tableur → relance des pièces → alerte équipe</td><td class="pr">1 490 €</td></tr>
+            <tr><td><b>Avancé · IA</b><small>IA européenne + validation humaine · ≈ 3 sem.</small></td><td>E-mails triés et résumés → brouillon → validation humaine</td><td class="pr">2 990 €</td></tr>
+            <tr><td><b>Sur mesure</b><small>Plusieurs services ou sites, agents</small></td><td>De l'inscription à la facturation, sur 2 sites</td><td class="pr">dès 4 900 €</td></tr>
+          </tbody>
+        </table>
+        <table class="ptable">
+          <caption>Mise en service <span class="badge a">Une seule fois</span></caption>
+          <tbody>
+            <tr><td><b>Installation serveur souverain</b><small>OVHcloud France à votre nom · HTTPS · pare-feu · 2FA · sauvegarde chiffrée</small></td><td>Hébergement payé directement à OVHcloud, ≈ 8 à 20 € HT/mois</td><td class="pr">690 €</td></tr>
+            <tr><td><b>Audit & cartographie des processus</b><small>Sur site, service par service · feuille de route chiffrée</small></td><td>Demi-journée : 490 €</td><td class="pr">850 € / j</td></tr>
+          </tbody>
+        </table>
+        <table class="ptable">
+          <caption>Maintenance & supervision <span class="badge k">Mensuel · 3 mois puis sans engagement</span></caption>
+          <tbody>
+            <tr><td><b>Essentiel</b><small>Jusqu'à 3 workflows</small></td><td>Surveillance auto 24 h/24 · sauvegarde quotidienne · panne sous 2 j ouvrés</td><td class="pr">89 € / mois</td></tr>
+            <tr class="hot"><td><b>Sérénité ★</b><small>Jusqu'à 10 workflows</small></td><td>+ 2 h d'évolutions/mois · J+1 ouvré · rapport du temps gagné</td><td class="pr">189 € / mois</td></tr>
+            <tr><td><b>Premium</b><small>Illimité (usage raisonnable)</small></td><td>+ 5 h d'évolutions/mois · jour même ouvré · revue RGPD & IA Act trimestrielle</td><td class="pr">349 € / mois</td></tr>
+          </tbody>
+        </table>
+        <p class="extra" style="margin-top:14px">Corrections incluses 30 jours après chaque livraison · contrat de sous-traitance RGPD (art. 28) · workflows exportés et remis au client · consommation d'IA et abonnements tiers au réel.</p>
+        <a class="cta" href="offre-automatisation.html">Voir l'offre Automatisation complète →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rgpd" style="--accent:var(--cyan)"><div class="bar"></div>
+  <div class="wrap sec-head">
+    <aside class="sec-side rv"><div class="kicker c">Pôle 03</div><div class="ico c" aria-hidden="true">🛡</div><h2>RGPD<br>& IA Act</h2><p>Sécuriser vos usages des données et de l'IA, et pouvoir prouver les mesures prises.</p>
+      <ul><li>Registre, charte IA, réflexes cyber</li><li>Qualification IA Act : interdit, haut risque, transparence</li></ul></aside>
+    <div class="cards" data-pole="rgpd"></div>
+  </div>
+</section>
+
+<section id="vente" style="--accent:var(--gold)"><div class="bar"></div>
+  <div class="wrap sec-head">
+    <aside class="sec-side rv"><div class="kicker">Pôle 04</div><div class="ico g" aria-hidden="true">↗</div><h2>Vente & Management</h2><p>Les fondamentaux qui font tourner une TPE : vendre au juste prix, encadrer avec méthode.</p>
+      <ul><li>Mises en situation sur vos cas réels</li><li>Aucun ordinateur nécessaire</li></ul></aside>
+    <div class="cards" data-pole="vente"></div>
+  </div>
+</section>
+
+<section id="deroule">
+  <div class="wrap">
+    <div class="kicker rv">Comment ça se passe</div>
+    <h2 class="rv" style="font-size:clamp(34px,4.2vw,52px)">De votre premier appel <span class="g">au suivi après formation.</span></h2>
+    <div class="flow rv">
+      <div><b>1</b><h4>Diagnostic</h4><p>Un échange pour analyser votre besoin, vos outils et vos contraintes.</p></div>
+      <div><b>2</b><h4>Devis & convention</h4><p>Devis nominatif valable 30 jours, puis convention ; programme remis avant l'inscription.</p></div>
+      <div><b>3</b><h4>Positionnement</h4><p>Un test avant la formation, pour adapter les ateliers au niveau de chacun.</p></div>
+      <div><b>4</b><h4>Formation</h4><p>30 % d'apports, 70 % de pratique, sur vos situations réelles.</p></div>
+      <div><b>5</b><h4>Évaluation</h4><p>Évaluation des acquis, attestation de fin de formation.</p></div>
+      <div><b>6</b><h4>Suivi</h4><p>Évaluation à froid, et suivi à J+30 selon la formation.</p></div>
+    </div>
+    <div class="infos">
+      <div class="rv"><h4>Horaires</h4><p>08h30–12h00 · 13h00–16h30, soit 7 heures par journée.</p></div>
+      <div class="rv"><h4>Effectif</h4><p>6 stagiaires minimum, 8 maximum, en inter comme en intra. En deçà de 6 : report ; remboursement intégral si l'effectif n'est pas atteint un mois après.</p></div>
+      <div class="rv"><h4>Lieu & délai</h4><p>Lieu communiqué par le formateur 15 jours avant la formation. Délai d'accès : 15 jours ouvrés minimum.</p></div>
+      <div class="rv"><h4>Financement</h4><p>OPCO et plan de développement des compétences, selon les règles de votre branche ; autres financeurs selon la formation. Nous montons le dossier avec vous.</p></div>
+      <div class="rv"><h4>Handicap</h4><p>Référent handicap : Aurélien LUMEKA. Besoin d'aménagement étudié dès l'inscription. Supports en corps 16 gratuits.</p></div>
+      <div class="rv"><h4>RGPD & IA Act</h4><p>Données des stagiaires limitées à la gestion de la formation. Aucun système d'IA n'évalue, ne note ni ne classe les stagiaires : la correction est faite par le formateur.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap tarif-grid">
+    <div class="rv">
+      <div class="kicker">Tarifs en un coup d'œil</div>
+      <h2 style="font-size:clamp(34px,4vw,50px);margin:10px 0 16px">Prix par jour. <span class="g">Nets de taxe.</span></h2>
+      <p style="color:var(--muted);margin-bottom:20px">TVA non applicable, article 293 B du code général des impôts. Inter : par stagiaire et par jour. Intra : par groupe et par jour, pour 6 à 8 participants d'une même entreprise.</p>
+      <table class="tt" id="tt">
+        <thead><tr><th>Formation <span class="badge f" style="margin-left:6px">finançable</span></th><th>Durée</th><th class="n">Inter</th><th class="n">Intra</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="rv">
+      <div class="boxed gold">
+        <span class="badge a">Automatisation clé en main</span>
+        <table class="tt" style="margin-top:10px">
+          <tbody>
+            <tr><td>Diagnostic express · 30 min <small style="display:block;color:var(--gold)">100 % déduit dès le devis signé</small></td><td class="n">100 €</td></tr>
+            <tr><td>Workflow Flash</td><td class="n">590 €</td></tr>
+            <tr><td>Workflow Standard</td><td class="n">1 490 €</td></tr>
+            <tr><td>Workflow Avancé · IA</td><td class="n">2 990 €</td></tr>
+            <tr><td>Sur mesure</td><td class="n">dès 4 900 €</td></tr>
+            <tr><td>Installation serveur souverain</td><td class="n">690 €</td></tr>
+            <tr><td>Maintenance Essentiel</td><td class="n">89 €/mois</td></tr>
+            <tr><td>Maintenance Sérénité</td><td class="n">189 €/mois</td></tr>
+            <tr><td>Maintenance Premium</td><td class="n">349 €/mois</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="boxed" style="margin-top:18px">
+        <span class="badge k">Conseil · audit · gouvernance</span>
+        <table class="tt" style="margin-top:10px"><tbody>
+          <tr><td>Demi-journée</td><td class="n">490 €</td></tr>
+          <tr><td>Journée</td><td class="n">850 €</td></tr>
+        </tbody></table>
+        <p class="extra" style="margin-top:10px">Prestations de conseil et d'automatisation : hors financement de la formation. Séminaire dirigeants : prix par dirigeant, hébergement en sus au réel. Tarifs au 23/10/2026.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="hero"><img src="assets/logo.png" alt="YEBA FORMATIONS"></div>
+  <div class="wrap contact">
+    <div><div class="kicker">Contact</div><strong>Aurélien LUMEKA</strong><div class="foot" style="margin-top:6px">DIRECTEUR · FORMATEUR & CONSULTANT IA</div></div>
+    <div><span class="kicker c" style="letter-spacing:.1em">TEL</span> +262 693 32 24 45<br><span class="kicker c" style="letter-spacing:.1em">WEB</span> www.yebaformations.re</div>
+    <div><span class="kicker c" style="letter-spacing:.1em">MAIL</span> <a href="mailto:yebaformations@gmail.com">yebaformations@gmail.com</a><br><span class="kicker c" style="letter-spacing:.1em">ADR</span> 9 rue Françoise Châtelain, 97490 Sainte-Clotilde</div>
+  </div>
+  <div class="wrap legal">YEBA FORMATIONS — Aurélien LUMEKA, directeur · 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion · Tél. 0693 32 24 45 · yebaformations@gmail.com · SIRET 814 622 262 00032 · Déclaration d'activité n° 04973676397 auprès du Préfet de La Réunion. Cet enregistrement ne vaut pas agrément de l'État. Certification Qualiopi n° 25FOR02027.1 délivrée au titre de la catégorie actions de formation — organisme certificateur Qualitia (accrédité COFRAC). Référent handicap : Aurélien LUMEKA — yebaformations@gmail.com<br><em>Ce document a été conçu par le formateur avec l'assistance d'un système d'IA générative (règlement (UE) 2024/1689, art. 50). Son contenu a été vérifié et validé par un humain, qui en assume la responsabilité.</em></div>
+</section>
+</main>
+
+<script>
+var F=[
+ {p:'ia',code:'FOR-0011',d:'2 j · 14 h',t:'IA générative au travail',s:'Gagner du temps chaque jour, en sécurité et avec des preuves',qui:"Tout salarié, manager, dirigeant ou indépendant qui utilise, ou va utiliser, l'IA générative dans son travail.",
+  vs:["Expliquer ce que fait un modèle de langage, et ce qu'il ne fait pas","Formuler une demande complète : rôle, contexte, format, contrainte","Trier l'information : je saisis · j'anonymise · je ne saisis jamais","Détecter une réponse fausse ou inventée, et tracer la vérification"],
+  plus:"Dossier de preuve des mesures IA pour l'entreprise · classe virtuelle de suivi à J+30",pre:"Savoir utiliser un navigateur et une messagerie ; compte professionnel sur l'outil d'IA de l'employeur.",inter:790,intra:2400,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'ia',code:'FOR-0015',nw:1,d:'2 j · 14 h',t:'IA souveraine',s:'Faire tourner l\'IA sur ses propres machines, sans donnée sortante',qui:"Dirigeants, responsables informatiques et référents IA de TPE-PME qui traitent des données sensibles : cabinets, santé, RH, bureaux d'études.",
+  vs:["Distinguer modèle local et modèle distant, et ce que chacun expose","Installer un moteur local et faire répondre un modèle sur son poste","Démontrer, réseau coupé, qu'aucune donnée ne quitte la machine","Choisir le modèle que son matériel peut réellement porter"],
+  plus:"La preuve par le câble : démonstration réseau coupé, conduite par le stagiaire",pre:"Usage courant de l'IA générative ; poste avec droits d'administration (16 Go de mémoire recommandés).",inter:890,intra:2700,fin:['OPCO','Plan de développement']},
+ {p:'ia',code:'FOR-0014',d:'2 j · résidentiel',t:'Séminaire dirigeants IA',s:'Choisir les 3 tâches que l\'IA fera pour vous',qui:"Dirigeants de TPE-PME de 3 à 50 salariés. Huis clos, un dirigeant par entreprise, jamais deux concurrents directs.",
+  vs:["Identifier les 3 tâches qui libèrent le plus de temps, chiffrées en heures par mois","Qualifier chaque tâche au regard de l'IA Act","Fixer le niveau d'autonomie acceptable selon le coût de l'erreur","Repartir avec le plan d'agents de son entreprise"],
+  plus:"Plan d'agents écrit de deux pages, présenté au groupe",pre:"Venir avec ses 5 tâches les plus chronophages, son chiffre d'affaires, son effectif et ses outils.",inter:990,intra:2900,il:'inter / dirigeant / jour',extra:'Hébergement en sus, au réel',fin:['OPCO','Plan de développement']},
+ {p:'ia',code:'FOR-0009',d:'1 j · 7 h',t:'Site internet IA',s:'Créer son site en le décrivant à voix haute',qui:"Dirigeants de TPE, artisans, commerçants et indépendants sans site, ou dépendants de leur prestataire pour la moindre modification.",
+  vs:["Dicter un cahier des charges exploitable","Piloter à la voix un outil de génération de site","Vérifier chaque contenu : textes, tarifs, coordonnées","Publier un site conforme : mentions légales, confidentialité, traceurs, accessibilité"],
+  plus:"Chaque stagiaire repart avec son site en ligne",pre:"Usage courant d'un ordinateur ; venir avec son projet réel (activité, tarifs, photos).",inter:790,intra:2500,fin:['OPCO','Plan de développement','Région','France Travail','AIF']},
+ {p:'ia',code:'FOR-0010',d:'1 j · 7 h',t:'Emailing IA',s:'Rédiger des courriels et des séquences qui obtiennent une réponse',qui:"Dirigeants, indépendants, commerciaux, fonctions administratives et chargés de communication.",
+  vs:["Constituer une base de contacts conforme au RGPD","Rédiger avec l'IA un courriel qui obtient une réponse","Concevoir une séquence et régler son rythme","Mesurer et corriger : ouverture, clic, désinscription"],
+  plus:"Fichier assaini et segmenté, et sa fiche de registre « prospection »",pre:"Messagerie et tableur simple ; venir avec son fichier, un courriel déjà envoyé et son offre.",inter:790,intra:2500,fin:['OPCO','Plan de développement','Région','AIF']},
+ {p:'ia',code:'FOR-0006',d:'2 j · 14 h',t:'Copilot Microsoft 365',s:'L\'IA dans Word, Excel, Outlook et Teams : méthode des 4 P',qui:"Salariés et dirigeants équipés de Microsoft 365 qui produisent chaque semaine documents, analyses et courriels.",
+  vs:["Périmètre : savoir ce que l'assistant voit, à partir des droits en place","Prompt : formuler une demande complète en désignant ses sources","Production : documents, tableaux et courriels sur ses vrais dossiers","Preuve : vérifier et documenter le résultat"],
+  plus:"Ateliers sur les documents réels de l'entreprise",pre:"Licence Copilot nominative active et documents professionnels réels, vérifiés par écrit 5 jours ouvrés avant.",inter:790,intra:2500,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'auto',code:'FOR-0002',d:'2 j · 14 h',t:'Automatisation sans code',s:'Relier ses outils et supprimer les tâches répétitives (n8n)',qui:"Dirigeants de TPE-PME, indépendants et fonctions administratives qui veulent gagner du temps et fiabiliser leurs processus.",
+  vs:["Repérer les tâches répétitives qui méritent d'être automatisées","Concevoir un workflow : déclencheur → conditions → actions","Mettre en place une automatisation (formulaire → base → e-mail)","Sécuriser les données et respecter le RGPD ; mesurer le temps gagné"],
+  plus:"On vient avec une tâche répétitive réelle, on repart avec son automatisation",pre:"Usage courant des outils bureautiques et du web. Aucune compétence en développement.",inter:990,intra:2900,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'auto',code:'FOR-0013',d:'2 j · 14 h',t:'Agents IA',s:'Déléguer des tâches à l\'IA sous contrôle humain · niveau avancé',qui:"Dirigeants, responsables informatiques, référents IA et chefs de projet à l'usage avancé de l'IA générative.",
+  vs:["Distinguer assistant, agent et système multi-agents","Mettre en service un agent qui exécute une tâche de bout en bout","Chaîner deux agents avec un point de contrôle humain obligatoire","Fixer le niveau d'autonomie acceptable"],
+  plus:"Kit de gouvernance des agents · procédure d'arrêt d'urgence testée · revue à J+30",pre:"Usage avancé de l'IA (ou « IA générative au travail ») ; accepter de travailler dans un terminal.",inter:990,intra:2900,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'rgpd',code:'FOR-0003',d:'1 j · 7 h',t:'Conformité RGPD & IA Act',s:'Sécuriser ses usages de l\'IA et prouver les mesures prises',qui:"Dirigeants, responsables administratifs et tout salarié qui manipule des données personnelles : RH, commercial, gestion.",
+  vs:["Identifier les données personnelles et les traitements soumis au RGPD","Appliquer les 6 principes clés : licéité, minimisation, exactitude, conservation, sécurité, responsabilité","Constituer et tenir à jour le registre des traitements","Prévenir les menaces cyber : hameçonnage, rançongiciel, mots de passe faibles","Réagir à une violation de données : mesures conservatoires, notification CNIL sous 72 h","Qualifier ses usages de l'IA au regard de l'IA Act et rédiger la charte d'usage de l'IA"],
+  plus:"Registre des traitements démarré en séance",pre:"Aucun prérequis technique.",inter:690,intra:2100,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'rgpd',kind:'conseil',code:'CONSEIL',d:'sur devis',t:'Audit & conseil en gouvernance',s:'Vos traitements et vos usages de l\'IA passés en revue, avec un plan d\'actions',qui:"Dirigeants et responsables de TPE-PME qui veulent faire le point sur leurs traitements de données personnelles et leurs usages de l'IA.",
+  rows:[['Diagnostic express · 30 min','100 €'],['Demi-journée','490 €'],['Journée','850 €']],
+  cadre:"Diagnostic express : environ 30 minutes d'échange, rapport sous 48 heures ouvrées. Lorsque nous traitons des données pour votre compte, un contrat de sous-traitance (RGPD, art. 28) est conclu. Diagnostic déduit de la prestation suivante. Prestation de conseil, hors financement de la formation."},
+ {p:'vente',code:'FOR-0004',d:'1 j · 7 h',t:'Vente & négociation',s:'Découvrir le besoin, argumenter et conclure sans brader',qui:"Créateurs d'entreprise, indépendants, commerciaux débutants, et toute personne amenée à vendre.",
+  vs:["Dérouler les étapes d'un entretien de vente","Mener une découverte par un questionnement structuré","Construire une proposition de valeur adaptée au besoin","Traiter les objections, conclure et organiser le suivi"],
+  plus:"Fiche de préparation réutilisable pour tout rendez-vous",pre:"Aucun. Venir avec un produit ou un service que l'on vend réellement.",inter:690,intra:2100,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'vente',code:'FOR-0008',d:'1 j · 7 h',t:'Manager au quotidien',s:'Cadrer, déléguer et recadrer son équipe de proximité',qui:"Encadrants de proximité, chefs d'équipe, responsables de rayon ou de service, dirigeants de TPE qui encadrent directement.",
+  vs:["Poser un cadre clair : règles, objectifs, priorités","Déléguer : objectif, moyens, échéance, points de contrôle","Conduire un recadrage factuel, sans dévaloriser","Désamorcer une tension ; conduire un point individuel"],
+  plus:"Charte d'équipe en une page",pre:"Exercer, ou s'apprêter à exercer, une fonction d'encadrement direct.",inter:790,intra:2400,fin:['OPCO','Plan de développement','France Travail','AIF','Région']},
+ {p:'vente',kind:'intra',code:'FORMAT INTRA',d:'dans vos murs',t:'Toute l\'équipe, en une fois',s:'Une session dédiée à votre entreprise, dans vos locaux ou en salle louée',
+  calc:true,incl:["Supports individuels, livret ressource et grille critériée","Évaluations, correction et attestation de fin de formation","Suivi administratif complet : convention, convocations, émargements","Évaluation à chaud et à froid"]}
+];
+function eur(n){return n.toLocaleString('fr-FR').replace(/ /g,' ')+' €';}
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+function card(f){
+  var b=f.kind==='conseil'?'<span class="badge k">Conseil</span>':'<span class="badge f">Formation</span>';
+  var h='<article class="fc rv"><div class="top">'+b+'<span>'+esc(f.code)+'</span>'+(f.nw?'<span class="new">NOUVEAU</span>':'')+'<span class="dur">'+esc(f.d)+'</span></div><h3>'+esc(f.t)+'</h3><div class="sub">'+esc(f.s)+'</div>';
+  if(f.qui)h+='<div class="lbl">Pour qui</div><p>'+esc(f.qui)+'</p>';
+  if(f.vs)h+='<div class="lbl">Vous saurez</div><ul>'+f.vs.map(function(v){return'<li>'+esc(v)+'</li>';}).join('')+'</ul>';
+  if(f.plus)h+='<div class="lbl">Le + YEBA</div><p>'+esc(f.plus)+'</p>';
+  if(f.pre)h+='<div class="lbl">Prérequis</div><p>'+esc(f.pre)+'</p>';
+  if(f.rows)h+='<table class="tt" style="margin-top:6px"><tbody>'+f.rows.map(function(r){return'<tr><td>'+r[0]+'</td><td class="n">'+r[1]+'</td></tr>';}).join('')+'</tbody></table><p class="extra">'+esc(f.cadre)+'</p>';
+  if(f.calc)h+='<div class="lbl">Le calcul</div><div class="prices"><div><span>6 inscrits en inter</span><strong>4 140 €</strong></div><div><span>1 groupe en intra</span><strong>2 100 €</strong></div></div><p class="extra">Exemple : Vente & négociation, 1 jour. L\'intra réunit 6 à 8 participants d\'une même entreprise, au prix du groupe.</p><div class="lbl">Ce qui est inclus</div><ul>'+f.incl.map(function(v){return'<li>'+esc(v)+'</li>';}).join('')+'</ul>';
+  if(f.inter)h+='<div class="prices"><div><strong>'+eur(f.inter)+'</strong><span>'+(f.il||'inter / stagiaire / jour')+'</span></div><div><strong>'+eur(f.intra)+'</strong><span>intra / groupe / jour</span></div></div>'+(f.extra?'<p class="extra">'+f.extra+'</p>':'')+'<div class="fund">'+f.fin.map(function(x){return'<span>'+x.toUpperCase()+'</span>';}).join('')+'</div>';
+  return h+'</article>';
+}
+document.querySelectorAll('[data-pole]').forEach(function(el){el.innerHTML=F.filter(function(f){return f.p===el.dataset.pole;}).map(card).join('');});
+var groups={ia:'IA',auto:'Automatisation',rgpd:'RGPD & IA Act',vente:'Vente & Management'},rows='',last='';
+F.forEach(function(f){if(!f.inter)return;if(f.p!==last){rows+='<tr class="grp"><td colspan="4" class="'+(f.p==='ia'||f.p==='rgpd'?'c':'g')+'">'+groups[f.p]+'</td></tr>';last=f.p;}
+  rows+='<tr><td><code>'+f.code+'</code>'+f.t+'</td><td>'+f.d+'</td><td class="n">'+eur(f.inter)+'</td><td class="n">'+eur(f.intra)+'</td></tr>';});
+document.querySelector('#tt tbody').innerHTML=rows;
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+var links=[].slice.call(document.querySelectorAll('#nav a.p'));
+var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(function(s){so.observe(s);});
+</script>
+</body>
+</html>
