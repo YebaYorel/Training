@@ -40,7 +40,7 @@ CHANTIERS est la table centrale : chaque chantier est relié à **1 client**, se
 ## 5. Chefs de chantier (3 binômes)
 
 - Sur le téléphone : ouvrir le **formulaire « Rapport terrain »** (lien en favori), choisir le chantier, son nom, l'avancement, dicter les notes, ajouter les photos, cocher « Problème » si besoin. **1 minute.**
-- Page **Terrain – Mes étapes** : filtrer par chantier ou par responsable, voir les étapes à faire et celles en retard.
+- Interface **NEOBATI – Terrain (artisans)**, page **Terrain – Mes étapes** : filtrer par chantier ou par responsable, voir les étapes à faire et celles en retard.
 - Un email arrive à chaque nouvelle affectation (S6).
 - Interdits : photos de documents personnels du client, informations de santé dans les notes.
 

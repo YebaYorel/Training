@@ -21,7 +21,7 @@ Format de chaque réponse : **Technique** (ce que j'ai fait, avec les mots du m�
 
 ## Q4. Comment avez-vous limité la consommation Make ?
 
-**Technique** — 1 module exécuté = 1 opération. (1) Webhooks au lieu du polling : ≈ 610 opérations/mois au lieu de ≈ 9 250, et le script Airtable envoie toutes les données utiles dans le webhook (pas de relecture). (2) Calculs faits par les **formules Airtable** (gratuites), pas par Make. (3) **Filtres** en début de scénario, sur des champs déjà calculés (« Alerte devis = À relancer »). (4) **Agrégateur de texte** : 1 email de synthèse au lieu d'un par chantier. (5) Planification à 8 h les jours ouvrés seulement (22 exécutions/mois). (6) Case « Traité par Make » : anti-doublon.
+**Technique** — 1 module exécuté = 1 opération. (1) Webhooks au lieu du polling : ≈ 620 opérations/mois au lieu de ≈ 9 260, et le script Airtable envoie toutes les données utiles dans le webhook (pas de relecture). (2) Calculs faits par les **formules Airtable** (gratuites), pas par Make. (3) **Filtres** en début de scénario, sur des champs déjà calculés (« Alerte devis = À relancer »). (4) **Agrégateur de texte** : 1 email de synthèse au lieu d'un par chantier. (5) Planification à 8 h les jours ouvrés seulement (22 exécutions/mois). (6) Case « Traité par Make » : anti-doublon.
 **Simple** — Le facteur ne se déplace que s'il y a vraiment du courrier, et il met toutes les lettres du patron dans une seule enveloppe.
 
 ## Q5. Comment gérez-vous les erreurs ?
@@ -46,7 +46,7 @@ Format de chaque réponse : **Technique** (ce que j'ai fait, avec les mots du m�
 
 ## Q9. Comment sécurisez-vous les accès ?
 
-**Technique** — Comptes **nominatifs** au domaine du client, **2FA** obligatoire, rôles au moindre privilège (artisans : formulaire + page Terrain en lecture), **Personal Access Token** Airtable limité aux scopes `data.records:read/write` et `schema.bases:read` et à **une seule base**, jeton secret dans le corps des webhooks (filtre Make), aucun secret écrit en clair dans les modules, gestionnaire de mots de passe, procédure de départ d'un salarié. *Référence : ANSSI, Guide d'hygiène informatique.*
+**Technique** — Comptes **nominatifs** au domaine du client, **2FA** obligatoire, rôles au moindre privilège (artisans : formulaire + interface Terrain séparée, sans accès aux marges), **Personal Access Token** Airtable limité aux scopes `data.records:read/write` et `schema.bases:read` et à **une seule base**, jeton secret dans le corps des webhooks (filtre Make), aucun secret écrit en clair dans les modules, gestionnaire de mots de passe, procédure de départ d'un salarié. *Référence : ANSSI, Guide d'hygiène informatique.*
 **Simple** — Chaque personne a sa clé, il faut aussi un code reçu sur le téléphone, et chacun n'ouvre que les portes dont il a besoin.
 
 ## Q10. Comment le client devient-il autonome après votre départ ?

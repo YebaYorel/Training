@@ -13,15 +13,18 @@ title: "Dossier d'examen NEOBATI — sommaire"
 | 5 | `05_Implementation_chez_le_client` | Schéma d'architecture, matériel, comptes au nom du client, cybersécurité, autonomie |
 | 6 | `06_Scenarios_Make` | Connexion à Make, fiches S0 à S6, prompts, budget d'opérations |
 | 7 | `07_Guide_utilisateur` | Guide par rôle + maintenance (livrable du sujet) |
+| 8 | `08_Chiffres_et_pourquoi` | Les chiffres de l'annexe pas à pas ; pourquoi Airtable, Make, les liens, rollups et formules |
+| 9 | `09_Failles_cybersecurite` | Audit de sécurité Airtable + Make (document sensible, hors dépôt public) |
 
 ## Ce qui est construit dans Airtable
 
 - Base **« NEOBATI – Gestion des chantiers (v2 examen) »** : https://airtable.com/app66nfSc639ML85K
-- Interface **NEOBATI – Pilotage** (publiée) : pages Direction, Administratif, Terrain.
+- Interface **NEOBATI – Pilotage** (publiée) : pages Direction et Administratif (bureau uniquement).
+- Interface **NEOBATI – Terrain (artisans)** (publiée) : page « Terrain – Mes étapes », sans aucune donnée financière.
 - Formulaires (créés **non publiés**, à relire puis publier) :
   - Nouvelle demande client : https://airtable.com/app66nfSc639ML85K/pagTGm4R3utpnTan3/edit
   - Rapport terrain : https://airtable.com/app66nfSc639ML85K/pagsoyynNuAxgALyV/edit
-- Données de démonstration fictives (emails en `example.com`) : 5 clients, 5 chantiers, 5 devis, 6 factures, 6 pointages, 5 achats, 15 étapes, 10 ressources (9 personnes + 1 matériel).
+- Données de démonstration fictives (emails en `example.com`) : 5 clients, 5 chantiers, 5 devis, 6 factures, 6 pointages, 5 achats, 15 étapes, 10 ressources (9 personnes + 1 matériel). Tarifs : menuisier 45 €/h, peintre 40 €/h (annexe), électricien 40 €/h (hypothèse).
 
 ## Pourquoi une v2 plutôt que l'ancienne base « NEOBÂTI - Nantes (2015) »
 

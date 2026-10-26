@@ -15,3 +15,7 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Audit de sécurité : document sensible, jamais dans le dépôt public
+examen-neobati/09_*
+examen-neobati/pdf/09_*

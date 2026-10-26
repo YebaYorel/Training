@@ -8,7 +8,7 @@ title: "Feuille 5 — Implémenter le workspace Airtable et les workflows Make c
 ## 1. Schéma d'architecture
 
 <div class="archi">
-<div class="row"><div class="box people">👷 3 chefs de chantier<br><small>smartphone · formulaire « Rapport terrain » · page Terrain</small></div><div class="box people">🧑‍💼 Paul · Zineb · chargé d'affaires<br><small>PC · interface Direction / Administratif</small></div><div class="box people">🏠 Clients<br><small>formulaire « Nouvelle demande » · emails</small></div></div>
+<div class="row"><div class="box people">👷 3 chefs de chantier<br><small>smartphone · formulaire « Rapport terrain » · interface Terrain</small></div><div class="box people">🧑‍💼 Paul · Zineb · chargé d'affaires<br><small>PC · interface Direction / Administratif</small></div><div class="box people">🏠 Clients<br><small>formulaire « Nouvelle demande » · emails</small></div></div>
 <div class="arrow">⬇ HTTPS (chiffré) · comptes nominatifs + 2FA</div>
 <div class="row"><div class="box core">📊 <b>AIRTABLE</b> — base NEOBATI<br><small>12 tables · formules · interfaces · formulaires<br>Automatisation « Exécuter un script » → webhook</small></div></div>
 <div class="arrow">⬇ webhook + jeton secret  ⬆ API Airtable (PAT limité à 1 base)</div>
@@ -52,7 +52,7 @@ title: "Feuille 5 — Implémenter le workspace Airtable et les workflows Make c
 ## 4. Cybersécurité (checklist de mise en production) 🔒
 
 - [ ] **2FA** activée sur Airtable, Make, Mistral, messagerie, pour **tous** les comptes.
-- [ ] Rôles au **moindre privilège** : artisans = formulaire + page Terrain ; seul `admin@` est propriétaire.
+- [ ] Rôles au **moindre privilège** : artisans = formulaire + interface Terrain séparée ; seul `admin@` est propriétaire.
 - [ ] **Personal Access Token** Airtable dédié à Make : scopes `data.records:read`, `data.records:write`, `schema.bases:read`, **une seule base**, nom explicite, rotation annuelle.
 - [ ] Webhooks Make protégés par un **jeton secret** vérifié par un filtre ; URL jamais publiée.
 - [ ] Clés API uniquement dans les **connexions Make** ; option « données confidentielles » sur les scénarios qui manipulent des données clients.
@@ -70,7 +70,7 @@ title: "Feuille 5 — Implémenter le workspace Airtable et les workflows Make c
 | Une relance n'est pas partie | Zineb | Make › Historique du scénario S3/S4 › lire l'erreur › table LOGS ERREURS |
 | Erreur « 401 / connexion » | Zineb | Make › Connexions › Réautoriser (jeton expiré ou révoqué) |
 | Erreur « 429 / quota » | Personne | Réessai automatique (Break) ; si 3 échecs : relancer l'exécution incomplète |
-| Nouvel artisan | Zineb | Ajouter dans RESSOURCES + l'inviter sur la page Terrain |
+| Nouvel artisan | Zineb | Ajouter dans RESSOURCES + l'inviter sur l'interface Terrain |
 | Un salarié part | Paul | Retirer ses accès Airtable/Make le jour même |
 | Crédits Make bientôt épuisés | Paul | Make › Organisation › Utilisation ; vérifier qu'aucun scénario ne boucle |
 | Modifier un texte de relance | Chargé d'affaires | Modifier le prompt dans S3/S4, tester avec « Run once », exporter le blueprint |

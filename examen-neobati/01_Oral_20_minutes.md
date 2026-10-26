@@ -38,7 +38,7 @@ title: "Feuille 1 — Oral de 20 minutes : NEOBATI (Airtable + Make + IA)"
   - Coût total = 1 500 + 2 000 = **3 500 €**
   - Devis signé = CA facturé = **5 000 € HT** → marge brute = 5 000 − 3 500 = **1 500 €** → taux de marge = 1 500 ÷ 5 000 = **30 %**
   - Trésorerie nette chantier = acompte perçu 1 500 − (MO 1 500 + achats payés 800) = **− 800 €** → « l'entreprise a avancé 800 € de sa poche ».
-- *Vues et interfaces* : 1 interface « NEOBATI – Pilotage » avec 3 pages (**Direction**, **Administratif**, **Terrain**) + 2 **formulaires** (Nouvelle demande client, Rapport terrain mobile).
+- *Vues et interfaces* : 2 interfaces cloisonnées : « NEOBATI – Pilotage » (pages **Direction** et **Administratif**) et « NEOBATI – Terrain (artisans) », pour que les artisans ne voient jamais les marges, + 2 **formulaires** (Nouvelle demande client, Rapport terrain mobile).
 - *Simple* : « Chacun a son écran : le patron voit l'argent et les retards, l'assistante voit les factures, les artisans voient seulement leurs tâches sur le téléphone. »
 
 **③ Make — les automatisations (8–14 min)**
@@ -46,7 +46,7 @@ title: "Feuille 1 — Oral de 20 minutes : NEOBATI (Airtable + Make + IA)"
 - *Technique* : « 6 **scénarios** + 1 **gestionnaire d'erreurs**. Les événements terrain arrivent par **webhook instantané** (Airtable déclenche Make), les relances tournent en **planification quotidienne** à 8 h les jours ouvrés. Des **filtres** stoppent tôt les bundles inutiles, un **agrégateur de texte** envoie **un seul** email de synthèse au lieu de N alertes. »
 - *Simple* : « Make, c'est un facteur automatique : dès qu'un artisan envoie son rapport, le facteur part tout de suite ; pour les relances, il fait sa tournée une fois par matin. »
 - Les 6 scénarios : **S1** nouvelle demande → fiche client + accusé de réception ; **S2** rapport terrain → résumé IA + mise à jour avancement + alerte si problème ; **S3** relance devis (J-5 avant expiration, 2 relances max) ; **S4** relance factures (3 niveaux : 1–15 j courtoise, 16–30 j ferme, > 30 j escalade humaine) ; **S5** synthèse direction (retards, dépassements, acomptes non reçus) ; **S6** notification d'affectation aux artisans ; **S0** journal d'erreurs.
-- **Optimisation** : estimation **≈ 610 opérations / mois** avec webhooks, contre **≈ 9 250** si les 3 scénarios événementiels interrogeaient Airtable toutes les 15 min (3 × 2 880 = 8 640 vérifications à vide).
+- **Optimisation** : estimation **≈ 620 opérations / mois** avec webhooks, contre **≈ 9 260** si les 3 scénarios événementiels interrogeaient Airtable toutes les 15 min (3 × 2 880 = 8 640 vérifications à vide).
 - *Simple* : « Au lieu d'aller voir la boîte aux lettres toutes les 15 minutes pour rien, on attend que la sonnette sonne. On paie 15 fois moins de déplacements. »
 
 **④ IA (14–16 min)**
@@ -77,9 +77,9 @@ title: "Feuille 1 — Oral de 20 minutes : NEOBATI (Airtable + Make + IA)"
 | Reste dû par les clients | **10 300 € HT** | 17 200 − 6 900 |
 | Marge moyenne (chantiers terminés) | **1 125 €** | (1 500 + 750) ÷ 2 |
 | Chantiers déficitaires (terminés) | **0 sur 2** | — |
-| Répartition des coûts | **MO 50,5 % / achats 49,5 %** | 10 660 € / 10 450 € sur 21 110 € |
+| Répartition des coûts | **MO 50,4 % / achats 49,6 %** | 10 600 € / 10 450 € sur 21 050 € |
 | C4 cuisine | **dépassement de 400 €** | coût 8 400 € > devis 8 000 € |
-| Opérations Make | **≈ 610 / mois** | détail feuille 6 |
+| Opérations Make | **≈ 620 / mois** | détail feuille 6 |
 | Gain de temps | **≈ 13 h 40 / mois** | 200 + 300 + 240 + 80 = 820 min |
 
 *Hypothèses du gain de temps (à valider avec Paul Durieux)* : 20 relances × 10 min = 200 min ; 60 rapports terrain × 5 min de ressaisie = 300 min ; tableau de bord hebdomadaire 4 × 60 min = 240 min ; 8 fiches clients × 10 min = 80 min.
