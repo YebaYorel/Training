@@ -1,0 +1,36 @@
+module.exports = {
+  num: '09',
+  slug: '09_Mobilite_internationale_des_apprentis',
+  title: 'Éléments et accords visant à favoriser la mobilité internationale des apprentis',
+  objet: 'Organisation de la mobilité nationale et internationale des apprentis, partenaires sollicités et état des accords.',
+  blocks: [
+    ['h1', '1. Engagement'],
+    ['p', 'L’article L.6231-2 du Code du travail demande aux CFA d’encourager la mobilité nationale et internationale des apprentis en nommant un personnel dédié, qui peut être un **référent mobilité**. Pour un apprenti réunionnais, la mobilité est à la fois une ouverture et un défi (coût, éloignement, famille). YEBA FORMATIONS en fait une option accompagnée, jamais une obligation.'],
+    ['table', ['Élément', 'Description'], [
+      ['Référent mobilité', 'Aurélien LUMEKA, Directeur — [[ou autre personne désignée]] ; lettre de mission jointe'],
+      ['Public', 'Tout apprenti volontaire, avec l’accord de son employeur ; dispositions spécifiques pour les mineurs (autorisation des représentants légaux)'],
+      ['Durée envisagée', 'Mobilités courtes (2 à 4 semaines) pour la première promotion ; mobilités longues étudiées ensuite'],
+    ], [2600, 7038]],
+    ['h1', '2. Dispositifs mobilisables'],
+    ['table', ['Dispositif / acteur', 'Intérêt pour nos apprentis', 'État'], [
+      ['Programme **Erasmus+** (Agence Erasmus+ France / Éducation Formation)', 'Financement de mobilités d’apprentis en Europe ; possibilité d’adhérer à un consortium porté par un acteur régional', '[[À solliciter / candidature prévue en … / adhésion à un consortium]]'],
+      ['**LADOM** (L’Agence de l’Outre-mer pour la Mobilité)', 'Aide à la mobilité des Ultramarins en formation vers l’Hexagone', '[[À solliciter — conditions à vérifier]]'],
+      ['**Région Réunion**', 'Dispositifs régionaux d’aide à la mobilité des jeunes', '[[À vérifier]]'],
+      ['Coopération régionale océan Indien', 'Échanges avec Maurice, Madagascar, les Seychelles, dans le cadre des programmes de coopération (Interreg océan Indien)', '[[Piste à explorer]]'],
+      ['Mobilité nationale', 'Stages ou séjours d’étude dans une entreprise ou un CFA partenaire de l’Hexagone', '[[À construire]]'],
+    ], [3000, 4400, 2238]],
+    ['h1', '3. Organisation d’une mobilité'],
+    ['ol', [
+      'Information de tous les apprentis dès l’intégration et lors d’une réunion annuelle dédiée.',
+      'Recueil des souhaits, accord de l’employeur, autorisation parentale pour les mineurs.',
+      'Montage : choix de l’organisme d’accueil, contrat pédagogique, financement, assurance, logement, transport.',
+      'Préparation au départ : culturelle, linguistique, sécurité.',
+      'Suivi pendant le séjour par le référent mobilité (contact hebdomadaire).',
+      'Valorisation au retour : attestation (par exemple Europass Mobilité), restitution devant la promotion, prise en compte des compétences acquises dans l’évaluation lorsque le référentiel le permet.',
+    ]],
+    ['p', 'Le Code du travail prévoit des règles particulières pour la mobilité à l’étranger d’un apprenti, notamment la possibilité de mise à disposition ou de mise en veille du contrat ([[conditions et durées à vérifier : art. L.6222-42 et suivants]]).'],
+    ['h1', '4. Accords signés à ce jour'],
+    ['box', 'Situation à la date du dossier', ['[[Aucun accord n’est signé à ce jour : les démarches ci-dessus sont prévues selon le calendrier suivant…]] — ou — [[liste des accords signés, joints en annexe]].', 'Il est préférable d’indiquer clairement l’absence d’accord et un calendrier crédible plutôt que de présenter des contacts comme des partenariats.']],
+    ['rgpd', ['**RGPD** — La transmission de données d’un apprenti à un organisme d’accueil hors Union européenne (par exemple Maurice, Madagascar) constitue un **transfert hors UE** : il doit être encadré (information de l’apprenti, garanties appropriées, minimisation des données transmises).']],
+  ],
+};

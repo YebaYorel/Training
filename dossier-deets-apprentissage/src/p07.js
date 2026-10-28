@@ -1,0 +1,47 @@
+module.exports = {
+  num: '07',
+  slug: '07_Notice_suivi_en_entreprise_et_coherence_CFA_entreprise',
+  title: 'Notice — Suivi des apprentis auprès de leur employeur et contrôle de l’adéquation entre la formation au CFA et en entreprise',
+  objet: 'Descriptif exhaustif des modalités et de la périodicité du suivi en entreprise, et des outils garantissant la cohérence entre les deux lieux de formation.',
+  blocks: [
+    ['h1', '1. Objectif'],
+    ['p', 'L’article L.6231-2 du Code du travail charge le CFA d’assurer la cohérence entre la formation dispensée en son sein et celle dispensée au sein de l’entreprise, en organisant notamment la coopération entre les formateurs et les maîtres d’apprentissage. YEBA FORMATIONS désigne pour chaque apprenti un **formateur référent**, interlocuteur du maître d’apprentissage pendant toute la durée du contrat.'],
+    ['h1', '2. Calendrier de suivi'],
+    ['table', ['Moment', 'Modalité', 'Contenu', 'Trace'], [
+      ['Avant la signature', 'Échange avec l’employeur', 'Vérification que les missions confiées permettent d’acquérir les compétences du référentiel ; désignation du maître d’apprentissage', 'Fiche « Adéquation poste / référentiel »'],
+      ['Semaine 1 à 2', 'Appel au maître d’apprentissage', 'Accueil, intégration, planning d’alternance', 'Compte rendu court'],
+      ['Avant la fin des 45 jours', '**Visite en entreprise** (présentiel)', 'Entretien tripartite : intégration, premières missions, difficultés éventuelles', 'Compte rendu de visite signé'],
+      ['Chaque trimestre', 'Point de suivi (visio ou téléphone)', 'Progression, missions à venir, assiduité', 'Mise à jour du livret'],
+      ['Mois 6', '**Deuxième visite en entreprise**', 'Bilan intermédiaire des compétences, ajustement des missions', 'Compte rendu de visite signé'],
+      ['Mois 10 à 11', 'Point de préparation à la certification', 'Situations professionnelles à mobiliser pour l’examen', 'Mise à jour du livret'],
+      ['À tout moment', 'Visite ou entretien sur alerte', 'Conflit, absences, risque de rupture, accident', 'Fiche d’alerte et plan d’action'],
+    ], [1900, 2200, 3600, 1938]],
+    ['p', 'Soit **au minimum 2 visites en entreprise et 4 points de suivi par an**, auxquels s’ajoutent les visites sur alerte. Pour un contrat de 24 mois, le cycle est reconduit la deuxième année.'],
+    ['h1', '3. Outils de coordination'],
+    ['table', ['Outil', 'Usage'], [
+      ['Livret d’apprentissage (numérique ou papier)', 'Planning d’alternance, progression pédagogique du CFA, tableau des compétences à mettre en œuvre en entreprise, observations du maître d’apprentissage, comptes rendus de visite'],
+      ['Tableau de correspondance « modules / missions »', 'Pour chaque séquence au CFA, liste des activités à réaliser en entreprise pendant la période suivante'],
+      ['Fiche navette mensuelle', 'Une page : missions réalisées, difficultés, besoins, signée par l’apprenti et le maître d’apprentissage'],
+      ['Réunion des maîtres d’apprentissage', 'Présentation du programme, retours d’expérience, formation (pièce n° 17) — 2 fois par an'],
+      ['Ligne directe', 'Contact du formateur référent : [[téléphone, courriel]] ; réponse sous 48 heures ouvrées'],
+    ], [3200, 6438]],
+    ['h1', '4. Contrôle de l’adéquation'],
+    ['ul', [
+      '**Contrôle a priori** : avant la signature, la fiche « Adéquation poste / référentiel » vérifie que le poste couvre les activités types de la certification. En cas d’écart, YEBA FORMATIONS propose des missions complémentaires ou refuse d’accompagner la signature.',
+      '**Contrôle en continu** : à chaque point de suivi, le formateur référent compare les activités réalisées au tableau de correspondance.',
+      '**Mesures correctrices** : si une compétence ne peut pas être exercée dans l’entreprise, il est proposé une mise en situation renforcée au CFA ou, avec l’accord des parties, une période dans une autre entreprise (dans les conditions prévues par le Code du travail — [[à vérifier]]).',
+      '**Escalade** : en cas de manquement grave et persistant de l’employeur à ses obligations de formation, YEBA FORMATIONS en informe l’apprenti, l’OPCO et, si nécessaire, les services de l’État compétents.',
+    ]],
+    ['h1', '5. Indicateurs'],
+    ['table', ['Indicateur', 'Objectif interne'], [
+      ['Taux de visites réalisées dans les 45 premiers jours', '100 %'],
+      ['Nombre moyen de contacts CFA / entreprise par apprenti et par an', '≥ 6'],
+      ['Taux de livrets à jour lors du bilan trimestriel', '≥ 90 %'],
+      ['Satisfaction des maîtres d’apprentissage (questionnaire annuel)', '[[objectif à valider]]'],
+    ], [6000, 3638]],
+    ['rgpd', [
+      '**RGPD** — Les comptes rendus de visite peuvent contenir des appréciations sur l’apprenti : rédaction factuelle, accès limité aux parties au contrat. Le livret numérique est hébergé dans l’UE ([[outil retenu : Baserow / logiciel de gestion de CFA d’éditeur français]]).',
+      'Pas de donnée de santé dans le livret : les éventuels aménagements liés au handicap sont mentionnés sans diagnostic.',
+    ]],
+  ],
+};

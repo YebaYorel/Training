@@ -1,0 +1,46 @@
+module.exports = {
+  num: '11',
+  slug: '11_Notice_prevention_du_decrochage',
+  title: 'Notice — Actions mises en œuvre pour garantir un décrochage minimal des apprentis',
+  objet: 'Dispositif de prévention, de détection précoce et de traitement du décrochage en formation et en entreprise.',
+  blocks: [
+    ['h1', '1. Approche'],
+    ['p', 'Le décrochage se prépare rarement en un jour : il se lit dans les absences, les retards, la baisse d’engagement, un conflit avec l’employeur ou des difficultés personnelles (transport, logement, argent, santé). YEBA FORMATIONS agit à trois niveaux : **prévenir, détecter tôt, agir vite**.'],
+    ['h1', '2. Prévenir'],
+    ['ul', [
+      'Entretien de positionnement et vérification du projet avant la signature (pièce n° 05).',
+      'Semaine d’intégration : connaissance de la promotion, règles de vie, droits et devoirs, présentation des personnes ressources.',
+      'Pédagogie active et concrète : jeux de rôle, cas d’entreprises réunionnaises, défis par équipe — pour donner du sens à chaque séquence.',
+      'Petits groupes ([[effectif maximum par groupe]]) permettant une attention individuelle.',
+      'Information sur les aides matérielles (transport, logement, aide au permis de conduire, selon les dispositifs en vigueur — [[à vérifier]]).',
+    ]],
+    ['h1', '3. Détecter tôt : signaux d’alerte'],
+    ['table', ['Signal', 'Seuil d’alerte', 'Réponse'], [
+      ['Absences injustifiées au CFA', '2 demi-journées sur un mois', 'Appel le jour même ; entretien sous 5 jours ouvrés'],
+      ['Retards répétés', '3 retards sur un mois', 'Entretien avec le formateur référent'],
+      ['Baisse des résultats', 'Deux évaluations successives sous le niveau attendu', 'Plan de remédiation (pièce n° 06)'],
+      ['Signalement de l’employeur', 'Tout signalement', 'Contact sous 48 heures ouvrées ; réunion tripartite si besoin'],
+      ['Difficulté personnelle exprimée', 'Toute situation', 'Orientation vers la Mission locale ou le partenaire adapté'],
+    ], [2600, 3000, 4038]],
+    ['p', 'Les absences sont relevées à chaque demi-journée par émargement et l’employeur est informé des absences au CFA, l’apprenti étant salarié pendant son temps de formation.'],
+    ['h1', '4. Agir vite'],
+    ['ol', [
+      'Entretien individuel : comprendre la cause, sans jugement.',
+      'Plan d’action écrit, avec un objectif et une date de point.',
+      'Mobilisation des partenaires : Mission locale, France Travail, assistant(e) social(e), médiateur consulaire selon la situation.',
+      'Réunion tripartite apprenti / employeur / CFA si le contrat est fragilisé.',
+      'En cas de rupture malgré tout : procédure décrite dans la pièce n° 05.',
+    ]],
+    ['h1', '5. Indicateurs'],
+    ['table', ['Indicateur', 'Objectif interne'], [
+      ['Taux d’assiduité au CFA', '≥ 95 %'],
+      ['Délai entre alerte et premier entretien', '≤ 5 jours ouvrés'],
+      ['Taux d’abandon en cours de formation', '[[objectif à valider]]'],
+      ['Part des apprentis en difficulté ayant bénéficié d’un plan d’action', '100 %'],
+    ], [6000, 3638]],
+    ['rgpd', [
+      '**RGPD** — Les informations sur les difficultés personnelles sont limitées au strict nécessaire et ne sont jamais transmises à l’employeur sans l’accord de l’apprenti.',
+      '**IA Act** — Le repérage repose sur des **seuils simples et transparents**, appliqués par des personnes. Aucun algorithme prédictif de « risque de décrochage » n’est utilisé : un tel système, s’il reposait sur l’IA et servait à surveiller ou orienter des apprenants, pourrait relever des usages à haut risque dans le domaine de l’éducation et de la formation professionnelle (annexe III, point 3) et nécessiterait une analyse préalable.',
+    ]],
+  ],
+};
