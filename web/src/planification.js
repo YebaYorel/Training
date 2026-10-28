@@ -149,21 +149,9 @@
     });
 
     const file = plan.seances.flatMap((s) => s.objectifs.filter((o) => o.minutes > 0).map((o) => [s, o]));
-    const aPlacer = file.reduce((t, [, o]) => t + o.minutes, 0);
-    let cumul = 0, idx = 0, resteObj = file.length ? file[0][1].minutes : 0;
-    const commences = new Set();
-    for (const [j, deb, fin] of creneaux(p, aPlacer)) {
-      let cur = deb;
-      while (cur < fin && idx < file.length) {
-        const [s, o] = file[idx], duree = Math.min(resteObj, fin - cur);
-        cumul += duree;
-        plan.lignes.push({ date: j, debut: cur, fin: cur + duree, minutes: duree, seance: s, objectif: o, suite: commences.has(o), cumul, pourcentage: aPlacer ? cumul / aPlacer : 0 });
-        commences.add(o);
-        cur += duree; resteObj -= duree;
-        if (resteObj <= 0 && ++idx < file.length) resteObj = file[idx][1].minutes;
-      }
-      if (idx >= file.length) break;
-    }
+    const place = placer(file.map(([s, o]) => [s, o, o.minutes]), p);
+    plan.lignes = place.lignes;
+    const idx = place.places;
     plan.date_fin = plan.lignes.length ? plan.lignes[plan.lignes.length - 1].date : null;
     if (idx < file.length) plan.avertissements.push("Calendrier insuffisant : toutes les séances n'ont pas pu être placées.");
     if (plan.date_fin)
@@ -174,6 +162,27 @@
     if (p.date_examen && plan.date_fin && plan.date_fin >= p.date_examen)
       plan.avertissements.push(`La fin des cours (${fr(plan.date_fin)}) dépasse la date d'examen (${fr(p.date_examen)}) : revoir le calendrier ou la durée.`);
     return plan;
+  }
+
+  // Place des éléments [séance, objectif, minutes restantes] dans les créneaux réels à partir de p.date_debut.
+  function placer(file, p) {
+    const lignes = [];
+    const aPlacer = file.reduce((t, x) => t + x[2], 0);
+    let cumul = 0, idx = 0, resteObj = file.length ? file[0][2] : 0;
+    const commences = new Set(file.filter((x) => x[3]).map((x) => x[1]));   // x[3] = déjà entamé
+    for (const [j, deb, fin] of creneaux(p, aPlacer)) {
+      let cur = deb;
+      while (cur < fin && idx < file.length) {
+        const [s, o] = file[idx], duree = Math.min(resteObj, fin - cur);
+        cumul += duree;
+        lignes.push({ date: j, debut: cur, fin: cur + duree, minutes: duree, seance: s, objectif: o, suite: commences.has(o), cumul, pourcentage: aPlacer ? cumul / aPlacer : 0 });
+        commences.add(o);
+        cur += duree; resteObj -= duree;
+        if (resteObj <= 0 && ++idx < file.length) resteObj = file[idx][2];
+      }
+      if (idx >= file.length) break;
+    }
+    return { lignes, places: idx };
   }
 
   function scinder(s, max) {
@@ -221,5 +230,5 @@
     };
   }
 
-  Object.assign(D, { MOIS, JOURS, construirePlan, parametresDepuis, fmtHm, fmtDuree, fr, iso, semaineIso, jourSem, paques, feries, lireDate, fenetres });
+  Object.assign(D, { MOIS, JOURS, construirePlan, placer, jourOuvre, ajoutJours: ajout, dateUTC: date, parametresDepuis, fmtHm, fmtDuree, fr, iso, semaineIso, jourSem, paques, feries, lireDate, fenetres });
 })(typeof window !== "undefined" ? window : globalThis);

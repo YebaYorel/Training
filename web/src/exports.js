@@ -325,6 +325,12 @@
       h2: (s) => enfants.push(new X.Paragraph({ text: s, heading: X.HeadingLevel.HEADING_2 })),
       p: (s) => enfants.push(new X.Paragraph({ text: s })),
       puce: (s, niveau = 0) => enfants.push(new X.Paragraph({ text: s, bullet: { level: niveau } })),
+      encadre: (titre, lignes) => enfants.push(new X.Table({ width: { size: 15000, type: X.WidthType.DXA }, columnWidths: [15000], rows: [new X.TableRow({ children: [new X.TableCell({
+        width: { size: 15000, type: X.WidthType.DXA }, shading: { fill: c.couleur_claire, type: X.ShadingType.CLEAR, color: "auto" },
+        children: [new X.Paragraph({ children: [new X.TextRun({ text: titre, bold: true, color: c.couleur_primaire, size: t + 4 })] })]
+          .concat(lignes.map((l) => new X.Paragraph({ children: [new X.TextRun({ text: "• " + propre(l), size: t })] }))) })] })] }), new X.Paragraph({ text: "" })),
+      lien: (texte, url) => enfants.push(new X.Paragraph({ children: [new X.ExternalHyperlink({ link: url, children: [new X.TextRun({ text: texte, style: "Hyperlink", size: t })] })] })),
+      saut: () => enfants.push(new X.Paragraph({ children: [new X.PageBreak()] })),
       tableau: (lignes) => {
         const total = 15000;
         const poids = lignes[0].map((h, j) => { const L = lignes.map((r) => String(r[j] ?? "").length); const motLong = Math.max(...lignes.flatMap((r) => String(r[j] ?? "").split(/\s+/).map((m) => m.length)));
@@ -429,5 +435,5 @@ ${corps}
     return z.generateAsync({ type: "blob", compression: "DEFLATE" });
   }
 
-  Object.assign(D, { classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
+  Object.assign(D, { docWord, classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
 })(typeof window !== "undefined" ? window : globalThis);

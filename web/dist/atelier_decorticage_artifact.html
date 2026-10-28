@@ -1176,21 +1176,9 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     });
 
     const file = plan.seances.flatMap((s) => s.objectifs.filter((o) => o.minutes > 0).map((o) => [s, o]));
-    const aPlacer = file.reduce((t, [, o]) => t + o.minutes, 0);
-    let cumul = 0, idx = 0, resteObj = file.length ? file[0][1].minutes : 0;
-    const commences = new Set();
-    for (const [j, deb, fin] of creneaux(p, aPlacer)) {
-      let cur = deb;
-      while (cur < fin && idx < file.length) {
-        const [s, o] = file[idx], duree = Math.min(resteObj, fin - cur);
-        cumul += duree;
-        plan.lignes.push({ date: j, debut: cur, fin: cur + duree, minutes: duree, seance: s, objectif: o, suite: commences.has(o), cumul, pourcentage: aPlacer ? cumul / aPlacer : 0 });
-        commences.add(o);
-        cur += duree; resteObj -= duree;
-        if (resteObj <= 0 && ++idx < file.length) resteObj = file[idx][1].minutes;
-      }
-      if (idx >= file.length) break;
-    }
+    const place = placer(file.map(([s, o]) => [s, o, o.minutes]), p);
+    plan.lignes = place.lignes;
+    const idx = place.places;
     plan.date_fin = plan.lignes.length ? plan.lignes[plan.lignes.length - 1].date : null;
     if (idx < file.length) plan.avertissements.push("Calendrier insuffisant : toutes les séances n'ont pas pu être placées.");
     if (plan.date_fin)
@@ -1201,6 +1189,27 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     if (p.date_examen && plan.date_fin && plan.date_fin >= p.date_examen)
       plan.avertissements.push(`La fin des cours (${fr(plan.date_fin)}) dépasse la date d'examen (${fr(p.date_examen)}) : revoir le calendrier ou la durée.`);
     return plan;
+  }
+
+  // Place des éléments [séance, objectif, minutes restantes] dans les créneaux réels à partir de p.date_debut.
+  function placer(file, p) {
+    const lignes = [];
+    const aPlacer = file.reduce((t, x) => t + x[2], 0);
+    let cumul = 0, idx = 0, resteObj = file.length ? file[0][2] : 0;
+    const commences = new Set(file.filter((x) => x[3]).map((x) => x[1]));   // x[3] = déjà entamé
+    for (const [j, deb, fin] of creneaux(p, aPlacer)) {
+      let cur = deb;
+      while (cur < fin && idx < file.length) {
+        const [s, o] = file[idx], duree = Math.min(resteObj, fin - cur);
+        cumul += duree;
+        lignes.push({ date: j, debut: cur, fin: cur + duree, minutes: duree, seance: s, objectif: o, suite: commences.has(o), cumul, pourcentage: aPlacer ? cumul / aPlacer : 0 });
+        commences.add(o);
+        cur += duree; resteObj -= duree;
+        if (resteObj <= 0 && ++idx < file.length) resteObj = file[idx][2];
+      }
+      if (idx >= file.length) break;
+    }
+    return { lignes, places: idx };
   }
 
   function scinder(s, max) {
@@ -1248,7 +1257,7 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     };
   }
 
-  Object.assign(D, { MOIS, JOURS, construirePlan, parametresDepuis, fmtHm, fmtDuree, fr, iso, semaineIso, jourSem, paques, feries, lireDate, fenetres });
+  Object.assign(D, { MOIS, JOURS, construirePlan, placer, jourOuvre, ajoutJours: ajout, dateUTC: date, parametresDepuis, fmtHm, fmtDuree, fr, iso, semaineIso, jourSem, paques, feries, lireDate, fenetres });
 })(typeof window !== "undefined" ? window : globalThis);
 
 /* Programme de formation et Examen simplifié — portage de programme.py
@@ -1744,6 +1753,12 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
       h2: (s) => enfants.push(new X.Paragraph({ text: s, heading: X.HeadingLevel.HEADING_2 })),
       p: (s) => enfants.push(new X.Paragraph({ text: s })),
       puce: (s, niveau = 0) => enfants.push(new X.Paragraph({ text: s, bullet: { level: niveau } })),
+      encadre: (titre, lignes) => enfants.push(new X.Table({ width: { size: 15000, type: X.WidthType.DXA }, columnWidths: [15000], rows: [new X.TableRow({ children: [new X.TableCell({
+        width: { size: 15000, type: X.WidthType.DXA }, shading: { fill: c.couleur_claire, type: X.ShadingType.CLEAR, color: "auto" },
+        children: [new X.Paragraph({ children: [new X.TextRun({ text: titre, bold: true, color: c.couleur_primaire, size: t + 4 })] })]
+          .concat(lignes.map((l) => new X.Paragraph({ children: [new X.TextRun({ text: "• " + propre(l), size: t })] }))) })] })] }), new X.Paragraph({ text: "" })),
+      lien: (texte, url) => enfants.push(new X.Paragraph({ children: [new X.ExternalHyperlink({ link: url, children: [new X.TextRun({ text: texte, style: "Hyperlink", size: t })] })] })),
+      saut: () => enfants.push(new X.Paragraph({ children: [new X.PageBreak()] })),
       tableau: (lignes) => {
         const total = 15000;
         const poids = lignes[0].map((h, j) => { const L = lignes.map((r) => String(r[j] ?? "").length); const motLong = Math.max(...lignes.flatMap((r) => String(r[j] ?? "").split(/\s+/).map((m) => m.length)));
@@ -1848,7 +1863,7 @@ ${corps}
     return z.generateAsync({ type: "blob", compression: "DEFLATE" });
   }
 
-  Object.assign(D, { classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
+  Object.assign(D, { docWord, classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
 })(typeof window !== "undefined" ? window : globalThis);
 
 /* Chef d'orchestre : fichiers déposés → analyse → plan → contexte d'export. */
