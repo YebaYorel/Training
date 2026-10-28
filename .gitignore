@@ -18,3 +18,7 @@ env/
 
 # Logiciel de décorticage : données locales (mot de passe haché, projets, tarifs)
 donnees_yeba/
+
+# Paquets fabriqués et sauvegardes personnelles
+distribution/
+Sauvegarde_decorticage_*.zip

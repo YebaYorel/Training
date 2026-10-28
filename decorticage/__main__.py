@@ -4,6 +4,8 @@
     python -m decorticage generer --reac REAC.pdf --re RE.pdf --fiche RNCP.pdf \
         --heures 455 --debut 2027-01-04 --sortie ./sorties
     python -m decorticage audit           → contrôle de sécurité (+ --corriger)
+    python -m decorticage sauvegarder     → archive de vos données (changer d'ordinateur)
+    python -m decorticage restaurer FICHIER.zip
 """
 
 from __future__ import annotations
@@ -41,6 +43,12 @@ def main(argv=None) -> int:
     p_aud = sous.add_parser("audit", help="contrôle de sécurité")
     p_aud.add_argument("--corriger", action="store_true")
 
+    p_sav = sous.add_parser("sauvegarder", help="archiver vos données pour les transférer")
+    p_sav.add_argument("--vers", type=Path, default=None, help="dossier de destination (défaut : à côté du logiciel)")
+    p_res = sous.add_parser("restaurer", help="restaurer une sauvegarde")
+    p_res.add_argument("archive", type=Path, nargs="?", default=None,
+                       help="fichier Sauvegarde_decorticage_*.zip (défaut : le plus récent à côté du logiciel)")
+
     a = parser.parse_args(argv)
     if a.commande in (None, "interface"):
         from .app import lancer
@@ -69,6 +77,31 @@ def main(argv=None) -> int:
             ok &= r["ok"]
             print(f"[{'OK' if r['ok'] else '!!'}] {r['controle']} — {r['detail']}")
         return 0 if ok else 1
+    if a.commande in ("sauvegarder", "restaurer"):
+        from .config import RACINE_LOGICIEL, dossier_donnees
+        from .sauvegarde import restaurer, sauvegarder
+        from .securite import FichierRefuse
+        if a.commande == "sauvegarder":
+            cible = sauvegarder(dossier_donnees(), a.vers or RACINE_LOGICIEL)
+            print(f"Sauvegarde créée : {cible}")
+            print("Copiez ce fichier sur le nouvel ordinateur, à côté du logiciel, puis lancez la restauration.")
+            return 0
+        archive = a.archive
+        if archive is None:
+            candidates = sorted(RACINE_LOGICIEL.glob("Sauvegarde_decorticage_*.zip"))
+            if not candidates:
+                print("Aucune sauvegarde trouvée à côté du logiciel.")
+                return 1
+            archive = candidates[-1]
+        try:
+            ancien = restaurer(archive, dossier_donnees())
+        except FichierRefuse as exc:
+            print(f"Restauration refusée : {exc}")
+            return 1
+        print(f"Données restaurées depuis {archive.name} (empreintes vérifiées).")
+        if ancien:
+            print(f"Les anciennes données ont été mises de côté dans : {ancien}")
+        return 0
     return 1
 
 

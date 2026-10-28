@@ -38,19 +38,51 @@ Les feuilles du classeur :
 Le logo est une image indépendante : cliquez dessus, puis « Suppr ». Aucune signature ni
 mention d'outil n'apparaît dans les fichiers.
 
-## 2. Installation (une seule fois) et déplacement
+## 2. Obtenir, installer et transférer le logiciel
 
-1. Installez Python 3.10 ou plus récent depuis python.org. Sous Windows, cochez
-   « Add Python to PATH ».
-2. Double-cliquez sur le lanceur :
-   * Windows : `Lancer_Decorticage_Windows.bat`
-   * Mac : `Lancer_Decorticage_Mac.command` (la première fois : clic droit → Ouvrir)
-3. Le premier lancement installe les bibliothèques (connexion internet nécessaire, 2 à 3 minutes).
-   Le navigateur s'ouvre ensuite. Créez votre mot de passe : 12 caractères minimum.
+### Les 3 paquets (dossier `distribution/`, recréé par `python outils/construire_paquets.py`)
 
-**Changer d'ordinateur** : copiez le dossier complet sur une clé USB, y compris
-`donnees_yeba/` qui contient vos projets, votre charte et vos décisions. Sur le nouvel
-ordinateur, double-cliquez sur le lanceur : l'environnement se réinstalle tout seul.
+| Paquet | Taille | Quand l'utiliser |
+|---|---|---|
+| `Logiciel_Decorticage_v1.0.zip` | 0,4 Mo | Ordinateur connecté à internet (installe les bibliothèques au 1er lancement) |
+| `Logiciel_Decorticage_v1.0_Windows_hors_ligne.zip` | 66 Mo | PC Windows **sans internet** (Python 3.12 à 3.15) |
+| `Logiciel_Decorticage_v1.0_Mac_hors_ligne.zip` | 123 Mo | Mac **sans internet** (Apple Silicon et Intel, Python 3.12 à 3.14) |
+
+`SHA256SUMS.txt` contient l'empreinte de chaque paquet : après un transfert, vous pouvez
+vérifier que le fichier n'a été ni abîmé ni modifié.
+* Windows : `certutil -hashfile Logiciel_Decorticage_v1.0.zip SHA256`
+* Mac : `shasum -a 256 Logiciel_Decorticage_v1.0.zip`
+
+Aucun paquet ne contient vos données personnelles (projets, mot de passe, tarifs).
+
+### Installation (une seule fois par ordinateur)
+
+1. Installez **Python 3.13** depuis python.org. Sous Windows, cochez « Add Python to PATH ».
+2. Décompressez le paquet où vous voulez (Documents, clé USB…).
+3. Double-cliquez sur le lanceur :
+   * Windows : `Lancer_Decorticage_Windows.bat` ;
+   * Mac : `Lancer_Decorticage_Mac.command`. La première fois, faites clic droit → Ouvrir
+     (Mac bloque les fichiers téléchargés).
+4. L'installation prend 2 à 3 minutes. Le navigateur s'ouvre ensuite : créez votre mot de passe.
+
+### Transférer vers un autre ordinateur, AVEC vos projets
+
+1. Sur l'ancien ordinateur, double-cliquez sur `Sauvegarder_mes_donnees_Windows.bat` (ou
+   `_Mac.command`). Un fichier `Sauvegarde_decorticage_DATE.zip` apparaît à côté du logiciel.
+   Il contient une empreinte de chaque fichier.
+2. Copiez ce fichier et le paquet du logiciel sur le nouvel ordinateur (clé USB par exemple).
+3. Installez le logiciel (étapes ci-dessus), placez la sauvegarde à côté, puis double-cliquez
+   sur `Restaurer_mes_donnees_…`. L'archive est vérifiée avant d'être ouverte : une sauvegarde
+   abîmée, modifiée ou piégée est refusée. Les données déjà présentes sont mises de côté,
+   jamais écrasées.
+4. Votre mot de passe reste le même.
+
+Autre méthode : copier tout le dossier du logiciel, y compris `donnees_yeba/`. Le dossier
+`.venv` se recrée tout seul sur le nouvel ordinateur.
+
+**Confidentialité (RGPD art. 32)** : la sauvegarde contient vos projets et votre mot de passe
+*haché*. Transportez-la sur une clé chiffrée (BitLocker To Go ou FileVault), et ne l'envoyez
+pas par un service hors UE.
 
 ## 3. Utilisation
 

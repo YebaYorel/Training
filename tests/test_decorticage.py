@@ -259,6 +259,27 @@ class TestProgrammeEtPublication(unittest.TestCase):
         self.assertFalse(r.afficher_nom)  # case décochée
 
 
+class TestSauvegarde(unittest.TestCase):
+    def test_aller_retour_et_alteration(self):
+        from decorticage.sauvegarde import restaurer, sauvegarder, verifier_archive
+        base = Path(tempfile.mkdtemp()) / "donnees_yeba"
+        (base / "projets" / "abc").mkdir(parents=True)
+        (base / "projets" / "abc" / "projet.json").write_text('{"titre": "MEM"}', encoding="utf-8")
+        z = sauvegarder(base, Path(tempfile.mkdtemp()))
+        self.assertEqual(len(verifier_archive(z)), 1)
+        dest = Path(tempfile.mkdtemp()) / "donnees_yeba"
+        self.assertIsNone(restaurer(z, dest))
+        self.assertEqual((dest / "projets" / "abc" / "projet.json").read_text(encoding="utf-8"), '{"titre": "MEM"}')
+        self.assertIsNotNone(restaurer(z, dest))  # données existantes mises de côté, jamais écrasées
+        altere = z.with_name("altere.zip")
+        with zipfile.ZipFile(z) as a, zipfile.ZipFile(altere, "w") as b:
+            for i in a.infolist():
+                d = a.read(i.filename)
+                b.writestr(i.filename, d + b" " if i.filename.endswith("projet.json") else d)
+        with self.assertRaises(securite.FichierRefuse):
+            verifier_archive(altere)
+
+
 @unittest.skipUnless(os.environ.get("DECORTICAGE_PDF_DIR"), "PDF réels non fournis")
 class TestIntegrationPDF(unittest.TestCase):
     def test_bout_en_bout(self):
