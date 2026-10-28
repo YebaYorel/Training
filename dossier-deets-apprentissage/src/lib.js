@@ -7,9 +7,11 @@ const {
   PageNumber, PageBreak, HighlightColor, TableLayoutType,
 } = require('docx');
 
-// Couleurs : à remplacer par la charte officielle YEBA FORMATIONS si différente.
-const COLORS = { primary: '1F3A5F', accent: 'C8691C', light: 'EAF0F6', grey: '595959' };
-const FONT = 'Arial';
+// Charte YEBA FORMATIONS 2026 : bleu #1B3A6B, or #C9AB4C, noir #121212.
+// L'or (contraste 2,2:1 sur blanc) sert aux filets et fonds, jamais au texte (accessibilité).
+const COLORS = { primary: '1B3A6B', accent: 'C9AB4C', text: '121212', light: 'EEF1F6', gold: 'F7F1DF', grey: '4D4D4D' };
+const FONT = 'Inter';
+const TITLE_FONT = 'Montserrat';
 const PAGE_W = 11906, MARGIN = 1134; // A4, marges 2 cm
 const CONTENT_W = PAGE_W - 2 * MARGIN;
 
@@ -19,7 +21,9 @@ const IDENT = {
   nda: '04973676397',
   qualiopi: '25FOR02027.1',
   dirigeant: 'Aurélien LUMEKA',
-  version: 'Version 1 du 28/10/2026',
+  uai: '9742022E',
+  lieu: '7 rue Henri Cornu, Immeuble Rodrigue 2, Technopole Réunion / Technor, 97490 Sainte-Clotilde (Saint-Denis)',
+  version: 'Version 2 du 28/10/2026',
 };
 
 function runs(text, base = {}) {
@@ -34,8 +38,8 @@ function runs(text, base = {}) {
 }
 
 const p = (t, o = {}) => new Paragraph({ children: runs(t, o.run || {}), spacing: { after: 120, line: 288 }, alignment: o.align || AlignmentType.JUSTIFIED, ...(o.para || {}) });
-const h1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun({ text: t, font: FONT })], spacing: { before: 300, after: 140 }, keepNext: true });
-const h2 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: t, font: FONT })], spacing: { before: 200, after: 100 }, keepNext: true });
+const h1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun({ text: t, font: TITLE_FONT })], spacing: { before: 300, after: 140 }, keepNext: true });
+const h2 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: t, font: TITLE_FONT })], spacing: { before: 200, after: 100 }, keepNext: true });
 const li = (t, ref = 'bul', level = 0) => new Paragraph({ numbering: { reference: ref, level }, children: runs(t), spacing: { after: 60, line: 276 } });
 
 function cell(text, w, o = {}) {
@@ -62,13 +66,13 @@ function table(headers, rows, widths) {
     borders: { top: border, bottom: border, left: border, right: border, insideHorizontal: border, insideVertical: border },
     rows: [
       new TableRow({ tableHeader: true, children: headers.map((hd, i) => cell(hd, widths[i], { fill: COLORS.primary, run: { bold: true, color: 'FFFFFF' } })) }),
-      ...rows.map((r, ri) => new TableRow({ cantSplit: true, children: r.map((c, i) => cell(c, widths[i], { fill: ri % 2 ? COLORS.light : undefined })) })),
+      ...rows.map((r, ri) => new TableRow({ cantSplit: JSON.stringify(r).length < 400, children: r.map((c, i) => cell(c, widths[i], { fill: ri % 2 ? COLORS.light : undefined })) })),
     ],
   });
 }
 
 // Encadré (note, point de vigilance RGPD / IA Act, etc.)
-function box(title, lines, fill = 'FFF4E5', edge = COLORS.accent) {
+function box(title, lines, fill = COLORS.gold, edge = COLORS.accent) {
   const b = { style: BorderStyle.SINGLE, size: 12, color: edge };
   const nb = { style: BorderStyle.NONE, size: 0, color: 'FFFFFF' };
   return new Table({
@@ -79,27 +83,33 @@ function box(title, lines, fill = 'FFF4E5', edge = COLORS.accent) {
       shading: { type: ShadingType.CLEAR, fill, color: 'auto' },
       margins: { top: 100, bottom: 100, left: 160, right: 120 },
       children: [
-        new Paragraph({ children: [new TextRun({ text: title, bold: true, color: edge, font: FONT })], spacing: { after: 60 } }),
+        new Paragraph({ children: [new TextRun({ text: title, bold: true, color: COLORS.primary, font: TITLE_FONT })], spacing: { after: 60 } }),
         ...lines.map((l) => new Paragraph({ children: runs(l), spacing: { after: 50 } })),
       ],
     })] })],
   });
 }
-const rgpd = (lines) => box('Conformité RGPD / IA Act', lines, 'EAF0F6', COLORS.primary);
+const rgpd = (lines) => box('Conformité RGPD / IA Act', lines, COLORS.light, COLORS.primary);
 const spacer = () => new Paragraph({ children: [], spacing: { after: 80 } });
 
 function cover(num, title, objet) {
   return [
-    new Paragraph({ children: [new TextRun({ text: IDENT.nom, bold: true, size: 36, color: COLORS.primary, font: FONT })], spacing: { after: 40 } }),
+    new Paragraph({ children: [new TextRun({ text: 'YEBA', bold: true, size: 40, color: COLORS.primary, font: TITLE_FONT }), new TextRun({ text: '  FORMATIONS', bold: true, size: 40, color: COLORS.accent, font: TITLE_FONT })], spacing: { after: 40 } }),
     new Paragraph({ children: [new TextRun({ text: 'Organisme de formation — Extension de la déclaration d’activité à la formation par apprentissage', size: 20, color: COLORS.grey, font: FONT })], border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: COLORS.accent, space: 6 } }, spacing: { after: 240 } }),
-    new Paragraph({ children: [new TextRun({ text: `Pièce n° ${num}`, bold: true, size: 24, color: COLORS.accent, font: FONT })], spacing: { after: 60 } }),
-    new Paragraph({ children: [new TextRun({ text: title, bold: true, size: 32, color: COLORS.primary, font: FONT })], spacing: { after: 160 } }),
-    table(['Rubrique', 'Information'], [
+    new Paragraph({ children: [new TextRun({ text: num === 'NI' ? 'Note interne — ne pas transmettre' : `Pièce n° ${num}`, bold: true, size: 24, color: COLORS.grey, font: TITLE_FONT })], spacing: { after: 60 } }),
+    new Paragraph({ children: [new TextRun({ text: title, bold: true, size: 32, color: COLORS.primary, font: TITLE_FONT })], spacing: { after: 160 } }),
+    table(['Rubrique', 'Information'], num === 'NI' ? [
+      ['Usage', 'Document de travail interne — ne pas joindre au dossier DEETS'],
+      ['Objet', objet],
+      ['Rédigé pour', `${IDENT.dirigeant}, Directeur`],
+      ['Version', IDENT.version],
+    ] : [
       ['Destinataire', 'DEETS La Réunion — Service de contrôle de la formation professionnelle'],
       ['Référence', 'Courriel de la DEETS du 20 octobre 2026 — instruction au titre de l’article L.6351-5 du Code du travail'],
       ['Objet de la pièce', objet],
-      ['Organisme', `${IDENT.nom} — SIRET ${IDENT.siret} — NDA ${IDENT.nda}`],
-      ['Certification Qualiopi', `n° ${IDENT.qualiopi} — [[préciser si la catégorie « actions de formation par apprentissage » est déjà couverte ou en cours d’extension]]`],
+      ['Organisme', `${IDENT.nom} — SIRET ${IDENT.siret} — NDA ${IDENT.nda} — UAI ${IDENT.uai}`],
+      ['Lieu de formation', IDENT.lieu],
+      ['Certification Qualiopi', `n° ${IDENT.qualiopi} (actions de formation). Extension à la catégorie « actions de formation par apprentissage » engagée : l’audit d’extension sera réalisé dès l’entrée en formation du premier apprenti (courriel de l’organisme certificateur du 14/10/2026).`],
       ['Responsable', `${IDENT.dirigeant}, Directeur`],
       ['Version', IDENT.version],
     ], [2600, 7038]),
@@ -110,7 +120,7 @@ function cover(num, title, objet) {
 function signature() {
   return [
     spacer(),
-    p(`Fait à [[commune]], le [[date d’envoi]].`, { align: AlignmentType.LEFT }),
+    p(`Fait à Saint-Denis, le [[date d’envoi]].`, { align: AlignmentType.LEFT }),
     p(`${IDENT.dirigeant}, Directeur de ${IDENT.nom}`, { align: AlignmentType.LEFT, run: { bold: true } }),
     p('Signature et cachet :', { align: AlignmentType.LEFT }),
   ];
@@ -141,23 +151,23 @@ function build({ num, title, objet, blocks, file, landscape }) {
     else if (k === 'pb') children.push(new Paragraph({ children: [new PageBreak()] }));
     else throw new Error('bloc inconnu ' + k);
   }
-  children.push(...signature());
+  if (num !== 'NI') children.push(...signature());
 
   const small = { size: 16, color: COLORS.grey, font: FONT };
   const doc = new Document({
     creator: IDENT.dirigeant,
-    title: `${IDENT.nom} — Pièce ${num} — ${title}`,
+    title: `${IDENT.nom} — ${num === 'NI' ? 'Note interne' : 'Pièce ' + num} — ${title}`,
     styles: {
-      default: { document: { run: { font: FONT, size: 22 } } },
+      default: { document: { run: { font: FONT, size: 22, color: COLORS.text } } },
       paragraphStyles: [
-        { id: 'Heading1', name: 'Heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 28, bold: true, color: COLORS.primary, font: FONT }, paragraph: { outlineLevel: 0 } },
-        { id: 'Heading2', name: 'Heading 2', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 24, bold: true, color: COLORS.accent, font: FONT }, paragraph: { outlineLevel: 1 } },
+        { id: 'Heading1', name: 'Heading 1', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 28, bold: true, color: COLORS.primary, font: TITLE_FONT }, paragraph: { outlineLevel: 0, border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: COLORS.accent, space: 4 } } } },
+        { id: 'Heading2', name: 'Heading 2', basedOn: 'Normal', next: 'Normal', quickFormat: true, run: { size: 24, bold: true, color: COLORS.primary, font: TITLE_FONT }, paragraph: { outlineLevel: 1 } },
       ],
     },
     numbering: { config: numberingConfigs },
     sections: [{
       properties: { page: { size: { width: PAGE_W, height: 16838 }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
-      headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: `${IDENT.nom} — Dossier apprentissage — Pièce ${num}`, ...small })] })] }) },
+      headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: num === 'NI' ? `${IDENT.nom} — Note interne` : `${IDENT.nom} — Dossier apprentissage — Pièce ${num}`, ...small })] })] }) },
       footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [
         new TextRun({ text: `SIRET ${IDENT.siret} — NDA ${IDENT.nda} — Qualiopi ${IDENT.qualiopi} — Page `, ...small }),
         new TextRun({ children: [PageNumber.CURRENT], ...small }), new TextRun({ text: ' / ', ...small }),

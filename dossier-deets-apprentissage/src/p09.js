@@ -30,7 +30,7 @@ module.exports = {
     ]],
     ['p', 'Le Code du travail prévoit des règles particulières pour la mobilité à l’étranger d’un apprenti, notamment la possibilité de mise à disposition ou de mise en veille du contrat ([[conditions et durées à vérifier : art. L.6222-42 et suivants]]).'],
     ['h1', '4. Accords signés à ce jour'],
-    ['box', 'Situation à la date du dossier', ['[[Aucun accord n’est signé à ce jour : les démarches ci-dessus sont prévues selon le calendrier suivant…]] — ou — [[liste des accords signés, joints en annexe]].', 'Il est préférable d’indiquer clairement l’absence d’accord et un calendrier crédible plutôt que de présenter des contacts comme des partenariats.']],
+    ['box', 'Situation à la date du dossier', ['**Aucun accord n’est signé à ce jour.** YEBA FORMATIONS ouvre l’apprentissage en mars 2027 avec une première promotion de contrats de 12 mois : les mobilités seront proposées à partir de la deuxième promotion.', 'Calendrier : prise de contact avec l’Agence Erasmus+ France / Éducation Formation et LADOM au premier semestre 2027 ; étude d’une adhésion à un consortium Erasmus+ régional en 2027-2028.']],
     ['rgpd', ['**RGPD** — La transmission de données d’un apprenti à un organisme d’accueil hors Union européenne (par exemple Maurice, Madagascar) constitue un **transfert hors UE** : il doit être encadré (information de l’apprenti, garanties appropriées, minimisation des données transmises).']],
   ],
 };

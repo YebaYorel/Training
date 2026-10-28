@@ -1,7 +1,7 @@
 // Bordereau d'envoi + liste de contrôle des éléments à compléter (générée automatiquement).
 const fs = require('fs');
 const { placeholders } = require('./lib');
-const pieces = fs.readdirSync(__dirname).filter((f) => /^p\d+\.js$/.test(f) && f !== 'p00.js').sort().map((f) => require('./' + f));
+const pieces = fs.readdirSync(__dirname).filter((f) => /^p\d+\.js$/.test(f) && f !== 'p00.js').sort().map((f) => require('./' + f)).filter((d) => d.num !== 'NI');
 const byNum = Object.fromEntries(pieces.map((d) => [d.num, d]));
 const ref = (n) => (byNum[n] ? 'Fichier Word fourni' : 'À joindre');
 
@@ -33,11 +33,12 @@ const blocks = [
   ['table', ['N°', 'Pièce demandée', 'État / responsable', 'Document'], liste, [700, 4300, 2600, 2038]],
   ['h1', '3. Points stratégiques à sécuriser'],
   ['ul', [
-    '**Certification Qualiopi** : vérifier que le certificat n° 25FOR02027.1 couvre la catégorie « actions de formation par apprentissage » ; sinon, demander une extension de périmètre à l’organisme certificateur. Sans elle, les contrats ne peuvent pas être financés par les OPCO.',
-    '**Certifications préparées** : seuls des diplômes ou titres inscrits au RNCP peuvent être préparés en apprentissage. Pour un titre du ministère du Travail, prévoir l’agrément pour organiser les sessions ou un partenariat avec un centre agréé ; pour un autre certificateur, une convention de partenariat.',
-    '**Numéro UAI** : immatriculation de l’établissement auprès du rectorat, nécessaire pour l’enregistrement des contrats ([[démarche à vérifier]]).',
-    '**Cohérence** : les noms, fonctions et engagements cités doivent être identiques dans toutes les pièces.',
-    '**Sincérité** : ne présenter comme réalisés que les actions et les partenariats effectivement engagés. Les surlignages jaunes signalent les points à compléter ou à vérifier.',
+    '**Qualiopi** : l’audit d’extension « apprentissage » ne peut avoir lieu qu’après l’entrée en formation d’un premier apprenti (courriel du certificateur du 14/10/2026). Demander **par écrit à chaque OPCO** comment sont financés les premiers contrats pendant cette période, avant de signer avec les employeurs.',
+    '**MEM (RNCP 41853)** : déposer la demande d’agrément auprès de la DEETS La Réunion (démarche en ligne « DEETS 974 — demande d’agrément pour organiser des sessions ») au moins 6 mois avant la session de février 2028, soit **avant fin juillet 2027** ; dépôt conseillé dès le premier trimestre 2027.',
+    '**Product Builder (RNCP 39108)** : enregistrement valable jusqu’au **31/05/2027**, soit avant la fin des contrats. Obtenir de l’École Cube l’assurance écrite du renouvellement avant de signer des contrats.',
+    '**Responsable RH (RNCP 38442, Cnam)** : vérifier auprès du Cnam qu’un organisme extérieur à son réseau peut préparer cette certification (contact : Cnam La Réunion) ; sinon, choisir une autre fiche « Responsable RH ».',
+    '**Capacité** : trois groupes et un seul formateur permanent. Les intervenants experts (RH, no-code) et le sous-traitant chargé du placement doivent être identifiés avant mars 2027. Ouvrir d’abord le MEM, puis les autres titres une fois les partenariats signés, réduirait le risque.',
+    '**Sincérité** : ne présenter comme réalisés que les actions et partenariats effectivement engagés. Les surlignages jaunes signalent les points à compléter ou à vérifier.',
   ]],
   ['h1', '4. Proposition de courriel d’accompagnement'],
   ['p', 'Objet : Extension de la déclaration d’activité à l’apprentissage — YEBA FORMATIONS (NDA 04973676397) — transmission des pièces'],

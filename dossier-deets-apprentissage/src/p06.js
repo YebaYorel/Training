@@ -34,11 +34,11 @@ module.exports = {
       'Plan de remédiation individuel en cas de résultats insuffisants : soutien, exercices complémentaires, entretien avec le maître d’apprentissage.',
     ]],
     ['h1', '5. Organisation de la certification'],
-    ['p', 'Les certifications préparées sont : [[liste des titres ou diplômes, avec leur code RNCP et leur certificateur]]. Selon le cas :'],
-    ['ul', [
-      'pour un **titre professionnel du ministère du Travail**, YEBA FORMATIONS sollicitera l’**agrément** permettant d’organiser les sessions de validation, ou s’appuiera sur un centre agréé ([[à préciser]]) ;',
-      'pour une certification d’un autre organisme, une **convention de partenariat** avec le certificateur précise les modalités d’évaluation ([[à joindre]]).',
-    ]],
+    ['table', ['Certification', 'Certificateur', 'Organisation de la certification'], [
+      ['Titre professionnel Manager d’établissement marchand — RNCP 41853 (niveau 5)', 'Ministère du Travail', 'YEBA FORMATIONS demande à la DEETS La Réunion l’**agrément** pour organiser la session de validation (dossier déposé au moins 6 mois avant la session). Épreuves selon le référentiel d’évaluation : mise en situation professionnelle, entretien technique, dossier professionnel et résultats des évaluations passées en cours de formation, entretien final avec le jury.'],
+      ['Product Builder No-Code — RNCP 39108 (niveau 6)', 'L’École pour tous (École Cube)', 'Modalités d’évaluation fixées par le certificateur dans la **convention de partenariat** [[à signer et à joindre]].'],
+      ['Responsable ressources humaines — RNCP 38442 (niveau 6)', 'Cnam', 'Modalités d’évaluation fixées par le Cnam dans la **convention de partenariat** [[à signer et à joindre]].'],
+    ], [3200, 2000, 4438]],
     ['rgpd', [
       '**RGPD** — Résultats et appréciations sont des données personnelles : accès limité à l’apprenti, à ses formateurs, à son employeur (pour ce qui le concerne) et, pour les mineurs, aux représentants légaux. Durée de conservation : [[à fixer selon les exigences du certificateur]].',
       '**IA Act** — Aucun système d’IA n’est utilisé pour noter ou évaluer les apprentis. Un système d’IA destiné à **évaluer les acquis d’apprentissage** relève des systèmes à **haut risque** (annexe III, point 3, « éducation et formation professionnelle »). Si des quiz sont créés avec l’aide d’une IA, leur contenu est relu et validé par un formateur, et la notation reste humaine.',

@@ -5,7 +5,7 @@ module.exports = {
   objet: 'Actions de sensibilisation et d’orientation des apprentis vers l’entrepreneuriat.',
   blocks: [
     ['h1', '1. Pourquoi c’est pertinent pour nos apprentis'],
-    ['p', 'Les métiers de la vente, de la négociation et du management sont des tremplins naturels vers l’entrepreneuriat. À La Réunion, de nombreuses TPE devront par ailleurs trouver un repreneur dans les années à venir ([[donnée chiffrée CCI Réunion / INSEE à insérer si disponible]]). Le dirigeant de YEBA FORMATIONS, lui-même créateur de son entreprise en 2021, témoigne de ce parcours.'],
+    ['p', 'Les métiers préparés — management d’un point de vente, ressources humaines, conception d’applications sans code — sont des tremplins naturels vers l’entrepreneuriat. À La Réunion, de nombreuses TPE devront par ailleurs trouver un repreneur dans les années à venir ([[donnée chiffrée CCI Réunion / INSEE à insérer si disponible]]). Le dirigeant de YEBA FORMATIONS, à la tête de l’entreprise depuis 2021, témoigne de ce parcours. Le Product Builder No-Code se prête particulièrement à la création d’activité (prestation indépendante auprès des TPE-PME).'],
     ['h1', '2. Programme de sensibilisation'],
     ['table', ['Action', 'Contenu', 'Durée / moment'], [
       ['Module « Esprit d’entreprendre »', 'Du projet à l’entreprise : idée, client, offre, prix, statut juridique, premières démarches ; intégré au cursus', '7 heures, deuxième moitié de la formation'],
@@ -14,7 +14,7 @@ module.exports = {
       ['Orientation individuelle', 'Mise en relation avec les réseaux d’accompagnement à la création et à la reprise', 'Sur demande'],
     ], [2600, 4800, 2238]],
     ['h1', '3. Réseaux d’accompagnement sollicités'],
-    ['p', 'CCI Réunion et Chambre de métiers et de l’artisanat (parcours création et reprise), réseaux de prêt d’honneur et de financement de la création (Initiative France, Réseau Entreprendre, Adie, BPI), France Travail pour les demandeurs d’emploi créateurs. [[État des contacts : à préciser — aucun partenariat ne doit être présenté comme signé s’il ne l’est pas]].'],
+    ['p', 'CCI Réunion et Chambre de métiers et de l’artisanat (parcours création et reprise), réseaux de prêt d’honneur et de financement de la création (Initiative France, Réseau Entreprendre, Adie, BPI), France Travail pour les demandeurs d’emploi créateurs. Aucun partenariat n’est formalisé à ce jour ; les prises de contact sont prévues au premier semestre 2027, avant le module « Esprit d’entreprendre ».'],
     ['rgpd', ['**RGPD** — La mise en relation avec un réseau d’accompagnement se fait à l’initiative de l’apprenti ou avec son accord explicite.']],
   ],
 };

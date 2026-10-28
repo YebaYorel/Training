@@ -30,11 +30,11 @@ module.exports = {
     ], [3200, 6438]],
     ['h1', '4. Accessibilité des locaux et des supports'],
     ['ul', [
-      'Locaux : [[accessibilité PMR, registre public d’accessibilité, attestation ou solution de repli]].',
+      'Locaux : 7 rue Henri Cornu, Immeuble Rodrigue 2, Technopole Réunion / Technor (Sainte-Clotilde) — **accessibles aux personnes à mobilité réduite** ; **registre public d’accessibilité** disponible et joint en annexe.',
       'Supports pédagogiques : police sans empattement, gros caractères, fort contraste, mots-clés plutôt que phrases longues, documents compatibles avec les lecteurs d’écran.',
     ]],
     ['h1', '5. Justificatifs joints'],
-    ['ul', ['[[Attestation de formation « Référent handicap »]]', '[[Lettre de mission du référent]]', '[[Registre public d’accessibilité]]', '[[Procédure d’accueil des personnes en situation de handicap (Qualiopi)]]']],
+    ['ul', ['[[Attestation de formation « Référent handicap »]]', '[[Lettre de mission du référent]]', 'Registre public d’accessibilité des locaux', '[[Procédure d’accueil des personnes en situation de handicap (Qualiopi)]]']],
     ['rgpd', [
       '**RGPD** — Les informations liées au handicap sont des **données de santé** (article 9 du RGPD), donc sensibles : recueil uniquement avec le **consentement explicite** du jeune (et des représentants légaux pour un mineur), finalité limitée à la compensation, accès réservé au référent, stockage séparé et sécurisé, aucune mention de diagnostic dans le livret ou auprès de l’employeur sans accord. Une analyse d’impact (AIPD) est recommandée si le volume le justifie.',
       '**IA Act** — Les outils d’IA d’accessibilité (synthèse vocale, transcription) peuvent être proposés, à condition d’être hébergés dans l’UE et de ne pas conserver les contenus. L’IA Act interdit d’exploiter la vulnérabilité liée au handicap (article 5).',
