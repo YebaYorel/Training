@@ -15,3 +15,6 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Logiciel de décorticage : données locales (mot de passe haché, projets, tarifs)
+donnees_yeba/

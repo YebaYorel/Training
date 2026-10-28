@@ -1,0 +1,2255 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Decorticage//FR
+CALSCALE:GREGORIAN
+BEGIN:VTIMEZONE
+TZID:Indian/Reunion
+BEGIN:STANDARD
+DTSTART:19700101T000000
+TZOFFSETFROM:+0400
+TZOFFSETTO:+0400
+TZNAME:RET
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270104-s1-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270104T083000
+DTEND;TZID=Indian/Reunion:20270104T163000
+SUMMARY:S1 — Accueil\, présentation du titre et positionnement
+DESCRIPTION:08h30-16h30\n- Identifier le déroulé de la formation\, les r
+ ègles de vie et les interlocuteurs\n- Situer les 3 activités types et 1
+ 0 compétences du titre\n- Décrire les épreuves de l'examen et le dossi
+ er professionnel\n- Évaluer ses acquis de départ (positionnement)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270105-s1-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270105T083000
+DTEND;TZID=Indian/Reunion:20270105T090000
+SUMMARY:S1 — Accueil\, présentation du titre et positionnement
+DESCRIPTION:08h30-09h00\n- Évaluer ses acquis de départ (positionnement)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270105-s2-540@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270105T090000
+DTEND;TZID=Indian/Reunion:20270105T144500
+SUMMARY:S2 — Mobiliser l’équipe et favoriser la cohésion autour des 
+ objectifs
+DESCRIPTION:09h00-14h45\n- Utiliser le système d’information ou les app
+ licatifs\n- Déléguer des tâches et contrôler les résultats\n- Mobili
+ ser l’ensemble des acteurs de l’entreprise\n- Informer les équipes d
+ es dysfonctionnements constatés\n- Gérer les relations avec les institu
+ tions représentatives du personnel
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270105-s3-900@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270105T150000
+DTEND;TZID=Indian/Reunion:20270105T163000
+SUMMARY:S3 — Contribuer à l’élaboration et à la mise en œuvre des 
+ projets en y associant l’équipe
+DESCRIPTION:15h00-16h30\n- Analyser et synthétiser des données\n- Être 
+ réactif face à des écarts de réalisation des tâches dans les délais
+  impartis
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270106-s3-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270106T083000
+DTEND;TZID=Indian/Reunion:20270106T111500
+SUMMARY:S3 — Contribuer à l’élaboration et à la mise en œuvre des 
+ projets en y associant l’équipe
+DESCRIPTION:08h30-11h15\n- Prévenir et gérer les conflits\n- Respecter l
+ es règles de confidentialité\n- Consulter régulièrement les membres d
+ u personnel
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270106-s4-675@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270106T111500
+DTEND;TZID=Indian/Reunion:20270106T163000
+SUMMARY:S4 — Animer des actions de professionnalisation opérationnelles
+  adaptées au contexte
+DESCRIPTION:11h15-16h30\n- Appliquer et faire respecter le règlement int
+ érieur et les règles liées à la législation du travail\n- Identifier
+  et hiérarchiser les étapes d’un projet\n- Placer les questions du tr
+ avail au cœur des préoccupations\n- Animer des campagnes internes de se
+ nsibilisation sur le handicap
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270107-s4-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270107T083000
+DTEND;TZID=Indian/Reunion:20270107T091500
+SUMMARY:S4 — Animer des actions de professionnalisation opérationnelles
+  adaptées au contexte
+DESCRIPTION:08h30-09h15\n- Veiller à son image de marque (personal brandi
+ ng) et à son e-réputation
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270107-s5-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270107T091500
+DTEND;TZID=Indian/Reunion:20270107T151500
+SUMMARY:S5 — Partager les informations et transmettre des consignes clai
+ res et adaptées au contexte\, en expliquant leur finalité…
+DESCRIPTION:09h15-15h15\n- Participer à la mise en œuvre des mesures de 
+ prévention\, de protection et des consignes pour les équipes\n- Structu
+ rer et synthétiser des informations\n- Expliquer une procédure\n- Trans
+ mettre des consignes orales et écrites\, individuellement et collectivem
+ ent\n- Transmettre un plan d’activité\n- Mener un entretien individuel
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270107-s6-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270107T151500
+DTEND;TZID=Indian/Reunion:20270107T163000
+SUMMARY:S6 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 1/3)
+DESCRIPTION:15h15-16h30\n- Sensibiliser les collaborateurs aux motifs et a
+ ux situations de discrimination au travail
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270108-s6-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270108T083000
+DTEND;TZID=Indian/Reunion:20270108T151500
+SUMMARY:S6 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 1/3)
+DESCRIPTION:08h30-15h15\n- Assurer l’adéquation entre les ressources et
+  les besoins\n- Conduire et accompagner l’équipe dans sa capacité à 
+ s’adapter aux changements de l’entreprise\n- Adapter sa pratique mana
+ gériale aux situations\n- Manager une équipe débutante\, expérimenté
+ e\, intergénérationnelle ou diverse\n- Analyser sa pratique managérial
+ e\n- Communiquer avec ses interlocuteurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270108-s7-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270108T151500
+DTEND;TZID=Indian/Reunion:20270108T163000
+SUMMARY:S7 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 2/3)
+DESCRIPTION:15h15-16h30\n- Communiquer des objectifs clairs\, concrets et 
+ mesurables\n- Communiquer sur les enjeux et les acteurs de la prévention
+  des risques
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270111-s7-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270111T083000
+DTEND;TZID=Indian/Reunion:20270111T144500
+SUMMARY:S7 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 2/3)
+DESCRIPTION:08h30-14h45\n- Communiquer sur les enjeux et les acteurs de la
+  prévention des risques\n- Communiquer sur les facteurs de risques psych
+ osociaux liés à l’organisation du travail\n- Transmettre les bonnes p
+ ratiques préconisées par l’entreprise\n- Responsabiliser les collabor
+ ateurs\n- Adopter une posture de leadership positif et bienveillant\n- Pr
+ atiquer l’écoute active et les techniques de questionnement
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270111-s8-900@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270111T150000
+DTEND;TZID=Indian/Reunion:20270111T163000
+SUMMARY:S8 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 3/3)
+DESCRIPTION:15h00-16h30\n- Maintenir cette e-réputation en cohérence ave
+ c la politique de communication\n- Adopter une posture bienveillante\, no
+ n intrusive et respectueuse dans les échanges avec les collaborateurs co
+ ncernés
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270112-s8-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270112T083000
+DTEND;TZID=Indian/Reunion:20270112T094500
+SUMMARY:S8 — Adapter sa communication\, son mode d’animation et sa pra
+ tique managériale aux besoins des collaborateurs et aux… (partie 3/3)
+DESCRIPTION:08h30-09h45\n- Adopter une posture bienveillante\, non intrusi
+ ve et respectueuse dans les échanges avec les collaborateurs concernés\
+ n- Adopter une posture d’écoute active face à un salarié se sentant 
+ discriminé
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270112-s9-585@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270112T094500
+DTEND;TZID=Indian/Reunion:20270112T163000
+SUMMARY:S9 — Organiser et animer des briefings\, débriefings quotidiens
+  et des réunions d’équipe périodiques afin de soutenir…
+DESCRIPTION:09h45-16h30\n- Appliquer et faire appliquer les réglementatio
+ ns\, les règles d’hygiène et de sécurité\n- Adopter une démarche p
+ articipative et expérimentale\n- Organiser les moyens humains et matéri
+ els en fonction des ressources disponibles et des dates butoirs\n- Antici
+ per les changements réglementaires ou organisationnels\n- Préparer et a
+ nimer une réunion\n- Fédérer les membres de l’équipe
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270113-s9-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270113T083000
+DTEND;TZID=Indian/Reunion:20270113T091500
+SUMMARY:S9 — Organiser et animer des briefings\, débriefings quotidiens
+  et des réunions d’équipe périodiques afin de soutenir…
+DESCRIPTION:08h30-09h15\n- Accompagner les collaborateurs dans l’atteint
+ e des objectifs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270113-s10-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270113T091500
+DTEND;TZID=Indian/Reunion:20270113T163000
+SUMMARY:S10 — Utiliser des outils et des techniques de stimulation et de
+  motivation adaptés au contexte pour renforcer la dynamique…
+DESCRIPTION:09h15-16h30\n- Utiliser les outils bureautiques et applicatifs
+  spécialisés\n- Coopérer avec les autres services\n- Utiliser les outi
+ ls de travail collaboratifs\n- Mettre en place des outils de stimulation 
+ des équipes (challenges\, concours…)\n- Mettre en œuvre des technique
+ s et outils de team building\n- Utiliser les techniques de communication 
+ interpersonnelle\n- Collecter des données auprès des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270114-s10-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270114T083000
+DTEND;TZID=Indian/Reunion:20270114T091500
+SUMMARY:S10 — Utiliser des outils et des techniques de stimulation et de
+  motivation adaptés au contexte pour renforcer la dynamique…
+DESCRIPTION:08h30-09h15\n- Développer et entretenir la motivation de l’
+ équipe
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270114-s11-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270114T091500
+DTEND;TZID=Indian/Reunion:20270114T153000
+SUMMARY:S11 — Impliquer l’équipe dans l’élaboration et la mise en 
+ œuvre des actions correctives et d’amélioration continue
+DESCRIPTION:09h15-15h30\n- Mettre en œuvre la démarche qualité\n- Appli
+ quer et faire appliquer la démarche QHSE : Qualité hygiène sécurité 
+ environnement\n- Élaborer des préconisations\, proposer des solutions o
+ u scénarios d’amélioration\n- Communiquer avec sa hiérarchie\, rendr
+ e compte et faire des propositions d’actions correctives\n- Mettre en 
+ œuvre des actions correctives issues d’un audit\, d’un signalement o
+ u d’un retour d’expérience sur les thématiques handicap\, discrimin
+ ation ou sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270114-s12-930@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270114T153000
+DTEND;TZID=Indian/Reunion:20270114T163000
+SUMMARY:S12 — Entraînement à l'évaluation — Animer l’équipe
+DESCRIPTION:15h30-16h30\n- Démontrer que : les consignes sont transmises 
+ en donnant du sens aux actions à mener
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270115-s12-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270115T083000
+DTEND;TZID=Indian/Reunion:20270115T160000
+SUMMARY:S12 — Entraînement à l'évaluation — Animer l’équipe
+DESCRIPTION:08h30-16h00\n- Démontrer que : les consignes sont transmises 
+ en donnant du sens aux actions à mener\n- Démontrer que : l’animation
+  des briefings\, des débriefings et des réunions est adaptée aux enjeu
+ x et à l’équipe\n- Démontrer que : les outils et les techniques de s
+ timulation et de motivation sont utilisés de manière adaptée au contex
+ te\n- Démontrer que : la communication et l’animation sont adaptées a
+ ux différentes situations managériales\n- Démontrer que : l’équipe 
+ est impliquée dans l’amélioration continue et l’atteinte des object
+ ifs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270115-s13-960@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270115T160000
+DTEND;TZID=Indian/Reunion:20270115T163000
+SUMMARY:S13 — Anticiper les besoins humains (partie 1/2)
+DESCRIPTION:16h00-16h30\n- Utiliser les systèmes d’information et les o
+ utils de gestion des ressources humaines pour planifier l’activité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270118-s13-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270118T083000
+DTEND;TZID=Indian/Reunion:20270118T160000
+SUMMARY:S13 — Anticiper les besoins humains (partie 1/2)
+DESCRIPTION:08h30-16h00\n- Utiliser les systèmes d’information et les o
+ utils de gestion des ressources humaines pour planifier l’activité\n- 
+ Veiller à la disponibilité et à l’utilisation d’équipements d’a
+ ccès en hauteur adaptés à l’activité\n- Respecter et faire respecte
+ r les procédures internes de gestion et d’organisation du travail\n- O
+ rganiser les moyens humains et matériels en fonction des ressources disp
+ onibles et des dates butoirs\n- Organiser des temps de sensibilisation ou
+  de rappel aux bonnes pratiques en matière de sécurité\n- Anticiper le
+ s changements réglementaires ou organisationnels\n- Planifier les horair
+ es de travail de l’équipe en fonction des besoins\n- Transmettre aux s
+ alariés des consignes\, précises et compréhensibles à l’oral et à 
+ l’écrit\, sur les gestes et postures
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270118-s14-960@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270118T160000
+DTEND;TZID=Indian/Reunion:20270118T163000
+SUMMARY:S14 — Anticiper les besoins humains (partie 2/2)
+DESCRIPTION:16h00-16h30\n- Fédérer l’équipe autour des objectifs comm
+ uns et assurer un suivi régulier de l’activité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270119-s14-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270119T083000
+DTEND;TZID=Indian/Reunion:20270119T091500
+SUMMARY:S14 — Anticiper les besoins humains (partie 2/2)
+DESCRIPTION:08h30-09h15\n- Fédérer l’équipe autour des objectifs comm
+ uns et assurer un suivi régulier de l’activité\n- Rappeler régulièr
+ ement les comportements attendus en matière de sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270119-s15-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270119T091500
+DTEND;TZID=Indian/Reunion:20270119T114500
+SUMMARY:S15 — Tenir compte de la nature de l’activité et évaluer la 
+ charge de travail de manière réaliste
+DESCRIPTION:09h15-11h45\n- Maîtriser les outils d’aide au diagnostic (d
+ iagramme d’Ishikawa…)\n- Coopérer avec les autres services\n- Consul
+ ter régulièrement les membres du personnel
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270119-s16-705@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270119T114500
+DTEND;TZID=Indian/Reunion:20270119T163000
+SUMMARY:S16 — Élaborer et ajuster les plannings de travail en répartis
+ sant les tâches de manière optimale (partie 1/2)
+DESCRIPTION:11h45-16h30\n- Utiliser les outils d’aide à la planificatio
+ n des tâches et des étapes\n- Appliquer et faire respecter la législat
+ ion du travail\, les règles relatives au temps de travail et aux congés
+ \n- Appliquer et faire respecter les règles d’hygiène\, de sécurité
+  et de prévention des risques professionnels\n- Mettre à disposition de
+ s salariés des EPI adaptés aux activités de l’établissement
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270120-s16-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270120T083000
+DTEND;TZID=Indian/Reunion:20270120T120000
+SUMMARY:S16 — Élaborer et ajuster les plannings de travail en répartis
+ sant les tâches de manière optimale (partie 1/2)
+DESCRIPTION:08h30-12h00\n- Maîtriser la démarche QHSE (ISO\, OHSAS\, ERP
+ \, IGH…)\n- Organiser la répartition des tâches et des responsabilit
+ és au sein de l’équipe\n- Élaborer des préconisations\, proposer de
+ s solutions ou scénarios d’amélioration\n- Identifier les activités 
+ à risque au sein de l’établissement et ajuster l’organisation du tr
+ avail en conséquence
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270120-s17-780@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270120T130000
+DTEND;TZID=Indian/Reunion:20270120T163000
+SUMMARY:S17 — Élaborer et ajuster les plannings de travail en répartis
+ sant les tâches de manière optimale (partie 2/2)
+DESCRIPTION:13h00-16h30\n- Intégrer les facteurs de risques psychosociaux
+  (RPS) dans l’organisation du travail pour limiter la charge mentale et
+  les tensions au sein de l’équipe\n- Participer à l’évaluation des
+  risques professionnels en lien avec la hiérarchie ou les référents s
+ écurité\n- Prendre en compte les capacités physiques des salariés dan
+ s la répartition des tâches\n- Organiser des temps de coordination pour
+  assurer une bonne répartition des tâches et une bonne circulation de l
+ ’information
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270121-s17-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270121T083000
+DTEND;TZID=Indian/Reunion:20270121T101500
+SUMMARY:S17 — Élaborer et ajuster les plannings de travail en répartis
+ sant les tâches de manière optimale (partie 2/2)
+DESCRIPTION:08h30-10h15\n- Organiser des temps de coordination pour assure
+ r une bonne répartition des tâches et une bonne circulation de l’info
+ rmation\n- Élaborer un rétroplanning des activités et des tâches\n- G
+ érer les conflits potentiels liés à la répartition des tâches et des
+  horaires de travail
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270121-s18-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270121T103000
+DTEND;TZID=Indian/Reunion:20270121T133000
+SUMMARY:S18 — Associer l’équipe à la mise en œuvre des projets de l
+ ’établissement et déléguer des responsabilités aux collaborateurs
+DESCRIPTION:10h30-13h30\n- Identifier et maîtriser les méthodes d’anal
+ yse et de synthèse de documents chiffrés\n- Déléguer efficacement les
+  tâches et contrôler la performance et les résultats\n- Responsabilise
+ r les collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270121-s19-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270121T133000
+DTEND;TZID=Indian/Reunion:20270121T163000
+SUMMARY:S19 — Tenir compte d’éventuels besoins spécifiques de collab
+ orateurs en situation de handicap (partie 1/2)
+DESCRIPTION:13h30-16h30\n- Identifier les contraintes techniques liées à
+  certains types de handicap lors des opérations de travail\n- Identifier
+  les situations ou pratiques indirectement discriminantes dans l’organi
+ sation du travail\n- Gérer les situations d’absences et d’imprévus 
+ en réajustant les plannings en temps réel\n- Veiller à l’adaptation 
+ des postes de travail du poste de travail pour le collaborateur en situat
+ ion de handicap
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270122-s19-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270122T083000
+DTEND;TZID=Indian/Reunion:20270122T134500
+SUMMARY:S19 — Tenir compte d’éventuels besoins spécifiques de collab
+ orateurs en situation de handicap (partie 1/2)
+DESCRIPTION:08h30-13h45\n- Appliquer les mesures relatives à l’aménage
+ ment\, à l’adaptation ou à la transformation du poste de travail du c
+ ollaborateur en situation de handicap\n- Utiliser les outils internes pou
+ r renseigner les besoins spécifiques des collaborateurs en situation de 
+ handicap\n- Analyser et synthétiser des données\n- Identifier les situa
+ tions ou pratiques indirectement discriminantes dans l’organisation du 
+ travail\n- Adapter les plannings pour limiter les pics de charge ou les s
+ ituations de sous-effectif récurrent
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270122-s20-825@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270122T134500
+DTEND;TZID=Indian/Reunion:20270122T163000
+SUMMARY:S20 — Tenir compte d’éventuels besoins spécifiques de collab
+ orateurs en situation de handicap (partie 2/2)
+DESCRIPTION:13h45-16h30\n- Assurer le rôle d’interface avec les service
+ s compétents (RH\, référent handicap\, SST)\n- Participer à l’organ
+ isation de campagnes internes de sensibilisation sur le handicap\n- Elabo
+ rer une organisation de travail prenant en compte d’éventuels besoins 
+ du collaborateur en situation de handicap\n- Prendre en compte d’évent
+ uels besoins spécifiques des collaborateurs et de ceux en situation de h
+ andicap lors de l’élaboration des plannings
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270125-s20-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270125T083000
+DTEND;TZID=Indian/Reunion:20270125T101500
+SUMMARY:S20 — Tenir compte d’éventuels besoins spécifiques de collab
+ orateurs en situation de handicap (partie 2/2)
+DESCRIPTION:08h30-10h15\n- Prendre en compte d’éventuels besoins spéci
+ fiques des collaborateurs et de ceux en situation de handicap lors de l
+ ’élaboration des plannings\n- Être à l’écoute des signaux de fati
+ gue ou de stress exprimés par les membres de l’équipe et de ceux en s
+ ituation de handicap\n- Accompagner et encourager les salariés à la rem
+ ontée d’information liée à des situations à risques
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270125-s21-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270125T103000
+DTEND;TZID=Indian/Reunion:20270125T143000
+SUMMARY:S21 — Communiquer à l’équipe les plannings et s’assurer de
+  sa compréhension
+DESCRIPTION:10h30-14h30\n- Calculer les indicateurs liés à la productivi
+ té horaire\n- Assurer la traçabilité des faits signalés et les remont
+ er à sa hiérarchie\n- Expliquer et justifier les choix organisationnels
+  auprès de l’équipe\n- Mettre en place des outils de communication in
+ terne pour fluidifier l’organisation des tâches et des missions
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270125-s22-870@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270125T143000
+DTEND;TZID=Indian/Reunion:20270125T163000
+SUMMARY:S22 — Suivre la réalisation des tâches et réguler l’activit
+ é en fonction des événements et des imprévus\, en concertation avec
+ …
+DESCRIPTION:14h30-16h30\n- Utiliser des outils de planification et de suiv
+ i des activités et des tâches de l’équipe\n- Veiller à la sécurisa
+ tion des zones de circulation\n- Identifier et hiérarchiser les étapes 
+ d’un projet
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270126-s22-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270126T083000
+DTEND;TZID=Indian/Reunion:20270126T114500
+SUMMARY:S22 — Suivre la réalisation des tâches et réguler l’activit
+ é en fonction des événements et des imprévus\, en concertation avec
+ …
+DESCRIPTION:08h30-11h45\n- Identifier et hiérarchiser les étapes d’un 
+ projet\n- Suivre la réalisation des tâches et s’assurer du respect de
+ s délais impartis\n- Être réactif face aux écarts de réalisation des
+  tâches et proposer des solutions adaptées\n- Communiquer de manière c
+ laire et adaptée avec l’équipe et la hiérarchie\n- Rendre compte des
+  résultats et des ajustements à la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270126-s23-705@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270126T114500
+DTEND;TZID=Indian/Reunion:20270126T151500
+SUMMARY:S23 — Encourager la participation de l’équipe à l’optimisa
+ tion de l’organisation du travail et à la mise en œuvre d’actions
+ …
+DESCRIPTION:11h45-15h15\n- Mettre en œuvre la démarche qualité (PDCA\, 
+ roue de Deming)\n- Mettre en œuvre des actions correctives à la suite d
+ ’incidents ou d’observations terrain liés à la sécurité\n- Mettre
+  en œuvre des actions correctives issues d’un audit\, d’un signaleme
+ nt ou d’un retour d’expérience sur les thématiques handicap\, discr
+ imination ou sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270126-s24-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270126T151500
+DTEND;TZID=Indian/Reunion:20270126T163000
+SUMMARY:S24 — Entraînement à l'évaluation — Planifier et coordonner
+  l'activité de l’équipe
+DESCRIPTION:15h15-16h30\n- Démontrer que : les besoins humains sont antic
+ ipés et adaptés à l’activité prévue\n- Démontrer que : la charge 
+ de travail est évaluée de manière réaliste et répartie de façon opt
+ imale
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270127-s24-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270127T083000
+DTEND;TZID=Indian/Reunion:20270127T143000
+SUMMARY:S24 — Entraînement à l'évaluation — Planifier et coordonner
+  l'activité de l’équipe
+DESCRIPTION:08h30-14h30\n- Démontrer que : la charge de travail est éval
+ uée de manière réaliste et répartie de façon optimale\n- Démontrer 
+ que : la planification des horaires et des tâches respecte la réglement
+ ation en vigueur\n- Démontrer que : les plannings sont communiqués à l
+ ’équipe de façon adaptée\n- Démontrer que : la gestion des imprévu
+ s est adaptée au contexte\n- Démontrer que : l’organisation du travai
+ l tient compte de la prévention des risques professionnels
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270127-s25-870@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270127T143000
+DTEND;TZID=Indian/Reunion:20270127T163000
+SUMMARY:S25 — Accompagner la performance individuelle des collaborateurs
+  à partir des données relatives aux évolutions de son…
+DESCRIPTION:14h30-16h30\n- Intégrer des temps de feedback dans l’accomp
+ agnement de la performance individuelle\n- Définir les missions en lien 
+ avec les objectifs individuels
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270128-s25-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270128T083000
+DTEND;TZID=Indian/Reunion:20270128T100000
+SUMMARY:S25 — Accompagner la performance individuelle des collaborateurs
+  à partir des données relatives aux évolutions de son…
+DESCRIPTION:08h30-10h00\n- Définir les missions en lien avec les objectif
+ s individuels\n- Respecter les échéances dans le suivi des évolutions 
+ des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270128-s26-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270128T100000
+DTEND;TZID=Indian/Reunion:20270128T151500
+SUMMARY:S26 — Identifier les freins et les leviers motivationnels
+DESCRIPTION:10h00-15h15\n- Adopter une posture d’écoute active face à 
+ un salarié se sentant discriminé\n- Transmettre des objectifs clairs\, 
+ concrets et mesurables
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270128-s27-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270128T151500
+DTEND;TZID=Indian/Reunion:20270128T161500
+SUMMARY:S27 — Évaluer le niveau de maîtrise des compétences\, le degr
+ é d’implication et le potentiel de chaque collaborateur en…
+DESCRIPTION:15h15-16h15\n- Assurer la traçabilité et le suivi des entret
+ iens de chaque collaborateur
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270128-s28-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270128T161500
+DTEND;TZID=Indian/Reunion:20270128T163000
+SUMMARY:S28 — Proposer des actions adaptées favorisant l’engagement e
+ t le développement professionnel afin de fidéliser les…
+DESCRIPTION:16h15-16h30\n- Mettre en place des feedbacks croisés\, constr
+ uctifs et réguliers\, pour développer les compétences individuelles
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270129-s28-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270129T083000
+DTEND;TZID=Indian/Reunion:20270129T161500
+SUMMARY:S28 — Proposer des actions adaptées favorisant l’engagement e
+ t le développement professionnel afin de fidéliser les…
+DESCRIPTION:08h30-16h15\n- Mettre en place des feedbacks croisés\, constr
+ uctifs et réguliers\, pour développer les compétences individuelles\n-
+  Concevoir et proposer des parcours individuels de progression profession
+ nelle\n- Organiser et coordonner la mise en place des actions de formatio
+ n\n- Planifier et suivre les objectifs individuels pour assurer un dével
+ oppement continu\n- Sensibiliser les collaborateurs aux enjeux du dévelo
+ ppement professionnel\n- Communiquer avec ses interlocuteurs\n- Valoriser
+  et motiver les collaborateurs en mettant en avant leurs réussites et pr
+ ogrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270129-s29-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270129T161500
+DTEND;TZID=Indian/Reunion:20270129T163000
+SUMMARY:S29 — Mettre en place des plans d’accompagnement et de formati
+ on individualisés pour répondre aux besoins identifiés
+DESCRIPTION:16h15-16h30\n- Identifier les besoins en formation et les axes
+  d’amélioration des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270201-s29-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270201T083000
+DTEND;TZID=Indian/Reunion:20270201T134500
+SUMMARY:S29 — Mettre en place des plans d’accompagnement et de formati
+ on individualisés pour répondre aux besoins identifiés
+DESCRIPTION:08h30-13h45\n- Identifier les besoins en formation et les axes
+  d’amélioration des collaborateurs\n- Appliquer et faire respecter les
+  règles de confidentialité lors des échanges individuels\n- Mettre en 
+ œuvre des techniques de formation en situation de travail\n- Identifier 
+ et structurer les étapes de progression des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270201-s30-825@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270201T134500
+DTEND;TZID=Indian/Reunion:20270201T163000
+SUMMARY:S30 — Conduire les différents types d’entretiens individuels 
+ en fonction de sa délégation et signaler toute difficulté à sa…
+DESCRIPTION:13h45-16h30\n- Utiliser les systèmes d’information et les o
+ utils de gestion des ressources humaines pour suivre la performance indiv
+ iduelle\n- Mener différents types d’entretiens
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270202-s30-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270202T083000
+DTEND;TZID=Indian/Reunion:20270202T131500
+SUMMARY:S30 — Conduire les différents types d’entretiens individuels 
+ en fonction de sa délégation et signaler toute difficulté à sa…
+DESCRIPTION:08h30-13h15\n- Mener des entretiens individuels en adoptant un
+ e posture neutre et bienveillante\n- Adopter une posture bienveillante\, 
+ non intrusive et respectueuse dans les échanges avec les collaborateurs 
+ concernés\, ainsi que lors d’entretiens individuels\n- Assurer l’int
+ erface entre le salarié et le service RH\n- Rendre compte des résultats
+  et des ajustements à la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270202-s31-795@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270202T131500
+DTEND;TZID=Indian/Reunion:20270202T163000
+SUMMARY:S31 — Entraînement à l'évaluation — Accompagner la performa
+ nce individuelle des collaborateurs
+DESCRIPTION:13h15-16h30\n- Démontrer que : le niveau de maîtrise des com
+ pétences\, le degré d’implication et le potentiel des collaborateurs 
+ sont évalués de manière pertinente\n- Démontrer que : les freins et l
+ es leviers motivationnels sont identifiés et pris en compte dans l’acc
+ ompagnement\n- Démontrer que : les plans d’accompagnement et de format
+ ion sont individualisés\n- Démontrer que : les plans d’accompagnement
+  correspondent aux besoins des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270203-s31-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270203T083000
+DTEND;TZID=Indian/Reunion:20270203T084500
+SUMMARY:S31 — Entraînement à l'évaluation — Accompagner la performa
+ nce individuelle des collaborateurs
+DESCRIPTION:08h30-08h45\n- Démontrer que : les plans d’accompagnement c
+ orrespondent aux besoins des collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270203-s32-525@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270203T084500
+DTEND;TZID=Indian/Reunion:20270203T141500
+SUMMARY:S32 — Identifier les besoins en ressources humaines afin d’ass
+ urer la continuité de service
+DESCRIPTION:08h45-14h15\n- Identifier les formalités administratives lié
+ es à l’embauche et renseigner les documents obligatoires\n- Identifier
+  les besoins en formation des nouveaux salariés et proposer des actions 
+ adaptées\n- Identifier les sources de recrutement adaptées aux besoins\
+ n- Assurer la traçabilité des faits signalés et les remonter à sa hi
+ érarchie\n- Anticiper et adapter le recrutement en fonction des besoins 
+ en ressources humaines\n- Assurer la communication entre les salariés\, 
+ la hiérarchie et le service RH
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270203-s33-855@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270203T141500
+DTEND;TZID=Indian/Reunion:20270203T163000
+SUMMARY:S33 — Contribuer à la sélection des candidatures en appliquant
+  les critères définis et en tenant compte des compétences…
+DESCRIPTION:14h15-16h30\n- Appliquer et faire respecter la législation du
+  travail\, la convention collective et les accords de branche\n- Applique
+ r les procédures internes en matière de recrutement et d’intégration
+ \n- Appliquer les réglementations en matière d’hygiène\, de sécurit
+ é et de protection des données personnelles
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270204-s33-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270204T083000
+DTEND;TZID=Indian/Reunion:20270204T100000
+SUMMARY:S33 — Contribuer à la sélection des candidatures en appliquant
+  les critères définis et en tenant compte des compétences…
+DESCRIPTION:08h30-10h00\n- Appliquer les réglementations en matière d’
+ hygiène\, de sécurité et de protection des données personnelles\n- S
+ électionner et analyser des candidatures en fonction des critères de re
+ crutement
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270204-s34-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270204T100000
+DTEND;TZID=Indian/Reunion:20270204T161500
+SUMMARY:S34 — Participer aux entretiens de recrutement afin d’évaluer
+  l’adéquation des profils avec la fiche de poste et les exigences
+DESCRIPTION:10h00-16h15\n- Utiliser les outils bureautiques et applicatifs
+  spécialisés pour la gestion des recrutements et de l’intégration\n-
+  Mettre à disposition des salariés des EPI adaptés aux activités de l
+ ’établissement\n- Rechercher et analyser des descriptifs de poste\n- I
+ dentifier et structurer les différentes étapes du processus de recrutem
+ ent et d’intégration\n- Respecter les échéances du processus de recr
+ utement et d’intégration\n- Conduire des entretiens de recrutement et 
+ d’intégration en respectant une posture neutre et bienveillante\n- Res
+ pecter et faire respecter les règles de confidentialité lors du traitem
+ ent des candidatures et des entretiens
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270204-s35-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270204T161500
+DTEND;TZID=Indian/Reunion:20270204T163000
+SUMMARY:S35 — Contribuer à l’étude des adaptations du poste de trava
+ il pour les collaborateurs en situation de handicap et les mettre… (par
+ tie 1/2)
+DESCRIPTION:16h15-16h30\n- Identifier les contraintes techniques liées à
+  certains types de handicap lors des opérations de travail
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270205-s35-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270205T083000
+DTEND;TZID=Indian/Reunion:20270205T163000
+SUMMARY:S35 — Contribuer à l’étude des adaptations du poste de trava
+ il pour les collaborateurs en situation de handicap et les mettre… (par
+ tie 1/2)
+DESCRIPTION:08h30-16h30\n- Identifier les contraintes techniques liées à
+  certains types de handicap lors des opérations de travail\n- Mettre en 
+ œuvre des techniques de tutorat et de formation en situation de travail\
+ n- Appliquer les mesures relatives à l’aménagement\, à l’adaptatio
+ n ou à la transformation du poste de travail pour le collaborateur en si
+ tuation de handicap\n- Coopérer avec un ergonome dans le cas d’une ada
+ ptation de poste de travail\n- Utiliser les outils internes pour renseign
+ er les besoins spécifiques des collaborateurs en situation de handicap\n
+ - Organiser des événements d’intégration pour favoriser l’adaptati
+ on des nouveaux collaborateurs\n- Coordonner la mise en œuvre des aména
+ gements avec les services compétents (RH\, référent handicap\, SST)\n-
+  Planifier un bilan régulier sur la pertinence dans la durée des aména
+ gements mis en œuvre pour l’adaptation
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270208-s36-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270208T083000
+DTEND;TZID=Indian/Reunion:20270208T151500
+SUMMARY:S36 — Contribuer à l’étude des adaptations du poste de trava
+ il pour les collaborateurs en situation de handicap et les mettre… (par
+ tie 2/2)
+DESCRIPTION:08h30-15h15\n- Sensibiliser aux bonnes pratiques d’accueil d
+ es personnes en situation de handicap\n- Adopter une posture d’accompag
+ nement pour faciliter l’intégration des nouveaux salariés\n- Favorise
+ r une culture d’équipe inclusive par des comportements exemplaires\n- 
+ Accueillir un nouveau collaborateur en situation de handicap\n- Transmett
+ re aux salariés des consignes claires sur les bons gestes et postures\n-
+  Adopter une posture bienveillante\, non intrusive et respectueuse dans l
+ es échanges avec les collaborateurs concernés\n- Mettre en œuvre des a
+ ctions correctives issues d’un audit\, d’un signalement ou d’un ret
+ our d’expérience sur les thématiques handicap\, discrimination ou sé
+ curité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270208-s37-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270208T151500
+DTEND;TZID=Indian/Reunion:20270208T163000
+SUMMARY:S37 — Collaborer avec le service des ressources humaines pour pr
+ éparer un parcours d’intégration individualisé et le mettre…
+DESCRIPTION:15h15-16h30\n- Organiser le parcours d’intégration des alte
+ rnants (ou stagiaires) en mobilisant les pratiques du tutorat\n- Intégre
+ r les principes de non-discrimination dans les process RH de base : inté
+ gration\, évaluation\, montée en compétences
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270209-s37-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270209T083000
+DTEND;TZID=Indian/Reunion:20270209T101500
+SUMMARY:S37 — Collaborer avec le service des ressources humaines pour pr
+ éparer un parcours d’intégration individualisé et le mettre…
+DESCRIPTION:08h30-10h15\n- Intégrer les principes de non-discrimination d
+ ans les process RH de base : intégration\, évaluation\, montée en comp
+ étences\n- Organiser et suivre le programme d’intégration des nouveau
+ x collaborateurs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270209-s38-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270209T103000
+DTEND;TZID=Indian/Reunion:20270209T133000
+SUMMARY:S38 — Accompagner la nouvelle recrue par un tutorat adapté à s
+ on statut et à son besoin afin de la faire monter en compétences
+DESCRIPTION:10h30-13h30\n- Assurer un accompagnement structuré des altern
+ ants (ou stagiaires)\, selon les principes du tutorat\n- Informer et sens
+ ibiliser l’équipe aux bonnes pratiques d’intégration et de tutorat\
+ n- Transmettre des consignes et objectifs précis aux collaborateurs nouv
+ ellement intégrés
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270209-s39-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270209T133000
+DTEND;TZID=Indian/Reunion:20270209T143000
+SUMMARY:S39 — Surveiller le respect des mesures de prévention des risqu
+ es professionnels par la nouvelle recrue
+DESCRIPTION:13h30-14h30\n- Planifier et coordonner les opérations adminis
+ tratives et logistiques liées à l’embauche
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270209-s40-870@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270209T143000
+DTEND;TZID=Indian/Reunion:20270209T154500
+SUMMARY:S40 — Veiller au bon déroulement de la période d’essai
+DESCRIPTION:14h30-15h45\n- Être à l’écoute des signaux de fatigue ou 
+ de stress exprimés par les membres de l’équipe
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270209-s41-945@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270209T154500
+DTEND;TZID=Indian/Reunion:20270209T163000
+SUMMARY:S41 — Signaler toute difficulté à sa hiérarchie dans le but d
+ e contribuer à une intégration réussie
+DESCRIPTION:15h45-16h30\n- Rappeler régulièrement les comportements atte
+ ndus en matière de sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270210-s42-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270210T083000
+DTEND;TZID=Indian/Reunion:20270210T141500
+SUMMARY:S42 — Entraînement à l'évaluation — Contribuer aux processu
+ s de recrutement et d’intégration des collaborateurs
+DESCRIPTION:08h30-14h15\n- Démontrer que : l’adéquation entre le profi
+ l du candidat et la fiche de poste est évaluée à partir des critères 
+ définis\n- Démontrer que : le parcours d’intégration est individuali
+ sé en fonction des compétences de la nouvelle recrue\n- Démontrer que 
+ : le tutorat est adapté aux besoins des nouvelles recrues et favorise le
+ ur montée en compétences\n- Démontrer que : le suivi de la période d
+ ’essai est assuré et les difficultés éventuelles sont remontées à 
+ la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270210-s43-855@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270210T141500
+DTEND;TZID=Indian/Reunion:20270210T163000
+SUMMARY:S43 — ECF — Évaluation en cours de formation AT1
+DESCRIPTION:14h15-16h30\n- Démontrer les compétences de l'AT1 en situati
+ on type examen\n- Analyser ses résultats et fixer ses axes de progrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270211-s43-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270211T083000
+DTEND;TZID=Indian/Reunion:20270211T100000
+SUMMARY:S43 — ECF — Évaluation en cours de formation AT1
+DESCRIPTION:08h30-10h00\n- Analyser ses résultats et fixer ses axes de pr
+ ogrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270211-s44-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270211T100000
+DTEND;TZID=Indian/Reunion:20270211T154500
+SUMMARY:S44 — Anticiper les besoins en approvisionnement à partir des d
+ onnées relatives aux stocks\, aux prévisions de ventes\, aux…
+DESCRIPTION:10h00-15h45\n- Identifier les circuits d’approvisionnement e
+ t de distribution des marchandises\n- Assurer le nettoyage et la désinfe
+ ction des contenants réutilisables selon les normes\n- Identifier et év
+ aluer les risques liés aux stocks (pénuries\, surstocks\, pertes)\n- Pr
+ endre en compte les capacités physiques des salariés dans la répartiti
+ on des tâches\n- Anticiper et gérer les ruptures d’approvisionnement 
+ en collaboration avec les fournisseurs et la hiérarchie\n- Coordonner la
+  mise en place des actions correctives en cas d’anomalies d’approvisi
+ onnement
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270211-s45-945@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270211T154500
+DTEND;TZID=Indian/Reunion:20270211T163000
+SUMMARY:S45 — Recueillir les informations nécessaires auprès des fourn
+ isseurs\, de la centrale d'achat\, du service logistique et de…
+DESCRIPTION:15h45-16h30\n- Identifier les fournisseurs spécialisés en pr
+ oduits vrac\, seconde main ou issus du réemploi
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270212-s45-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270212T083000
+DTEND;TZID=Indian/Reunion:20270212T151500
+SUMMARY:S45 — Recueillir les informations nécessaires auprès des fourn
+ isseurs\, de la centrale d'achat\, du service logistique et de…
+DESCRIPTION:08h30-15h15\n- Identifier et veiller au bon état des postes o
+ u zones à risque lors de tournées terrain\n- Prendre en compte le poids
+  et la fréquence d’utilisation des produits dans l’organisation du r
+ angement et dans la répartition des tâches\n- Organiser le stockage dan
+ s le respect des contraintes sanitaires propres au vrac\n- Organiser des 
+ temps de sensibilisation ou de rappel aux bonnes pratiques en matière de
+  sécurité\n- Planifier des commandes en tenant compte de la saisonnalit
+ é\, de la rotation en vrac et des spécificités logistiques liées au r
+ éemploi\n- Optimiser les livraisons groupées pour limiter les coûts lo
+ gistiques et l’empreinte carbone\n- Coopérer avec des fournisseurs loc
+ aux et engagés dans l’économie circulaire d’approvisionnement
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270212-s46-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270212T151500
+DTEND;TZID=Indian/Reunion:20270212T163000
+SUMMARY:S46 — Suivre les niveaux de stock en temps réel en utilisant le
+ s outils de traçabilité et les applicatifs dédiés
+DESCRIPTION:15h15-16h30\n- Utiliser les outils de traçabilité\n- Veiller
+  à la disponibilité et à l’utilisation d’équipements d’accès e
+ n hauteur adaptés à l’activité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270215-s46-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270215T083000
+DTEND;TZID=Indian/Reunion:20270215T120000
+SUMMARY:S46 — Suivre les niveaux de stock en temps réel en utilisant le
+ s outils de traçabilité et les applicatifs dédiés
+DESCRIPTION:08h30-12h00\n- Veiller à la disponibilité et à l’utilisat
+ ion d’équipements d’accès en hauteur adaptés à l’activité\n- O
+ ptimiser les espaces dédiés à la réception et au déballage et veille
+ r à ce qu’ils restent désencombrés et accessibles pour les aides à 
+ la manutention\n- Suivre et contrôler les stocks et les flux en temps r
+ éel\n- Échanger efficacement avec les partenaires sur la traçabilité 
+ et la provenance des produits\n- Alerter la hiérarchie en temps voulu en
+  cas de problème d’approvisionnement ou de stock
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270215-s47-780@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270215T130000
+DTEND;TZID=Indian/Reunion:20270215T163000
+SUMMARY:S47 — Réaliser les inventaires périodiques\, ajuster les comma
+ ndes en fonction des ventes\, des réservations clients et des…
+DESCRIPTION:13h00-16h30\n- Déterminer et ajuster les quantités de produi
+ ts à commander en fonction des objectifs commerciaux\n- Veiller à la pr
+ ésence et l’utilisation à bon escient de moyens de manutention adapt
+ és à la marchandise tels que des diables\, transpalettes électriques\,
+  tables ou chariots mobiles\, etc\n- Participer à l’évaluation des ri
+ sques de TMS pour les salariés\n- Identifier les activités à risque au
+  sein de l’établissement et ajuster l’organisation du travail en con
+ séquence\n- Mettre en place et ajuster les procédures de gestion des st
+ ocks en fonction des évolutions du marché et des objectifs commerciaux
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270216-s48-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270216T083000
+DTEND;TZID=Indian/Reunion:20270216T163000
+SUMMARY:S48 — Réceptionner les produits avec l'équipe ou le réception
+ naire\, vérifier la conformité des livraisons et signaler toute…
+DESCRIPTION:08h30-16h30\n- Mettre à jour ou signaler les fiches de poste 
+ ou les consignes de sécurité en lien avec les évolutions opérationnel
+ les\n- Veiller à l’utilisation conforme des matériels de stockage et 
+ de manutention\n- Veiller à la sécurisation des zones de circulation\n-
+  Veiller à l’accessibilité des allés de circulation et des produits\
+ n- Contrôler la qualité des produits en vrac à réception\n- Assurer l
+ a conformité des documents liés à la réception et à la commande\n- P
+ articiper à l’évaluation des risques professionnels en lien avec la h
+ iérarchie ou les référents sécurité\n- Collaborer avec les différen
+ ts acteurs internes (hiérarchie\, les collègues) et externes de la cha
+ îne\n- Rappeler régulièrement les comportements attendus en matière d
+ e sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270217-s48-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270217T083000
+DTEND;TZID=Indian/Reunion:20270217T084500
+SUMMARY:S48 — Réceptionner les produits avec l'équipe ou le réception
+ naire\, vérifier la conformité des livraisons et signaler toute…
+DESCRIPTION:08h30-08h45\n- Rappeler régulièrement les comportements atte
+ ndus en matière de sécurité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270217-s49-525@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270217T084500
+DTEND;TZID=Indian/Reunion:20270217T094500
+SUMMARY:S49 — Optimiser l’utilisation de l’espace de stockage
+DESCRIPTION:08h45-09h45\n- Optimiser les espaces de stockage\, réception 
+ et déballage pour limiter les manutentions pénibles ou dangereuses
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270217-s50-585@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270217T094500
+DTEND;TZID=Indian/Reunion:20270217T120000
+SUMMARY:S50 — Participer au stockage\, au rangement et à la mise à dis
+ position des produits et superviser le travail de l’équipe
+DESCRIPTION:09h45-12h00\n- Organiser le rangement des produits en tenant c
+ ompte de leur poids\, de leur volume et de leur fréquence de manipulatio
+ n\n- Participer à l’actualisation du Document Unique d’Évaluation d
+ es Risques (DUER)\n- Organiser\, dans le respect des réglementations\, l
+ a réception\, le stockage et le rangement des produits
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270217-s51-780@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270217T130000
+DTEND;TZID=Indian/Reunion:20270217T160000
+SUMMARY:S51 — Appliquer et faire appliquer les mesures de prévention sp
+ écifiques à la réception et au stockage
+DESCRIPTION:13h00-16h00\n- Gérer les DLC/DDM spécifiques au vrac et aux 
+ produits reconditionnés\n- Appliquer et faire appliquer les règles de p
+ révention en matière de gestes et postures au travail\n- Mettre à disp
+ osition des salariés des EPI adaptés aux activités de l’établisseme
+ nt\, et veiller à leur port\n- Mettre en œuvre des actions correctives 
+ à la suite d’incidents ou d’observations terrain liés à la sécuri
+ té
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270217-s52-960@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270217T160000
+DTEND;TZID=Indian/Reunion:20270217T163000
+SUMMARY:S52 — Appliquer et faire appliquer les consignes découlant de l
+ a démarche RSE concernant la gestion des stocks\, la…
+DESCRIPTION:16h00-16h30\n- Identifier et utiliser les indicateurs de perfo
+ rmance pertinents liés à la gestion des stocks
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270218-s52-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270218T083000
+DTEND;TZID=Indian/Reunion:20270218T163000
+SUMMARY:S52 — Appliquer et faire appliquer les consignes découlant de l
+ a démarche RSE concernant la gestion des stocks\, la…
+DESCRIPTION:08h30-16h30\n- Identifier et utiliser les indicateurs de perfo
+ rmance pertinents liés à la gestion des stocks\n- Utiliser le système 
+ d’information et les applicatifs de l’entreprise pour la gestion des 
+ stocks et des flux\n- Utiliser les outils informatiques et bureautiques p
+ our la gestion des stocks et des flux marchands\n- Utiliser un logiciel d
+ e gestion des stocks incluant la traçabilité des produits non emballés
+ \n- Appliquer et faire appliquer les règles d’hygiène\, de sécurité
+  et de sûreté dans la gestion des stocks\n- Appliquer et faire applique
+ r les règles et obligations légales concernant le recyclage\, le tri de
+ s déchets et la réduction du gaspillage\n- Mettre en place un circuit d
+ e collecte ou de consigne pour les contenants réutilisables\n- Sensibili
+ ser l’équipe aux bonnes pratiques de gestion des stocks et aux normes 
+ de sécurité\n- Expliquer aux collaborateurs les spécificités des appr
+ ovisionnements vrac et seconde main\n- Transmettre aux salariés des cons
+ ignes claires sur les bons gestes et postures
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270219-s53-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270219T083000
+DTEND;TZID=Indian/Reunion:20270219T144500
+SUMMARY:S53 — Entraînement à l'évaluation — Gérer l'approvisionnem
+ ent
+DESCRIPTION:08h30-14h45\n- Démontrer que : l'analyse des données d'appro
+ visionnement permet d'anticiper les besoins\n- Démontrer que : les inven
+ taires sont réalisés dans le respect des procédures de l'entreprise\n-
+  Démontrer que : les quantités commandées sont fournies en fonction de
+ s stocks\, des ventes et des réservations clients\n- Démontrer que : le
+ s anomalies de livraison sont repérées\, signalées et traitées suivan
+ t le contexte\n- Démontrer que : les mesures de prévention des risques 
+ sont appliquées\n- Démontrer que : l’application des mesures de prév
+ ention des risques est contrôlée
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270219-s54-900@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270219T150000
+DTEND;TZID=Indian/Reunion:20270219T163000
+SUMMARY:S54 — Organiser et mettre en œuvre l’implantation de l’offr
+ e de produits et de services et les opérations commerciales\, afin…
+DESCRIPTION:15h00-16h30\n- Identifier et utiliser les indicateurs de perfo
+ rmance liés au merchandising\n- Mettre en place une opération commercia
+ le en fonction des objectifs définis\n- Implanter un assortiment de prod
+ uits permanents et saisonniers
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270222-s54-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270222T083000
+DTEND;TZID=Indian/Reunion:20270222T131500
+SUMMARY:S54 — Organiser et mettre en œuvre l’implantation de l’offr
+ e de produits et de services et les opérations commerciales\, afin…
+DESCRIPTION:08h30-13h15\n- Implanter un assortiment de produits permanents
+  et saisonniers\n- Coordonner les opérations commerciales avec les autre
+ s services concernés (marketing\, logistique)\n- Organiser l’implantat
+ ion des produits selon un plan d’implantation défini\n- Organiser et p
+ lanifier les moyens matériels nécessaires aux implantations et opérati
+ ons commerciales\n- Assurer le suivi des opérations commerciales et des 
+ animations
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270222-s55-795@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270222T131500
+DTEND;TZID=Indian/Reunion:20270222T163000
+SUMMARY:S55 — Respecter les consignes\, les règles de merchandising de 
+ gestion\, d’organisation et de séduction
+DESCRIPTION:13h15-16h30\n- Réaliser ou superviser la mise en place des vi
+ trines et des zones promotionnelles\n- Respecter et faire respecter les r
+ ègles du merchandising de gestion\, d’organisation et de séduction\n-
+  Agencer un rayon vrac selon les règles d’hygiène et de circulation (
+ gravitaires\, bacs\, silos…)\n- Appliquer et faire appliquer les règle
+ s de lutte contre la démarque
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270223-s55-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270223T083000
+DTEND;TZID=Indian/Reunion:20270223T104500
+SUMMARY:S55 — Respecter les consignes\, les règles de merchandising de 
+ gestion\, d’organisation et de séduction
+DESCRIPTION:08h30-10h45\n- Appliquer et faire appliquer les règles de lut
+ te contre la démarque\n- Utiliser les outils informatiques et bureautiqu
+ es pour la gestion du merchandising\n- Concevoir un plan merchandising co
+ mpatible avec les contraintes logistiques du vrac\n- Impliquer l’équip
+ e autour des objectifs commerciaux et du respect des standards de merchan
+ dising
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270223-s56-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270223T104500
+DTEND;TZID=Indian/Reunion:20270223T163000
+SUMMARY:S56 — Appliquer et faire appliquer les mesures de prévention sp
+ écifiques à la manutention\, à la manipulation des équipements… (pa
+ rtie 1/2)
+DESCRIPTION:10h45-16h30\n- Identifier les contraintes techniques liées à
+  certains types de handicap lors des opérations de travail\n- Appliquer 
+ et faire appliquer les normes de marchandisage et les préconisations\n- 
+ Mettre en place des parcours clients fluides en prenant en compte les zon
+ es de remplissage et de pesée\n- Appliquer et faire appliquer les règle
+ s de prévention en matière de gestes et postures au travail\n- Applique
+ r et faire appliquer les règles d’hygiène\, de sécurité et de sûre
+ té\n- Utiliser les équipements de protection individuelle (EPI) et les 
+ mesures de protection collective
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270224-s56-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270224T083000
+DTEND;TZID=Indian/Reunion:20270224T104500
+SUMMARY:S56 — Appliquer et faire appliquer les mesures de prévention sp
+ écifiques à la manutention\, à la manipulation des équipements… (pa
+ rtie 1/2)
+DESCRIPTION:08h30-10h45\n- Veiller à l’adaptation des postes de travail
+  du poste de travail pour le collaborateur en situation de handicap\n- Ap
+ pliquer les mesures relatives à l’aménagement\, à l’adaptation ou 
+ à la transformation du poste de travail du collaborateur en situation de
+  handicap\n- Veiller à la disponibilité et à l’utilisation d’équi
+ pements d’accès en hauteur adaptés à l’activité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270224-s57-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270224T104500
+DTEND;TZID=Indian/Reunion:20270224T161500
+SUMMARY:S57 — Appliquer et faire appliquer les mesures de prévention sp
+ écifiques à la manutention\, à la manipulation des équipements… (pa
+ rtie 2/2)
+DESCRIPTION:10h45-16h15\n- Mettre à disposition des salariés des EPI ada
+ ptés aux activités de l’établissement\, et veiller à leur port\n- O
+ ptimiser les espaces de stockage\, réception et déballage pour limiter 
+ les manutentions pénibles ou dangereuse\n- Identifier les activités à 
+ risque au sein de l’établissement et ajuster l’organisation du trava
+ il en conséquence\n- Organiser les stockages pour limiter les manipulati
+ ons et les risques d’accidents\n- Sensibiliser l’équipe aux bonnes p
+ ratiques de remplissage\, d’hygiène et de présentation en vrac\n- Rap
+ peler régulièrement les comportements attendus en matière de sécurit
+ é
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270224-s58-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270224T161500
+DTEND;TZID=Indian/Reunion:20270224T163000
+SUMMARY:S58 — En présence du client\, veiller à l’accessibilité des
+  produits et s’assurer que les allées sont circulables
+DESCRIPTION:16h15-16h30\n- Veiller à l’accessibilité des allées de ci
+ rculation et des produits
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270225-s58-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270225T083000
+DTEND;TZID=Indian/Reunion:20270225T100000
+SUMMARY:S58 — En présence du client\, veiller à l’accessibilité des
+  produits et s’assurer que les allées sont circulables
+DESCRIPTION:08h30-10h00\n- Veiller à l’accessibilité des allées de ci
+ rculation et des produits\n- Veiller à la sécurisation des zones de cir
+ culation\n- Veiller à la présence et à l’utilisation appropriée des
+  moyens de manutention adaptés à la marchandise
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270225-s59-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270225T100000
+DTEND;TZID=Indian/Reunion:20270225T104500
+SUMMARY:S59 — En toute circonstance\, s’assurer que rien n’entrave l
+ ’utilisation des issues de secours
+DESCRIPTION:10h00-10h45\n- Coopérer avec un ergonome dans le cas d’une 
+ adaptation de poste de travail
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270225-s60-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270225T104500
+DTEND;TZID=Indian/Reunion:20270225T163000
+SUMMARY:S60 — Appliquer et faire appliquer les consignes découlant de l
+ a démarche RSE concernant la gestion des stocks\, la…
+DESCRIPTION:10h45-16h30\n- Étiqueter les produits selon la réglementatio
+ n en matière de vrac et de réemploi\n- Réaliser un zoning adapté à l
+ a seconde main\n- Appliquer et faire appliquer les règles et obligations
+  légales concernant le recyclage et la réduction du gaspillage\n- Élab
+ orer et ajuster un plan d’implantation en fonction des stocks et des pe
+ rformances de vente\n- Adapter la mise en scène produit aux fluctuations
+  des stocks en réemploi\n- Organiser la rotation des produits vrac pour 
+ éviter les pertes \; FIFO (first in first out)\, DDM
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270226-s60-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270226T083000
+DTEND;TZID=Indian/Reunion:20270226T104500
+SUMMARY:S60 — Appliquer et faire appliquer les consignes découlant de l
+ a démarche RSE concernant la gestion des stocks\, la…
+DESCRIPTION:08h30-10h45\n- Planifier les opérations commerciales en lien 
+ avec les journées de sensibilisation\n- Travailler en co-construction av
+ ec les fournisseurs pour mettre en avant leurs engagements RSE\n- Interag
+ ir avec les clients pour expliquer les démarches et les inciter à adopt
+ er de nouveaux usages (consigne\, réemploi…)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270226-s61-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270226T104500
+DTEND;TZID=Indian/Reunion:20270226T131500
+SUMMARY:S61 — Analyser les résultats commerciaux et budgétaires des im
+ plantations et des opérations commerciales
+DESCRIPTION:10h45-13h15\n- Utiliser les outils de planification et de suiv
+ i des réalisations\n- Analyser le merchandising en fonction des résulta
+ ts des ventes et des stocks
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270226-s62-795@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270226T131500
+DTEND;TZID=Indian/Reunion:20270226T134500
+SUMMARY:S62 — Exploiter les résultats afin d’identifier les leviers d
+ ’amélioration
+DESCRIPTION:13h15-13h45\n- Exploiter les résultats afin d’identifier le
+ s leviers d’amélioration
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270226-s63-825@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270226T134500
+DTEND;TZID=Indian/Reunion:20270226T161500
+SUMMARY:S63 — Élaborer un plan d’actions adapté aux enjeux identifi
+ és et le proposer à la hiérarchie
+DESCRIPTION:13h45-16h15\n- Installer une signalétique éducative sur les 
+ enjeux du zéro déchet ou de l'économie circulaire\n- Ajuster l’effic
+ acité des implantations\n- Alerter la hiérarchie en cas de problèmes l
+ iés au merchandising ou aux opérations commerciales
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270226-s64-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270226T161500
+DTEND;TZID=Indian/Reunion:20270226T163000
+SUMMARY:S64 — Communiquer les ajustements à l’équipe et rectifier l
+ ’implantation de l’offre de produits et de services
+DESCRIPTION:16h15-16h30\n- Utiliser les systèmes d’information et les a
+ pplicatifs de l’entreprise
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270301-s64-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270301T083000
+DTEND;TZID=Indian/Reunion:20270301T101500
+SUMMARY:S64 — Communiquer les ajustements à l’équipe et rectifier l
+ ’implantation de l’offre de produits et de services
+DESCRIPTION:08h30-10h15\n- Utiliser les systèmes d’information et les a
+ pplicatifs de l’entreprise\n- Informer les membres de l’équipe des d
+ ysfonctionnements constatés et des ajustements nécessaires\n- Être à 
+ l’écoute des signaux de fatigue ou de stress exprimés par les membres
+  de l’équipe
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270301-s65-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270301T103000
+DTEND;TZID=Indian/Reunion:20270301T163000
+SUMMARY:S65 — Entraînement à l'évaluation — Organiser et mettre en 
+ œuvre le merchandising de l’offre de produits et de services
+DESCRIPTION:10h30-16h30\n- Démontrer que : les consignes de l’offre de 
+ produits et de services concernant le merchandising d’implantation sont
+  respectées\n- Démontrer que : l’organisation et la mise en œuvre de
+  l’implantation des produits sont efficaces et en cohérence avec les o
+ bjectifs commerciaux\, budgétaires et les indicateurs de performance\n- 
+ Démontrer que : l’organisation et la mise en œuvre des opérations co
+ mmerciales sont en adéquation avec les objectifs définis\n- Démontrer 
+ que : l’analyse des résultats du merchandising est pertinente et perme
+ t d’identifier des actions correctives adaptées\n- Démontrer que : l
+ ’application des mesures de prévention des risques par l’équipe est
+  contrôlée
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270302-s65-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270302T083000
+DTEND;TZID=Indian/Reunion:20270302T084500
+SUMMARY:S65 — Entraînement à l'évaluation — Organiser et mettre en 
+ œuvre le merchandising de l’offre de produits et de services
+DESCRIPTION:08h30-08h45\n- Démontrer que : l’application des mesures de
+  prévention des risques par l’équipe est contrôlée
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270302-s66-525@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270302T084500
+DTEND;TZID=Indian/Reunion:20270302T143000
+SUMMARY:S66 — Identifier les attentes des clients\, leur parcours d’ac
+ hat et les tendances de consommation
+DESCRIPTION:08h45-14h30\n- Identifier et analyser les indicateurs de perfo
+ rmance des ventes\n- Appliquer les techniques de vente et de conseil clie
+ nt adaptées aux différents parcours d’achat\n- Contribuer à mettre e
+ n place des actions de fidélisation en fonction des attentes des clients
+  et des données de suivi client\n- Organiser la stratégie commerciale e
+ n fonction des remontées clients et des tendances de consommation\n- Tra
+ nsmettre des consignes précises et adaptées pour optimiser l’expérie
+ nce client
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270302-s67-870@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270302T143000
+DTEND;TZID=Indian/Reunion:20270302T163000
+SUMMARY:S67 — Utiliser les outils de gestion de la relation client pour 
+ conseiller les clients et répondre à leurs besoins\, en…
+DESCRIPTION:14h30-16h30\n- Utiliser les outils de gestion de la relation c
+ lient pour suivre les interactions avec les clients et personnaliser les 
+ offres\n- Utiliser les outils informatiques et bureautiques pour l’anal
+ yse et le suivi des indicateurs commerciaux
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270303-s67-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270303T083000
+DTEND;TZID=Indian/Reunion:20270303T151500
+SUMMARY:S67 — Utiliser les outils de gestion de la relation client pour 
+ conseiller les clients et répondre à leurs besoins\, en…
+DESCRIPTION:08h30-15h15\n- Utiliser les outils informatiques et bureautiqu
+ es pour l’analyse et le suivi des indicateurs commerciaux\n- Assurer la
+  gestion des flux financiers et monétaires en respectant les normes et l
+ a traçabilité\n- Adapter l’organisation des ventes à un parcours omn
+ icanal intégrant le commerce physique et digital\n- Intégrer des outils
+  de recueil de satisfaction sur les services écoresponsables (consigne\,
+  réparation…)\n- Sensibiliser l’équipe aux bonnes pratiques d’acc
+ ueil et de fidélisation des clients\n- Former les collaborateurs à l’
+ accueil client dans un contexte d’innovation responsable
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270303-s68-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270303T151500
+DTEND;TZID=Indian/Reunion:20270303T163000
+SUMMARY:S68 — Prendre en compte les besoins spécifiques de tout type de
+  clientèle\, dont celle en situation de handicap et leur…
+DESCRIPTION:15h15-16h30\n- Respecter et faire respecter les dispositions r
+ elatives à l’accueil des clients en situation de handicap
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270304-s68-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270304T083000
+DTEND;TZID=Indian/Reunion:20270304T101500
+SUMMARY:S68 — Prendre en compte les besoins spécifiques de tout type de
+  clientèle\, dont celle en situation de handicap et leur…
+DESCRIPTION:08h30-10h15\n- Gérer les incidents spécifiques\n- Échanger 
+ avec la clientèle en français et en anglais (niveau B2 du CECRL) pour g
+ arantir un service adapté aux besoins des clients internationaux
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270304-s69-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270304T103000
+DTEND;TZID=Indian/Reunion:20270304T133000
+SUMMARY:S69 — Mettre en avant l’offre commerciale de produits et de se
+ rvices\, développer des argumentaires qui prennent en compte la…
+DESCRIPTION:10h30-13h30\n- Encaisser les transactions en appliquant les pr
+ océdures internes et réglementations liées à l’encaissement et aux 
+ flux monétaires\n- Coordonner les événements commerciaux pour renforce
+ r l’attractivité de l’offre produits et services
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270304-s70-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270304T133000
+DTEND;TZID=Indian/Reunion:20270304T151500
+SUMMARY:S70 — Proposer des solutions pour améliorer la satisfaction cli
+ ent
+DESCRIPTION:13h30-15h15\n- Appliquer et faire appliquer les réglementatio
+ ns\n- Donner les consignes adéquates pour désamorcer un litige ou une t
+ ension avec un client
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270304-s71-915@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270304T151500
+DTEND;TZID=Indian/Reunion:20270304T161500
+SUMMARY:S71 — Soutenir les équipes dans des situations difficiles face 
+ aux clients
+DESCRIPTION:15h15-16h15\n- Adapter son discours à des publics sensibles a
+ ux enjeux environnementaux
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270304-s72-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270304T161500
+DTEND;TZID=Indian/Reunion:20270304T163000
+SUMMARY:S72 — Adopter en toutes circonstances\, y compris lors de litige
+ s\, d’incivilités ou de réclamations clients\, une posture…
+DESCRIPTION:16h15-16h30\n- Accompagner les clients dans leur découverte d
+ u vrac ou du réemploi
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270305-s72-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270305T083000
+DTEND;TZID=Indian/Reunion:20270305T100000
+SUMMARY:S72 — Adopter en toutes circonstances\, y compris lors de litige
+ s\, d’incivilités ou de réclamations clients\, une posture…
+DESCRIPTION:08h30-10h00\n- Accompagner les clients dans leur découverte d
+ u vrac ou du réemploi\n- Gérer les situations conflictuelles et les inc
+ ivilités de manière professionnelle
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270305-s73-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270305T100000
+DTEND;TZID=Indian/Reunion:20270305T114500
+SUMMARY:S73 — Mettre en œuvre des actions de fidélisation adaptées à
+  la situation et aux objectifs de l’entreprise
+DESCRIPTION:10h00-11h45\n- Utiliser les systèmes d’information et les a
+ pplicatifs de l’entreprise pour analyser les ventes et suivre la fidél
+ isation\n- Mettre en œuvre et suivre des actions correctives en fonction
+  des analyses de performance
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270305-s74-705@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270305T114500
+DTEND;TZID=Indian/Reunion:20270305T143000
+SUMMARY:S74 — Valoriser l’offre de produits et de services sur les sup
+ ports numériques\, sites marchands et réseaux sociaux\, en…
+DESCRIPTION:11h45-14h30\n- Effectuer une veille concurrentielle sur l’e-
+ réputation et l’image via les réseaux sociaux et forums\n- Mobiliser 
+ les différents canaux de communication pour interagir avec les clients
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270305-s75-870@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270305T143000
+DTEND;TZID=Indian/Reunion:20270305T163000
+SUMMARY:S75 — Faire des propositions à sa hiérarchie pour améliorer l
+ ’offre de produits et de services
+DESCRIPTION:14h30-16h30\n- Intégrer les retours clients dans la révision
+  des procédures de vrac et de réemploi\n- Encourager la remontée d’i
+ nformation liée à des situations à risque
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270308-s75-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270308T083000
+DTEND;TZID=Indian/Reunion:20270308T091500
+SUMMARY:S75 — Faire des propositions à sa hiérarchie pour améliorer l
+ ’offre de produits et de services
+DESCRIPTION:08h30-09h15\n- Communiquer de manière claire et adaptée avec
+  l’équipe\, la hiérarchie et les clients
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270308-s76-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270308T091500
+DTEND;TZID=Indian/Reunion:20270308T141500
+SUMMARY:S76 — Entraînement à l'évaluation — Participer à l’amél
+ ioration de l’expérience client
+DESCRIPTION:09h15-14h15\n- Démontrer que : l’identification des attente
+ s clients et des tendances de consommation permet d’optimiser l’expé
+ rience client et de développer les ventes\n- Démontrer que : l’utilis
+ ation des outils de gestion de la relation client est efficace et répond
+  aux besoins du client\n- Démontrer que : la réponse aux besoins spéci
+ fiques de tout type de clientèle\, dont celle en situation de handicap\,
+  est efficace et répond aux besoins du client\n- Démontrer que : l’of
+ fre de produits et de services est valorisée sur la surface de vente et 
+ via les supports numériques\n- Démontrer que : les argumentaires de ven
+ te prennent en compte la demande du client et valorisent l’offre de pro
+ duits et de services\n- Démontrer que : les performances commerciales fo
+ nt l’objet d’un suivi régulier et des propositions d’amélioration
+  sont formulées auprès de la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270308-s77-855@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270308T141500
+DTEND;TZID=Indian/Reunion:20270308T163000
+SUMMARY:S77 — ECF — Évaluation en cours de formation AT2
+DESCRIPTION:14h15-16h30\n- Démontrer les compétences de l'AT2 en situati
+ on type examen\n- Analyser ses résultats et fixer ses axes de progrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270309-s77-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270309T083000
+DTEND;TZID=Indian/Reunion:20270309T100000
+SUMMARY:S77 — ECF — Évaluation en cours de formation AT2
+DESCRIPTION:08h30-10h00\n- Analyser ses résultats et fixer ses axes de pr
+ ogrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270309-s78-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270309T100000
+DTEND;TZID=Indian/Reunion:20270309T163000
+SUMMARY:S78 — Collecter les données d’activité issues du système d
+ ’information\, des applicatifs ou d’un tableau de bord (partie 1/3)
+DESCRIPTION:10h00-16h30\n- Identifier et extraire les indicateurs commerci
+ aux du tableau de bord\n- Utiliser le système d’information ou les app
+ licatifs de synthèse de performances commerciales\n- Utiliser les outils
+  bureautiques spécialisés\n- Renseigner les tableaux de bord de suivi d
+ e l’activité commerciale\n- Collecter\, extraire et croiser les donné
+ es issues des ventes\, stocks\, marges et fréquentation\n- Croiser les d
+ onnées commerciales avec des données contextuelles
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270310-s78-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270310T083000
+DTEND;TZID=Indian/Reunion:20270310T104500
+SUMMARY:S78 — Collecter les données d’activité issues du système d
+ ’information\, des applicatifs ou d’un tableau de bord (partie 1/3)
+DESCRIPTION:08h30-10h45\n- Croiser les données commerciales avec des donn
+ ées contextuelles\n- Exploiter les données de performance liées à la 
+ vente de produits issus du vrac\, du réemploi ou de la seconde main\n- S
+ électionner les données pertinentes selon les objectifs commerciaux
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270310-s79-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270310T104500
+DTEND;TZID=Indian/Reunion:20270310T163000
+SUMMARY:S79 — Collecter les données d’activité issues du système d
+ ’information\, des applicatifs ou d’un tableau de bord (partie 2/3)
+DESCRIPTION:10h45-16h30\n- Détecter des tendances ou anomalies à partir 
+ de l’observation de l’activité\n- Classer et archiver les données d
+ e performance commerciale\n- Mettre en place un suivi régulier des perfo
+ rmances des rayons à impact social ou environnemental positif\n- Suivre 
+ des indicateurs sur une période donnée pour mesurer des effets correcti
+ fs\n- Croiser les données économiques avec les indicateurs RH\n- Organi
+ ser la collecte des données commerciales de manière régulière
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270311-s79-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270311T083000
+DTEND;TZID=Indian/Reunion:20270311T101500
+SUMMARY:S79 — Collecter les données d’activité issues du système d
+ ’information\, des applicatifs ou d’un tableau de bord (partie 2/3)
+DESCRIPTION:08h30-10h15\n- Structurer et hiérarchiser les informations se
+ lon leur pertinence\n- Organiser la collecte avis clients concernant l’
+ accessibilité\, la lisibilité de l’offre ou les pratiques durables
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270311-s80-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270311T103000
+DTEND;TZID=Indian/Reunion:20270311T134500
+SUMMARY:S80 — Collecter les données d’activité issues du système d
+ ’information\, des applicatifs ou d’un tableau de bord (partie 3/3)
+DESCRIPTION:10h30-13h45\n- Préparer les supports visuels pour partager le
+ s résultats avec son équipe\n- Présenter les données et écarts de ma
+ nière adaptée aux interlocuteurs concernés\n- Communiquer avec sa hié
+ rarchie de manière synthétique et argumentée
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270311-s81-825@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270311T134500
+DTEND;TZID=Indian/Reunion:20270311T163000
+SUMMARY:S81 — Analyser les indicateurs clés de la performance commercia
+ le et de la satisfaction client
+DESCRIPTION:13h45-16h30\n- Identifier les impacts commerciaux d’un envir
+ onnement de vente inclusif\n- Utiliser les fonctions avancées d’un tab
+ leur pour produire des analyses visuelles\n- Calculer les indicateurs com
+ merciaux de performance\n- Intégrer des indicateurs de performance liés
+  à la prévention des risques professionnels
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270312-s81-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270312T083000
+DTEND;TZID=Indian/Reunion:20270312T140000
+SUMMARY:S81 — Analyser les indicateurs clés de la performance commercia
+ le et de la satisfaction client
+DESCRIPTION:08h30-14h00\n- Intégrer des indicateurs de performance liés 
+ à la prévention des risques professionnels\n- Analyser l’évolution d
+ es indicateurs de performance commerciale\n- Analyser la contribution des
+  offres écoresponsables à la satisfaction et à la fidélisation client
+ \n- Détecter les écarts de performance liés à l’accessibilité des 
+ offres ou à l’ergonomie des parcours client\n- Programmer des temps d
+ ’analyse hebdomadaires ou mensuels\n- Intégrer les retours d’expéri
+ ence de personnes en situation de handicap ou confrontées à des discrim
+ inations dans l’analyse globale
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270312-s82-840@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270312T140000
+DTEND;TZID=Indian/Reunion:20270312T163000
+SUMMARY:S82 — Interpréter les résultats au regard des objectifs fixés
+  par la hiérarchie et les formaliser par écrit
+DESCRIPTION:14h00-16h30\n- Comparer les résultats à ceux d'autres unité
+ s comparables\n- Respecter les échéances de reporting fixées par la hi
+ érarchie\n- Structurer un reporting synthétique à destination de la hi
+ érarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270315-s82-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270315T083000
+DTEND;TZID=Indian/Reunion:20270315T093000
+SUMMARY:S82 — Interpréter les résultats au regard des objectifs fixés
+  par la hiérarchie et les formaliser par écrit
+DESCRIPTION:08h30-09h30\n- Structurer un reporting synthétique à destina
+ tion de la hiérarchie\n- Planifier un point d’équipe pour interpréte
+ r collectivement les résultats
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270315-s83-570@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270315T093000
+DTEND;TZID=Indian/Reunion:20270315T131500
+SUMMARY:S83 — Repérer les écarts significatifs et alerter sa hiérarch
+ ie en cas de dérive ou de risque de non-atteinte des objectifs…
+DESCRIPTION:09h30-13h15\n- Identifier les écarts entre les objectifs fix
+ és et les résultats atteints\n- Identifier les écarts par rapport aux 
+ objectifs et prioriser les points d’alerte\n- Prioriser les zones d’a
+ mélioration commerciale à traiter\n- Être réactif face à des résult
+ ats non conformes aux objectifs
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270315-s84-795@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270315T131500
+DTEND;TZID=Indian/Reunion:20270315T163000
+SUMMARY:S84 — Entraînement à l'évaluation — Analyser la performance
+  commerciale
+DESCRIPTION:13h15-16h30\n- Démontrer que : les indicateurs clés de la pe
+ rformance commerciale\, de la satisfaction client et leurs variations son
+ t collectés\, calculés et fiables\n- Démontrer que : les écarts par r
+ apport aux objectifs sont détectés\, calculés et analysés\n- Démontr
+ er que : l’analyse des résultats est communiquée de manière structur
+ ée\, claire et argumentée à sa hiérarchie\n- Démontrer que : les ale
+ rtes en cas de dérive sont transmises à sa hiérarchie par le canal le 
+ plus adapté au contexte
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270316-s84-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270316T083000
+DTEND;TZID=Indian/Reunion:20270316T091500
+SUMMARY:S84 — Entraînement à l'évaluation — Analyser la performance
+  commerciale
+DESCRIPTION:08h30-09h15\n- Démontrer que : l’analyse est réalisée et 
+ transmise à sa hiérarchie dans les délais requis
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270316-s85-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270316T091500
+DTEND;TZID=Indian/Reunion:20270316T163000
+SUMMARY:S85 — Collecter les données économiques liées à l’activit
+ é (partie 1/2)
+DESCRIPTION:09h15-16h30\n- Utiliser les fonctions avancées d’un tableur
+ \n- Calculer les indicateurs de rentabilité\n- Utiliser les applicatifs 
+ de gestion pour extraire les données financières\n- Collecter les élé
+ ments constitutifs du compte de résultat\n- Mettre en corrélation les d
+ onnées de rentabilité avec les opérations commerciales ou de gestion d
+ e stock\n- Créer et alimenter des tableaux de bord de suivi de la rentab
+ ilité\n- Respecter les échéances fixées pour le suivi de rentabilité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270317-s85-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270317T083000
+DTEND;TZID=Indian/Reunion:20270317T091500
+SUMMARY:S85 — Collecter les données économiques liées à l’activit
+ é (partie 1/2)
+DESCRIPTION:08h30-09h15\n- Respecter les échéances fixées pour le suivi
+  de rentabilité\n- Mettre à jour les données et les hypothèses au fil
+  du temps
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270317-s86-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270317T091500
+DTEND;TZID=Indian/Reunion:20270317T144500
+SUMMARY:S86 — Collecter les données économiques liées à l’activit
+ é (partie 2/2)
+DESCRIPTION:09h15-14h45\n- Intégrer les spécificités de gestion budgét
+ aire liées aux dispositifs RSE\, aux actions anti-discrimination ou à l
+ ’adaptation des postes\n- Organiser la collecte des données économiqu
+ es\n- Structurer les données par poste de charges ou d’activité\n- Sy
+ nthétiser les données dans un reporting lisible\n- Préparer des suppor
+ ts synthétiques de présentation de la rentabilité\n- Communiquer les d
+ onnées de manière compréhensible et factuelle
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270317-s87-900@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270317T150000
+DTEND;TZID=Indian/Reunion:20270317T163000
+SUMMARY:S87 — Identifier les indicateurs de rentabilité à analyser sel
+ on les objectifs transmis par la hiérarchie (partie 1/2)
+DESCRIPTION:15h00-16h30\n- Identifier les postes de coûts principaux et s
+ econdaires\n- Lire et interpréter les tableaux de bord économiques tran
+ smis\n- Utiliser des outils d’aide à l’analyse
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270318-s87-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270318T083000
+DTEND;TZID=Indian/Reunion:20270318T153000
+SUMMARY:S87 — Identifier les indicateurs de rentabilité à analyser sel
+ on les objectifs transmis par la hiérarchie (partie 1/2)
+DESCRIPTION:08h30-15h30\n- Utiliser des outils d’aide à l’analyse\n- 
+ Analyser l’évolution des marges et des coûts par rapport aux prévisi
+ ons\n- Structurer les étapes de l’analyse de rentabilité\n- Hiérarch
+ iser les zones à fort impact économique sur lesquelles intervenir\n- Or
+ ganiser la remontée des écarts constatés vers la hiérarchie\n- Planif
+ ier les temps d’analyse en cohérence avec les rythmes de gestion mensu
+ els ou trimestriels\n- Écouter les retours d’équipe pour identifier l
+ es dysfonctionnements ayant un impact sur la rentabilité\n- Adopter une 
+ posture d’analyse constructive face aux résultats
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270318-s88-930@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270318T153000
+DTEND;TZID=Indian/Reunion:20270318T163000
+SUMMARY:S88 — Identifier les indicateurs de rentabilité à analyser sel
+ on les objectifs transmis par la hiérarchie (partie 2/2)
+DESCRIPTION:15h30-16h30\n- Communiquer les constats de rentabilité à sa 
+ hiérarchie avec objectivité et clarté\n- Argumenter auprès de la hié
+ rarchie sur l’intérêt économique de démarches inclusives ou respons
+ ables
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270319-s88-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270319T083000
+DTEND;TZID=Indian/Reunion:20270319T084500
+SUMMARY:S88 — Identifier les indicateurs de rentabilité à analyser sel
+ on les objectifs transmis par la hiérarchie (partie 2/2)
+DESCRIPTION:08h30-08h45\n- Argumenter auprès de la hiérarchie sur l’in
+ térêt économique de démarches inclusives ou responsables
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270319-s89-525@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270319T084500
+DTEND;TZID=Indian/Reunion:20270319T131500
+SUMMARY:S89 — Mettre en relation les résultats économiques avec les ac
+ tions commerciales et les événements internes ou externes
+DESCRIPTION:08h45-13h15\n- Mesurer l’impact des actions menées sur les 
+ résultats\n- Mesurer l’impact financier des risques professionnels\n- 
+ Suivre les dépenses et les économies générées par les actions de pr
+ évention des TMS ou l’ergonomie des postes\n- Échanger avec sa hiéra
+ rchie pour présenter les résultats économiques\n- Travailler en collab
+ oration avec les fonctions supports si besoin (RH\, gestion...)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270319-s90-795@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270319T131500
+DTEND;TZID=Indian/Reunion:20270319T163000
+SUMMARY:S90 — Identifier les causes d’écarts et les leviers de progre
+ ssion
+DESCRIPTION:13h15-16h30\n- Réaliser des simulations simples d’ajustemen
+ t sur les leviers de rentabilité (prix\, effectif\, stock)\n- Identifier
+  les causes d’écarts entre prévisionnel et réalisé\n- Prioriser les
+  causes d’écart affectant la rentabilité\n- Être à l’écoute des 
+ remontées terrain pour mieux comprendre les écarts
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270322-s90-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270322T083000
+DTEND;TZID=Indian/Reunion:20270322T091500
+SUMMARY:S90 — Identifier les causes d’écarts et les leviers de progre
+ ssion
+DESCRIPTION:08h30-09h15\n- Être à l’écoute des remontées terrain pou
+ r mieux comprendre les écarts\n- Participer aux échanges entre services
+  pour croiser les données et comprendre les causes d’écart
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270322-s91-555@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270322T091500
+DTEND;TZID=Indian/Reunion:20270322T133000
+SUMMARY:S91 — Transmettre une synthèse écrite à sa hiérarchie et con
+ tribuer à l’élaboration de pistes d’amélioration
+DESCRIPTION:09h15-13h30\n- Identifier les coûts associés à des pratique
+ s responsables\n- Calculer les marges et la rotation des produits issus d
+ u vrac\, de la seconde main ou du réemploi\n- Évaluer la rentabilité g
+ lobale des services à impact
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270322-s92-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270322T133000
+DTEND;TZID=Indian/Reunion:20270322T163000
+SUMMARY:S92 — Entraînement à l'évaluation — Analyser la rentabilit
+ é
+DESCRIPTION:13h30-16h30\n- Démontrer que : les données économiques sont
+  recueillies avec fiabilité et exactitude\n- Démontrer que : les indica
+ teurs clés de rentabilité sont sélectionnés selon les objectifs trans
+ mis par la hiérarchie\n- Démontrer que : les écarts sont analysés ave
+ c rigueur et dans les délais prescrits\n- Démontrer que : les causes de
+ s écarts sont identifiées
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270323-s92-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270323T083000
+DTEND;TZID=Indian/Reunion:20270323T094500
+SUMMARY:S92 — Entraînement à l'évaluation — Analyser la rentabilit
+ é
+DESCRIPTION:08h30-09h45\n- Démontrer que : les causes des écarts sont id
+ entifiées\n- Démontrer que : une synthèse claire et structurée est tr
+ ansmise à sa hiérarchie\n- Démontrer que : des pistes d’optimisation
+  réalistes sont formulées
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270323-s93-585@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270323T094500
+DTEND;TZID=Indian/Reunion:20270323T163000
+SUMMARY:S93 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 1/4)
+DESCRIPTION:09h45-16h30\n- Identifier les leviers d’action possibles à 
+ partir des résultats analysés\n- Identifier et proposer des actions cor
+ rectives pour améliorer la lisibilité\, l’accessibilité ou la rotati
+ on des offres en vrac\, seconde main ou réemploi\n- Utiliser des outils 
+ d’aide à la décision\n- Utiliser les outils bureautiques et applicati
+ fs spécialisés pour formaliser les propositions d’actions\n- Collecte
+ r les données utiles au pilotage des plans d’action\n- Mesurer l’imp
+ act des actions mises en œuvre avec des indicateurs définis\n- Argument
+ er les propositions d’actions à partir de données chiffrées
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270324-s93-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270324T083000
+DTEND;TZID=Indian/Reunion:20270324T100000
+SUMMARY:S93 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 1/4)
+DESCRIPTION:08h30-10h00\n- Formaliser un plan d’actions\n- Élaborer des
+  propositions argumentées et chiffrées
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270324-s94-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270324T100000
+DTEND;TZID=Indian/Reunion:20270324T163000
+SUMMARY:S94 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 2/4)
+DESCRIPTION:10h00-16h30\n- Élaborer des propositions d’actions correcti
+ ves en lien avec les données disponibles\n- Créer des tableaux de suivi
+  de mise en œuvre des actions validées\n- Préparer des comptes rendus 
+ d’avancement à destination de la hiérarchie\n- Proposer des ajustemen
+ ts sur les outils\, le matériel ou les parcours clients pour mieux accue
+ illir les personnes en situation de handicap\n- Identifier les moyens mob
+ ilisables dans son périmètre\n- Mettre à jour régulièrement le table
+ au de suivi des actions\n- Respecter les délais fixés dans le cadre du 
+ suivi d’actions correctives
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270325-s94-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270325T083000
+DTEND;TZID=Indian/Reunion:20270325T101500
+SUMMARY:S94 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 2/4)
+DESCRIPTION:08h30-10h15\n- Respecter les délais fixés dans le cadre du s
+ uivi d’actions correctives\n- Contribuer à la construction d’un plan
+  d’actions correctives réaliste et mesurable\n- Structurer une proposi
+ tion d’action à soumettre à la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270325-s95-630@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270325T103000
+DTEND;TZID=Indian/Reunion:20270325T163000
+SUMMARY:S95 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 3/4)
+DESCRIPTION:10h30-16h30\n- Coordonner les actions correctives avec les aut
+ res activités\n- Définir des indicateurs de suivi simples et mesurables
+  pour chaque action\n- Planifier la mise en œuvre des actions corrective
+ s selon leur urgence et faisabilité\n- Présenter à sa hiérarchie des 
+ propositions claires\, réalistes et argumentées\n- Présenter les résu
+ ltats commerciaux à l’équipe de façon claire et factuelle\n- Expliqu
+ er les enjeux économiques d’une action ou d’un choix d’organisatio
+ n\n- Sensibiliser l’équipe aux leviers qui influencent directement la 
+ rentabilité\n- Adapter sa communication aux retours de la hiérarchie
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270326-s95-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270326T083000
+DTEND;TZID=Indian/Reunion:20270326T110000
+SUMMARY:S95 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 3/4)
+DESCRIPTION:08h30-11h00\n- Adapter sa communication aux retours de la hié
+ rarchie\n- Valoriser les comportements favorables à la maîtrise des co
+ ûts\n- Être réactif et force de proposition face à des résultats non
+  conformes aux objectifs\n- Communiquer efficacement avec la hiérarchie 
+ sur les axes d’amélioration liés au handicap\, aux risques ou aux dis
+ criminations
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270326-s96-660@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270326T110000
+DTEND;TZID=Indian/Reunion:20270326T140000
+SUMMARY:S96 — Proposer des actions correctives à sa hiérarchie afin de
+  contribuer à l’amélioration continue (partie 4/4)
+DESCRIPTION:11h00-14h00\n- Mobiliser les collaborateurs dans la mise en œ
+ uvre des actions correctives tout en valorisant leur rôle dans la transf
+ ormation responsable\n- Prioriser les actions correctives selon leur fais
+ abilité\, leur impact économique et leur cohérence avec les valeurs de
+  l’établissement\n- Assurer le suivi de plans d’actions prenant en c
+ ompte l’évolution des pratiques RSE\, réglementations et besoins spé
+ cifiques
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270326-s97-840@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270326T140000
+DTEND;TZID=Indian/Reunion:20270326T163000
+SUMMARY:S97 — Contribuer à la mise en œuvre du plan d’actions valid
+ é par la hiérarchie
+DESCRIPTION:14h00-16h30\n- Réajuster les pratiques de vente ou de planifi
+ cation pour prévenir les risques professionnels constatés\n- Prioriser 
+ les actions selon leur impact et leur faisabilité\n- Structurer une dém
+ arche de plan d’actions en étapes : diagnostic\, action\, suivi\, bila
+ n
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270330-s97-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270330T083000
+DTEND;TZID=Indian/Reunion:20270330T140000
+SUMMARY:S97 — Contribuer à la mise en œuvre du plan d’actions valid
+ é par la hiérarchie
+DESCRIPTION:08h30-14h00\n- Planifier les étapes de mise en œuvre d’un 
+ plan d’actions validé\n- Expliquer à l’équipe les finalités et le
+ s bénéfices attendus du plan d’actions\n- Écouter les retours de l
+ ’équipe sur la mise en œuvre du plan\n- Mobiliser l’équipe autour 
+ du plan d’actions\n- Adopter une posture proactive et responsable dans 
+ le suivi des objectifs du plan d’actions\n- Construire un plan d’acti
+ ons intégrant des objectifs liés à l’inclusion\, à la prévention o
+ u à la durabilité
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270330-s98-840@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270330T140000
+DTEND;TZID=Indian/Reunion:20270330T163000
+SUMMARY:S98 — Informer l’équipe\, organiser et suivre la mise en œuv
+ re des mesures prises en coordination avec les membres de son…
+DESCRIPTION:14h00-16h30\n- Corriger des dérives liées à des pratiques m
+ anagériales discriminantes ou non inclusives\n- Distinguer les actions 
+ à mener directement par l’équipe de celles nécessitant une validatio
+ n ou un arbitrage\n- Organiser la communication autour du plan d’action
+ s auprès de l’équipe
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270331-s98-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270331T083000
+DTEND;TZID=Indian/Reunion:20270331T110000
+SUMMARY:S98 — Informer l’équipe\, organiser et suivre la mise en œuv
+ re des mesures prises en coordination avec les membres de son…
+DESCRIPTION:08h30-11h00\n- Expliquer les objectifs et les résultats atten
+ dus à l’équipe\n- Échanger avec ses interlocuteurs internes pour gar
+ antir la faisabilité des mesures\n- Adapter son discours en fonction de 
+ l’interlocuteur\n- Encourager la contribution de l’équipe à la réf
+ lexion sur l’optimisation des ressources
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270331-s99-660@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270331T110000
+DTEND;TZID=Indian/Reunion:20270331T133000
+SUMMARY:S99 — Évaluer régulièrement les résultats des actions engag
+ ées et\, en cas d’écarts persistants\, proposer des ajustements…
+DESCRIPTION:11h00-13h30\n- Identifier les ajustements nécessaires en cas 
+ d’écart persistant\n- Ajuster les échéances ou les modalités d’ac
+ tions selon les retours de terrain ou les évolutions contextuelles
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270331-s100-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270331T133000
+DTEND;TZID=Indian/Reunion:20270331T163000
+SUMMARY:S100 — Entraînement à l'évaluation — Proposer des actions c
+ orrectives à sa hiérarchie et assurer le suivi du plan d’actions
+DESCRIPTION:13h30-16h30\n- Démontrer que : les propositions d’actions s
+ ont cohérentes avec les objectifs visés et les données analysées\n- D
+ émontrer que : les propositions prennent en compte des moyens humains\, 
+ matériels et financiers disponibles\n- Démontrer que : les actions vali
+ dées sont mises en œuvre et les résultats évalués
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270401-s100-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270401T083000
+DTEND;TZID=Indian/Reunion:20270401T104500
+SUMMARY:S100 — Entraînement à l'évaluation — Proposer des actions c
+ orrectives à sa hiérarchie et assurer le suivi du plan d’actions
+DESCRIPTION:08h30-10h45\n- Démontrer que : les actions validées sont mis
+ es en œuvre et les résultats évalués\n- Démontrer que : les écarts 
+ persistants sont identifiés\n- Démontrer que : les propositions d’aju
+ stement sont réalistes
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270401-s101-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270401T104500
+DTEND;TZID=Indian/Reunion:20270401T153000
+SUMMARY:S101 — ECF — Évaluation en cours de formation AT3
+DESCRIPTION:10h45-15h30\n- Démontrer les compétences de l'AT3 en situati
+ on type examen\n- Analyser ses résultats et fixer ses axes de progrès
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270401-s102-930@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270401T153000
+DTEND;TZID=Indian/Reunion:20270401T163000
+SUMMARY:S102 — Dossier professionnel (DP) : rédaction accompagnée (par
+ tie 1/3)
+DESCRIPTION:15h30-16h30\n- Sélectionner les exemples de pratique professi
+ onnelle par activité type
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270402-s102-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270402T083000
+DTEND;TZID=Indian/Reunion:20270402T133000
+SUMMARY:S102 — Dossier professionnel (DP) : rédaction accompagnée (par
+ tie 1/3)
+DESCRIPTION:08h30-13h30\n- Sélectionner les exemples de pratique professi
+ onnelle par activité type
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270402-s103-810@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270402T133000
+DTEND;TZID=Indian/Reunion:20270402T163000
+SUMMARY:S103 — Dossier professionnel (DP) : rédaction accompagnée (par
+ tie 2/3)
+DESCRIPTION:13h30-16h30\n- Rédiger les exemples de pratique professionnel
+ le du DP
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270405-s103-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270405T083000
+DTEND;TZID=Indian/Reunion:20270405T104500
+SUMMARY:S103 — Dossier professionnel (DP) : rédaction accompagnée (par
+ tie 2/3)
+DESCRIPTION:08h30-10h45\n- Rédiger les exemples de pratique professionnel
+ le du DP
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270405-s104-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270405T104500
+DTEND;TZID=Indian/Reunion:20270405T163000
+SUMMARY:S104 — Dossier professionnel (DP) : rédaction accompagnée (par
+ tie 3/3)
+DESCRIPTION:10h45-16h30\n- Vérifier la complétude du DP avant la session
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270406-s105-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270406T083000
+DTEND;TZID=Indian/Reunion:20270406T140000
+SUMMARY:S105 — Productions d'examen : documents et diaporamas (partie 1/
+ 5)
+DESCRIPTION:08h30-14h00\n- Construire le plan du document : Contribuer à 
+ la performance commerciale et à la rentabilité de son périmètre au se
+ in de l’établissement marchand : entre 12 et 18 pages
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270406-s106-840@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270406T140000
+DTEND;TZID=Indian/Reunion:20270406T163000
+SUMMARY:S106 — Productions d'examen : documents et diaporamas (partie 2/
+ 5)
+DESCRIPTION:14h00-16h30\n- Construire le plan du document : Manager l’é
+ quipe de son périmètre au sein de l’établissement marchand : entre 1
+ 6 et 24 pages
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270407-s106-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270407T083000
+DTEND;TZID=Indian/Reunion:20270407T104500
+SUMMARY:S106 — Productions d'examen : documents et diaporamas (partie 2/
+ 5)
+DESCRIPTION:08h30-10h45\n- Construire le plan du document : Manager l’é
+ quipe de son périmètre au sein de l’établissement marchand : entre 1
+ 6 et 24 pages
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270407-s107-645@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270407T104500
+DTEND;TZID=Indian/Reunion:20270407T161500
+SUMMARY:S107 — Productions d'examen : documents et diaporamas (partie 3/
+ 5)
+DESCRIPTION:10h45-16h15\n- Concevoir le diaporama : Contribuer à la perfo
+ rmance commerciale et à la rentabilité de son périmètre au sein de l
+ ’établissement marchand : 12 à 18 diapositives
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270407-s108-975@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270407T161500
+DTEND;TZID=Indian/Reunion:20270407T163000
+SUMMARY:S108 — Productions d'examen : documents et diaporamas (partie 4/
+ 5)
+DESCRIPTION:16h15-16h30\n- Concevoir le diaporama : Manager l’équipe de
+  son périmètre au sein de l’établissement marchand : 18 à 24 diapos
+ itives
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270408-s108-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270408T083000
+DTEND;TZID=Indian/Reunion:20270408T134500
+SUMMARY:S108 — Productions d'examen : documents et diaporamas (partie 4/
+ 5)
+DESCRIPTION:08h30-13h45\n- Concevoir le diaporama : Manager l’équipe de
+  son périmètre au sein de l’établissement marchand : 18 à 24 diapos
+ itives
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270408-s109-825@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270408T134500
+DTEND;TZID=Indian/Reunion:20270408T163000
+SUMMARY:S109 — Productions d'examen : documents et diaporamas (partie 5/
+ 5)
+DESCRIPTION:13h45-16h30\n- S'entraîner à la présentation orale et au qu
+ estionnement du jury
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270409-s109-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270409T083000
+DTEND;TZID=Indian/Reunion:20270409T100000
+SUMMARY:S109 — Productions d'examen : documents et diaporamas (partie 5/
+ 5)
+DESCRIPTION:08h30-10h00\n- S'entraîner à la présentation orale et au qu
+ estionnement du jury
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270409-s110-600@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270409T100000
+DTEND;TZID=Indian/Reunion:20270409T163000
+SUMMARY:S110 — Examen blanc dans les conditions de la session (partie 1/
+ 2)
+DESCRIPTION:10h00-16h30\n- Réaliser l'épreuve « Mise en situation profe
+ ssionnelle » (04 h 00 min)\n- Réaliser l'épreuve « Entretien techniqu
+ e » (01 h 30 min)\n- Réaliser l'épreuve « Questionnement à partir de
+  production(s) » (02 h 10 min)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270412-s110-510@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270412T083000
+DTEND;TZID=Indian/Reunion:20270412T093000
+SUMMARY:S110 — Examen blanc dans les conditions de la session (partie 1/
+ 2)
+DESCRIPTION:08h30-09h30\n- Réaliser l'épreuve « Questionnement à parti
+ r de production(s) » (02 h 10 min)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270412-s111-570@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270412T093000
+DTEND;TZID=Indian/Reunion:20270412T114500
+SUMMARY:S111 — Examen blanc dans les conditions de la session (partie 2/
+ 2)
+DESCRIPTION:09h30-11h45\n- Réaliser l'épreuve « Entretien final » (00 
+ h 15 min)
+END:VEVENT
+BEGIN:VEVENT
+UID:tp-manager-detablissement-marchand-20270412-s112-705@decorticage.local
+DTSTAMP:20261028T120943Z
+DTSTART;TZID=Indian/Reunion:20270412T114500
+DTEND;TZID=Indian/Reunion:20270412T163000
+SUMMARY:S112 — Bilan de formation et préparation à la session
+DESCRIPTION:11h45-16h30\n- Évaluer l'atteinte des objectifs de la formati
+ on\n- Préparer la logistique et le mental du jour de l'examen
+END:VEVENT
+END:VCALENDAR

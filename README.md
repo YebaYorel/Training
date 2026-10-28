@@ -1,3 +1,18 @@
+# Logiciels YEBA FORMATIONS
+
+## Logiciel de décorticage pédagogique (titres professionnels)
+
+Analyse le REAC, le RE/RC et la fiche France Compétences d'un titre, puis produit le
+décorticage complet (AT, CP, séances, objectifs Bloom, contenus, planning jour par jour et
+heure par heure), le programme de formation, l'examen simplifié et la page web du programme
+(publiée seulement avec votre accord). 100 % local, protégé par mot de passe.
+
+→ **Guide complet : [DECORTICAGE.md](DECORTICAGE.md)** — lancement :
+`Lancer_Decorticage_Windows.bat` ou `Lancer_Decorticage_Mac.command`.
+Exemple produit sur le titre MEM (hypothèse 455 h) : `exemples_sorties/MEM_hypothese_455h/`.
+
+---
+
 # Connexion Baserow ↔ Claude Code — YEBA FORMATIONS
 
 Intégration **souveraine** (données hébergées dans l'UE) permettant à Claude
