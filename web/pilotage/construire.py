@@ -8,6 +8,7 @@ Produit dans web/pilotage/dist/ :
 Le moteur de décorticage (web/src) est réutilisé tel quel ; seules les bibliothèques
 (versions figées) viennent de cdn.jsdelivr.net.
 """
+import base64
 import re
 from pathlib import Path
 
@@ -33,6 +34,9 @@ def inline(js: str) -> str:
 def construire() -> tuple[Path, Path]:
     page = (SRC / "page.html").read_text(encoding="utf-8")
     scripts = [f'<script src="{u}"></script>' for u in LIBS]
+    logo = SRC / "logo_yeba.png"
+    if logo.exists():   # logo de la charte, utilisé par défaut (retirable dans Réglages)
+        scripts.append(f'<script>window.LOGO_YEBA = "data:image/png;base64,{base64.b64encode(logo.read_bytes()).decode()}";</script>')
     code = [inline((MOTEUR / f"{m}.js").read_text(encoding="utf-8")) for m in MODULES_MOTEUR]
     code += [inline((SRC / f"{m}.js").read_text(encoding="utf-8")) for m in MODULES]
     scripts.append("<script>\n" + "\n".join(code) + "\n</script>")

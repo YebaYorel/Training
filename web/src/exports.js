@@ -97,8 +97,8 @@
       normal: { name: c.police, size: t, color: { argb: argb(c.couleur_texte) } },
       gras: { name: c.police, size: t, bold: true, color: { argb: argb(c.couleur_texte) } },
       entete: { name: c.police, size: t + 1, bold: true, color: { argb: "FFFFFFFF" } },
-      titre: { name: c.police, size: c.taille_titre, bold: true, color: { argb: argb(c.couleur_primaire) } },
-      sousTitre: { name: c.police, size: t + 3, bold: true, color: { argb: argb(c.couleur_secondaire) } },
+      titre: { name: c.police_titres || c.police, size: c.taille_titre, bold: true, color: { argb: argb(c.couleur_primaire) } },
+      sousTitre: { name: c.police_titres || c.police, size: t + 3, bold: true, color: { argb: argb(accentTexte(c)) } },
       fondEntete: { type: "pattern", pattern: "solid", fgColor: { argb: argb(c.couleur_primaire) } },
       fondClair: { type: "pattern", pattern: "solid", fgColor: { argb: argb(c.couleur_claire) } },
       fondAccent: { type: "pattern", pattern: "solid", fgColor: { argb: argb(c.couleur_secondaire) } },
@@ -110,7 +110,7 @@
     const t = propre(texte);
     const debut = verbe && t.toLowerCase().startsWith(verbe.toLowerCase()) ? t.slice(0, verbe.length) : "";
     const parts = [];
-    if (debut) parts.push({ font: { name: st.police, size: st.c.taille_texte, bold: true, color: { argb: "FF" + st.c.couleur_secondaire } }, text: debut.toUpperCase() });
+    if (debut) parts.push({ font: { name: st.police, size: st.c.taille_texte, bold: true, color: { argb: "FF" + accentTexte(st.c) } }, text: debut.toUpperCase() });
     parts.push({ font: { name: st.police, size: st.c.taille_texte, color: { argb: "FF" + st.c.couleur_texte } }, text: t.slice(debut.length) });
     return { richText: parts };
   }
@@ -314,9 +314,19 @@
     return new Blob([await wb.xlsx.writeBuffer()], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
   }
 
+  // ------------------------------------------------------------------ contrastes (WCAG 2.1, critère 1.4.3)
+  const lum = (hex) => { const v = [0, 2, 4].map((i) => parseInt(String(hex).replace("#", "").padEnd(6, "0").slice(i, i + 2), 16) / 255).map((x) => (x <= 0.03928 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4));
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]; };
+  const contraste = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+  // Couleur d'accent utilisable EN TEXTE sur fond blanc : l'accent s'il atteint 4,5:1, sinon la couleur principale
+  const accentTexte = (c) => (contraste(c.couleur_secondaire, "FFFFFF") >= 4.5 ? c.couleur_secondaire : c.couleur_primaire);
+  // Texte lisible posé sur un aplat : blanc, ou la couleur principale / le noir si le blanc ne contraste pas assez
+  const texteSur = (fond, c) => (contraste(fond, "FFFFFF") >= 4.5 ? "FFFFFF" : contraste(fond, c.couleur_primaire) >= 4.5 ? c.couleur_primaire : "121212");
+  D.contraste = contraste; D.accentTexte = accentTexte; D.texteSur = texteSur;
+
   // ------------------------------------------------------------------ Word
   function docWord(ctx, titre, construire) {
-    const X = G.docx, c = ctx.charte, t = c.taille_texte * 2;
+    const X = G.docx, c = ctx.charte, t = c.taille_texte * 2, FT = c.police_titres || c.police;
     const enfants = [];
     if (ctx.logo) enfants.push(new X.Paragraph({ children: [new X.ImageRun({ data: ctx.logo.octets, transformation: { width: Math.round(83 * ctx.logo.ratio), height: 83 } })] }));
     enfants.push(new X.Paragraph({ text: titre, heading: X.HeadingLevel.HEADING_1 }));
@@ -349,9 +359,12 @@
       creator: ctx.nomOrg || "", lastModifiedBy: ctx.nomOrg || "", title: titre, description: "",
       styles: { default: { document: { run: { font: c.police, size: t, color: c.couleur_texte } } },
         paragraphStyles: [
-          { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: c.police, size: c.taille_titre * 2, bold: true, color: c.couleur_primaire }, paragraph: { spacing: { before: 240, after: 160 } } },
-          { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: c.police, size: (c.taille_texte + 4) * 2, bold: true, color: c.couleur_secondaire }, paragraph: { spacing: { before: 240, after: 120 } } }] },
-      sections: [{ properties: { page: { size: { width: 11906, height: 16838, orientation: X.PageOrientation.LANDSCAPE }, margin: { top: 907, bottom: 907, left: 907, right: 907 } } }, children: enfants }],
+          { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FT, size: c.taille_titre * 2, bold: true, color: c.couleur_primaire }, paragraph: { spacing: { before: 240, after: 160 } } },
+          { id: "Heading2", name: "Heading 2", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FT, size: (c.taille_texte + 4) * 2, bold: true, color: accentTexte(c) }, paragraph: { spacing: { before: 240, after: 120 } } }] },
+      sections: [{ properties: { page: { size: { width: 11906, height: 16838, orientation: X.PageOrientation.LANDSCAPE }, margin: { top: 907, bottom: 907, left: 907, right: 907 } } },
+        // pied de page : bloc-marque légal (jamais en marque blanche : ctx.pied est vide dans ce cas)
+        footers: ctx.pied ? { default: new X.Footer({ children: String(ctx.pied).split("\n").map((l) => new X.Paragraph({ children: [new X.TextRun({ text: l, size: Math.max(22, t - 6), color: c.couleur_texte })] })) }) } : undefined,
+        children: enfants }],
     });
     return X.Packer.toBlob(doc);
   }

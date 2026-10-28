@@ -1,40 +1,45 @@
 <title>Pilotage YEBA FORMATIONS</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Atkinson+Hyperlegible+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700;800&display=swap">
 <style>
-/* Pilotage : barre de navigation fixe, une vue à la fois. Typo Atkinson Hyperlegible (lecteurs malvoyants),
-   corps 1.15rem, contrastes AA. --marque / --accent-marque sont réécrites par la charte saisie dans Réglages. */
+/* Pilotage YEBA FORMATIONS — charte 2026 : bleu #1B3A6B (confiance), or #C9AB4C (qualité), noir #121212, blanc.
+   Montserrat pour les titres, Inter pour le texte (très lisible, corps 1.15rem). Accessibilité : l'or (2,3:1 sur blanc)
+   n'est JAMAIS du texte sur fond clair ; il sert aux filets et aplats, et au texte sur bleu (4,9:1) ou sur noir (8,2:1).
+   --marque / --accent-marque sont réécrites par la charte saisie dans Réglages. */
 :root {
-  --marque: #1F3A5F; --accent-marque: #E07A1F;
-  --encre: var(--marque); --accent: #B85A12;
-  --fond: #F4F6F9; --surface: #FFFFFF; --surface-2: #EEF3F8; --texte: #16202B; --doux: #4B5967; --trait: #C9D3DD;
-  --ok: #1E6B3A; --ok-fond: #E5F3EA; --alerte: #8A4B00; --alerte-fond: #FFF2E0; --ko: #9B1C1C; --ko-fond: #FDECEC;
-  --police: "Atkinson Hyperlegible", "Verdana", "Segoe UI", sans-serif;
-  --mono: "Atkinson Hyperlegible Mono", "Consolas", monospace;
+  --marque: #1B3A6B; --accent-marque: #C9AB4C;
+  --encre: var(--marque); --accent: var(--marque);
+  --fond: #F3F5F9; --surface: #FFFFFF; --surface-2: #EEF2F8; --texte: #121212; --doux: #47515E; --trait: #C8D0DC;
+  --ok: #1E6B3A; --ok-fond: #E5F3EA; --alerte: #7A4600; --alerte-fond: #FFF3DC; --ko: #9B1C1C; --ko-fond: #FDECEC;
+  --police: "Inter", "Segoe UI", "Verdana", sans-serif;
+  --titres: "Montserrat", "Inter", "Segoe UI", sans-serif;
+  --mono: "Inter", "Consolas", monospace;
   --t-base: 1.15rem; --t-petit: 1rem; --t-h2: 1.45rem; --t-h1: clamp(1.8rem, 4vw, 2.5rem);
   --rayon: 10px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --encre: #9CC3EE; --accent: #F2A25E; --fond: #10161D; --surface: #18212B; --surface-2: #1F2A36; --texte: #E8EEF4; --doux: #A9B6C3; --trait: #2E3B49;
+  --encre: #E3CF8E; --accent: #C9AB4C; --fond: #121212; --surface: #1B1F27; --surface-2: #232A36; --texte: #F1F3F6; --doux: #A9B6C3; --trait: #2E3B49;
   --ok: #7FD39A; --ok-fond: #15301F; --alerte: #F5C27A; --alerte-fond: #33240F; --ko: #F49A9A; --ko-fond: #3A1616; color-scheme: dark } }
 :root[data-theme="dark"] {
-  --encre: #9CC3EE; --accent: #F2A25E; --fond: #10161D; --surface: #18212B; --surface-2: #1F2A36; --texte: #E8EEF4; --doux: #A9B6C3; --trait: #2E3B49;
+  --encre: #E3CF8E; --accent: #C9AB4C; --fond: #121212; --surface: #1B1F27; --surface-2: #232A36; --texte: #F1F3F6; --doux: #A9B6C3; --trait: #2E3B49;
   --ok: #7FD39A; --ok-fond: #15301F; --alerte: #F5C27A; --alerte-fond: #33240F; --ko: #F49A9A; --ko-fond: #3A1616; color-scheme: dark }
 * { box-sizing: border-box }
 [hidden] { display: none !important }
 html { scroll-padding-top: 90px }
 body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--police); font-size: var(--t-base); line-height: 1.55; min-height: 100vh }
 a { color: var(--encre) }
+h1, h2, h3, .tuile b, #barre .marque { font-family: var(--titres) }
 
 /* ------------------------------------------------ barre de navigation */
-#barre { position: sticky; top: 0; z-index: 20; background: var(--marque); color: #fff; box-shadow: 0 2px 0 var(--accent-marque) }
+#barre { position: sticky; top: 0; z-index: 20; background: var(--marque); color: #fff; box-shadow: 0 3px 0 var(--accent-marque) }
+#logo-nav { height: 44px; width: auto; display: block; border-radius: 4px }
 #barre .dedans { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; gap: 14px; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)) }
 #barre .marque { font-weight: 700; font-size: 1.1rem; letter-spacing: .02em; white-space: nowrap; flex: none }
 #nav { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: thin; flex: 1; min-width: 0 }
 #nav a { color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 8px; white-space: nowrap; font-weight: 700; font-size: 1.02rem }
 #nav a:hover { background: rgba(255,255,255,.14) }
-#nav a[aria-current="page"] { background: #fff; color: var(--marque) }
+#nav a[aria-current="page"] { background: var(--accent-marque); color: var(--marque) }
 #etat-sauvegarde { font-family: var(--mono); font-size: .85rem; opacity: .9; white-space: nowrap; flex: none }
 @media (max-width: 760px) { #barre .dedans { flex-wrap: wrap } #nav { order: 3; flex-basis: 100% } #barre .marque { flex: 1 } }
 
@@ -91,7 +96,7 @@ input[type=checkbox], input[type=radio] { width: 1.35rem; height: 1.35rem; accen
 label.coche { display: flex; gap: 10px; align-items: center; font-weight: 400; cursor: pointer }
 fieldset.jours { border: 2px solid var(--trait); border-radius: 8px; padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0; min-width: 0 }
 fieldset.jours legend { font-weight: 700; padding: 0 6px }
-:focus-visible { outline: 4px solid var(--accent); outline-offset: 2px }
+:focus-visible { outline: 4px solid var(--marque); outline-offset: 2px; box-shadow: 0 0 0 7px var(--accent-marque) }
 
 /* ------------------------------------------------ boutons */
 button { font: inherit; cursor: pointer }
@@ -117,7 +122,7 @@ button:disabled { opacity: .55; cursor: progress }
 .todo .quand { font-family: var(--mono); font-size: .92rem; color: var(--doux) }
 @media (max-width: 560px) { .todo li { grid-template-columns: minmax(0, 1fr) } }
 .objs { margin: 0; padding-left: 1.4rem; display: grid; gap: 6px }
-.verbe { color: var(--accent); font-weight: 700 }
+.verbe { color: var(--encre); font-weight: 700; text-decoration: underline; text-decoration-color: var(--accent-marque); text-decoration-thickness: 3px; text-underline-offset: 3px }
 .ligne-liste { font: inherit; width: 100%; text-align: left; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(90px, 1fr) auto; gap: 6px 14px; align-items: center;
   background: var(--surface); color: var(--texte); border: 1px solid var(--trait); border-radius: 8px; padding: 12px 14px; overflow-wrap: anywhere }
 .ligne-liste:hover { border-color: var(--accent) }
@@ -175,13 +180,30 @@ tr:last-child td { border-bottom: none }
 .carte-connexion details { border-top: 1px solid var(--trait); padding-top: 10px }
 .carte-connexion summary { cursor: pointer; font-weight: 700 }
 
+/* ------------------------------------------------ tableau de bord financier */
+.tableau-bord { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)) }
+.tableau-bord .tuile b { font-size: 1.9rem }
+.rapprochement { border-left: 6px solid var(--accent-marque); display: grid; gap: 10px }
+.rapprochement .ind-tete .num { font-size: 1.3rem }
+.propositions { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px }
+.propositions li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px 14px; align-items: center; padding: 10px 12px; border: 1px solid var(--trait); border-radius: 8px; background: var(--surface-2) }
+@media (max-width: 640px) { .propositions li { grid-template-columns: minmax(0, 1fr) } }
+.score { font-weight: 700; font-variant-numeric: tabular-nums; padding: 4px 10px; border-radius: 999px; background: var(--surface); border: 2px solid var(--trait) }
+.score.ok { border-color: var(--ok); color: var(--ok) } .score.att { border-color: var(--alerte); color: var(--alerte) } .score.ko { border-color: var(--ko); color: var(--ko) }
+label.second { display: inline-block; cursor: pointer; padding: 8px 14px; font-weight: 700 }
+.apercu-logo { max-height: 110px; width: auto; border-radius: 6px }
+.logo-connexion { width: 150px; height: auto; border-radius: 10px; justify-self: start }
+tr.retard td { background: var(--ko-fond) }
+td .puce, td .score { white-space: nowrap; overflow-wrap: normal }
+details > summary { cursor: pointer; padding: 6px 0 }
+
 @media print { #barre, #toasts, button { display: none !important } body { background: #fff } }
 </style>
 
 <div id="connexion"></div>
 <div id="app" hidden>
   <header id="barre"><div class="dedans">
-    <span class="marque">Pilotage</span>
+    <img id="logo-nav" alt="" hidden><span class="marque">Pilotage</span>
     <nav id="nav" aria-label="Sections">
       <a href="#accueil" data-v="accueil">Aujourd'hui</a>
       <a href="#formations" data-v="formations">Formations</a>

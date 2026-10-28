@@ -22,6 +22,7 @@
   function toast(msg, type = "ok") {
     const t = document.createElement("div");
     t.className = "toast " + type; t.textContent = msg; $("#toasts").appendChild(t);
+    while ($("#toasts").children.length > 3) $("#toasts").firstElementChild.remove();   // 3 messages au plus à l'écran
     setTimeout(() => t.remove(), 6000);
   }
   let inactif;
@@ -32,6 +33,8 @@
   let dl;
   const capacite = async (n) => (window.claude && typeof window.claude.use === "function" ? window.claude.use(n).catch(() => null) : null);
   async function enregistrer(nom, data) {
+    // noms de fichiers sans accents : lisibles partout (Windows, Mac, clé USB, messagerie)
+    nom = String(nom).normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9._-]+/g, "_");
     if (dl === undefined) dl = await capacite("downloads");
     if (dl) { try { await dl.save({ filename: nom, data }); } catch (e) { if (e && e.code !== "declined") toast(`Téléchargement impossible (${(e && e.code) || "indisponible"}).`, "ko"); } return; }
     if (window.claude) { toast("Téléchargement indisponible dans cet affichage : ouvrez la page dans claude.ai.", "ko"); return; }
@@ -49,6 +52,7 @@
     const c = d().charte, r = document.documentElement.style;
     r.setProperty("--marque", "#" + c.couleur_primaire); r.setProperty("--accent-marque", "#" + c.couleur_secondaire);
     etat.logo = null;
+    const ln = $("#logo-nav"); if (ln) { ln.hidden = !c.logo; if (c.logo) { ln.src = c.logo; ln.alt = d().identite.nom; } }
     if (c.logo) chargerLogo(c.logo);
   }
   function chargerLogo(dataURL) {
@@ -75,6 +79,7 @@
     const existe = await C.existe();
     $("#connexion").innerHTML = `
       <div class="carte-connexion">
+        ${window.LOGO_YEBA ? `<img class="logo-connexion" src="${window.LOGO_YEBA}" alt="YEBA FORMATIONS">` : ""}
         <span class="etiquette">Pilotage du centre de formation</span>
         <h1>${existe ? "Déverrouiller" : "Créer votre coffre"}</h1>
         <p>${existe ? "Vos données sont chiffrées dans ce navigateur. Saisissez votre mot de passe." : "Toutes vos données (formations, actions, finances, Qualiopi) seront chiffrées avec ce mot de passe et resteront dans ce navigateur. Sans lui, personne ne peut les lire, pas même vous : notez-le en lieu sûr."}</p>
@@ -107,8 +112,7 @@
   }
   function demarrer() {
     $("#connexion").hidden = true; $("#app").hidden = false;
-    const dd = d();
-    for (const k of ["formations", "actions", "ecritures", "partenaires", "reclamations", "ameliorations", "veille"]) dd[k] = dd[k] || [];
+    P.migrer(d()); P.synchroAttendus(d());
     appliquerCharte(); reveil();
     aller(location.hash.slice(1) || "accueil");
   }
@@ -132,7 +136,7 @@
   }
 
   // ------------------------------------------------------------ calculs partagés
-  function contexteF(f) { return P.contexteFormation(f, charteDoc(f.reglages.commanditaire), etat.logo); }
+  function contexteF(f) { return Object.assign(P.contexteFormation(f, charteDoc(f.reglages.commanditaire), etat.logo), { pied: f.reglages.commanditaire ? "" : P.blocMarque(d().identite) }); }
   function prochaineSeance(f) {
     try { const ctx = contexteF(f), pr = P.planReel(f, ctx); return { ctx, pr, jour: P.journee(pr.futur) }; } catch (e) { return { erreur: e.message }; }
   }
@@ -145,14 +149,17 @@
         const j = jours(doc.limite);
         if (j <= 14) liste.push({ quand: doc.limite, j, texte: `${doc.titre} — ${a.intitule}`, action: a.id, type: "doc" });
       }
-      if (a.date_facture && !a.encaisse && a.echeance_facture && jours(a.echeance_facture) < 0)
-        liste.push({ quand: a.echeance_facture, j: jours(a.echeance_facture), texte: `Facture ${a.numero_facture || ""} en retard — ${a.client?.raison || a.intitule} (${E(P.totalTTC(a))})`, action: a.id, type: "facture" });
     }
+    for (const x of d().attendus) if (P.etatAttendu(x) === "retard") liste.push({ quand: x.echeance, j: jours(x.echeance), texte: `Paiement en retard — ${x.payeur} : ${E(P.reste(x))} (${x.libelle})`, type: "paiement" });
+    const nb = d().mouvements.filter((m) => m.etat === "a_confirmer").length;
+    if (nb) liste.push({ quand: auj(), j: 0, texte: `${nb} virement(s) reçu(s) à confirmer`, type: "paiement" });
     for (const p of d().partenaires) if (p.relance && jours(p.relance) <= 3) liste.push({ quand: p.relance, j: jours(p.relance), texte: `Relancer ${p.nom}${p.objet ? " — " + p.objet : ""}`, partenaire: p.id, type: "relance" });
     const derniereVeille = d().veille.map((x) => x.date).sort().pop();
     if (!derniereVeille || jours(derniereVeille) < -30) liste.push({ quand: auj(), j: 0, texte: "Veille du mois à noter (Qualiopi 23, 24, 25)", type: "veille" });
     const derniereSauv = d().derniere_sauvegarde;
     if (!derniereSauv || jours(derniereSauv.slice(0, 10)) < -7) liste.push({ quand: auj(), j: 0, texte: "Faire une sauvegarde chiffrée (plus de 7 jours)", type: "sauvegarde" });
+    const I = d().identite;
+    if (I.qualiopi_validite && jours(I.qualiopi_validite) <= 120) liste.push({ quand: I.qualiopi_validite, j: jours(I.qualiopi_validite), texte: `Certificat Qualiopi valable jusqu'au ${fr(I.qualiopi_validite)} : vérifier la date de l'audit de renouvellement avec ${I.certificateur || "le certificateur"}`, type: "qualiopi" });
     return liste.sort((x, y) => x.quand.localeCompare(y.quand));
   }
   function couvertureQualiopi() {
@@ -164,7 +171,7 @@
 
   // ------------------------------------------------------------ ACCUEIL
   function vAccueil() {
-    const t = P.tresorerie(d()), q = couvertureQualiopi(), liste = aFaire();
+    const t = P.tresorerie(d()), tb = P.tableauBord(d()), q = couvertureQualiopi(), liste = aFaire();
     const audit = jours(d().identite.audit_debut);
     const cartesSeances = d().formations.filter((f) => !f.archivee).map((f) => {
       const ps = prochaineSeance(f);
@@ -179,13 +186,13 @@
     }).join("") || `<div class="carte vide"><h3>Aucune formation</h3><p>Ajoutez une formation à partir de ses référentiels (REAC, RE/RC, fiche RNCP ou RS) pour voir ici vos prochaines séances.</p><button data-go="formations" class="principal-court">Ajouter une formation</button></div>`;
     return `<header class="titre-vue"><h1>Aujourd'hui</h1><p>${esc(new Date().toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long", year: "numeric" }))}</p></header>
       <div class="tuiles">
-        ${tuile("Trésorerie", E(t.solde), t.autonomieJours !== null ? `${t.autonomieJours} jours d'autonomie` : "saisissez vos dépenses pour l'autonomie", t.sousSeuil ? "alerte" : "", "finances")}
-        ${tuile("À encaisser", E(t.totalCreances), `${t.creances.length} facture(s) en attente`, t.creances.some((c) => c.echeance < auj()) ? "alerte" : "", "finances")}
+        ${tuile("Ce que j'ai aujourd'hui", E(tb.solde), t.autonomieJours !== null ? `${t.autonomieJours} jours d'autonomie` : "solde bancaire", t.sousSeuil ? "alerte" : "", "finances")}
+        ${tuile("Ce qu'on me doit", E(tb.du), tb.nbRetard ? `dont ${E(tb.retard)} en retard` : `${tb.nbDu} somme(s) attendue(s)`, tb.nbRetard ? "alerte" : "", "finances")}
         ${tuile("Qualiopi", `${Math.round(q.taux * 100)} %`, `${q.prets}/${q.total} indicateurs prêts${audit !== null ? ` · audit dans ${audit} j` : ""}`, q.taux < 0.5 && audit !== null && audit < 120 ? "alerte" : "", "qualiopi")}
-        ${tuile("Actions en cours", String(d().actions.filter((a) => ["convention_signee", "en_cours"].includes(a.statut)).length), `${d().actions.length} au total`, "", "actions")}
+        ${tb.aConfirmer ? tuile("Virements à confirmer", String(tb.aConfirmer), "reçus sur le compte", "alerte", "finances") : tuile("Actions en cours", String(d().actions.filter((a) => ["convention_signee", "en_cours"].includes(a.statut)).length), `${d().actions.length} au total`, "", "actions")}
       </div>
       <div class="deux-colonnes"><section><h2>Séances</h2><div class="pile">${cartesSeances}</div></section>
-      <section><h2>À faire (14 prochains jours)</h2>${liste.length ? `<ul class="todo">${liste.map((x) => `<li class="${x.j < 0 ? "retard" : x.j <= 2 ? "proche" : ""}"><span class="quand">${x.j < 0 ? `en retard de ${-x.j} j` : x.j === 0 ? "aujourd'hui" : `dans ${x.j} j`}</span><span>${esc(x.texte)}</span>${x.action ? `<button class="lien" data-act="voir-action" data-id="${esc(x.action)}">Ouvrir</button>` : x.type === "veille" ? `<button class="lien" data-go="qualiopi">Noter</button>` : x.type === "sauvegarde" ? `<button class="lien" data-go="reglages">Sauvegarder</button>` : x.partenaire ? `<button class="lien" data-go="partenaires">Voir</button>` : ""}</li>`).join("")}</ul>` : `<p class="discret">Rien d'urgent. Profitez-en pour démarcher vos partenaires.</p>`}
+      <section><h2>À faire (14 prochains jours)</h2>${liste.length ? `<ul class="todo">${liste.map((x) => `<li class="${x.j < 0 ? "retard" : x.j <= 2 ? "proche" : ""}"><span class="quand">${x.j < 0 ? `en retard de ${-x.j} j` : x.j === 0 ? "aujourd'hui" : `dans ${x.j} j`}</span><span>${esc(x.texte)}</span>${x.action ? `<button class="lien" data-act="voir-action" data-id="${esc(x.action)}">Ouvrir</button>` : x.type === "veille" || x.type === "qualiopi" ? `<button class="lien" data-go="qualiopi">Ouvrir</button>` : x.type === "paiement" ? `<button class="lien" data-go="finances">Voir</button>` : x.type === "sauvegarde" ? `<button class="lien" data-go="reglages">Sauvegarder</button>` : x.partenaire ? `<button class="lien" data-go="partenaires">Voir</button>` : ""}</li>`).join("")}</ul>` : `<p class="discret">Rien d'urgent. Profitez-en pour démarcher vos partenaires.</p>`}
       ${tresorerieSvg(t)}</section></div>`;
   }
   const tuile = (lib, val, sous, cls, go) => `<button class="tuile ${cls}" data-go="${go}"><span>${esc(lib)}</span><b>${esc(val)}</b><small>${esc(sous)}</small></button>`;
@@ -401,6 +408,7 @@
         <label>Statut<select name="statut">${opt(STATUTS, a.statut)}</select></label>
         ${champ("Réalisée pour un autre centre (sous-traitance)", "pour_centre", a.pour_centre, "text", 'placeholder="ICCI, GEM FORMATION…"')}
         <label>Financeur (origine BPF)<select name="origine">${opt(P.ORIGINES, a.origine)}</select></label>
+        <label>Nature<select name="nature">${opt({ formation: "Action de formation", conseil: "Conseil, audit (RGPD, IA Act)", implementation: "Implémentation IA / workflow" }, a.nature || "formation")}</select><small>Le conseil n'est jamais exonéré de TVA</small></label>
         ${champ("Début", "debut", a.debut, "date")}${champ("Fin", "fin", a.fin, "date")}
         ${champ("Jours de formation (1 = lundi)", "jours_semaine", a.jours_semaine || "1,2,3,4,5")}${champ("Horaires", "horaires", a.horaires || "08:30-12:00, 13:00-16:30")}
         ${champ("Lieu", "lieu", a.lieu)}${champ("Heures par stagiaire", "heures", a.heures, "number", 'step="0.5" min="0"')}
@@ -414,12 +422,16 @@
         ${(a.stagiaires || []).map((s, i) => ligneStag(s, i)).join("")}</tbody></table></div><button type="button" class="second" data-act="ajout-stag">+ Stagiaire</button></section>
       <section class="carte"><h2>Prix et facture</h2><div class="grille-champs">
         ${champ("Prix total HT (€)", "prix_ht", a.prix_ht, "number", 'step="0.01" min="0"')}
-        <label>TVA<select name="tva">${opt({ exonere: "Exonéré (art. 261-4-4° a CGI)", tva: "TVA applicable", "": "À préciser" }, a.tva ?? "")}</select></label>
-        ${champ("Taux de TVA (%)", "taux_tva", a.taux_tva || 8.5, "number", 'step="0.1"')}
+        <label>TVA<select name="tva">${opt(Object.assign({ "": `Automatique : ${P.REGIMES[P.regimeTva(Object.assign({}, a, { tva: "" })).code]}` }, P.REGIMES), a.tva || "")}</select><small>Franchise jusqu'au ${fr(D.iso(D.ajoutJours(D.lireDate(d().identite.tva_debut || "2027-02-01"), -1)))}, puis TVA ${String(d().identite.taux_tva || 8.5).replace(".", ",")} %</small></label>
+        ${champ("Taux de TVA (%)", "taux_tva", a.taux_tva || d().identite.taux_tva || 8.5, "number", 'step="0.1"')}
+        <label>Payé par<select name="canal">${opt(Object.fromEntries(Object.entries(P.CANAUX).map(([k, v]) => [k, v.lib])), a.canal || "")}</select><small>Sert à reconnaître le virement</small></label>
+        ${champ("Montant pris en charge par un financeur (HT)", "prise_en_charge_ht", a.prise_en_charge_ht, "number", 'step="0.01" min="0"')}
+        ${champ("Nom du financeur (OPCO, France Travail…)", "financeur_nom", a.financeur_nom, "text", 'placeholder="AKTO, OPCO EP, ATLAS…"')}
+        <label>Canal du financeur<select name="canal_financeur">${opt(Object.fromEntries(Object.entries(P.CANAUX).filter(([k]) => !["entreprise", "particulier"].includes(k)).map(([k, v]) => [k, v.lib])), a.canal_financeur || "opco")}</select></label>
         ${champ("Modalités de règlement", "reglement", a.reglement || "Virement à 30 jours")}
         ${champ("N° de facture", "numero_facture", a.numero_facture)}${champ("Date de facture", "date_facture", a.date_facture, "date")}${champ("Échéance", "echeance_facture", a.echeance_facture, "date")}
-        <label class="coche"><input type="checkbox" name="encaisse" ${a.encaisse ? "checked" : ""}>Payée (crée la recette en trésorerie)</label>
         <label class="coche"><input type="checkbox" name="subrogation" ${a.subrogation ? "checked" : ""}>Subrogation de paiement (OPCO)</label></div>
+        ${paiementsAction(a)}
         <p class="discret">${P.besoinMission(a).message}</p></section>
       <section class="carte"><h2>Résultats (indicateurs Qualiopi 2 et 30)</h2><div class="grille-champs">
         ${champ("Satisfaction à chaud (moyenne sur 4)", "satisfaction_chaud", a.satisfaction_chaud, "number", 'step="0.1" min="0" max="4"')}
@@ -430,7 +442,7 @@
         <div class="defile"><table><thead><tr><th>Document</th><th>Pour le</th><th>Qualiopi</th><th>État</th><th></th></tr></thead><tbody>
         ${docs.map((x) => `<tr class="${x.etat !== "fait" && x.etat !== "na" && x.limite && x.limite < auj() ? "retard" : ""}"><td>${esc(x.titre)}</td><td>${fr(x.limite)}</td><td>${x.ind.map((n) => "I" + n).join(" ")}</td>
           <td><select data-act="etat-doc" data-doc="${esc(x.id)}" aria-label="État du document">${opt({ a_faire: "À faire", genere: "Généré", fait: "Fait / signé", na: "Non concerné" }, x.etat)}</select></td>
-          <td><button class="lien" data-act="gen-doc" data-doc="${esc(x.id)}">Générer</button></td></tr>`).join("")}</tbody></table></div>
+          <td><button class="lien" data-act="gen-doc" data-doc="${esc(x.id)}">Générer</button>${((d().bibliotheque[x.id] || {}).fichiers || []).filter((f) => (d().fichiers || {})[f]).slice(-1).map((f) => `<br><button class="lien" data-act="dl-piece" data-id="${esc(f)}">Ma version validée</button>`).join("")}</td></tr>`).join("")}</tbody></table></div>
         <div class="actions"><button class="second" data-act="gen-tous">Tous les documents (.zip)</button></div></section>
       <section class="carte"><h2>Pièces classées (conventions signées, justificatifs)</h2>
         <ul class="todo">${pieces.map(([id, m]) => `<li><span>${esc(m.nom)}</span><small class="discret">${Math.round(m.taille / 1024)} Ko · ${fr(m.depose.slice(0, 10))}</small><button class="lien" data-act="dl-piece" data-id="${esc(id)}">Télécharger</button><button class="lien danger" data-act="suppr-piece" data-id="${esc(id)}">Retirer</button></li>`).join("") || `<li class="discret">Aucune pièce.</li>`}</ul>
@@ -442,17 +454,21 @@
     <td><input name="s_resultat" value="${esc(s.resultat)}" aria-label="Résultat"></td><td><button type="button" class="lien danger" data-act="suppr-stag">Retirer</button></td></tr>`;
   function lireAction(form, a) {
     const fd = new FormData(form), g = (k) => String(fd.get(k) ?? "").trim().slice(0, 1000);
-    for (const k of ["intitule", "formationId", "type", "statut", "pour_centre", "origine", "debut", "fin", "jours_semaine", "horaires", "lieu", "objectifs", "tva", "reglement", "numero_facture", "date_facture", "echeance_facture"]) a[k] = g(k);
-    for (const k of ["heures", "frais_prevus", "delai_paiement_jours", "prix_ht", "taux_tva", "satisfaction_chaud", "presentes", "admis", "abandons", "reclamations"]) a[k] = P.num(fd.get(k));
+    for (const k of ["intitule", "formationId", "type", "statut", "pour_centre", "origine", "nature", "debut", "fin", "jours_semaine", "horaires", "lieu", "objectifs", "tva", "reglement", "numero_facture", "date_facture", "echeance_facture", "canal", "financeur_nom", "canal_financeur"]) a[k] = g(k);
+    for (const k of ["heures", "frais_prevus", "delai_paiement_jours", "prix_ht", "taux_tva", "prise_en_charge_ht", "satisfaction_chaud", "presentes", "admis", "abandons", "reclamations"]) a[k] = P.num(fd.get(k));
     a.subrogation = !!fd.get("subrogation");
-    const etaitEncaisse = a.encaisse;
-    a.encaisse = !!fd.get("encaisse");
     a.client = { raison: g("c_raison"), siret: g("c_siret"), adresse: g("c_adresse"), contact: g("c_contact"), email: g("c_email") };
     a.stagiaires = [...form.querySelectorAll("#t-stag tbody tr")].map((tr) => ({ nom: $('[name="s_nom"]', tr).value.trim(), prenom: $('[name="s_prenom"]', tr).value.trim(), statut: $('[name="s_statut"]', tr).value,
       entreprise: $('[name="s_entreprise"]', tr).value.trim(), heures: P.num($('[name="s_heures"]', tr).value), resultat: $('[name="s_resultat"]', tr).value.trim() })).filter((s) => s.nom || s.prenom);
     if (a.date_facture && !a.numero_facture) a.numero_facture = `${a.date_facture.slice(0, 4)}-${String(d().actions.filter((x) => x.numero_facture && x.numero_facture.startsWith(a.date_facture.slice(0, 4))).length + 1).padStart(3, "0")}`;
     if (a.date_facture && !a.echeance_facture) a.echeance_facture = D.iso(D.ajoutJours(D.lireDate(a.date_facture), 30));
-    if (a.encaisse && !etaitEncaisse) d().ecritures.push({ id: uid(), date: auj(), libelle: `Paiement facture ${a.numero_facture || ""} — ${a.client.raison || a.intitule}`, montant: P.totalTTC(a), sens: "recette", origine: a.origine || "autres", actionId: a.id, statut: "realise" });
+    P.synchroAttendus(d());
+  }
+  // Ce que l'action doit rapporter, part par part, et ce qui est déjà arrivé
+  function paiementsAction(a) {
+    const xs = d().attendus.filter((x) => x.actionId === a.id && !x.annule);
+    if (!xs.length) return `<p class="discret">Les sommes attendues apparaissent dans Finances dès que l'action est « Convention signée » (ou facturée).</p>`;
+    return `<h3>Paiements</h3><ul class="todo">${xs.map((x) => `<li class="${P.etatAttendu(x) === "retard" ? "retard" : ""}"><span class="quand">${esc(P.ETATS[P.etatAttendu(x)])}</span><span>${esc(x.payeur)} — ${E(P.recu(x))} reçu sur ${E(x.montant)}${P.reste(x) ? ` · reste ${E(P.reste(x))}` : ""}</span><button type="button" class="lien" data-go="finances">Finances</button></li>`).join("")}</ul>`;
   }
   function aActions() {
     lierCommun();
@@ -471,7 +487,8 @@
 
   // ------------------------------------------------------------ QUALIOPI
   function preuvesAuto(n) {
-    const out = [];
+    const out = [], ind = P.QUALIOPI.find((i) => i.n === n);
+    for (const id of (ind && ind.docs) || []) { const b = d().bibliotheque[id], m = P.BIBLIOTHEQUE.find((x) => x.id === id); if (b && (b.fichiers || []).length) out.push(`${m.titre}${m.ref ? " (" + m.ref + ")" : ""} — version déposée le ${fr(b.date)}`); }
     for (const a of d().actions) for (const doc of P.documentsAttendus(a)) if (doc.ind.includes(n) && (doc.etat === "fait" || doc.etat === "genere")) out.push(`${doc.titre} — ${a.intitule}`);
     for (const f of d().formations) {
       if ([5, 6, 7, 11, 19].includes(n) && Object.keys(f.packs || {}).length) out.push(`${Object.keys(f.packs).length} séance(s) préparée(s) avec supports — ${f.titre}`);
@@ -485,26 +502,50 @@
     if (n === 26 && d().partenaires.some((p) => /handicap|agefiph|cap emploi|mdph/i.test(p.nom + " " + (p.notes || "")))) out.push("Partenaires handicap identifiés");
     return out;
   }
+  // indicateurs prouvés par chaque document de la bibliothèque
+  const indicateursDe = (id) => P.QUALIOPI.filter((i) => i.docs.includes(id)).map((i) => i.n);
+  const etatBiblio = (b) => { const v = d().bibliotheque[b.id] || {}; return (v.fichiers || []).length ? "ok" : v.statut === "en_vigueur" || (b.source === "app" && !v.statut) ? "att" : "ko"; };
   function vQualiopi() {
-    const q = d().qualiopi, tous = P.QUALIOPI.concat(q.ajouts || []), cov = couvertureQualiopi(), audit = jours(d().identite.audit_debut), r = P.resultats(d());
-    return `<header class="titre-vue"><h1>Qualiopi</h1><p>${cov.prets}/${cov.total} indicateurs prêts${audit !== null ? ` · audit à partir du ${fr(d().identite.audit_debut)} (dans ${audit} jours)` : ""}. Les preuves se remplissent avec ce que vous faites dans le logiciel.</p></header>
+    const q = d().qualiopi, tous = P.QUALIOPI.concat(q.ajouts || []), cov = couvertureQualiopi(), audit = jours(d().identite.audit_debut), r = P.resultats(d()), I = d().identite;
+    const alerteCertif = I.qualiopi_validite && I.audit_fin && I.qualiopi_validite < I.audit_fin
+      ? `<p class="message ko"><b>À vérifier en priorité :</b> votre certificat est noté valable jusqu'au ${fr(I.qualiopi_validite)}, alors que la période d'audit indiquée court jusqu'au ${fr(I.audit_fin)}. L'audit de renouvellement doit avoir lieu <b>avant le ${fr(I.qualiopi_validite)}</b>, sinon la certification s'interrompt (et avec elle l'accès aux fonds publics et mutualisés, art. L6316-1). Confirmez la date avec ${esc(I.certificateur || "votre certificateur")}.</p>` : "";
+    const bib = P.BIBLIOTHEQUE, presents = bib.filter((b) => etatBiblio(b) === "ok").length;
+    return `<header class="titre-vue"><h1>Qualiopi</h1><p>${cov.prets}/${cov.total} indicateurs prêts${audit !== null ? ` · audit à partir du ${fr(I.audit_debut)} (dans ${audit} jours)` : ""}. Les preuves se remplissent avec ce que vous faites dans le logiciel.</p></header>
+      <p class="message"><b>Référentiel V10 — 33 indicateurs</b> (décret n° 2026-728 du 1<sup>er</sup> août 2026), applicable à tout audit réalisé à partir du 1<sup>er</sup> novembre 2026. Libellés : texte de 2019 ; les modifications V10 sont résumées sous chaque indicateur concerné. Le texte exact de l'annexe est à confirmer sur Légifrance avant l'audit.</p>
+      ${alerteCertif}
       <div class="tuiles">${tuile("Satisfaction", r.satisfaction ? r.satisfaction.toFixed(1).replace(".", ",") + " / 4" : "—", "indicateur 2", "", "qualiopi")}${tuile("Réussite", r.reussite !== null ? Math.round(r.reussite * 100) + " %" : "—", "certifications", "", "qualiopi")}
-        ${tuile("Abandons", r.abandon !== null ? Math.round(r.abandon * 100) + " %" : "—", "", "", "qualiopi")}${tuile("Stagiaires formés", String(r.stagiaires), `${r.actions} action(s) terminée(s)`, "", "qualiopi")}</div>
+        ${tuile("Abandons", r.abandon !== null ? Math.round(r.abandon * 100) + " %" : "—", "", "", "qualiopi")}${tuile("Bibliothèque", `${presents} / ${bib.length}`, "documents déposés", presents < bib.length / 2 ? "alerte" : "", "qualiopi")}</div>
       ${Object.entries(P.CRITERES).map(([c, lib]) => `<details class="carte" ${c === "1" ? "open" : ""}><summary><b>Critère ${c}</b> — ${esc(lib)}</summary>
         ${tous.filter((i) => String(i.critere) === c).map((i) => { const s = q.suivi[i.n] || {}, auto = preuvesAuto(i.n);
-          return `<div class="indicateur ${s.na ? "na" : s.statut || "a_faire"}" data-n="${i.n}"><div class="ind-tete"><b>Indicateur ${i.n}</b>${i.portee !== "tous" ? `<span class="puce att">${i.portee === "certif" ? "si action certifiante" : "si apprentissage"}</span>` : ""}
+          return `<div class="indicateur ${s.na ? "na" : s.statut || "a_faire"}" data-n="${i.n}"><div class="ind-tete"><b>Indicateur ${i.n}</b>${i.portee && i.portee !== "tous" ? `<span class="puce att">${esc(P.PORTEES[i.portee] || i.portee)}</span>` : ""}${i.v10 ? `<span class="puce ${i.n === 33 ? "ko" : "att"}">${i.n === 33 ? "nouveau V10" : "modifié V10"}</span>` : ""}
             <select data-act="statut-ind" aria-label="Statut">${opt({ a_faire: "À faire", en_cours: "En cours", pret: "Prêt pour l'audit" }, s.statut || "a_faire")}</select>
             <label class="coche"><input type="checkbox" data-act="na-ind" ${s.na ? "checked" : ""}>Non concerné</label></div>
-            <p>${esc(i.libelle)}</p>${auto.length ? `<ul class="preuves">${auto.map((x) => `<li>✔ ${esc(x)}</li>`).join("")}</ul>` : `<p class="discret">Aucune preuve automatique pour l'instant.</p>`}
+            <p>${esc(i.libelle)}</p>${i.v10 ? `<p class="message alerte"><b>V10 :</b> ${esc(i.v10)}</p>` : ""}
+            ${i.portee === "cfa" ? `<p class="discret">En sous-traitance pour un CFA, cet indicateur est audité chez le CFA : vous lui fournissez les preuves de vos séances.</p>` : ""}
+            ${(i.docs || []).length ? `<p class="petit"><b>Documents attendus :</b></p><ul class="puces-docs">${i.docs.map((id) => { const b = bib.find((x) => x.id === id); return `<li><a class="puce ${etatBiblio(b)}" href="#bib-${esc(id)}" data-bib="${esc(id)}">${esc(b.titre)}</a></li>`; }).join("")}</ul>` : ""}
+            ${auto.length ? `<ul class="preuves">${auto.map((x) => `<li>✔ ${esc(x)}</li>`).join("")}</ul>` : `<p class="discret">Aucune preuve automatique pour l'instant.</p>`}
             <textarea data-act="note-ind" rows="2" aria-label="Preuves et remarques" placeholder="Vos preuves complémentaires (où se trouve le document, procédure…)">${esc(s.note || "")}</textarea></div>`; }).join("")}</details>`).join("")}
+      <section class="carte" id="bibliotheque"><h2>Bibliothèque documentaire</h2>
+        <p>Chaque document exigé est déposé <b>une seule fois</b>, chiffré, puis réutilisé partout : preuves des indicateurs, dossier d'audit, documents des actions. Statuts relevés dans votre base Airtable (« DOCUMENTS OFFICIELS YEBA ») le 28/10/2026.</p>
+        <div class="defile"><table><thead><tr><th>Document</th><th>Indicateurs</th><th>Statut</th><th>Reste à faire</th><th>Ma version</th><th></th></tr></thead><tbody>
+        ${bib.map((b) => { const v = d().bibliotheque[b.id] || {}, f = (v.fichiers || []).map((id) => [id, (d().fichiers || {})[id]]).filter(([, m]) => m), st = v.statut ?? b.statut;
+          return `<tr id="bib-${esc(b.id)}"><td><b>${esc(b.titre)}</b>${b.ref ? `<br><small class="discret">${esc(b.ref)}</small>` : ""}${b.source === "app" ? `<br><small class="discret">produit par le logiciel</small>` : ""}</td>
+          <td>${indicateursDe(b.id).join(", ") || "—"}</td>
+          <td><select data-act="statut-bib" data-id="${esc(b.id)}" aria-label="Statut du document">${opt(P.STATUTS_DOC, st)}</select></td>
+          <td class="petit">${esc(v.note ?? b.reste)}</td>
+          <td>${f.map(([id, m]) => `<button class="lien" data-act="dl-piece" data-id="${esc(id)}">${esc(m.nom)}</button>`).join("<br>") || `<span class="puce ${etatBiblio(b)}">${etatBiblio(b) === "ko" ? "manquant" : "aucun fichier"}</span>`}</td>
+          <td><label class="second petit">Déposer<input type="file" data-act="depot-biblio" data-id="${esc(b.id)}" accept=".pdf,.docx,.doc,.odt,.xlsx,.png,.jpg,.jpeg" hidden></label>
+            ${P.BIBLIO_GENERABLES.includes(b.id) ? `<button class="lien" data-act="gen-biblio" data-id="${esc(b.id)}">Générer le modèle</button>` : ""}</td></tr>`; }).join("")}</tbody></table></div></section>
       <section class="carte"><h2>Registres</h2><div class="trois">
         ${registre("veille", "Veille (indicateurs 23, 24, 25)", [["date", "date", "Date"], ["type", "select", "Type", { legale: "Légale et réglementaire", metiers: "Métiers et compétences", pedagogique: "Pédagogique et technologique" }], ["source", "text", "Source"], ["info", "text", "Information"], ["exploitation", "text", "Ce que je change"]])}
         ${registre("reclamations", "Réclamations et aléas (indicateur 31)", [["date", "date", "Date"], ["objet", "text", "Objet"], ["traitement", "text", "Traitement"], ["cloture", "date", "Clôturée le"]])}
-        ${registre("ameliorations", "Améliorations (indicateur 32)", [["date", "date", "Date"], ["origine", "text", "Origine (avis, réclamation…)"], ["action", "text", "Action"], ["echeance", "date", "Échéance"]])}</div>
-        <p class="discret">Sources de veille : legifrance.gouv.fr · francecompetences.fr · centre-inffo.fr · travail-emploi.gouv.fr · dreets.gouv.fr (La Réunion).</p></section>
-      <section class="carte"><h2>Dossier d'audit</h2><p>Un document qui récapitule, indicateur par indicateur, vos preuves (automatiques et saisies), plus les registres.</p>
+        ${registre("ameliorations", "Améliorations (indicateur 32)", [["date", "date", "Date"], ["origine", "text", "Origine (avis, réclamation, risque…)"], ["action", "text", "Action"], ["echeance", "date", "Échéance"]])}</div>
+        <h3>Risques qualité (V10, indicateur 32)</h3>
+        ${registre("risques", "Registre des risques", [["date", "date", "Date de revue"], ["risque", "text", "Risque"], ["p", "select", "Probabilité", { Faible: "Faible", Moyenne: "Moyenne", Forte: "Forte" }], ["i", "select", "Impact", { Faible: "Faible", Moyen: "Moyen", Fort: "Fort" }], ["mesure", "text", "Mesure de prévention"]])}
+        <p class="discret">Sources de veille : legifrance.gouv.fr · francecompetences.fr · centre-inffo.fr · travail-emploi.gouv.fr · deets.gouv.fr (La Réunion).</p></section>
+      <section class="carte"><h2>Dossier d'audit</h2><p>Un document qui récapitule, indicateur par indicateur, vos preuves (automatiques, bibliothèque et saisies), les modifications V10 et les registres.</p>
         <div class="actions"><button class="principal-court" data-act="dossier-audit">Télécharger le dossier d'audit (.docx)</button>
-        <button class="second" data-act="ajout-ind">Ajouter un indicateur (nouveau référentiel)</button></div></section>`;
+        <button class="second" data-act="ajout-ind">Ajouter un indicateur</button></div></section>`;
   }
   function registre(cle, titre, champs) {
     const lignes = d()[cle] || [];
@@ -528,8 +569,11 @@
       for (const [c, lib] of Object.entries(P.CRITERES)) {
         o.h2(`Critère ${c} — ${lib}`);
         o.tableau([["Indicateur", "Statut", "Preuves"]].concat(tous.filter((i) => String(i.critere) === c).map((i) => { const s = q.suivi[i.n] || {};
-          return [`${i.n}. ${i.libelle}`, s.na ? "Non concerné" : ({ a_faire: "À faire", en_cours: "En cours", pret: "Prêt" })[s.statut || "a_faire"], preuvesAuto(i.n).concat(s.note ? [s.note] : []).map((x) => "• " + x).join("\n") || "—"]; })));
+          return [`${i.n}. ${i.libelle}${i.v10 ? "\nV10 : " + i.v10 : ""}`, s.na ? "Non concerné" : ({ a_faire: "À faire", en_cours: "En cours", pret: "Prêt" })[s.statut || "a_faire"], preuvesAuto(i.n).concat(s.note ? [s.note] : []).map((x) => "• " + x).join("\n") || "—"]; })));
       }
+      o.h2("Bibliothèque documentaire");
+      o.tableau([["Document", "Indicateurs", "Statut", "Version déposée"]].concat(P.BIBLIOTHEQUE.map((b) => { const v = d().bibliotheque[b.id] || {};
+        return [`${b.titre}${b.ref ? " (" + b.ref + ")" : ""}`, indicateursDe(b.id).join(", ") || "—", P.STATUTS_DOC[v.statut ?? b.statut] || "", (v.fichiers || []).length ? `oui, le ${fr(v.date)}` : "non"]; })));
       for (const [cle, lib] of [["veille", "Registre de veille"], ["reclamations", "Registre des réclamations"], ["ameliorations", "Plan d'amélioration"]]) {
         o.h2(lib); const l = d()[cle];
         if (l.length) o.tableau([Object.keys(l[0]).filter((k) => k !== "id")].concat(l.map((x) => Object.entries(x).filter(([k]) => k !== "id").map(([, v]) => v)))); else o.p("Aucune entrée.");
@@ -538,29 +582,85 @@
   }
 
   // ------------------------------------------------------------ FINANCES
+  const canalLib = (k) => (P.CANAUX[k] || P.CANAUX.autre).lib;
+  const TRIS = { echeance: "Échéance", reste: "Reste dû (du plus grand)", payeur: "Payeur (A → Z)", canal: "Canal de paiement", etat: "État" };
+  const FILTRES = { a_recevoir: "Tout ce qui reste à recevoir", retard: "En retard seulement", solde: "Réglé", tous: "Tout" };
+  function listeAttendus() {
+    const f = etat.filtreAtt || "a_recevoir", t = etat.triAtt || "echeance", ordreEtat = { retard: 0, partiel: 1, a_venir: 2, solde: 3, annule: 4 };
+    return d().attendus.filter((x) => !x.annule && (f === "tous" || (f === "solde" ? P.etatAttendu(x) === "solde" : f === "retard" ? P.etatAttendu(x) === "retard" : P.reste(x) > 0)))
+      .sort((x, y) => t === "reste" ? P.reste(y) - P.reste(x) : t === "payeur" ? x.payeur.localeCompare(y.payeur, "fr") : t === "canal" ? canalLib(x.canal).localeCompare(canalLib(y.canal), "fr")
+        : t === "etat" ? ordreEtat[P.etatAttendu(x)] - ordreEtat[P.etatAttendu(y)] : (x.echeance || "9999").localeCompare(y.echeance || "9999"));
+  }
+  function ligneAttendu(x) {
+    const e = P.etatAttendu(x), ouvert = etat.paiementOuvert === x.id;
+    return `<tr class="${e === "retard" ? "retard" : ""}"><td><b>${esc(x.payeur)}</b><br><small class="discret">${esc(x.libelle)}${x.reference ? " · facture " + esc(x.reference) : ""}</small></td>
+      <td>${esc(canalLib(x.canal))}</td><td>${fr(x.echeance)}</td><td class="num">${E(x.montant)}</td><td class="num">${E(P.recu(x))}</td><td class="num"><b>${E(P.reste(x))}</b></td>
+      <td><span class="puce ${e === "solde" ? "ok" : e === "retard" ? "ko" : "att"}">${esc(P.ETATS[e])}</span></td>
+      <td>${P.reste(x) > 0 ? `<button class="lien" data-act="ouvrir-paiement" data-a="${esc(x.id)}">${ouvert ? "Fermer" : "Noter un paiement reçu"}</button>` : ""}${x.actionId ? `<br><button class="lien" data-act="voir-action" data-id="${esc(x.actionId)}">Action</button>` : `<br><button class="lien danger" data-act="suppr-attendu" data-a="${esc(x.id)}">Retirer</button>`}</td></tr>
+      ${(x.encaissements || []).length ? `<tr><td colspan="8" class="petit discret">Reçu : ${x.encaissements.map((en) => `${fr(en.date)} ${E(en.montant)} (${esc(en.mode || "")}) <button class="lien danger" data-act="annuler-enc" data-a="${esc(x.id)}" data-e="${esc(en.id)}">annuler</button>`).join(" · ")}</td></tr>` : ""}
+      ${ouvert ? `<tr><td colspan="8"><form id="f-paiement" class="grille-champs" data-a="${esc(x.id)}">${champ("Montant reçu (€)", "montant", P.reste(x), "number", 'step="0.01" min="0.01" required')}${champ("Date de réception", "date", auj(), "date", "required")}
+        <label>Moyen<select name="mode">${opt({ virement: "Virement", cheque: "Chèque", especes: "Espèces", prelevement: "Prélèvement", autre: "Autre" }, "virement")}</select></label>
+        <button class="principal-court" type="submit">Confirmer la réception</button></form><p class="discret petit">Si vous importez ensuite le relevé bancaire, le virement correspondant sera reconnu comme la même somme (pas de double comptage).</p></td></tr>` : ""}`;
+  }
   function vFinances() {
-    const t = P.tresorerie(d()), annee = new Date().getFullYear(), b = P.bpf(d(), annee - (new Date().getMonth() < 5 ? 1 : 0)), ec = d().ecritures.slice().sort((x, y) => y.date.localeCompare(x.date));
-    return `<header class="titre-vue"><h1>Finances</h1><p>Trésorerie, encaissements, besoin en fonds de roulement et préparation du Bilan pédagogique et financier.</p></header>
-      <div class="tuiles">${tuile("Solde actuel", E(t.solde), `au ${fr(auj())}`, t.solde < P.num(d().tresorerie.seuil_alerte) ? "alerte" : "", "finances")}
-        ${tuile("À encaisser", E(t.totalCreances), `${t.creances.filter((c) => c.echeance < auj()).length} en retard`, "", "finances")}
-        ${tuile("BFR", E(t.bfr), t.bfrJours !== null ? `${t.bfrJours} jours de chiffre d'affaires` : "créances − dettes", "", "finances")}
-        ${tuile("Charges / mois", E(t.chargeMensuelle), t.autonomieJours !== null ? `${t.autonomieJours} jours d'autonomie` : "", "", "finances")}</div>
-      <div class="deux-colonnes"><section class="carte"><h2>Nouvelle écriture</h2><form id="f-ecr" class="grille-champs">
-        <label>Type<select name="sens"><option value="recette">Recette (virement reçu)</option><option value="depense">Dépense</option></select></label>
-        ${champ("Date", "date", auj(), "date", "required")}${champ("Montant (€)", "montant", "", "number", 'step="0.01" min="0" required')}${champ("Libellé", "libelle", "", "text", "required")}
-        <label>Origine (recettes, BPF)<select name="origine">${opt(P.ORIGINES, "entreprises")}</select></label>
-        <label>Catégorie (dépenses)<select name="categorie">${P.CATEGORIES_DEPENSE.map((c) => `<option>${esc(c)}</option>`).join("")}</select></label>
-        <label>Action liée<select name="actionId"><option value="">—</option>${d().actions.map((a) => `<option value="${esc(a.id)}">${esc(a.intitule)}</option>`).join("")}</select></label>
-        <label>Statut<select name="statut"><option value="realise">Réalisé</option><option value="prevu">Prévu (à venir)</option></select></label>
-        <button class="principal-court" type="submit">Ajouter</button></form>
-        <h3>Importer un relevé bancaire (CSV de votre banque)</h3><p class="discret">Les virements reçus qui correspondent au montant exact d'une facture sont rapprochés : la facture passe « payée ».</p>
-        <input type="file" id="releve" accept=".csv,.txt" aria-label="Relevé bancaire CSV"></section>
+    P.synchroAttendus(d());
+    const tb = P.tableauBord(d()), t = P.tresorerie(d()), annee = new Date().getFullYear(), b = P.bpf(d(), annee - (new Date().getMonth() < 5 ? 1 : 0)), ec = d().ecritures.slice().sort((x, y) => y.date.localeCompare(x.date));
+    const aConf = d().mouvements.filter((m) => m.etat === "a_confirmer").sort((x, y) => y.date.localeCompare(x.date));
+    const ouverts = d().attendus.filter((x) => !x.annule && P.reste(x) > 0);
+    const liste = listeAttendus(), grouper = !!etat.grouperAtt;
+    const groupes = grouper ? Object.entries(liste.reduce((g, x) => ((g[x.canal] = g[x.canal] || []).push(x), g), {})) : [["", liste]];
+    const optAttendus = ouverts.map((x) => `<option value="${esc(x.id)}">${esc(x.payeur)} — ${esc(x.libelle)} (reste ${esc(E(P.reste(x)))})</option>`).join("");
+    return `<header class="titre-vue"><h1>Finances</h1><p>Ce que j'ai, ce qu'on me doit, ce qu'il me restera. Rien n'est marqué « reçu » sans votre confirmation.</p></header>
+      <div class="tuiles tableau-bord">
+        ${tuile("Ce que j'ai aujourd'hui", E(tb.solde), `solde bancaire au ${fr(auj())}`, tb.solde < P.num(d().tresorerie.seuil_alerte) ? "alerte" : "ok", "finances")}
+        ${tuile("Ce qu'on me doit", E(tb.du), `${tb.nbDu} somme(s) pas encore réglée(s)`, "", "finances")}
+        ${tuile("Dont en retard", E(tb.retard), tb.nbRetard ? `${tb.nbRetard} paiement(s) à relancer` : "aucun retard", tb.nbRetard ? "ko" : "ok", "finances")}
+        ${tuile("Ce qu'il me restera", E(tb.restera), "si tout est payé, après dépenses prévues et TVA", tb.restera < 0 ? "ko" : "", "finances")}
+        ${tuile(`Encaissé en ${annee}`, E(tb.encaisseAnnee), `dont ${E(tb.encaisseMois)} ce mois-ci`, "", "finances")}
+        ${tuile("Virements à confirmer", String(tb.aConfirmer), tb.aConfirmer ? "reçus sur le compte, à rattacher" : "tout est rapproché", tb.aConfirmer ? "alerte" : "ok", "finances")}
+        ${tb.tva || tb.tvaAVenir ? tuile("TVA à reverser (estimation)", E(tb.tva), `+ ${E(tb.tvaAVenir)} sur les sommes encore dues`, "", "finances") : ""}</div>
+      <p class="discret petit">Ce qu'il me restera = ce que j'ai (${E(tb.solde)}) + ce qu'on me doit (${E(tb.du)}) + recettes prévues (${E(tb.recettesPrevues)}) − dépenses prévues (${E(tb.depensesPrevues)}) − TVA à reverser (${E(tb.tva + tb.tvaAVenir)}).</p>
+      ${aConf.length ? `<section class="carte"><h2>Virements reçus à confirmer (${aConf.length})</h2>
+        <p>Le logiciel compare le montant, le nom de l'émetteur (même écrit autrement : « VIR AKTO OPCO » pour « AKTO Réunion ») et le n° de facture. <b>Vous confirmez</b> ; il retient l'association pour la fois suivante.</p>
+        ${aConf.some((m) => m.propositions && m.propositions[0] && m.propositions[0].score >= 0.9 && !(m.propositions[1] && m.propositions[1].score >= 0.6)) ? `<div class="actions"><button class="second" data-act="confirmer-surs">Confirmer toutes les correspondances sûres (≥ 90 %)</button></div>` : ""}
+        <div class="pile">${aConf.map((m) => `<div class="carte rapprochement"><div class="ind-tete"><span class="quand">${fr(m.date)}</span><b class="num">${E(m.montant)}</b><span>${esc(m.libelle)}</span></div>
+          ${(m.propositions || []).length ? `<ul class="propositions">${m.propositions.map((pr) => { const x = d().attendus.find((y) => y.id === pr.attenduId); if (!x) return "";
+            return `<li><span class="score ${pr.score >= 0.9 ? "ok" : pr.score >= 0.6 ? "att" : "ko"}">${Math.round(pr.score * 100)} %</span><span><b>${esc(x.payeur)}</b> — ${esc(x.libelle)} · reste ${E(P.reste(x))}<br><small class="discret">${esc(pr.raisons.join(" · "))}</small></span><button class="principal-court" data-act="confirmer-rap" data-m="${esc(m.id)}" data-a="${esc(x.id)}">C'est bien ça</button></li>`; }).join("")}</ul>`
+            : `<p class="discret">Aucune somme attendue ne correspond (montant et nom).</p>`}
+          <div class="actions">${optAttendus ? `<label class="petit">Autre somme attendue<select id="sel-${esc(m.id)}">${optAttendus}</select></label><button class="second" data-act="confirmer-autre" data-m="${esc(m.id)}">Rattacher</button>` : ""}
+            <label class="petit">Pas une facture<select id="cls-${esc(m.id)}">${opt(P.ORIGINES, "autres")}</select></label><button class="second" data-act="classer-mvt" data-m="${esc(m.id)}">Classer en autre recette</button>
+            <button class="lien" data-act="ignorer-mvt" data-m="${esc(m.id)}">Ignorer (virement interne)</button></div></div>`).join("")}</div></section>` : ""}
+      <section class="carte"><h2>Ce qu'on me doit</h2>
+        <div class="actions"><label class="petit">Trier par<select data-act="tri-att">${opt(TRIS, etat.triAtt || "echeance")}</select></label>
+          <label class="petit">Afficher<select data-act="filtre-att">${opt(FILTRES, etat.filtreAtt || "a_recevoir")}</select></label>
+          <label class="coche petit"><input type="checkbox" data-act="grouper-att" ${grouper ? "checked" : ""}>Regrouper par canal (OPCO, CPF, entreprises…)</label></div>
+        <div class="defile"><table><thead><tr><th>Qui me paie</th><th>Par quel canal</th><th>Échéance</th><th class="num">Attendu</th><th class="num">Reçu</th><th class="num">Reste</th><th>État</th><th></th></tr></thead><tbody>
+        ${liste.length ? groupes.map(([k, xs]) => (grouper ? `<tr><th colspan="8">${esc(canalLib(k))} — reste ${E(xs.reduce((a, x) => a + P.reste(x), 0))}</th></tr>` : "") + xs.map(ligneAttendu).join("")).join("")
+          : `<tr><td colspan="8" class="discret">Rien à afficher. Les sommes attendues se créent depuis les actions (dès « Convention signée ») ou avec le formulaire ci-dessous.</td></tr>`}</tbody></table></div>
+        <details><summary><b>Ajouter une somme attendue hors action</b> (conseil, audit, implémentation, acompte…)</summary>
+          <form id="f-attendu" class="grille-champs">${champ("Qui me paie", "payeur", "", "text", 'required placeholder="Nom de la structure"')}${champ("Pour quoi", "libelle", "", "text", 'required placeholder="Audit RGPD, workflow IA…"')}
+          <label>Canal<select name="canal">${opt(Object.fromEntries(Object.entries(P.CANAUX).map(([k, v]) => [k, v.lib])), "entreprise")}</select></label>
+          ${champ("Montant TTC attendu (€)", "montant", "", "number", 'step="0.01" min="0.01" required')}${champ("Échéance", "echeance", "", "date")}${champ("N° de facture", "reference", "")}${champ("Taux de TVA inclus (%)", "taux_tva", 0, "number", 'step="0.1" min="0"')}
+          <button class="principal-court" type="submit">Ajouter</button></form></details></section>
+      <div class="deux-colonnes"><section class="carte"><h2>Par canal de paiement</h2><div class="defile"><table><thead><tr><th>Canal</th><th class="num">Attendu</th><th class="num">Reçu</th><th class="num">Reste</th></tr></thead><tbody>
+          ${Object.entries(tb.parCanal).map(([k, c]) => `<tr><td>${esc(canalLib(k))} <small class="discret">(${c.n})</small></td><td class="num">${E(c.attendu)}</td><td class="num">${E(c.recu)}</td><td class="num"><b>${E(c.reste)}</b></td></tr>`).join("") || `<tr><td colspan="4" class="discret">Aucune somme attendue.</td></tr>`}</tbody></table></div>
+        <h3>Importer le relevé bancaire</h3>
+        <p class="discret">Dans l'espace en ligne de votre banque : « Télécharger les opérations » au format <b>CSV</b> ou <b>OFX</b> (Money / Quicken). Les lignes déjà importées sont ignorées.</p>
+        <input type="file" id="releve" accept=".csv,.ofx,.qfx,.txt" aria-label="Relevé bancaire CSV ou OFX">
+        <h3>Réglages de trésorerie</h3><form id="f-treso" class="grille-champs">${champ("Solde bancaire de départ (€)", "solde_initial", d().tresorerie.solde_initial, "number", 'step="0.01"')}${champ("À la date du", "date_solde", d().tresorerie.date_solde, "date")}${champ("Seuil d'alerte (€)", "seuil_alerte", d().tresorerie.seuil_alerte, "number")}<button class="second" type="submit">Enregistrer</button></form></section>
       <section class="carte">${tresorerieSvg(t)}
-        <h3>Réglages de trésorerie</h3><form id="f-treso" class="grille-champs">${champ("Solde bancaire de départ (€)", "solde_initial", d().tresorerie.solde_initial, "number", 'step="0.01"')}${champ("À la date du", "date_solde", d().tresorerie.date_solde, "date")}${champ("Seuil d'alerte (€)", "seuil_alerte", d().tresorerie.seuil_alerte, "number")}<button class="second" type="submit">Enregistrer</button></form></section></div>
+        <h3>Besoin en fonds de roulement</h3><p>${E(t.bfr)}${t.bfrJours !== null ? ` · soit ${t.bfrJours} jours de chiffre d'affaires` : ""} · charges moyennes ${E(t.chargeMensuelle)} par mois${t.autonomieJours !== null ? ` · ${t.autonomieJours} jours d'autonomie` : ""}.</p>
+        <h3>Nouvelle écriture (dépense, ou recette hors facture)</h3><form id="f-ecr" class="grille-champs">
+        <label>Type<select name="sens"><option value="depense">Dépense</option><option value="recette">Recette</option></select></label>
+        ${champ("Date", "date", auj(), "date", "required")}${champ("Montant (€)", "montant", "", "number", 'step="0.01" min="0" required')}${champ("Libellé", "libelle", "", "text", "required")}
+        <label>Catégorie (dépenses)<select name="categorie">${P.CATEGORIES_DEPENSE.map((c) => `<option>${esc(c)}</option>`).join("")}</select></label>
+        <label>Origine (recettes, BPF)<select name="origine">${opt(P.ORIGINES, "autres")}</select></label>
+        <label>Statut<select name="statut"><option value="realise">Réalisé</option><option value="prevu">Prévu (à venir)</option></select></label>
+        <button class="principal-court" type="submit">Ajouter</button></form></section></div>
       <section class="carte"><h2>Journal (${ec.length} écritures)</h2><div class="defile"><table><thead><tr><th>Date</th><th>Libellé</th><th>Origine / catégorie</th><th class="num">Recette</th><th class="num">Dépense</th><th>Statut</th><th></th></tr></thead><tbody>
-        ${ec.slice(0, 200).map((e) => `<tr><td>${fr(e.date)}</td><td>${esc(e.libelle)}</td><td>${esc(e.sens === "recette" ? P.ORIGINES[e.origine] || "" : e.categorie || "")}</td><td class="num">${e.sens === "recette" ? E(e.montant) : ""}</td><td class="num">${e.sens === "depense" ? E(e.montant) : ""}</td><td>${e.statut === "prevu" ? "prévu" : "réalisé"}</td><td><button class="lien danger" data-act="suppr-ecr" data-id="${esc(e.id)}">Retirer</button></td></tr>`).join("") || `<tr><td colspan="7" class="discret">Aucune écriture.</td></tr>`}</tbody></table></div>
+        ${ec.slice(0, 200).map((e) => `<tr><td>${fr(e.date)}</td><td>${esc(e.libelle)}${e.source === "banque" ? ` <small class="discret">(banque)</small>` : ""}</td><td>${esc(e.sens === "recette" ? P.ORIGINES[e.origine] || "" : e.categorie || "")}</td><td class="num">${e.sens === "recette" ? E(e.montant) : ""}</td><td class="num">${e.sens === "depense" ? E(e.montant) : ""}</td><td>${e.statut === "prevu" ? "prévu" : "réalisé"}</td><td>${e.source === "banque" ? "" : `<button class="lien danger" data-act="suppr-ecr" data-id="${esc(e.id)}">Retirer</button>`}</td></tr>`).join("") || `<tr><td colspan="7" class="discret">Aucune écriture.</td></tr>`}</tbody></table></div>
         <div class="actions"><button class="second" data-act="exp-compta">Tableau comptable (.xlsx)</button></div></section>
-      <section class="carte"><h2>Bilan pédagogique et financier ${b.annee} (préparation)</h2><p>À déclarer sur « Mon Activité Formation » avant le ${fr(b.echeance)}. Vérifiez chaque ligne : le calcul repose sur vos écritures et vos actions.</p>
+      <section class="carte"><h2>Bilan pédagogique et financier ${b.annee} (préparation)</h2><p>À déclarer sur « Mon Activité Formation » avant le ${fr(b.echeance)}. Produits retenus hors TVA. Vérifiez chaque ligne : le calcul repose sur vos encaissements et vos actions.</p>
         <div class="deux-colonnes"><div><h3>Cadre C — Origine des produits</h3><table><tbody>${Object.entries(b.C).filter(([, v]) => v).map(([k, v]) => `<tr><td>${esc(P.ORIGINES[k])}</td><td class="num">${E(v)}</td></tr>`).join("") || `<tr><td class="discret">Aucune recette sur l'exercice.</td></tr>`}<tr><td><b>Total</b></td><td class="num"><b>${E(b.totalProduits)}</b></td></tr></tbody></table>
           <h3>Cadre D — Charges</h3><p>${E(b.charges)} (total des dépenses réalisées)</p></div>
         <div><h3>Cadre F — Stagiaires et heures</h3><table><thead><tr><th>Public</th><th class="num">Stagiaires</th><th class="num">Heures</th></tr></thead><tbody>${b.F1.map((x) => `<tr><td>${esc(x.lib)}</td><td class="num">${x.nombre}</td><td class="num">${x.heures}</td></tr>`).join("")}<tr><td><b>Total</b></td><td class="num"><b>${b.totalStagiaires}</b></td><td class="num"><b>${b.totalHeures}</b></td></tr></tbody></table>
@@ -572,26 +672,30 @@
     $("#f-ecr").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target), x = { id: uid() }; for (const [k, v] of fd.entries()) x[k] = String(v).slice(0, 300); x.montant = P.num(x.montant);
       if (x.sens === "depense") delete x.origine; else delete x.categorie; d().ecritures.push(x); sauver(); rendre(); toast("Écriture ajoutée."); };
     $("#f-treso").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target); d().tresorerie = { solde_initial: P.num(fd.get("solde_initial")), date_solde: String(fd.get("date_solde") || auj()), seuil_alerte: P.num(fd.get("seuil_alerte")) }; sauver(); rendre(); };
+    $("#f-attendu").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target), g = (k) => String(fd.get(k) || "").trim().slice(0, 300);
+      d().attendus.push({ id: uid(), payeur: g("payeur"), libelle: g("libelle"), canal: g("canal") || "entreprise", montant: P.num(fd.get("montant")), echeance: g("echeance"), reference: g("reference"), taux_tva: P.num(fd.get("taux_tva")), encaissements: [], cree: auj() });
+      sauver(); rendre(); toast("Somme attendue ajoutée."); };
+    const fp = $("#f-paiement");
+    if (fp) fp.onsubmit = (e) => { e.preventDefault(); const fd = new FormData(fp);
+      try { P.encaisserManuel(d(), fp.dataset.a, { montant: fd.get("montant"), date: String(fd.get("date")), mode: String(fd.get("mode")) }); etat.paiementOuvert = null; sauver(); rendre(); toast("Paiement enregistré : il est compté dans « Ce que j'ai »."); }
+      catch (err) { toast(err.message, "ko"); } };
     $("#releve").onchange = async (e) => {
       const fi = e.target.files[0]; if (!fi) return;
-      const mouvements = P.lireReleve(await fi.text());
-      const deja = new Set(d().ecritures.map((x) => `${x.date}|${x.montant}|${x.libelle}`));
-      let n = 0, rap = 0;
-      for (const m of mouvements) {
-        if (deja.has(`${m.date}|${m.montant}|${m.libelle}`)) continue;
-        const a = P.rapprocher(d(), m);
-        d().ecritures.push(Object.assign({ id: uid(), statut: "realise", origine: a ? a.origine : "autres", categorie: m.sens === "depense" ? "Autre" : undefined, actionId: a ? a.id : "" }, m));
-        if (a) { a.encaisse = true; a.statut = "soldee"; rap++; }
-        n++;
-      }
-      sauver(); rendre(); toast(`${n} mouvement(s) importé(s), ${rap} facture(s) rapprochée(s).`);
+      if (fi.size > 10 * 1024 * 1024) { toast("Fichier trop volumineux (10 Mo maximum).", "ko"); return; }
+      const r = P.importerReleve(d(), await fi.text());
+      sauver(); rendre();
+      toast(r.lus ? `${r.nouveaux} opération(s) importée(s) (${r.recettes} recette(s), ${r.depenses} dépense(s))${r.doublons ? `, ${r.doublons} déjà connue(s)` : ""}. Confirmez les virements ci-dessus.` : "Aucune opération lue : vérifiez le format (CSV avec date, libellé, montant ; ou OFX).", r.lus ? "ok" : "ko");
     };
   }
   async function exportCompta() {
     const wb = new ExcelJS.Workbook(); wb.creator = d().identite.nom;
     const ws = wb.addWorksheet("Journal", { pageSetup: { orientation: "landscape", fitToPage: true, fitToWidth: 1, fitToHeight: 0 } });
-    ws.columns = [{ header: "Date", key: "date", width: 12 }, { header: "Libellé", key: "libelle", width: 50 }, { header: "Origine / catégorie", key: "cat", width: 36 }, { header: "Recette", key: "r", width: 14 }, { header: "Dépense", key: "dp", width: 14 }, { header: "Statut", key: "s", width: 10 }];
-    for (const e of d().ecritures.slice().sort((x, y) => x.date.localeCompare(y.date))) ws.addRow({ date: e.date, libelle: e.libelle, cat: e.sens === "recette" ? P.ORIGINES[e.origine] || "" : e.categorie || "", r: e.sens === "recette" ? e.montant : null, dp: e.sens === "depense" ? e.montant : null, s: e.statut === "prevu" ? "prévu" : "réalisé" });
+    ws.columns = [{ header: "Date", key: "date", width: 12 }, { header: "Libellé", key: "libelle", width: 50 }, { header: "Origine / catégorie", key: "cat", width: 36 }, { header: "Recette TTC", key: "r", width: 14 }, { header: "dont HT", key: "ht", width: 12 }, { header: "dont TVA", key: "tva", width: 12 }, { header: "Dépense", key: "dp", width: 14 }, { header: "Statut", key: "s", width: 10 }];
+    for (const e of d().ecritures.slice().sort((x, y) => x.date.localeCompare(y.date))) ws.addRow({ date: e.date, libelle: e.libelle, cat: e.sens === "recette" ? P.ORIGINES[e.origine] || "" : e.categorie || "", r: e.sens === "recette" ? e.montant : null, ht: e.sens === "recette" ? e.montant_ht ?? e.montant : null, tva: e.sens === "recette" ? e.tva || 0 : null, dp: e.sens === "depense" ? e.montant : null, s: e.statut === "prevu" ? "prévu" : "réalisé" });
+    const at = wb.addWorksheet("Ce qu'on me doit", { pageSetup: { orientation: "landscape", fitToPage: true, fitToWidth: 1, fitToHeight: 0 } });
+    at.columns = [{ header: "Payeur", key: "p", width: 32 }, { header: "Objet", key: "l", width: 40 }, { header: "Canal", key: "c", width: 26 }, { header: "Échéance", key: "e", width: 12 }, { header: "Attendu", key: "m", width: 13 }, { header: "Reçu", key: "r", width: 13 }, { header: "Reste", key: "x", width: 13 }, { header: "État", key: "s", width: 14 }];
+    for (const x of d().attendus.filter((y) => !y.annule)) at.addRow({ p: x.payeur, l: x.libelle, c: (P.CANAUX[x.canal] || P.CANAUX.autre).lib, e: x.echeance, m: x.montant, r: P.recu(x), x: P.reste(x), s: P.ETATS[P.etatAttendu(x)] });
+    at.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" }, size: 13 }; at.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF" + d().charte.couleur_primaire } };
     ws.getRow(1).font = { bold: true, color: { argb: "FFFFFFFF" }, size: 13 }; ws.getRow(1).fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FF" + d().charte.couleur_primaire } };
     const m = wb.addWorksheet("Synthèse mensuelle");
     m.columns = [{ header: "Mois", key: "m", width: 12 }, { header: "Recettes", key: "r", width: 14 }, { header: "Dépenses", key: "dp", width: 14 }, { header: "Résultat", key: "res", width: 14 }];
@@ -648,18 +752,23 @@
     const I = d().identite, c = d().charte;
     return `<header class="titre-vue"><h1>Réglages</h1></header>
       <form id="f-ident" class="carte"><h2>Identité du centre (remplit tous les documents)</h2><div class="grille-champs">
-        ${[["Nom", "nom"], ["Dirigeant / formateur", "dirigeant"], ["SIRET", "siret"], ["N° de déclaration d'activité (NDA)", "nda"], ["N° de certificat Qualiopi", "qualiopi"], ["Adresse", "adresse"], ["Code postal et ville", "ville"],
-          ["Téléphone", "telephone"], ["E-mail", "email"], ["Site internet", "site"], ["IBAN (factures)", "iban"], ["Référent handicap", "referent_handicap"]].map(([l, k]) => champ(l, k, I[k])).join("")}
-        ${champ("Début de la période d'audit", "audit_debut", I.audit_debut, "date")}${champ("Fin de la période d'audit", "audit_fin", I.audit_fin, "date")}</div>
+        ${[["Nom", "nom"], ["Dirigeant / formateur", "dirigeant"], ["SIRET", "siret"], ["N° de déclaration d'activité (NDA)", "nda"], ["N° de certificat Qualiopi", "qualiopi"], ["Organisme certificateur", "certificateur"], ["Adresse", "adresse"], ["Code postal", "code_postal"], ["Ville", "ville"],
+          ["Téléphone", "telephone"], ["E-mail", "email"], ["Site internet", "site"], ["IBAN (factures)", "iban"], ["BIC", "bic"], ["Référent handicap", "referent_handicap"], ["Délai d'accès aux formations", "delai_acces"], ["Horaires standard", "horaires"], ["N° de TVA intracommunautaire", "tva_intra"]].map(([l, k]) => champ(l, k, I[k])).join("")}
+        ${champ("Certificat Qualiopi valable jusqu'au", "qualiopi_validite", I.qualiopi_validite, "date")}${champ("Début de la période d'audit", "audit_debut", I.audit_debut, "date")}${champ("Fin de la période d'audit", "audit_fin", I.audit_fin, "date")}
+        ${champ("TVA appliquée à partir du", "tva_debut", I.tva_debut, "date")}${champ("Taux de TVA (La Réunion)", "taux_tva", I.taux_tva, "number", 'step="0.1"')}
+        <label class="coche"><input type="checkbox" name="attestation_3511" ${I.attestation_3511 ? "checked" : ""}>J'ai l'attestation 3511-SD (formation exonérée de TVA, art. 261-4-4° a du CGI)</label></div>
+        <p class="discret petit">Avant la date de TVA : « TVA non applicable — article 293 B du CGI » sur devis et factures. Après : TVA ${String(I.taux_tva || 8.5).replace(".", ",")} % (formation exonérée seulement avec l'attestation 3511-SD ; le conseil et l'implémentation restent soumis à la TVA).</p>
         <button class="principal-court" type="submit">Enregistrer</button></form>
       <form id="f-charte" class="carte"><h2>Charte graphique</h2>${c.couleurs_validees ? "" : `<p class="message alerte">Couleurs provisoires : saisissez les codes exacts de la charte YEBA FORMATIONS.</p>`}<div class="grille-champs">
         ${[["Couleur principale", "couleur_primaire"], ["Couleur d'accent", "couleur_secondaire"], ["Fond des bandes", "couleur_claire"], ["Texte", "couleur_texte"]].map(([l, k]) => `<label>${l}<input type="color" name="${k}" value="#${esc(c[k])}"></label>`).join("")}
-        ${champ("Police des documents", "police", c.police)}${champ("Taille du texte (14 minimum)", "taille_texte", c.taille_texte, "number", 'min="14" max="28"')}
+        ${champ("Police des titres", "police_titres", c.police_titres || "Montserrat")}${champ("Police du texte", "police", c.police)}${champ("Taille du texte (14 minimum)", "taille_texte", c.taille_texte, "number", 'min="14" max="28"')}
         <label>Logo (PNG ou JPEG)<input type="file" id="logo" accept=".png,.jpg,.jpeg"><small>${c.logo ? "Logo enregistré" : "Aucun logo"}</small></label></div>
+        ${c.logo ? `<p><img src="${esc(c.logo)}" alt="Logo actuel" class="apercu-logo"></p>` : ""}
+        <p class="discret petit">Règle d'accessibilité appliquée automatiquement : l'or #${esc(c.couleur_secondaire)} n'est jamais utilisé en texte sur fond clair (contraste ${D.contraste(c.couleur_secondaire, "FFFFFF").toFixed(2).replace(".", ",")}:1, minimum 4,5:1) ; il reste réservé aux filets, aplats et au texte sur fond bleu (${D.contraste(c.couleur_secondaire, c.couleur_primaire).toFixed(2).replace(".", ",")}:1). Polices Montserrat et Inter : gratuites (licence SIL OFL), à installer sur l'ordinateur qui projette, sinon PowerPoint les remplace.</p>
         <div class="actions"><button class="principal-court" type="submit">Enregistrer</button>${c.logo ? `<button type="button" class="second" data-act="retirer-logo">Retirer le logo</button>` : ""}</div></form>
       <section class="carte"><h2>Sauvegarde et transfert</h2><p>La sauvegarde est un fichier chiffré : il ne s'ouvre qu'avec votre mot de passe. Gardez-en une copie sur une clé USB ou un stockage européen. ${d().derniere_sauvegarde ? "Dernière : " + fr(d().derniere_sauvegarde.slice(0, 10)) + "." : "Aucune sauvegarde pour l'instant."}</p>
         <div class="actions"><button class="principal-court" data-act="sauvegarde">Télécharger la sauvegarde chiffrée</button><button class="second" data-act="verrouiller">Verrouiller maintenant</button></div>
-        <h3>Importer des données existantes</h3><p class="discret">Depuis Airtable ou un tableur : exportez vos écritures bancaires en CSV et importez-les dans Finances. L'import direct de la base « YEBA FORMATIONS - centre de formation (adaptable) » sera branché quand sa structure (tables et colonnes) sera confirmée.</p></section>
+        <h3>Banque</h3><p class="discret">Import du relevé (CSV ou OFX) dans Finances : rapprochement automatique, toujours confirmé par vous. Une connexion bancaire directe (DSP2) passe obligatoirement par un agrégateur agréé par l'ACPR et un petit serveur : elle n'est pas activée dans cette version 100 % locale.</p></section>
       <section class="carte"><h2>Conformité</h2><ul>
         <li><b>RGPD</b> : données chiffrées dans votre navigateur (AES-256), jamais envoyées à un serveur. Seuls les objectifs pédagogiques d'une séance sont transmis à Claude quand vous demandez une rédaction, jamais les noms des stagiaires ni vos finances.</li>
         <li><b>IA Act</b> : la rédaction des séances utilise une IA générative (Claude). Vous restez l'auteur : relisez et validez chaque contenu (maîtrise de l'IA, article 4). Les apprenants doivent savoir que les supports ont été préparés avec l'aide d'une IA s'ils vous le demandent ; aucune décision les concernant n'est prise par l'IA.</li></ul>
@@ -667,10 +776,11 @@
   }
   function aReglages() {
     lierCommun();
-    $("#f-ident").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target); for (const [k, v] of fd.entries()) d().identite[k] = String(v).slice(0, 300); sauver(); toast("Identité enregistrée."); };
+    $("#f-ident").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target); for (const [k, v] of fd.entries()) d().identite[k] = String(v).slice(0, 300);
+      d().identite.attestation_3511 = !!fd.get("attestation_3511"); d().identite.taux_tva = P.num(fd.get("taux_tva")) || 8.5; P.synchroAttendus(d()); sauver(); toast("Identité enregistrée."); };
     $("#f-charte").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target), c = d().charte;
       for (const k of ["couleur_primaire", "couleur_secondaire", "couleur_claire", "couleur_texte"]) c[k] = String(fd.get(k)).replace("#", "").toUpperCase();
-      c.police = String(fd.get("police") || "Arial").replace(/[^A-Za-z0-9 \-]/g, "").slice(0, 40) || "Arial"; c.taille_texte = Math.min(28, Math.max(14, P.num(fd.get("taille_texte")) || 14)); c.taille_titre = c.taille_texte + 8;
+      c.police = String(fd.get("police") || "Arial").replace(/[^A-Za-z0-9 \-]/g, "").slice(0, 40) || "Arial"; c.police_titres = String(fd.get("police_titres") || c.police).replace(/[^A-Za-z0-9 \-]/g, "").slice(0, 40) || c.police; c.taille_texte = Math.min(28, Math.max(14, P.num(fd.get("taille_texte")) || 14)); c.taille_titre = c.taille_texte + 8;
       c.couleurs_validees = true; sauver(); appliquerCharte(); rendre(); toast("Charte enregistrée."); };
     $("#logo").onchange = (e) => { const fi = e.target.files[0]; if (!fi || fi.size > 5e6) return; const r = new FileReader();
       r.onload = async () => { const propre = await chargerLogo(r.result); if (propre) { d().charte.logo = propre; sauver(); rendre(); toast("Logo enregistré."); } else toast("Image illisible.", "ko"); }; r.readAsDataURL(fi); };
@@ -723,7 +833,16 @@
       else if (act === "dl-piece") { const m = d().fichiers[b.dataset.id]; await enregistrer(m.nom, new Blob([await C.lireFichier(b.dataset.id)])); }
       else if (act === "suppr-piece") { const a = d().actions.find((x) => x.id === etat.actionSel); await C.supprimerFichier(b.dataset.id); a.pieces = a.pieces.filter((x) => x !== b.dataset.id); sauver(); rendre(); }
       else if (act === "dossier-audit") await enregistrer(`Dossier_preuves_Qualiopi_${auj()}.docx`, await dossierAudit());
-      else if (act === "ajout-ind") { const q = d().qualiopi, n = 33 + (q.ajouts || []).length; (q.ajouts = q.ajouts || []).push({ n, critere: 7, portee: "tous", libelle: "Nouvel indicateur — saisissez son intitulé officiel dans les remarques" }); sauver(); rendre(); toast(`Indicateur ${n} ajouté au critère 7 (modifiable).`); }
+      else if (act === "ajout-ind") { const q = d().qualiopi, n = 34 + (q.ajouts || []).length; (q.ajouts = q.ajouts || []).push({ n, critere: 7, portee: "tous", libelle: "Nouvel indicateur — saisissez son intitulé officiel dans les remarques" }); sauver(); rendre(); toast(`Indicateur ${n} ajouté au critère 7 (modifiable).`); }
+      else if (act === "confirmer-rap") { P.confirmer(d(), b.dataset.m, b.dataset.a); sauver(); rendre(); toast("Virement rattaché. Le logiciel s'en souviendra pour ce payeur."); }
+      else if (act === "confirmer-autre") { const sel = $("#sel-" + b.dataset.m); if (sel && sel.value) { P.confirmer(d(), b.dataset.m, sel.value); sauver(); rendre(); toast("Virement rattaché."); } }
+      else if (act === "confirmer-surs") { let n = 0; for (const m of d().mouvements.filter((x) => x.etat === "a_confirmer")) { const [p1, p2] = m.propositions || []; if (p1 && p1.score >= 0.9 && !(p2 && p2.score >= 0.6)) { P.confirmer(d(), m.id, p1.attenduId); n++; } } sauver(); rendre(); toast(`${n} virement(s) rattaché(s).`); }
+      else if (act === "classer-mvt") { P.classer(d(), b.dataset.m, ($("#cls-" + b.dataset.m) || {}).value || "autres"); sauver(); rendre(); toast("Classé en autre recette."); }
+      else if (act === "ignorer-mvt") { P.classer(d(), b.dataset.m, "ignorer"); sauver(); rendre(); }
+      else if (act === "ouvrir-paiement") { etat.paiementOuvert = etat.paiementOuvert === b.dataset.a ? null : b.dataset.a; rendre(); }
+      else if (act === "annuler-enc") { P.annulerEncaissement(d(), b.dataset.a, b.dataset.e); sauver(); rendre(); toast("Encaissement annulé."); }
+      else if (act === "suppr-attendu") { const x = d().attendus.find((y) => y.id === b.dataset.a); if (x && !P.recu(x)) { d().attendus = d().attendus.filter((y) => y !== x); sauver(); rendre(); } else toast("Annulez d'abord les paiements reçus.", "alerte"); }
+      else if (act === "gen-biblio") { await enregistrer(...(await P.genererBiblio(d(), b.dataset.id, etat.logo))); }
       else if (act === "suppr-ecr") { d().ecritures = d().ecritures.filter((x) => x.id !== b.dataset.id); sauver(); rendre(); }
       else if (act === "exp-compta") await enregistrer(`Tableau_comptable_${auj()}.xlsx`, await exportCompta());
       else if (act === "exp-bpf") await enregistrer(...(await exportBpf()));
@@ -745,6 +864,17 @@
       if (act === "statut-ind") s.statut = el.value; else if (act === "na-ind") s.na = el.checked; else s.note = el.value.slice(0, 4000);
       sauver();
       if (act !== "note-ind") rendre();
+    }
+    else if (act === "tri-att") { etat.triAtt = el.value; rendre(); }
+    else if (act === "filtre-att") { etat.filtreAtt = el.value; rendre(); }
+    else if (act === "grouper-att") { etat.grouperAtt = el.checked; rendre(); }
+    else if (act === "statut-bib") { const v = (d().bibliotheque[el.dataset.id] = d().bibliotheque[el.dataset.id] || {}); v.statut = el.value; sauver(); }
+    else if (act === "depot-biblio") {
+      const fi = el.files[0]; if (!fi) return;
+      if (fi.size > 15 * 1024 * 1024) { toast("15 Mo maximum.", "ko"); return; }
+      (async () => { const id = await C.deposerFichier(fi.name.slice(0, 120), fi.type, new Uint8Array(await fi.arrayBuffer()));
+        const v = (d().bibliotheque[el.dataset.id] = d().bibliotheque[el.dataset.id] || {}); (v.fichiers = v.fichiers || []).push(id); v.date = auj(); if (!v.statut || v.statut === "") v.statut = "en_vigueur";
+        sauver(); rendre(); toast("Document déposé dans la bibliothèque (chiffré) : il prouve désormais les indicateurs liés."); })().catch((err) => toast(err.message, "ko"));
     }
     else if (act === "relance-part") { const p = d().partenaires.find((x) => x.id === el.dataset.id); p.relance = el.value; sauver(); }
   });

@@ -135,7 +135,10 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
     const c = ctx.charte, pptx = new G.PptxGenJS();
     pptx.layout = "LAYOUT_WIDE";            // 13,33 × 7,5 pouces
     pptx.author = ctx.nomOrg || ""; pptx.company = ctx.nomOrg || ""; pptx.title = pack.titre;
-    const F = c.police || "Arial", P1 = c.couleur_primaire, P2 = c.couleur_secondaire, CL = c.couleur_claire, TX = c.couleur_texte;
+    const F = c.police || "Arial", FT = c.police_titres || F, P1 = c.couleur_primaire, P2 = c.couleur_secondaire, CL = c.couleur_claire, TX = c.couleur_texte;
+    const A2 = D.accentTexte(c);              // accent lisible en texte sur fond blanc (l'or n'y atteint pas 4,5:1)
+    // largeur moyenne d'un caractère gras, en fraction de la taille : Montserrat est large, on prend de la marge
+    const chasse = (f) => (/montserrat/i.test(f) ? 0.68 : /inter/i.test(f) ? 0.62 : 0.58);
     const pied = `${ctx.nomOrg ? ctx.nomOrg + " · " : ""}${D.fr(D.lireDate(jour.date))}`;
     pptx.defineSlideMaster({ title: "YEBA", background: { color: "FFFFFF" },
       objects: [{ rect: { x: 0, y: 0, w: 13.33, h: 0.22, fill: { color: P1 } } },
@@ -143,10 +146,10 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       slideNumber: { x: 12.3, y: 6.95, w: 0.8, h: 0.4, fontFace: F, fontSize: 14, color: "5B6B7C" } });
     /* Taille de police qui fait tenir le texte dans la boîte SANS couper un mot :
      * le mot le plus long doit tenir sur une ligne, et toutes les lignes dans la hauteur. */
-    const taille = (texte, w, h, max, min = 18) => {
+    const taille = (texte, w, h, max, min = 18, police = F) => {
       const mots = String(texte).split(/\s+/).filter(Boolean);
       for (let fs = max; fs >= min; fs -= 2) {
-        const parLigne = Math.floor(((w - 0.3) * 72) / (fs * 0.56));
+        const parLigne = Math.floor(((w - 0.3) * 72) / (fs * chasse(police)));
         if (Math.max(...mots.map((m) => m.length), 1) > parLigne) continue;
         let lignes = 1, cour = 0;
         for (const m of mots) { if (cour && cour + 1 + m.length > parLigne) { lignes++; cour = m.length; } else cour += (cour ? 1 : 0) + m.length; }
@@ -154,10 +157,10 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       }
       return min;
     };
-    const texte = (s, t, o) => s.addText(t, Object.assign({ fontFace: F, valign: "middle", margin: 8, fontSize: taille(t, o.w, o.h, o.max || 32, o.min || 18) }, o));
+    const texte = (s, t, o) => s.addText(t, Object.assign({ fontFace: o.fontFace || F, valign: "middle", margin: 8, fontSize: taille(t, o.w, o.h, o.max || 32, o.min || 18, o.fontFace || F) }, o));
     const nouvelle = (titre) => {
       const s = pptx.addSlide({ masterName: "YEBA" });
-      if (titre) texte(s, titre, { x: 0.5, y: 0.45, w: 12.3, h: 1.1, max: 40, min: 28, bold: true, color: P1 });
+      if (titre) texte(s, titre, { x: 0.5, y: 0.45, w: 12.3, h: 1.1, max: 40, min: 28, bold: true, color: P1, fontFace: FT });
       return s;
     };
     const puces = (s, mots, y = 1.8) => {
@@ -170,15 +173,16 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       if (sc.type === "comparaison" && n >= 2) {
         const moitie = Math.ceil(n / 2);
         [el.slice(0, moitie), el.slice(moitie)].forEach((col, k) => col.forEach((t, i) => texte(s, t, { x: 0.8 + k * 6.1, y: y + i * 1.15, w: 5.7, h: 0.95, max: 28, min: 18,
-          bold: true, color: k ? "FFFFFF" : TX, fill: { color: k ? P1 : CL }, shape: pptx.ShapeType.roundRect, rectRadius: 0.1, align: "center" })));
+          bold: true, color: k ? D.texteSur(P1, c) : TX, fill: { color: k ? P1 : CL }, shape: pptx.ShapeType.roundRect, rectRadius: 0.1, align: "center" })));
         return;
       }
       // Étapes / cycle : blocs séparés par une flèche placée ENTRE les blocs (jamais sur le texte)
       const fl = 0.45, w = (12.2 - (n - 1) * fl) / n;
       const fs = Math.min(...el.map((t) => taille(t, w, 1.7, 28, 16)));
+      const fond = (i) => (i % 2 ? P2 : P1);
       el.forEach((t, i) => {
         const x = 0.55 + i * (w + fl);
-        s.addText(t, { x, y: y + 0.5, w, h: 1.7, fontFace: F, fontSize: fs, bold: true, color: "FFFFFF", fill: { color: i % 2 ? P2 : P1 },
+        s.addText(t, { x, y: y + 0.5, w, h: 1.7, fontFace: F, fontSize: fs, bold: true, color: D.texteSur(fond(i), c), fill: { color: fond(i) },
           shape: pptx.ShapeType.roundRect, rectRadius: 0.12, align: "center", valign: "middle", margin: 8 });
         if (i < n - 1) s.addText(sc.type === "cycle" && i === n - 2 ? "→" : "→", { x: x + w, y: y + 0.5, w: fl, h: 1.7, fontFace: F, fontSize: 30, bold: true, color: P1, align: "center", valign: "middle", margin: 0 });
       });
@@ -187,16 +191,16 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
     // 1. Titre
     let s = pptx.addSlide();
     s.background = { color: P1 };
-    texte(s, pack.titre, { x: 0.7, y: 1.6, w: 11.9, h: 2.2, max: 48, min: 30, bold: true, color: "FFFFFF" });
+    texte(s, pack.titre, { x: 0.7, y: 1.6, w: 11.9, h: 2.2, max: 48, min: 30, bold: true, color: D.texteSur(P1, c), fontFace: FT });
     s.addText(`${ctx.titre}\n${D.JOURS[D.jourSem(D.lireDate(jour.date))]} ${D.fr(D.lireDate(jour.date))} · ${jour.lignes.length ? D.fmtHm(jour.lignes[0].debut) + "–" + D.fmtHm(jour.lignes[jour.lignes.length - 1].fin) : ""}`,
-      { x: 0.7, y: 4.1, w: 11.9, h: 1.4, fontFace: F, fontSize: 24, color: "FFFFFF", valign: "top" });
-    if (ctx.nomOrg) s.addText(ctx.nomOrg, { x: 0.7, y: 6.3, w: 8, h: 0.6, fontFace: F, fontSize: 20, bold: true, color: P2 });
+      { x: 0.7, y: 4.1, w: 11.9, h: 1.4, fontFace: F, fontSize: 24, color: D.texteSur(P1, c), valign: "top" });
+    if (ctx.nomOrg) s.addText(ctx.nomOrg, { x: 0.7, y: 6.3, w: 8, h: 0.6, fontFace: FT, fontSize: 20, bold: true, color: D.contraste(P2, P1) >= 4.5 ? P2 : D.texteSur(P1, c) });
     if (logo) s.addImage({ data: logo.dataURL, x: 11.2, y: 0.4, w: 1.6 * Math.min(1.6, logo.ratio), h: 1.6, sizing: { type: "contain", w: 1.6 * Math.min(1.6, logo.ratio), h: 1.6 } });
     // 2. Objectifs
     s = nouvelle("Objectifs de la séance");
     pack.objectifs_seance.forEach((o, i) => {
       const v = D.verbeInitial(o), reste = o.slice(v.length);
-      s.addText([{ text: v.toUpperCase(), options: { bold: true, color: P2 } }, { text: reste, options: { color: TX } }],
+      s.addText([{ text: v.toUpperCase(), options: { bold: true, color: A2 } }, { text: reste, options: { color: TX } }],
         { x: 0.8, y: 1.75 + i * 0.98, w: 11.8, h: 0.88, fontFace: F, fontSize: taille(o, 11.8, 0.88, 26, 18), valign: "middle" });
     });
     // 3. Accroche
@@ -217,7 +221,7 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
     for (const e of pack.exercices) {
       s = nouvelle(`À vous ! ${e.titre}`);
       texte(s, e.consigne, { x: 0.8, y: 1.75, w: 11.8, h: 2.6, max: 32, min: 22, color: TX, valign: "top" });
-      texte(s, `${e.duree_minutes} min · ${e.modalite || ""}`.trim(), { x: 0.8, y: 4.6, w: 5.5, h: 0.9, max: 28, min: 18, bold: true, color: "FFFFFF", fill: { color: P2 }, shape: pptx.ShapeType.roundRect, rectRadius: 0.1, align: "center" });
+      texte(s, `${e.duree_minutes} min · ${e.modalite || ""}`.trim(), { x: 0.8, y: 4.6, w: 5.5, h: 0.9, max: 28, min: 18, bold: true, color: D.texteSur(P2, c), fill: { color: P2 }, shape: pptx.ShapeType.roundRect, rectRadius: 0.1, align: "center" });
       if (e.materiel) texte(s, `Matériel : ${e.materiel}`, { x: 6.6, y: 4.6, w: 6, h: 0.9, max: 22, min: 16, color: "4B5967" });
       s.addNotes([...e.etapes.map((x, i) => `${i + 1}. ${x}`), e.corrige ? "Éléments de réponse : " + e.corrige : ""].filter(Boolean).join("\n"));
     }
