@@ -60,8 +60,9 @@ def _tableau_docx(d, ctx, lignes: list[list[str]]):
     poids = []
     for j in range(len(lignes[0])):
         longueurs = [len(str(r[j])) for r in lignes if j < len(r)]
-        mini = max(12, len(str(lignes[0][j])) + 4)   # l'en-tête ne doit jamais couper un mot
-        poids.append(min(60, max(mini, sum(longueurs) / max(len(longueurs), 1))))
+        mot_long = max(len(m) for r in lignes if j < len(r) for m in (str(r[j]).split() or [""]))
+        mini = max(14, len(str(lignes[0][j])) + 6, mot_long + 3)   # aucun mot coupé, en-tête compris
+        poids.append(min(45, max(mini, sum(longueurs) / max(len(longueurs), 1))))
     largeurs = [Cm(26.5 * w / sum(poids)) for w in poids]
     for i, row in enumerate(lignes):
         cells = t.add_row().cells

@@ -84,6 +84,27 @@ Autre méthode : copier tout le dossier du logiciel, y compris `donnees_yeba/`. 
 *haché*. Transportez-la sur une clé chiffrée (BitLocker To Go ou FileVault), et ne l'envoyez
 pas par un service hors UE.
 
+## Version web (navigateur, sans installation)
+
+**Atelier de décorticage** : https://claude.ai/artifact/H6psurLHQReo7TvpV4uiPm (privé : vous seul y avez accès).
+
+1. Ouvrez le lien et déposez le REAC, le RE ou RC et la fiche RNCP ou RS (PDF, Word ou Excel).
+2. Réglez la durée, les dates et les horaires, puis cliquez sur « Produire mes documents ».
+3. Téléchargez les fichiers : Excel (11 feuilles), programme et examen en Word, page web du
+   programme, ou tout en un ZIP qui contient aussi l'agenda .ics.
+
+Les documents sont lus et traités **dans votre navigateur** : ils ne sont envoyés à aucun
+serveur. La charte graphique (couleurs, logo) est mémorisée dans le navigateur utilisé.
+
+`web/dist/Atelier_decorticage.html` est la même page en un seul fichier : elle s'ouvre dans
+n'importe quel navigateur (Chrome, Edge, Safari, Firefox), avec une connexion internet pour
+charger les bibliothèques. Pour la reconstruire après une modification de `web/src/`, lancez
+`python web/construire.py`.
+
+Le moteur web est un portage fidèle du moteur Python. Sur le titre MEM, les deux versions
+trouvent exactement les mêmes 10 compétences, épreuves, blocs et heures par compétence. Le
+découpage en séances diffère d'une séance (111 contre 112).
+
 ## 3. Utilisation
 
 1. Menu **Charte** : saisissez vos codes couleur exacts et votre logo. Faites-le une seule fois.

@@ -1,0 +1,221 @@
+<title>Atelier de décorticage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Atkinson+Hyperlegible+Mono:wght@400;600&display=swap">
+<style>
+/* Mise en page : une colonne d'atelier (déposer → régler → produire), registre de résultats à droite sur grand écran.
+   Typo Atkinson Hyperlegible : conçue pour les lecteurs malvoyants (Braille Institute). */
+:root {
+  --encre: #1F3A5F;       /* couleur principale (charte provisoire) */
+  --accent: #C2601A;      /* verbes Bloom, actions */
+  --fond: #F5F7F9;
+  --surface: #FFFFFF;
+  --texte: #16202B;
+  --doux: #4B5967;
+  --trait: #C9D3DD;
+  --ok: #1E6B3A; --ok-fond: #E5F3EA;
+  --alerte: #8A4B00; --alerte-fond: #FFF2E0;
+  --ko: #9B1C1C; --ko-fond: #FDECEC;
+  --police: "Atkinson Hyperlegible", "Verdana", "Segoe UI", sans-serif;
+  --mono: "Atkinson Hyperlegible Mono", "Consolas", monospace;
+  --t-base: 1.15rem; --t-petit: 1rem; --t-h2: 1.5rem; --t-h1: clamp(1.9rem, 4vw, 2.6rem);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --encre: #9CC3EE; --accent: #F2A25E; --fond: #10161D; --surface: #18212B; --texte: #E8EEF4; --doux: #A9B6C3; --trait: #2E3B49;
+  --ok: #7FD39A; --ok-fond: #15301F; --alerte: #F5C27A; --alerte-fond: #33240F; --ko: #F49A9A; --ko-fond: #3A1616; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --encre: #9CC3EE; --accent: #F2A25E; --fond: #10161D; --surface: #18212B; --texte: #E8EEF4; --doux: #A9B6C3; --trait: #2E3B49;
+  --ok: #7FD39A; --ok-fond: #15301F; --alerte: #F5C27A; --alerte-fond: #33240F; --ko: #F49A9A; --ko-fond: #3A1616; color-scheme: dark }
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+body { margin: 0; background: var(--fond); color: var(--texte); font-family: var(--police); font-size: var(--t-base); line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px }
+.cadre { max-width: 1240px; margin: 0 auto }
+header.tete { padding-block: 28px 18px; display: grid; gap: 6px; border-bottom: 3px solid var(--encre); margin-bottom: 22px }
+header.tete h1 { font-size: var(--t-h1); line-height: 1.1; margin: 0; color: var(--encre); text-wrap: balance; letter-spacing: -0.01em }
+header.tete p { margin: 0; color: var(--doux); max-width: 70ch }
+.etiquette { font-family: var(--mono); font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent) }
+.grille { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: start }
+@media (max-width: 960px) { .grille { grid-template-columns: minmax(0, 1fr) } }
+section.bloc { background: var(--surface); border: 1px solid var(--trait); border-radius: 10px; padding: 20px 22px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; min-width: 0 }
+@media (max-width: 480px) { section.bloc { padding: 16px 14px } }
+.colonne { display: grid; gap: 22px; min-width: 0 }
+h2 { font-size: var(--t-h2); margin: 0; color: var(--encre); display: flex; gap: 12px; align-items: baseline; text-wrap: balance }
+h2 .n { font-family: var(--mono); font-size: 1rem; color: var(--surface); background: var(--encre); border-radius: 50%; width: 1.9rem; height: 1.9rem;
+  display: inline-grid; place-items: center; flex: none }
+h3 { margin: 6px 0 0; font-size: 1.2rem; color: var(--encre) }
+.depot { border: 3px dashed var(--trait); border-radius: 10px; padding: 26px 18px; text-align: center; display: grid; gap: 10px; justify-items: center; cursor: pointer }
+.depot.survol { border-color: var(--accent); background: var(--alerte-fond) }
+.depot strong { font-size: 1.25rem }
+.fichiers { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px }
+.fichiers li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: center; padding: 8px 12px; border: 1px solid var(--trait); border-radius: 8px }
+.fichiers .nom { overflow-wrap: anywhere }
+.puce { font-family: var(--mono); font-size: .85rem; font-weight: 600; padding: 3px 9px; border-radius: 999px; overflow-wrap: anywhere }
+.puce.ok { background: var(--ok-fond); color: var(--ok) } .puce.ko { background: var(--ko-fond); color: var(--ko) } .puce.att { background: var(--alerte-fond); color: var(--alerte) }
+.champs { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px }
+label { display: grid; gap: 4px; font-weight: 700; min-width: 0 }
+label small { font-weight: 400; color: var(--doux); font-size: var(--t-petit) }
+input, select, textarea { font: inherit; font-size: 1.05rem; padding: 10px 12px; border: 2px solid var(--trait); border-radius: 8px; background: var(--surface); color: var(--texte); width: 100%; min-width: 0 }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, summary:focus-visible, .depot:focus-visible { outline: 4px solid var(--accent); outline-offset: 2px }
+input[type=color] { padding: 2px; height: 48px }
+.coche { display: flex; gap: 10px; align-items: center; font-weight: 400 }
+.coche input { width: 22px; height: 22px; flex: none }
+details { border-top: 1px solid var(--trait); padding-top: 10px }
+summary { cursor: pointer; font-weight: 700; color: var(--encre); padding-block: 4px }
+details[open] > summary { margin-bottom: 12px }
+button { font: inherit; font-weight: 700; font-size: 1.1rem; border: 0; border-radius: 8px; padding: 13px 20px; cursor: pointer; background: var(--encre); color: var(--surface) }
+button.principal { background: var(--accent); color: #fff; font-size: 1.25rem; padding: 16px 24px; width: 100% }
+button.second { background: transparent; color: var(--encre); border: 2px solid var(--encre) }
+button:disabled { opacity: .55; cursor: progress }
+.actions { display: flex; flex-wrap: wrap; gap: 10px }
+.message { padding: 10px 14px; border-radius: 8px; border-left: 6px solid }
+.message.alerte { background: var(--alerte-fond); border-color: var(--alerte); color: var(--texte) }
+.message.ko { background: var(--ko-fond); border-color: var(--ko); color: var(--texte) }
+.message.ok { background: var(--ok-fond); border-color: var(--ok); color: var(--texte) }
+.chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px }
+.chiffre { border: 1px solid var(--trait); border-radius: 8px; padding: 10px 12px; display: grid; gap: 2px; min-width: 0 }
+.chiffre.large { grid-column: 1 / -1 }
+.chiffre b { font-family: var(--mono); font-size: 1.5rem; overflow-wrap: anywhere; color: var(--encre); font-variant-numeric: tabular-nums; line-height: 1.1 }
+.chiffre span { color: var(--doux); font-size: var(--t-petit) }
+.structure { display: grid; gap: 10px }
+.at { border-left: 5px solid var(--encre); padding-left: 12px; display: grid; gap: 6px }
+.at > b { color: var(--encre) }
+.cps { display: flex; flex-wrap: wrap; gap: 6px }
+.cp { font-size: var(--t-petit); border: 1px solid var(--trait); border-radius: 6px; padding: 3px 8px; font-variant-numeric: tabular-nums }
+.cp em { font-style: normal; font-family: var(--mono); color: var(--accent); font-weight: 600 }
+.telech { display: grid; gap: 10px }
+.telech button { display: grid; grid-template-columns: minmax(0, 1fr) auto; text-align: left; align-items: center; gap: 12px; background: var(--surface); color: var(--texte); border: 2px solid var(--encre) }
+.telech button .fmt { font-family: var(--mono); font-size: .9rem; color: var(--accent) }
+.telech button.tout { background: var(--encre); color: var(--surface) }
+.telech button.tout .fmt { color: var(--surface) }
+.onglets { display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 2px solid var(--trait) }
+.onglets button { background: transparent; color: var(--doux); border-radius: 8px 8px 0 0; padding: 10px 14px; font-size: 1rem }
+.onglets button[aria-selected="true"] { color: var(--encre); background: var(--fond); box-shadow: inset 0 -3px 0 var(--accent) }
+.defile { overflow-x: auto; max-height: 560px; overflow-y: auto; border: 1px solid var(--trait); border-radius: 8px }
+table { border-collapse: collapse; width: 100%; font-size: 1rem; font-variant-numeric: tabular-nums }
+th, td { border-bottom: 1px solid var(--trait); padding: 8px 10px; text-align: left; vertical-align: top }
+th { position: sticky; top: 0; background: var(--encre); color: var(--surface); z-index: 1 }
+td .verbe { color: var(--accent); font-weight: 700; text-transform: uppercase }
+.discret { color: var(--doux); font-size: var(--t-petit) }
+.exemple-bandeau { min-width: 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between }
+footer { margin-top: 28px; color: var(--doux); font-size: var(--t-petit); display: grid; gap: 6px; max-width: 90ch }
+@media (prefers-reduced-motion: no-preference) { button { transition: transform .08s ease } button:active { transform: translateY(1px) } }
+</style>
+
+<div class="cadre">
+  <header class="tete">
+    <span class="etiquette">REAC · RE/RC · Fiche RNCP/RS → décorticage complet</span>
+    <h1>Atelier de décorticage</h1>
+    <p>Déposez les référentiels d'un titre professionnel : vous obtenez le décorticage jour par jour et heure par heure, le programme de formation, l'examen en clair, la page web du programme et l'agenda. Tout est calculé dans votre navigateur : vos documents ne sont envoyés nulle part.</p>
+  </header>
+
+  <div class="grille">
+    <div class="colonne">
+      <section class="bloc" aria-labelledby="t1">
+        <h2 id="t1"><span class="n">1</span>Vos documents</h2>
+        <div class="depot" id="depot" tabindex="0" role="button" aria-describedby="depot-aide">
+          <strong>Déposez ici le REAC, le RE/RC et la fiche RNCP ou RS</strong>
+          <span id="depot-aide" class="discret">ou cliquez pour choisir · PDF, Word (.docx), Excel (.xlsx) · type reconnu automatiquement</span>
+          <input id="fichiers" type="file" multiple accept=".pdf,.docx,.xlsx,.txt" hidden>
+        </div>
+        <ul class="fichiers" id="liste-fichiers"></ul>
+      </section>
+
+      <section class="bloc" aria-labelledby="t2">
+        <h2 id="t2"><span class="n">2</span>Durée et calendrier</h2>
+        <div class="champs">
+          <label>Durée en centre (heures)<input id="heures_centre" type="number" min="1" step="0.5" value="455"><small>Fixée par la convention : la fiche ne la donne pas</small></label>
+          <label>Date de début<input id="date_debut" type="date" value="2027-01-04"></label>
+          <label>Jours en centre<input id="jours" value="1,2,3,4,5"><small>1 = lundi … 5 = vendredi</small></label>
+          <label>Rythme d'alternance<input id="rythme" value="" placeholder="ex. CCEE"><small>C = semaine centre, E = entreprise</small></label>
+          <label>Horaires<input id="creneaux" value="08:30-12:00, 13:00-16:30"></label>
+          <label>Pauses (non comptées)<input id="pauses" value="10:15-10:30, 14:45-15:00"></label>
+        </div>
+        <label>Fermetures et jours annulés<input id="fermetures" value="" placeholder="2027-02-15..2027-02-19 Vacances ; 2027-03-08 Alerte rouge"><small>Les jours fériés de La Réunion, dont le 20 décembre, sont exclus automatiquement</small></label>
+        <details>
+          <summary>Organisme, programme et tarifs</summary>
+          <div class="champs">
+            <label>Formation pour un autre centre ?<input id="commanditaire" value="" placeholder="ICCI, TETRANERGY, PAM OI…"><small>Si rempli : YEBA FORMATIONS et son logo disparaissent</small></label>
+            <label>Public visé<input id="public" value=""></label>
+            <label>Prérequis<input id="prerequis" value=""></label>
+            <label>Lieu<input id="lieu" value=""></label>
+            <label>Délai d'accès<input id="delai_acces" value=""></label>
+            <label>Référent handicap<input id="referent_handicap" value=""></label>
+            <label>Prix inter (par stagiaire, HT)<input id="prix_inter" value="" placeholder="ex. 3 900 €"></label>
+            <label>Prix intra (par jour et groupe, HT)<input id="prix_intra" value="" placeholder="ex. 1 200 €"></label>
+          </div>
+          <label>Modalités pédagogiques<input id="modalites_pedagogiques" value="Présentiel, pédagogie active : apports, études de cas, mises en situation, jeux de rôle"></label>
+          <label class="coche"><input id="afficher_nom" type="checkbox" checked>Afficher le nom de l'organisme</label>
+          <label class="coche"><input id="afficher_logo" type="checkbox" checked>Afficher le logo (formations YEBA uniquement)</label>
+        </details>
+        <details>
+          <summary>Organisation pédagogique (avancé)</summary>
+          <div class="champs">
+            <label>Date d'examen (contrôle)<input id="date_examen" type="date" value=""></label>
+            <label>Ordre des compétences<input id="ordre_cp" value="" placeholder="ex. 5,6,7,1,2,3,4,8,9,10"></label>
+            <label>Pondération<input id="poids_cp" value="" placeholder="ex. 1=40, 5=30"></label>
+            <label>Accueil (h)<input id="h_accueil" type="number" step="0.5" min="0" value="7"></label>
+            <label>ECF par AT (h)<input id="h_ecf_par_at" type="number" step="0.5" min="0" value="3.5"></label>
+            <label>Dossier professionnel (h)<input id="h_dossier_pro" type="number" step="0.5" min="0" value="14"></label>
+            <label>Productions d'examen (h)<input id="h_productions" type="number" step="0.5" min="0" value="21"></label>
+            <label>Examen blanc (h, 0 = durée du RE)<input id="h_examen_blanc" type="number" step="0.5" min="0" value="0"></label>
+            <label>Bilan (h)<input id="h_bilan" type="number" step="0.5" min="0" value="3.5"></label>
+          </div>
+        </details>
+        <details id="bloc-charte">
+          <summary>Charte graphique (enregistrée dans ce navigateur)</summary>
+          <div class="champs">
+            <label>Nom de l'organisme<input id="nom_organisme" value="YEBA FORMATIONS"></label>
+            <label>Couleur principale<input id="couleur_primaire" type="color" value="#1F3A5F"></label>
+            <label>Couleur d'accent (verbes Bloom)<input id="couleur_secondaire" type="color" value="#E07A1F"></label>
+            <label>Fond des bandes<input id="couleur_claire" type="color" value="#EEF3F8"></label>
+            <label>Texte<input id="couleur_texte" type="color" value="#1A1A1A"></label>
+            <label>Police<input id="police" value="Arial"></label>
+            <label>Taille du texte (14 min.)<input id="taille_texte" type="number" min="14" max="28" value="14"></label>
+            <label>Logo (PNG ou JPEG)<input id="logo" type="file" accept=".png,.jpg,.jpeg"><small id="logo-etat">Aucun logo</small></label>
+          </div>
+          <div class="actions"><button type="button" class="second" id="retirer-logo">Retirer le logo</button></div>
+        </details>
+      </section>
+
+      <button type="button" class="principal" id="generer">Produire mes documents</button>
+      <div id="messages" aria-live="polite"></div>
+    </div>
+
+    <div class="colonne">
+      <section class="bloc" aria-labelledby="t3" id="resultats">
+        <h2 id="t3"><span class="n">3</span>Vos résultats</h2>
+        <div class="exemple-bandeau" id="bandeau-exemple">
+          <span class="puce att">Exemple affiché : TP MEM, hypothèse 455 h</span>
+          <span class="discret">Déposez vos propres documents pour remplacer l'exemple.</span>
+        </div>
+        <div class="chiffres" id="chiffres"></div>
+        <div class="structure" id="structure"></div>
+        <div class="telech" id="telech">
+          <button type="button" data-f="tout" class="tout"><span>Tout télécharger (Excel, Word, page web, agenda)</span><span class="fmt">.zip</span></button>
+          <button type="button" data-f="xlsx"><span>Décorticage complet : 11 feuilles, paysage, police 14</span><span class="fmt">.xlsx</span></button>
+          <button type="button" data-f="prog"><span>Programme de formation (modifiable)</span><span class="fmt">.docx</span></button>
+          <button type="button" data-f="exam"><span>Examen simplifié : épreuves et attendus du jury</span><span class="fmt">.docx</span></button>
+          <button type="button" data-f="site"><span>Page web du programme, prête pour votre site</span><span class="fmt">.html</span></button>
+        </div>
+        <div>
+          <div class="onglets" role="tablist" id="onglets">
+            <button role="tab" aria-selected="true" data-v="jours">Par jour</button>
+            <button role="tab" aria-selected="false" data-v="deco">Décorticage</button>
+            <button role="tab" aria-selected="false" data-v="examen">Examen</button>
+            <button role="tab" aria-selected="false" data-v="synth">Heures</button>
+          </div>
+          <div class="defile" id="apercu" role="tabpanel"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer>
+    <span><b>RGPD</b> : aucun document ne quitte votre navigateur. N'inscrivez pas de nom de stagiaire dans les fichiers produits.</span>
+    <span><b>IA Act</b> : outil à règles fixes (repérage des rubriques du REAC, verbes de Bloom, calendrier). Il n'apprend rien et n'évalue personne : il ne relève pas de la définition d'un système d'IA (art. 3(1), règlement (UE) 2024/1689).</span>
+    <span>Sources : Anderson &amp; Krathwohl (2001) · Wood, Bruner &amp; Ross (1976) · Bruner (1966) · Code du travail L3133-1 · décret n° 83-1003 · Référentiel national qualité (Qualiopi).</span>
+  </footer>
+</div>
+
+{{SCRIPTS}}

@@ -289,7 +289,7 @@ def exporter_classeur(ctx, chemin: Path) -> Path:
             f.paragraphe(f"⚠ {a}")
 
     # ------------------------------------------------------------- Décorticage
-    larg = [24, 8, 26, 38, 14, 34, 9]
+    larg = [24, 8, 25, 37, 17, 32, 9]
     f = Feuille(wb, "Décorticage", st, larg, f"Décorticage — {titre_formation}",
                 "Activités types et compétences : termes exacts du REAC. Objectifs : verbe d'action (Bloom) + mots clés du REAC.",
                 nom_org)
