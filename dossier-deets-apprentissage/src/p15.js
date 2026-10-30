@@ -5,16 +5,18 @@ module.exports = {
   objet: 'Actions de sensibilisation et d’orientation des apprentis vers l’entrepreneuriat.',
   blocks: [
     ['h1', '1. Pourquoi c’est pertinent pour nos apprentis'],
-    ['p', 'Les métiers préparés — management d’un point de vente, ressources humaines, conception d’applications sans code — sont des tremplins naturels vers l’entrepreneuriat. À La Réunion, de nombreuses TPE devront par ailleurs trouver un repreneur dans les années à venir ([[donnée chiffrée CCI Réunion / INSEE à insérer si disponible]]). Le dirigeant de YEBA FORMATIONS, à la tête de l’entreprise depuis 2021, témoigne de ce parcours. Le Product Builder No-Code se prête particulièrement à la création d’activité (prestation indépendante auprès des TPE-PME).'],
+    ['p', 'Le métier de manager d’établissement marchand est un tremplin naturel vers l’entrepreneuriat : piloter un point de vente, c’est déjà gérer une équipe, un chiffre d’affaires, des stocks et une marge. À La Réunion, de nombreuses TPE devront par ailleurs trouver un repreneur dans les années à venir ([[donnée chiffrée CCI Réunion / INSEE à insérer si disponible]]). Le dirigeant de YEBA FORMATIONS, à la tête de l’entreprise depuis 2021, témoigne de ce parcours. Ouvrir son propre commerce, reprendre une boutique ou devenir franchisé sont des projets fréquents chez les managers de magasin expérimentés.'],
     ['h1', '2. Programme de sensibilisation'],
-    ['table', ['Action', 'Contenu', 'Durée / moment'], [
-      ['Module « Esprit d’entreprendre »', 'Du projet à l’entreprise : idée, client, offre, prix, statut juridique, premières démarches ; intégré au cursus', '7 heures, deuxième moitié de la formation'],
-      ['Défi « Mon projet en 48 heures »', 'Par équipes, construction d’un mini-projet (offre, cible, pitch) présenté devant un jury de chefs d’entreprise', '2 jours, une fois par an'],
-      ['Témoignages', 'Créateurs et repreneurs réunionnais, dont d’anciens apprentis à terme', '1 à 2 rencontres par an'],
-      ['Orientation individuelle', 'Mise en relation avec les réseaux d’accompagnement à la création et à la reprise', 'Sur demande'],
-    ], [2600, 4800, 2238]],
-    ['h1', '3. Réseaux d’accompagnement sollicités'],
-    ['p', 'CCI Réunion et Chambre de métiers et de l’artisanat (parcours création et reprise), réseaux de prêt d’honneur et de financement de la création (Initiative France, Réseau Entreprendre, Adie, BPI), France Travail pour les demandeurs d’emploi créateurs. Aucun partenariat n’est formalisé à ce jour ; les prises de contact sont prévues au premier semestre 2027, avant le module « Esprit d’entreprendre ».'],
+    ['p', 'La sensibilisation combine un module de formation et trois Rendez-vous du mois consacrés à l’entrepreneuriat (pièce n° 19). Elle forme un parcours progressif : comprendre l’écosystème, savoir financer un projet, puis poser des fondations solides.'],
+    ['table', ['Date', 'Action', 'Contenu'], [
+      ['Jeudi 24 juin 2027, 13 h – 17 h', 'Rendez-vous « Les acteurs qui font naître les entreprises »', 'Rencontre avec la CCI Réunion (création, reprise, formalités), le tribunal mixte de commerce de Saint-Denis (rôle du greffe, registre du commerce, prévention des difficultés) et Bpifrance Réunion (financement, garanties). Les apprentis préparent leurs questions en amont.'],
+      ['Jeudi 23 septembre 2027, 13 h – 17 h', 'Rendez-vous « Financer et lancer son projet »', 'Rencontre avec Initiative Réunion (prêt d’honneur, parrainage) et avec un accompagnateur à la création d’entreprise (incubateur, couveuse ou réseau d’accompagnement) ; mini-pitch des idées des apprentis, avec retour des intervenants.'],
+      ['Jeudi 21 octobre 2027, 13 h – 17 h', 'Rendez-vous « Les fondations d’une entreprise solide »', 'Rencontre avec un expert-comptable (statut juridique, prévisionnel, seuil de rentabilité d’un commerce) et un assureur (responsabilité civile, multirisque, prévoyance du dirigeant).'],
+      ['Semaine du 15 novembre 2027', 'Module « Esprit d’entreprendre » (7 heures)', 'Du projet à l’entreprise : idée, client, offre, prix, compte de résultat prévisionnel d’un magasin, en lien avec le CCP 3 (rentabilité).'],
+      ['Toute l’année', 'Orientation individuelle', 'Mise en relation avec les réseaux d’accompagnement pour tout apprenti porteur d’un projet, à sa demande.'],
+    ], [2300, 2700, 4638]],
+    ['h1', '3. Partenaires sollicités'],
+    ['p', 'CCI Réunion, tribunal mixte de commerce de Saint-Denis, Bpifrance Réunion, Initiative Réunion, réseaux d’accompagnement à la création, un cabinet d’expertise comptable et un assureur. **Aucun partenariat n’est formalisé à ce jour** : les sollicitations seront adressées entre janvier et mars 2027, avec un courrier de présentation de la promotion et des dates proposées.'],
     ['rgpd', ['**RGPD** — La mise en relation avec un réseau d’accompagnement se fait à l’initiative de l’apprenti ou avec son accord explicite.']],
   ],
 };

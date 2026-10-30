@@ -10,8 +10,10 @@ module.exports = {
     ['ul', [
       'Entretien de positionnement et vérification du projet avant la signature (pièce n° 05).',
       'Semaine d’intégration : connaissance de la promotion, règles de vie, droits et devoirs, présentation des personnes ressources.',
-      'Pédagogie active et concrète : jeux de rôle, cas d’entreprises réunionnaises, défis par équipe — pour donner du sens à chaque séquence.',
-      'Petits groupes ([[effectif maximum par groupe]]) permettant une attention individuelle.',
+      '**Un Rendez-vous du mois** (pièce n° 19) : une demi-journée par mois, hors semaines au CFA, consacrée à une rencontre, une visite ou un défi collectif. Ces moments entretiennent le lien avec le groupe pendant les trois semaines passées en entreprise.',
+      '**Élection de délégués** en avril 2027, porte-parole de la promotion et relais des difficultés de leurs camarades.',
+      'Pédagogie active et concrète : jeux de rôle, cas de commerces réunionnais, défis par équipe — pour donner du sens à chaque séquence.',
+      'Un groupe de 8 à 10 apprentis, qui permet une attention individuelle à chacun.',
       'Information sur les aides matérielles (transport, logement, aide au permis de conduire, selon les dispositifs en vigueur — [[à vérifier]]).',
     ]],
     ['h1', '3. Détecter tôt : signaux d’alerte'],

@@ -5,7 +5,7 @@ module.exports = {
   objet: 'Dispositifs mis en œuvre pour accompagner les postulants dans leur recherche d’employeur (moyens humains, sous-traitance, cahier des charges) et pour informer et accompagner les apprentis en cas de rupture du contrat d’apprentissage.',
   blocks: [
     ['h1', '1. Synthèse'],
-    ['p', 'YEBA FORMATIONS, organisme de formation implanté à La Réunion depuis avril 2021, déclaré sous le n° 04973676397 et certifié Qualiopi, étend son activité à la formation par apprentissage. La présente notice décrit l’organisation retenue pour remplir deux missions confiées aux centres de formation d’apprentis par l’**article L.6231-2 du Code du travail** : appuyer les postulants dans leur recherche d’un employeur, et informer puis accompagner les apprentis lorsque leur contrat est rompu.'],
+    ['p', 'YEBA FORMATIONS, organisme de formation réunionnais dirigé par Aurélien LUMEKA depuis avril 2021, déclaré sous le n° 04973676397 et certifié Qualiopi, étend son activité à la formation par apprentissage. La présente notice décrit l’organisation retenue pour remplir deux missions confiées aux centres de formation d’apprentis par l’**article L.6231-2 du Code du travail** : appuyer les postulants dans leur recherche d’un employeur, et informer puis accompagner les apprentis lorsque leur contrat est rompu.'],
     ['p', 'Notre dispositif repose sur trois principes :'],
     ['ul', [
       '**Un interlocuteur unique et identifié** pour chaque jeune et chaque entreprise, du premier contact jusqu’à la fin du contrat.',
@@ -27,23 +27,22 @@ module.exports = {
       ['Art. L.6222-18-2 C. trav.', 'En cas de rupture, le CFA permet à l’apprenti de poursuivre sa formation pendant 6 mois et contribue à lui trouver un nouvel employeur', 'Procédure « Rupture » en 6 étapes (§ 7)'],
       ['Art. L.6222-39 C. trav.', 'Médiation par le médiateur consulaire (CCI, CMA, Chambre d’agriculture)', 'Orientation systématique vers le médiateur compétent en cas de différend'],
     ], [2100, 3900, 3638]],
-    ['box', 'Point de vigilance', ['Les références ci-dessus sont citées dans leur rédaction connue à la date du document. Elles seront [[revérifiées sur Légifrance avant envoi]], le Code du travail ayant été modifié à plusieurs reprises depuis la loi du 5 septembre 2018.']],
 
     ['h1', '3. Moyens humains dédiés'],
-    ['p', 'La DEETS demande la justification des salariés dédiés (CV et contrat de travail) ou, à défaut, du contrat de sous-traitance et de son cahier des charges. YEBA FORMATIONS retient une organisation **en deux niveaux**, proportionnée à la taille de la première promotion : **trois groupes de 8 à 10 apprentis** à partir de mars 2027 (pièce n° 18).'],
+    ['p', 'La DEETS demande la justification des salariés dédiés (CV et contrat de travail) ou, à défaut, du contrat de sous-traitance et de son cahier des charges. YEBA FORMATIONS retient une organisation **en deux niveaux**, proportionnée à la première promotion : **un groupe de 8 à 10 apprentis** préparant le titre professionnel Manager d’établissement marchand (MEM) à partir du 1er mars 2027 (pièce n° 18).'],
     ['h2', '3.1 Niveau 1 — Référent « Relations entreprises et accompagnement des apprentis »'],
     ['table', ['Élément', 'Description'], [
       ['Titulaire', 'Aurélien LUMEKA, dirigeant et formateur de YEBA FORMATIONS'],
       ['Compétences mobilisées', 'Formateur en vente, négociation et management depuis 2021 ; expérience dans plusieurs centres de formation de La Réunion ; Référent handicap en organisme de formation ; certification Qualiopi de l’organisme'],
       ['Temps consacré', 'Avant l’ouverture (novembre 2026 – février 2027) : l’essentiel de son temps, consacré à la prospection des entreprises et au recrutement des candidats. Pendant la formation : une semaine par mois, hors semaines au CFA (pièce n° 18), consacrée aux visites en entreprise, au suivi et à la recherche d’employeurs.'],
       ['Missions', 'Prospection des employeurs, qualification des offres, préparation des candidats, mise en relation, appui à la signature du contrat, suivi des ruptures'],
-      ['Justificatifs joints', 'CV (annexe 05-1) ; statuts (pièce n° 1)'],
+      ['Justificatifs joints', 'CV (annexe 05-1) ; statuts (pièce n° 01)'],
     ], [2600, 7038]],
     ['h2', '3.2 Niveau 2 — Renfort par sous-traitance'],
     ['p', 'YEBA FORMATIONS ne compte pas de salarié à ce jour. Pour ne pas faire reposer l’accompagnement sur une seule personne, un **prestataire spécialisé dans l’insertion et le placement en alternance** sera mobilisé par contrat de sous-traitance, sur la base du cahier des charges joint (annexe B). Le contrat sera signé dans l’un des cas suivants :'],
     ['ul', [
-      'plus de **10 postulants admis sans employeur** au même moment ;',
-      'au plus tard à l’ouverture du **deuxième groupe** de formation, soit avant le **1er mars 2027** si les trois groupes ouvrent simultanément ;',
+      'plus de **5 postulants admis sans employeur** au même moment ;',
+      'ouverture d’une deuxième formation par apprentissage ou d’une deuxième promotion MEM ;',
       'absence prolongée du dirigeant (maladie, congé), pour assurer la continuité du service.',
     ]],
     ['p', 'Le contrat de sous-traitance signé et le CV des intervenants seront transmis à la DEETS dès leur signature [[date prévisionnelle]].'],
@@ -51,7 +50,7 @@ module.exports = {
     ['h1', '4. Parcours « Trouver mon employeur »'],
     ['p', 'Le parcours s’adresse à tout postulant admis dans une formation de YEBA FORMATIONS qui n’a pas encore signé de contrat d’apprentissage. Il est organisé en cinq étapes, chacune donnant lieu à une trace écrite dans le dossier du jeune.'],
     ['table', ['Étape', 'Actions', 'Délai / périodicité', 'Livrable'], [
-      ['1. Accueil et information', 'Réunion d’information collective (alternance, statut d’apprenti, rémunération, aides) ; remise du livret « Bienvenue en apprentissage »', 'Réunions mensuelles d’avril à octobre ; à la demande hors période', 'Feuille d’émargement ; livret remis'],
+      ['1. Accueil et information', 'Réunion d’information collective (alternance, statut d’apprenti, rémunération, aides) ; remise du livret « Bienvenue en apprentissage »', 'Réunions toutes les deux semaines de novembre 2026 à février 2027, puis à partir de septembre 2027 pour la promotion suivante', 'Feuille d’émargement ; livret remis'],
       ['2. Diagnostic individuel', 'Entretien de positionnement : projet professionnel, mobilité géographique (micro-régions Nord, Sud, Est, Ouest), permis, contraintes, besoins d’adaptation', 'Sous 5 jours ouvrés après la candidature', 'Fiche diagnostic et plan d’action individuel'],
       ['3. Ateliers « Se vendre auprès d’un recruteur »', 'CV, lettre de motivation, pitch de 60 secondes, simulation d’entretien filmée avec débriefing, usage des réseaux professionnels', '3 ateliers de 3 heures sur 3 semaines', 'CV et pitch validés ; grille d’évaluation de l’entretien simulé'],
       ['4. Mise en relation', 'Diffusion des offres qualifiées ; envoi de profils ciblés aux entreprises du portefeuille ; job dating ; préparation de chaque entretien', 'Point hebdomadaire (présentiel ou visio) ; job dating trimestriel', 'Tableau de suivi des candidatures'],
@@ -68,12 +67,12 @@ module.exports = {
 
     ['h1', '5. Prospection et fidélisation des employeurs'],
     ['h2', '5.1 Ciblage'],
-    ['p', 'Le tissu économique réunionnais est composé très majoritairement de TPE et de PME ([[chiffre et référence exacte INSEE La Réunion à insérer]]). Ces entreprises connaissent souvent mal l’apprentissage et redoutent ses démarches administratives. Notre prospection les cible en priorité, selon les certifications préparées : **commerce et distribution** (Manager d’établissement marchand), **toute entreprise disposant d’une fonction ressources humaines**, y compris les PME en croissance et les groupements d’employeurs (Responsable ressources humaines), **entreprises de services, de conseil et du numérique, et PME engagées dans leur transformation numérique** (Product Builder No-Code).'],
+    ['p', 'Le tissu économique réunionnais est composé très majoritairement de TPE et de PME ([[chiffre et référence exacte INSEE La Réunion à insérer]]). Ces entreprises connaissent souvent mal l’apprentissage et redoutent ses démarches administratives. Notre prospection les cible en priorité dans les secteurs où s’exerce le métier de manager d’établissement marchand : **commerce de détail alimentaire et non alimentaire, grandes et moyennes surfaces, magasins spécialisés, réseaux de franchise, enseignes de l’équipement de la personne et de la maison, jardineries, commerce de gros avec point de vente**. Le titre vise des personnes appelées à encadrer une équipe ou un rayon : nous recherchons des entreprises capables de confier progressivement à l’apprenti la responsabilité d’un périmètre.'],
     ['h2', '5.2 Actions de prospection'],
     ['table', ['Action', 'Description', 'Fréquence'], [
-      ['Prospection directe', 'Appels, visites et rendez-vous auprès des TPE-PME, en s’appuyant sur le portefeuille clients de YEBA FORMATIONS (formation et conseil) et sur la Technopole Réunion, où sont situés nos locaux', 'Hebdomadaire ; objectif : 15 contacts qualifiés par semaine de novembre 2026 à février 2027'],
+      ['Prospection directe', 'Appels, visites et rendez-vous auprès des TPE-PME, en s’appuyant sur le portefeuille clients de YEBA FORMATIONS (formation et conseil) et sur la Technopole Réunion, où sont situés nos locaux', 'Hebdomadaire ; objectif : 15 contacts qualifiés par semaine de novembre 2026 à février 2027, pour réunir au moins 20 entreprises intéressées'],
       ['Petits-déjeuners « Recruter un apprenti »', 'Réunion de 1 h 30 pour les dirigeants : coût réel, aides, rôle du maître d’apprentissage, démarches prises en charge par YEBA FORMATIONS', 'Trimestrielle, en alternant les micro-régions'],
-      ['Job dating', 'Rencontres courtes entre entreprises et candidats préparés', 'Trimestrielle, et chaque mois de mai à septembre'],
+      ['Job dating', 'Rencontres courtes entre entreprises et candidats préparés', 'Mensuelle de décembre 2026 à février 2027 ; en novembre 2027 pour l’insertion des apprentis en fin de contrat (pièce n° 19)'],
       ['Partenariats institutionnels', 'Rapprochement avec France Travail, les Missions locales, la CCI Réunion, la CMA Réunion et les OPCO pour la diffusion des offres', 'Prises de contact à partir de novembre 2026 ; aucune convention signée à ce jour'],
       ['Présence sur les salons et forums', 'Forums orientation, emploi et alternance de l’île', 'Selon le calendrier annuel'],
     ], [2400, 4800, 2438]],
@@ -114,7 +113,7 @@ module.exports = {
     ['table', ['Indicateur', 'Mode de calcul', 'Objectif interne'], [
       ['Délai moyen de premier entretien', 'Date de l’entretien – date de candidature', '≤ 5 jours ouvrés'],
       ['Taux de signature à 3 mois', 'Postulants admis ayant signé un contrat dans les 3 mois / postulants admis', '≥ 75 %'],
-      ['Portefeuille d’entreprises actives', 'Entreprises ayant proposé au moins une offre sur 12 mois', '≥ 40 entreprises'],
+      ['Portefeuille d’entreprises actives', 'Entreprises ayant proposé au moins une offre sur 12 mois', '≥ 20 entreprises'],
       ['Taux de rupture', 'Contrats rompus / contrats signés (avec distinction des ruptures dans les 45 jours)', '< 20 %'],
       ['Taux de rebond après rupture', 'Apprentis ayant retrouvé un employeur ou une solution dans les 6 mois / apprentis concernés par une rupture', '≥ 70 %'],
     ], [3000, 4300, 2338]],
@@ -170,6 +169,5 @@ module.exports = {
       'Je vérifie que mon employeur me remet mes **documents de fin de contrat** (certificat de travail, attestation France Travail, solde de tout compte).',
       'Contact : [[nom, téléphone, courriel du référent]]',
     ]],
-    ['box', 'Rédaction à faire valider', ['Les conditions de démission (saisine du médiateur, délais de préavis) seront [[vérifiées sur Légifrance (art. L.6222-18 et D.6222-21-1)]] avant remise aux apprentis.']],
   ],
 };

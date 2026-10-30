@@ -9,13 +9,14 @@ module.exports = {
     ['p', 'Le développement des compétences des maîtres d’apprentissage est un point fort de YEBA FORMATIONS : son dirigeant est formateur en **management et en soft skills** depuis 2021 — transmettre, accompagner, évaluer, gérer un conflit et donner un retour constructif sont précisément ses domaines d’intervention.'],
     ['h1', '2. Parcours proposé aux maîtres d’apprentissage'],
     ['table', ['Action', 'Contenu', 'Durée / fréquence', 'Coût pour l’entreprise'], [
-      ['Réunion de lancement', 'Calendrier d’alternance, référentiel, livret, rôle de chacun, contacts', '2 heures, avant ou au début du contrat', 'Gratuit'],
-      ['Formation « Réussir sa mission de maître d’apprentissage »', ['Accueillir et intégrer un jeune.', 'Organiser la progression et transmettre un savoir-faire.', 'Évaluer et donner un retour constructif.', 'Communiquer avec une génération différente ; prévenir les conflits.', 'Cadre légal : contrat, temps de travail, règles pour les mineurs, rupture.', 'Égalité, prévention du harcèlement et des discriminations ; accueil d’un apprenti en situation de handicap.'], '1 jour (7 heures) en présentiel ou 2 demi-journées', 'Gratuit pour les entreprises accueillant un apprenti de YEBA FORMATIONS ; [[prise en charge OPCO possible selon les règles en vigueur — à vérifier]]'],
-      ['Réunions d’échange de pratiques', 'Retours d’expérience, difficultés rencontrées, évolution du programme', '2 fois par an (1 h 30)', 'Gratuit'],
+      ['Réunion de lancement', 'Calendrier d’alternance, référentiel, livret, rôle de chacun, contacts', '2 heures, mardi 16 février 2027, 17 h – 19 h', 'Gratuit'],
+      ['Formation « Réussir sa mission de maître d’apprentissage »', ['Accueillir et intégrer un jeune.', 'Organiser la progression et transmettre un savoir-faire.', 'Évaluer et donner un retour constructif.', 'Communiquer avec une génération différente ; prévenir les conflits.', 'Cadre légal : contrat, temps de travail, règles pour les mineurs, rupture.', 'Égalité, prévention du harcèlement et des discriminations ; accueil d’un apprenti en situation de handicap.'], '1 jour (7 heures), jeudi 15 avril 2027, ou 2 demi-journées', 'Gratuit pour les entreprises accueillant un apprenti de YEBA FORMATIONS ; [[prise en charge OPCO possible selon les règles en vigueur — à vérifier]]'],
+      ['Réunions d’échange de pratiques', 'Retours d’expérience, difficultés rencontrées, évolution du programme', 'Mardi 14 septembre 2027 et mardi 11 janvier 2028, 17 h – 18 h 30', 'Gratuit'],
       ['Appui individuel', 'Conseil ponctuel sur une situation (conflit, démotivation, évaluation)', 'Sur demande, réponse sous 48 heures ouvrées', 'Gratuit'],
       ['Ressources', 'Guide du maître d’apprentissage (fiches pratiques), modèles de grille d’évaluation', 'Remis à la réunion de lancement', 'Gratuit'],
     ], [2000, 3600, 1700, 2338]],
     ['p', 'Les maîtres d’apprentissage qui le souhaitent peuvent être orientés vers une certification de leurs compétences de tuteur inscrite au répertoire spécifique de France Compétences ([[certification à identifier]]).'],
+    ['p', 'Les maîtres d’apprentissage sont également invités au **conseil de perfectionnement** (juin et décembre 2027), au **job dating** du 25 novembre 2027 et à la **cérémonie de clôture** de février 2028 (pièce n° 19).'],
     ['h1', '3. Évaluation'],
     ['ul', [
       'Questionnaire de satisfaction à l’issue de chaque formation et réunion.',
@@ -27,7 +28,6 @@ module.exports = {
       ['[[date]]', '[[ex. conception du guide du maître d’apprentissage]]', '[[—]]', '[[document joint]]'],
       ['[[date]]', '[[ex. actions de formation au tutorat ou au management déjà réalisées par YEBA FORMATIONS pour des entreprises clientes]]', '[[nombre]]', '[[attestations, programmes]]'],
     ], [1600, 4600, 1600, 1838]],
-    ['box', 'À compléter avec des faits', ['Les formations au management, à la transmission ou au tutorat déjà réalisées par Aurélien LUMEKA (chez YEBA FORMATIONS ou dans d’autres centres) sont des preuves utiles. Pour les actions réalisées pour le compte d’un autre centre, vérifier ce que le contrat autorise à mentionner.']],
     ['rgpd', ['**RGPD** — Les données des maîtres d’apprentissage (identité, coordonnées, diplômes et expérience) sont collectées pour vérifier les conditions légales et organiser le suivi ; conservation pendant la durée du contrat d’apprentissage augmentée des délais de contrôle ([[durée à fixer]]).']],
   ],
 };

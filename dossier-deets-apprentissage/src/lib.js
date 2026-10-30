@@ -4,7 +4,7 @@ const fs = require('fs');
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, Header, Footer,
   AlignmentType, HeadingLevel, LevelFormat, WidthType, ShadingType, BorderStyle,
-  PageNumber, PageBreak, HighlightColor, TableLayoutType,
+  PageNumber, PageBreak, HighlightColor, TableLayoutType, PageOrientation,
 } = require('docx');
 
 // Charte YEBA FORMATIONS 2026 : bleu #1B3A6B, or #C9AB4C, noir #121212.
@@ -13,7 +13,7 @@ const COLORS = { primary: '1B3A6B', accent: 'C9AB4C', text: '121212', light: 'EE
 const FONT = 'Inter';
 const TITLE_FONT = 'Montserrat';
 const PAGE_W = 11906, MARGIN = 1134; // A4, marges 2 cm
-const CONTENT_W = PAGE_W - 2 * MARGIN;
+let CONTENT_W = PAGE_W - 2 * MARGIN; // élargi en paysage par build()
 
 const IDENT = {
   nom: 'YEBA FORMATIONS',
@@ -40,7 +40,7 @@ function runs(text, base = {}) {
 const p = (t, o = {}) => new Paragraph({ children: runs(t, o.run || {}), spacing: { after: 120, line: 288 }, alignment: o.align || AlignmentType.JUSTIFIED, ...(o.para || {}) });
 const h1 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun({ text: t, font: TITLE_FONT })], spacing: { before: 300, after: 140 }, keepNext: true });
 const h2 = (t) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun({ text: t, font: TITLE_FONT })], spacing: { before: 200, after: 100 }, keepNext: true });
-const li = (t, ref = 'bul', level = 0) => new Paragraph({ numbering: { reference: ref, level }, children: runs(t), spacing: { after: 60, line: 276 } });
+const li = (t, ref = 'bul', level = 0) => new Paragraph({ numbering: { reference: ref, level }, children: runs(t), alignment: AlignmentType.JUSTIFIED, spacing: { after: 60, line: 276 } });
 
 function cell(text, w, o = {}) {
   const lines = Array.isArray(text) ? text : [text];
@@ -48,7 +48,8 @@ function cell(text, w, o = {}) {
     width: { size: w, type: WidthType.DXA },
     shading: o.fill ? { type: ShadingType.CLEAR, fill: o.fill, color: 'auto' } : undefined,
     margins: { top: 60, bottom: 60, left: 90, right: 90 },
-    children: lines.map((l) => new Paragraph({ children: runs(l, o.run || {}), spacing: { after: 40 } })),
+    // Texte justifié dans les colonnes assez larges ; à gauche dans les colonnes étroites (évite les grands blancs).
+    children: lines.map((l) => new Paragraph({ children: runs(l, o.run || {}), alignment: w >= 3500 && !o.run && String(l).length > 140 ? AlignmentType.JUSTIFIED : AlignmentType.LEFT, spacing: { after: 40 } })),
   });
 }
 
@@ -84,7 +85,7 @@ function box(title, lines, fill = COLORS.gold, edge = COLORS.accent) {
       margins: { top: 100, bottom: 100, left: 160, right: 120 },
       children: [
         new Paragraph({ children: [new TextRun({ text: title, bold: true, color: COLORS.primary, font: TITLE_FONT })], spacing: { after: 60 } }),
-        ...lines.map((l) => new Paragraph({ children: runs(l), spacing: { after: 50 } })),
+        ...lines.map((l) => new Paragraph({ children: runs(l), alignment: AlignmentType.JUSTIFIED, spacing: { after: 50 } })),
       ],
     })] })],
   });
@@ -130,6 +131,7 @@ function signature() {
 // Blocs : ['h1',t] ['h2',t] ['p',t] ['ul',[..]] ['ol',[..]] ['table',headers,rows,widths?] ['box',titre,[..]] ['rgpd',[..]] ['pb']
 let olCounter = 0;
 function build({ num, title, objet, blocks, file, landscape }) {
+  CONTENT_W = (landscape ? 16838 : PAGE_W) - 2 * MARGIN;
   const children = [...cover(num, title, objet)];
   const numberingConfigs = [{ reference: 'bul', levels: [
     { level: 0, format: LevelFormat.BULLET, text: '•', alignment: AlignmentType.LEFT, style: { paragraph: { indent: { left: 567, hanging: 283 } } } },
@@ -166,7 +168,7 @@ function build({ num, title, objet, blocks, file, landscape }) {
     },
     numbering: { config: numberingConfigs },
     sections: [{
-      properties: { page: { size: { width: PAGE_W, height: 16838 }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
+      properties: { page: { size: { width: PAGE_W, height: 16838, orientation: landscape ? PageOrientation.LANDSCAPE : PageOrientation.PORTRAIT }, margin: { top: MARGIN, bottom: MARGIN, left: MARGIN, right: MARGIN } } },
       headers: { default: new Header({ children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [new TextRun({ text: num === 'NI' ? `${IDENT.nom} — Note interne` : `${IDENT.nom} — Dossier apprentissage — Pièce ${num}`, ...small })] })] }) },
       footers: { default: new Footer({ children: [new Paragraph({ alignment: AlignmentType.CENTER, children: [
         new TextRun({ text: `SIRET ${IDENT.siret} — NDA ${IDENT.nda} — Qualiopi ${IDENT.qualiopi} — Page `, ...small }),

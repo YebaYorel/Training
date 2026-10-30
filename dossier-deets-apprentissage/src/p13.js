@@ -8,10 +8,10 @@ module.exports = {
     ['p', 'L’apprentissage est la voie d’insertion la plus directe : l’apprenti connaît déjà une entreprise et un métier. L’objectif de YEBA FORMATIONS est que chaque diplômé(e) dispose, à la fin de son contrat, d’**une solution d’emploi ou de poursuite d’études choisie**.'],
     ['h1', '2. Actions pendant la formation'],
     ['table', ['Période', 'Action'], [
-      ['Dès le mois 6', 'Entretien « Et après ? » : souhait de rester dans l’entreprise, de changer, de poursuivre des études ou de créer une activité'],
-      ['Mois 8 à 10', 'Point avec l’employeur sur une éventuelle embauche à l’issue du contrat ; préparation de l’apprenti à cette négociation'],
-      ['Mois 9 à 12', 'Ateliers « valoriser son expérience » : CV de professionnel(le), profil sur les réseaux professionnels, présentation de ses réalisations, simulation d’entretien'],
-      ['Toute l’année', 'Rencontres avec des professionnels et des recruteurs (job dating, témoignages d’anciens à partir de la deuxième promotion)'],
+      ['Août 2027', 'Entretien « Et après ? » : souhait de rester dans l’entreprise, de changer, de poursuivre des études ou de créer une activité'],
+      ['Octobre à décembre 2027', 'Point avec l’employeur sur une éventuelle embauche à l’issue du contrat ; préparation de l’apprenti à cette négociation'],
+      ['Décembre 2027 à février 2028', 'Ateliers « valoriser son expérience » : CV de professionnel(le), profil sur les réseaux professionnels, présentation de ses réalisations, simulation d’entretien'],
+      ['Toute l’année', 'Rencontres avec des professionnels lors des Rendez-vous du mois (pièce n° 19), dont un **job dating** avec France Travail et des enseignes réunionnaises en novembre 2027'],
     ], [2400, 7238]],
     ['h1', '3. Actions après la certification'],
     ['ul', [
