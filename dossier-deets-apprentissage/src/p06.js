@@ -16,11 +16,11 @@ module.exports = {
 
     ['h1', '2. Les cinq temps de l’évaluation'],
     ['table', ['Temps', 'Objectif', 'Outils', 'Périodicité'], [
-      ['1. Positionnement initial', 'Mesurer les acquis à l’entrée et individualiser le parcours', 'Entretien, test de positionnement sur les trois CCP, questionnaire de besoins', 'Première semaine au CFA (mars 2027)'],
-      ['2. Évaluations formatives', 'Vérifier l’acquisition de chaque séquence et ajuster', 'Quiz courts, études de cas de commerces réunionnais, jeux de rôle filmés (entretien individuel, brief d’équipe, conseil client), auto-évaluation', 'Chaque semaine au CFA'],
+      ['1. Positionnement initial', 'Mesurer les acquis à l’entrée et individualiser le parcours', 'Entretien, test de positionnement sur les trois CCP, questionnaire de besoins', 'Premiers mardis de formation (2 et 9 mars 2027)'],
+      ['2. Évaluations formatives', 'Vérifier l’acquisition de chaque séquence et ajuster', 'Quiz courts, études de cas de commerces réunionnais, jeux de rôle filmés (entretien individuel, brief d’équipe, conseil client), auto-évaluation', 'Chaque mardi de cours'],
       ['3. Évaluations en entreprise', 'Vérifier le transfert des compétences en situation de travail', 'Grille de compétences du livret d’apprentissage, complétée par le maître d’apprentissage', 'À chaque visite et au moins une fois par trimestre'],
-      ['4. Évaluations passées en cours de formation (ECF)', 'Évaluer chaque activité type dans les conditions prévues par le référentiel d’évaluation ; les résultats sont reportés dans le livret d’ECF remis au jury', 'Mise en situation, étude de cas, production écrite, selon le référentiel d’évaluation', 'Une ECF par CCP : juin 2027 (CCP 1), octobre 2027 (CCP 2), janvier 2028 (CCP 3)'],
-      ['5. Session de validation du titre', 'Obtenir le titre ou un ou plusieurs CCP', 'Épreuves prévues par le référentiel de certification : [[mise en situation professionnelle, entretien technique, entretien final — à confirmer sur le RC du titre]] ; examen du dossier professionnel et du livret d’ECF par le jury', 'Février 2028 [[date fixée après agrément]], précédée d’un examen blanc en janvier 2028'],
+      ['4. Évaluations passées en cours de formation (ECF)', 'Évaluer chaque activité type dans les conditions prévues par le référentiel d’évaluation ; les résultats sont reportés dans le livret d’ECF remis au jury', 'Mise en situation, étude de cas, production écrite, selon le référentiel d’évaluation', 'Une ECF par CCP : mardi 29 juin 2027 (CCP 1), mardi 26 octobre 2027 (CCP 2), jeudi 27 janvier 2028 (CCP 3)'],
+      ['5. Session de validation du titre', 'Obtenir le titre ou un ou plusieurs CCP', 'Épreuves prévues par le référentiel de certification : [[mise en situation professionnelle, entretien technique, entretien final — à confirmer sur le RC du titre]] ; examen du dossier professionnel et du livret d’ECF par le jury', 'Semaine du 21 février 2028 [[date fixée après agrément]], précédée d’un examen blanc le vendredi 28 janvier 2028'],
     ], [2100, 2600, 3100, 1838]],
 
     ['h1', '3. Le dossier professionnel'],
@@ -30,18 +30,18 @@ module.exports = {
       ['Juin 2027', 'Rédaction des exemples de pratique de l’activité type 1', 'Relecture individuelle par le formateur'],
       ['Octobre 2027', 'Rédaction des exemples de pratique de l’activité type 2', 'Relecture individuelle ; validation des faits par le maître d’apprentissage'],
       ['Décembre 2027 – janvier 2028', 'Rédaction des exemples de pratique de l’activité type 3 ; finalisation', 'Relecture complète ; préparation de la présentation orale'],
-      ['Février 2028', 'Dépôt du DP complet avant la session', 'Vérification de la conformité du dossier'],
+      ['Février 2028', 'Remise du DP complet le vendredi 11 février, pendant la semaine intensive n° 2', 'Vérification de la conformité du dossier ; oraux blancs'],
     ], [2400, 4400, 2838]],
 
     ['h1', '4. Calendrier des évaluations'],
     ['table', ['Période', 'Évaluation', 'Acteurs'], [
-      ['Mars 2027', 'Positionnement initial', 'Formateur référent, apprenti'],
+      ['Mardis 2 et 9 mars 2027', 'Positionnement initial', 'Formateur référent, apprenti'],
       ['Avril 2027', 'Bilan de fin de période des 45 jours en entreprise', 'Formateur référent, apprenti, maître d’apprentissage'],
       ['Mai, août, novembre 2027, février 2028', 'Entretien trimestriel individuel : progression, livret, dossier professionnel, projet', 'Formateur référent, apprenti ; maître d’apprentissage associé'],
-      ['Juin 2027', '**ECF du CCP 1**', 'Formateur, professionnel extérieur si possible'],
-      ['Octobre 2027', '**ECF du CCP 2**', 'Formateur, professionnel extérieur si possible'],
-      ['Janvier 2028', '**ECF du CCP 3** et **examen blanc** dans les conditions de la session', 'Formateurs, professionnel extérieur'],
-      ['Février 2028', '**Session de validation du titre**', 'Jury de professionnels habilités, selon le règlement des sessions'],
+      ['Mardi 29 juin 2027', '**ECF du CCP 1**', 'Formateur, professionnel extérieur si possible'],
+      ['Mardi 26 octobre 2027', '**ECF du CCP 2**', 'Formateur, professionnel extérieur si possible'],
+      ['Jeudi 27 et vendredi 28 janvier 2028 (semaine intensive n° 1)', '**ECF du CCP 3** et **examen blanc** dans les conditions de la session', 'Formateurs, professionnel extérieur'],
+      ['Semaine du 21 février 2028', '**Session de validation du titre**', 'Jury de professionnels habilités, selon le règlement des sessions'],
     ], [2400, 4400, 2838]],
 
     ['h1', '5. Communication des résultats et remédiation'],

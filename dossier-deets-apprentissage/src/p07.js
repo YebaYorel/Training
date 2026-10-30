@@ -10,7 +10,7 @@ module.exports = {
     ['table', ['Moment', 'Modalité', 'Contenu', 'Trace'], [
       ['Avant la signature (novembre 2026 – février 2027)', 'Échange avec l’employeur', 'Vérification que le poste permet d’exercer les trois activités types du titre MEM, en particulier l’encadrement d’une équipe ou d’un périmètre (rayon, univers, magasin) ; désignation du maître d’apprentissage', 'Fiche « Adéquation poste / référentiel »'],
       ['Semaine du 8 mars 2027', 'Appel au maître d’apprentissage', 'Accueil, intégration, calendrier d’alternance, dates des Rendez-vous du mois', 'Compte rendu court'],
-      ['Du 12 au 30 avril 2027 (avant la fin des 45 premiers jours en entreprise)', '**Première visite en entreprise** (présentiel)', 'Entretien tripartite : intégration, premières missions, difficultés éventuelles', 'Compte rendu de visite signé'],
+      ['Du 12 avril au 7 mai 2027 (avant la fin des 45 premiers jours de formation pratique en entreprise)', '**Première visite en entreprise** (présentiel)', 'Entretien tripartite : intégration, premières missions, difficultés éventuelles', 'Compte rendu de visite signé'],
       ['Mai, août, novembre 2027, février 2028', 'Entretien trimestriel de l’apprenti, avec un point téléphonique ou en visio avec le maître d’apprentissage', 'Progression, missions à venir, dossier professionnel, assiduité', 'Mise à jour du livret'],
       ['Septembre 2027 (mois 7)', '**Deuxième visite en entreprise**', 'Bilan intermédiaire des compétences, ajustement des missions pour le CCP 3', 'Compte rendu de visite signé'],
       ['Décembre 2027 – janvier 2028', 'Point de préparation à la session', 'Situations professionnelles à présenter dans le dossier professionnel et au jury', 'Mise à jour du livret'],

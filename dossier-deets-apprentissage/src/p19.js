@@ -15,14 +15,14 @@ module.exports = {
   num: '19',
   slug: '19_Programme_des_Rendez-vous_du_mois_MEM',
   title: 'Programme des Rendez-vous du mois — Promotion MEM 2027-2028',
-  objet: 'Programme annuel des rencontres, visites, activités culturelles, artistiques, sportives et solidaires proposées aux apprentis préparant le titre Manager d’établissement marchand, en complément des 420 heures d’enseignement.',
+  objet: 'Programme annuel des rencontres, visites, activités culturelles, artistiques, sportives et solidaires proposées aux apprentis préparant le titre Manager d’établissement marchand, en complément des mardis de cours.',
   blocks: [
     ['h1', '1. L’esprit de l’année'],
     ['p', 'YEBA FORMATIONS veut que chaque apprenti puisse dire, en février 2028 : « J’ai adoré cette année, je ne l’ai pas vue passer. » Apprendre un métier exigeant ne s’oppose pas au plaisir d’apprendre : un groupe soudé, des rencontres marquantes et des défis concrets sont les meilleurs remèdes contre la démotivation et l’abandon.'],
-    ['p', 'Chaque mois, un **Rendez-vous du mois** réunit la promotion pendant une journée, un mardi, en dehors des semaines au CFA : le matin prépare ou prolonge l’activité, l’après-midi accueille la rencontre ou l’événement. Il est toujours relié au métier de manager d’établissement marchand : manager une équipe, développer le commerce, piloter la rentabilité, ou préparer son avenir (emploi, création d’entreprise).'],
+    ['p', 'Chaque mois, un **Rendez-vous du mois** réunit la promotion pendant une journée : un mardi par mois, les autres mardis étant des mardis de cours. Le matin prépare ou prolonge l’activité, l’après-midi accueille la rencontre ou l’événement. Il est toujours relié au métier de manager d’établissement marchand : manager une équipe, développer le commerce, piloter la rentabilité, ou préparer son avenir (emploi, création d’entreprise).'],
     ['table', ['Principe', 'Application'], [
-      ['Ne pas réduire les heures d’enseignement', 'Les 420 heures d’enseignement restent entières. Les Rendez-vous ajoutent 84 heures de formation (12 × 7 heures), soit 504 heures au total (pièce n° 18).'],
-      ['Un jour fixe, connu d’avance', 'Un mardi par mois, de 8 h à 12 h et de 13 h à 16 h (pauses de 15 minutes à 10 h et à 15 h), pendant une semaine en entreprise. Le calendrier est remis à l’employeur avant la signature du contrat et annexé à la convention de formation.'],
+      ['Des journées pédagogiques à part entière', 'Chaque Rendez-vous poursuit des objectifs rattachés aux compétences du titre. Les 12 Rendez-vous représentent 84 heures de formation, qui s’ajoutent aux 343 heures d’enseignement en face à face, soit 427 heures au total (pièce n° 18).'],
+      ['Un jour fixe, connu d’avance', 'Un mardi par mois, de 8 h à 12 h et de 13 h à 16 h (pauses de 15 minutes à 10 h et à 15 h), à la place d’un mardi de cours. Le calendrier est remis à l’employeur avant la signature du contrat et annexé à la convention de formation.'],
       ['Un temps de formation à part entière', 'Ce temps est rémunéré comme du temps de formation. La présence est obligatoire et donne lieu à un émargement ; une absence est justifiée comme une absence au CFA.'],
       ['Des apprentis acteurs', 'Les apprentis préparent leurs questions, organisent certains événements (tournoi solidaire, collecte de Noël) et rédigent une courte trace dans leur livret, réutilisable dans leur dossier professionnel.'],
     ], [3200, 6438]],
@@ -65,7 +65,7 @@ module.exports = {
     ['h1', '6. Faire face à la réalité du terrain'],
     ['p', 'Une année réussie n’est pas une année sans difficulté. Les Rendez-vous sont aussi des moments pour repérer et soutenir les apprentis qui décrochent (pièce n° 11) :'],
     ['ul', [
-      '**Binômes d’entraide** formés dès mars : chaque apprenti a un camarade référent qui prend de ses nouvelles entre les semaines au CFA.',
+      '**Binômes d’entraide** formés dès mars : chaque apprenti a un camarade référent qui prend de ses nouvelles entre deux mardis.',
       '**Point informel** du référent avec chaque apprenti à la fin de chaque Rendez-vous ; toute absence non justifiée déclenche un appel le jour même.',
       '**Activité de repli** prévue pour chaque Rendez-vous (intempéries, alerte cyclonique, désistement d’un intervenant) : atelier en salle tiré de la banque d’idées.',
       '**Questionnaire de satisfaction** de deux minutes à la fin de chaque Rendez-vous ; bilan avec les délégués au conseil de perfectionnement de juin et de décembre.',

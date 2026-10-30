@@ -11,7 +11,7 @@ module.exports = {
     ['p', 'La sensibilisation combine un module de formation et trois Rendez-vous du mois (un mardi par mois) consacrés à l’entrepreneuriat (pièce n° 19). Elle forme un parcours progressif : comprendre l’écosystème, savoir financer un projet, puis poser des fondations solides.'],
     ['table', ['Date', 'Action', 'Contenu'], [
       ...rdv.filter((r) => /entrepreneuriat/.test(r.type)).map((r) => [r.date, `Rendez-vous « ${r.titre} » (journée)`, `Matin : ${r.matin} Après-midi : ${r.apresmidi}`]),
-      ['Semaine du 15 novembre 2027', 'Module « Esprit d’entreprendre » (7 heures)', 'Du projet à l’entreprise : idée, client, offre, prix, compte de résultat prévisionnel d’un magasin, en lien avec le CCP 3 (rentabilité).'],
+      ['Mardi 16 novembre 2027', 'Module « Esprit d’entreprendre » (7 heures)', 'Du projet à l’entreprise : idée, client, offre, prix, compte de résultat prévisionnel d’un magasin, en lien avec le CCP 3 (rentabilité).'],
       ['Toute l’année', 'Orientation individuelle', 'Mise en relation avec les réseaux d’accompagnement pour tout apprenti porteur d’un projet, à sa demande.'],
     ], [2300, 2700, 4638]],
     ['h1', '3. Partenaires sollicités'],

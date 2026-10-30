@@ -8,12 +8,12 @@ module.exports = {
   blocks: [
     ['h1', '1. Intention'],
     ['p', 'Les activités culturelles et sportives renforcent la cohésion de la promotion, la confiance en soi et le sentiment d’appartenance, trois leviers reconnus de la persévérance (pièce n° 11). Elles valorisent aussi la culture réunionnaise et développent des compétences directement utiles à un manager d’établissement marchand : prendre la parole, fédérer une équipe, conduire un projet.'],
-    ['p', 'Ces activités s’inscrivent dans les **Rendez-vous du mois** : une journée par mois, un mardi, de 8 h à 12 h et de 13 h à 16 h, en dehors des semaines au CFA (programme complet en pièce n° 19). Elles ne réduisent donc pas les 420 heures de formation.'],
+    ['p', 'Ces activités s’inscrivent dans les **Rendez-vous du mois** : un mardi par mois, de 8 h à 12 h et de 13 h à 16 h, les autres mardis étant consacrés aux cours (programme complet en pièce n° 19). Ce sont des journées pédagogiques à part entière, rattachées aux compétences du titre.'],
     ['h1', '2. Programme 2027-2028'],
     ['table', ['Date', 'Activité', 'Contenu', 'Lien avec la formation'], choix.map((r) => [r.date, `**${r.titre}** (${r.type.toLowerCase()})`, [`Matin : ${r.matin}`, `Après-midi : ${r.apresmidi}`], r.lien]), [1700, 1900, 4000, 2038]],
     ['h1', '3. Organisation'],
     ['ul', [
-      '**Référent vie de l’apprenti** : Aurélien LUMEKA. Le programme est présenté à la promotion dès la semaine d’intégration ; les **délégués**, élus en avril 2027, peuvent proposer des ajustements ou une activité de remplacement.',
+      '**Référent vie de l’apprenti** : Aurélien LUMEKA. Le programme est présenté à la promotion dès les journées d’intégration ; les **délégués**, élus en avril 2027, peuvent proposer des ajustements ou une activité de remplacement.',
       '**Statut des Rendez-vous** : ils sont inscrits au calendrier de formation annexé à la convention de formation signée avec l’employeur. Ce temps est du temps de formation, rémunéré comme tel ; la présence est obligatoire et fait l’objet d’un émargement.',
       '**Accessibilité** : chaque activité est vérifiée au regard des besoins des apprentis ; une alternative est proposée si nécessaire (pièce n° 10).',
       '**Sécurité** : assurance responsabilité civile de l’organisme vérifiée pour chaque activité extérieure ; autorisation des représentants légaux pour les mineurs ; plan de repli en cas d’intempéries ou d’alerte cyclonique.',

@@ -34,7 +34,7 @@ module.exports = {
     ['table', ['Élément', 'Description'], [
       ['Titulaire', 'Aurélien LUMEKA, dirigeant et formateur de YEBA FORMATIONS'],
       ['Compétences mobilisées', 'Formateur en vente, négociation et management depuis 2021 ; expérience dans plusieurs centres de formation de La Réunion ; Référent handicap en organisme de formation ; certification Qualiopi de l’organisme'],
-      ['Temps consacré', 'Avant l’ouverture (novembre 2026 – février 2027) : l’essentiel de son temps, consacré à la prospection des entreprises et au recrutement des candidats. Pendant la formation : une semaine par mois, hors semaines au CFA (pièce n° 18), consacrée aux visites en entreprise, au suivi et à la recherche d’employeurs.'],
+      ['Temps consacré', 'Avant l’ouverture (novembre 2026 – février 2027) : l’essentiel de son temps, consacré à la prospection des entreprises et au recrutement des candidats. Pendant la formation : les lundis, jeudis et vendredis, en dehors des mardis de formation et des semaines intensives (pièce n° 18), consacrés aux visites en entreprise, au suivi et à la recherche d’employeurs.'],
       ['Missions', 'Prospection des employeurs, qualification des offres, préparation des candidats, mise en relation, appui à la signature du contrat, suivi des ruptures'],
       ['Justificatifs joints', 'CV (annexe 05-1) ; statuts (pièce n° 01)'],
     ], [2600, 7038]],

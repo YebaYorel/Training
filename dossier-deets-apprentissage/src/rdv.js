@@ -1,6 +1,7 @@
 // Source unique des « Rendez-vous du mois » de la promotion MEM 2027-2028.
 // Reprise par les pièces 15, 16, 18, 19, 20 et les notes internes : ne modifier les dates qu'ici.
-// Chaque rendez-vous : un mardi, 8 h – 12 h et 13 h – 16 h (7 heures, pauses de 15 minutes à 10 h et 15 h), hors semaines au CFA.
+// Chaque rendez-vous : un mardi par mois, 8 h – 12 h et 13 h – 16 h (7 heures, pauses de 15 minutes à 10 h et 15 h) ;
+// les autres mardis sont des mardis de cours (cal.js).
 module.exports = [
   { mois: 'Mars 2027', date: 'Mardi 16 mars 2027', iso: '2027-03-16', titre: 'Une équipe, un magasin', type: 'Team building', matin: 'Team building de 4 heures : défi « magasin éphémère » par équipes (installer, vendre, encaisser en temps limité, devant un vrai jury).', apresmidi: 'Débriefing : les rôles de chacun dans une équipe et ce qu’ils disent du manager ; constitution des binômes d’entraide.', lien: 'CCP 1 : rôles dans une équipe, communication, coopération', partenaires: 'YEBA FORMATIONS ; [[prestataire ou lieu à choisir]]', cout: 'Modéré' },
   { mois: 'Avril 2027', date: 'Mardi 20 avril 2027', iso: '2027-04-20', titre: 'IA et cybersécurité au service du magasin', type: 'Rencontre métier', matin: 'Atelier « les outils d’IA du manager » : planning d’équipe, prévisions de ventes, rédaction d’annonces ; règles RGPD sur les données des clients et des salariés.', apresmidi: 'Rencontre avec un expert en cybersécurité : arnaques au faux fournisseur, sécurité des paiements et des caisses, mots de passe ; quiz par équipes.', lien: 'CCP 1 et CCP 3 ; obligation de maîtrise de l’IA (art. 4 de l’IA Act)', partenaires: '[[Expert cybersécurité à solliciter]] ; Aurélien LUMEKA', cout: 'Faible' },

@@ -1,4 +1,4 @@
-// Générateur commun des pièces du dossier DEETS (extension apprentissage).
+// Générateur commun des pièces du dossier DEETS (extension de l'activité à l'apprentissage).
 // Mini-balisage du texte : **gras**, [[à compléter]] (surligné jaune).
 const fs = require('fs');
 const {
@@ -24,7 +24,8 @@ const IDENT = {
   dirigeant: 'Aurélien LUMEKA',
   uai: '9742022E',
   lieu: '7 rue Henri Cornu, Immeuble Rodrigue 2, Technopole Réunion / Technor, 97490 Sainte-Clotilde (Saint-Denis)',
-  version: 'Version 3 du 30/10/2026',
+  adresseAdmin: '9 rue Françoise Châtelain, Bâtiment A, Entrée 1, Porte 0042, 97490 Saint-Denis',
+  version: 'Version 4 du 30/10/2026',
   tel: '+262 693 32 24 45',
   mail: 'yebaformations@gmail.com',
 };
@@ -113,7 +114,8 @@ function cover(num, title, objet) {
       ['Objet de la pièce', objet],
       ['Organisme', `${IDENT.nom} — SIRET ${IDENT.siret} — NDA ${IDENT.nda} — UAI ${IDENT.uai}`],
       ['Lieu de formation', IDENT.lieu],
-      ['Certification Qualiopi', `n° ${IDENT.qualiopi} (actions de formation). Extension à la catégorie « actions de formation par apprentissage » engagée : l’audit d’extension sera réalisé dès l’entrée en formation du premier apprenti (courriel de l’organisme certificateur du 14/10/2026).`],
+      ['Adresse administrative (courrier)', IDENT.adresseAdmin],
+      ['Certification Qualiopi', `n° ${IDENT.qualiopi}, délivrée par QUALITIA Certification, valable du 17/02/2026 au 16/02/2029. Catégories certifiées (art. L.6313-1 du Code du travail) : actions de formation, bilans de compétences, actions de validation des acquis de l’expérience et **actions de formation par apprentissage**.`],
       ['Responsable', `${IDENT.dirigeant}, Directeur — ${IDENT.tel} — ${IDENT.mail}`],
       ['Version', IDENT.version],
     ], [2600, 7038]),

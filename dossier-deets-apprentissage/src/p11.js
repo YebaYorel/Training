@@ -9,9 +9,10 @@ module.exports = {
     ['h1', '2. Prévenir'],
     ['ul', [
       'Entretien de positionnement et vérification du projet avant la signature (pièce n° 05).',
-      'Semaine d’intégration : connaissance de la promotion, règles de vie, droits et devoirs, présentation des personnes ressources.',
-      '**Un Rendez-vous du mois** (pièce n° 19) : une journée par mois, un mardi, hors semaines au CFA, consacrée à une rencontre, une visite ou un défi collectif. Ces moments entretiennent le lien avec le groupe pendant les trois semaines passées en entreprise.',
-      '**Élection de délégués** en avril 2027, porte-parole de la promotion et relais des difficultés de leurs camarades.',
+      'Journées d’intégration (mardis 2 et 9 mars 2027) : connaissance de la promotion, règles de vie, droits et devoirs, présentation des personnes ressources.',
+      '**Un rendez-vous chaque semaine** : la promotion se retrouve au CFA tous les mardis, ce qui permet de repérer en quelques jours un apprenti qui s’absente ou décroche, au lieu d’attendre la séquence suivante.',
+      '**Un Rendez-vous du mois** (pièce n° 19) : un mardi par mois consacré à une rencontre, une visite ou un défi collectif, pour entretenir la motivation et la cohésion du groupe.',
+      '**Élection de délégués** le mardi 13 avril 2027, porte-parole de la promotion et relais des difficultés de leurs camarades.',
       'Pédagogie active et concrète : jeux de rôle, cas de commerces réunionnais, défis par équipe — pour donner du sens à chaque séquence.',
       'Un groupe de 8 à 10 apprentis, qui permet une attention individuelle à chacun.',
       'Information sur les aides matérielles (transport, logement, aide au permis de conduire, selon les dispositifs en vigueur — [[à vérifier]]).',
