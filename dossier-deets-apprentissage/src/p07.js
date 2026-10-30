@@ -23,7 +23,7 @@ module.exports = {
       ['Tableau de correspondance « modules / missions »', 'Pour chaque séquence au CFA, liste des activités à réaliser en entreprise pendant la période suivante'],
       ['Fiche navette mensuelle', 'Une page : missions réalisées, difficultés, besoins, signée par l’apprenti et le maître d’apprentissage'],
       ['Réunion des maîtres d’apprentissage', 'Réunion de lancement en février 2027, puis réunions d’échange en septembre 2027 et janvier 2028 (pièce n° 17)'],
-      ['Ligne directe', 'Contact du formateur référent : [[téléphone, courriel]] ; réponse sous 48 heures ouvrées'],
+      ['Ligne directe', 'Contact du formateur référent : +262 693 32 24 45 — yebaformations@gmail.com ; réponse sous 48 heures ouvrées'],
     ], [3200, 6438]],
     ['h1', '4. Contrôle de l’adéquation'],
     ['ul', [

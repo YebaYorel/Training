@@ -1,6 +1,7 @@
 const fs = require('fs');
 const rdv = require('./rdv');
 const { placeholders } = require('./lib');
+const j60 = (iso) => { const d = new Date(iso + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() - 60); if (d.getUTCDay() === 6) d.setUTCDate(d.getUTCDate() - 1); if (d.getUTCDay() === 0) d.setUTCDate(d.getUTCDate() - 2); return d.toLocaleDateString('fr-FR', { timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric' }); };
 const pieces = fs.readdirSync(__dirname).filter((f) => /^p\d+\.js$/.test(f) && f !== 'p99.js').sort().map((f) => require('./' + f));
 module.exports = {
   num: 'NI',
@@ -14,7 +15,7 @@ module.exports = {
     '**Qualiopi** : l’audit d’extension « apprentissage » ne peut avoir lieu qu’après l’entrée en formation d’un premier apprenti (courriel du certificateur du 14/10/2026). Obtenir **par écrit de chaque OPCO** les conditions de financement des premiers contrats pendant cette période, avant de signer avec les employeurs.',
     '**Agrément MEM** : déposer la demande auprès de la DEETS La Réunion dès le premier trimestre 2027, et au plus tard 6 mois avant la session de février 2028.',
     '**Capacité** : un formateur permanent. L’intervenant expert du CCP 3 et le sous-traitant chargé du placement doivent être identifiés avant mars 2027.',
-    '**Rendez-vous du mois** : 48 heures de formation en plus des 420 heures d’enseignement ; à annexer à la convention de formation pour que les employeurs s’engagent à libérer les apprentis.',
+    '**Rendez-vous du mois** : 84 heures de formation (12 mardis de 7 heures) en plus des 420 heures d’enseignement ; à annexer à la convention de formation pour que les employeurs s’engagent à libérer les apprentis.',
     '**Sincérité** : ne présenter comme réalisés que les actions et partenariats effectivement engagés. Les surlignages jaunes signalent les points à compléter ou à vérifier avant l’envoi.',
     ]],
     ['h1', '2. Courriel d’envoi du dossier à la DEETS'],
@@ -23,7 +24,7 @@ module.exports = {
     ['p', 'Suite à notre entretien téléphonique et à votre courriel du 20 octobre 2026, je vous prie de trouver ci-joint les pièces demandées dans le cadre de l’instruction de la modification de notre déclaration d’activité, en application de l’article L.6351-5 du Code du travail. Notre première promotion préparera le titre professionnel Manager d’établissement marchand (RNCP 41853) à compter du 1er mars 2027. Le bordereau joint récapitule les pièces transmises ; les pièces n° 19 et 20 détaillent le programme des Rendez-vous du mois et le planning annuel de la promotion. [[Le cas échéant : les pièces n° 01 à 03 vous seront adressées au plus tard le …]]'],
     ['p', 'Je reste à votre disposition pour tout complément d’information.'],
     ['p', 'Veuillez agréer, Madame, Monsieur, mes salutations distinguées.'],
-    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — [[téléphone]]'],
+    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — +262 693 32 24 45 — yebaformations@gmail.com'],
     ['h1', '3. Agrément pour la session du titre MEM'],
     ['ul', [
       'Titre professionnel Manager d’établissement marchand, RNCP 41853, niveau 5, ministère du Travail ; fiche valable jusqu’au 02/03/2031 ; 3 CCP.',
@@ -34,7 +35,7 @@ module.exports = {
     ['h1', '4. Financement des premiers contrats'],
     ['p', 'L’audit d’extension Qualiopi ne peut avoir lieu qu’après l’entrée du premier apprenti. Écrire à chaque OPCO concerné par vos futurs employeurs (commerce et distribution notamment) pour obtenir par écrit : les conditions de prise en charge des contrats démarrant avant l’extension, le niveau de prise en charge du titre MEM, et le calendrier de facturation.'],
     ['h1', '5. Intervenants à solliciter pour les Rendez-vous du mois'],
-    ['table', ['Date', 'Rendez-vous', 'Intervenants à solliciter', 'À solliciter avant'], rdv.map((r, i) => [r.date, r.titre, r.partenaires, i < 5 ? '31 janvier 2027' : '30 juin 2027']), [2500, 2400, 3200, 1538]],
+    ['table', ['Date', 'Rendez-vous', 'Intervenants à solliciter', 'À solliciter au plus tard'], rdv.map((r) => [r.date, r.titre, r.partenaires, j60(r.iso)]), [2500, 2400, 3200, 1538]],
     ['h1', '6. Vérifications avant envoi ou avant l’ouverture'],
     ['ul', [
       'Vérifier sur Légifrance la rédaction en vigueur des articles cités : L.6231-2, L.6222-12-1, L.6222-18, L.6222-18-2, L.6222-39, L.6211-2, L.6224-1, L.6223-8-1, L.6111-8 du Code du travail.',
@@ -47,20 +48,20 @@ module.exports = {
     ['p', 'Objet : Invitation à intervenir auprès de nos apprentis managers — [[date du Rendez-vous]]'],
     ['p', 'Madame, Monsieur,'],
     ['p', 'YEBA FORMATIONS, organisme de formation implanté à la Technopole de La Réunion, ouvre en mars 2027 sa première promotion d’apprentis préparant le titre professionnel Manager d’établissement marchand. Chaque mois, nos 8 à 10 apprentis vivent un « Rendez-vous du mois » : une rencontre avec un acteur de l’économie réunionnaise, en lien direct avec leur futur métier.'],
-    ['p', 'Nous serions honorés de vous accueillir le [[date]], de 13 h à 17 h, dans nos locaux du 7 rue Henri Cornu, Immeuble Rodrigue 2, à Sainte-Clotilde, pour un échange autour du thème « [[thème]] ». Les apprentis prépareront leurs questions en amont ; votre intervention pourrait durer de 1 h 30 à 2 heures.'],
+    ['p', 'Nous serions honorés de vous accueillir le [[date]], de 13 h à 16 h, dans nos locaux du 7 rue Henri Cornu, Immeuble Rodrigue 2, à Sainte-Clotilde, pour un échange autour du thème « [[thème]] ». Les apprentis prépareront leurs questions en amont ; votre intervention pourrait durer de 1 h 30 à 2 heures.'],
     ['p', 'Je me tiens à votre disposition pour en convenir ensemble.'],
-    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — [[téléphone]]'],
+    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — +262 693 32 24 45 — yebaformations@gmail.com'],
     ['h1', '8. Modèle de courriel — présentation aux entreprises'],
     ['p', 'Objet : Recrutez votre futur manager en apprentissage — titre professionnel MEM, rentrée le 1er mars 2027'],
     ['p', 'Madame, Monsieur,'],
     ['p', 'YEBA FORMATIONS ouvre le 1er mars 2027 une formation par apprentissage au titre professionnel Manager d’établissement marchand (niveau 5, bac+2). Pendant 12 mois, l’apprenti passe une semaine par mois au CFA et trois semaines dans votre magasin, où il apprend à manager une équipe, développer les ventes et piloter la rentabilité de son périmètre.'],
     ['p', 'Nous prenons en charge les démarches (contrat, convention, dépôt auprès de l’OPCO), présélectionnons des candidats motivés et formons gratuitement votre maître d’apprentissage. Vous trouverez en pièce jointe le planning de l’année et le programme des Rendez-vous du mois.'],
     ['p', 'Puis-je vous proposer un rendez-vous de 30 minutes pour en parler ?'],
-    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — [[téléphone]]'],
+    ['p', 'Aurélien LUMEKA — Directeur de YEBA FORMATIONS — +262 693 32 24 45 — yebaformations@gmail.com'],
     ['h1', '9. Liste de contrôle : éléments surlignés à compléter'],
     ...pieces.flatMap((d) => {
       const ph = placeholders(d.blocks);
-      return ph.length ? [['h2', `Pièce ${d.num} — ${ph.length} élément(s)`], ['ul', ph]] : [];
+      return ph.length ? [['h2', `${d.num === 'NI' ? 'Note interne « ' + d.title + ' »' : 'Pièce ' + d.num} — ${ph.length} élément(s)`], ['ul', ph]] : [];
     }),
     ['rgpd', [
       '**RGPD** — Prospection d’entreprises par courriel : en B2B, elle est possible si le message concerne l’activité professionnelle du destinataire, avec un moyen simple de s’opposer à de nouveaux envois. Les coordonnées des intervenants et des entreprises sont tenues dans Baserow (hébergement UE) et conservées [[durée à fixer]].',

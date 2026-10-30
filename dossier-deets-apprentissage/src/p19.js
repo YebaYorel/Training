@@ -2,9 +2,10 @@ const rdv = require('./rdv');
 const fiches = rdv.flatMap((r, i) => [
   ['h2', `${i + 1}. ${r.mois} — ${r.titre}`],
   ['table', ['Rubrique', 'Détail'], [
-    ['Date et horaire', `${r.date}, 13 h – 17 h`],
+    ['Date et horaire', `${r.date}, 8 h – 12 h et 13 h – 16 h`],
     ['Nature', r.type],
-    ['Déroulé', r.contenu],
+    ['Matin (8 h – 12 h)', r.matin],
+    ['Après-midi (13 h – 16 h)', r.apresmidi],
     ['Lien avec la formation', r.lien],
     ['Intervenants et partenaires', r.partenaires],
     ['Coût estimé', r.cout],
@@ -18,10 +19,10 @@ module.exports = {
   blocks: [
     ['h1', '1. L’esprit de l’année'],
     ['p', 'YEBA FORMATIONS veut que chaque apprenti puisse dire, en février 2028 : « J’ai adoré cette année, je ne l’ai pas vue passer. » Apprendre un métier exigeant ne s’oppose pas au plaisir d’apprendre : un groupe soudé, des rencontres marquantes et des défis concrets sont les meilleurs remèdes contre la démotivation et l’abandon.'],
-    ['p', 'Chaque mois, un **Rendez-vous du mois** réunit la promotion pendant une demi-journée, en dehors des semaines au CFA. Il est toujours relié au métier de manager d’établissement marchand : manager une équipe, développer le commerce, piloter la rentabilité, ou préparer son avenir (emploi, création d’entreprise).'],
+    ['p', 'Chaque mois, un **Rendez-vous du mois** réunit la promotion pendant une journée, un mardi, en dehors des semaines au CFA : le matin prépare ou prolonge l’activité, l’après-midi accueille la rencontre ou l’événement. Il est toujours relié au métier de manager d’établissement marchand : manager une équipe, développer le commerce, piloter la rentabilité, ou préparer son avenir (emploi, création d’entreprise).'],
     ['table', ['Principe', 'Application'], [
-      ['Ne pas réduire les heures d’enseignement', 'Les 420 heures d’enseignement restent entières. Les Rendez-vous ajoutent 48 heures de formation (12 × 4 heures), soit 468 heures au total (pièce n° 18).'],
-      ['Un jour fixe, connu d’avance', 'Un jeudi par mois, de 13 h à 17 h, pendant une semaine en entreprise. Le calendrier est remis à l’employeur avant la signature du contrat et annexé à la convention de formation.'],
+      ['Ne pas réduire les heures d’enseignement', 'Les 420 heures d’enseignement restent entières. Les Rendez-vous ajoutent 84 heures de formation (12 × 7 heures), soit 504 heures au total (pièce n° 18).'],
+      ['Un jour fixe, connu d’avance', 'Un mardi par mois, de 8 h à 12 h et de 13 h à 16 h (pauses de 15 minutes à 10 h et à 15 h), pendant une semaine en entreprise. Le calendrier est remis à l’employeur avant la signature du contrat et annexé à la convention de formation.'],
       ['Un temps de formation à part entière', 'Ce temps est rémunéré comme du temps de formation. La présence est obligatoire et donne lieu à un émargement ; une absence est justifiée comme une absence au CFA.'],
       ['Des apprentis acteurs', 'Les apprentis préparent leurs questions, organisent certains événements (tournoi solidaire, collecte de Noël) et rédigent une courte trace dans leur livret, réutilisable dans leur dossier professionnel.'],
     ], [3200, 6438]],
@@ -43,7 +44,7 @@ module.exports = {
     ]],
 
     ['h1', '5. Banque d’idées de remplacement'],
-    ['p', 'Si un intervenant se désiste ou si la promotion exprime d’autres envies (via ses délégués), ces activités peuvent remplacer un Rendez-vous, sur le même créneau de 4 heures et avec le même lien au métier.'],
+    ['p', 'Si un intervenant se désiste ou si la promotion exprime d’autres envies (via ses délégués), ces activités peuvent remplacer un Rendez-vous, sur la même journée et avec le même lien au métier.'],
     ['table', ['Idée', 'Déroulé', 'Lien avec la formation'], [
       ['Client mystère croisé', 'Chaque apprenti visite incognito le magasin d’un camarade et rédige un rapport d’expérience client ; restitution collective.', 'CCP 2 : expérience client'],
       ['Concours de vitrines', 'Les apprentis réalisent une vitrine ou un îlot dans leur magasin ; vote des maîtres d’apprentissage et des clients.', 'CCP 2 : merchandising'],

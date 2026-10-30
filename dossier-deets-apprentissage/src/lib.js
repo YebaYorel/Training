@@ -4,7 +4,7 @@ const fs = require('fs');
 const {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, Header, Footer,
   AlignmentType, HeadingLevel, LevelFormat, WidthType, ShadingType, BorderStyle,
-  PageNumber, PageBreak, HighlightColor, TableLayoutType, PageOrientation,
+  PageNumber, PageBreak, HighlightColor, TableLayoutType, PageOrientation, ImageRun,
 } = require('docx');
 
 // Charte YEBA FORMATIONS 2026 : bleu #1B3A6B, or #C9AB4C, noir #121212.
@@ -12,6 +12,7 @@ const {
 const COLORS = { primary: '1B3A6B', accent: 'C9AB4C', text: '121212', light: 'EEF1F6', gold: 'F7F1DF', grey: '4D4D4D' };
 const FONT = 'Inter';
 const TITLE_FONT = 'Montserrat';
+const LOGO = fs.readFileSync(require('path').join(__dirname, 'assets', 'logo_yeba.png'));
 const PAGE_W = 11906, MARGIN = 1134; // A4, marges 2 cm
 let CONTENT_W = PAGE_W - 2 * MARGIN; // élargi en paysage par build()
 
@@ -23,7 +24,9 @@ const IDENT = {
   dirigeant: 'Aurélien LUMEKA',
   uai: '9742022E',
   lieu: '7 rue Henri Cornu, Immeuble Rodrigue 2, Technopole Réunion / Technor, 97490 Sainte-Clotilde (Saint-Denis)',
-  version: 'Version 2 du 28/10/2026',
+  version: 'Version 3 du 30/10/2026',
+  tel: '+262 693 32 24 45',
+  mail: 'yebaformations@gmail.com',
 };
 
 function runs(text, base = {}) {
@@ -95,7 +98,7 @@ const spacer = () => new Paragraph({ children: [], spacing: { after: 80 } });
 
 function cover(num, title, objet) {
   return [
-    new Paragraph({ children: [new TextRun({ text: 'YEBA', bold: true, size: 40, color: COLORS.primary, font: TITLE_FONT }), new TextRun({ text: '  FORMATIONS', bold: true, size: 40, color: COLORS.accent, font: TITLE_FONT })], spacing: { after: 40 } }),
+    new Paragraph({ children: [new ImageRun({ type: 'png', data: LOGO, transformation: { width: 120, height: 102 }, altText: { title: 'Logo YEBA FORMATIONS', description: 'Logo YEBA FORMATIONS', name: 'logo' } })], spacing: { after: 80 } }),
     new Paragraph({ children: [new TextRun({ text: 'Organisme de formation — Extension de la déclaration d’activité à la formation par apprentissage', size: 20, color: COLORS.grey, font: FONT })], border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: COLORS.accent, space: 6 } }, spacing: { after: 240 } }),
     new Paragraph({ children: [new TextRun({ text: num === 'NI' ? 'Note interne — ne pas transmettre' : `Pièce n° ${num}`, bold: true, size: 24, color: COLORS.grey, font: TITLE_FONT })], spacing: { after: 60 } }),
     new Paragraph({ children: [new TextRun({ text: title, bold: true, size: 32, color: COLORS.primary, font: TITLE_FONT })], spacing: { after: 160 } }),
@@ -111,7 +114,7 @@ function cover(num, title, objet) {
       ['Organisme', `${IDENT.nom} — SIRET ${IDENT.siret} — NDA ${IDENT.nda} — UAI ${IDENT.uai}`],
       ['Lieu de formation', IDENT.lieu],
       ['Certification Qualiopi', `n° ${IDENT.qualiopi} (actions de formation). Extension à la catégorie « actions de formation par apprentissage » engagée : l’audit d’extension sera réalisé dès l’entrée en formation du premier apprenti (courriel de l’organisme certificateur du 14/10/2026).`],
-      ['Responsable', `${IDENT.dirigeant}, Directeur`],
+      ['Responsable', `${IDENT.dirigeant}, Directeur — ${IDENT.tel} — ${IDENT.mail}`],
       ['Version', IDENT.version],
     ], [2600, 7038]),
     spacer(),

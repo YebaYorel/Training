@@ -10,13 +10,13 @@ module.exports = {
     ['h1', '2. Parcours proposé aux maîtres d’apprentissage'],
     ['table', ['Action', 'Contenu', 'Durée / fréquence', 'Coût pour l’entreprise'], [
       ['Réunion de lancement', 'Calendrier d’alternance, référentiel, livret, rôle de chacun, contacts', '2 heures, mardi 16 février 2027, 17 h – 19 h', 'Gratuit'],
-      ['Formation « Réussir sa mission de maître d’apprentissage »', ['Accueillir et intégrer un jeune.', 'Organiser la progression et transmettre un savoir-faire.', 'Évaluer et donner un retour constructif.', 'Communiquer avec une génération différente ; prévenir les conflits.', 'Cadre légal : contrat, temps de travail, règles pour les mineurs, rupture.', 'Égalité, prévention du harcèlement et des discriminations ; accueil d’un apprenti en situation de handicap.'], '1 jour (7 heures), jeudi 15 avril 2027, ou 2 demi-journées', 'Gratuit pour les entreprises accueillant un apprenti de YEBA FORMATIONS ; [[prise en charge OPCO possible selon les règles en vigueur — à vérifier]]'],
+      ['Formation « Réussir sa mission de maître d’apprentissage »', ['Accueillir et intégrer un jeune.', 'Organiser la progression et transmettre un savoir-faire.', 'Évaluer et donner un retour constructif.', 'Communiquer avec une génération différente ; prévenir les conflits.', 'Cadre légal : contrat, temps de travail, règles pour les mineurs, rupture.', 'Égalité, prévention du harcèlement et des discriminations ; accueil d’un apprenti en situation de handicap.'], '1 jour (7 heures), mardi 27 avril 2027, ou 2 demi-journées', 'Gratuit pour les entreprises accueillant un apprenti de YEBA FORMATIONS ; [[prise en charge OPCO possible selon les règles en vigueur — à vérifier]]'],
       ['Réunions d’échange de pratiques', 'Retours d’expérience, difficultés rencontrées, évolution du programme', 'Mardi 14 septembre 2027 et mardi 11 janvier 2028, 17 h – 18 h 30', 'Gratuit'],
       ['Appui individuel', 'Conseil ponctuel sur une situation (conflit, démotivation, évaluation)', 'Sur demande, réponse sous 48 heures ouvrées', 'Gratuit'],
       ['Ressources', 'Guide du maître d’apprentissage (fiches pratiques), modèles de grille d’évaluation', 'Remis à la réunion de lancement', 'Gratuit'],
     ], [2000, 3600, 1700, 2338]],
     ['p', 'Les maîtres d’apprentissage qui le souhaitent peuvent être orientés vers une certification de leurs compétences de tuteur inscrite au répertoire spécifique de France Compétences ([[certification à identifier]]).'],
-    ['p', 'Les maîtres d’apprentissage sont également invités au **conseil de perfectionnement** (juin et décembre 2027), au **job dating** du 25 novembre 2027 et à la **cérémonie de clôture** de février 2028 (pièce n° 19).'],
+    ['p', 'Les maîtres d’apprentissage sont également invités au **conseil de perfectionnement** (juin et décembre 2027), au **job dating** du 23 novembre 2027 et à la **cérémonie de clôture** de février 2028 (pièce n° 19).'],
     ['h1', '3. Évaluation'],
     ['ul', [
       'Questionnaire de satisfaction à l’issue de chaque formation et réunion.',

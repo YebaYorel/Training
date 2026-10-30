@@ -167,7 +167,7 @@ module.exports = {
       '**Je ne suis pas seul(e)** : YEBA FORMATIONS me contacte sous 48 heures ouvrées.',
       '**Je peux continuer ma formation jusqu’à 6 mois** pendant que je cherche un nouvel employeur, avec l’aide de YEBA FORMATIONS.',
       'Je vérifie que mon employeur me remet mes **documents de fin de contrat** (certificat de travail, attestation France Travail, solde de tout compte).',
-      'Contact : [[nom, téléphone, courriel du référent]]',
+      'Contact : Aurélien LUMEKA — +262 693 32 24 45 — yebaformations@gmail.com',
     ]],
   ],
 };

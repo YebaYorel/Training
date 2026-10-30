@@ -8,7 +8,7 @@ module.exports = {
     ['table', ['Élément', 'Description'], [
       ['Référent', 'Aurélien LUMEKA, titulaire d’une formation de **Référent handicap en organisme de formation** ([[intitulé exact, organisme, date — attestation jointe]])'],
       ['Missions', 'Accueil et écoute ; identification des besoins de compensation ; mise en place des aménagements ; lien avec l’employeur et les partenaires spécialisés ; suivi pendant tout le parcours'],
-      ['Contact', '[[téléphone, courriel dédié]] — affiché dans les locaux, sur le site internet et dans le livret d’accueil'],
+      ['Contact', '+262 693 32 24 45 — yebaformations@gmail.com — affiché dans les locaux, sur le site internet et dans le livret d’accueil'],
     ], [2600, 7038]],
     ['p', 'L’article L.6231-2 du Code du travail prévoit que chaque CFA comprend un référent chargé de l’intégration des personnes en situation de handicap. YEBA FORMATIONS satisfait déjà à cette exigence au titre de sa certification Qualiopi (indicateur 26 du référentiel national qualité).'],
     ['h1', '2. Parcours d’accompagnement'],
