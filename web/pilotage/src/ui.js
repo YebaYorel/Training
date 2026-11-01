@@ -76,6 +76,7 @@
   // ------------------------------------------------------------ connexion
   async function afficherConnexion(message) {
     $("#app").hidden = true; $("#connexion").hidden = false;
+    $("#vue").innerHTML = ""; $("#etat-sauvegarde").textContent = ""; etat.logo = null;   // plus rien de lisible une fois verrouillé
     const existe = await C.existe();
     $("#connexion").innerHTML = `
       <div class="carte-connexion">
@@ -820,7 +821,7 @@
     $("#f-ident").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target); for (const [k, v] of fd.entries()) d().identite[k] = String(v).slice(0, 300);
       d().identite.attestation_3511 = !!fd.get("attestation_3511"); d().identite.taux_tva = P.num(fd.get("taux_tva")) || 8.5; P.synchroAttendus(d()); sauver(); toast("Identité enregistrée."); };
     $("#f-charte").onsubmit = (e) => { e.preventDefault(); const fd = new FormData(e.target), c = d().charte;
-      for (const k of ["couleur_primaire", "couleur_secondaire", "couleur_claire", "couleur_texte"]) c[k] = String(fd.get(k)).replace("#", "").toUpperCase();
+      for (const k of ["couleur_primaire", "couleur_secondaire", "couleur_claire", "couleur_texte"]) { const v = String(fd.get(k)).replace("#", "").toUpperCase(); if (/^[0-9A-F]{6}$/.test(v)) c[k] = v; }
       c.police = String(fd.get("police") || "Arial").replace(/[^A-Za-z0-9 \-]/g, "").slice(0, 40) || "Arial"; c.police_titres = String(fd.get("police_titres") || c.police).replace(/[^A-Za-z0-9 \-]/g, "").slice(0, 40) || c.police; c.taille_texte = Math.min(28, Math.max(14, P.num(fd.get("taille_texte")) || 14)); c.taille_titre = c.taille_texte + 8;
       c.couleurs_validees = true; sauver(); appliquerCharte(); rendre(); toast("Charte enregistrée."); };
     $("#logo").onchange = (e) => { const fi = e.target.files[0]; if (!fi || fi.size > 5e6) return; const r = new FileReader();

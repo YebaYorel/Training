@@ -477,7 +477,7 @@
     return `<!doctype html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self' data:">
-<title>${h(intitule)}</title><script type="application/ld+json">${ld}</script>
+<title>${h(intitule)}</title><script type="application/ld+json">${ld.replace(/</g, "\\u003c").replace(/>/g, "\\u003e").replace(/&/g, "\\u0026")}</script>
 <style>:root{--p:#${c.couleur_primaire};--s:#${c.couleur_secondaire};--c:#${c.couleur_claire};--t:#${c.couleur_texte}}
 body{font-family:${h(c.police)},Arial,sans-serif;font-size:1.25rem;line-height:1.6;color:var(--t);margin:0;background:#fff}
 header{background:var(--p);color:#fff;padding:1.5rem 1rem}header h1{margin:0;font-size:2rem}main{max-width:1100px;margin:0 auto;padding:1rem}

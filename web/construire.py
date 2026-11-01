@@ -8,9 +8,12 @@ Produit dans web/dist/ :
 Les bibliothèques (versions figées) sont chargées depuis cdn.jsdelivr.net ; tout le reste est intégré.
 """
 import re
+import sys
 from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
+sys.path.insert(0, str(ICI))
+from securite_build import balise, csp  # noqa: E402
 SRC = ICI / "src"
 LIBS = [
     "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js",
@@ -30,7 +33,7 @@ def inline(js: str) -> str:
 def construire() -> tuple[Path, Path]:
     page = (SRC / "page.html").read_text(encoding="utf-8")
     exemple = (SRC / "exemple_mem.json").read_text(encoding="utf-8")
-    scripts = [f'<script src="{u}"></script>' for u in LIBS]
+    scripts = [balise(u) for u in LIBS]
     scripts.append(f"<script>window.EXEMPLE_MEM = {inline(exemple)};</script>")
     code = "\n".join(inline((SRC / f"{m}.js").read_text(encoding="utf-8")) for m in MODULES)
     scripts.append(f"<script>\n{code}\n</script>")
@@ -42,6 +45,8 @@ def construire() -> tuple[Path, Path]:
     autonome = dist / "Atelier_decorticage.html"
     autonome.write_text('<!doctype html>\n<html lang="fr"><head><meta charset="utf-8">'
                         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+                        f'<meta http-equiv="Content-Security-Policy" content="{csp(contenu)}">'
+                        '<meta name="referrer" content="no-referrer">'
                         "</head><body>\n" + contenu + "\n</body></html>\n", encoding="utf-8")
     return artefact, autonome
 

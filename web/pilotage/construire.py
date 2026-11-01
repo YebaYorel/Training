@@ -10,9 +10,12 @@ Le moteur de décorticage (web/src) est réutilisé tel quel ; seules les biblio
 """
 import base64
 import re
+import sys
 from pathlib import Path
 
 ICI = Path(__file__).resolve().parent
+sys.path.insert(0, str(ICI.parent))
+from securite_build import balise, csp  # noqa: E402
 SRC = ICI / "src"
 MOTEUR = ICI.parent / "src"
 LIBS = [
@@ -33,7 +36,7 @@ def inline(js: str) -> str:
 
 def construire() -> tuple[Path, Path]:
     page = (SRC / "page.html").read_text(encoding="utf-8")
-    scripts = [f'<script src="{u}"></script>' for u in LIBS]
+    scripts = [balise(u) for u in LIBS]
     logo = SRC / "logo_yeba.png"
     if logo.exists():   # logo de la charte, utilisé par défaut (retirable dans Réglages)
         scripts.append(f'<script>window.LOGO_YEBA = "data:image/png;base64,{base64.b64encode(logo.read_bytes()).decode()}";</script>')
@@ -48,6 +51,8 @@ def construire() -> tuple[Path, Path]:
     autonome = dist / "Pilotage.html"
     autonome.write_text('<!doctype html>\n<html lang="fr"><head><meta charset="utf-8">'
                         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+                        f'<meta http-equiv="Content-Security-Policy" content="{csp(contenu)}">'
+                        '<meta name="referrer" content="no-referrer">'
                         "</head><body>\n" + contenu + "\n</body></html>\n", encoding="utf-8")
     return artefact, autonome
 
