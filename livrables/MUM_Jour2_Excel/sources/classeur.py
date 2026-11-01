@@ -91,12 +91,12 @@ def construire(corrige: bool) -> Workbook:
     wb = Workbook()
     # ------------------------------------------------------------------ Accueil
     ws = wb.active; ws.title = "Accueil"
-    entete(ws, "RUN'ATTITUDE · Boutique du Chaudron", "Vous êtes manager de la boutique. La direction régionale vous confie 5 missions et un coffre à ouvrir.",
+    entete(ws, "RUN'ATTITUDE · Boutique du Chaudron", "Vous êtes manager de la boutique. La direction régionale vous confie 4 missions, un coffre à ouvrir et un bonus pour la maison.",
            "Règle unique : on écrit seulement dans les cases JAUNES. La colonne « Contrôle » affiche ✔ quand c'est juste, ✘ sinon. "
            "Le score se met à jour tout seul dans la feuille « Tableau de bord ».", {"A": 6, "B": 44, "C": 18, "D": 18, "E": 18, "F": 18, "G": 4, "H": 16})
     for i, (t, d) in enumerate([("Mission 1 · Stock", "Un tableau lisible, des nombres qui en sont"), ("Mission 2 · Valeur", "Valeur, total, moyenne"),
                                 ("Mission 3 · Alerte", "Trier, filtrer, décider avec SI"), ("Mission 4 · Erreurs", "####, #VALEUR!, #DIV/0!"),
-                                ("Mission 5 · Ventes", "Total, moyenne, écart à l'objectif"), ("Le coffre", "4 codes, 1 coffre : escape game final")]):
+                                ("Le coffre", "4 codes, 1 coffre : escape game final"), ("Bonus · Ventes", "À la maison : total, moyenne, écart à l'objectif")]):
         ws.cell(row=5 + i, column=1, value=i + 1); ws.cell(row=5 + i, column=2, value=t); ws.merge_cells(start_row=5 + i, start_column=3, end_row=5 + i, end_column=6)
         ws.cell(row=5 + i, column=3, value=d)
         for col in (1, 2, 3):
@@ -206,8 +206,8 @@ def construire(corrige: bool) -> Workbook:
     couleurs_controle(ws, "H9:H12")
 
     # ------------------------------------------------------------------ Mission 5
-    ws = wb.create_sheet("Mission 5 · Ventes")
-    entete(ws, "Mission 5 · Les ventes de la semaine", f"Objectif hebdomadaire fixé par la direction : {OBJECTIF:,} €".replace(",", " ") + ". Êtes-vous dans les clous ?",
+    ws = wb.create_sheet("Bonus · Ventes")
+    entete(ws, "Bonus à la maison · Les ventes de la semaine", f"Objectif hebdomadaire fixé par la direction : {OBJECTIF:,} €".replace(",", " ") + ". Êtes-vous dans les clous ?",
            "Calculez avec des formules : total, moyenne, meilleur jour (MAX), écart en € (total - objectif), écart en % (écart ÷ objectif). "
            "Puis écrivez en B20 une phrase d'alerte pour la direction, avec une action.",
            {"A": 4, "B": 36, "C": 20, "D": 4, "E": 4, "F": 4, "G": 4, "H": 14})
@@ -251,11 +251,11 @@ def construire(corrige: bool) -> Workbook:
         ref.cell(row=i + 1, column=1, value=q); ref.cell(row=i + 1, column=2, value=p)
     for i, (j, v) in enumerate(VENTES):
         ref.cell(row=i + 1, column=3, value=v)
-    ref["D1"] = OBJECTIF
+    ref["D1"] = OBJECTIF; ref["E1"] = 12450; ref["F1"] = 415
     codes = [("Code 1 · Nombre de produits à recommander (Mission 3)", 5, 'COUNTIF(_ref!A1:A12,"<10")'),
              ("Code 2 · Valeur totale du stock, arrondie à l'euro (Mission 2)", 2839, "ROUND(SUMPRODUCT(_ref!A1:A12,_ref!B1:B12),0)"),
-             ("Code 3 · Chiffre d'affaires de la semaine (Mission 5)", 10730, "SUM(_ref!C1:C7)"),
-             ("Code 4 · Écart à l'objectif en euros (Mission 5)", -270, "SUM(_ref!C1:C7)-_ref!D1")]
+             ("Code 3 · Panier moyen réparé, en euros (Mission 4)", 30, "ROUND(_ref!E1/_ref!F1,0)"),
+             ("Code 4 · Prix moyen des produits, arrondi à l'euro (Mission 2)", 15, "ROUND(AVERAGE(_ref!B1:B12),0)")]
     ligne_titres(ws, 5, ["", "Énigme", "Votre code"])
     ws.cell(row=5, column=8, value="Contrôle"); f(ws["H5"], 14, True, BLANC, MARINE, "center")
     for i, (lib, sol, attendu) in enumerate(codes):
@@ -273,12 +273,12 @@ def construire(corrige: bool) -> Workbook:
 
     # ------------------------------------------------------------------ Tableau de bord
     ws = wb.create_sheet("Tableau de bord", 1)
-    entete(ws, "Tableau de bord des missions", "Votre score se met à jour à chaque ✔.", "Objectif de la journée : 100 %. Le formateur relève le score à 16h40.",
+    entete(ws, "Tableau de bord des missions", "Votre score se met à jour à chaque ✔.", "Objectif de la journée : 100 %. Le formateur relève le score à 11h45. Le bonus ne compte pas dans le total.",
            {"A": 4, "B": 30, "C": 14, "D": 14, "E": 14, "F": 30, "G": 4, "H": 4})
     ligne_titres(ws, 5, ["", "Mission", "✔ obtenus", "Sur", "Réussite", "Progression"])
     plages = [("Mission 1 · Stock", f"'Mission 1 · Stock'!H{L0}:H{LN}", 12), ("Mission 2 · Valeur", f"'Mission 2 · Valeur'!H{L0}:H20", 14),
               ("Mission 3 · Alerte", f"'Mission 3 · Alerte'!H{L0}:H19", 13), ("Mission 4 · Erreurs", "'Mission 4 · Erreurs'!H9:H12", 3),
-              ("Mission 5 · Ventes", "'Mission 5 · Ventes'!H13:H20", 6), ("Le coffre", "'Le coffre'!H6:H9", 4)]
+              ("Le coffre", "'Le coffre'!H6:H9", 4), ("Bonus maison · Ventes", "'Bonus · Ventes'!H13:H20", 6)]
     for i, (nom, plage, sur) in enumerate(plages):
         r = 6 + i
         ws[f"B{r}"] = nom; ws[f"C{r}"] = f'=COUNTIF({plage},"✔")'; ws[f"D{r}"] = sur; ws[f"E{r}"] = f"=C{r}/D{r}"
@@ -287,7 +287,7 @@ def construire(corrige: bool) -> Workbook:
             f(ws[f"{col}{r}"], 14, col == "B", MARINE if col == "F" else NOIR, CLAIR if i % 2 == 0 else None, "left" if col in "BF" else "center",
               nf="0%" if col == "E" else None)
             ws[f"{col}{r}"].border = BORD
-    ws["B13"] = "TOTAL"; ws["C13"] = "=SUM(C6:C11)"; ws["D13"] = "=SUM(D6:D11)"; ws["E13"] = "=C13/D13"
+    ws["B13"] = "TOTAL DU MATIN"; ws["C13"] = "=SUM(C6:C10)"; ws["D13"] = "=SUM(D6:D10)"; ws["E13"] = "=C13/D13"
     ws["F13"] = '=REPT("█",ROUND(E13*10,0))&REPT("░",10-ROUND(E13*10,0))'
     for col in "BCDEF":
         f(ws[f"{col}13"], 16, True, BLANC, MARINE, "left" if col in "BF" else "center", nf="0%" if col == "E" else None)

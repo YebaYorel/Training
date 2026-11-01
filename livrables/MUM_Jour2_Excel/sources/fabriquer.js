@@ -22,7 +22,7 @@ D.JOURS = D.JOURS.map(() => 'Date :');
   const identite = P.identiteYeba(), charte = Object.assign({ nom_organisme: 'YEBA FORMATIONS' }, P.initiales().charte);
   const png = fs.readFileSync(RACINE + '/web/pilotage/src/logo_yeba.png');
   const logo = { dataURL: 'data:image/png;base64,' + png.toString('base64'), base64: png.toString('base64'), ext: 'png', octets: new Uint8Array(png), ratio: 520 / 443 };
-  const r = { heures_centre: 21, date_debut: DATE, jours: '1', creneaux: '08:00-12:00, 13:00-17:00', pauses: '10:00-10:20, 15:00-15:20', afficher_nom: true, afficher_logo: true };
+  const r = { heures_centre: 4, date_debut: DATE, jours: '1', creneaux: '08:00-12:00', pauses: '10:00-10:15', afficher_nom: true, afficher_logo: true };
   const ctx = Object.assign(D.construireContexte(analyse, r, charte, logo), { pied: P.blocMarque(identite), titre: C.module, sigle: 'MUM' });
   const hm = (s) => { const m = /(\d+)h(\d+)/.exec(s); return +m[1] * 60 + +m[2]; };
   const seance = Object.assign({ numero: 2, type_seance: 'apprentissage', at: 0 }, C.seance);
@@ -44,6 +44,7 @@ D.JOURS = D.JOURS.map(() => 'Date :');
   const NOMS = { Seance: '1_Diaporama', Essentiel_journee: '2_Ressource_fin_de_cours', Exercices: '3_Missions_apprenants', Corriges: '4_Corriges_et_animation_FORMATEUR', Grille_criteriee: '5_Grille_evaluation_5_criteres', QuizApprenants: '6_Quiz_apprenants', Quiz_FORMATEUR: '7_Quiz_reponses_FORMATEUR', Fiche_seance_preuve: '8_Fiche_seance_preuve_Qualiopi' };
   fs.mkdirSync(SORTIE, { recursive: true });
   for (const [n, b] of fichiers) {
+    if (/^Seance/.test(n)) continue;   // le diaporama projeté est fait sur mesure (diaporama.js)
     const base = n.replace(`_${DATE}_${ctx.sigle}`, '').replace(`_${DATE}`, '').replace(/\.(pptx|docx)$/, ''), ext = /\.pptx$/.test(n) ? 'pptx' : 'docx';
     fs.writeFileSync(path.join(SORTIE, `${NOMS[base] || base}_MUM_J2_Excel.${ext}`), Buffer.from(await b.arrayBuffer()));
   }
