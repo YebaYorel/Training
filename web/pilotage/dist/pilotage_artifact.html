@@ -194,6 +194,22 @@ label.second { display: inline-block; cursor: pointer; padding: 8px 14px; font-w
 .apercu-logo { max-height: 110px; width: auto; border-radius: 6px }
 .logo-connexion { width: 150px; height: auto; border-radius: 10px; justify-self: start }
 tr.retard td { background: var(--ko-fond) }
+/* ------------------------------------------------ plan de cours */
+.plan-cp > summary { font-size: 1.08rem }
+ol.plan { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 14px }
+ol.plan > li.grande { border-left: 5px solid var(--accent-marque); padding-left: 12px }
+ol.plan ol { margin: 6px 0 0; padding-left: 1.2rem; display: grid; gap: 8px }
+.ligne-titre { display: flex; gap: 8px; align-items: center }
+.num-romain { font-family: var(--titres); font-weight: 800; color: var(--encre); font-size: 1.2rem; min-width: 2.2rem }
+.titre-partie { font-family: var(--titres); font-weight: 700; color: var(--encre); border-style: dashed }
+.sous-partie { margin: 6px 0 0 6px }
+.sous-partie .lettre { font-weight: 800; color: var(--encre) }
+.sous-partie ul { margin: 4px 0 0; padding-left: 1.2rem; display: grid; gap: 4px }
+.sous-partie li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center }
+select.deplacer { width: 5.2rem; flex: none; font-size: .9rem; padding: 2px 4px; border-width: 1px }
+.sous-partie li { overflow-wrap: anywhere; min-width: 0 }
+.ligne-titre input { min-width: 0 }
+ol.plan, ol.plan ol, .sous-partie ul { min-width: 0 }
 td .puce, td .score { white-space: nowrap; overflow-wrap: normal }
 details > summary { cursor: pointer; padding: 6px 0 }
 
@@ -903,7 +919,46 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     return Object.assign({ contenus: [], mots: [], associes: [], criteres: [], minutes: 0, mode: "", activite: "", exemple: "" }, o);
   }
 
+  /* Séances depuis le plan de cours : une séance par petite partie (action du processus), rangée dans sa
+   * grande partie (I, II…) ; les savoir-faire de ses sous-parties deviennent ses objectifs, les savoirs leurs contenus. */
+  function seancesDepuisPlan(cp, plan) {
+    const seances = [];
+    for (const g of plan.parties)
+      for (const x of g.petites) {
+        const s = { titre: `${g.numero}.${x.numero} — ${titreEtape(x.texte)}`, origine: x.origine, objectifs: [], minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero,
+          sequence: 0, sequence_titre: "", type_seance: "apprentissage", partie: g.numero, partie_titre: g.titre, petite: x.numero, action: x.texte, cadre: x.cadre,
+          criteres_partie: g.criteres, epreuves: plan.epreuves, bloc: plan.bloc };
+        for (const sp of x.sous) {
+          if (sp.attr === "savoirs") continue;
+          const cat = { sf_techniques: "technique", sf_organisationnels: "organisationnel", sf_relationnels: "relationnel" }[sp.attr];
+          for (const ligne of sp.items) {
+            const texte = formuler(ligne), niv = niveauBloom(texte);
+            s.objectifs.push(objectif({ texte, verbe: verbeInitial(texte), niveau: niv, categorie: cat, origine: ligne, mots: motsCles(ligne), sous_partie: sp.lettre,
+              mode: modeBruner(cat, niv), activite: suggestion(ACTIVITES, ligne + " " + x.texte, "Étude de cas guidée puis application en binôme"), exemple: suggestion(EXEMPLES_LOCAUX, ligne + " " + x.texte) }));
+          }
+        }
+        // l'action elle-même est toujours un objectif de la séance (c'est la phrase du REAC qu'on travaille)
+        const t = simplifier(x.texte), nv = niveauBloom(t);
+        s.objectifs.unshift(objectif({ texte: t, verbe: verbeInitial(t), niveau: nv, categorie: "technique", origine: x.texte, mots: motsCles(x.texte), sous_partie: "",
+          mode: modeBruner("technique", nv), activite: suggestion(ACTIVITES, x.texte, "Étude de cas guidée puis application en binôme"), exemple: suggestion(EXEMPLES_LOCAUX, x.texte) }));
+        const savoirs = x.sous.find((sp) => sp.attr === "savoirs").items;
+        const jo = s.objectifs.map((o) => jetons(o.origine));
+        for (const sav of savoirs) {
+          const js = jetons(sav), sc = jo.map((j) => [...js].filter((k) => j.has(k)).length), best = Math.max(...sc);
+          s.objectifs[best > 0 ? sc.indexOf(best) : 0].contenus.push(simplifier(sav));
+        }
+        const [tete, ...reste] = s.objectifs;
+        s.objectifs = [tete].concat(reste.sort((a, b) => ORDRE_CAT[a.categorie] - ORDRE_CAT[b.categorie] || a.niveau - b.niveau));
+        seances.push(s);
+      }
+    return seances;
+  }
+
   function construireSeances(cp) {
+    if (cp.plan && cp.plan.parties && cp.plan.parties.length && D.planCompetence) {
+      const seances = seancesDepuisPlan(cp, cp.plan);
+      return seances.concat(seanceEvaluation(cp));
+    }
     const etapes = cp.description.length ? cp.description : [cp.intitule];
     const seances = etapes.map((e) => ({ titre: titreEtape(e), origine: e, objectifs: [], minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "apprentissage" }));
     const je = etapes.map(jetons);
@@ -950,9 +1005,14 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
       seances[si].objectifs[oi].contenus.push(simplifier(sav));
     }
     for (const s of seances) s.objectifs.sort((a, b) => ORDRE_CAT[a.categorie] - ORDRE_CAT[b.categorie] || a.niveau - b.niveau);
+    return seances.concat(seanceEvaluation(cp));
+  }
+  function seanceEvaluation(cp) {
+    const seances = [];
     if (cp.criteres.length) {
       const ev = { titre: `Entraînement à l'évaluation — ${simplifier(cp.intitule)}`, origine: "Critères de performance du REAC", objectifs: [],
-        minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "evaluation" };
+        minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "evaluation",
+        epreuves: cp.plan ? cp.plan.epreuves : [], bloc: cp.plan ? cp.plan.bloc : null, criteres_partie: cp.criteres };
       for (const c of cp.criteres)
         ev.objectifs.push(objectif({ texte: `Démontrer que : ${c[0].toLowerCase() + c.slice(1)}`, verbe: "Démontrer", niveau: 5, categorie: "critere",
           origine: c, criteres: [c], mots: motsCles(c), mode: modeBruner("critere", 5),
@@ -1023,8 +1083,264 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
   }
   const poidsCompetences = (reac) => Object.fromEntries(reac.competences.map((c) => [c.numero, Math.max(D.volume(c), 1)]));
 
-  Object.assign(D, { NIVEAUX_BLOOM, ETAYAGE, MODES, niveauBloom, verbeInitial, simplifier, motsCles, objectifDepuisSavoir, formuler,
+  Object.assign(D, { NIVEAUX_BLOOM, ETAYAGE, MODES, niveauBloom, verbeInitial, simplifier, motsCles, objectifDepuisSavoir, formuler, jetons, FAMILLES, titreEtape,
     modeBruner, construireSeances, decouperCompetence, repartir, poidsCompetences, PAS, objectif });
+})(typeof window !== "undefined" ? window : globalThis);
+
+/* Plan de cours d'une compétence, selon la méthode de décorticage YEBA FORMATIONS :
+ *
+ *  1. La « Description de la compétence – processus de mise en œuvre » est découpée en ACTIONS :
+ *     une action commence par un verbe d'action et se termine par une virgule ou un point
+ *     (« Mobiliser l'équipe et favoriser la cohésion autour des objectifs de l'établissement marchand. »).
+ *     Un début de phrase de contexte (« Dans le respect des consignes…, ») est gardé à part, comme cadre.
+ *  2. Les actions proches sont RASSEMBLÉES en grandes parties cohérentes (I, II, III…), dans l'ordre du
+ *     REAC, pour que la formation soit « buvable » ; chaque action devient une petite partie (1, 2, 3…).
+ *  3. Sous chaque petite partie, les sous-parties regroupent ce qui s'y rattache :
+ *     a) savoirs, b) savoir-faire techniques, c) savoir-faire organisationnels, d) savoir-faire relationnels.
+ *  4. Chaque grande partie est reliée aux critères de performance (REAC), aux épreuves (RE / RC)
+ *     et au bloc de compétences (fiche RNCP) : c'est la base du suivi quotidien.
+ * Le regroupement est automatique (ressemblance des mots et familles de notions) : il est
+ * MODIFIABLE par le formateur, qui reste le seul juge de la cohérence pédagogique. */
+(function (G) {
+  "use strict";
+  const D = (G.Decorticage = G.Decorticage || {});
+  const N = (s) => D.normaliser(s);
+
+  const ROMAINS = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+  const SOUS_PARTIES = [["savoirs", "a", "Savoirs"], ["sf_techniques", "b", "Savoir-faire techniques"],
+    ["sf_organisationnels", "c", "Savoir-faire organisationnels"], ["sf_relationnels", "d", "Savoir-faire relationnels"]];
+  // mots en -er / -ir / -re qui ne sont pas des verbes à l'infinitif
+  const PAS_VERBES = new Set(["notre", "votre", "entre", "autre", "contre", "titre", "ordre", "cadre", "centre", "offre", "membre", "nombre",
+    "chiffre", "libre", "propre", "lettre", "registre", "manager", "dossier", "fichier", "premier", "dernier", "particulier", "metier",
+    "chantier", "papier", "atelier", "calendrier", "quartier", "plusieurs", "leur", "leurs", "pour", "sur", "par", "hier", "fer", "mer",
+    "super", "inter", "cher", "fier", "amer", "hiver", "partenaire", "matiere", "maniere", "primaire", "necessaire", "affaire",
+    "tutoire", "inventaire", "horaire", "salaire", "barriere", "carriere", "frontiere", "derniere", "premiere", "filiere", "lumiere",
+    "gestionnaire", "fournisseur", "noir", "soir", "espoir", "devoir", "pouvoir", "savoir", "avoir", "loisir", "desir", "plaisir", "avenir",
+    "dire", "lire", "rire", "pire", "sire", "faire", "boire", "croire", "joindre"].map(N));
+  const VERBES_COURTS = new Set(["faire", "dire", "lire", "etre", "avoir", "savoir", "pouvoir", "devoir", "joindre", "boire", "croire"].map(N));
+
+  // « Mobiliser… », « S'assurer… », « Faire appliquer… » : le segment commence-t-il par un infinitif ?
+  function commenceParVerbe(seg) {
+    const m = /^\s*(?:s[’']|se\s+)?([A-Za-zÀ-ÿœ]+)/.exec(seg);
+    if (!m) return false;
+    const w = N(m[1]);
+    if (VERBES_COURTS.has(w) && /^\s*(faire|etre)\s/i.test(N(seg))) return true;
+    if (PAS_VERBES.has(w) || w.length < 4) return false;
+    return /(er|ir|re|oir)$/.test(w);
+  }
+  const majuscule = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
+  // Découpe aux virgules hors parenthèses
+  function segments(phrase) {
+    const out = []; let cur = "", prof = 0;
+    for (const ch of phrase) {
+      if (ch === "(") prof++; else if (ch === ")") prof = Math.max(0, prof - 1);
+      if (ch === "," && !prof) { out.push(cur.trim()); cur = ""; } else cur += ch;
+    }
+    if (cur.trim()) out.push(cur.trim());
+    return out.filter(Boolean);
+  }
+
+  /* Étape 1 — actions. Chaque action garde sa phrase d'origine (traçabilité REAC) et son éventuel cadre. */
+  function actions(cp) {
+    const res = [];
+    (cp.description || []).forEach((phrase, iPhrase) => {
+      const segs = segments(phrase.replace(/\.$/, ""));
+      let cadre = [], cour = null, local = [];
+      const pousser = () => { if (cour) { cour.texte = majuscule(cour.texte.replace(/\s+(et|ou)$/i, "").trim()); res.push(cour); cour = null; } };
+      segs.forEach((seg, k) => {
+        if (commenceParVerbe(seg)) {
+          pousser();
+          cour = { texte: seg, cadre: cadre.concat(local).join(", "), origine: phrase, phrase: iPhrase };
+          local = [];
+        } else if (!cour) cadre.push(seg);
+        // « …engagées et, en cas d'écarts persistants, proposer… » : le segment est le cadre de l'action suivante
+        else if (/\s(et|ou)$/i.test(cour.texte) && segs.slice(k + 1).some(commenceParVerbe)) local.push(seg);
+        else cour.texte += ", " + seg;
+      });
+      pousser();
+      if (!res.some((a) => a.phrase === iPhrase)) res.push({ texte: majuscule(phrase.replace(/\.$/, "")), cadre: "", origine: phrase, phrase: iPhrase });
+    });
+    return res.map((a, i) => Object.assign(a, { index: i, verbe: D.verbeInitial(a.texte), niveau: D.niveauBloom(a.texte) }));
+  }
+
+  /* Thèmes métier : relient une action du processus aux savoirs qui la servent, même quand les mots diffèrent
+   * (« Préparer et animer une réunion » ↔ « Organiser et animer des briefings »). Fragments cherchés dans le texte normalisé. */
+  const THEMES = {
+    communication: ["communi", "consign", "inform", "transmet", "expliq", "partag", "message", "ecoute", "questionnement", "interpersonnel", "rendre compte", "reformul", "procedure"],
+    reunion: ["reunion", "briefing", "debriefing", "animer", "animation"],
+    motivation: ["motiv", "stimul", "challeng", "concours", "team building", "cohesion", "feder", "dynamique", "engag", "mobilis", "impliq", "valoris", "reconnaiss", "leadership", "responsabilis"],
+    posture: ["posture", "pratique managerial", "style", "techniques de management", "fondamentaux du management", "bienveill", "conflit", "adapter sa", "situations managerial", "dynamique de groupe", "intergeneration"],
+    competences: ["competence", "professionnalis", "formation", "tutorat", "montee", "gpec", "developpement des", "potentiel", "accompagn", "progres", "fiche de poste", "fonctions"],
+    entretien: ["entretien", "evaluat", "feedback", "recadr", "appreciation", "individuel"],
+    projet: ["projet", "changement", "etape", "jalon", "experiment", "participati", "anticip"],
+    amelioration: ["amelior", "correct", "preconis", "solution", "pdca", "deming", "qualite", "lean", "audit", "retour d", "continue", "dysfonction", "proposition"],
+    organisation: ["planning", "planifi", "organis", "tache", "deleg", "charge de travail", "gestion du temps", "delai", "priorit", "coordon", "ressources", "horaire", "absence", "imprevu", "regul", "date butoir", "moyens humains"],
+    cadre_legal: ["code du travail", "legislation", "reglement", "legal", "convention", "instance", "representati", "negociation", "droit", "responsabilite civile", "penale", "juridique", "contrat", "periode d", "politique rh", "conventionnel", "confidentialit"],
+    sante_securite: ["securit", "hygiene", "prevention", "risque", "rps", "psychosoc", "qhse", "accident", "ergonom", "sante", "issues de secours", "manutention", "ohsas", "iso"],
+    handicap: ["handicap", "discrimin", "inclusion", "rqth", "agefiph", "amenagement", "accessibil", "divers", "egalite", "pep", "referent"],
+    numerique: ["numerique", "digital", "medias sociaux", "reseaux sociaux", "e-reputation", "image de marque", "personal branding", "applicatif", "bureautique", "systeme d", "logiciel", "collaborati", "tracabil", "omnicanal", "crm", "site", "outils de travail"],
+    donnees: ["donnee", "indicateur", "tableau de bord", "analys", "synthes", "statisti", "ecart", "ratio", "kpi", "interpret", "calcul", "collecter", "collecte ", "resultat"],
+    rentabilite: ["rentabil", "marge", "cout", "budget", "chiffre d", "demarque", "financ", "prix", "compte de resultat", "frais", "economique", "seuil"],
+    client: ["client", "satisf", "fidelis", "argument", "vente", "conseil", "parcours d", "reclamation", "litige", "incivilit", "accueil", "attente", "consommation"],
+    stock: ["stock", "approvision", "command", "inventaire", "reception", "livraison", "fournisseur", "rupture", "logisti", "entrepos", "reserve", "rangement"],
+    merchandising: ["merchandis", "implant", "lineaire", "planogram", "vitrine", "balisage", "operations commerciales", "promotion", "theatralis", "signaletique", "assortiment", "offre de produits", "allee"],
+    rse: ["rse", "gaspill", "dechet", "environnement", "durable", "valorisation des"],
+    recrutement: ["recrut", "candidat", "selection", "integration", "nouvelle recrue", "onboarding", "profil", "besoins en ressources humaines", "embauche"],
+  };
+  const THEMES_REG = { cadre_legal: 1, sante_securite: 1, handicap: 1 };
+  function themes(texte) {
+    const n = " " + N(texte).replace(/[’']/g, " ").replace(/[^a-z0-9]+/g, " ") + " ";
+    // un fragment doit commencer un mot (« collecter » ne doit pas attraper « négociation collective »)
+    return new Set(Object.entries(THEMES).filter(([, frags]) => frags.some((f) => n.includes(" " + f))).map(([k]) => k));
+  }
+  // Signature d'un texte : racines de 5 lettres + thèmes (préfixés « # »)
+  const VIDES = new Set("dans pour avec sans sous leur leurs entre selon afin ainsi notamment etre faire mettre oeuvre place partir compte cadre ensemble connaissance connaissances notions principes principales differents differentes techniques outils etablissement marchand marchands perimetre entreprise enseigne contexte adapte adaptee adaptes adaptees situation situations ensemble".split(" "));
+  function signature(texte) {
+    const r = new Set((N(texte).replace(/[’']/g, " ").match(/[a-z]{4,}/g) || []).filter((m) => !VIDES.has(m)).map((m) => m.slice(0, 5)));
+    for (const t of themes(texte)) r.add("#" + t);
+    return r;
+  }
+  // Poids : les marques rares dans la compétence comptent plus ; un thème partagé compte double
+  function ponderation(listes) {
+    const df = {};
+    for (const js of listes) for (const j of js) df[j] = (df[j] || 0) + 1;
+    return (j) => (j.startsWith("#") ? 2 : 1) / Math.sqrt(df[j] || 1);
+  }
+  const proximite = (a, b, w) => { let s = 0; for (const j of a) if (b.has(j)) s += w(j); return s; };
+
+  /* Étape 2 — grandes parties : on découpe la suite des phrases du REAC (son ordre logique) en 2 à 5 blocs
+   * consécutifs qui maximisent la proximité interne (programmation dynamique). Les actions d'une même
+   * phrase restent ensemble ; une grande partie d'une seule phrase est pénalisée (« buvabilité »). */
+  function regrouper(acts) {
+    const unites = [];
+    for (const a of acts) { const u = unites.find((x) => x.phrase === a.phrase); if (u) u.idx.push(a.index); else unites.push({ phrase: a.phrase, idx: [a.index] }); }
+    const n = unites.length;
+    if (n <= 2) return [acts.map((a) => a.index)];
+    const sig = unites.map((u) => { const s = new Set(); for (const i of u.idx) for (const j of signature(acts[i].texte)) s.add(j); return s; });
+    const w = ponderation(sig);
+    const sim = sig.map((a) => sig.map((b) => proximite(a, b, w)));
+    const cible = Math.max(2, Math.min(5, Math.round(n / 2.3)));
+    const maxTaille = Math.max(2, Math.ceil(n / cible) + 1);
+    const valeur = (i, j) => {                      // unités i..j incluses
+      const t = j - i + 1;
+      if (t > maxTaille) return -Infinity;
+      if (t === 1) return -0.6;
+      let s = 0, c = 0;
+      for (let a = i; a <= j; a++) for (let b = a + 1; b <= j; b++) { s += sim[a][b]; c++; }
+      return (s / c) * (t - 1);
+    };
+    // best[k][j] : meilleur découpage des unités 0..j-1 en k blocs
+    const best = Array.from({ length: cible + 1 }, () => Array(n + 1).fill(-Infinity)), choix = Array.from({ length: cible + 1 }, () => Array(n + 1).fill(-1));
+    best[0][0] = 0;
+    for (let k = 1; k <= cible; k++)
+      for (let j = 1; j <= n; j++)
+        for (let i = k - 1; i < j; i++) {
+          if (best[k - 1][i] === -Infinity) continue;
+          const v = best[k - 1][i] + valeur(i, j - 1);
+          if (v > best[k][j]) { best[k][j] = v; choix[k][j] = i; }
+        }
+    let k = cible;
+    while (k > 1 && best[k][n] === -Infinity) k--;
+    const bornes = [];
+    for (let j = n; k > 0; k--) { const i = choix[k][j]; bornes.unshift([i, j - 1]); j = i; }
+    return bornes.map(([i, j]) => unites.slice(i, j + 1).flatMap((u) => u.idx));
+  }
+
+  // Titre d'une grande partie : l'action la plus représentative, réduite à sa proposition principale (jamais de mot coupé)
+  function titreGrande(membres) {
+    let rep = membres[0];
+    if (membres.length > 2) {
+      const sg = membres.map((m) => signature(m.texte)), w = ponderation(sg);
+      let best = -1;
+      membres.forEach((m, i) => { const s = sg.reduce((t, o, k) => t + (k === i ? 0 : proximite(sg[i], o, w)), 0); if (s > best) { best = s; rep = m; } });
+    }
+    let t = rep.texte.replace(/\s+(afin d[e’']|pour |en vue d|en s[’']appuyant|en tenant|en expliquant|en utilisant|en concertation|en collaboration|en coordination|à partir d|dans le respect|en intégrant|en fonction d|dans le but)[\s\S]*$/i, "");
+    t = D.simplifier(t.replace(/\s*\([^)]*\)/g, ""));
+    // titre = proposition principale ENTIÈRE : on coupe seulement à une virgule, jamais au milieu d'une proposition ni d'un mot
+    const v = t.indexOf(", ");
+    if (t.length > 95 && v >= 35) t = t.slice(0, v);
+    return majuscule(t);
+  }
+
+  /* Étape 3 — sous-parties : chaque savoir / savoir-faire va sous l'action qui le sert le plus (thèmes + mots).
+   * Sans lien avec aucune action : les repères réglementaires (droit du travail, prévention, handicap) forment
+   * une grande partie « Cadre et repères » ; les autres rejoignent l'action la plus proche, même faiblement. */
+  function repartirItems(cp, acts) {
+    const items = SOUS_PARTIES.flatMap(([attr]) => (cp[attr] || []).map((texte) => ({ attr, texte })));
+    const ja = acts.map((a) => signature(a.texte + " " + (a.cadre || ""))), ji = items.map((it) => signature(it.texte));
+    const w = ponderation(ja.concat(ji));
+    const charge = acts.map(() => 0), orphelins = [];
+    const affect = acts.map(() => Object.fromEntries(SOUS_PARTIES.map(([attr]) => [attr, []])));
+    items.forEach((it, k) => {
+      const sc = ja.map((a) => proximite(ji[k], a, w)), best = Math.max(...sc);
+      const reglementaire = [...themes(it.texte)].some((t) => THEMES_REG[t]);
+      if (best < 1.6 && reglementaire) { orphelins.push(it); return; }
+      let i = sc.indexOf(best);
+      if (best <= 0) i = charge.indexOf(Math.min(...charge));
+      affect[i][it.attr].push(it.texte); charge[i]++;
+    });
+    return { affect, orphelins, charge };
+  }
+
+  // Étape 4 — liens avec l'évaluation : épreuves (RE / RC) et bloc RNCP de la compétence
+  function liensEvaluation(cp, re, fiche) {
+    const epreuves = re && re.epreuves ? re.epreuves.filter((e) => (e.competences || []).includes(cp.numero)).map((e) => `${e.modalite} (${e.duree})`) : [];
+    let bloc = null;
+    if (fiche && fiche.blocs) {
+      const cle = N(cp.intitule).replace(/[^a-z0-9]+/g, " ").trim();
+      bloc = fiche.blocs.find((b) => (b.competences || []).some((c) => { const k = N(c).replace(/[^a-z0-9]+/g, " ").replace(/\s*…$/, "").trim(); return k && (cle.startsWith(k.slice(0, 40)) || k.startsWith(cle.slice(0, 40))); })) || null;
+    }
+    const questions = re && re.productions ? re.productions.filter((p) => N(p.competence) === N(cp.intitule)).flatMap((p) => p.themes.map((t) => t[0])) : [];
+    return { epreuves, bloc: bloc ? { code: bloc.code, intitule: bloc.intitule } : null, themes_jury: questions };
+  }
+
+  function planCompetence(cp, re, fiche) {
+    const acts = actions(cp);
+    if (!acts.length) acts.push({ texte: cp.intitule, cadre: "", origine: cp.intitule, phrase: 0, index: 0, verbe: D.verbeInitial(cp.intitule), niveau: D.niveauBloom(cp.intitule) });
+    const groupes = regrouper(acts);
+    const { affect, orphelins } = repartirItems(cp, acts);
+    const parties = groupes.map((g, gi) => {
+      const membres = g.map((i) => acts[i]);
+      return { numero: ROMAINS[gi] || String(gi + 1), titre: titreGrande(membres), criteres: [],
+        petites: membres.map((a, k) => ({ numero: k + 1, texte: a.texte, cadre: a.cadre, verbe: a.verbe, niveau: a.niveau, origine: a.origine,
+          sous: SOUS_PARTIES.map(([attr, lettre, lib]) => ({ attr, lettre, titre: lib, items: affect[a.index][attr] })) })) };
+    });
+    // items sans lien : grande partie « cadre et repères » (souvent : réglementation, handicap, risques) ou action la moins chargée
+    if (orphelins.length >= 3) {
+      parties.push({ numero: ROMAINS[parties.length] || String(parties.length + 1), titre: "Appliquer le cadre réglementaire : droit du travail, prévention des risques, handicap et non-discrimination", criteres: [], reperes: true,
+        petites: [{ numero: 1, texte: "Appliquer et faire appliquer les règles, la prévention et l'inclusion dans son périmètre", cadre: "", verbe: "Appliquer", niveau: 3, origine: "Savoirs et savoir-faire réglementaires du REAC, sans action dédiée dans la description",
+          sous: SOUS_PARTIES.map(([attr, lettre, lib]) => ({ attr, lettre, titre: lib, items: orphelins.filter((o) => o.attr === attr).map((o) => o.texte) })) }] });
+    } else for (const o of orphelins) {
+      const toutes = parties.flatMap((p) => p.petites);
+      const cible = toutes.reduce((m, p) => (p.sous.reduce((t, s) => t + s.items.length, 0) < m.sous.reduce((t, s) => t + s.items.length, 0) ? p : m), toutes[0]);
+      cible.sous.find((s) => s.attr === o.attr).items.push(o.texte);
+    }
+    // critères de performance → grande partie la plus proche (la dernière à défaut)
+    const jp = parties.map((p) => signature(p.titre + " " + p.petites.map((x) => x.texte + " " + x.sous.flatMap((z) => z.items).join(" ")).join(" ")));
+    const wc = ponderation(jp);
+    for (const c of cp.criteres || []) {
+      const jc = signature(c), sc = jp.map((x) => proximite(jc, x, wc)), best = Math.max(...sc);
+      parties[best > 0 ? sc.indexOf(best) : parties.length - 1].criteres.push(c);
+    }
+    return Object.assign({ cp: cp.numero, at: cp.at_numero, intitule: cp.intitule, parties, nbActions: acts.length,
+      nbItems: SOUS_PARTIES.reduce((t, [attr]) => t + (cp[attr] || []).length, 0) }, liensEvaluation(cp, re, fiche));
+  }
+
+  // Plan complet du titre : AT → CP → I, II… → 1, 2… → a) b) c) d)
+  function planDeCours(reac, re, fiche) {
+    return reac.activites.map((at) => ({ numero: at.numero, intitule: at.intitule,
+      competences: reac.competences.filter((c) => c.at_numero === at.numero).map((c) => planCompetence(c, re, fiche)) }));
+  }
+
+  // Contrôle d'exhaustivité : chaque savoir / savoir-faire / critère du REAC apparaît exactement une fois
+  function controlePlan(cp, plan) {
+    const vus = plan.parties.flatMap((p) => p.petites.flatMap((x) => x.sous.flatMap((s) => s.items)));
+    const attendus = SOUS_PARTIES.flatMap(([attr]) => cp[attr] || []);
+    return { complet: vus.length === attendus.length && attendus.every((a) => vus.includes(a)), items: vus.length, attendus: attendus.length,
+      criteres: plan.parties.reduce((t, p) => t + p.criteres.length, 0) === (cp.criteres || []).length };
+  }
+
+  Object.assign(D, { THEMES, themesTexte: themes, actionsCompetence: actions, planCompetence, planDeCours, controlePlan, ROMAINS, SOUS_PARTIES });
 })(typeof window !== "undefined" ? window : globalThis);
 
 /* Planification jour par jour, heure par heure — portage de planification.py.
@@ -1605,6 +1921,25 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
       });
     f.filtre(7);
 
+    // Plan de cours (méthode YEBA) : AT → CP → I, II… → 1, 2… → a) savoirs, b) c) d) savoir-faire
+    if (ctx.planCours) {
+      f = new Feuille(wb, "Plan de cours", st, [22, 26, 36, 50, 34, 26], `Plan de cours — ${titreF}`,
+        "Chaque action du processus (REAC) = une petite partie ; les actions proches forment une grande partie ; savoirs et savoir-faire rangés dessous.", nomOrg);
+      f.entetes(["Activité type · Compétence", "Grande partie", "Petite partie — action du REAC", "Sous-partie : savoirs et savoir-faire", "Critères de performance (REAC)", "Évaluation (RE / RC) · Bloc RNCP"]);
+      for (const at of ctx.planCours)
+        for (const pc of at.competences) {
+          f.rangee([`AT${at.numero} · CP${pc.cp}`, `CP${pc.cp} — ${pc.intitule}`, "", "", "", [pc.epreuves.join("\n") || "—", pc.bloc ? `${pc.bloc.code} — ${pc.bloc.intitule}` : ""].filter(Boolean).join("\n")], { gras: true, fond: st.fondClair });
+          pc.parties.forEach((g, gi) => g.petites.forEach((x, xi) => {
+            const sous = x.sous.filter((sp) => sp.items.length);
+            const lignes = sous.length ? sous.flatMap((sp) => { const out = []; for (let k = 0; k < sp.items.length; k += 10) out.push([sp, sp.items.slice(k, k + 10), k]); return out; }) : [[null, [], 0]];
+            lignes.forEach(([sp, items, k], li) => f.rangee([li === 0 && xi === 0 ? `CP${pc.cp}` : "", li === 0 && xi === 0 ? `${g.numero}. ${g.titre}` : "",
+              li === 0 ? `${g.numero}.${x.numero} ${x.texte}${x.cadre ? `\n(Cadre : ${x.cadre})` : ""}` : "",
+              sp ? `${k ? "" : `${sp.lettre}) ${sp.titre}\n`}${items.map((t) => "• " + t).join("\n")}` : "—",
+              li === 0 && xi === 0 ? g.criteres.map((c) => "✔ " + c).join("\n") : "", ""], { bande: gi % 2 === 1 }));
+          }));
+        }
+    }
+
     // Planning détaillé
     f = new Feuille(wb, "Planning détaillé", st, [18, 15, 8, 7, 29, 40, 13, 11, 13], `Planning heure par heure — ${titreF}`,
       "Chaque ligne = un créneau réel (pauses exclues). Colonne « Réalisé » : liste déroulante.", nomOrg);
@@ -1710,8 +2045,10 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     for (const [, ls] of parJour) {
       const objs = uniques(ls.map((x) => x.objectif.texte)), ss = uniques(ls.map((x) => `S${x.seance.numero} « ${x.seance.titre} »`));
       const cps = uniques(ls.filter((x) => x.seance.cp).map((x) => x.seance.cp)).sort((a, b) => a - b);
+      const parts = uniques(ls.filter((x) => x.seance.partie).map((x) => `CP${x.seance.cp} ${x.seance.partie}.${x.seance.petite} ${x.seance.action}`));
+      const evals = uniques(ls.flatMap((x) => (x.seance.epreuves || []).concat(x.seance.bloc ? [x.seance.bloc.code] : [])));
       f.rangee([D.fr(ls[0].date), D.fmtDuree(ls.reduce((t, x) => t + x.minutes, 0)),
-        `Séance(s) ${ss.join(", ")}${cps.length ? " — " + cps.map((c) => "CP" + c).join(", ") : ""}. Objectifs travaillés : ${objs.map((o) => o[0].toLowerCase() + o.slice(1)).join(" ; ")}.`, "", ""], { bande: i++ % 2 === 1 });
+        `Séance(s) ${ss.join(", ")}${cps.length ? " — " + cps.map((c) => "CP" + c).join(", ") : ""}.${parts.length ? ` Plan de cours : ${parts.join(" ; ")}.` : ""} Objectifs travaillés : ${objs.map((o) => o[0].toLowerCase() + o.slice(1)).join(" ; ")}.${evals.length ? ` Prépare à : ${evals.join(", ")}.` : ""}`, "", ""], { bande: i++ % 2 === 1 });
     }
 
     // Préparation PowerPoint
@@ -1764,6 +2101,8 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     const outils = {
       h2: (s) => enfants.push(new X.Paragraph({ text: s, heading: X.HeadingLevel.HEADING_2 })),
       p: (s) => enfants.push(new X.Paragraph({ text: s })),
+      h3: (s) => enfants.push(new X.Paragraph({ spacing: { before: 160, after: 60 }, children: [new X.TextRun({ text: propre(s), bold: true, color: c.couleur_primaire, size: t + 2, font: FT })] })),
+      note: (s, niveau = 0) => enfants.push(new X.Paragraph({ indent: { left: 360 * (niveau + 1) }, children: [new X.TextRun({ text: propre(s), italics: true, size: t - 2 })] })),
       puce: (s, niveau = 0) => enfants.push(new X.Paragraph({ text: s, bullet: { level: niveau } })),
       encadre: (titre, lignes) => enfants.push(new X.Table({ width: { size: 15000, type: X.WidthType.DXA }, columnWidths: [15000], rows: [new X.TableRow({ children: [new X.TableCell({
         width: { size: 15000, type: X.WidthType.DXA }, shading: { fill: c.couleur_claire, type: X.ShadingType.CLEAR, color: "auto" },
@@ -1797,6 +2136,30 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
         children: enfants }],
     });
     return X.Packer.toBlob(doc);
+  }
+
+  // Plan de cours en Word : la trame du formateur, compétence par compétence
+  function planCoursDocx(ctx) {
+    return docWord(ctx, `Plan de cours — ${ctx.titre}`, (o) => {
+      o.p("Méthode : chaque phrase du « processus de mise en œuvre » qui commence par un verbe d'action est une petite partie (1, 2…) ; les actions proches sont rassemblées en grandes parties (I, II…) ; sous chacune : a) savoirs, b) savoir-faire techniques, c) organisationnels, d) relationnels (termes exacts du REAC).");
+      for (const at of ctx.planCours || []) {
+        o.saut(); o.h2(`Activité type ${at.numero} — ${at.intitule}`);
+        for (const pc of at.competences) {
+          o.encadre(`CP${pc.cp} — ${pc.intitule}`, [`Bloc RNCP : ${pc.bloc ? pc.bloc.code + " — " + pc.bloc.intitule : "non relié (fiche RNCP absente ou intitulé différent)"}`,
+            `Évaluée par : ${pc.epreuves.join(" ; ") || "voir le RE / RC"}`, `${pc.nbActions} actions du processus → ${pc.parties.length} grandes parties · ${pc.nbItems} savoirs et savoir-faire`]);
+          for (const g of pc.parties) {
+            o.h3(`${g.numero}. ${g.titre}`);
+            for (const x of g.petites) {
+              o.puce(`${x.numero}. ${x.texte}`);
+              if (x.cadre) o.note(`Cadre : ${x.cadre}`);
+              for (const sp of x.sous) if (sp.items.length) { o.puce(`${sp.lettre}) ${sp.titre}`, 1); sp.items.forEach((it) => o.puce(it, 2)); }
+            }
+            if (g.criteres.length) { o.note("Critères de performance visés (REAC) :"); g.criteres.forEach((c) => o.puce("✔ " + c, 1)); }
+          }
+          if (pc.themes_jury && pc.themes_jury.length) { o.note("Ce que le jury explore (RE) :"); pc.themes_jury.forEach((t) => o.puce(t, 1)); }
+        }
+      }
+    });
   }
 
   function programmeDocx(ctx) {
@@ -1878,7 +2241,7 @@ ${corps}
     return z.generateAsync({ type: "blob", compression: "DEFLATE" });
   }
 
-  Object.assign(D, { docWord, classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
+  Object.assign(D, { docWord, classeur, programmeDocx, planCoursDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
 })(typeof window !== "undefined" ? window : globalThis);
 
 /* Chef d'orchestre : fichiers déposés → analyse → plan → contexte d'export. */
@@ -1915,6 +2278,9 @@ ${corps}
     if (!reac || !reac.competences.length) throw new Error("Aucun REAC exploitable : le REAC est indispensable (activités types et compétences).");
     const hypotheses = [];
     const p = D.parametresDepuis(r, hypotheses);
+    // Plan de cours de chaque compétence (méthode YEBA : actions → I, II… → 1, 2… → savoirs / savoir-faire) ;
+    // les ajustements du formateur (r.plan_ajuste) remplacent le plan automatique compétence par compétence
+    for (const cp of reac.competences) cp.plan = (r.plan_ajuste && r.plan_ajuste[cp.numero]) || D.planCompetence(cp, analyse.re, analyse.fiche);
     const plan = D.construirePlan(reac, analyse.re, p);
     const alertes = [...reac.avertissements];
     if (analyse.re) alertes.push(...analyse.re.avertissements); else alertes.push("Pas de RE/RC fourni : l'examen simplifié est construit depuis la fiche France Compétences.");
@@ -1931,7 +2297,8 @@ ${corps}
     const sources = Object.values(analyse.noms).map((n) => `Document source : ${n}`).concat(SOURCES);
     if (fiche && fiche.code) sources.unshift(`Fiche France Compétences : https://www.francecompetences.fr/recherche/${fiche.type_fiche.toLowerCase()}/${fiche.code.replace(/\D/g, "")}/`);
     const sigle = (reac.sigle || (fiche && fiche.code) || "titre").toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    return { reac, re: analyse.re, fiche, plan, r, charte, nomOrg, estYeba, logo: estYeba && r.afficher_logo ? logo : null,
+    const planCours = reac.activites.map((at) => ({ numero: at.numero, intitule: at.intitule, competences: reac.competences.filter((c) => c.at_numero === at.numero).map((c) => c.plan) }));
+    return { reac, re: analyse.re, fiche, plan, planCours, r, charte, nomOrg, estYeba, logo: estYeba && r.afficher_logo ? logo : null,
       tarif: r.tarif_affichage && Object.keys(r.tarif_affichage).length ? { affichage: r.tarif_affichage } : null,
       hypotheses, alertes, sources, sigle, titre: (fiche && fiche.intitule) || `TP ${reac.intitule}` };
   }
@@ -2376,6 +2743,9 @@ ${corps}
       formation: ctx.titre, niveau: reac.niveau ? `Niveau ${reac.niveau}` : "", date: jour.date, duree_minutes: jour.minutes,
       horaires: `${D.fmtHm(jour.lignes[0].debut)} – ${D.fmtHm(jour.lignes[jour.lignes.length - 1].fin)}`,
       competences: cps.map((n) => { const c = reac.competence(n); return { code: `CP${n}`, intitule: c.intitule, criteres: c.criteres }; }),
+      // plan de cours du jour : grande partie, action du REAC (petite partie), critères, épreuve et bloc RNCP
+      plan_du_jour: [...new Map(jour.seances.filter((s) => s.partie).map((s) => [`${s.cp}.${s.partie}.${s.petite}`, { cp: `CP${s.cp}`, grande_partie: `${s.partie}. ${s.partie_titre}`,
+        petite_partie: `${s.partie}.${s.petite} ${s.action}`, criteres_reac: s.criteres_partie || [], epreuves: s.epreuves || [], bloc_rncp: s.bloc ? s.bloc.code : "" }])).values()],
       objectifs,
     };
   }
@@ -2385,6 +2755,7 @@ ${corps}
 Prépare la séance de formation complète décrite ci-dessous, pour le formateur. Écris en français simple, concret, bienveillant.
 
 PUBLIC : ${public_ || "adultes en formation qualifiante ou en apprentissage, niveaux hétérogènes, à La Réunion"}.
+PLAN DE COURS IMPOSÉ : la journée suit le plan du décorticage (« plan_du_jour ») : grande partie (I, II…) puis petite partie = une action du REAC commençant par un verbe. Les diapositives et la ressource reprennent ces intitulés, dans cet ordre.
 PÉDAGOGIE IMPOSÉE :
 - Objectifs commençant par un verbe d'action de la taxonomie de Bloom, repris des termes du REAC.
 - Démarche de Bruner : déroulé selon les 6 fonctions d'étayage (enrôlement, réduction des degrés de liberté, maintien de l'orientation, signalisation des caractéristiques déterminantes, contrôle de la frustration, démonstration) et passage enactif → iconique → symbolique.
@@ -3605,15 +3976,44 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
         ${tuile("Séances préparées", String(Object.keys(f.packs || {}).length), "avec preuves", "", "formations")}
         ${tuile("Journées notées", String((f.journal || []).length), "", "", "formations")}</div>
       <section class="carte"><h2>Prochaines journées (planning recalé)</h2><div class="defile"><table><thead><tr><th>Date</th><th>Séances et objectifs</th><th>Durée</th><th></th></tr></thead><tbody>
-        ${prochains.map(([k, ls]) => `<tr><td>${esc(D.JOURS[D.jourSem(D.lireDate(k))].slice(0, 3))} ${fr(k)}</td><td>${[...new Set(ls.map((l) => `S${l.seance.numero} — ${l.seance.titre}`))].map(esc).join("<br>")}</td><td>${D.fmtDuree(ls.reduce((t, l) => t + l.minutes, 0))}</td>
+        ${prochains.map(([k, ls]) => `<tr><td>${esc(D.JOURS[D.jourSem(D.lireDate(k))].slice(0, 3))} ${fr(k)}</td><td>${[...new Set(ls.map((l) => `${l.seance.cp ? `CP${l.seance.cp} · ` : ""}${l.seance.titre}`))].map(esc).join("<br>")}</td><td>${D.fmtDuree(ls.reduce((t, l) => t + l.minutes, 0))}</td>
           <td><button class="lien" data-act="ouvrir-seance" data-f="${esc(f.id)}" data-d="${esc(k)}">${f.packs && f.packs[k] ? "Séance prête" : "Préparer"}</button></td></tr>`).join("")}</tbody></table></div></section>
+      ${vuePlan(f, ctx)}
       <section class="carte"><h2>Documents du titre</h2><div class="actions">
-        <button data-act="exp-f" data-k="xlsx" class="second">Décorticage complet (.xlsx)</button><button data-act="exp-f" data-k="prog" class="second">Programme (.docx)</button>
+        <button data-act="exp-f" data-k="xlsx" class="second">Décorticage complet (.xlsx)</button><button data-act="exp-f" data-k="plan" class="second">Plan de cours I, II, 1, 2 (.docx)</button><button data-act="exp-f" data-k="prog" class="second">Programme (.docx)</button>
         <button data-act="exp-f" data-k="exam" class="second">Examen simplifié (.docx)</button><button data-act="exp-f" data-k="tout" class="second">Tout + agenda (.zip)</button></div></section>
       <section class="carte"><h2>Journal des séances réalisées</h2>${(f.journal || []).length ? `<ul class="todo">${f.journal.slice().reverse().map((j) => `<li><span class="quand">${fr(j.date)}</span><span>${D.fmtDuree(Object.values(j.faits).reduce((a, b) => a + b, 0))} réalisées sur ${D.fmtDuree(j.prevu || 0)} prévues${j.notes ? " — " + esc(j.notes) : ""}</span><button class="lien" data-act="annuler-journal" data-d="${esc(j.date)}">Annuler</button></li>`).join("")}</ul>` : `<p class="discret">Aucune séance notée.</p>`}</section>
       <details class="carte"><summary>Modifier le calendrier et les réglages</summary><form id="f-regl" class="pile">${champsReglages(f.reglages)}<button type="submit" class="principal-court">Enregistrer et recalculer</button></form></details>
       <p><button class="lien danger" data-act="suppr-formation">Supprimer cette formation</button></p>`;
   }
+  /* Plan de cours : AT → CP → I, II… → 1, 2… → a) b) c) d). Le formateur peut renommer une grande partie
+   * et déplacer un savoir / savoir-faire vers une autre petite partie : l'ajustement est gardé par compétence. */
+  function vuePlan(f, ctx) {
+    const aj = (f.reglages.plan_ajuste || {});
+    const n = (ctx.planCours || []).reduce((t, at) => t + at.competences.length, 0);
+    return `<section class="carte"><h2>Plan de cours</h2>
+      <p>Chaque action du « processus de mise en œuvre » (phrase qui commence par un verbe) est une petite partie ; les actions proches forment une grande partie, dans l'ordre du REAC. Sous chacune : a) savoirs, b) savoir-faire techniques, c) organisationnels, d) relationnels. Chaque jour du planning suit ce plan.</p>
+      <p class="discret petit">Regroupement automatique (ressemblance des mots et thèmes métier), vérifié : aucun savoir ni savoir-faire du REAC n'est perdu. Vous pouvez renommer une grande partie et déplacer un élément : le planning se recalcule.</p>
+      ${(ctx.planCours || []).map((at) => `<h3>AT${at.numero} — ${esc(at.intitule)}</h3>${at.competences.map((pc) => {
+        const cibles = pc.parties.flatMap((g) => g.petites.map((x) => [`${g.numero}.${x.numero}`, `${g.numero}.${x.numero} ${x.texte.slice(0, 60)}`]));
+        return `<details class="carte plan-cp" data-cp="${pc.cp}"><summary><b>CP${pc.cp} — ${esc(pc.intitule)}</b> <span class="discret petit">· ${pc.parties.length} grandes parties · ${pc.nbActions} actions${aj[pc.cp] ? " · ajusté par vous" : ""}</span></summary>
+          <p class="petit"><b>Bloc RNCP :</b> ${esc(pc.bloc ? pc.bloc.code + " — " + pc.bloc.intitule : "non relié")} · <b>Évaluée par :</b> ${esc(pc.epreuves.join(" ; ") || "voir le RE / RC")}</p>
+          <ol class="plan">${pc.parties.map((g, gi) => `<li class="grande"><div class="ligne-titre"><span class="num-romain">${g.numero}.</span><input class="titre-partie" data-act="titre-partie" data-cp="${pc.cp}" data-g="${gi}" value="${esc(g.titre)}" aria-label="Titre de la grande partie ${g.numero}"></div>
+            <ol>${g.petites.map((x, xi) => `<li><b>${g.numero}.${x.numero}</b> ${esc(x.texte)}${x.cadre ? `<br><small class="discret">Cadre : ${esc(x.cadre)}</small>` : ""}
+              ${x.sous.filter((sp) => sp.items.length).map((sp) => `<div class="sous-partie"><span class="lettre">${sp.lettre})</span> <b>${esc(sp.titre)}</b><ul>${sp.items.map((it, ii) => `<li>${esc(it)}
+                <select class="deplacer" data-act="deplacer-item" data-cp="${pc.cp}" data-g="${gi}" data-x="${xi}" data-s="${sp.attr}" data-i="${ii}" aria-label="Déplacer cet élément vers la petite partie" title="Déplacer vers une autre petite partie">${cibles.map(([k, lib]) => `<option value="${k}" title="${esc(lib)}" ${k === `${g.numero}.${x.numero}` ? "selected" : ""}>→ ${k}</option>`).join("")}</select></li>`).join("")}</ul></div>`).join("")}</li>`).join("")}</ol>
+            ${g.criteres.length ? `<p class="petit"><b>Critères de performance (REAC) :</b> ${g.criteres.map(esc).join(" · ")}</p>` : ""}</li>`).join("")}</ol>
+          ${aj[pc.cp] ? `<button class="lien" data-act="plan-auto" data-cp="${pc.cp}">Revenir au plan automatique</button>` : ""}</details>`; }).join("")}`).join("") || `<p class="discret">Aucune compétence.</p>`}
+      ${n ? "" : ""}</section>`;
+  }
+  // copie modifiable du plan d'une compétence (gardée dans les réglages de la formation, donc dans le coffre chiffré)
+  function planModifiable(f, cpNum) {
+    const ctx = contexteF(f), pc = ctx.planCours.flatMap((at) => at.competences).find((x) => x.cp === cpNum);
+    f.reglages.plan_ajuste = f.reglages.plan_ajuste || {};
+    if (!f.reglages.plan_ajuste[cpNum]) f.reglages.plan_ajuste[cpNum] = JSON.parse(JSON.stringify(pc));
+    return f.reglages.plan_ajuste[cpNum];
+  }
+
   function aFormations() {
     lierCommun();
     const form = $("#f-formation");
@@ -3657,6 +4057,7 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
     return `<button class="lien" data-go="accueil">← Aujourd'hui</button>
       <header class="titre-vue"><span class="etiquette">${esc(f.titre)}</span><h1>Séance du ${esc(D.JOURS[D.jourSem(D.lireDate(etat.jourSel))])} ${fr(etat.jourSel)}</h1>
       ${jour ? `<p>${D.fmtHm(jour.lignes[0].debut)} – ${D.fmtHm(jour.lignes[jour.lignes.length - 1].fin)} · ${D.fmtDuree(jour.minutes)} · ${[...new Set(jour.seances.map((s) => s.cp).filter(Boolean))].map((n) => "CP" + n).join(", ") || "modules transverses"}</p>` : ""}</header>
+      ${jour ? planDuJour(jour) : ""}
       <div class="deux-colonnes"><section class="carte"><h2>Objectifs du décorticage (REAC)</h2>
         <ul class="objs">${objs.map((l) => `<li>${verbe(l.objectif.texte)} <small class="discret">· ${D.fmtDuree(jour.lignes.filter((x) => x.objectif === l.objectif).reduce((t, x) => t + x.minutes, 0))}</small></li>`).join("")}</ul>
         ${jour ? `<form id="f-noter" class="pile"><h3>Séance terminée ? Notez ce qui a été fait</h3>${objs.map((l) => { const k = P.cleObjectif(l.seance, l.objectif);
@@ -3673,6 +4074,17 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
         ${jour ? `<div class="actions"><button class="${pack ? "second" : "principal-court"}" data-act="generer" ${gen ? "disabled" : ""}>${pack ? "Rédiger à nouveau avec Claude" : "Préparer la séance avec Claude"}</button>${gen ? `<button class="second" data-act="stop">Arrêter</button>` : ""}</div>
           <p id="gen-etat" class="discret" aria-live="polite">${gen ? esc(gen.message) : "Claude rédige le contenu à partir des objectifs ci-contre ; le logiciel fabrique les fichiers. Comptez 1 à 3 minutes."}</p>` : ""}
       </section></div>`;
+  }
+  // Où en est-on dans le plan aujourd'hui, et à quoi cela prépare (REAC, RE / RC, fiche RNCP)
+  function planDuJour(jour) {
+    const vus = new Map();
+    for (const s of jour.seances) if (s.partie) vus.set(`${s.cp}.${s.partie}.${s.petite}`, s);
+    if (!vus.size) return "";
+    return `<section class="carte plan-jour"><h2>Plan de cours du jour</h2><ul class="todo">${[...vus.values()].map((s) => `<li><span class="quand">CP${s.cp} · ${esc(s.partie)}.${s.petite}</span>
+      <span><b>${esc(s.partie)}. ${esc(s.partie_titre)}</b><br>${esc(s.partie)}.${s.petite} ${esc(s.action)}${s.cadre ? `<br><small class="discret">Cadre : ${esc(s.cadre)}</small>` : ""}
+      ${(s.criteres_partie || []).length ? `<br><small><b>REAC — critères :</b> ${s.criteres_partie.map(esc).join(" · ")}</small>` : ""}
+      ${(s.epreuves || []).length ? `<br><small><b>RE / RC — épreuve(s) :</b> ${s.epreuves.map(esc).join(" ; ")}</small>` : ""}
+      ${s.bloc ? `<br><small><b>RNCP :</b> ${esc(s.bloc.code)} — ${esc(s.bloc.intitule)}</small>` : ""}</span></li>`).join("")}</ul></section>`;
   }
   async function genererSeance(f, date, silencieux) {
     if (etat.generation) return;
@@ -4146,8 +4558,8 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       }
       else if (act === "exp-f") {
         const f = formationCourante(), ctx = contexteF(f), s = ctx.sigle;
-        const faire = { xlsx: async () => [`Decorticage_${s}.xlsx`, await D.classeur(ctx)], prog: async () => [`Programme_${s}.docx`, await D.programmeDocx(ctx)], exam: async () => [`Examen_simplifie_${s}.docx`, await D.examenDocx(ctx)] };
-        if (b.dataset.k === "tout") { const parts = []; for (const k of ["xlsx", "prog", "exam"]) parts.push(await faire[k]()); parts.push([`Page_programme_${s}.html`, new Blob([D.pageSite(ctx)])]); await enregistrer(`Decorticage_${s}_complet.zip`, await D.toutEnZip(ctx, parts)); }
+        const faire = { xlsx: async () => [`Decorticage_${s}.xlsx`, await D.classeur(ctx)], prog: async () => [`Programme_${s}.docx`, await D.programmeDocx(ctx)], plan: async () => [`Plan_de_cours_${s}.docx`, await D.planCoursDocx(ctx)], exam: async () => [`Examen_simplifie_${s}.docx`, await D.examenDocx(ctx)] };
+        if (b.dataset.k === "tout") { const parts = []; for (const k of ["xlsx", "plan", "prog", "exam"]) parts.push(await faire[k]()); parts.push([`Page_programme_${s}.html`, new Blob([D.pageSite(ctx)])]); await enregistrer(`Decorticage_${s}_complet.zip`, await D.toutEnZip(ctx, parts)); }
         else await enregistrer(...(await faire[b.dataset.k]()));
       }
       else if (act === "annuler-journal") { const f = formationCourante(); f.journal = f.journal.filter((j) => j.date !== b.dataset.d); sauver(); rendre(); toast("Saisie annulée : planning recalculé."); }
@@ -4171,6 +4583,7 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       else if (act === "suppr-piece") { const a = d().actions.find((x) => x.id === etat.actionSel); await C.supprimerFichier(b.dataset.id); a.pieces = a.pieces.filter((x) => x !== b.dataset.id); sauver(); rendre(); }
       else if (act === "dossier-audit") await enregistrer(`Dossier_preuves_Qualiopi_${auj()}.docx`, await dossierAudit());
       else if (act === "ajout-ind") { const q = d().qualiopi, n = 34 + (q.ajouts || []).length; (q.ajouts = q.ajouts || []).push({ n, critere: 7, portee: "tous", libelle: "Nouvel indicateur — saisissez son intitulé officiel dans les remarques" }); sauver(); rendre(); toast(`Indicateur ${n} ajouté au critère 7 (modifiable).`); }
+      else if (act === "plan-auto") { const f = formationCourante(); delete (f.reglages.plan_ajuste || {})[b.dataset.cp]; sauver(); rendre(); toast("Plan automatique rétabli pour cette compétence."); }
       else if (act === "confirmer-rap") { P.confirmer(d(), b.dataset.m, b.dataset.a); sauver(); rendre(); toast("Virement rattaché. Le logiciel s'en souviendra pour ce payeur."); }
       else if (act === "confirmer-autre") { const sel = $("#sel-" + b.dataset.m); if (sel && sel.value) { P.confirmer(d(), b.dataset.m, sel.value); sauver(); rendre(); toast("Virement rattaché."); } }
       else if (act === "confirmer-surs") { let n = 0; for (const m of d().mouvements.filter((x) => x.etat === "a_confirmer")) { const [p1, p2] = m.propositions || []; if (p1 && p1.score >= 0.9 && !(p2 && p2.score >= 0.6)) { P.confirmer(d(), m.id, p1.attenduId); n++; } } sauver(); rendre(); toast(`${n} virement(s) rattaché(s).`); }
@@ -4201,6 +4614,16 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       if (act === "statut-ind") s.statut = el.value; else if (act === "na-ind") s.na = el.checked; else s.note = el.value.slice(0, 4000);
       sauver();
       if (act !== "note-ind") rendre();
+    }
+    else if (act === "deplacer-item" || act === "titre-partie") {
+      const f = formationCourante(), cpNum = +el.dataset.cp, pl = planModifiable(f, cpNum), g = pl.parties[+el.dataset.g];
+      if (act === "titre-partie") g.titre = el.value.trim().slice(0, 200) || g.titre;
+      else {
+        const x = g.petites[+el.dataset.x], sp = x.sous.find((z) => z.attr === el.dataset.s), [item] = sp.items.splice(+el.dataset.i, 1);
+        const [ng, nx] = el.value.split("."), cg = pl.parties.find((p) => p.numero === ng), cx = cg.petites.find((p) => String(p.numero) === nx);
+        cx.sous.find((z) => z.attr === el.dataset.s).items.push(item);
+      }
+      sauver(); rendre(); toast(act === "titre-partie" ? "Titre enregistré." : "Élément déplacé : le planning est recalculé.");
     }
     else if (act === "tri-att") { etat.triAtt = el.value; rendre(); }
     else if (act === "filtre-att") { etat.filtreAtt = el.value; rendre(); }

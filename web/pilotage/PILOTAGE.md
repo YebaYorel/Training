@@ -6,6 +6,15 @@ Logiciel personnel en un seul fichier HTML : `web/pilotage/dist/Pilotage.html`
     python web/pilotage/construire.py
 
 ## Ce qu'il fait
+- **Plan de cours (méthode YEBA)** : dans chaque compétence de chaque activité type, la « Description de la
+  compétence – processus de mise en œuvre » est découpée en actions (une phrase qui commence par un verbe
+  d'action et se termine par une virgule ou un point ; le contexte « Dans le respect… » est gardé comme cadre).
+  Les actions proches sont rassemblées en grandes parties (I, II…) dans l'ordre du REAC ; chaque action est une
+  petite partie (1, 2…) ; dessous : a) savoirs, b) savoir-faire techniques, c) organisationnels, d) relationnels.
+  Chaque grande partie est reliée aux critères de performance (REAC), aux épreuves (RE/RC) et au bloc RNCP.
+  Contrôle : aucun élément du REAC n'est perdu. Le formateur renomme une partie ou déplace un élément ; le
+  planning jour par jour (une séance par petite partie) et le suivi quotidien se recalculent.
+  Exports : onglet Excel « Plan de cours » et document Word « Plan de cours ».
 - **Formations** : dépôt REAC + RE/RC + fiche RNCP → décorticage, planning sur les jours cochés
   (ex. mardi seul = 1 jour/semaine), alternance (CCEE), fermetures. Le planning est une hypothèse :
   il se recale à chaque séance notée (fait / à moitié / pas fait).

@@ -194,6 +194,22 @@ label.second { display: inline-block; cursor: pointer; padding: 8px 14px; font-w
 .apercu-logo { max-height: 110px; width: auto; border-radius: 6px }
 .logo-connexion { width: 150px; height: auto; border-radius: 10px; justify-self: start }
 tr.retard td { background: var(--ko-fond) }
+/* ------------------------------------------------ plan de cours */
+.plan-cp > summary { font-size: 1.08rem }
+ol.plan { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 14px }
+ol.plan > li.grande { border-left: 5px solid var(--accent-marque); padding-left: 12px }
+ol.plan ol { margin: 6px 0 0; padding-left: 1.2rem; display: grid; gap: 8px }
+.ligne-titre { display: flex; gap: 8px; align-items: center }
+.num-romain { font-family: var(--titres); font-weight: 800; color: var(--encre); font-size: 1.2rem; min-width: 2.2rem }
+.titre-partie { font-family: var(--titres); font-weight: 700; color: var(--encre); border-style: dashed }
+.sous-partie { margin: 6px 0 0 6px }
+.sous-partie .lettre { font-weight: 800; color: var(--encre) }
+.sous-partie ul { margin: 4px 0 0; padding-left: 1.2rem; display: grid; gap: 4px }
+.sous-partie li { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center }
+select.deplacer { width: 5.2rem; flex: none; font-size: .9rem; padding: 2px 4px; border-width: 1px }
+.sous-partie li { overflow-wrap: anywhere; min-width: 0 }
+.ligne-titre input { min-width: 0 }
+ol.plan, ol.plan ol, .sous-partie ul { min-width: 0 }
 td .puce, td .score { white-space: nowrap; overflow-wrap: normal }
 details > summary { cursor: pointer; padding: 6px 0 }
 

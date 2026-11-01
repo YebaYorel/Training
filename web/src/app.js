@@ -272,11 +272,12 @@
     if (!etat.cache[f]) {
       if (f === "xlsx") etat.cache[f] = [`Decorticage_${s}.xlsx`, await D.classeur(ctx)];
       else if (f === "prog") etat.cache[f] = [`Programme_${s}.docx`, await D.programmeDocx(ctx)];
+      else if (f === "plan") etat.cache[f] = [`Plan_de_cours_${s}.docx`, await D.planCoursDocx(ctx)];
       else if (f === "exam") etat.cache[f] = [`Examen_simplifie_${s}.docx`, await D.examenDocx(ctx)];
       else if (f === "site") etat.cache[f] = [`Page_programme_${s}.html`, new Blob([D.pageSite(ctx)], { type: "text/html" })];
       else if (f === "tout") {
         const parts = [];
-        for (const k of ["xlsx", "prog", "exam", "site"]) parts.push(await fichier(k));
+        for (const k of ["xlsx", "plan", "prog", "exam", "site"]) parts.push(await fichier(k));
         etat.cache[f] = [`Decorticage_${s}_complet.zip`, await D.toutEnZip(ctx, parts)];
       }
     }

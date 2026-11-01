@@ -175,6 +175,25 @@
       });
     f.filtre(7);
 
+    // Plan de cours (méthode YEBA) : AT → CP → I, II… → 1, 2… → a) savoirs, b) c) d) savoir-faire
+    if (ctx.planCours) {
+      f = new Feuille(wb, "Plan de cours", st, [22, 26, 36, 50, 34, 26], `Plan de cours — ${titreF}`,
+        "Chaque action du processus (REAC) = une petite partie ; les actions proches forment une grande partie ; savoirs et savoir-faire rangés dessous.", nomOrg);
+      f.entetes(["Activité type · Compétence", "Grande partie", "Petite partie — action du REAC", "Sous-partie : savoirs et savoir-faire", "Critères de performance (REAC)", "Évaluation (RE / RC) · Bloc RNCP"]);
+      for (const at of ctx.planCours)
+        for (const pc of at.competences) {
+          f.rangee([`AT${at.numero} · CP${pc.cp}`, `CP${pc.cp} — ${pc.intitule}`, "", "", "", [pc.epreuves.join("\n") || "—", pc.bloc ? `${pc.bloc.code} — ${pc.bloc.intitule}` : ""].filter(Boolean).join("\n")], { gras: true, fond: st.fondClair });
+          pc.parties.forEach((g, gi) => g.petites.forEach((x, xi) => {
+            const sous = x.sous.filter((sp) => sp.items.length);
+            const lignes = sous.length ? sous.flatMap((sp) => { const out = []; for (let k = 0; k < sp.items.length; k += 10) out.push([sp, sp.items.slice(k, k + 10), k]); return out; }) : [[null, [], 0]];
+            lignes.forEach(([sp, items, k], li) => f.rangee([li === 0 && xi === 0 ? `CP${pc.cp}` : "", li === 0 && xi === 0 ? `${g.numero}. ${g.titre}` : "",
+              li === 0 ? `${g.numero}.${x.numero} ${x.texte}${x.cadre ? `\n(Cadre : ${x.cadre})` : ""}` : "",
+              sp ? `${k ? "" : `${sp.lettre}) ${sp.titre}\n`}${items.map((t) => "• " + t).join("\n")}` : "—",
+              li === 0 && xi === 0 ? g.criteres.map((c) => "✔ " + c).join("\n") : "", ""], { bande: gi % 2 === 1 }));
+          }));
+        }
+    }
+
     // Planning détaillé
     f = new Feuille(wb, "Planning détaillé", st, [18, 15, 8, 7, 29, 40, 13, 11, 13], `Planning heure par heure — ${titreF}`,
       "Chaque ligne = un créneau réel (pauses exclues). Colonne « Réalisé » : liste déroulante.", nomOrg);
@@ -280,8 +299,10 @@
     for (const [, ls] of parJour) {
       const objs = uniques(ls.map((x) => x.objectif.texte)), ss = uniques(ls.map((x) => `S${x.seance.numero} « ${x.seance.titre} »`));
       const cps = uniques(ls.filter((x) => x.seance.cp).map((x) => x.seance.cp)).sort((a, b) => a - b);
+      const parts = uniques(ls.filter((x) => x.seance.partie).map((x) => `CP${x.seance.cp} ${x.seance.partie}.${x.seance.petite} ${x.seance.action}`));
+      const evals = uniques(ls.flatMap((x) => (x.seance.epreuves || []).concat(x.seance.bloc ? [x.seance.bloc.code] : [])));
       f.rangee([D.fr(ls[0].date), D.fmtDuree(ls.reduce((t, x) => t + x.minutes, 0)),
-        `Séance(s) ${ss.join(", ")}${cps.length ? " — " + cps.map((c) => "CP" + c).join(", ") : ""}. Objectifs travaillés : ${objs.map((o) => o[0].toLowerCase() + o.slice(1)).join(" ; ")}.`, "", ""], { bande: i++ % 2 === 1 });
+        `Séance(s) ${ss.join(", ")}${cps.length ? " — " + cps.map((c) => "CP" + c).join(", ") : ""}.${parts.length ? ` Plan de cours : ${parts.join(" ; ")}.` : ""} Objectifs travaillés : ${objs.map((o) => o[0].toLowerCase() + o.slice(1)).join(" ; ")}.${evals.length ? ` Prépare à : ${evals.join(", ")}.` : ""}`, "", ""], { bande: i++ % 2 === 1 });
     }
 
     // Préparation PowerPoint
@@ -334,6 +355,8 @@
     const outils = {
       h2: (s) => enfants.push(new X.Paragraph({ text: s, heading: X.HeadingLevel.HEADING_2 })),
       p: (s) => enfants.push(new X.Paragraph({ text: s })),
+      h3: (s) => enfants.push(new X.Paragraph({ spacing: { before: 160, after: 60 }, children: [new X.TextRun({ text: propre(s), bold: true, color: c.couleur_primaire, size: t + 2, font: FT })] })),
+      note: (s, niveau = 0) => enfants.push(new X.Paragraph({ indent: { left: 360 * (niveau + 1) }, children: [new X.TextRun({ text: propre(s), italics: true, size: t - 2 })] })),
       puce: (s, niveau = 0) => enfants.push(new X.Paragraph({ text: s, bullet: { level: niveau } })),
       encadre: (titre, lignes) => enfants.push(new X.Table({ width: { size: 15000, type: X.WidthType.DXA }, columnWidths: [15000], rows: [new X.TableRow({ children: [new X.TableCell({
         width: { size: 15000, type: X.WidthType.DXA }, shading: { fill: c.couleur_claire, type: X.ShadingType.CLEAR, color: "auto" },
@@ -367,6 +390,30 @@
         children: enfants }],
     });
     return X.Packer.toBlob(doc);
+  }
+
+  // Plan de cours en Word : la trame du formateur, compétence par compétence
+  function planCoursDocx(ctx) {
+    return docWord(ctx, `Plan de cours — ${ctx.titre}`, (o) => {
+      o.p("Méthode : chaque phrase du « processus de mise en œuvre » qui commence par un verbe d'action est une petite partie (1, 2…) ; les actions proches sont rassemblées en grandes parties (I, II…) ; sous chacune : a) savoirs, b) savoir-faire techniques, c) organisationnels, d) relationnels (termes exacts du REAC).");
+      for (const at of ctx.planCours || []) {
+        o.saut(); o.h2(`Activité type ${at.numero} — ${at.intitule}`);
+        for (const pc of at.competences) {
+          o.encadre(`CP${pc.cp} — ${pc.intitule}`, [`Bloc RNCP : ${pc.bloc ? pc.bloc.code + " — " + pc.bloc.intitule : "non relié (fiche RNCP absente ou intitulé différent)"}`,
+            `Évaluée par : ${pc.epreuves.join(" ; ") || "voir le RE / RC"}`, `${pc.nbActions} actions du processus → ${pc.parties.length} grandes parties · ${pc.nbItems} savoirs et savoir-faire`]);
+          for (const g of pc.parties) {
+            o.h3(`${g.numero}. ${g.titre}`);
+            for (const x of g.petites) {
+              o.puce(`${x.numero}. ${x.texte}`);
+              if (x.cadre) o.note(`Cadre : ${x.cadre}`);
+              for (const sp of x.sous) if (sp.items.length) { o.puce(`${sp.lettre}) ${sp.titre}`, 1); sp.items.forEach((it) => o.puce(it, 2)); }
+            }
+            if (g.criteres.length) { o.note("Critères de performance visés (REAC) :"); g.criteres.forEach((c) => o.puce("✔ " + c, 1)); }
+          }
+          if (pc.themes_jury && pc.themes_jury.length) { o.note("Ce que le jury explore (RE) :"); pc.themes_jury.forEach((t) => o.puce(t, 1)); }
+        }
+      }
+    });
   }
 
   function programmeDocx(ctx) {
@@ -448,5 +495,5 @@ ${corps}
     return z.generateAsync({ type: "blob", compression: "DEFLATE" });
   }
 
-  Object.assign(D, { docWord, classeur, programmeDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
+  Object.assign(D, { docWord, classeur, programmeDocx, planCoursDocx, examenDocx, ics, pageSite, toutEnZip, echapper: h });
 })(typeof window !== "undefined" ? window : globalThis);

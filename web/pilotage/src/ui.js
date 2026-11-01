@@ -268,15 +268,44 @@
         ${tuile("Séances préparées", String(Object.keys(f.packs || {}).length), "avec preuves", "", "formations")}
         ${tuile("Journées notées", String((f.journal || []).length), "", "", "formations")}</div>
       <section class="carte"><h2>Prochaines journées (planning recalé)</h2><div class="defile"><table><thead><tr><th>Date</th><th>Séances et objectifs</th><th>Durée</th><th></th></tr></thead><tbody>
-        ${prochains.map(([k, ls]) => `<tr><td>${esc(D.JOURS[D.jourSem(D.lireDate(k))].slice(0, 3))} ${fr(k)}</td><td>${[...new Set(ls.map((l) => `S${l.seance.numero} — ${l.seance.titre}`))].map(esc).join("<br>")}</td><td>${D.fmtDuree(ls.reduce((t, l) => t + l.minutes, 0))}</td>
+        ${prochains.map(([k, ls]) => `<tr><td>${esc(D.JOURS[D.jourSem(D.lireDate(k))].slice(0, 3))} ${fr(k)}</td><td>${[...new Set(ls.map((l) => `${l.seance.cp ? `CP${l.seance.cp} · ` : ""}${l.seance.titre}`))].map(esc).join("<br>")}</td><td>${D.fmtDuree(ls.reduce((t, l) => t + l.minutes, 0))}</td>
           <td><button class="lien" data-act="ouvrir-seance" data-f="${esc(f.id)}" data-d="${esc(k)}">${f.packs && f.packs[k] ? "Séance prête" : "Préparer"}</button></td></tr>`).join("")}</tbody></table></div></section>
+      ${vuePlan(f, ctx)}
       <section class="carte"><h2>Documents du titre</h2><div class="actions">
-        <button data-act="exp-f" data-k="xlsx" class="second">Décorticage complet (.xlsx)</button><button data-act="exp-f" data-k="prog" class="second">Programme (.docx)</button>
+        <button data-act="exp-f" data-k="xlsx" class="second">Décorticage complet (.xlsx)</button><button data-act="exp-f" data-k="plan" class="second">Plan de cours I, II, 1, 2 (.docx)</button><button data-act="exp-f" data-k="prog" class="second">Programme (.docx)</button>
         <button data-act="exp-f" data-k="exam" class="second">Examen simplifié (.docx)</button><button data-act="exp-f" data-k="tout" class="second">Tout + agenda (.zip)</button></div></section>
       <section class="carte"><h2>Journal des séances réalisées</h2>${(f.journal || []).length ? `<ul class="todo">${f.journal.slice().reverse().map((j) => `<li><span class="quand">${fr(j.date)}</span><span>${D.fmtDuree(Object.values(j.faits).reduce((a, b) => a + b, 0))} réalisées sur ${D.fmtDuree(j.prevu || 0)} prévues${j.notes ? " — " + esc(j.notes) : ""}</span><button class="lien" data-act="annuler-journal" data-d="${esc(j.date)}">Annuler</button></li>`).join("")}</ul>` : `<p class="discret">Aucune séance notée.</p>`}</section>
       <details class="carte"><summary>Modifier le calendrier et les réglages</summary><form id="f-regl" class="pile">${champsReglages(f.reglages)}<button type="submit" class="principal-court">Enregistrer et recalculer</button></form></details>
       <p><button class="lien danger" data-act="suppr-formation">Supprimer cette formation</button></p>`;
   }
+  /* Plan de cours : AT → CP → I, II… → 1, 2… → a) b) c) d). Le formateur peut renommer une grande partie
+   * et déplacer un savoir / savoir-faire vers une autre petite partie : l'ajustement est gardé par compétence. */
+  function vuePlan(f, ctx) {
+    const aj = (f.reglages.plan_ajuste || {});
+    const n = (ctx.planCours || []).reduce((t, at) => t + at.competences.length, 0);
+    return `<section class="carte"><h2>Plan de cours</h2>
+      <p>Chaque action du « processus de mise en œuvre » (phrase qui commence par un verbe) est une petite partie ; les actions proches forment une grande partie, dans l'ordre du REAC. Sous chacune : a) savoirs, b) savoir-faire techniques, c) organisationnels, d) relationnels. Chaque jour du planning suit ce plan.</p>
+      <p class="discret petit">Regroupement automatique (ressemblance des mots et thèmes métier), vérifié : aucun savoir ni savoir-faire du REAC n'est perdu. Vous pouvez renommer une grande partie et déplacer un élément : le planning se recalcule.</p>
+      ${(ctx.planCours || []).map((at) => `<h3>AT${at.numero} — ${esc(at.intitule)}</h3>${at.competences.map((pc) => {
+        const cibles = pc.parties.flatMap((g) => g.petites.map((x) => [`${g.numero}.${x.numero}`, `${g.numero}.${x.numero} ${x.texte.slice(0, 60)}`]));
+        return `<details class="carte plan-cp" data-cp="${pc.cp}"><summary><b>CP${pc.cp} — ${esc(pc.intitule)}</b> <span class="discret petit">· ${pc.parties.length} grandes parties · ${pc.nbActions} actions${aj[pc.cp] ? " · ajusté par vous" : ""}</span></summary>
+          <p class="petit"><b>Bloc RNCP :</b> ${esc(pc.bloc ? pc.bloc.code + " — " + pc.bloc.intitule : "non relié")} · <b>Évaluée par :</b> ${esc(pc.epreuves.join(" ; ") || "voir le RE / RC")}</p>
+          <ol class="plan">${pc.parties.map((g, gi) => `<li class="grande"><div class="ligne-titre"><span class="num-romain">${g.numero}.</span><input class="titre-partie" data-act="titre-partie" data-cp="${pc.cp}" data-g="${gi}" value="${esc(g.titre)}" aria-label="Titre de la grande partie ${g.numero}"></div>
+            <ol>${g.petites.map((x, xi) => `<li><b>${g.numero}.${x.numero}</b> ${esc(x.texte)}${x.cadre ? `<br><small class="discret">Cadre : ${esc(x.cadre)}</small>` : ""}
+              ${x.sous.filter((sp) => sp.items.length).map((sp) => `<div class="sous-partie"><span class="lettre">${sp.lettre})</span> <b>${esc(sp.titre)}</b><ul>${sp.items.map((it, ii) => `<li>${esc(it)}
+                <select class="deplacer" data-act="deplacer-item" data-cp="${pc.cp}" data-g="${gi}" data-x="${xi}" data-s="${sp.attr}" data-i="${ii}" aria-label="Déplacer cet élément vers la petite partie" title="Déplacer vers une autre petite partie">${cibles.map(([k, lib]) => `<option value="${k}" title="${esc(lib)}" ${k === `${g.numero}.${x.numero}` ? "selected" : ""}>→ ${k}</option>`).join("")}</select></li>`).join("")}</ul></div>`).join("")}</li>`).join("")}</ol>
+            ${g.criteres.length ? `<p class="petit"><b>Critères de performance (REAC) :</b> ${g.criteres.map(esc).join(" · ")}</p>` : ""}</li>`).join("")}</ol>
+          ${aj[pc.cp] ? `<button class="lien" data-act="plan-auto" data-cp="${pc.cp}">Revenir au plan automatique</button>` : ""}</details>`; }).join("")}`).join("") || `<p class="discret">Aucune compétence.</p>`}
+      ${n ? "" : ""}</section>`;
+  }
+  // copie modifiable du plan d'une compétence (gardée dans les réglages de la formation, donc dans le coffre chiffré)
+  function planModifiable(f, cpNum) {
+    const ctx = contexteF(f), pc = ctx.planCours.flatMap((at) => at.competences).find((x) => x.cp === cpNum);
+    f.reglages.plan_ajuste = f.reglages.plan_ajuste || {};
+    if (!f.reglages.plan_ajuste[cpNum]) f.reglages.plan_ajuste[cpNum] = JSON.parse(JSON.stringify(pc));
+    return f.reglages.plan_ajuste[cpNum];
+  }
+
   function aFormations() {
     lierCommun();
     const form = $("#f-formation");
@@ -320,6 +349,7 @@
     return `<button class="lien" data-go="accueil">← Aujourd'hui</button>
       <header class="titre-vue"><span class="etiquette">${esc(f.titre)}</span><h1>Séance du ${esc(D.JOURS[D.jourSem(D.lireDate(etat.jourSel))])} ${fr(etat.jourSel)}</h1>
       ${jour ? `<p>${D.fmtHm(jour.lignes[0].debut)} – ${D.fmtHm(jour.lignes[jour.lignes.length - 1].fin)} · ${D.fmtDuree(jour.minutes)} · ${[...new Set(jour.seances.map((s) => s.cp).filter(Boolean))].map((n) => "CP" + n).join(", ") || "modules transverses"}</p>` : ""}</header>
+      ${jour ? planDuJour(jour) : ""}
       <div class="deux-colonnes"><section class="carte"><h2>Objectifs du décorticage (REAC)</h2>
         <ul class="objs">${objs.map((l) => `<li>${verbe(l.objectif.texte)} <small class="discret">· ${D.fmtDuree(jour.lignes.filter((x) => x.objectif === l.objectif).reduce((t, x) => t + x.minutes, 0))}</small></li>`).join("")}</ul>
         ${jour ? `<form id="f-noter" class="pile"><h3>Séance terminée ? Notez ce qui a été fait</h3>${objs.map((l) => { const k = P.cleObjectif(l.seance, l.objectif);
@@ -336,6 +366,17 @@
         ${jour ? `<div class="actions"><button class="${pack ? "second" : "principal-court"}" data-act="generer" ${gen ? "disabled" : ""}>${pack ? "Rédiger à nouveau avec Claude" : "Préparer la séance avec Claude"}</button>${gen ? `<button class="second" data-act="stop">Arrêter</button>` : ""}</div>
           <p id="gen-etat" class="discret" aria-live="polite">${gen ? esc(gen.message) : "Claude rédige le contenu à partir des objectifs ci-contre ; le logiciel fabrique les fichiers. Comptez 1 à 3 minutes."}</p>` : ""}
       </section></div>`;
+  }
+  // Où en est-on dans le plan aujourd'hui, et à quoi cela prépare (REAC, RE / RC, fiche RNCP)
+  function planDuJour(jour) {
+    const vus = new Map();
+    for (const s of jour.seances) if (s.partie) vus.set(`${s.cp}.${s.partie}.${s.petite}`, s);
+    if (!vus.size) return "";
+    return `<section class="carte plan-jour"><h2>Plan de cours du jour</h2><ul class="todo">${[...vus.values()].map((s) => `<li><span class="quand">CP${s.cp} · ${esc(s.partie)}.${s.petite}</span>
+      <span><b>${esc(s.partie)}. ${esc(s.partie_titre)}</b><br>${esc(s.partie)}.${s.petite} ${esc(s.action)}${s.cadre ? `<br><small class="discret">Cadre : ${esc(s.cadre)}</small>` : ""}
+      ${(s.criteres_partie || []).length ? `<br><small><b>REAC — critères :</b> ${s.criteres_partie.map(esc).join(" · ")}</small>` : ""}
+      ${(s.epreuves || []).length ? `<br><small><b>RE / RC — épreuve(s) :</b> ${s.epreuves.map(esc).join(" ; ")}</small>` : ""}
+      ${s.bloc ? `<br><small><b>RNCP :</b> ${esc(s.bloc.code)} — ${esc(s.bloc.intitule)}</small>` : ""}</span></li>`).join("")}</ul></section>`;
   }
   async function genererSeance(f, date, silencieux) {
     if (etat.generation) return;
@@ -809,8 +850,8 @@
       }
       else if (act === "exp-f") {
         const f = formationCourante(), ctx = contexteF(f), s = ctx.sigle;
-        const faire = { xlsx: async () => [`Decorticage_${s}.xlsx`, await D.classeur(ctx)], prog: async () => [`Programme_${s}.docx`, await D.programmeDocx(ctx)], exam: async () => [`Examen_simplifie_${s}.docx`, await D.examenDocx(ctx)] };
-        if (b.dataset.k === "tout") { const parts = []; for (const k of ["xlsx", "prog", "exam"]) parts.push(await faire[k]()); parts.push([`Page_programme_${s}.html`, new Blob([D.pageSite(ctx)])]); await enregistrer(`Decorticage_${s}_complet.zip`, await D.toutEnZip(ctx, parts)); }
+        const faire = { xlsx: async () => [`Decorticage_${s}.xlsx`, await D.classeur(ctx)], prog: async () => [`Programme_${s}.docx`, await D.programmeDocx(ctx)], plan: async () => [`Plan_de_cours_${s}.docx`, await D.planCoursDocx(ctx)], exam: async () => [`Examen_simplifie_${s}.docx`, await D.examenDocx(ctx)] };
+        if (b.dataset.k === "tout") { const parts = []; for (const k of ["xlsx", "plan", "prog", "exam"]) parts.push(await faire[k]()); parts.push([`Page_programme_${s}.html`, new Blob([D.pageSite(ctx)])]); await enregistrer(`Decorticage_${s}_complet.zip`, await D.toutEnZip(ctx, parts)); }
         else await enregistrer(...(await faire[b.dataset.k]()));
       }
       else if (act === "annuler-journal") { const f = formationCourante(); f.journal = f.journal.filter((j) => j.date !== b.dataset.d); sauver(); rendre(); toast("Saisie annulée : planning recalculé."); }
@@ -834,6 +875,7 @@
       else if (act === "suppr-piece") { const a = d().actions.find((x) => x.id === etat.actionSel); await C.supprimerFichier(b.dataset.id); a.pieces = a.pieces.filter((x) => x !== b.dataset.id); sauver(); rendre(); }
       else if (act === "dossier-audit") await enregistrer(`Dossier_preuves_Qualiopi_${auj()}.docx`, await dossierAudit());
       else if (act === "ajout-ind") { const q = d().qualiopi, n = 34 + (q.ajouts || []).length; (q.ajouts = q.ajouts || []).push({ n, critere: 7, portee: "tous", libelle: "Nouvel indicateur — saisissez son intitulé officiel dans les remarques" }); sauver(); rendre(); toast(`Indicateur ${n} ajouté au critère 7 (modifiable).`); }
+      else if (act === "plan-auto") { const f = formationCourante(); delete (f.reglages.plan_ajuste || {})[b.dataset.cp]; sauver(); rendre(); toast("Plan automatique rétabli pour cette compétence."); }
       else if (act === "confirmer-rap") { P.confirmer(d(), b.dataset.m, b.dataset.a); sauver(); rendre(); toast("Virement rattaché. Le logiciel s'en souviendra pour ce payeur."); }
       else if (act === "confirmer-autre") { const sel = $("#sel-" + b.dataset.m); if (sel && sel.value) { P.confirmer(d(), b.dataset.m, sel.value); sauver(); rendre(); toast("Virement rattaché."); } }
       else if (act === "confirmer-surs") { let n = 0; for (const m of d().mouvements.filter((x) => x.etat === "a_confirmer")) { const [p1, p2] = m.propositions || []; if (p1 && p1.score >= 0.9 && !(p2 && p2.score >= 0.6)) { P.confirmer(d(), m.id, p1.attenduId); n++; } } sauver(); rendre(); toast(`${n} virement(s) rattaché(s).`); }
@@ -864,6 +906,16 @@
       if (act === "statut-ind") s.statut = el.value; else if (act === "na-ind") s.na = el.checked; else s.note = el.value.slice(0, 4000);
       sauver();
       if (act !== "note-ind") rendre();
+    }
+    else if (act === "deplacer-item" || act === "titre-partie") {
+      const f = formationCourante(), cpNum = +el.dataset.cp, pl = planModifiable(f, cpNum), g = pl.parties[+el.dataset.g];
+      if (act === "titre-partie") g.titre = el.value.trim().slice(0, 200) || g.titre;
+      else {
+        const x = g.petites[+el.dataset.x], sp = x.sous.find((z) => z.attr === el.dataset.s), [item] = sp.items.splice(+el.dataset.i, 1);
+        const [ng, nx] = el.value.split("."), cg = pl.parties.find((p) => p.numero === ng), cx = cg.petites.find((p) => String(p.numero) === nx);
+        cx.sous.find((z) => z.attr === el.dataset.s).items.push(item);
+      }
+      sauver(); rendre(); toast(act === "titre-partie" ? "Titre enregistré." : "Élément déplacé : le planning est recalculé.");
     }
     else if (act === "tri-att") { etat.triAtt = el.value; rendre(); }
     else if (act === "filtre-att") { etat.filtreAtt = el.value; rendre(); }

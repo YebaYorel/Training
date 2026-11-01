@@ -22,6 +22,9 @@
       formation: ctx.titre, niveau: reac.niveau ? `Niveau ${reac.niveau}` : "", date: jour.date, duree_minutes: jour.minutes,
       horaires: `${D.fmtHm(jour.lignes[0].debut)} – ${D.fmtHm(jour.lignes[jour.lignes.length - 1].fin)}`,
       competences: cps.map((n) => { const c = reac.competence(n); return { code: `CP${n}`, intitule: c.intitule, criteres: c.criteres }; }),
+      // plan de cours du jour : grande partie, action du REAC (petite partie), critères, épreuve et bloc RNCP
+      plan_du_jour: [...new Map(jour.seances.filter((s) => s.partie).map((s) => [`${s.cp}.${s.partie}.${s.petite}`, { cp: `CP${s.cp}`, grande_partie: `${s.partie}. ${s.partie_titre}`,
+        petite_partie: `${s.partie}.${s.petite} ${s.action}`, criteres_reac: s.criteres_partie || [], epreuves: s.epreuves || [], bloc_rncp: s.bloc ? s.bloc.code : "" }])).values()],
       objectifs,
     };
   }
@@ -31,6 +34,7 @@
 Prépare la séance de formation complète décrite ci-dessous, pour le formateur. Écris en français simple, concret, bienveillant.
 
 PUBLIC : ${public_ || "adultes en formation qualifiante ou en apprentissage, niveaux hétérogènes, à La Réunion"}.
+PLAN DE COURS IMPOSÉ : la journée suit le plan du décorticage (« plan_du_jour ») : grande partie (I, II…) puis petite partie = une action du REAC commençant par un verbe. Les diapositives et la ressource reprennent ces intitulés, dans cet ordre.
 PÉDAGOGIE IMPOSÉE :
 - Objectifs commençant par un verbe d'action de la taxonomie de Bloom, repris des termes du REAC.
 - Démarche de Bruner : déroulé selon les 6 fonctions d'étayage (enrôlement, réduction des degrés de liberté, maintien de l'orientation, signalisation des caractéristiques déterminantes, contrôle de la frustration, démonstration) et passage enactif → iconique → symbolique.

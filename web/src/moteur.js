@@ -32,6 +32,9 @@
     if (!reac || !reac.competences.length) throw new Error("Aucun REAC exploitable : le REAC est indispensable (activités types et compétences).");
     const hypotheses = [];
     const p = D.parametresDepuis(r, hypotheses);
+    // Plan de cours de chaque compétence (méthode YEBA : actions → I, II… → 1, 2… → savoirs / savoir-faire) ;
+    // les ajustements du formateur (r.plan_ajuste) remplacent le plan automatique compétence par compétence
+    for (const cp of reac.competences) cp.plan = (r.plan_ajuste && r.plan_ajuste[cp.numero]) || D.planCompetence(cp, analyse.re, analyse.fiche);
     const plan = D.construirePlan(reac, analyse.re, p);
     const alertes = [...reac.avertissements];
     if (analyse.re) alertes.push(...analyse.re.avertissements); else alertes.push("Pas de RE/RC fourni : l'examen simplifié est construit depuis la fiche France Compétences.");
@@ -48,7 +51,8 @@
     const sources = Object.values(analyse.noms).map((n) => `Document source : ${n}`).concat(SOURCES);
     if (fiche && fiche.code) sources.unshift(`Fiche France Compétences : https://www.francecompetences.fr/recherche/${fiche.type_fiche.toLowerCase()}/${fiche.code.replace(/\D/g, "")}/`);
     const sigle = (reac.sigle || (fiche && fiche.code) || "titre").toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    return { reac, re: analyse.re, fiche, plan, r, charte, nomOrg, estYeba, logo: estYeba && r.afficher_logo ? logo : null,
+    const planCours = reac.activites.map((at) => ({ numero: at.numero, intitule: at.intitule, competences: reac.competences.filter((c) => c.at_numero === at.numero).map((c) => c.plan) }));
+    return { reac, re: analyse.re, fiche, plan, planCours, r, charte, nomOrg, estYeba, logo: estYeba && r.afficher_logo ? logo : null,
       tarif: r.tarif_affichage && Object.keys(r.tarif_affichage).length ? { affichage: r.tarif_affichage } : null,
       hypotheses, alertes, sources, sigle, titre: (fiche && fiche.intitule) || `TP ${reac.intitule}` };
   }

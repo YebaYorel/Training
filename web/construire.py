@@ -19,7 +19,7 @@ LIBS = [
     "https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js",
     "https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js",
 ]
-MODULES = ["referentiels", "extraction", "pedagogie", "planification", "programme", "exports", "moteur", "app"]
+MODULES = ["referentiels", "extraction", "pedagogie", "plan", "planification", "programme", "exports", "moteur", "app"]
 
 
 def inline(js: str) -> str:

@@ -213,7 +213,46 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
     return Object.assign({ contenus: [], mots: [], associes: [], criteres: [], minutes: 0, mode: "", activite: "", exemple: "" }, o);
   }
 
+  /* Séances depuis le plan de cours : une séance par petite partie (action du processus), rangée dans sa
+   * grande partie (I, II…) ; les savoir-faire de ses sous-parties deviennent ses objectifs, les savoirs leurs contenus. */
+  function seancesDepuisPlan(cp, plan) {
+    const seances = [];
+    for (const g of plan.parties)
+      for (const x of g.petites) {
+        const s = { titre: `${g.numero}.${x.numero} — ${titreEtape(x.texte)}`, origine: x.origine, objectifs: [], minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero,
+          sequence: 0, sequence_titre: "", type_seance: "apprentissage", partie: g.numero, partie_titre: g.titre, petite: x.numero, action: x.texte, cadre: x.cadre,
+          criteres_partie: g.criteres, epreuves: plan.epreuves, bloc: plan.bloc };
+        for (const sp of x.sous) {
+          if (sp.attr === "savoirs") continue;
+          const cat = { sf_techniques: "technique", sf_organisationnels: "organisationnel", sf_relationnels: "relationnel" }[sp.attr];
+          for (const ligne of sp.items) {
+            const texte = formuler(ligne), niv = niveauBloom(texte);
+            s.objectifs.push(objectif({ texte, verbe: verbeInitial(texte), niveau: niv, categorie: cat, origine: ligne, mots: motsCles(ligne), sous_partie: sp.lettre,
+              mode: modeBruner(cat, niv), activite: suggestion(ACTIVITES, ligne + " " + x.texte, "Étude de cas guidée puis application en binôme"), exemple: suggestion(EXEMPLES_LOCAUX, ligne + " " + x.texte) }));
+          }
+        }
+        // l'action elle-même est toujours un objectif de la séance (c'est la phrase du REAC qu'on travaille)
+        const t = simplifier(x.texte), nv = niveauBloom(t);
+        s.objectifs.unshift(objectif({ texte: t, verbe: verbeInitial(t), niveau: nv, categorie: "technique", origine: x.texte, mots: motsCles(x.texte), sous_partie: "",
+          mode: modeBruner("technique", nv), activite: suggestion(ACTIVITES, x.texte, "Étude de cas guidée puis application en binôme"), exemple: suggestion(EXEMPLES_LOCAUX, x.texte) }));
+        const savoirs = x.sous.find((sp) => sp.attr === "savoirs").items;
+        const jo = s.objectifs.map((o) => jetons(o.origine));
+        for (const sav of savoirs) {
+          const js = jetons(sav), sc = jo.map((j) => [...js].filter((k) => j.has(k)).length), best = Math.max(...sc);
+          s.objectifs[best > 0 ? sc.indexOf(best) : 0].contenus.push(simplifier(sav));
+        }
+        const [tete, ...reste] = s.objectifs;
+        s.objectifs = [tete].concat(reste.sort((a, b) => ORDRE_CAT[a.categorie] - ORDRE_CAT[b.categorie] || a.niveau - b.niveau));
+        seances.push(s);
+      }
+    return seances;
+  }
+
   function construireSeances(cp) {
+    if (cp.plan && cp.plan.parties && cp.plan.parties.length && D.planCompetence) {
+      const seances = seancesDepuisPlan(cp, cp.plan);
+      return seances.concat(seanceEvaluation(cp));
+    }
     const etapes = cp.description.length ? cp.description : [cp.intitule];
     const seances = etapes.map((e) => ({ titre: titreEtape(e), origine: e, objectifs: [], minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "apprentissage" }));
     const je = etapes.map(jetons);
@@ -260,9 +299,14 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
       seances[si].objectifs[oi].contenus.push(simplifier(sav));
     }
     for (const s of seances) s.objectifs.sort((a, b) => ORDRE_CAT[a.categorie] - ORDRE_CAT[b.categorie] || a.niveau - b.niveau);
+    return seances.concat(seanceEvaluation(cp));
+  }
+  function seanceEvaluation(cp) {
+    const seances = [];
     if (cp.criteres.length) {
       const ev = { titre: `Entraînement à l'évaluation — ${simplifier(cp.intitule)}`, origine: "Critères de performance du REAC", objectifs: [],
-        minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "evaluation" };
+        minutes: 0, numero: 0, cp: cp.numero, at: cp.at_numero, sequence: 0, sequence_titre: "", type_seance: "evaluation",
+        epreuves: cp.plan ? cp.plan.epreuves : [], bloc: cp.plan ? cp.plan.bloc : null, criteres_partie: cp.criteres };
       for (const c of cp.criteres)
         ev.objectifs.push(objectif({ texte: `Démontrer que : ${c[0].toLowerCase() + c.slice(1)}`, verbe: "Démontrer", niveau: 5, categorie: "critere",
           origine: c, criteres: [c], mots: motsCles(c), mode: modeBruner("critere", 5),
@@ -333,6 +377,6 @@ elles leurs mettre mise place sein travers partir`.split(/\s+/).map(N));
   }
   const poidsCompetences = (reac) => Object.fromEntries(reac.competences.map((c) => [c.numero, Math.max(D.volume(c), 1)]));
 
-  Object.assign(D, { NIVEAUX_BLOOM, ETAYAGE, MODES, niveauBloom, verbeInitial, simplifier, motsCles, objectifDepuisSavoir, formuler,
+  Object.assign(D, { NIVEAUX_BLOOM, ETAYAGE, MODES, niveauBloom, verbeInitial, simplifier, motsCles, objectifDepuisSavoir, formuler, jetons, FAMILLES, titreEtape,
     modeBruner, construireSeances, decouperCompetence, repartir, poidsCompetences, PAS, objectif });
 })(typeof window !== "undefined" ? window : globalThis);

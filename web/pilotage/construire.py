@@ -23,7 +23,7 @@ LIBS = [
     "https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js",
     "https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js",
 ]
-MODULES_MOTEUR = ["referentiels", "extraction", "pedagogie", "planification", "programme", "exports", "moteur"]
+MODULES_MOTEUR = ["referentiels", "extraction", "pedagogie", "plan", "planification", "programme", "exports", "moteur"]
 MODULES = ["coffre", "donnees", "suivi", "generateur", "documents", "finances", "ui"]
 
 
