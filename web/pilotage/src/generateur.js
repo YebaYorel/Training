@@ -168,9 +168,9 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
       if (titre) texte(s, titre, { x: 0.5, y: 0.45, w: 12.3, h: 1.1, max: 40, min: 28, bold: true, color: P1, fontFace: FT });
       return s;
     };
-    const puces = (s, mots, y = 1.8) => {
+    const puces = (s, mots, y = 1.8, min = 22) => {
       const n = Math.max(mots.length, 1), h = Math.min(1.0, 4.6 / n - 0.15);
-      mots.forEach((m, i) => texte(s, m, { x: 0.9, y: y + i * (h + 0.18), w: 11.5, h, max: 32, min: 22, bold: true, color: TX,
+      mots.forEach((m, i) => texte(s, m, { x: 0.9, y: y + i * (h + 0.18), w: 11.5, h, max: 32, min, bold: true, color: TX,
         fill: { color: CL }, rectRadius: 0.12, shape: pptx.ShapeType.roundRect, margin: 14 }));
     };
     const schema = (s, sc, y = 1.9) => {
@@ -232,7 +232,8 @@ Quantités : 10 à 14 diapositives, 4 à 6 exercices de types variés, 3 à 5 se
     }
     // 6. À retenir
     s = nouvelle("À retenir");
-    puces(s, (pack.ressource.a_retenir.length ? pack.ressource.a_retenir : pack.objectifs_seance).slice(0, 5).map((x) => x.split(" ").slice(0, 7).join(" ")));
+    // phrases ENTIÈRES (jamais coupées au milieu) : la taille de police s'adapte, 20 pt minimum
+    puces(s, (pack.ressource.a_retenir.length ? pack.ressource.a_retenir : pack.objectifs_seance).slice(0, 5), 1.8, 20);
     s = nouvelle("Questions ?");
     texte(s, "Quiz et évaluation de la séance", { x: 0.9, y: 2.4, w: 11.5, h: 2, max: 40, bold: true, color: P1, align: "center" });
     return pptx.write({ outputType: "blob" });
