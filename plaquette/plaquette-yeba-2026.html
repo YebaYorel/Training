@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Plaquette YEBA FORMATIONS 2026</title>
+<style>
+@font-face{font-family:"Montserrat";font-weight:600;src:url(assets/mont600.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:700;src:url(assets/mont700.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:800;src:url(assets/mont800.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:900;src:url(assets/mont900.woff2) format("woff2")}
+:root{
+  --bg:#060b15;--navy:#0a1628;--card:#0c1c33;--card2:#0f2340;--line:#1f3456;
+  --text:#eef3fa;--muted:#b9c6d8;--gold:#e6c36a;--gold2:#f6dc95;--cyan:#35c9f2;--cyan2:#8fe3ff;
+  --head:"Montserrat",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif;--mono:"JetBrains Mono",monospace;
+}
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:var(--body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;background:var(--bg);page-break-after:always;break-after:page}
+.page:last-child{page-break-after:auto;break-after:auto}
+h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.08;hyphens:none;word-break:normal;overflow-wrap:normal}
+.mono{font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.gold{color:var(--gold)} .cyan{color:var(--cyan)}
+
+/* ---------- PAGE 1 ---------- */
+.topbar{position:absolute;top:0;left:0;right:0;z-index:3;display:flex;justify-content:space-between;align-items:center;
+  padding:22px 40px;font-size:13px;color:var(--cyan2)}
+.topbar .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);margin-right:10px;vertical-align:1px}
+.hero{position:relative;height:96mm;background:url(assets/visuel-ia.jpg) center 38%/cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,21,.55) 0%,rgba(6,11,21,0) 22%,rgba(6,11,21,0) 55%,var(--bg) 100%)}
+.brand{position:relative;margin-top:-27mm;z-index:2;text-align:center;padding:0 40px}
+.brand img{width:128px;display:block;margin:0 auto 6px}
+.brand h1{font-size:46px;font-weight:900;margin-top:8px}
+.brand .tag{margin-top:10px;font-family:var(--head);font-weight:700;font-size:21px;color:var(--cyan2);letter-spacing:.02em}
+.brand .intro{margin:8px auto 0;max-width:150mm;font-size:16px;line-height:1.45;color:var(--muted)}
+
+.poles{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px 40px 0}
+.pole{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--line);border-top:3px solid var(--cyan);border-radius:10px;padding:14px 16px 12px;display:flex;flex-direction:column}
+.pole:nth-child(even){border-top-color:var(--gold)}
+.pole .num{font-size:12px;color:var(--cyan2)}
+.pole h3{font-size:21px;margin:4px 0 6px}
+.pole p{font-size:14.5px;line-height:1.4;color:var(--muted);flex:1}
+.pole .price{margin-top:9px;padding-top:8px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+.pole .price b{font-family:var(--head);font-weight:800;font-size:22px;color:var(--gold);margin:0 4px}
+
+.figures{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px 40px 0;text-align:center}
+.figures div{border:1px solid var(--line);border-radius:10px;padding:9px 4px;background:var(--navy)}
+.figures b{display:block;font-family:var(--head);font-weight:800;font-size:25px;color:var(--gold2)}
+.figures span{font-size:13px;color:var(--muted)}
+
+.badges{display:flex;margin-top:14px;flex-wrap:wrap;justify-content:center;gap:8px;padding:0 40px}
+.badge{border:1px solid #2c4a75;background:#0d1f3a;border-radius:6px;padding:6px 10px;font-size:13px;color:var(--text)}
+.badge b{color:var(--gold)}
+
+/* ---------- PAGE 2 ---------- */
+.p2{padding:34px 40px 0}
+.kicker{font-size:13px;color:var(--cyan2)}
+.p2 h2{font-size:34px;margin:8px 0 6px}
+.lead{font-size:16px;line-height:1.45;color:var(--muted);max-width:165mm}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.way{background:linear-gradient(170deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:12px;padding:16px 15px 14px;display:flex;flex-direction:column}
+.way .ico{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;background:#0a2a44;border:1px solid #23557e;margin-bottom:10px}
+.way h3{font-size:19px;margin-bottom:4px}
+.way .for{font-size:13px;color:var(--cyan2);margin-bottom:8px;font-weight:600}
+.way p{font-size:14.5px;line-height:1.42;color:var(--muted)}
+.way .fin{margin-top:auto;padding-top:10px;font-size:13px;color:var(--gold2);font-weight:600}
+.way .fin span{display:block;color:var(--muted);font-weight:400;margin-top:2px}
+
+.why{display:grid;grid-template-columns:1fr 1fr;gap:9px 22px;margin-top:18px}
+.why div{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.38}
+.why i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--bg);font-style:normal;font-weight:800;font-size:13px;display:grid;place-items:center;margin-top:1px}
+.why b{color:var(--text)} .why span{color:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:20px;counter-reset:s}
+.steps div{border-top:3px solid var(--cyan);padding-top:7px;font-size:13px;color:var(--muted);line-height:1.3}
+.steps div:nth-child(even){border-top-color:var(--gold)}
+.steps b{display:block;font-family:var(--head);font-size:14.5px;color:var(--text);margin-bottom:2px}
+
+.funds{margin-top:22px;display:flex;align-items:center;gap:14px;border:1px dashed #2c4a75;border-radius:10px;padding:10px 14px}
+.funds>span{font-size:12px;color:var(--cyan2);flex:none;width:110px;line-height:1.3}
+.funds div{display:flex;flex-wrap:wrap;gap:8px}
+.funds b{font-size:14px;font-weight:600;color:var(--text);background:#0d1f3a;border:1px solid #2c4a75;border-radius:6px;padding:5px 10px}
+.contact{position:absolute;left:0;right:0;bottom:0;padding:34px 40px 12px;background:url(assets/visuel-couloir.jpg) center 60%/cover}
+.contact::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--bg) 0%,rgba(6,11,21,.82) 30%,rgba(6,11,21,.9) 100%)}
+.cbox{position:relative;display:grid;grid-template-columns:1fr 128px;gap:22px;align-items:center;
+  background:rgba(8,18,34,.88);border:1px solid #2c4a75;border-radius:14px;padding:18px 22px}
+.cbox h2{font-size:26px}
+.cbox .cta{margin-top:6px;font-size:15px;color:var(--muted)}
+.cbox .cta b{color:var(--gold)}
+.who{margin-top:12px;font-family:var(--head);font-weight:800;font-size:19px}
+.who span{display:block;font-family:var(--mono);font-weight:400;font-size:12px;color:var(--cyan2);letter-spacing:.08em;margin-top:2px}
+.lines{margin-top:8px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:15.5px}
+.lines dt{font-family:var(--mono);font-size:12px;color:var(--gold);padding-top:3px}
+.lines dd{color:var(--text);font-weight:600}
+.qr{background:#fff;border-radius:10px;padding:8px;text-align:center}
+.qr img{width:100%;display:block}
+.qr small{display:block;font-size:11px;color:#0a1628;font-weight:700;margin-top:4px}
+.legal{position:relative;margin-top:10px;font-size:10px;line-height:1.4;color:#93a3ba}
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<section class="page">
+  <div class="topbar mono"><span><span class="dot"></span>YEBA FORMATIONS · Offre 2026</span><span>La Réunion · 974</span></div>
+  <div class="hero" role="img" aria-label="Visuel&nbsp;: couloir de données lumineux avec les lettres AI"></div>
+  <div class="brand">
+    <img src="assets/logo-yeba-blanc.png" alt="Logo YEBA FORMATIONS">
+    <h1>Passez à l’IA.<br><span class="gold">Gardez la main.</span></h1>
+    <div class="tag">Former · Automatiser · Protéger · Vendre</div>
+    <p class="intro">Un seul interlocuteur, du diagnostic à la mise en œuvre, pour vos équipes, vos recrutements et vos données.</p>
+  </div>
+
+  <div class="poles">
+    <div class="pole">
+      <span class="num mono">Pôle 01</span>
+      <h3>Intelligence artificielle</h3>
+      <p>Gagner du temps chaque jour, sans exposer vos données. Copilot, IA souveraine, site et emailing IA.</p>
+      <div class="price">dès<b>790 €</b>/ stagiaire / jour</div>
+    </div>
+    <div class="pole">
+      <span class="num mono">Pôle 02</span>
+      <h3>Automatisation</h3>
+      <p>Supprimer les tâches répétitives, déléguer à des agents IA, toujours sous contrôle humain.</p>
+      <div class="price">dès<b>990 €</b>/ stagiaire / jour</div>
+    </div>
+    <div class="pole">
+      <span class="num mono">Pôle 03</span>
+      <h3>RGPD &amp; IA Act</h3>
+      <p>Sécuriser vos usages des données et de l’IA, et pouvoir prouver les mesures prises.</p>
+      <div class="price">dès<b>690 €</b>/ stagiaire / jour</div>
+    </div>
+    <div class="pole">
+      <span class="num mono">Pôle 04</span>
+      <h3>Vente &amp; Management</h3>
+      <p>Vendre sans brader, encadrer sans s’épuiser. Mises en situation sur vos cas réels.</p>
+      <div class="price">dès<b>690 €</b>/ stagiaire / jour</div>
+    </div>
+  </div>
+
+  <div class="figures">
+    <div><b>7 h</b><span>par journée</span></div>
+    <div><b>6 à 8</b><span>participants</span></div>
+    <div><b>15 j</b><span>ouvrés d’accès</span></div>
+    <div><b>70 %</b><span>de pratique</span></div>
+  </div>
+
+  <div class="badges">
+    <span class="badge"><b>Qualiopi</b> 25FOR02027.1</span>
+    <span class="badge"><b>Google</b> AI Specialist</span>
+    <span class="badge"><b>Google</b> Professional AI</span>
+    <span class="badge"><b>ANSSI</b> SecNumacadémie</span>
+    <span class="badge"><b>CNIL</b> MOOC RGPD</span>
+    <span class="badge"><b>Référent</b> handicap</span>
+  </div>
+</section>
+
+<!-- ================= PAGE 2 ================= -->
+<section class="page">
+  <div class="p2">
+    <span class="kicker mono">Pour votre entreprise</span>
+    <h2>Trois façons de <span class="gold">travailler ensemble</span></h2>
+    <p class="lead">TPE, PME ou grande enseigne&nbsp;: on part de votre besoin réel, pas d’un catalogue.</p>
+
+    <div class="ways">
+      <div class="way">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#35c9f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></div>
+        <h3>Former vos équipes</h3>
+        <div class="for">Salariés · managers · dirigeants</div>
+        <p>En inter ou en intra, dans vos locaux ou en salle louée. Ateliers sur vos vrais dossiers.</p>
+        <div class="fin">Intra dès 2 100 € / groupe / jour<span>soit 263 à 350 € par personne · OPCO, plan de développement</span></div>
+      </div>
+      <div class="way">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e6c36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 8h5M19.5 5.5v5"/></svg></div>
+        <h3>Recruter des profils prêts</h3>
+        <div class="for">Vous recrutez · nous préparons</div>
+        <p>Formation avant embauche (POEI) de vos futurs salariés&nbsp;: accueil, vente, management, outils IA.</p>
+        <div class="fin">Avec France Travail<span>financement selon conditions · dossier monté avec vous</span></div>
+      </div>
+      <div class="way">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#35c9f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+        <h3>Être accompagné</h3>
+        <div class="for">Conseil · audit · mise en place</div>
+        <p>Audit RGPD &amp; IA Act, workflows automatisés et agents IA conçus et installés pour vous.</p>
+        <div class="fin">Diagnostic 30&nbsp;min&nbsp;: 100&nbsp;€<span>déduit de la prestation suivante</span></div>
+      </div>
+    </div>
+
+    <div class="why">
+      <div><i>✓</i><p><b>Expérience terrain</b> <span>en vente et management, à La Réunion.</span></p></div>
+      <div><i>✓</i><p><b>Aucune commission d’éditeur&nbsp;:</b> <span>outils américains et européens à parité.</span></p></div>
+      <div><i>✓</i><p><b>30 % d’apports, 70 % de pratique</b> <span>sur vos situations réelles.</span></p></div>
+      <div><i>✓</i><p><b>Conformité intégrée&nbsp;:</b> <span>aucune IA n’évalue ni ne classe vos stagiaires.</span></p></div>
+      <div><i>✓</i><p><b>Accessible à tous&nbsp;:</b> <span>référent handicap, supports en corps 16 gratuits.</span></p></div>
+      <div><i>✓</i><p><b>Financement&nbsp;:</b> <span>nous montons le dossier avec vous.</span></p></div>
+    </div>
+
+    <div class="steps">
+      <div><b>1. Diagnostic</b>votre besoin, vos outils</div>
+      <div><b>2. Devis</b>valable 30 jours</div>
+      <div><b>3. Test</b>niveau de chacun</div>
+      <div><b>4. Formation</b>sur vos cas réels</div>
+      <div><b>5. Évaluation</b>et attestation</div>
+      <div><b>6. Suivi</b>à froid, J+30</div>
+    </div>
+
+    <div class="funds">
+      <span class="mono">Financements possibles</span>
+      <div><b>OPCO</b><b>Plan de développement</b><b>France Travail · AIF · POEI</b><b>Région</b></div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="cbox">
+      <div>
+        <h2>Parlons de <span class="gold">votre projet</span></h2>
+        <p class="cta">Un appel de 20 minutes suffit pour <b>chiffrer votre besoin</b>.</p>
+        <div class="who">Aurélien LUMEKA<span>Directeur · Formateur &amp; consultant IA</span></div>
+        <dl class="lines">
+          <dt>TÉL</dt><dd>+262 693 32 24 45</dd>
+          <dt>MAIL</dt><dd>yebaformations@gmail.com</dd>
+          <dt>WEB</dt><dd>www.yebaformations.re</dd>
+          <dt>ADR</dt><dd>9 rue Françoise Châtelain, 97490 Sainte-Clotilde</dd>
+        </dl>
+      </div>
+      <div class="qr"><img src="assets/qr-site.svg" alt="QR code vers www.yebaformations.re"><small>Scannez-moi</small></div>
+    </div>
+    <p class="legal">YEBA FORMATIONS · SIRET 814 622 262 00032 · Déclaration d’activité n° 04973676397 auprès du Préfet de La Réunion (cet enregistrement ne vaut pas agrément de l’État) · Certification Qualiopi n° 25FOR02027.1, catégorie actions de formation (Qualitia, accrédité COFRAC) · TVA non applicable, art. 293 B du CGI · Tarifs 2026 nets de taxe, détail dans le catalogue · Document conçu avec l’assistance d’une IA générative, vérifié et validé par un humain (règlement (UE) 2024/1689).</p>
+  </div>
+</section>
+
+</body>
+</html>

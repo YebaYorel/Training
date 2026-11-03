@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Plaquette animée YEBA 2026</title>
+<style>
+@font-face{font-family:"Montserrat";font-weight:700;src:url(assets/mont700.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:800;src:url(assets/mont800.woff2) format("woff2")}
+@font-face{font-family:"Montserrat";font-weight:900;src:url(assets/mont900.woff2) format("woff2")}
+:root{--bg:#060b15;--card:#0c1c33;--card2:#0f2340;--line:#1f3456;--text:#eef3fa;--muted:#c3cfdf;--gold:#e6c36a;--gold2:#f6dc95;--cyan:#35c9f2;--cyan2:#8fe3ff;
+  --head:"Montserrat",sans-serif;--body:"Inter",sans-serif;--mono:"JetBrains Mono",monospace}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1350px;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--body)}
+.stage{position:relative;width:1080px;height:1350px;overflow:hidden}
+.bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0}
+.bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,11,21,.35),rgba(6,11,21,.2) 35%,rgba(6,11,21,.92) 72%,var(--bg))}
+#bg1{background-image:url(assets/visuel-ia.jpg);bottom:auto;height:66%;background-position:center 40%;transform-origin:50% 40%;-webkit-mask-image:linear-gradient(180deg,#000 50%,transparent 98%);mask-image:linear-gradient(180deg,#000 50%,transparent 98%)}
+#bg1::after{background:linear-gradient(180deg,rgba(6,11,21,.35),rgba(6,11,21,0) 30%,rgba(6,11,21,0) 60%,var(--bg) 100%)}
+#bg2{background-image:url(assets/visuel-couloir.jpg)}
+#bg2::after{background:linear-gradient(180deg,rgba(6,11,21,.55),rgba(6,11,21,.88))}
+.scene{position:absolute;inset:0;padding:90px 80px}
+.mono{font-family:var(--mono);letter-spacing:.1em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.08}
+.gold{color:var(--gold)}
+.topline{position:absolute;top:44px;left:80px;right:80px;display:flex;justify-content:space-between;font-size:24px;color:var(--cyan2);z-index:5}
+.progress{position:absolute;left:0;bottom:0;height:8px;background:linear-gradient(90deg,var(--cyan),var(--gold));z-index:5}
+[data-a]{opacity:0;will-change:transform,opacity}
+
+/* S1 */
+#s1{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding-bottom:120px}
+#s1 img{width:220px;margin-bottom:22px}
+#s1 h1{font-size:104px;font-weight:900}
+#s1 .tag{margin-top:30px;white-space:nowrap;font-family:var(--head);font-weight:700;font-size:38px;color:var(--cyan2)}
+
+/* S2 */
+#s2{display:flex;flex-direction:column;justify-content:center}
+.kick{font-size:28px;color:var(--cyan2);margin-bottom:22px}
+#s2 h2{font-size:76px;margin-bottom:46px}
+.need{display:flex;align-items:center;gap:30px;font-family:var(--head);font-weight:800;font-size:62px;margin:18px 0}
+.need i{flex:none;width:22px;height:84px;border-radius:6px;background:var(--cyan)}
+.need:nth-of-type(even) i{background:var(--gold)}
+
+/* S3 */
+#s3{display:flex;flex-direction:column;justify-content:center}
+#s3 h2{font-size:72px;margin-bottom:40px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{background:linear-gradient(160deg,var(--card2),var(--card));border:2px solid var(--line);border-top:6px solid var(--cyan);border-radius:20px;padding:30px 30px 26px;min-height:330px;display:flex;flex-direction:column}
+.card:nth-child(even){border-top-color:var(--gold)}
+.card .n{font-size:22px;color:var(--cyan2)}
+.card h3{font-size:44px;margin:10px 0 14px}
+.card p{font-size:30px;line-height:1.3;color:var(--muted);flex:1}
+.card .pr{margin-top:16px;font-size:26px;color:var(--muted)}
+.card .pr b{font-family:var(--head);font-size:46px;color:var(--gold);margin:0 6px}
+
+/* S4 */
+#s4{display:flex;flex-direction:column;justify-content:center}
+#s4 h2{font-size:72px;margin-bottom:40px}
+.way{display:grid;grid-template-columns:110px 1fr;gap:28px;align-items:center;background:linear-gradient(160deg,var(--card2),var(--card));border:2px solid var(--line);border-radius:20px;padding:28px 32px;margin-bottom:24px}
+.way .ic{width:110px;height:110px;border-radius:22px;display:grid;place-items:center;background:#0a2a44;border:2px solid #23557e}
+.way h3{font-size:48px}
+.way p{font-size:31px;color:var(--muted);margin-top:8px;line-height:1.25}
+.way p b{color:var(--gold2);font-weight:700}
+
+/* S5 */
+#s5{display:flex;flex-direction:column;justify-content:center}
+#s5 h2{font-size:72px;margin-bottom:44px}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:44px}
+.fig{border:2px solid var(--line);border-radius:20px;padding:26px;text-align:center;background:#0a1628}
+.fig b{display:block;font-family:var(--head);font-weight:900;font-size:90px;color:var(--gold2)}
+.fig span{font-size:32px;color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:16px}
+.badge{border:2px solid #2c4a75;background:#0d1f3a;border-radius:12px;padding:12px 20px;font-size:30px}
+.badge b{color:var(--gold)}
+
+/* S6 */
+#s6{display:flex;flex-direction:column;justify-content:center}
+#s6 img.logo{width:200px;margin-bottom:28px}
+#s6 h2{font-size:82px}
+#s6 .cta{font-size:36px;color:var(--muted);margin:22px 0 40px;line-height:1.3}
+#s6 .cta b{color:var(--gold)}
+.cbox{display:grid;grid-template-columns:1fr 250px;gap:36px;align-items:center;background:rgba(8,18,34,.9);border:2px solid #2c4a75;border-radius:26px;padding:40px}
+.who{font-family:var(--head);font-weight:800;font-size:48px}
+.role{font-size:22px;color:var(--cyan2);margin:8px 0 26px}
+.ln{display:grid;grid-template-columns:96px 1fr;gap:12px 10px;font-size:34px;font-weight:600}
+.ln dt{font-family:var(--mono);font-size:22px;color:var(--gold);padding-top:9px}
+.qr{background:#fff;border-radius:18px;padding:14px;text-align:center}
+.qr img{width:100%;display:block}
+.qr small{display:block;font-size:22px;color:#0a1628;font-weight:700;margin-top:6px}
+.legal{margin-top:26px;font-size:20px;color:#9fb0c6;line-height:1.4}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="bg" id="bg1"></div>
+  <div class="bg" id="bg2"></div>
+  <div class="topline mono" data-a="0.2,30.6" data-fx="fade"><span>● YEBA FORMATIONS · Offre 2026</span><span>La Réunion · 974</span></div>
+
+  <section class="scene" id="s1">
+    <img src="assets/logo-yeba-blanc.png" alt="YEBA FORMATIONS" data-a="0.4,4.4" data-fx="zoom">
+    <h1><span data-a="1.0,4.4" style="display:inline-block">Passez à l’IA.</span><br><span class="gold" data-a="1.6,4.4" style="display:inline-block">Gardez la main.</span></h1>
+    <div class="tag" data-a="2.4,4.4">Former · Automatiser · Protéger · Vendre</div>
+  </section>
+
+  <section class="scene" id="s2">
+    <div class="kick mono" data-a="4.9,9.0">Vos enjeux</div>
+    <h2 data-a="5.1,9.0">Ce que nos clients <span class="gold">veulent vraiment</span></h2>
+    <div class="need" data-a="5.7,9.0"><i></i>Gagner du temps</div>
+    <div class="need" data-a="6.2,9.0"><i></i>Recruter et fidéliser</div>
+    <div class="need" data-a="6.7,9.0"><i></i>Vendre au juste prix</div>
+    <div class="need" data-a="7.2,9.0"><i></i>Protéger leurs données</div>
+  </section>
+
+  <section class="scene" id="s3">
+    <div class="kick mono" data-a="9.4,15.0">4 pôles · 1 seul interlocuteur</div>
+    <h2 data-a="9.6,15.0">Une offre <span class="gold">complète</span></h2>
+    <div class="cards">
+      <div class="card" data-a="10.1,15.0"><span class="n mono">Pôle 01</span><h3>Intelligence artificielle</h3><p>Gagner du temps, sans exposer vos données.</p><div class="pr">dès<b>790 €</b>/ jour</div></div>
+      <div class="card" data-a="10.5,15.0"><span class="n mono">Pôle 02</span><h3>Automa&shy;tisation</h3><p>Workflows et agents IA, sous contrôle humain.</p><div class="pr">dès<b>990 €</b>/ jour</div></div>
+      <div class="card" data-a="10.9,15.0"><span class="n mono">Pôle 03</span><h3>RGPD &amp; IA Act</h3><p>Sécuriser vos usages et prouver vos mesures.</p><div class="pr">dès<b>690 €</b>/ jour</div></div>
+      <div class="card" data-a="11.3,15.0"><span class="n mono">Pôle 04</span><h3>Vente &amp; Management</h3><p>Vendre sans brader, encadrer sans s’épuiser.</p><div class="pr">dès<b>690 €</b>/ jour</div></div>
+    </div>
+  </section>
+
+  <section class="scene" id="s4">
+    <div class="kick mono" data-a="15.3,20.6">Pour votre entreprise</div>
+    <h2 data-a="15.5,20.6">3 façons de <span class="gold">travailler ensemble</span></h2>
+    <div class="way" data-a="16.0,20.6"><div class="ic"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#35c9f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></svg></div><div><h3>Former vos équipes</h3><p>Inter ou intra · <b>dès 2 100 € / groupe / jour</b></p></div></div>
+    <div class="way" data-a="16.6,20.6"><div class="ic"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#e6c36a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6"/><path d="M17 8h5M19.5 5.5v5"/></svg></div><div><h3>Recruter des profils prêts</h3><p>Formation avant embauche · <b>POEI avec France Travail</b></p></div></div>
+    <div class="way" data-a="17.2,20.6"><div class="ic"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#35c9f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div><div><h3>Être accompagné</h3><p>Audit, workflows, agents IA · <b>diagnostic 30&nbsp;min&nbsp;: 100&nbsp;€</b></p></div></div>
+  </section>
+
+  <section class="scene" id="s5">
+    <div class="kick mono" data-a="20.9,24.2">Nos engagements</div>
+    <h2 data-a="21.1,24.2">Du concret, <span class="gold">des preuves</span></h2>
+    <div class="figs">
+      <div class="fig" data-a="21.5,24.2"><b>70 %</b><span>de pratique</span></div>
+      <div class="fig" data-a="21.8,24.2"><b>6 à 8</b><span>participants</span></div>
+    </div>
+    <div class="badges" data-a="22.3,24.2">
+      <span class="badge"><b>Qualiopi</b> 25FOR02027.1</span>
+      <span class="badge"><b>Google</b> AI Specialist</span>
+      <span class="badge"><b>Google</b> Professional AI</span>
+      <span class="badge"><b>ANSSI</b> SecNumacadémie</span>
+      <span class="badge"><b>CNIL</b> MOOC RGPD</span>
+      <span class="badge"><b>Référent</b> handicap</span>
+    </div>
+  </section>
+
+  <section class="scene" id="s6">
+    <img class="logo" src="assets/logo-yeba-blanc.png" alt="YEBA FORMATIONS" data-a="24.5,99" data-fx="zoom">
+    <h2 data-a="24.8,99">Parlons de <span class="gold">votre projet</span></h2>
+    <p class="cta" data-a="25.2,99">Un appel de 20 minutes suffit pour <b>chiffrer votre besoin</b>.</p>
+    <div class="cbox" data-a="25.6,99">
+      <div>
+        <div class="who">Aurélien LUMEKA</div>
+        <div class="role mono">Directeur · Formateur &amp; consultant IA</div>
+        <dl class="ln">
+          <dt>TÉL</dt><dd>+262 693 32 24 45</dd>
+          <dt>MAIL</dt><dd>yebaformations@gmail.com</dd>
+          <dt>WEB</dt><dd>www.yebaformations.re</dd>
+        </dl>
+      </div>
+      <div class="qr"><img src="assets/qr-site.svg" alt="QR code du site"><small>Scannez-moi</small></div>
+    </div>
+    <p class="legal" data-a="26.2,99">9 rue Françoise Châtelain, 97490 Sainte-Clotilde · SIRET 814 622 262 00032 · NDA 04973676397 · Qualiopi 25FOR02027.1 (actions de formation) · Visuels et mise en forme réalisés avec l’assistance d’une IA, validés par un humain.</p>
+  </section>
+  <div class="progress" id="prog"></div>
+</div>
+<script>
+const DUR=31;
+const ease=x=>x<=0?0:x>=1?1:1-Math.pow(1-x,3);
+const els=[...document.querySelectorAll('[data-a]')].map(e=>{const [i,o]=e.dataset.a.split(',').map(Number);return {e,i,o,fx:e.dataset.fx||'up'}});
+const bg1=document.getElementById('bg1'),bg2=document.getElementById('bg2'),prog=document.getElementById('prog');
+window.render=function(t){
+  for(const {e,i,o,fx} of els){
+    const pi=ease((t-i)/0.7), po=ease((t-o)/0.45);
+    e.style.opacity=(pi*(1-po)).toFixed(3);
+    if(fx==='up') e.style.transform=`translateY(${(1-pi)*46 - po*30}px)`;
+    else if(fx==='zoom') e.style.transform=`scale(${0.86+0.14*pi})`;
+  }
+  // fonds
+  const a1=ease(t/0.8)*(1-ease((t-4.3)/0.8)) + 0.18*ease((t-5)/1)*(1-ease((t-24)/0.6));
+  bg1.style.opacity=a1.toFixed(3); bg1.style.transform=`scale(${1.04+0.08*Math.min(t,24)/24})`;
+  bg2.style.opacity=ease((t-24.2)/1).toFixed(3); bg2.style.transform=`scale(${1.12-0.08*ease((t-24.2)/6.8)})`;
+  prog.style.width=(Math.min(t/DUR,1)*100).toFixed(2)+'%';
+};
+window.DUR=DUR;
+// lecture en direct si on ouvre la page dans un navigateur
+if(!location.search.includes('capture')){const t0=performance.now();(function loop(){render(((performance.now()-t0)/1000)%(DUR+1));requestAnimationFrame(loop)})();}
+</script>
+</body>
+</html>
