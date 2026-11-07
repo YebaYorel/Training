@@ -47,6 +47,7 @@ class BaserowClient:
         self.password = password or os.getenv("BASEROW_PASSWORD")
         self.database_token = token or os.getenv("BASEROW_TOKEN") or None
         self.timeout = timeout
+        _exiger_https(self.api_url)
 
         self._jwt: Optional[str] = None
         self._session = requests.Session()
@@ -327,6 +328,22 @@ class BaserowClient:
             result["jwt"] = "absent"
 
         return result
+
+
+def _exiger_https(url: str) -> None:
+    """Refuse d'envoyer mot de passe et jetons en clair (RGPD art. 32).
+
+    Seule exception : une instance Baserow locale (localhost) pour les tests.
+    """
+    from urllib.parse import urlparse
+
+    parsed = urlparse(url)
+    local = parsed.hostname in ("localhost", "127.0.0.1", "::1")
+    if parsed.scheme != "https" and not (parsed.scheme == "http" and local):
+        raise BaserowError(
+            f"BASEROW_API_URL doit commencer par https:// (reçu : {parsed.scheme or 'aucun'}://). "
+            "Les identifiants ne sont jamais envoyés sur une connexion non chiffrée."
+        )
 
 
 def _safe_json(resp: requests.Response) -> Any:

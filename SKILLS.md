@@ -23,6 +23,12 @@ mais une version modifiée par l'auteur s'installerait sans relecture.
 | `theme-factory` | Thèmes visuels prêts pour slides/documents | anthropics/skills @ `2c5958e` | Apache 2.0 |
 | `yeba-charte` | **Créé pour YEBA** : charte graphique appliquée à toute production (couleurs, polices, contrastes, CSS pour site web) | ce dépôt | — |
 | `yeba-powerpoint` | **Créé pour YEBA** : .pptx accessibles + transitions Morph/Prisme/Vortex + contrôle automatique | ce dépôt | — |
+| `yeba-ingenierie-formation` | **Créé pour YEBA** : chef d'orchestre du pack formation (besoin → objectifs → progression → déroulé → supports → évaluation → Qualiopi) | ce dépôt | — |
+| `yeba-bloom` | **Créé pour YEBA** : Bloom révisé, tableau de Bloom, objectifs opérationnels (Mager), alignement (Biggs) | ce dépôt | — |
+| `yeba-bruner` | **Créé pour YEBA** : spirale, modes enactif/iconique/symbolique, étayage (Wood, Bruner & Ross) | ce dépôt | — |
+| `yeba-deroule-pedagogique` | **Créé pour YEBA** : progression et déroulé minute par minute, rythme d'attention, plan B | ce dépôt | — |
+| `yeba-donnees-formation` | **Créé pour YEBA** : extraction, anonymisation, indicateurs Qualiopi, Kirkpatrick | ce dépôt | — |
+| `yeba-vulgarisation` | **Créé pour YEBA** : Feynman, analogies réunionnaises, 3 niveaux de lecture | ce dépôt | — |
 | `caveman`, `ultracave` | Mode réponses ultra-courtes (sur demande : `/caveman`) | JuliusBrussee/caveman @ `c310c9d` | Apache 2.0 |
 | `task-observer` | Méta-skill « One Skill to Rule Them All » : améliore les skills | rebelytics/one-skill-to-rule-them-all @ `046b8f2` | CC BY 4.0 |
 | `headroom` | Doc : réduire les tokens dans une appli qui appelle un LLM | chopratejas/headroom @ `12864fc` | Apache 2.0 |
@@ -46,7 +52,7 @@ Déjà disponibles via ton compte claude.ai (rien à installer) : `pptx`, `docx`
 |---|---|---|
 | `baserow` | actif | existant (UE, Pays-Bas) |
 | `playwright` | actif | navigateur piloté, local, version figée 0.0.83 (`scripts/playwright_mcp.py`) |
-| `perplexity` | **désactivé** | société US : requêtes traitées hors UE. Activer via `/mcp` + variable `PERPLEXITY_API_KEY` |
+| `perplexity` | **déclaré mais NON opérationnel** | Désactivé (société US, requêtes traitées hors UE) **et** aucune clé API configurée. Pour l'activer : clé Perplexity enregistrée comme secret de l'environnement cloud, puis `/mcp` |
 | `composio` | **désactivé** | société US + concentre les accès OAuth à toutes tes applis (risque sécurité élevé). Activer via `/mcp` |
 
 ## 2. Non installés — décision motivée

@@ -31,6 +31,23 @@
       }
     }
   },
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.production)",
+      "Edit(./.env)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)"
+    ],
+    "ask": [
+      "mcp__baserow__delete_row",
+      "mcp__baserow__update_row",
+      "mcp__playwright__browser_run_code_unsafe",
+      "mcp__playwright__browser_file_upload",
+      "Bash(rm -rf:*)"
+    ]
+  },
   "disabledMcpjsonServers": [
     "perplexity",
     "composio"
