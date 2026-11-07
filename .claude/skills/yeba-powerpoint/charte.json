@@ -1,0 +1,49 @@
+{
+  "_lire_moi": "Charte graphique officielle YEBA FORMATIONS (planche fournie par Aurelien le 2026-11-07). Source unique utilisee par les skills yeba-charte et yeba-powerpoint. Ne s'applique PAS quand Aurelien travaille pour un autre centre de formation.",
+  "organisme": "YEBA FORMATIONS",
+  "couleurs": {
+    "bleu": {"hex": "#1B3A6B", "role": "Confiance, sécurité, RGPD — couleur dominante"},
+    "or": {"hex": "#C9AB4C", "role": "Qualité premium, innovation — accents"},
+    "noir": {"hex": "#121212", "role": "Cyber, matrice — fonds sombres"},
+    "blanc": {"hex": "#FFFFFF", "role": "Clarté, espace"}
+  },
+  "associations_texte_fond": {
+    "autorisees": [
+      {"texte": "#1B3A6B", "fond": "#FFFFFF", "contraste": 11.3},
+      {"texte": "#FFFFFF", "fond": "#1B3A6B", "contraste": 11.3},
+      {"texte": "#FFFFFF", "fond": "#121212", "contraste": 18.7},
+      {"texte": "#C9AB4C", "fond": "#121212", "contraste": 8.4},
+      {"texte": "#C9AB4C", "fond": "#1B3A6B", "contraste": 5.1, "condition": "titres et mots-clés seulement, >= 28 pt gras"}
+    ],
+    "interdites": [
+      {"texte": "#C9AB4C", "fond": "#FFFFFF", "contraste": 2.2, "raison": "illisible pour un public malvoyant"},
+      {"texte": "#1B3A6B", "fond": "#121212", "contraste": 1.7, "raison": "illisible"}
+    ]
+  },
+  "polices": {
+    "titres": {"nom": "Montserrat", "graisse": "Bold", "repli": "Arial Black"},
+    "accent": {"nom": "Poiret One", "usage": "décoratif uniquement : très gros titre de couverture (>= 54 pt) d'une présentation d'entreprise ; JAMAIS dans un support de formation ni pour du texte courant (trait trop fin pour les malvoyants)", "repli": "Montserrat Light"},
+    "texte": {"nom": "Inter", "graisse": "Regular / SemiBold", "repli": "Arial"}
+  },
+  "logo": {
+    "description": "Trois montagnes en réseau (bleu -> or), oeil au sommet ; mot YEBA en bleu, FORMATIONS en or. Versions : horizontale (petits en-têtes), monochrome sur bleu, monochrome sur or, icône ronde sur bleu.",
+    "fichiers": null,
+    "_note": "Fichiers PNG/SVG du logo a fournir par Aurelien. Ne jamais redessiner ou generer le logo."
+  },
+  "style_images": {
+    "nom": "Cyber-Garage Premium",
+    "principes": ["fonds sombres", "lumières néon bleu et or", "réseaux de points reliés", "portraits noir et blanc contrastés"],
+    "motif": "réseau de points reliés + silhouette de La Réunion avec « 974 »"
+  },
+  "pictogrammes": ["RGPD", "AI Workflow", "Cybersécurité", "Cloud"],
+  "pictogrammes_style": "trait or, fines lignes, coins arrondis",
+  "accessibilite": {
+    "taille_min_titre_pt": 40,
+    "taille_min_texte_pt": 28,
+    "taille_min_absolue_pt": 24,
+    "contraste_min": 4.5,
+    "contraste_vise": 7.0,
+    "mots_max_par_diapo": 20,
+    "mots_max_par_ligne": 6
+  }
+}

@@ -1,0 +1,44 @@
+/* Charte YEBA FORMATIONS — variables CSS pour sites et pages HTML.
+   Polices à AUTO-HÉBERGER (fichiers .woff2 dans /fonts) : ne pas utiliser
+   fonts.googleapis.com (transfert de l'IP des visiteurs hors UE — RGPD). */
+
+@font-face { font-family: "Montserrat"; font-weight: 700; font-display: swap; src: url("/fonts/montserrat-700.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("/fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("/fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Poiret One"; font-weight: 400; font-display: swap; src: url("/fonts/poiret-one-400.woff2") format("woff2"); }
+
+:root {
+  --yeba-bleu: #1B3A6B;
+  --yeba-or: #C9AB4C;
+  --yeba-noir: #121212;
+  --yeba-blanc: #FFFFFF;
+
+  --yeba-police-titres: "Montserrat", "Arial Black", sans-serif;
+  --yeba-police-texte: "Inter", Arial, sans-serif;
+  --yeba-police-accent: "Poiret One", "Montserrat", sans-serif; /* décoratif, >= 54px */
+
+  /* Thème clair (par défaut) */
+  --fond: var(--yeba-blanc);
+  --texte: var(--yeba-noir);
+  --titre: var(--yeba-bleu);
+  --accent-sur-fond: var(--yeba-bleu); /* l'or est illisible sur blanc (2,2:1) */
+  --filet: var(--yeba-or);             /* or réservé aux traits/décors en thème clair */
+}
+
+/* Thème sombre « Cyber-Garage Premium » */
+[data-theme="sombre"] {
+  --fond: var(--yeba-noir);
+  --texte: var(--yeba-blanc);
+  --titre: var(--yeba-blanc);
+  --accent-sur-fond: var(--yeba-or);   /* 8,4:1 sur noir */
+  --filet: var(--yeba-or);
+}
+
+body { background: var(--fond); color: var(--texte); font-family: var(--yeba-police-texte); font-size: 1.125rem; line-height: 1.6; }
+h1, h2, h3 { font-family: var(--yeba-police-titres); font-weight: 700; color: var(--titre); }
+a { color: var(--accent-sur-fond); text-decoration: underline; }
+:focus-visible { outline: 3px solid var(--yeba-or); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
