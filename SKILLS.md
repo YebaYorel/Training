@@ -5,8 +5,10 @@ session Claude Code (cloud ou PC) ouvrant ce dépôt les retrouve automatiquemen
 Pour les avoir dans **tous** les projets du PC : `python scripts/installer_skills_pc.py --appliquer`.
 
 Relecture de sécurité effectuée le 2026-11-07 : hooks, scripts, appels réseau,
-licences. Chaque source est **figée à un commit** : une mise à jour amont n'est
-jamais exécutée sans relecture.
+licences. Les **skills copiés** sont figés à un commit : une mise à jour amont
+n'est jamais exécutée sans relecture. ⚠️ Les **4 plugins** (section suivante)
+suivent en revanche la version publiée par leur auteur : ils sont plus à jour,
+mais une version modifiée par l'auteur s'installerait sans relecture.
 
 ## 1. Installés et actifs
 
