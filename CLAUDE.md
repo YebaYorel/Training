@@ -44,6 +44,18 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
 
+## Charte YEBA FORMATIONS — à appliquer à CHAQUE production
+
+Skill `yeba-charte` ; valeurs exactes dans `.claude/skills/yeba-powerpoint/charte.json`.
+
+- Bleu `#1B3A6B` (dominante) · Or `#C9AB4C` (accents) · Noir `#121212` · Blanc `#FFFFFF`
+- Titres **Montserrat Bold** · Texte **Inter** · **Poiret One** décoratif seulement (≥ 54 pt, jamais en formation)
+- **Or jamais en texte sur fond blanc** (contraste 2,2:1, illisible) ; or OK sur noir (8,4:1) ou bleu (5,1:1)
+- Images « Cyber-Garage Premium » (fonds sombres, néons bleu/or, réseaux de points, motif 974)
+- Logo : fichiers fournis uniquement, jamais redessiné ni généré par IA
+- **Exception** : travail pour un autre centre de formation → aucune trace de YEBA
+- Web : polices auto-hébergées (pas de Google Fonts → RGPD)
+
 ## Skills et plugins installés
 
 Inventaire complet, sources figées et refus motivés : `SKILLS.md`.

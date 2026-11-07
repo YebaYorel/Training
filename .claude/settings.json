@@ -1,6 +1,6 @@
 {
   "enabledPlugins": {
-    "context-mode@context-mode": true,
+    "context-mode@context-mode": false,
     "cost-guardian@cost-guardian-marketplace": true,
     "video-context@video-context-marketplace": true,
     "linkedin-skills@linkedin-skills": true
