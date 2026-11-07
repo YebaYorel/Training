@@ -15,3 +15,18 @@ env/
 # Divers
 .DS_Store
 *.log
+
+# Dépôt PUBLIC : rien de ce que les skills produisent sur le travail réel
+# (clients, stagiaires, idées business) ne doit partir sur GitHub (RGPD art. 5 & 32)
+.claude/settings.local.json
+.claude/vendor-cache/
+skill-observations/
+.arena/
+founder/
+instagram/
+linkedin/
+council-report-*.html
+council-transcript-*.md
+*.pptx
+*.pdf
+!.claude/skills/**/*.pdf

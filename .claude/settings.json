@@ -1,0 +1,42 @@
+{
+  "enabledPlugins": {
+    "context-mode@context-mode": true,
+    "cost-guardian@cost-guardian-marketplace": true,
+    "video-context@video-context-marketplace": true,
+    "linkedin-skills@linkedin-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "context-mode": {
+      "source": {
+        "source": "github",
+        "repo": "mksglu/context-mode"
+      }
+    },
+    "cost-guardian-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "Manavarya09/cost-guardian"
+      }
+    },
+    "video-context-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "vusallyv/video-context-plugin"
+      }
+    },
+    "linkedin-skills": {
+      "source": {
+        "source": "github",
+        "repo": "sergebulaev/linkedin-skills"
+      }
+    }
+  },
+  "disabledMcpjsonServers": [
+    "perplexity",
+    "composio"
+  ],
+  "enabledMcpjsonServers": [
+    "baserow",
+    "playwright"
+  ]
+}

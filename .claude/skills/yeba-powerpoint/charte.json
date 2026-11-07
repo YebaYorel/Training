@@ -1,0 +1,27 @@
+{
+  "_lire_moi": "Charte graphique YEBA FORMATIONS. Les valeurs null sont A COMPLETER par Aurelien (codes hexadecimaux exacts du logo / de la charte). Claude ne doit JAMAIS inventer ces couleurs : s'il trouve null, il demande.",
+  "organisme": "YEBA FORMATIONS",
+  "couleurs": {
+    "primaire": null,
+    "secondaire": null,
+    "accent": null,
+    "fond_clair": "#FFFFFF",
+    "fond_sombre": null,
+    "texte_sur_fond_clair": null,
+    "texte_sur_fond_sombre": "#FFFFFF"
+  },
+  "polices": {
+    "titres": null,
+    "texte": null
+  },
+  "logo": null,
+  "accessibilite": {
+    "taille_min_titre_pt": 40,
+    "taille_min_texte_pt": 28,
+    "taille_min_absolue_pt": 24,
+    "contraste_min": 4.5,
+    "contraste_vise": 7.0,
+    "mots_max_par_diapo": 20,
+    "mots_max_par_ligne": 6
+  }
+}

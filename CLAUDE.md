@@ -43,3 +43,16 @@ candidats) → vérifier l'**IA Act** (niveau de risque).
 
 - Secrets uniquement dans `.env` (ignoré par Git). Ne jamais les committer.
 - Compte de service dédié, révocable, distinct du compte personnel.
+
+## Skills et plugins installés
+
+Inventaire complet, sources figées et refus motivés : `SKILLS.md`.
+
+- **Tester une idée de business** → skills `founder-*` (commencer par `founder-plan`
+  ou `founder-board`), `llm-council` pour challenger une décision, `arena` si une
+  réponse ne convient pas.
+- **PowerPoint** → toujours `yeba-powerpoint` (accessibilité + transitions), avec
+  `anthropic-skills:pptx` pour la fabrication ; `frontend-slides` pour une version web animée.
+- Les sorties de travail (`founder/`, `instagram/`, `linkedin/`, `.arena/`, rapports
+  du conseil, .pptx/.pdf) sont **ignorées par Git** : ce dépôt est **public**.
+- Ne pas activer `caveman` par défaut : Aurélien veut un raisonnement détaillé.
