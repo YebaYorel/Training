@@ -31,3 +31,6 @@ council-transcript-*.md
 *.pdf
 !.claude/skills/**/*.pdf
 .agents/
+
+# Livrables de formation générés (supports, PDF, exercices) : jamais sur le dépôt public
+formations/*/sortie/
