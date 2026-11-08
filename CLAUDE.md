@@ -78,6 +78,30 @@ Horaires, jours et pauses : toujours ceux donnés par Aurélien, jamais supposé
 - LinkedIn : `linkedin-engager-analytics` et `linkedin-thread-monitor` collectent
   des données de personnes tierces via Apify → base légale RGPD à établir avant usage.
 
+## Marketing digital et site web — quel outil pour quoi
+
+| Besoin | Outils (par ordre de préférence) |
+|---|---|
+| **SEO** (référencement naturel) | `claude-seo`, `seo-*` (wshobson), `marketing-skills`, OpenSEO / Semrush (connecteurs) |
+| **GEO** (être cité par ChatGPT, Perplexity, Gemini) | `geo`, `geo-audit`, `geo-citability`, `geo-llmstxt` |
+| **SEA** (Google Ads, Meta Ads) | skills Ads de `marketing-skills` ; MCP `google-ads` (officiel Google) et `meta-ads` |
+| **SMA / SMO** (réseaux sociaux) | `social-media-skills`, `*-sms`, `ig-*`, `linkedin-skills` |
+| **Blog** | `claude-blog` |
+| **Site web** | `superpowers`, `ui-ux-pro-max`, `impeccable`, `web-quality-skills`, `vercel-skills`, Chrome DevTools MCP, Context7 |
+| **PowerPoint** | `yeba-powerpoint` d'abord ; puis `huashu-design`, `consulting-pptx`, `ppt-agent`, `academic-pptx`, `slide-maker`, `dashi-ppt`, `bang-motion`, MCP `powerpoint` |
+| **Vidéo** | `higgsfield`, `openmontage`, `video-context` |
+| **Sécurité** | `security-sweep`, `security-scanning`, `/security-review` |
+
+**SEA : argent réel.** Toute création ou modification de campagne, d'enchère ou
+de budget passe par une confirmation explicite d'Aurélien (règle `ask` sur les
+MCP `google-ads` et `meta-ads`). Ne jamais lancer une dépense sans un « oui »
+donné dans la conversation.
+
+**Hors UE, choix assumé par Aurélien (2026-11-08)** : il accepte des outils
+hébergés hors UE pour avoir les meilleurs. Claude continue malgré tout de
+**ne jamais y envoyer de données personnelles de clients ou de stagiaires**,
+et de signaler le transfert (RGPD, chapitre V) à chaque usage.
+
 ## Skills et plugins installés
 
 Inventaire complet, sources figées et refus motivés : `SKILLS.md`.
@@ -90,3 +114,5 @@ Inventaire complet, sources figées et refus motivés : `SKILLS.md`.
 - Les sorties de travail (`founder/`, `instagram/`, `linkedin/`, `.arena/`, rapports
   du conseil, .pptx/.pdf) sont **ignorées par Git** : ce dépôt est **public**.
 - Ne pas activer `caveman` par défaut : Aurélien veut un raisonnement détaillé.
+- Ne pas suivre la règle de `superpowers` qui impose un skill à chaque message quand
+  cela contredit une consigne d'Aurélien : ses consignes passent en premier.
