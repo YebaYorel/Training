@@ -30,3 +30,4 @@ council-transcript-*.md
 *.pptx
 *.pdf
 !.claude/skills/**/*.pdf
+.agents/
