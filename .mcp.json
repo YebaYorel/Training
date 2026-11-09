@@ -56,6 +56,13 @@
         "meta-ads"
       ],
       "env": {}
+    },
+    "21st": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp",
+      "headers": {
+        "x-api-key": "${TWENTYFIRST_API_KEY}"
+      }
     }
   }
 }

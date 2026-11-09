@@ -1,0 +1,86 @@
+[
+ {
+  "ref": "FOR-0002",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0002_Automatisation-sans-code.pdf"
+ },
+ {
+  "ref": "FOR-0003",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0003_Conformite-RGPD-IA-Act.pdf"
+ },
+ {
+  "ref": "FOR-0004",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0004_Vente-negociation.pdf"
+ },
+ {
+  "ref": "FOR-0006",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0006_Copilot-Microsoft-365.pdf"
+ },
+ {
+  "ref": "FOR-0008",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0008_Manager-au-quotidien.pdf"
+ },
+ {
+  "ref": "FOR-0009",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0009_Site-internet-IA.pdf"
+ },
+ {
+  "ref": "FOR-0010",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0010_Emailing-IA.pdf"
+ },
+ {
+  "ref": "FOR-0011",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0011_IA-generative-au-travail.pdf"
+ },
+ {
+  "ref": "FOR-0013",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0013_Agents-IA.pdf"
+ },
+ {
+  "ref": "FOR-0014",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0014_Seminaire-dirigeants-IA.pdf"
+ },
+ {
+  "ref": "FOR-0015",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0015_IA-souveraine.pdf"
+ },
+ {
+  "ref": "FOR-0017",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0017_Assistant-IA-perso.pdf"
+ }
+]

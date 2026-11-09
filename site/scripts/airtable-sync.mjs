@@ -1,0 +1,235 @@
+#!/usr/bin/env node
+// Synchronise le catalogue public du site avec Airtable
+// (base « YEBA FORMATIONS - Centre de formation (Adaptable) »).
+//
+//   Mode direct :  AIRTABLE_TOKEN=pat... node site/scripts/airtable-sync.mjs
+//   Mode export :  node site/scripts/airtable-sync.mjs --depuis site/airtable
+//                  (catalogue-brut.json + sessions-brut.json au format { records: [{ id, fields }] })
+//
+// Écrit site/src/catalogue.json et site/src/documents.json — seuls fichiers lus par le site.
+// Règles de publication (CONFIG SYSTEME) appliquées ici, pas dans le site :
+//   • seules les fiches « Active » et dont la marque YEBA est obligatoire sont publiées
+//     (jamais de marque blanche / sous-traitance) ;
+//   • aucun tarif si le bloc public commence par ⛔ ;
+//   • aucune donnée personnelle : ni client, ni formateur, ni apprenant.
+// RGPD : le jeton reste dans l'environnement (.env, secret CI), jamais dans le code ni dans Git.
+
+import { readFile, writeFile } from 'node:fs/promises'
+import { resolve, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const ICI = dirname(fileURLToPath(import.meta.url))
+const SORTIE = resolve(ICI, '../src/catalogue.json')
+const SORTIE_DOCS = resolve(ICI, '../src/documents.json')
+const BASE = process.env.AIRTABLE_BASE_ID || 'appQ2zqc80kkc6MR1'
+const T_CATALOGUE = 'tblEYxI7LpLZpBPlo'
+const T_SESSIONS = 'tblg3KHANR7nq4cH6'
+const T_DOCUMENTS = 'tblSCxGvNSDdH3Blt'
+
+// Identifiants de champs (stables même si un champ est renommé dans Airtable)
+const C = {
+  ref: 'fldWPKxIdTNSNiK6n', titre: 'fld6Xp5Zw0J0XQSh5', statut: 'fldcMSEP0XWMPuUdR', marque: 'fldpLRGUwDSgGt145',
+  type: 'fldjiurLwibphehvH', public: 'fld7CazsUxGR1OxSF', heures: 'fldgkIZrOJeDAxT2F', jours: 'fldmM09bgaAjwhfwY',
+  prerequis: 'fldIFQ1HzJaBBoykp', methodes: 'fldNUqS1VCsf2erCm', evaluation: 'fld474uBdXZ6UOltS',
+  acces: 'fldbsvcmvRBqUysLD', adaptations: 'fldADYnLuEBfmqnI9', financements: 'fld0grIzQO2B1Vhlq',
+  satisfaction: 'fldOOz2pqtG4YpV5Z', reussite: 'fldqIJ1fMpImp1d9x', sessions: 'fldRVW750ot7ierMJ',
+  formes: 'fldivCa49hCqSugPe', tarifs: 'fldoIGoiOTyCsZ57q', revision: 'fldpNLAhe2tUe5vOt', rncp: 'fld3WJqOymGw8R35b',
+  programme: 'fld8GlwffOYDcNKMl', objectifs: 'fldUTrd3hxOnHY53h', domaine: 'fldSIGD4tyrbWRnyn',
+  interJour: 'fldaty410G5hlJmvL', intraJour: 'fldFqIXtNjUWKoZeq', interTotal: 'fldJYUhGvdFFTWHR2', intraTotal: 'fld4goilFvLlV4kk8',
+  materiel: 'fldNPJWYxtO8GBdkC', precisionMateriel: 'fld0dqAPIkUmQIFlc',
+}
+const S = {
+  formation: 'fldXgTjZg5EtYosdJ', type: 'fldMF7SFMhwYFz7K5', debut: 'fldZYdDetuJDMTNsF', fin: 'fldaTV5honw4xJqQL',
+  lieu: 'fldOTKtqKr0sQKhLC', places: 'fldqQx5E0d6APrNL1', restantes: 'fldxfFymB8BV1mUnf', statut: 'fldDJgDZEyHxMmw3q',
+}
+const D = {
+  ref: 'fldFfYg5S7zrqgROf', titre: 'fldFCGhX6WU0PWlsm', version: 'fldqQiP8xnhi84YJ0', statut: 'fldMOFv8zq7OW4BW1',
+  date: 'fldyCwllaCBJYedcE', rnq: 'fldS2LL5ZlqPs5ZKI', destinataires: 'fld5ZokEH4L1eoTS2', contenu: 'fldcNJ4MDGkK3uDKb',
+}
+// Un document n'est listé que s'il s'adresse à l'extérieur ; jamais les documents purement internes.
+const DESTINATAIRES_PUBLICS = ['Public / site internet', 'Prospects', 'Stagiaires', 'Clients entreprises']
+// Documents dont la version à jour est déjà une page du site : on renvoie vers la page.
+const PAGES_DU_SITE = { 'YEBA-DOC-01': 'mentions-legales.html', 'YEBA-DOC-02': 'confidentialite.html' }
+const MARQUES_PUBLIQUES = ['Catalogue YEBA — marque YEBA obligatoire', 'Client direct — marque YEBA obligatoire']
+const STATUTS_SESSION_PUBLICS = ['Planifiée', 'Confirmée', 'Ouverte', 'Inscriptions ouvertes']
+
+const nom = (v) => (v && typeof v === 'object' && !Array.isArray(v) ? v.name : v)
+const noms = (v) => (Array.isArray(v) ? v.map(nom).filter(Boolean) : [])
+const texte = (v) => (typeof v === 'string' ? v.trim() : '')
+const pourcent = (v) => (typeof v === 'number' ? Math.round(v * 100) : null)
+
+/** Coupe les blocs « internes » (consignes en majuscules, ⚠️) pour ne garder que le texte destiné au public. */
+function textePublic(v) {
+  return texte(v)
+    .split(/\n\s*\n/)
+    .filter((p) => !/^(⚠️|⛔|FICHE ARCHIV|NE PAS)/.test(p.trim()))
+    .join('\n\n')
+    .trim()
+}
+
+/** Extrait les montants du bloc « TARIFS (bloc public auto) ». */
+function lireTarifs(bloc, f = {}) {
+  const t = texte(bloc)
+  if (!t || t.startsWith('⛔')) return null
+  // Les champs numériques Airtable font foi ; le bloc texte sert de repli et pour le supplément.
+  const num = (id) => (typeof f[id] === 'number' && f[id] > 0 ? f[id] : null)
+  const n = (re) => {
+    const m = t.match(re)
+    return m ? Number(m[1].replace(/\s/g, '')) : null
+  }
+  const tarifs = {
+    interTotal: num(C.interTotal) ?? n(/INTER-ENTREPRISES\s*:\s*([\d\s]+)\s*€/),
+    interJour: num(C.interJour) ?? n(/INTER-ENTREPRISES[^\n]*soit\s*([\d\s]+)\s*€/),
+    intraTotal: num(C.intraTotal) ?? n(/INTRA-ENTREPRISE\s*:\s*([\d\s]+)\s*€/),
+    intraJour: num(C.intraJour) ?? n(/INTRA-ENTREPRISE[^\n]*soit\s*([\d\s]+)\s*€/),
+    supplement: n(/au-delà de \d+, par jour\s*:\s*([\d\s]+)\s*€/),
+    mentionTva: /293 B/.test(t) ? 'TVA non applicable, art. 293 B du CGI' : null,
+  }
+  return tarifs.interTotal || tarifs.intraTotal ? tarifs : null
+}
+
+// Totaux recalculés : prix par jour × nombre de jours de 7 heures.
+function totaux(t, heures) {
+  if (!t || typeof heures !== 'number') return t
+  const j = Math.max(1, Math.round(heures / 7))
+  return { ...t, interTotal: t.interJour ? t.interJour * j : t.interTotal, intraTotal: t.intraJour ? t.intraJour * j : t.intraTotal }
+}
+
+export function transformer(catalogue, sessions, aujourdHui = new Date()) {
+  const refParId = {}
+  const formations = []
+  for (const r of catalogue.records) {
+    const f = r.fields
+    refParId[r.id] = f[C.ref]
+    if (nom(f[C.statut]) !== 'Active') continue
+    if (!MARQUES_PUBLIQUES.includes(nom(f[C.marque]))) continue
+    formations.push({
+      ref: f[C.ref],
+      titre: texte(f[C.titre]),
+      type: nom(f[C.type]) || null,
+      public: textePublic(f[C.public]),
+      heures: f[C.heures] ?? null,
+      // Règle YEBA : 7 heures de formation par jour (DEETS / OPCO), quel que soit le calcul Airtable.
+      jours: typeof f[C.heures] === 'number' ? Math.max(1, Math.round(f[C.heures] / 7)) : null,
+      prerequis: textePublic(f[C.prerequis]),
+      methodes: noms(f[C.methodes]),
+      evaluation: textePublic(f[C.evaluation]),
+      acces: textePublic(f[C.acces]),
+      adaptations: textePublic(f[C.adaptations]),
+      financements: noms(f[C.financements]),
+      certification: texte(f[C.rncp]) || null,
+      tarifs: totaux(lireTarifs(f[C.tarifs], f), f[C.heures]),
+      domaine: nom(f[C.domaine]) || null,
+      objectifs: textePublic(f[C.objectifs]),
+      programme: dureeOfficielle(textePublic(f[C.programme]), f[C.heures], f[C.jours]),
+      materiel: nom(f[C.materiel]) || 'À confirmer',
+      precisionMateriel: textePublic(f[C.precisionMateriel]),
+      indicateurs: {
+        satisfaction: pourcent(f[C.satisfaction]),
+        reussite: pourcent(f[C.reussite]),
+        sessions: f[C.sessions] ?? null,
+        stagiaires: f[C.formes] ?? null,
+      },
+      revision: f[C.revision] ? String(f[C.revision]).slice(0, 10) : null,
+    })
+  }
+  const refsPubliques = new Set(formations.map((f) => f.ref))
+  const jour = aujourdHui.toISOString().slice(0, 10)
+  const agenda = sessions.records
+    .map((r) => r.fields)
+    .filter((s) => nom(s[S.type]) === 'Inter-entreprise')
+    .filter((s) => STATUTS_SESSION_PUBLICS.includes(nom(s[S.statut])))
+    .filter((s) => s[S.debut] && s[S.debut] >= jour)
+    .map((s) => ({
+      ref: refParId[(s[S.formation] || [])[0]?.id ?? (s[S.formation] || [])[0]],
+      debut: s[S.debut],
+      fin: s[S.fin] || s[S.debut],
+      lieu: texte(s[S.lieu]),
+      placesRestantes: typeof s[S.restantes] === 'number' ? s[S.restantes] : null,
+    }))
+    .filter((s) => refsPubliques.has(s.ref))
+    .sort((a, b) => a.debut.localeCompare(b.debut))
+  formations.sort((a, b) => a.ref.localeCompare(b.ref))
+  // Pas d’identifiant de base dans le fichier livré au navigateur (aucune aide à la reconnaissance)
+  return { synchronise: new Date().toISOString(), formations, agenda }
+}
+
+
+/** La durée affichée dans le programme suit TOUJOURS les champs numériques de la fiche (source officielle,
+ *  reprise dans les conventions) : un texte de programme resté à « 8 heures par jour » ne peut plus la contredire. */
+export function dureeOfficielle(programme, heures, jours) {
+  const h = Number(heures), j = Number(jours)
+  if (!programme || !h || !j) return programme
+  return programme.replace(/Durée\s*:\s*\d+\s*heures?\s*\(\d+\s*jours?\)/i, `Durée : ${h} heures (${j} jour${j > 1 ? 's' : ''})`)
+}
+
+export function transformerDocuments(documents) {
+  const sortie = []
+  for (const r of documents.records) {
+    const f = r.fields
+    const dest = noms(f[D.destinataires])
+    if (!dest.some((d) => DESTINATAIRES_PUBLICS.includes(d))) continue
+    const ref = texte(f[D.ref])
+    // Les documents qualité (règlement, conventions, procédures, chartes…) sont des modèles du Pack
+    // Qualiopi vendu par YEBA Studio : ni leur texte, ni leur correspondance avec les indicateurs du
+    // référentiel ne sont publiés. Seuls l'intitulé et le moyen de les obtenir le sont.
+    sortie.push({
+      ref,
+      titre: texte(f[D.titre]),
+      pour: dest.filter((d) => DESTINATAIRES_PUBLICS.includes(d) || d === 'Financeurs / OPCO'),
+      acces: PAGES_DU_SITE[ref] ? 'page' : 'demande',
+      page: PAGES_DU_SITE[ref] || null,
+    })
+  }
+  sortie.sort((a, b) => a.ref.localeCompare(b.ref))
+  return { synchronise: new Date().toISOString(), documents: sortie }
+}
+
+async function toutLire(table, jeton) {
+  const records = []
+  let offset
+  do {
+    const url = new URL(`https://api.airtable.com/v0/${BASE}/${table}`)
+    url.searchParams.set('returnFieldsByFieldId', 'true')
+    if (offset) url.searchParams.set('offset', offset)
+    const rep = await fetch(url, { headers: { Authorization: `Bearer ${jeton}` } })
+    if (!rep.ok) throw new Error(`Airtable ${table} : HTTP ${rep.status} — vérifiez le jeton et sa portée (data.records:read).`)
+    const json = await rep.json()
+    records.push(...json.records.map((r) => ({ id: r.id, fields: r.fields })))
+    offset = json.offset
+  } while (offset)
+  return { records }
+}
+
+async function principal() {
+  const i = process.argv.indexOf('--depuis')
+  let catalogue, sessions, documents
+  if (i > -1) {
+    const dossier = resolve(process.argv[i + 1])
+    catalogue = JSON.parse(await readFile(resolve(dossier, 'catalogue-brut.json'), 'utf8'))
+    sessions = JSON.parse(await readFile(resolve(dossier, 'sessions-brut.json'), 'utf8'))
+    documents = await readFile(resolve(dossier, 'documents-brut.json'), 'utf8').then(JSON.parse, () => null)
+  } else {
+    const jeton = process.env.AIRTABLE_TOKEN
+    if (!jeton) throw new Error('AIRTABLE_TOKEN manquant (voir .env.example).')
+    ;[catalogue, sessions, documents] = await Promise.all([
+      toutLire(T_CATALOGUE, jeton), toutLire(T_SESSIONS, jeton), toutLire(T_DOCUMENTS, jeton),
+    ])
+  }
+  if (documents) {
+    const docs = transformerDocuments(documents)
+    await writeFile(SORTIE_DOCS, JSON.stringify(docs, null, 2) + '\n')
+    const n = (a) => docs.documents.filter((d) => d.acces === a).length
+    console.log(`documents.json : ${n('lecture')} en lecture, ${n('page')} page(s) du site, ${n('demande')} sur demande.`)
+  }
+  const sortie = transformer(catalogue, sessions)
+  await writeFile(SORTIE, JSON.stringify(sortie, null, 2) + '\n')
+  console.log(`catalogue.json : ${sortie.formations.length} formations publiques, ${sortie.agenda.length} session(s) inter à venir.`)
+}
+
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  principal().catch((e) => {
+    console.error('Échec de la synchronisation :', e.message)
+    process.exit(1)
+  })
+}
