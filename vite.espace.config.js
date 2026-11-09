@@ -1,4 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
+import { writeFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import { resolve } from 'node:path'
@@ -73,6 +74,22 @@ export default defineConfig(({ mode }) => {
         name: 'csp-api',
         // Autorise le serveur YEBA Studio (paiement, IA) dans la politique de sécurité, s'il est configuré
         transformIndexHtml: (html) => (env.VITE_STUDIO_API ? html.replace("connect-src 'self'", `connect-src 'self' ${new URL(env.VITE_STUDIO_API).origin}`) : html),
+      },
+      {
+        // En ligne (dist/studio/), le .htaccess du site imposerait connect-src 'self' et bloquerait le serveur
+        // YEBA Studio (paiement, licences, IA). Ce dossier reçoit donc sa propre politique : identique, plus la
+        // seule origine du serveur YEBA Studio si elle est configurée.
+        name: 'htaccess-studio',
+        apply: 'build',
+        closeBundle() {
+          if (mode !== 'studio') return
+          const api = env.VITE_STUDIO_API ? ' ' + new URL(env.VITE_STUDIO_API).origin : ''
+          const csp = `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'${api}; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests`
+          writeFileSync(
+            resolve(__dirname, 'dist/studio/.htaccess'),
+            `# Généré par vite.espace.config.js : politique de sécurité propre au logiciel YEBA Studio\n<IfModule mod_headers.c>\n  Header always set Content-Security-Policy "${csp}"\n  Header always set Referrer-Policy "no-referrer"\n  Header always set Cache-Control "no-store"\n</IfModule>\n`,
+          )
+        },
       },
       ...(mode === 'apercu' ? [viteSingleFile()] : [])],
     // Versions distribuées : le module Airtable interne est remplacé par un module vide (rien à découvrir dans le code).

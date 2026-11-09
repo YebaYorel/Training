@@ -1,7 +1,7 @@
 // Pack Qualiopi V10 : 24 modèles Word, pré-remplis avec la fiche organisme, régénérables à volonté.
 import { useState } from 'react'
 import { AlertTriangle, Download, FileText, Package } from 'lucide-react'
-import { CATEGORIES, MODELES } from './modeles-qualiopi.js'
+import { APERCU_SEULEMENT, CATEGORIES, MODELES } from './modeles-qualiopi.js'
 import { genererDocx, nomFichier, telechargerBlob } from './word.js'
 import { completudeOrganisme } from './Donnees.jsx'
 
@@ -48,6 +48,12 @@ export default function Modeles({ donnees, essai, aller }) {
         <p className="avertissement">
           <AlertTriangle size={18} aria-hidden="true" /> Fiche organisme complète à {Math.round(c.taux)} % : les informations manquantes apparaîtront surlignées en jaune dans Word.{' '}
           <button className="lien-discret" onClick={() => aller('donnees')}>Compléter ma fiche</button>
+        </p>
+      )}
+      {APERCU_SEULEMENT && (
+        <p className="avertissement">
+          <AlertTriangle size={18} aria-hidden="true" /> Version en ligne : chaque modèle est présenté en aperçu (intitulé, indicateurs et sommaire).
+          Le texte complet des {MODELES.length} modèles est remis avec votre licence, dans la version du logiciel envoyée après paiement.
         </p>
       )}
       {essai && <p className="avertissement"><AlertTriangle size={18} aria-hidden="true" /> Essai : les documents portent la mention « document d’essai, non valable ».</p>}

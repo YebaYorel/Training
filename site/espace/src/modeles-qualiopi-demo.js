@@ -349,3 +349,4 @@ export const MODELES = APERCU.map((m) => ({
 }))
 
 export const CATEGORIES = [...new Set(MODELES.map((m) => m.categorie))]
+export const APERCU_SEULEMENT = true

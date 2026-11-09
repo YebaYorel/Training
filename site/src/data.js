@@ -306,7 +306,7 @@ export const PROFILS = [
 /* ---------- Diagnostic express (calcul local, rien n'est envoyé) ---------- */
 export const DIAGNOSTIC = [
   {
-    q: 'Vos équipes utilisent-elles déjà un outil d’IA (ChatGPT, Copilot, Mistral…) ?',
+    q: 'Vos équipes utilisent-elles déjà un outil d’IA (ChatGPT, Copilot, Mistral…) ?',
     r: [
       { t: 'Pas encore', m: 0, refs: ['FOR-0011'] },
       { t: 'Oui, chacun de son côté, sans règles', m: 1, refs: ['FOR-0011', 'FOR-0003'], alerte: 'regles' },
@@ -314,7 +314,7 @@ export const DIAGNOSTIC = [
     ],
   },
   {
-    q: 'Manipulez-vous des données sensibles (santé, RH, juridique, comptabilité) ?',
+    q: 'Manipulez-vous des données sensibles (santé, RH, juridique, comptabilité) ?',
     r: [
       { t: 'Oui, tous les jours', m: 0, refs: ['FOR-0015', 'FOR-0003'], alerte: 'sensible' },
       { t: 'Parfois', m: 1, refs: ['FOR-0003'] },
@@ -322,7 +322,7 @@ export const DIAGNOSTIC = [
     ],
   },
   {
-    q: 'Combien d’heures par semaine partent en tâches répétitives (devis, relances, ressaisies) ?',
+    q: 'Combien d’heures par semaine partent en tâches répétitives (devis, relances, ressaisies) ?',
     r: [
       { t: 'Moins de 2 heures', m: 2, refs: [] },
       { t: 'Entre 2 et 5 heures', m: 1, refs: ['FOR-0002'] },
@@ -338,7 +338,7 @@ export const DIAGNOSTIC = [
     ],
   },
   {
-    q: 'Avez-vous un inventaire de vos usages d’IA et une charte interne ?',
+    q: 'Avez-vous un inventaire de vos usages d’IA et une charte interne ?',
     r: [
       { t: 'Non, rien d’écrit', m: 0, refs: ['FOR-0003', 'FOR-0014'], alerte: 'preuve' },
       { t: 'En cours', m: 1, refs: ['FOR-0003'] },
@@ -346,7 +346,7 @@ export const DIAGNOSTIC = [
     ],
   },
   {
-    q: 'Votre priorité pour les six prochains mois ?',
+    q: 'Votre priorité pour les six prochains mois ?',
     r: [
       { t: 'Gagner du temps', m: 0, refs: ['FOR-0002', 'FOR-0011'] },
       { t: 'Sécuriser nos pratiques', m: 0, refs: ['FOR-0003'] },
@@ -374,31 +374,31 @@ export const FINANCEURS = {
 /* ---------- Questions fréquentes ---------- */
 export const FAQ = [
   [
-    'Mes formations peuvent-elles être financées ?',
-    'Oui, selon votre situation : OPCO, plan de développement des compétences, France Travail (AIF) ou dispositifs de la Région. Nous sommes certifiés Qualiopi, condition exigée par les financeurs publics et paritaires. Nous vous aidons à monter la demande.',
+    'Mes formations peuvent-elles être financées ?',
+    'Oui, selon votre situation : OPCO, plan de développement des compétences, France Travail (AIF) ou dispositifs de la Région. Nous sommes certifiés Qualiopi, condition exigée par les financeurs publics et paritaires. Nous vous aidons à monter la demande.',
   ],
   [
-    'Et le CPF ?',
+    'Et le CPF ?',
     'Pas aujourd’hui : aucune de nos formations n’est enregistrée au RNCP ou au Répertoire spécifique, condition pour être éligible au CPF. Nous préférons vous le dire clairement.',
   ],
   [
-    'Combien de temps avant de démarrer ?',
+    'Combien de temps avant de démarrer ?',
     '15 jours ouvrés minimum entre l’inscription et le premier jour. Ce délai sert à vous envoyer le test de positionnement et à adapter le contenu à vos dossiers réels.',
   ],
   [
-    'Intra ou inter, quelle différence ?',
+    'Intra ou inter, quelle différence ?',
     'En intra, nous venons dans vos locaux, pour votre équipe, sur vos cas. En inter, vous rejoignez d’autres entreprises en salle de séminaire : idéal pour une ou deux personnes. Dans les deux cas, le groupe compte 6 participants minimum et 8 au maximum.',
   ],
   [
-    'Nos données sont-elles en sécurité pendant la formation ?',
+    'Nos données sont-elles en sécurité pendant la formation ?',
     'Chaque stagiaire travaille avec un compte professionnel, jamais personnel. Nous apprenons à trier ce qui peut être saisi, ce qui doit être anonymisé et ce qui ne doit jamais l’être.',
   ],
   [
-    'Je suis en situation de handicap. Comment ça se passe ?',
+    'Je suis en situation de handicap. Comment ça se passe ?',
     'Signalez simplement votre besoin d’aménagement : aucun justificatif médical n’est demandé. Supports agrandis, rythme adapté, pauses supplémentaires : le référent handicap étudie chaque situation avant l’entrée en formation.',
   ],
   [
-    'Qu’est-ce que je reçois à la fin ?',
+    'Qu’est-ce que je reçois à la fin ?',
     'Une attestation de fin de formation, les résultats de l’évaluation, et des livrables utilisables dès le lendemain : bibliothèque de demandes, charte, plan d’action.',
   ],
 ]

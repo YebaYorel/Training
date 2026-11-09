@@ -426,4 +426,6 @@ export const MODELES = [
   },
 ]
 
+// Version complète (client) : le texte des modèles est présent.
+export const APERCU_SEULEMENT = false
 export const CATEGORIES = [...new Set(MODELES.map((m) => m.categorie))]

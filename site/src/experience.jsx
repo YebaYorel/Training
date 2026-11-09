@@ -13,7 +13,7 @@ export function Parcours({ onChoisir }) {
     <section id="diagnostic" className="bloc clair" aria-labelledby="titre-parcours" style={{ paddingTop: 0 }}>
       <div className="conteneur">
         <Reveal>
-          <p className="surtitre">Par où commencer ?</p>
+          <p className="surtitre">Par où commencer ?</p>
         </Reveal>
         <TitreAnime id="titre-parcours" texte="Dites-nous qui vous êtes. On vous montre le chemin." accent={[6, 7, 8]} />
         <div className="profils">
@@ -36,7 +36,7 @@ export function Parcours({ onChoisir }) {
 }
 
 function Diagnostic() {
-  const [etape, setEtape] = useState(-1) // -1 : accueil ; DIAGNOSTIC.length : résultat
+  const [etape, setEtape] = useState(-1) // -1 : accueil ; DIAGNOSTIC.length : résultat
   const [reponses, setReponses] = useState([])
   const fini = etape >= DIAGNOSTIC.length
 
@@ -184,7 +184,7 @@ function Jauge({ score, niveau }) {
           strokeLinecap="round"
           transform="rotate(-90 90 90)"
           strokeDasharray={C}
-          initial={{ strokeDashoffset: calme ? C * (1 - score / 100) : C }}
+          initial={{ strokeDashoffset: calme ? C * (1 - score / 100) : C }}
           animate={{ strokeDashoffset: C * (1 - score / 100) }}
           transition={{ duration: 1.4, ease: EASE, delay: 0.2 }}
         />
@@ -255,7 +255,7 @@ export function Resultats() {
             </div>
           </Reveal>
           <Reveal className="resultats-carte" delay={0.12}>
-            <h3>Qui peut financer ?</h3>
+            <h3>Qui peut financer ?</h3>
             <ul className="financeurs">
               {financeurs.map((n) => (
                 <li key={n}>

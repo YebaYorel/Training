@@ -94,7 +94,7 @@ const SUIVIS = [
   { mots: ['prix', 'tarif', 'cout', 'coute', 'combien', 'cher'], rep: (f) => [`${f.nom} : ${prixDe(f)}. TVA non applicable, art. 293 B du CGI.`] },
   { mots: ['pour qui', 'public', 'qui peut', 'concerne'], rep: (f) => [f.public ? `${f.nom} s’adresse à : ${f.public.split('\n')[0]}` : 'Le public visé est détaillé sur la fiche.'] },
   { mots: ['prerequis', 'niveau', 'debutant', 'faut il savoir'], rep: (f) => [f.prerequis ? `Prérequis : ${f.prerequis.split('\n')[0]}` : 'Aucun prérequis particulier n’est indiqué sur la fiche.'] },
-  { mots: ['objectif', 'apprendre', 'programme', 'contenu', 'on fait quoi'], rep: (f) => (f.objectifs?.length ? ['À l’issue de la formation, vous saurez :', ...f.objectifs.slice(0, 4).map((o) => '• ' + o)] : [`Le programme complet de ${f.nom} est sur sa fiche, dans le catalogue.`]) },
+  { mots: ['objectif', 'apprendre', 'programme', 'contenu', 'on fait quoi'], rep: (f) => (f.objectifs?.length ? ['À l’issue de la formation, vous saurez :', ...f.objectifs.slice(0, 4).map((o) => '• ' + o)] : [`Le programme complet de ${f.nom} est sur sa fiche, dans le catalogue.`]) },
   { mots: ['groupe', 'combien de personnes', 'effectif', 'participants'], rep: (f) => [f.effectif ? `Groupe : ${f.effectif}.` : 'La taille du groupe est précisée sur le devis.'] },
   { mots: ['evaluation', 'evalue', 'examen', 'test'], rep: (f) => [f.evaluation ? `Évaluation : ${f.evaluation.split('\n')[0]}` : 'Positionnement à l’entrée, évaluation des acquis à la sortie et questionnaire de satisfaction.'] },
 ]
@@ -142,13 +142,13 @@ const INTENTIONS = [
   {
     id: 'rappel',
     mots: ['rappel', 'rappeler', 'rdv', 'rendez vous', 'appelez moi', 'appeler', 'contacter', 'parler a', 'joindre', 'devis', 'etre rappele', 'reserver'],
-    rep: () => ({ texte: ['Avec plaisir ! Choisissez le jour et l’heure qui vous arrangent : Aurélien vous rappelle.'], action: 'rdv' }),
+    rep: () => ({ texte: ['Avec plaisir ! Choisissez le jour et l’heure qui vous arrangent : Aurélien vous rappelle.'], action: 'rdv' }),
   },
   {
     id: 'coordonnees',
     mots: ['numero', 'telephone', 'adresse', 'mail', 'email', 'courriel', 'ou etes vous', 'situe', 'siege'],
     rep: () => ({
-      texte: [`📞 ${ENTREPRISE.telAffiche}`, `✉️ ${ENTREPRISE.email}`, `📍 ${ENTREPRISE.adresse}`, 'Préférez-vous que je vous organise un rappel ?'],
+      texte: [`📞 ${ENTREPRISE.telAffiche}`, `✉️ ${ENTREPRISE.email}`, `📍 ${ENTREPRISE.adresse}`, 'Préférez-vous que je vous organise un rappel ?'],
       suggestions: ['Être rappelé'],
     }),
   },
@@ -156,7 +156,7 @@ const INTENTIONS = [
   {
     id: 'financement',
     mots: ['financ', 'opco', 'prise en charge', 'france travail', 'pole emploi', 'aif', 'region', 'rembours', 'payer moins', 'aides', 'subvention', 'akto', 'opcommerce', 'atlas', 'constructys'],
-    rep: () => ({ texte: [faq('Mes formations peuvent-elles'), 'La notice des financements est disponible dans la section Qualiopi du site, sur simple demande.'], suggestions: ['Et le CPF ?', 'Être rappelé'] }),
+    rep: () => ({ texte: [faq('Mes formations peuvent-elles'), 'La notice des financements est disponible dans la section Qualiopi du site, sur simple demande.'], suggestions: ['Et le CPF ?', 'Être rappelé'] }),
   },
   {
     id: 'prix',
@@ -168,7 +168,7 @@ const INTENTIONS = [
       return {
         texte: [
           `En inter-entreprises, nos formations vont de ${euros(Math.min(...prix))} à ${euros(Math.max(...prix))} par jour et par stagiaire, prix nets (TVA non applicable, art. 293 B du CGI).`,
-          'En intra, dans vos locaux, le prix est fixé par jour pour tout le groupe, de 6 à 8 personnes. Quelle formation vous intéresse ?',
+          'En intra, dans vos locaux, le prix est fixé par jour pour tout le groupe, de 6 à 8 personnes. Quelle formation vous intéresse ?',
         ],
         suggestions: FORMATIONS.slice(0, 4).map((x) => x.nom),
       }
@@ -181,12 +181,12 @@ const INTENTIONS = [
       if (AGENDA.length) {
         const nom = (ref) => FORMATIONS.find((f) => f.ref === ref)?.nom || ref
         return {
-          texte: ['Prochaines sessions ouvertes :', ...AGENDA.slice(0, 4).map((s) => `• ${nom(s.ref)} — ${new Date(s.debut).toLocaleDateString('fr-FR')}${s.lieu ? ', ' + s.lieu : ''}`)],
+          texte: ['Prochaines sessions ouvertes :', ...AGENDA.slice(0, 4).map((s) => `• ${nom(s.ref)} — ${new Date(s.debut).toLocaleDateString('fr-FR')}${s.lieu ? ', ' + s.lieu : ''}`)],
           suggestions: ['Être rappelé'],
           lien: '#formations',
         }
       }
-      return { texte: ['Aucune session inter-entreprises n’est publiée pour le moment. En intra, on fixe la date avec vous.', faq('Combien de temps')], suggestions: ['Être rappelé', 'Intra ou inter ?'] }
+      return { texte: ['Aucune session inter-entreprises n’est publiée pour le moment. En intra, on fixe la date avec vous.', faq('Combien de temps')], suggestions: ['Être rappelé', 'Intra ou inter ?'] }
     },
   },
   { id: 'delai', mots: ['delai', 'demarr', 'commencer', 'rapidement', 'urgent', 'vite'], rep: () => ({ texte: [faq('Combien de temps')], suggestions: ['Être rappelé'] }) },
@@ -195,7 +195,7 @@ const INTENTIONS = [
     mots: ['inscri', 'inscrire', 's inscrire', 'comment faire pour', 'modalite', 'etapes'],
     rep: () => ({
       texte: [
-        'L’inscription se fait en 4 temps :',
+        'L’inscription se fait en 4 temps :',
         '1. Un échange pour cerner votre besoin (positionnement).',
         '2. Un devis, puis une convention (entreprise) ou un contrat (particulier).',
         '3. La convocation, le programme et le règlement intérieur, avant le démarrage.',
@@ -214,14 +214,14 @@ const INTENTIONS = [
   {
     id: 'cyclone',
     mots: ['cyclone', 'alerte orange', 'alerte rouge', 'meteo', 'forte pluie'],
-    rep: () => ({ texte: ['Notre règlement intérieur est clair : en alerte cyclonique orange, la session est suspendue ; en alerte rouge, personne ne se déplace. La session est alors reportée sans frais. Votre sécurité d’abord !'], lien: '#qualiopi' }),
+    rep: () => ({ texte: ['Notre règlement intérieur est clair : en alerte cyclonique orange, la session est suspendue ; en alerte rouge, personne ne se déplace. La session est alors reportée sans frais. Votre sécurité d’abord !'], lien: '#qualiopi' }),
   },
   {
     id: 'studio',
     mots: ['logiciel', 'studio', 'bpf', 'bilan pedagogique', 'carburant', 'erp', 'ypareo', 'digiforma', 'dendreo', 'kit qualiopi', 'pack qualiopi', 'modeles qualiopi', 'emargement', 'gestion des sessions', 'opco qui paie', 'impaye'],
     rep: () => ({
       texte: [
-        'YEBA Studio, ce sont nos logiciels pour les organismes de formation :',
+        'YEBA Studio, ce sont nos logiciels pour les organismes de formation :',
         `• ${OFFRES.qualiopi.nom} — ${OFFRES.qualiopi.libellePrix} : les documents Qualiopi en Word, remplis à votre nom.`,
         `• ${OFFRES.bpf.nom} — ${OFFRES.bpf.libellePrix} : l’assistant remplit votre BPF.`,
         `• ${OFFRES.parcours.nom} — ${OFFRES.parcours.libellePrix} : sessions, dossiers, émargements, documents.`,
@@ -271,17 +271,17 @@ const INTENTIONS = [
     rep: () => ({
       texte: [
         'Au-delà des formations, nous construisons avec vous des workflows automatisés, des assistants, des sites et des bases de données, en privilégiant des outils européens.',
-        'Décrivez-moi la tâche qui vous prend le plus de temps : Aurélien regarde avec vous ce qui peut être automatisé.',
+        'Décrivez-moi la tâche qui vous prend le plus de temps : Aurélien regarde avec vous ce qui peut être automatisé.',
       ],
       suggestions: ['Être rappelé', 'Faire le diagnostic'],
     }),
   },
-  { id: 'diagnostic', mots: ['diagnostic', 'par ou commencer', 'conseil', 'quelle formation', 'recommand', 'hesite', 'choisir'], rep: () => ({ texte: ['Le diagnostic IA express tient en 6 questions et vous conseille 3 formations. Je vous y emmène ?'], action: 'diagnostic' }) },
+  { id: 'diagnostic', mots: ['diagnostic', 'par ou commencer', 'conseil', 'quelle formation', 'recommand', 'hesite', 'choisir'], rep: () => ({ texte: ['Le diagnostic IA express tient en 6 questions et vous conseille 3 formations. Je vous y emmène ?'], action: 'diagnostic' }) },
   {
     id: 'catalogue',
     mots: ['formation', 'catalogue', 'liste', 'proposez', 'offre', 'thematique', 'programme'],
     rep: () => ({
-      texte: ['Voici notre catalogue, en quatre modules (IA, automatisation, vente et management, gouvernance) :', ...FORMATIONS.map((f) => `• ${f.nom} — ${f.sousTitre} (${f.jours} j)`), 'Laquelle voulez-vous découvrir ?'],
+      texte: ['Voici notre catalogue, en quatre modules (IA, automatisation, vente et management, gouvernance) :', ...FORMATIONS.map((f) => `• ${f.nom} — ${f.sousTitre} (${f.jours} j)`), 'Laquelle voulez-vous découvrir ?'],
       suggestions: ['IA générative au travail', 'Conformité RGPD', 'Séminaire dirigeants', 'Être rappelé'],
     }),
   },
@@ -291,18 +291,18 @@ const INTENTIONS = [
 
 /* ---------- Petites conversations (le côté humain) ---------- */
 const BAVARDAGES = [
-  { mots: ['ca va', 'comment vas tu', 'comment allez vous', 'la forme', 'bien ou quoi', 'koman i lé', 'koman i le'], rep: (ton) => [ton.tutoie ? 'Ça va très bien, merci de demander ! Et toi ? Dis-moi ce qui t’amène 😊' : 'Très bien, merci de demander ! Et vous ? Dites-moi ce qui vous amène 😊'] },
-  { mots: ['merci', 'super', 'parfait', 'genial', 'top', 'nickel', 'cool'], rep: (ton) => [ton.tutoie ? 'Avec plaisir ! Je reste là si tu as une autre question.' : 'Avec plaisir ! Je reste là si vous avez une autre question.'] },
-  { mots: ['au revoir', 'bye', 'a plus', 'a bientot', 'bonne journee', 'bonne soiree', 'ciao'], rep: () => ['À très vite ! Et si une question vous revient, je suis là 👋'] },
-  { mots: ['jolie', 'belle', 'mignonne', 'charmante'], rep: () => ['Merci, c’est gentil 😊 Mais revenons à l’essentiel : comment puis-je vous aider ?'] },
-  { mots: ['blague', 'drole', 'rigoler'], rep: () => ['Une IA entre dans une salle de formation. Le formateur lui dit : « Tu as tout appris par cœur, mais as-tu compris ? » Elle répond : « Donnez-moi un prompt et je vous dis. » 😄 C’est pour ça qu’on forme les humains !'] },
-  { mots: ['mdr', 'lol', 'haha', 'ptdr'], rep: () => ['😄 Je suis contente de vous faire sourire. Une question sur nos formations ?'] },
+  { mots: ['ca va', 'comment vas tu', 'comment allez vous', 'la forme', 'bien ou quoi', 'koman i lé', 'koman i le'], rep: (ton) => [ton.tutoie ? 'Ça va très bien, merci de demander ! Et toi ? Dis-moi ce qui t’amène 😊' : 'Très bien, merci de demander ! Et vous ? Dites-moi ce qui vous amène 😊'] },
+  { mots: ['merci', 'super', 'parfait', 'genial', 'top', 'nickel', 'cool'], rep: (ton) => [ton.tutoie ? 'Avec plaisir ! Je reste là si tu as une autre question.' : 'Avec plaisir ! Je reste là si vous avez une autre question.'] },
+  { mots: ['au revoir', 'bye', 'a plus', 'a bientot', 'bonne journee', 'bonne soiree', 'ciao'], rep: () => ['À très vite ! Et si une question vous revient, je suis là 👋'] },
+  { mots: ['jolie', 'belle', 'mignonne', 'charmante'], rep: () => ['Merci, c’est gentil 😊 Mais revenons à l’essentiel : comment puis-je vous aider ?'] },
+  { mots: ['blague', 'drole', 'rigoler'], rep: () => ['Une IA entre dans une salle de formation. Le formateur lui dit : « Tu as tout appris par cœur, mais as-tu compris ? » Elle répond : « Donnez-moi un prompt et je vous dis. » 😄 C’est pour ça qu’on forme les humains !'] },
+  { mots: ['mdr', 'lol', 'haha', 'ptdr'], rep: () => ['😄 Je suis contente de vous faire sourire. Une question sur nos formations ?'] },
 ]
 const GROSSIERETES = ['connard', 'connasse', 'pute', 'salope', 'encule', 'nique', 'fdp', 'ta gueule', 'batard', 'idiote', 'nulle']
 
 function salutation(ton, ctx) {
   if (!ton.salut || ctx.salue) return null
-  if (ton.salut === 'formel') return ton.motSalut === 'bonsoir' ? 'Bonsoir !' : 'Bonjour !'
+  if (ton.salut === 'formel') return ton.motSalut === 'bonsoir' ? 'Bonsoir !' : 'Bonjour !'
   if (ton.salut === 'detendu') return ton.motSalut === 'bonsoir' ? 'bonsoir 😊' : 'bonjour 😊'
   return `${ton.motSalut === 'coucou' ? 'Coucou' : 'Salut'} ! 😊`
 }
@@ -366,7 +366,7 @@ export function repondre(question, ctx = {}) {
   const nomComplet = f && motsFormation(f).every((c) => contient(t, mots, c, 1))
   const sujet = intention && ['gouvernance', 'solutions'].includes(intention.id) && !parleFormation && !nomComplet
   if (f && !sujet && (!intention || !['prix', 'rappel'].includes(intention.id))) {
-    return avec({ texte: ficheCourte(f), suggestions: ['C’est pour qui ?', 'Le programme', 'Être rappelé'], lien: '#formations', formation: f })
+    return avec({ texte: ficheCourte(f), suggestions: ['C’est pour qui ?', 'Le programme', 'Être rappelé'], lien: '#formations', formation: f })
   }
   if (intention) return avec(intention.rep(t, ton, mots))
 
@@ -374,7 +374,7 @@ export function repondre(question, ctx = {}) {
   if (bavardage) return avec({ texte: bavardage.rep(detendu), suggestions: SUGGESTIONS_ACCUEIL })
   if (avant.length) {
     return {
-      texte: [...avant, detendu.tutoie ? 'Qu’est-ce qui t’amène ? Formations, tarifs, financement… je t’écoute !' : 'Que puis-je faire pour vous aujourd’hui ?'],
+      texte: [...avant, detendu.tutoie ? 'Qu’est-ce qui t’amène ? Formations, tarifs, financement… je t’écoute !' : 'Que puis-je faire pour vous aujourd’hui ?'],
       suggestions: SUGGESTIONS_ACCUEIL,
     }
   }
@@ -384,7 +384,7 @@ export function repondre(question, ctx = {}) {
     .filter((p) => p.d <= 3)
     .sort((a, b) => a.d - b.d)
   if (proches.length) {
-    return { texte: ['Je ne suis pas sûre d’avoir compris. Vous parlez peut-être de :'], suggestions: [...proches.slice(0, 3).map((p) => p.x.nom), 'Être rappelé'] }
+    return { texte: ['Je ne suis pas sûre d’avoir compris. Vous parlez peut-être de :'], suggestions: [...proches.slice(0, 3).map((p) => p.x.nom), 'Être rappelé'] }
   }
   return {
     texte: [

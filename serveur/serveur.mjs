@@ -21,6 +21,20 @@ const AIRTABLE_BASE = E.AIRTABLE_BASE_ID || 'appQ2zqc80kkc6MR1'
 const T_LICENCES = 'tblCr0eK7l3mWZINx'
 const QUOTA_IA_JOUR = Number(E.QUOTA_IA_JOUR || 60)
 
+
+/**
+ * Adresse du client pour les limites de débit. X-Forwarded-For est écrit par le client lui-même : on ne le croit
+ * que si le serveur est déclaré derrière un proxy de confiance (PROXY_DE_CONFIANCE=1), et l'on prend alors la
+ * DERNIÈRE valeur, celle ajoutée par ce proxy. Sinon, l'adresse de la connexion fait foi.
+ */
+function adresseClient(req) {
+  if (E.PROXY_DE_CONFIANCE === '1') {
+    const chaine = String(req.headers['x-forwarded-for'] || '').split(',').map((s) => s.trim()).filter(Boolean)
+    if (chaine.length) return chaine[chaine.length - 1]
+  }
+  return req.socket.remoteAddress || 'inconnu'
+}
+
 /* ---------- Outils HTTP ---------- */
 function repondre(res, code, corps, req) {
   const origine = req?.headers.origin
@@ -175,7 +189,7 @@ async function mistral(tache, contenu) {
 /* ---------- Routes ---------- */
 async function routeur(req, res) {
   const url = new URL(req.url, 'http://local')
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress
+  const ip = adresseClient(req)
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST')
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type')

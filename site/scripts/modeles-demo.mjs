@@ -40,6 +40,7 @@ export const MODELES = APERCU.map((m) => ({
 }))
 
 export const CATEGORIES = [...new Set(MODELES.map((m) => m.categorie))]
+export const APERCU_SEULEMENT = true
 `
 writeFileSync(resolve(ICI, '../espace/src/modeles-qualiopi-demo.js'), code)
 console.log(`Modèles de démonstration : ${apercu.length} (sommaires seulement).`)

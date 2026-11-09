@@ -19,11 +19,24 @@ export default function Lanceur() {
   const [bulle, setBulle] = useState(false)
   const bouton = useRef(null)
 
-  // Petite bulle d'accueil, une seule fois par visite, après 9 secondes
+  // Petite bulle d'accueil, une seule fois par visite, après 9 secondes.
+  // Sur téléphone, elle attend que le visiteur ait quitté l'écran d'accueil : elle ne masque jamais les boutons du héros.
   useEffect(() => {
     if (dejaSalue()) return
-    const t = setTimeout(() => setBulle(true), 9000)
-    return () => clearTimeout(t)
+    const petitEcran = window.matchMedia('(max-width: 640px)')
+    let delaiEcoule = false
+    const tenter = () => {
+      if (delaiEcoule && (!petitEcran.matches || window.scrollY > window.innerHeight * 0.9)) {
+        setBulle(true)
+        window.removeEventListener('scroll', tenter)
+      }
+    }
+    const t = setTimeout(() => ((delaiEcoule = true), tenter()), 9000)
+    window.addEventListener('scroll', tenter, { passive: true })
+    return () => {
+      clearTimeout(t)
+      window.removeEventListener('scroll', tenter)
+    }
   }, [])
   function fermerBulle() {
     setBulle(false)
@@ -55,7 +68,7 @@ export default function Lanceur() {
             transition={{ type: 'spring', stiffness: 380, damping: 26 }}
           >
             <button className="ifa-bulle-texte" onClick={ouvrir}>
-              Bonjour, je suis <strong>IFA</strong>. Une question sur nos formations ?
+              Bonjour, je suis <strong>IFA</strong>. Une question sur nos formations ?
             </button>
             <button className="ifa-bulle-fermer" onClick={fermerBulle} aria-label="Masquer ce message">
               <X size={16} />

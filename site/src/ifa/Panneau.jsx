@@ -14,7 +14,7 @@ const RACCOURCIS = {
   'Le financement': 'financement',
   'Être rappelé': 'être rappelé',
   'Faire le diagnostic': 'diagnostic',
-  'Et le CPF ?': 'cpf',
+  'Et le CPF ?': 'cpf',
 }
 let compteur = 0
 const nouvelId = () => ++compteur
@@ -235,7 +235,7 @@ function Agenda({ ajouter }) {
       })
       if (!rep.ok) throw new Error(String(rep.status))
       setEtat('envoye')
-      ajouter({ texte: [`C’est noté ! Aurélien vous rappelle le ${resume}.`, 'Bonne journée, et à très vite !'] })
+      ajouter({ texte: [`C’est noté ! Aurélien vous rappelle le ${resume}.`, 'Bonne journée, et à très vite !'] })
     } catch {
       setEtat('courriel')
     }
@@ -304,7 +304,7 @@ function Agenda({ ajouter }) {
 
   return (
     <div className="ifa-agenda">
-      <p className="ifa-petit">Choisissez un jour :</p>
+      <p className="ifa-petit">Choisissez un jour :</p>
       <div className="ifa-jours" data-lenis-prevent>
         {jours.map((j) => (
           <button key={j.date} aria-pressed={jour === j.date} onClick={() => (setJour(j.date), setHeure(null))}>
@@ -315,7 +315,7 @@ function Agenda({ ajouter }) {
       <AnimatePresence>
         {jour && (
           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} style={{ overflow: 'hidden' }}>
-            <p className="ifa-petit">Puis une heure (heure de La Réunion) :</p>
+            <p className="ifa-petit">Puis une heure (heure de La Réunion) :</p>
             <div className="ifa-heures">
               {jours
                 .find((j) => j.date === jour)

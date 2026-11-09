@@ -1,10 +1,31 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import { resolve } from 'node:path'
 
 // `npm run build`   → site statique multi-fichiers dans dist/ (à déposer chez l'hébergeur)
 // `npm run apercu`  → un seul fichier HTML autonome dans apercu/ (pour relire le site hors ligne)
+
+// Si le formulaire de rappel d'IFA est branché sur un service externe (VITE_RAPPEL_ENDPOINT, en https),
+// son origine — et elle seule — est ajoutée à la directive connect-src de la politique de sécurité (.htaccess).
+// Sans cela, le navigateur bloquerait l'envoi sans prévenir le visiteur.
+function cspFormulaire(mode) {
+  return {
+    name: 'csp-formulaire',
+    apply: 'build',
+    closeBundle() {
+      const point = loadEnv(mode, process.cwd(), 'VITE_').VITE_RAPPEL_ENDPOINT
+      const fichier = resolve(__dirname, 'dist/.htaccess')
+      if (!point || !existsSync(fichier)) return
+      const url = new URL(point)
+      if (url.protocol !== 'https:') throw new Error('VITE_RAPPEL_ENDPOINT doit être en https://')
+      const htaccess = readFileSync(fichier, 'utf8')
+      writeFileSync(fichier, htaccess.replace("connect-src 'self'", `connect-src 'self' ${url.origin}`))
+    },
+  }
+}
+
 export default defineConfig(({ mode }) => ({
   root: 'site',
   base: './',
@@ -18,7 +39,7 @@ export default defineConfig(({ mode }) => ({
       'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
     },
   },
-  plugins: [react(), ...(mode === 'apercu' ? [viteSingleFile()] : [])],
+  plugins: [react(), cspFormulaire(mode), ...(mode === 'apercu' ? [viteSingleFile()] : [])],
   build: {
     outDir: resolve(__dirname, mode === 'apercu' ? 'apercu' : 'dist'),
     emptyOutDir: true,

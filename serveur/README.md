@@ -12,6 +12,7 @@ Petit serveur Node (aucune dépendance) : **paiement Mollie**, **délivrance des
 | `MISTRAL_API_KEY` | Clé API Mistral AI (La Plateforme). **Secret.** |
 | `MISTRAL_MODELE` | Modèle (défaut `mistral-small-latest`). |
 | `ORIGINES` | Adresses autorisées à appeler le serveur, ex. `https://www.yebaformations.re`. |
+| `PROXY_DE_CONFIANCE` | `1` seulement si le serveur est derrière un proxy/répartiteur qui écrit `X-Forwarded-For` (sinon les limites de tentatives se contourneraient). Par défaut : non. |
 | `URL_APPLI` | Adresse du logiciel, ex. `https://www.yebaformations.re/studio`. |
 | `AIRTABLE_TOKEN` | Facultatif : enregistre chaque licence vendue dans « STUDIO — LICENCES » (portée `data.records:write` sur cette seule table). |
 | `QUOTA_IA_JOUR` | Demandes IA par licence et par jour (défaut 60). |

@@ -61,7 +61,7 @@ const SECTIONS = [
   { id: 'implementation', label: 'Solutions IA', Icone: Workflow, info: 'Workflows, agents, sites, bases de données' },
   { id: 'gouvernance', label: 'RGPD & IA Act', Icone: ShieldCheck, info: 'Audit, registre, charte, preuves' },
   { id: 'qualiopi', label: 'Qualiopi', Icone: BadgeCheck, info: 'Nos engagements et nos indicateurs' },
-  { id: 'studio', label: 'Logiciels', Icone: LayoutDashboard, info: 'YEBA Studio : Qualiopi, BPF, CARBURANT' },
+  { id: 'studio', label: 'Logiciels', Icone: LayoutDashboard, info: 'YEBA Studio : Qualiopi, BPF, CARBURANT' },
   { id: 'financement', label: 'Financement', Icone: Wallet, info: 'OPCO, plan de développement, France Travail' },
   { id: 'contact', label: 'Contact', Icone: Mail, info: 'Téléphone, courriel ou rappel' },
 ]
@@ -218,7 +218,7 @@ function Nav() {
       transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
     >
       <a className="nav-logo" href="#" aria-label="YEBA FORMATIONS — retour en haut">
-        <img src="media/logo-yeba.png" alt="YEBA FORMATIONS" width="54" height="46" style={{ width: 'auto' }} />
+        <img src="media/logo-yeba-nav.webp" alt="YEBA FORMATIONS" width="54" height="46" />
       </a>
       <ul className="nav-liens">
         {SECTIONS.map((s) => (
@@ -265,7 +265,7 @@ function Nav() {
               </span>
               <p>
                 <span className="menu-ia-statut">Navigation assistée</span>
-                <span className="menu-ia-question">Où voulez-vous aller ?<span className="curseur" aria-hidden="true" /></span>
+                <span className="menu-ia-question">Où voulez-vous aller ?<span className="curseur" aria-hidden="true" /></span>
               </p>
             </div>
             <ul className="menu-ia-liste">
@@ -694,7 +694,7 @@ function Catalogue({ profil, onEffacerProfil }) {
         <Reveal>
           <p className="note" style={{ marginTop: 28 }}>
             Inter : prix par jour et par stagiaire, en salle avec d’autres entreprises. Intra : prix par jour pour votre groupe,
-            dans vos locaux. Dans les deux cas, 6 participants minimum et 8 au maximum. Prix nets de taxe : TVA non applicable, article 293 B du code général des
+            dans vos locaux. Dans les deux cas, 6 participants minimum et 8 au maximum. Prix nets de taxe : TVA non applicable, article 293 B du code général des
             impôts. Informations issues de notre base de formation, mise à jour le {new Date(SYNCHRO).toLocaleDateString('fr-FR')}.
           </p>
         </Reveal>
@@ -786,7 +786,6 @@ function CarteFormation({ f, onOuvrir, vedette }) {
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 300, damping: 22 }}
       aria-haspopup="dialog"
-      aria-label={`${f.nom} : ${f.sousTitre}. ${t?.interJour ? `Inter ${euros(t.interJour)} par jour et par stagiaire. ` : ''}${t?.intraJour ? `Intra ${euros(t.intraJour)} par jour pour le groupe. ` : ''}Voir la fiche complète`}
     >
       <motion.div className="formation-tete" layoutId={'tete-' + f.ref}>
         {f.badge && <span className="badge">{f.badge}</span>}
@@ -1058,11 +1057,11 @@ function FicheFormation({ f, onFermer }) {
             >
               {onglet === 'programme' && (
                 <>
-                  <h4>Pour qui ?</h4>
+                  <h4>Pour qui ?</h4>
                   <Paragraphes texte={f.public} />
                   {f.objectifs ? (
                     <>
-                      <h4>En repartant, vous saurez :</h4>
+                      <h4>En repartant, vous saurez :</h4>
                       <ol>
                         {f.objectifs.map((o) => (
                           <li key={o}>{o}</li>
@@ -1624,7 +1623,7 @@ function APropos() {
 function Pratique() {
   const cartes = [
     [Clock, 'Horaires', '08h00–12h00 et 13h00–17h00. Deux pauses incluses, à 10h et 15h.'],
-    [MapPin, 'Où ?', 'Dans vos locaux (intra), ou en salle de séminaire sur l’île (inter).'],
+    [MapPin, 'Où ?', 'Dans vos locaux (intra), ou en salle de séminaire sur l’île (inter).'],
     [Timer, 'Délai d’accès', '15 jours ouvrés minimum entre l’inscription et le démarrage.'],
     [Accessibility, 'Handicap', 'Un référent handicap étudie avec vous chaque besoin d’aménagement.'],
   ]
@@ -1671,7 +1670,7 @@ function Contact() {
             <p className="surtitre" style={{ color: 'var(--or)' }}>
               Contact
             </p>
-            <h2 id="titre-contact">Une tâche vous prend trop de temps ? Parlons-en.</h2>
+            <h2 id="titre-contact">Une tâche vous prend trop de temps ? Parlons-en.</h2>
             <p>
               Un premier échange permet de voir si une formation, un outil ou un audit vous fera gagner du temps. Sans
               engagement.
@@ -1702,7 +1701,7 @@ function Pied() {
     <footer className="pied">
       <div className="conteneur">
         <div className="pied-grille">
-          <img className="pied-logo" src="media/logo-yeba.png" alt="YEBA FORMATIONS" width="220" height="190" loading="lazy" />
+          <img className="pied-logo" src="media/logo-yeba-pied.webp" alt="YEBA FORMATIONS" width="220" height="187" loading="lazy" decoding="async" />
           <address className="bloc-marque" style={{ fontStyle: 'normal' }}>
             <strong>YEBA FORMATIONS</strong> — {e.dirigeant} EI, entrepreneur individuel
             <br />
