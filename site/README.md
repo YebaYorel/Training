@@ -10,6 +10,20 @@ Site vitrine animé (React + Framer Motion, compilé par Vite en site statique).
 | `npm run apercu` | un seul fichier `apercu/index.html`, médias inclus, pour relire hors ligne |
 | `npm run sync` | **met à jour le catalogue depuis Airtable** (jeton `AIRTABLE_TOKEN` dans `.env`, lecture seule) |
 
+## Mise en ligne (à suivre dans l’ordre)
+
+| Commande | Effet |
+|---|---|
+| `npm run build` | site final dans `dist/` : page d’accueil **pré-rendue** (lisible sans JavaScript), une page par formation (`formations/`), `robots.txt`, `sitemap.xml`, `llms.txt`, données structurées |
+| `npm run build:studio` | YEBA Studio **public** dans `dist/studio/` : modèles du Pack Qualiopi en **aperçu seulement** (sommaire) |
+| `npm run build:client` | YEBA Studio **complet** dans `dist-client/` (jamais en ligne) : à remettre au client après paiement |
+| `npm run verifier` | contrôle de `dist/` : champs légaux, contenu payant, secrets, fichiers techniques |
+| `npm run publier` | tout construire + contrôle **bloquant** : ne déposer `dist/` chez OVH que si tout est vert |
+
+Avant la première mise en ligne : créer la boîte `contact@yebaformations.re` (OVH), compléter les champs
+`[À …]` des pages légales (contrat OVH, médiateur si vente aux particuliers, expert-comptable), mettre à jour
+l’adresse de contact et les programmes (8 h → 7 h/jour) dans Airtable pour la prochaine synchronisation.
+
 ## Connexion Airtable
 Le site ne contacte jamais Airtable depuis le navigateur du visiteur : aucun jeton n'est exposé.
 `npm run sync` lit la base « YEBA FORMATIONS - Centre de formation » et écrit `site/src/catalogue.json`, puis `npm run build`.

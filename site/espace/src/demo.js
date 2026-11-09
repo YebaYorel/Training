@@ -1,7 +1,7 @@
 // Données FICTIVES de démonstration — aucune personne réelle (hors le dirigeant, déjà public).
 // Servent à montrer l'Espace sans exposer la moindre donnée de stagiaire ou de client (RGPD).
 import RNQ from '../../src/rnq.json'
-import DOCS from '../../src/documents.json'
+import { MODELES } from './modeles-qualiopi.js'
 import { PIECES } from './pieces.js'
 
 // Générateur pseudo-aléatoire déterministe : la démo est identique à chaque ouverture.
@@ -95,7 +95,15 @@ const factures = [
 
 const STATUTS = { 1: 'c', 2: 'e', 4: 'c', 5: 'c', 6: 'c', 8: 'c', 9: 'c', 10: 'e', 11: 'c', 12: 'n', 17: 'c', 18: 'c', 19: 'e', 21: 'c', 22: 'e', 23: 'c', 24: 'n', 25: 'e', 26: 'c', 27: 'c', 30: 'c', 31: 'e', 32: 'e' }
 const LIB = { c: '✅ Conforme', e: '⏳En cours', n: '❌ Non conforme', na: '➖ Non applicable' }
-const docs = DOCS.documents
+// Documents qualité de l'organisme FICTIF : un par modèle du Pack Qualiopi (en ligne, la version de démonstration
+// des modèles est utilisée). Rien ne provient des documents réels de YEBA FORMATIONS.
+const docs = MODELES.map((m, k) => ({
+  ref: `DOC-${String(k + 1).padStart(2, '0')}`,
+  titre: m.titre,
+  version: '1.0',
+  date: '2026-09-01',
+  indicateurs: m.indicateurs,
+}))
 
 const indicateurs = RNQ.indicateurs.map((i) => {
   const s = STATUTS[i.n] || 'na'

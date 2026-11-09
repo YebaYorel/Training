@@ -71,7 +71,7 @@ export default function Studio() {
 
         <ul className="studio-pourquoi">
           {POURQUOI.map(([Icone, t, d], k) => (
-            <Reveal key={t} delay={k * 0.08} className="studio-point">
+            <Reveal key={t} as="li" delay={k * 0.08} className="studio-point">
               <Icone size={30} aria-hidden="true" />
               <h3>{t}</h3>
               <p>{d}</p>

@@ -84,7 +84,7 @@ export default function Verrou({ onDemo, onOuvert, poste }) {
   )
 
   return (
-    <div className="verrou">
+    <main className="verrou">
       <div className="verrou-marque">
         <span className="marque-logo" aria-hidden="true">Y</span>
         <div>
@@ -176,6 +176,6 @@ export default function Verrou({ onDemo, onOuvert, poste }) {
             </div>
           </form>,
         )}
-    </div>
+    </main>
   )
 }
