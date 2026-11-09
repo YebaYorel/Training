@@ -25,6 +25,7 @@ import {
   Cpu,
   Database,
   FileDown,
+  FileText,
   Globe,
   GraduationCap,
   HeartHandshake,
@@ -50,6 +51,7 @@ import { Parcours, Questions, Resultats, Reunion } from './experience.jsx'
 import Lanceur from './ifa/Lanceur.jsx'
 import Qualiopi, { Lecteur } from './qualiopi.jsx'
 import { DOCS_GOUVERNANCE } from './gouvernance-docs.js'
+import { slugFormation } from './liens.js'
 import Studio from './studio.jsx'
 import { useIntroTerminee } from './intro.jsx'
 import DEROULES from './deroules.json'
@@ -1085,6 +1087,9 @@ function FicheFormation({ f, onFermer }) {
                       <a className="btn btn-bleu btn-petit lien-pdf" href={DEROULES[f.ref].fichier} target="_blank" rel="noopener">
                         <FileDown size={18} aria-hidden="true" /> Programme complet (PDF)
                       </a>
+                      <a className="btn btn-contour-bleu btn-petit lien-pdf" href={slugFormation(f)}>
+                        <FileText size={18} aria-hidden="true" /> Page complète de la formation
+                      </a>
                     </div>
                   )}
                   <Deroule texte={f.programme} refFormation={f.ref} />
@@ -1271,7 +1276,7 @@ function SchemaFlux() {
         <defs>
           <linearGradient id="gflux" x1="0" x2="1">
             <stop offset="0" stopColor="#5b8bd6" />
-            <stop offset="1" stopColor="#C9A84C" />
+            <stop offset="1" stopColor="#C9AB4C" />
           </linearGradient>
         </defs>
         {chemins.map((d, k) => (
@@ -1310,8 +1315,8 @@ function SchemaFlux() {
               width="144"
               height="68"
               rx="18"
-              fill={k === 3 ? '#C9A84C' : '#132b54'}
-              stroke={k === 3 ? '#e3c979' : 'rgba(201,168,76,0.55)'}
+              fill={k === 3 ? '#C9AB4C' : '#132b54'}
+              stroke={k === 3 ? '#e3c979' : 'rgba(201, 171, 76,0.55)'}
               strokeWidth="2"
             />
             <text
@@ -1333,10 +1338,10 @@ function SchemaFlux() {
       </svg>
       <figcaption className="flux-legende">
         <span>
-          <i style={{ background: '#C9A84C' }} /> Point d’arrêt humain obligatoire
+          <i style={{ background: '#C9AB4C' }} /> Point d’arrêt humain obligatoire
         </span>
         <span>
-          <i style={{ background: '#132b54', border: '2px solid #C9A84C' }} /> Étape automatisée
+          <i style={{ background: '#132b54', border: '2px solid #C9AB4C' }} /> Étape automatisée
         </span>
       </figcaption>
     </figure>
@@ -1461,7 +1466,7 @@ function Gouvernance() {
           {listes.map((l, i) => (
             <Reveal key={l.titre} delay={i * 0.15} className="gouv-carte">
               <h3>
-                <ShieldCheck size={34} color="#C9A84C" aria-hidden="true" /> {l.titre}
+                <ShieldCheck size={34} color="#C9AB4C" aria-hidden="true" /> {l.titre}
               </h3>
               <span className="ref">{l.ref}</span>
               <ul className="coches">
@@ -1528,7 +1533,7 @@ function Gouvernance() {
         </div>
 
         <Reveal className="souverain">
-          <Globe size={48} color="#C9A84C" aria-hidden="true" />
+          <Globe size={48} color="#C9AB4C" aria-hidden="true" />
           <p>
             <strong>Souveraineté des données.</strong> Nous privilégions des outils hébergés dans l’Union européenne,
             ou installés chez vous, pour que vos données et celles de vos clients restent sous votre contrôle.
@@ -1660,7 +1665,7 @@ function Contact() {
               aria-hidden="true"
               style={{
                 position: 'absolute', right: -120, top: -120, width: 420, height: 420, borderRadius: '50%',
-                background: 'radial-gradient(circle, rgba(201,168,76,0.45), transparent 65%)',
+                background: 'radial-gradient(circle, rgba(201, 171, 76,0.45), transparent 65%)',
               }}
               animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 6, repeat: Infinity }}
@@ -1720,6 +1725,16 @@ function Pied() {
             Référent handicap : {e.dirigeant} — {e.email}
           </address>
         </div>
+        <nav className="pied-formations" aria-label="Nos formations">
+          <h2>Nos formations</h2>
+          <ul>
+            {FORMATIONS.map((f) => (
+              <li key={f.ref}>
+                <a href={slugFormation(f)}>{f.nom}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <nav className="pied-liens" aria-label="Informations légales">
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="confidentialite.html">Politique de confidentialité</a>

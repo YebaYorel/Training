@@ -141,7 +141,7 @@ export function ReseauPitons({ className }) {
   const triangles = [
     { d: 'M40 380 L200 140 L360 380 Z', c: '#3d6bb3' },
     { d: 'M200 380 L380 40 L560 380 Z', c: '#8f8a6a' },
-    { d: 'M400 380 L560 140 L720 380 Z', c: '#C9A84C' },
+    { d: 'M400 380 L560 140 L720 380 Z', c: '#C9AB4C' },
   ]
   const noeuds = [
     [150, 240], [245, 290], [110, 320], [330, 150], [300, 250], [430, 170], [390, 290], [470, 270], [540, 230], [620, 300], [580, 340], [255, 330],
@@ -154,7 +154,7 @@ export function ReseauPitons({ className }) {
       <defs>
         <linearGradient id="grad-reseau" x1="0" x2="1">
           <stop offset="0" stopColor="#5b8bd6" />
-          <stop offset="1" stopColor="#C9A84C" />
+          <stop offset="1" stopColor="#C9AB4C" />
         </linearGradient>
       </defs>
       {triangles.map((t, i) => (
@@ -190,7 +190,7 @@ export function ReseauPitons({ className }) {
           cx={x}
           cy={y}
           r="9"
-          fill={x < 330 ? '#5b8bd6' : '#C9A84C'}
+          fill={x < 330 ? '#5b8bd6' : '#C9AB4C'}
           initial={{ scale: calme ? 1 : 0 }}
           animate={calme ? { scale: 1 } : { scale: [0, 1.4, 1], opacity: [1, 1, 0.9] }}
           transition={{ duration: 0.6, delay: 1.4 + i * 0.08 }}

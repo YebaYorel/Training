@@ -3,7 +3,7 @@
 //     IA et réseaux sociaux lisent le contenu sans exécuter JavaScript, et le texte s'affiche tout de suite ;
 //  2. ajoute les données structurées schema.org (organisme de formation + formations) ;
 //  3. écrit robots.txt, sitemap.xml et llms.txt à partir du catalogue réel.
-import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
@@ -13,7 +13,8 @@ const DIST = resolve(RACINE, 'dist')
 const SSR = resolve(RACINE, 'dist-ssr')
 const SITE = 'https://www.yebaformations.re'
 
-const { render, ENTREPRISE } = await import(pathToFileURL(resolve(SSR, 'entry-server.js')).href)
+const { render, ENTREPRISE, FORMATIONS, slugFormation } = await import(pathToFileURL(resolve(SSR, 'entry-server.js')).href)
+const { pageFormation } = await import(pathToFileURL(resolve(ICI, 'pages-formations.mjs')).href)
 const CATALOGUE = JSON.parse(readFileSync(resolve(ICI, '../src/catalogue.json'), 'utf8'))
 const PROGRAMMES = JSON.parse(readFileSync(resolve(ICI, '../public/documents/index.json'), 'utf8'))
 
@@ -71,7 +72,7 @@ const formations = CATALOGUE.formations.map((f) => {
     provider: { '@id': `${SITE}/#organisme` },
     ...(f.prerequis ? { coursePrerequisites: f.prerequis.slice(0, 300) } : {}),
     ...(f.public ? { audience: { '@type': 'Audience', audienceType: f.public.slice(0, 200) } } : {}),
-    ...(prog ? { url: `${SITE}/${prog.programme}` } : {}),
+    url: `${SITE}/${slugFormation(f)}`,
     hasCourseInstance: {
       '@type': 'CourseInstance',
       courseMode: 'Onsite',
@@ -104,11 +105,24 @@ html = html
   .replace('<!--donnees-structurees-->', `<script type="application/ld+json">${jsonSur(donnees)}</script>`)
 writeFileSync(resolve(DIST, 'index.html'), html)
 
+// ---------- 2 bis. Une page par formation ----------
+const css = (readFileSync(resolve(DIST, 'mentions-legales.html'), 'utf8').match(/href="\.?\/?(assets\/legal-[^"]+\.css)"/) || [])[1]
+if (!css) throw new Error('Feuille de style des pages légales introuvable dans dist/mentions-legales.html')
+mkdirSync(resolve(DIST, 'formations'), { recursive: true })
+const pagesFormations = FORMATIONS.map((f) => ({ f, slug: slugFormation(f) }))
+for (const { f, slug } of pagesFormations) {
+  const fiche = CATALOGUE.formations.find((x) => x.ref === f.ref) || {}
+  const autres = pagesFormations.filter((p) => p.f.ref !== f.ref).map((p) => ({ nom: p.f.nom, slug: p.slug }))
+  const programmePdf = PROGRAMMES.find((p) => p.ref === f.ref)?.programme
+  writeFileSync(resolve(DIST, slug), pageFormation({ f, fiche, slug, css, site: SITE, entreprise: ENTREPRISE, autres, programmePdf }))
+}
+
 // ---------- 3. Fichiers pour les robots ----------
 const aujourdhui = new Date().toISOString().slice(0, 10)
 const pages = ['', 'mentions-legales.html', 'confidentialite.html', 'cgv-logiciels.html']
 const urls = [
   ...pages.map((p) => ({ loc: `${SITE}/${p}`, prio: p ? '0.3' : '1.0' })),
+  ...pagesFormations.map((p) => ({ loc: `${SITE}/${p.slug}`, prio: '0.8' })),
   ...PROGRAMMES.map((p) => ({ loc: `${SITE}/${p.programme}`, prio: '0.6' })),
 ]
 writeFileSync(
@@ -133,7 +147,7 @@ const lignesFormations = CATALOGUE.formations
   .map((f) => {
     const prog = PROGRAMMES.find((p) => p.ref === f.ref)
     const duree = f.heures ? ` — ${f.jours} j, ${f.heures} h` : ''
-    const lien = prog ? `${SITE}/${encodeURI(prog.programme)}` : `${SITE}/#formations`
+    const lien = `${SITE}/${slugFormation(f)}`
     return `- [${titreCourt(f.titre)}](${lien}): ${sousTitre(f.titre)}${duree}`
   })
   .join('\n')
@@ -150,7 +164,7 @@ writeFileSync(
 - Numéro de déclaration d'activité : ${ENTREPRISE.nda} (cet enregistrement ne vaut pas agrément de l'État)
 - SIRET : ${ENTREPRISE.siret}
 
-## Formations (programmes détaillés en PDF)
+## Formations (une page détaillée par formation)
 
 ${lignesFormations}
 
@@ -162,4 +176,4 @@ ${lignesFormations}
 )
 
 if (existsSync(SSR)) rmSync(SSR, { recursive: true, force: true })
-console.log(`Pré-rendu : ${Math.round(contenu.length / 1024)} Ko de HTML, ${formations.length} formations en données structurées, robots.txt, sitemap.xml (${urls.length} URL), llms.txt.`)
+console.log(`Pré-rendu : ${Math.round(contenu.length / 1024)} Ko de HTML, ${pagesFormations.length} pages formation, ${formations.length} formations en données structurées, robots.txt, sitemap.xml (${urls.length} URL), llms.txt.`)

@@ -15,3 +15,5 @@ export function render() {
 
 // Coordonnées reprises par le pré-rendu (données structurées, llms.txt) : une seule source de vérité.
 export { ENTREPRISE } from './data.js'
+export { slugFormation } from './liens.js'
+export { FORMATIONS, AGENDA } from './data.js'

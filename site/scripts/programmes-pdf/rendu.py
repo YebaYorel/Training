@@ -3,7 +3,7 @@
 Reprend la structure du programme « Emailing pro » déposé dans Airtable :
 couverture, positionnement, vocabulaire, fiche synoptique, objectifs, déroulé jour par jour,
 méthodes et moyens, grille critériée, suivi de la progression, quiz et corrigé, validation,
-défi final, annexes. Couleurs YEBA : bleu #1B3A6B, or #C9A84C (jamais en texte sur blanc).
+défi final, annexes. Couleurs YEBA : bleu #1B3A6B, or #C9AB4C (jamais en texte sur blanc).
 """
 from pathlib import Path
 
@@ -26,7 +26,7 @@ for nom, fichier in [('L', 'LiberationSans-Regular.ttf'), ('L-B', 'LiberationSan
 pdfmetrics.registerFontFamily('L', normal='L', bold='L-B', italic='L-I', boldItalic='L-BI')
 
 BLEU = colors.HexColor('#1B3A6B')
-OR = colors.HexColor('#C9A84C')
+OR = colors.HexColor('#C9AB4C')
 NOIR = colors.HexColor('#121212')
 GRIS = colors.HexColor('#4B5563')
 ENCART = colors.HexColor('#EAF1FA')

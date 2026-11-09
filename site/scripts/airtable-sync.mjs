@@ -121,7 +121,7 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
       tarifs: totaux(lireTarifs(f[C.tarifs], f), f[C.heures]),
       domaine: nom(f[C.domaine]) || null,
       objectifs: textePublic(f[C.objectifs]),
-      programme: textePublic(f[C.programme]),
+      programme: dureeOfficielle(textePublic(f[C.programme]), f[C.heures], f[C.jours]),
       materiel: nom(f[C.materiel]) || 'À confirmer',
       precisionMateriel: textePublic(f[C.precisionMateriel]),
       indicateurs: {
@@ -152,6 +152,15 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
   formations.sort((a, b) => a.ref.localeCompare(b.ref))
   // Pas d’identifiant de base dans le fichier livré au navigateur (aucune aide à la reconnaissance)
   return { synchronise: new Date().toISOString(), formations, agenda }
+}
+
+
+/** La durée affichée dans le programme suit TOUJOURS les champs numériques de la fiche (source officielle,
+ *  reprise dans les conventions) : un texte de programme resté à « 8 heures par jour » ne peut plus la contredire. */
+export function dureeOfficielle(programme, heures, jours) {
+  const h = Number(heures), j = Number(jours)
+  if (!programme || !h || !j) return programme
+  return programme.replace(/Durée\s*:\s*\d+\s*heures?\s*\(\d+\s*jours?\)/i, `Durée : ${h} heures (${j} jour${j > 1 ? 's' : ''})`)
 }
 
 export function transformerDocuments(documents) {

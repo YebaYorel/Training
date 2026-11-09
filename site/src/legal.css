@@ -1,9 +1,9 @@
-/* Pages légales YEBA FORMATIONS — lisibles, imprimables, sans JavaScript. Charte : bleu #1B3A6B, or #C9A84C. */
+/* Pages légales YEBA FORMATIONS — lisibles, imprimables, sans JavaScript. Charte : bleu #1B3A6B, or #C9AB4C. */
 @import '@fontsource/montserrat/800.css';
 @import '@fontsource/atkinson-hyperlegible/400.css';
 @import '@fontsource/atkinson-hyperlegible/700.css';
 
-:root { --bleu: #1b3a6b; --nuit: #0b1830; --or: #c9a84c; --creme: #f7f4ec; --texte: #1c2433; }
+:root { --bleu: #1b3a6b; --nuit: #0b1830; --or: #c9ab4c; --creme: #f7f4ec; --texte: #1c2433; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -13,7 +13,7 @@ a { color: var(--bleu); font-weight: 700; }
 .evitement { position: absolute; left: 16px; top: -80px; background: var(--bleu); color: #fff; padding: 12px 18px; border-radius: 10px; }
 .evitement:focus { top: 16px; }
 
-.bandeau { background: radial-gradient(circle at 85% 0%, rgba(201, 168, 76, 0.28), transparent 45%), var(--nuit); color: #fff; padding: 28px 16px 56px; }
+.bandeau { background: radial-gradient(circle at 85% 0%, rgba(201, 171, 76, 0.28), transparent 45%), var(--nuit); color: #fff; padding: 28px 16px 56px; }
 .bandeau-inner, .page { width: min(1120px, 100%); margin: 0 auto; }
 .bandeau a { color: #fff; }
 .retour { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; }
@@ -36,7 +36,7 @@ main section { background: #fff; border-radius: 22px; padding: 26px 30px; margin
 main h2 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--bleu); font-size: 1.3rem; line-height: 1.25; margin: 0 0 12px; display: flex; gap: 12px; align-items: baseline; }
 main h2 .num { flex: none; display: inline-grid; place-items: center; min-width: 34px; height: 34px; border-radius: 10px; background: var(--bleu); color: #fff; font-size: 0.95rem; }
 main h3 { font-family: 'Montserrat', sans-serif; font-weight: 800; color: var(--bleu); font-size: 1.05rem; margin: 20px 0 6px; }
-main p, main li { margin: 6px 0; }
+main p, main li { overflow-wrap: anywhere; margin: 6px 0; }
 dl.fiche { display: grid; grid-template-columns: max-content 1fr; gap: 6px 20px; margin: 10px 0; }
 @media (max-width: 560px) { dl.fiche { grid-template-columns: 1fr; gap: 0; } dl.fiche dd { margin-bottom: 10px; } }
 dl.fiche dt { font-weight: 700; color: var(--bleu); }

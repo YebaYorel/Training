@@ -40,7 +40,7 @@ export default function Avatar({ taille = 56, parle = false, className }) {
           ))}
           {/* Buste et haut bleu à col doré */}
           <path d="M14 120 C18 100 36 94 60 94 C84 94 102 100 106 120 Z" fill="#1B3A6B" />
-          <path d="M46 95 L60 110 L74 95" fill="none" stroke="#C9A84C" strokeWidth="3" strokeLinejoin="round" />
+          <path d="M46 95 L60 110 L74 95" fill="none" stroke="#C9AB4C" strokeWidth="3" strokeLinejoin="round" />
           {/* Cou */}
           <path d="M51 78 L51 97 C55 101 65 101 69 97 L69 78 Z" fill={peauOmbre} />
           {/* Oreilles et créoles */}
@@ -91,7 +91,7 @@ export default function Avatar({ taille = 56, parle = false, className }) {
           />
           <path d="M49.3 71.6 C49.8 72.3 50.3 72.6 51 72.8 M70.7 71.6 C70.2 72.3 69.7 72.6 69 72.8" fill="none" stroke={peauOmbre} strokeWidth="1" strokeLinecap="round" />
           {/* Micro-casque doré */}
-          <path d="M81 64 C85 71 82 79 73 80" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" />
+          <path d="M81 64 C85 71 82 79 73 80" fill="none" stroke="#C9AB4C" strokeWidth="2" strokeLinecap="round" />
           <circle cx="72" cy="80" r="2.4" fill="#e3c979" />
         </motion.g>
       </g>

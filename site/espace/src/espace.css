@@ -1,6 +1,6 @@
-/* Espace YEBA — charte : bleu #1B3A6B, or #C9A84C, noir #121212. L'or n'est jamais du texte sur blanc. */
+/* Espace YEBA — charte : bleu #1B3A6B, or #C9AB4C, noir #121212. L'or n'est jamais du texte sur blanc. */
 :root {
-  --bleu: #1b3a6b; --nuit: #0b1830; --or: #c9a84c; --or-clair: #e3c979; --noir: #121212;
+  --bleu: #1b3a6b; --nuit: #0b1830; --or: #c9ab4c; --or-clair: #e3c979; --noir: #121212;
   --fond: #f4f1e8; --blanc: #fff; --texte: #1f2a3c; --doux: #4a5870; --trait: #e2e7ef;
   --vert: #1e7a4c; --vert-f: #e3f3ea; --jaune: #7a5a00; --jaune-f: #fff4d0; --rouge: #a3262a; --rouge-f: #fde7e6;
   --rayon: 18px; --titre: 'Montserrat', system-ui, sans-serif; --corps: 'Atkinson Hyperlegible', system-ui, sans-serif;
@@ -253,7 +253,7 @@ thead th { font-family: var(--titre); font-size: 0.78rem; letter-spacing: 0.04em
 .large { grid-column: 1 / -1; }
 
 /* Accueil / code personnel */
-.verrou { min-height: 100svh; display: grid; place-content: center; gap: 22px; padding: 24px 16px; background: radial-gradient(circle at 85% 0%, rgba(201, 168, 76, 0.25), transparent 45%), var(--nuit); }
+.verrou { min-height: 100svh; display: grid; place-content: center; gap: 22px; padding: 24px 16px; background: radial-gradient(circle at 85% 0%, rgba(201, 171, 76, 0.25), transparent 45%), var(--nuit); }
 .verrou-marque { display: flex; gap: 16px; align-items: center; color: #fff; max-width: 640px; }
 .verrou-marque h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.6rem); }
 .verrou-marque p { color: #dbe3f0; }
@@ -291,7 +291,7 @@ thead th { font-family: var(--titre); font-size: 0.78rem; letter-spacing: 0.04em
 /* Formulaires et collections */
 .champ textarea, .champ select, .champ input:not([type='checkbox']):not([type='color']) { width: 100%; min-height: 42px; padding: 8px 12px; border-radius: 10px; border: 2px solid #cdd6e4; background: #fff; font-weight: 400; color: var(--texte); }
 .champ textarea { resize: vertical; }
-.champ input:focus, .champ select:focus, .champ textarea:focus { border-color: var(--bleu); outline: none; box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.45); }
+.champ input:focus, .champ select:focus, .champ textarea:focus { border-color: var(--bleu); outline: none; box-shadow: 0 0 0 3px rgba(201, 171, 76, 0.45); }
 .champ small { font-weight: 400; color: var(--doux); }
 .champ abbr { color: var(--rouge); text-decoration: none; }
 .grille-champs { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px 18px; }
@@ -377,7 +377,7 @@ thead th { font-family: var(--titre); font-size: 0.78rem; letter-spacing: 0.04em
 .badge-ia.on { background: var(--vert-f); color: var(--vert); }
 .carburant-hero { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; margin-bottom: 18px; }
 .jauge-argent { background: linear-gradient(135deg, var(--nuit), var(--bleu)); color: #fff; border-radius: 22px; padding: 22px 24px; display: grid; gap: 6px; position: relative; overflow: hidden; }
-.jauge-argent::after { content: ''; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(201, 168, 76, 0.45), transparent 70%); }
+.jauge-argent::after { content: ''; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, rgba(201, 171, 76, 0.45), transparent 70%); }
 .jauge-argent span { color: #dbe3f0; font-weight: 700; }
 .jauge-argent strong { font-family: var(--titre); font-size: clamp(2rem, 5vw, 3rem); line-height: 1; color: #fff; }
 .jauge-argent small { color: #b9c5da; }

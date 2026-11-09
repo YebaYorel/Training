@@ -1,6 +1,6 @@
 """Charte graphique YEBA FORMATIONS pour les documents PDF (programmes, livrets d'accueil).
 
-Bleu #1B3A6B, or #C9A84C (jamais en texte sur fond blanc : filets, pastilles, fonds), noir #121212.
+Bleu #1B3A6B, or #C9AB4C (jamais en texte sur fond blanc : filets, pastilles, fonds), noir #121212.
 Titres Montserrat, texte Atkinson Hyperlegible (police conçue pour les personnes malvoyantes).
 """
 from pathlib import Path
@@ -24,7 +24,7 @@ pdfmetrics.registerFontFamily('M-B', normal='M-B', bold='M-XB', italic='M-B', bo
 
 BLEU = colors.HexColor('#1B3A6B')
 BLEU_NUIT = colors.HexColor('#0B1830')
-OR = colors.HexColor('#C9A84C')
+OR = colors.HexColor('#C9AB4C')
 OR_CLAIR = colors.HexColor('#E3C979')
 NOIR = colors.HexColor('#121212')
 GRIS = colors.HexColor('#3F4A5C')

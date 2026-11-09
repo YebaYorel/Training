@@ -68,7 +68,7 @@ export async function genererDocx({ titre, organisme: o = {}, blocs, essai = fal
         enfants.push(
           new Paragraph({
             children: runs(contenu),
-            border: { left: { style: BorderStyle.SINGLE, size: 24, color: 'C9A84C', space: 8 } },
+            border: { left: { style: BorderStyle.SINGLE, size: 24, color: 'C9AB4C', space: 8 } },
             shading: { type: ShadingType.CLEAR, fill: 'F6F1E3', color: 'auto' },
             spacing: { before: 120, after: 160 },
             indent: { left: 200 },

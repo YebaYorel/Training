@@ -115,7 +115,7 @@ export default function Intro() {
           <linearGradient id="intro-vrai" x1="120" y1="0" x2="400" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0" stopColor="#1B3A6B" />
             <stop offset="0.5" stopColor="#6f6f5e" />
-            <stop offset="1" stopColor="#C9A84C" />
+            <stop offset="1" stopColor="#C9AB4C" />
           </linearGradient>
           <filter id="intro-halo" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="3" result="flou" />

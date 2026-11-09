@@ -191,7 +191,7 @@ function Jauge({ score, niveau }) {
         <defs>
           <linearGradient id="gjauge" x1="0" x2="1">
             <stop offset="0" stopColor="#5b8bd6" />
-            <stop offset="1" stopColor="#C9A84C" />
+            <stop offset="1" stopColor="#C9AB4C" />
           </linearGradient>
         </defs>
         <text x="90" y="92" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="42">
@@ -348,7 +348,7 @@ export function Reunion() {
             <motion.path
               d={lisser(CONTOUR)}
               fill="url(#relief)"
-              stroke="#C9A84C"
+              stroke="#C9AB4C"
               strokeWidth="3"
               initial={{ pathLength: calme ? 1 : 0, fillOpacity: calme ? 1 : 0 }}
               whileInView={{ pathLength: 1, fillOpacity: 1 }}
@@ -395,7 +395,7 @@ export function Reunion() {
                     cy={v.y}
                     r="8"
                     fill="none"
-                    stroke="#C9A84C"
+                    stroke="#C9AB4C"
                     strokeWidth="2"
                     style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                     animate={{ scale: [1, 3], opacity: [0.9, 0] }}
@@ -406,7 +406,7 @@ export function Reunion() {
                   cx={v.x}
                   cy={v.y}
                   r={v.siege ? 8 : 5.5}
-                  fill={v.siege || active === v.n ? '#C9A84C' : '#ffffff'}
+                  fill={v.siege || active === v.n ? '#C9AB4C' : '#ffffff'}
                   style={{ transformBox: 'fill-box', transformOrigin: 'center' }}
                   animate={{ scale: active === v.n ? 1.9 : 1 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 18 }}
@@ -454,7 +454,7 @@ function EtiquetteVille({ ville }) {
       exit={{ opacity: 0, scale: 0.6 }}
       transition={{ type: 'spring', stiffness: 420, damping: 26 }}
     >
-      <rect x={x - largeur / 2} y={y} width={largeur} height="44" rx="22" fill="#C9A84C" />
+      <rect x={x - largeur / 2} y={y} width={largeur} height="44" rx="22" fill="#C9AB4C" />
       <text x={x} y={y + 30} textAnchor="middle" fill="#0b1830" fontFamily="Montserrat, sans-serif" fontWeight="900" fontSize="24">
         {ville.n}
       </text>
