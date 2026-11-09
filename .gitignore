@@ -31,3 +31,18 @@ council-transcript-*.md
 *.pdf
 !.claude/skills/**/*.pdf
 .agents/
+
+
+
+# Node
+node_modules/
+dist/
+apercu/
+apercu-espace/
+dist-espace/
+YEBA-site-apercu.html
+site/airtable/
+
+# Supports pédagogiques, évaluations et corrigés : propriété intellectuelle, jamais en ligne
+livrables-prives/
+!site/public/**/*.pdf

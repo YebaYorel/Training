@@ -1,0 +1,110 @@
+[
+ {
+  "ref": "FOR-0002",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0002_Automatisation-sans-code.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0002_Automatisation-sans-code_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0002_Automatisation-sans-code_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0003",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0003_Conformite-RGPD-IA-Act.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0003_Conformite-RGPD-IA-Act_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0003_Conformite-RGPD-IA-Act_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0004",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0004_Vente-negociation.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0004_Vente-negociation_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0004_Vente-negociation_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0006",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0006_Copilot-Microsoft-365.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0006_Copilot-Microsoft-365_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0006_Copilot-Microsoft-365_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0008",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0008_Manager-au-quotidien.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0008_Manager-au-quotidien_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0008_Manager-au-quotidien_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0009",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0009_Site-internet-IA.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0009_Site-internet-IA_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0009_Site-internet-IA_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0010",
+  "heures": 7,
+  "jours": 1,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0010_Emailing-IA.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0010_Emailing-IA_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0010_Emailing-IA_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0011",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0011_IA-generative-au-travail.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0011_IA-generative-au-travail_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0011_IA-generative-au-travail_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0013",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0013_Agents-IA.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0013_Agents-IA_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0013_Agents-IA_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0014",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0014_Seminaire-dirigeants-IA.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0014_Seminaire-dirigeants-IA_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0014_Seminaire-dirigeants-IA_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0015",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0015_IA-souveraine.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0015_IA-souveraine_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0015_IA-souveraine_A4-paysage-impression.pdf"
+ },
+ {
+  "ref": "FOR-0017",
+  "heures": 14,
+  "jours": 2,
+  "pages_livret": 24,
+  "programme": "documents/programmes/Programme_FOR-0017_Assistant-IA-perso.pdf",
+  "livret_a5": "documents/livrets/Livret-accueil_FOR-0017_Assistant-IA-perso_A5-portrait.pdf",
+  "livret_a4": "documents/livrets/Livret-accueil_FOR-0017_Assistant-IA-perso_A4-paysage-impression.pdf"
+ }
+]
