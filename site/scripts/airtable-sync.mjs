@@ -48,8 +48,6 @@ const D = {
 }
 // Un document n'est listé que s'il s'adresse à l'extérieur ; jamais les documents purement internes.
 const DESTINATAIRES_PUBLICS = ['Public / site internet', 'Prospects', 'Stagiaires', 'Clients entreprises']
-// Tout marqueur de travail interne bloque la publication du texte intégral (le document reste « sur demande »).
-const MARQUEURS_INTERNES = /à vérifier|à compléter|à confirmer|à désigner|interne|action a-\d|\[[^\]]*\]|⚠️|écart|non-conformit/i
 // Documents dont la version à jour est déjà une page du site : on renvoie vers la page.
 const PAGES_DU_SITE = { 'YEBA-DOC-01': 'mentions-legales.html', 'YEBA-DOC-02': 'confidentialite.html' }
 const MARQUES_PUBLIQUES = ['Catalogue YEBA — marque YEBA obligatoire', 'Client direct — marque YEBA obligatoire']
@@ -156,14 +154,6 @@ export function transformer(catalogue, sessions, aujourdHui = new Date()) {
   return { synchronise: new Date().toISOString(), formations, agenda }
 }
 
-/** « 3, 9, 16 » → [3, 9, 16] ; les plages (« 1 à 32 ») ne sont pas dépliées pour ne pas surévaluer la couverture. */
-function lireRnq(v) {
-  const t = texte(v)
-  if (/\d+\s*à\s*\d+/.test(t)) return { indicateurs: [], global: true }
-  const n = [...t.matchAll(/\b(\d{1,2})\b/g)].map((m) => Number(m[1])).filter((x) => x >= 1 && x <= 33)
-  return { indicateurs: [...new Set(n)], global: false }
-}
-
 export function transformerDocuments(documents) {
   const sortie = []
   for (const r of documents.records) {
@@ -171,21 +161,15 @@ export function transformerDocuments(documents) {
     const dest = noms(f[D.destinataires])
     if (!dest.some((d) => DESTINATAIRES_PUBLICS.includes(d))) continue
     const ref = texte(f[D.ref])
-    const contenu = texte(f[D.contenu])
-    const lisible = nom(f[D.statut]) === 'En vigueur' && contenu && !MARQUEURS_INTERNES.test(contenu)
-    const { indicateurs, global } = lireRnq(f[D.rnq])
+    // Les documents qualité (règlement, conventions, procédures, chartes…) sont des modèles du Pack
+    // Qualiopi vendu par YEBA Studio : ni leur texte, ni leur correspondance avec les indicateurs du
+    // référentiel ne sont publiés. Seuls l'intitulé et le moyen de les obtenir le sont.
     sortie.push({
       ref,
       titre: texte(f[D.titre]),
-      version: texte(f[D.version]) || null,
-      date: f[D.date] ? String(f[D.date]).slice(0, 10) : null,
-      indicateurs,
-      tousCriteres: global,
       pour: dest.filter((d) => DESTINATAIRES_PUBLICS.includes(d) || d === 'Financeurs / OPCO'),
-      // Le statut interne (incomplet, à valider…) n'est JAMAIS publié : seul le mode d'accès l'est.
-      acces: PAGES_DU_SITE[ref] ? 'page' : lisible ? 'lecture' : 'demande',
+      acces: PAGES_DU_SITE[ref] ? 'page' : 'demande',
       page: PAGES_DU_SITE[ref] || null,
-      texte: !PAGES_DU_SITE[ref] && lisible ? contenu : null,
     })
   }
   sortie.sort((a, b) => a.ref.localeCompare(b.ref))

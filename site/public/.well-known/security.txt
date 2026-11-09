@@ -1,4 +1,6 @@
 # Signaler une vulnérabilité de ce site (RFC 9116)
-Contact: mailto:yebaformations@gmail.com
+Contact: mailto:contact@yebaformations.re
 Expires: 2027-09-25T00:00:00.000Z
 Preferred-Languages: fr, en
+Canonical: https://www.yebaformations.re/.well-known/security.txt
+Policy: https://www.yebaformations.re/mentions-legales.html

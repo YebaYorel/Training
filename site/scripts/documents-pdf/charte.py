@@ -37,7 +37,7 @@ OR_FOND = colors.HexColor('#F6EFD9')
 ENTREPRISE = {
     'nom': 'YEBA FORMATIONS', 'dirigeant': 'Aurélien LUMEKA',
     'adresse': '9 rue Françoise Châtelain, 97490 Sainte-Clotilde — La Réunion',
-    'tel': '06 93 32 24 45', 'email': 'yebaformations@gmail.com', 'site': 'www.yebaformations.re',
+    'tel': '06 93 32 24 45', 'email': 'contact@yebaformations.re', 'site': 'www.yebaformations.re',
     'siret': '814 622 262 00032', 'nda': '04973676397', 'qualiopi': '25FOR02027.1',
 }
 LEGAL = (f"YEBA FORMATIONS — Aurélien LUMEKA EI — SIRET {ENTREPRISE['siret']} — NDA {ENTREPRISE['nda']} "

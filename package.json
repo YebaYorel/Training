@@ -4,17 +4,20 @@
   "description": "Sites web YEBA FORMATIONS (animations Framer Motion, design UI/UX Pro Max)",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir ../dist-ssr --emptyOutDir && node site/scripts/prerender.mjs",
     "apercu": "vite build --mode apercu && python3 site/integrer-medias.py",
     "preview": "vite preview",
     "sync": "node site/scripts/airtable-sync.mjs",
     "sync-export": "node site/scripts/airtable-sync.mjs --depuis site/airtable",
     "espace": "vite --config vite.espace.config.js",
-    "espace:apercu": "vite build --config vite.espace.config.js --mode apercu",
+    "espace:apercu": "node site/scripts/modeles-demo.mjs && vite build --config vite.espace.config.js --mode apercu",
     "licence": "node site/scripts/licence.mjs",
     "serveur": "node serveur/serveur.mjs",
-    "build:studio": "vite build --config vite.espace.config.js --mode studio",
-    "build:tout": "npm run build && npm run build:studio"
+    "build:studio": "node site/scripts/modeles-demo.mjs && vite build --config vite.espace.config.js --mode studio",
+    "build:tout": "npm run build && npm run build:studio",
+    "build:client": "vite build --config vite.espace.config.js --mode client",
+    "verifier": "node site/scripts/verifier-publication.mjs",
+    "publier": "npm run build && npm run build:studio && node site/scripts/verifier-publication.mjs --strict"
   },
   "repository": {
     "type": "git",

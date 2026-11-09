@@ -15,6 +15,9 @@ from livret import construire_a5, imposer
 from programme import construire
 
 RACINE = Path(__file__).resolve().parents[2] / 'public' / 'documents'
+# Les livrets d'accueil reprennent le modèle du Pack Qualiopi (vendu par YEBA Studio) :
+# ils sont remis aux stagiaires inscrits, jamais publiés sur le site ni versionnés.
+PRIVE = Path(__file__).resolve().parents[3] / 'livrables-prives' / 'livrets'
 
 
 def slug(t):
@@ -25,20 +28,18 @@ def slug(t):
 def main(refs=None):
     fs = fiches(refs)
     (RACINE / 'programmes').mkdir(parents=True, exist_ok=True)
-    (RACINE / 'livrets').mkdir(parents=True, exist_ok=True)
+    PRIVE.mkdir(parents=True, exist_ok=True)
     index = []
     for f in fs:
         base = f"{f['ref']}_{slug(f['nom'])}"
         prog = RACINE / 'programmes' / f'Programme_{base}.pdf'
-        a5 = RACINE / 'livrets' / f'Livret-accueil_{base}_A5-portrait.pdf'
-        a4 = RACINE / 'livrets' / f'Livret-accueil_{base}_A4-paysage-impression.pdf'
+        a5 = PRIVE / f'Livret-accueil_{base}_A5-portrait.pdf'
+        a4 = PRIVE / f'Livret-accueil_{base}_A4-paysage-impression.pdf'
         construire(f, prog)
         n = construire_a5(f, a5)
         imposer(a5, a4)
         index.append({'ref': f['ref'], 'heures': f['heures'], 'jours': f['jours'], 'pages_livret': n,
-                      'programme': prog.relative_to(RACINE.parent).as_posix(),
-                      'livret_a5': a5.relative_to(RACINE.parent).as_posix(),
-                      'livret_a4': a4.relative_to(RACINE.parent).as_posix()})
+                      'programme': prog.relative_to(RACINE.parent).as_posix()})
         print(f"{f['ref']} · {f['heures']} h / {f['jours']} j · livret {n} p. A5")
     if not refs:
         (RACINE / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')

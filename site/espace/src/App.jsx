@@ -36,7 +36,7 @@ const MODULES = [
 ]
 const MODULES_INTERNES = ['tableau', 'coffre', 'parcours', 'bpf']
 // Le lien Airtable interne n'existe que sur le poste de YEBA : absent des versions publiées (studio, aperçu).
-const INTERNE = import.meta.env.MODE !== 'studio' && import.meta.env.MODE !== 'apercu'
+const INTERNE = !['studio', 'apercu', 'client'].includes(import.meta.env.MODE)
 const ESSAI_JOURS = 14
 const VERROU_MINUTES = 15
 

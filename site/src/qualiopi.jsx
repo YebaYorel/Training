@@ -1,10 +1,11 @@
 // Section publique « Qualiopi : la preuve, pas la promesse ».
-// Ne lit que documents.json (généré par scripts/airtable-sync.mjs) et rnq.json (référentiel public).
+// Ne lit que documents.json (intitulés seulement, généré par scripts/airtable-sync.mjs) et rnq.json (référentiel public).
+// Le contenu des documents qualité (Pack Qualiopi vendu par YEBA Studio) n'est jamais publié.
 // Aucun statut interne (incomplet, à valider, score d'audit) n'est jamais affiché ici.
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { BookOpen, ExternalLink, FileText, Mail, Printer, ShieldCheck, X } from 'lucide-react'
+import { ExternalLink, FileText, Mail, Printer, ShieldCheck, X } from 'lucide-react'
 import { Reveal, TitreAnime } from './anim.jsx'
 import { ENTREPRISE } from './data.js'
 import DOCS from './documents.json'
@@ -17,8 +18,9 @@ const PUBLICS = [
   ['Stagiaires', 'Stagiaires'],
   ['Financeurs / OPCO', 'Financeurs'],
 ]
+// Liste publique des organismes de formation (DGEFP) : on y vérifie la certification Qualiopi.
+const VERIFIER_QUALIOPI = 'https://www.data.gouv.fr/fr/datasets/liste-publique-des-organismes-de-formation-l-6351-7-1-du-code-du-travail/'
 const ACCES = {
-  lecture: { libelle: 'Lire en ligne', Icone: BookOpen },
   page: { libelle: 'Ouvrir la page', Icone: ExternalLink },
   demande: { libelle: 'Recevoir le document', Icone: Mail },
 }
@@ -35,10 +37,7 @@ function lienDemande(d) {
 export default function Qualiopi() {
   const [vue, setVue] = useState('bibliotheque')
   const [publicCible, setPublicCible] = useState('tous')
-  const [lu, setLu] = useState(null)
   const liste = documents.filter((d) => publicCible === 'tous' || d.pour.includes(publicCible))
-  const couverts = useMemo(() => new Set(documents.flatMap((d) => d.indicateurs)), [])
-  const enLigne = documents.filter((d) => d.acces !== 'demande').length
 
   return (
     <section id="qualiopi" className="bloc clair qualiopi" aria-labelledby="titre-qualiopi">
@@ -51,8 +50,8 @@ export default function Qualiopi() {
             <TitreAnime id="titre-qualiopi" texte="Qualiopi : la preuve, pas la promesse." accent={[3]} />
             <Reveal delay={0.1}>
               <p className="intro">
-                Nos documents qualité sont ici, en accès libre ou sur simple demande. Vous vérifiez avant de signer — votre
-                OPCO aussi.
+                Notre certification se vérifie en un clic sur la liste publique de l’État. Nos documents qualité sont
+                remis à nos stagiaires, à nos clients et à leurs financeurs, sur simple demande.
               </p>
             </Reveal>
           </div>
@@ -62,6 +61,9 @@ export default function Qualiopi() {
               <strong>Certification Qualiopi</strong>
               <span>n° {ENTREPRISE.qualiopi}</span>
               <span>Catégorie : actions de formation</span>
+              <a href={VERIFIER_QUALIOPI} target="_blank" rel="noopener noreferrer">
+                Vérifier sur la liste publique <ExternalLink size={14} aria-hidden="true" />
+              </a>
             </p>
           </Reveal>
         </div>
@@ -71,17 +73,17 @@ export default function Qualiopi() {
             <strong>{documents.length}</strong> documents référencés
           </li>
           <li>
-            <strong>{enLigne}</strong> consultables en ligne
+            <strong>{RNQ.criteres.length}</strong> critères du référentiel national qualité
           </li>
           <li>
-            <strong>{couverts.size}</strong> indicateurs du référentiel reliés à un document
+            <strong>{RNQ.indicateurs.length}</strong> indicateurs vérifiés par un auditeur indépendant
           </li>
         </ul>
 
         <div className="onglets q-vues" role="tablist" aria-label="Affichage">
           {[
             ['bibliotheque', 'Bibliothèque de documents'],
-            ['carte', 'Carte des 33 indicateurs'],
+            ['carte', `Les ${RNQ.indicateurs.length} indicateurs`],
           ].map(([id, l]) => (
             <button
               key={id}
@@ -112,7 +114,7 @@ export default function Qualiopi() {
             </LayoutGroup>
             <ul className="q-docs">
               {liste.map((d) => (
-                <CarteDocument key={d.ref} d={d} onLire={() => setLu(d)} />
+                <CarteDocument key={d.ref} d={d} />
               ))}
             </ul>
           </div>
@@ -128,55 +130,33 @@ export default function Qualiopi() {
           mutualisés de la formation (art. L.6316-1 du code du travail).
         </p>
       </div>
-      <AnimatePresence>{lu && <Lecteur d={lu} onFermer={() => setLu(null)} />}</AnimatePresence>
     </section>
   )
 }
 
-function CarteDocument({ d, onLire }) {
+function CarteDocument({ d }) {
   const { libelle, Icone } = ACCES[d.acces]
-  const action =
-    d.acces === 'lecture' ? (
-      <button className="btn btn-bleu btn-petit" onClick={onLire}>
-        <Icone size={18} aria-hidden="true" /> {libelle}
-      </button>
-    ) : (
-      <a className="btn btn-bleu btn-petit" href={d.acces === 'page' ? d.page : lienDemande(d)}>
-        <Icone size={18} aria-hidden="true" /> {libelle}
-      </a>
-    )
   return (
     <motion.li layout className="q-doc" transition={{ duration: 0.35, ease: EASE }}>
       <FileText className="q-doc-icone" size={30} aria-hidden="true" />
       <div className="q-doc-corps">
-        <p className="q-doc-ref">
-          {d.ref}
-          {d.version && <> · v{d.version}</>}
-          {d.date && <> · {new Date(d.date).toLocaleDateString('fr-FR')}</>}
-        </p>
         <h3>{titreCourt(d.titre)}</h3>
-        <p className="q-doc-rnq">
-          {d.tousCriteres
-            ? 'Couvre les 7 critères du référentiel'
-            : d.indicateurs.length > 0 && <>Indicateurs {d.indicateurs.join(', ')}</>}
-        </p>
+        <p className="q-doc-rnq">{d.acces === 'page' ? 'Consultable sur ce site' : 'Remis sur simple demande'}</p>
       </div>
-      <div className="q-doc-action">{action}</div>
+      <div className="q-doc-action">
+        <a className="btn btn-bleu btn-petit" href={d.acces === 'page' ? d.page : lienDemande(d)}>
+          <Icone size={18} aria-hidden="true" /> {libelle}
+        </a>
+      </div>
     </motion.li>
   )
 }
 
 function CarteIndicateurs() {
   const [choisi, setChoisi] = useState(null)
-  const docsPour = (n) => documents.filter((d) => d.indicateurs.includes(n))
   const detail = choisi && RNQ.indicateurs.find((i) => i.n === choisi)
   return (
     <div className="q-carte">
-      <div className="q-legende" aria-hidden="true">
-        <span><i className="q-pt en-ligne" /> Document consultable en ligne</span>
-        <span><i className="q-pt sur-demande" /> Document sur demande</span>
-        <span><i className="q-pt audit" /> Preuve présentée en audit</span>
-      </div>
       <div className="q-criteres">
         {RNQ.criteres.map((c) => (
           <div key={c.n} className="q-critere">
@@ -186,21 +166,17 @@ function CarteIndicateurs() {
             <div className="q-puces">
               {RNQ.indicateurs
                 .filter((i) => i.critere === c.n)
-                .map((i) => {
-                  const ds = docsPour(i.n)
-                  const etat = ds.some((d) => d.acces !== 'demande') ? 'en-ligne' : ds.length ? 'sur-demande' : 'audit'
-                  return (
-                    <button
-                      key={i.n}
-                      className={'q-ind ' + etat}
-                      aria-pressed={choisi === i.n}
-                      aria-label={`Indicateur ${i.n}`}
-                      onClick={() => setChoisi(choisi === i.n ? null : i.n)}
-                    >
-                      {i.n}
-                    </button>
-                  )
-                })}
+                .map((i) => (
+                  <button
+                    key={i.n}
+                    className="q-ind en-ligne"
+                    aria-pressed={choisi === i.n}
+                    aria-label={`Indicateur ${i.n}`}
+                    onClick={() => setChoisi(choisi === i.n ? null : i.n)}
+                  >
+                    {i.n}
+                  </button>
+                ))}
             </div>
           </div>
         ))}
@@ -210,20 +186,10 @@ function CarteIndicateurs() {
           <>
             <h3>Indicateur {detail.n}</h3>
             <p>{detail.libelle}</p>
-            {docsPour(detail.n).length ? (
-              <ul>
-                {docsPour(detail.n).map((d) => (
-                  <li key={d.ref}>
-                    <strong>{d.ref}</strong> — {titreCourt(d.titre)}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="q-muet">Preuves internes (dossiers, émargements, évaluations…) présentées à l’auditeur.</p>
-            )}
+            <p className="q-muet">Nos preuves sont présentées à l’auditeur lors de chaque audit de surveillance.</p>
           </>
         ) : (
-          <p className="q-muet">Touchez un numéro pour voir l’exigence et les documents qui y répondent.</p>
+          <p className="q-muet">Touchez un numéro pour lire l’exigence du référentiel national qualité.</p>
         )}
       </div>
     </div>

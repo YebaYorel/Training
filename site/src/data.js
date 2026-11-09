@@ -12,7 +12,7 @@ export const ENTREPRISE = {
   adresse: '9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion',
   telAffiche: '0693 32 24 45',
   telLien: 'tel:+262693322445',
-  email: 'yebaformations@gmail.com',
+  email: 'contact@yebaformations.re',
   siret: '814 622 262 00032',
   nda: '04973676397',
   qualiopi: '25FOR02027.1',

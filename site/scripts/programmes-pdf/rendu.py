@@ -291,7 +291,7 @@ class Programme:
             'Exercices : uniquement sur des données fictives ou anonymisées ; aucun document client nominatif n\'est saisi dans un outil d\'IA.',
         ])
         e.append(P('Contact', 'h2'))
-        e.append(P('Responsable pédagogique et référent handicap : Aurélien LUMEKA — 0693 32 24 45 — yebaformations@gmail.com — 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion. Contact sous 48 h ouvrées, proposition d\'aménagement sous 5 jours ouvrés.'))
+        e.append(P('Responsable pédagogique et référent handicap : Aurélien LUMEKA — 0693 32 24 45 — contact@yebaformations.re — 9 rue Françoise Châtelain, 97490 Sainte-Clotilde, La Réunion. Contact sous 48 h ouvrées, proposition d\'aménagement sous 5 jours ouvrés.'))
         if f.get('sources'):
             e.append(P('Sources et repères', 'h2'))
             e += puces(f['sources'])

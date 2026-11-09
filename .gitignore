@@ -46,3 +46,5 @@ site/airtable/
 # Supports pédagogiques, évaluations et corrigés : propriété intellectuelle, jamais en ligne
 livrables-prives/
 !site/public/**/*.pdf
+dist-client/
+dist-ssr/

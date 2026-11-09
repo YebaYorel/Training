@@ -75,8 +75,17 @@ export default defineConfig(({ mode }) => {
         transformIndexHtml: (html) => (env.VITE_STUDIO_API ? html.replace("connect-src 'self'", `connect-src 'self' ${new URL(env.VITE_STUDIO_API).origin}`) : html),
       },
       ...(mode === 'apercu' ? [viteSingleFile()] : [])],
-    // Versions publiées : le module Airtable interne est remplacé par un module vide (rien à découvrir dans le code)
-    resolve: publiee ? { alias: [{ find: /^\.\/donnees\.js$/, replacement: resolve(__dirname, 'site/espace/src/donnees-vide.js') }] } : undefined,
+    // Versions distribuées : le module Airtable interne est remplacé par un module vide (rien à découvrir dans le code).
+    // Versions PUBLIQUES (démo, essai) : les modèles du Pack Qualiopi sont remplacés par leur seul sommaire,
+    // car tout code envoyé au navigateur est lisible. Le texte complet n'est que dans la version client.
+    resolve: publiee || mode === 'client'
+      ? {
+          alias: [
+            { find: /^\.\/donnees\.js$/, replacement: resolve(__dirname, 'site/espace/src/donnees-vide.js') },
+            ...(publiee ? [{ find: /^\.\/modeles-qualiopi\.js$/, replacement: resolve(__dirname, 'site/espace/src/modeles-qualiopi-demo.js') }] : []),
+          ],
+        }
+      : undefined,
     server: {
       host: '127.0.0.1',
       port: 5180,
@@ -104,7 +113,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     build: {
-      outDir: resolve(__dirname, mode === 'apercu' ? 'apercu-espace' : mode === 'studio' ? 'dist/studio' : 'dist-espace'),
+      outDir: resolve(__dirname, mode === 'apercu' ? 'apercu-espace' : mode === 'studio' ? 'dist/studio' : mode === 'client' ? 'dist-client' : 'dist-espace'),
       emptyOutDir: true,
       chunkSizeWarningLimit: 700,
     },

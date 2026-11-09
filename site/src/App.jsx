@@ -328,6 +328,8 @@ function ReseauMenu() {
 /* ---------- Hero ---------- */
 const ROTATION = ['former', 'équiper', 'sécuriser']
 
+// Le texte du héros est visible dès la première image (pré-rendu, sans fondu depuis l'invisible) :
+// c'est lui que Google mesure (LCP). Seuls des déplacements légers l'animent après l'intro.
 function Hero({ calmeForce }) {
   const ref = useRef(null)
   const video = useRef(null)
@@ -380,8 +382,8 @@ function Hero({ calmeForce }) {
         <motion.p
           className="surtitre"
           style={{ color: 'var(--or)' }}
-          initial={{ opacity: 0, x: -30 }}
-          animate={pret ? { opacity: 1, x: 0 } : undefined}
+          initial={{ x: -30 }}
+          animate={pret ? { x: 0 } : undefined}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           Formation · IA · Gouvernance — La Réunion
@@ -402,9 +404,9 @@ function Hero({ calmeForce }) {
         </h1>
         <motion.div
           className="hero-rotateur"
-          initial={{ opacity: 0 }}
-          animate={pret ? { opacity: 1 } : undefined}
-          transition={{ delay: 1.4, duration: 0.8 }}
+          initial={{ y: 14 }}
+          animate={pret ? { y: 0 } : undefined}
+          transition={{ delay: 1.0, duration: 0.8, ease: EASE }}
         >
           <span className="fixe">Nous venons</span>
           <span className="fenetre" aria-live="off">
@@ -424,18 +426,18 @@ function Hero({ calmeForce }) {
         </motion.div>
         <motion.p
           className="accroche"
-          initial={{ opacity: 0, y: 20 }}
-          animate={pret ? { opacity: 1, y: 0 } : undefined}
-          transition={{ delay: 1.6, duration: 0.8 }}
+          initial={{ y: 20 }}
+          animate={pret ? { y: 0 } : undefined}
+          transition={{ delay: 1.1, duration: 0.8, ease: EASE }}
         >
           Formation, mise en place de solutions d’IA et gouvernance RGPD &amp; IA Act pour les TPE-PME de La Réunion.
           Des outils qui font gagner du temps. Des preuves que tout est maîtrisé.
         </motion.p>
         <motion.div
           className="hero-actions"
-          initial={{ opacity: 0, y: 20 }}
-          animate={pret ? { opacity: 1, y: 0 } : undefined}
-          transition={{ delay: 1.8, duration: 0.8 }}
+          initial={{ y: 20 }}
+          animate={pret ? { y: 0 } : undefined}
+          transition={{ delay: 1.2, duration: 0.8, ease: EASE }}
         >
           <a className="btn btn-or" href="#formations">
             Voir les formations <ArrowRight size={20} aria-hidden="true" />
@@ -1084,11 +1086,6 @@ function FicheFormation({ f, onFermer }) {
                       <a className="btn btn-bleu btn-petit lien-pdf" href={DEROULES[f.ref].fichier} target="_blank" rel="noopener">
                         <FileDown size={18} aria-hidden="true" /> Programme complet (PDF)
                       </a>
-                      {DEROULES[f.ref].livretA5 && (
-                        <a className="btn btn-contour-bleu btn-petit lien-pdf" href={DEROULES[f.ref].livretA5} target="_blank" rel="noopener">
-                          <FileDown size={18} aria-hidden="true" /> Livret d’accueil (PDF)
-                        </a>
-                      )}
                     </div>
                   )}
                   <Deroule texte={f.programme} refFormation={f.ref} />
