@@ -29,3 +29,6 @@ soiree-lancement/dist/*_IMAGES.pptx
 
 # Page storyboard régénérable (outils/generer_storyboard_page.py)
 soiree-lancement/dist/storyboard/
+
+# Prototype « Accueil Saison 1 » régénérable (outils/generer_accueil.py)
+soiree-lancement/dist/accueil/

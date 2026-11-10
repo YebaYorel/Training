@@ -19,6 +19,7 @@ python3 pptx/build_pptx.py            # version cinéma : fonds vidéo vivants
 python3 pptx/build_pptx.py --sobre    # version sobre : mêmes fonds en images fixes
 python3 revealjs/build_reveal.py
 python3 outils/generer_supports.py
+python3 outils/generer_accueil.py      # prototype « Accueil Saison 1 » → dist/accueil/
 if command -v soffice >/dev/null 2>&1; then
   # PDF depuis une copie où chaque vidéo est remplacée par son image (sinon LibreOffice embarque les MP4 : ~100 Mo)
   python3 pptx/build_pptx.py --images

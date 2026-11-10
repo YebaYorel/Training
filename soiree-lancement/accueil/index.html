@@ -1,0 +1,1109 @@
+<title>Accueil Saison 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/*@POLICES@*/
+
+/* Mise en page : une scène et sa régie. Le téléphone de l'invité à gauche, la régie (ce que fait le système)
+   à droite ; sous 980 px, la régie passe sous le téléphone. Thème sombre d'abord, comme la charte YEBA. */
+:root {
+  /* Page */
+  --bg: #0D0F14;
+  --panel: #151821;
+  --panel-2: #1C2030;
+  --line: #2A3042;
+  --fg: #F3F4F7;
+  --muted: #A6ADBB;
+  --accent: #C9A84C;
+  --accent-ink: #E2C66F;
+  --cadre: #050608;
+  /* Plan de salle, vue de l'équipe */
+  --s-sol: #11141B;
+  --s-libre: #2A3043;
+  --s-occupe: #4A5268;
+  --s-pmr: #3B6BC0;
+  --s-scene: #1B3A6B;
+  --s-scene-txt: #FFFFFF;
+  --s-txt: #A6ADBB;
+  --p-moi: #F3F4F7;
+  /* Application de l'invité : identité fixe, la même dans les deux thèmes */
+  --app-bg: #121212;
+  --app-surface: #1C1C22;
+  --app-surface-2: #26262E;
+  --app-line: #3C3C47;
+  --app-fg: #FFFFFF;
+  --app-muted: #BEC1CA;
+  --app-erreur: #FFA08F;
+  --or: #C9A84C;
+  --or-clair: #E9D7A0;
+  --bleu: #1B3A6B;
+  --bleu-clair: #4A7BD0;
+  --app-s-sol: #18181E;
+  --app-s-libre: #30303A;
+  --app-s-occupe: #5A5A66;
+  /* E-mails : fond clair, titres bleu YEBA (jamais d'or en texte sur blanc) */
+  --mail-fond: #E9EBF0;
+  --mail-bg: #FFFFFF;
+  --mail-fg: #17181C;
+  --mail-titre: #1B3A6B;
+  --mail-muted: #50566A;
+  /* Typographie : Montserrat, police de la charte, embarquée (aucun appel externe) */
+  --f: "Montserrat", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #ECEFF4; --panel: #FFFFFF; --panel-2: #F3F5F9; --line: #D2D8E3; --fg: #10131A; --muted: #4D5566;
+    --accent: #B8962F; --accent-ink: #1B3A6B; --cadre: #0B0C10;
+    --s-sol: #F6F7FA; --s-libre: #DCE2EB; --s-occupe: #8F98AB; --s-pmr: #2E5BA6; --s-scene: #1B3A6B;
+    --s-scene-txt: #FFFFFF; --s-txt: #4D5566; --p-moi: #10131A;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #ECEFF4; --panel: #FFFFFF; --panel-2: #F3F5F9; --line: #D2D8E3; --fg: #10131A; --muted: #4D5566;
+  --accent: #B8962F; --accent-ink: #1B3A6B; --cadre: #0B0C10;
+  --s-sol: #F6F7FA; --s-libre: #DCE2EB; --s-occupe: #8F98AB; --s-pmr: #2E5BA6; --s-scene: #1B3A6B;
+  --s-scene-txt: #FFFFFF; --s-txt: #4D5566; --p-moi: #10131A;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 16px/1.55 var(--f);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 44px;
+}
+h1, h2, h3, p, figure, ol, ul { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+button { font-family: var(--f); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.nw { white-space: nowrap; }
+
+.page { max-width: 1220px; margin: 0 auto; display: grid; gap: 28px; }
+
+/* ---------- En-tête ---------- */
+.tete { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 18px; row-gap: 4px; align-items: end; }
+.tete-icone { grid-row: span 2; width: 72px; height: 72px; border-radius: 20px; background: var(--app-bg); border: 1px solid var(--line); display: grid; place-items: center; align-self: center; }
+.tete-icone img { width: 54px; height: auto; }
+.surtitre { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; letter-spacing: -.012em; }
+.chapeau { grid-column: 1 / -1; margin-top: 12px; max-width: 66ch; font-size: 17px; color: var(--muted); }
+.badge-demo { grid-column: 1 / -1; justify-self: start; margin-top: 8px; font-size: 13.5px; font-weight: 700; color: var(--muted); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); }
+
+/* ---------- Frise du parcours (vraie chronologie : les numéros sont l'ordre des moments) ---------- */
+.frise { overflow-x: auto; scrollbar-width: thin; margin-inline: -4px; }
+.frise ol { list-style: none; padding: 4px 4px 6px; display: grid; grid-template-columns: repeat(7, minmax(104px, 1fr)); min-width: 740px; }
+.frise li { position: relative; }
+.frise li + li::before { content: ""; position: absolute; top: 18px; right: calc(50% + 17px); width: calc(100% - 34px); height: 2px; border-radius: 2px; background: var(--line); }
+.frise li[data-etat="fait"]::before, .frise li[data-etat="actif"]::before { background: var(--accent); }
+.frise button { appearance: none; background: none; border: 0; color: inherit; cursor: pointer; width: 100%; display: grid; justify-items: center; gap: 4px; padding: 4px 4px 8px; border-radius: 14px; text-align: center; }
+.frise .point { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--line); background: var(--bg); display: grid; place-items: center; font-size: 13px; font-weight: 900; color: var(--muted); font-variant-numeric: tabular-nums; transition: background .25s, border-color .25s, color .25s; }
+.frise-quand { font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.frise-quoi { font-size: 15.5px; font-weight: 800; color: var(--fg); line-height: 1.2; }
+.frise button:hover .frise-quoi { color: var(--accent-ink); }
+.frise li[data-etat="fait"] .point { border-color: var(--accent); color: var(--accent-ink); }
+.frise li[data-etat="actif"] .point { background: var(--accent); border-color: var(--accent); color: var(--app-bg); }
+
+/* ---------- Scène : téléphone + régie ---------- */
+.scene { display: grid; grid-template-columns: 414px minmax(0, 1fr); gap: 36px; align-items: start; }
+.tel-col { display: grid; gap: 14px; justify-items: center; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.tel { width: 414px; max-width: 100%; padding: 12px; border-radius: 54px; background: var(--cadre); box-shadow: 0 34px 80px -34px rgb(0 0 0 / .7), inset 0 0 0 1px rgb(255 255 255 / .09); }
+.app {
+  position: relative; isolation: isolate; overflow: hidden;
+  height: clamp(600px, calc(100vh - 120px), 760px);
+  border-radius: 42px; background: var(--app-bg); color: var(--app-fg); color-scheme: dark;
+  --s-sol: var(--app-s-sol); --s-libre: var(--app-s-libre); --s-occupe: var(--app-s-occupe);
+  --s-pmr: var(--bleu-clair); --s-txt: var(--app-muted); --p-moi: var(--app-fg);
+}
+.app::after { content: ""; position: absolute; inset: auto 0 0; height: 26px; z-index: 15; pointer-events: none; background: linear-gradient(transparent, var(--app-bg)); }
+.app[data-ecran="mail"]::after { background: linear-gradient(transparent, var(--mail-fond)); }
+.app :focus-visible { outline-color: var(--or-clair); }
+.ilot { position: absolute; z-index: 20; top: 11px; left: 50%; width: 112px; height: 32px; transform: translateX(-50%); border-radius: 20px; background: var(--cadre); pointer-events: none; }
+.tel-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.btn-texte { appearance: none; cursor: pointer; font: 700 15px/1 var(--f); color: var(--fg); background: var(--panel); border: 1px solid var(--line); padding: 12px 18px; border-radius: 999px; }
+.btn-texte:hover { border-color: var(--accent); }
+
+/* Écrans du téléphone */
+.ecran { position: absolute; inset: 0; z-index: 1; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; padding: 58px 22px 30px; display: flex; flex-direction: column; gap: 16px; }
+.ecran::-webkit-scrollbar { display: none; }
+.ecran.entre { animation: entre .45s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes entre { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--or); }
+.titre-xl { font-size: 34px; line-height: 1.08; font-weight: 900; letter-spacing: -.01em; }
+.titre-l { font-size: 27px; line-height: 1.14; font-weight: 900; }
+.texte { font-size: 18px; line-height: 1.5; color: var(--app-muted); }
+.texte-s { font-size: 16px; line-height: 1.5; color: var(--app-muted); }
+.mini { font-size: 14px; line-height: 1.45; color: var(--app-muted); text-align: center; }
+.focus-cible:focus { outline: none; }
+.btn-or { appearance: none; border: 0; cursor: pointer; width: 100%; min-height: 58px; flex: none; padding: 12px 18px; border-radius: 16px; background: var(--or); color: var(--app-bg); font: 800 18px/1.2 var(--f); transition: transform .15s, filter .15s; }
+.btn-or:hover { filter: brightness(1.08); }
+.btn-or:active { transform: scale(.985); }
+.btn-rond { appearance: none; flex: none; cursor: pointer; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid var(--app-line); background: var(--app-surface); color: var(--app-fg); font: 800 24px/1 var(--f); display: grid; place-items: center; }
+.btn-rond:disabled { opacity: .4; cursor: default; }
+.btn-lien { appearance: none; cursor: pointer; border: 1.5px solid var(--app-line); background: transparent; color: var(--or-clair); font: 700 14.5px/1 var(--f); padding: 12px 14px; border-radius: 999px; }
+.app-barre { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.app-barre-titre { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--app-muted); }
+.app-barre-vide { width: 46px; }
+.mention-ia { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.45; color: var(--app-muted); }
+.mention-ia::before { content: "IA"; flex: none; margin-top: 1px; font-size: 11px; font-weight: 900; letter-spacing: .06em; padding: 3px 6px; border-radius: 6px; color: var(--or-clair); background: var(--app-surface-2); border: 1px solid var(--app-line); }
+
+/* Accueil */
+.ecran-accueil { padding: 0; gap: 0; justify-content: space-between; background: radial-gradient(130% 62% at 50% 0%, var(--bleu), transparent 72%), var(--app-bg); }
+.ciel { position: absolute; inset: 0; z-index: -1; background: var(--etoiles, none) center / cover; }
+.halo { position: absolute; left: 50%; top: 12%; width: 340px; height: 340px; margin-left: -170px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in srgb, var(--or) 34%, transparent), transparent); animation: halo 10s ease-in-out infinite alternate; }
+@keyframes halo { to { transform: translate3d(16px, 24px, 0) scale(1.08); } }
+.scintille { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--or-clair); box-shadow: 0 0 8px 2px color-mix(in srgb, var(--or) 55%, transparent); animation: scintille 3.4s ease-in-out infinite; }
+@keyframes scintille { 0%, 100% { opacity: .15; transform: scale(.6); } 50% { opacity: 1; transform: scale(1.2); } }
+.accueil-haut { padding: 84px 24px 0; display: grid; justify-items: center; }
+.accueil-haut img { width: 190px; height: auto; }
+.accueil-bas { padding: 56px 24px 32px; display: grid; gap: 14px; background: linear-gradient(transparent, var(--app-bg) 34%); }
+
+/* Fiche */
+#fiche { display: grid; gap: 18px; }
+.champ { display: grid; gap: 7px; }
+.champ label, .groupe legend { font-size: 15.5px; font-weight: 700; color: var(--app-fg); }
+.requis { display: inline-block; width: 8px; height: 8px; margin-left: 6px; border-radius: 50%; background: var(--or); vertical-align: middle; }
+.facultatif { margin-left: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: var(--app-muted); }
+.champ input, .champ select { width: 100%; min-height: 54px; padding: 0 16px; border-radius: 14px; border: 1.5px solid var(--app-line); background: var(--app-surface); color: var(--app-fg); font: 400 18px/1.2 var(--f); }
+.champ select { appearance: none; padding-right: 44px; background: var(--app-surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23BEC1CA' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 18px center; }
+.champ input:focus, .champ select:focus { outline: none; border-color: var(--or); box-shadow: 0 0 0 3px color-mix(in srgb, var(--or) 35%, transparent); }
+.champ input:-webkit-autofill { -webkit-text-fill-color: var(--app-fg); box-shadow: 0 0 0 100px var(--app-surface) inset; }
+.champ input[aria-invalid="true"] { border-color: var(--app-erreur); }
+.erreur { font-size: 14.5px; font-weight: 600; line-height: 1.4; color: var(--app-erreur); }
+.groupe { border: 0; margin: 0; padding: 0; display: grid; gap: 12px; min-width: 0; }
+.groupe legend { padding: 0; margin-bottom: 10px; }
+.stepper { display: flex; align-items: center; gap: 14px; }
+.stepper output { min-width: 1.4ch; text-align: center; font-size: 28px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.stepper-txt { font-size: 16px; color: var(--app-muted); }
+.accompagnants { display: grid; gap: 12px; }
+.accompagnants:empty { display: none; }
+.note-app { font-size: 14px; line-height: 1.45; color: var(--app-muted); }
+.case { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 16px; line-height: 1.4; cursor: pointer; }
+.case input { appearance: none; margin: 0; width: 28px; height: 28px; border-radius: 8px; border: 2px solid var(--app-line); background: var(--app-surface); display: grid; place-items: center; cursor: pointer; }
+.case input::after { content: ""; width: 7px; height: 13px; margin-top: -3px; border: solid var(--app-bg); border-width: 0 3px 3px 0; transform: rotate(45deg); opacity: 0; }
+.case input:checked { background: var(--or); border-color: var(--or); }
+.case input:checked::after { opacity: 1; }
+.case-note { display: block; margin-top: 3px; font-size: 14px; color: var(--app-muted); }
+.rgpd { font-size: 14px; line-height: 1.55; color: var(--app-muted); padding: 14px 16px; border-radius: 14px; border: 1px solid var(--app-line); }
+.rgpd strong { color: var(--app-fg); }
+.a-completer { color: var(--or-clair); font-weight: 700; }
+
+/* Placement */
+.ecran-calcul { justify-content: center; text-align: center; gap: 14px; }
+.calcul-plan { position: relative; overflow: hidden; border-radius: 16px; margin-bottom: 10px; }
+.calcul-plan::after { content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 42%; transform: translateX(-120%); background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--or) 42%, transparent), transparent); animation: balaye 1.1s cubic-bezier(.65, 0, .35, 1) forwards; }
+@keyframes balaye { to { transform: translateX(260%); } }
+
+/* Place */
+.billet { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-radius: 18px; border: 1px solid var(--app-line); background: linear-gradient(135deg, var(--app-surface-2), var(--app-surface)); }
+.billet::before, .billet::after { content: ""; position: absolute; left: 50%; width: 22px; height: 22px; margin-left: -11px; border-radius: 50%; background: var(--app-bg); }
+.billet::before { top: -12px; }
+.billet::after { bottom: -12px; }
+.billet > div { display: grid; gap: 2px; padding: 14px 18px 16px; }
+.billet > div + div { border-left: 2px dashed var(--app-line); }
+.billet-label { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--app-muted); }
+.billet-val { font-size: 64px; line-height: 1; font-weight: 900; color: var(--or); font-variant-numeric: tabular-nums; }
+.billet-petit .billet-val { font-size: 46px; }
+.voisins { font-size: 17px; line-height: 1.45; }
+.voisins strong { color: var(--or-clair); font-weight: 700; }
+.etoile-msg { font-size: 15.5px; font-weight: 700; color: var(--or-clair); }
+
+/* Plan (SVG) */
+.plan { display: block; width: 100%; height: auto; }
+.plan text { font-family: var(--f); }
+.plan .p-sol { fill: var(--s-sol); }
+.plan .p-scene { fill: var(--s-scene); }
+.plan .p-scene-txt { fill: var(--s-scene-txt); font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.plan .p-lettre { fill: var(--s-txt); font-size: 10.5px; font-weight: 800; }
+.plan .p-libre { fill: var(--s-libre); }
+.plan .p-occupe { fill: var(--s-occupe); }
+.plan .p-pmr { fill: var(--s-pmr); }
+.plan .p-groupe { fill: var(--or); }
+.plan .p-moi { stroke: var(--p-moi); stroke-width: 2; }
+.plan .p-num { fill: var(--app-bg); font-size: 9.5px; font-weight: 900; }
+.plan .p-porte { fill: var(--or); }
+.plan .p-porte-txt { fill: var(--s-txt); font-size: 9.5px; font-weight: 800; letter-spacing: .1em; }
+.plan .p-chemin { fill: none; stroke: var(--or); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 6; animation: fourmis 1s linear infinite; }
+.plan .p-arrivee { fill: var(--or); }
+@keyframes fourmis { to { stroke-dashoffset: -22; } }
+.plan-perso .p-groupe { animation: pouls 1.8s ease-in-out infinite; }
+@keyframes pouls { 50% { opacity: .6; } }
+
+/* Affiche */
+.affiche {
+  position: relative; aspect-ratio: 2 / 3; max-width: 100%; flex: none;
+  display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center;
+  padding: 24px 20px 20px; border-radius: 18px;
+  background: var(--etoiles, none) center / cover, radial-gradient(90% 46% at 50% 40%, color-mix(in srgb, var(--or) 26%, transparent), transparent 72%), linear-gradient(180deg, var(--bleu), var(--app-bg) 80%);
+  box-shadow: 0 22px 44px -20px rgb(0 0 0 / .85), inset 0 0 0 1px color-mix(in srgb, var(--or) 45%, transparent);
+}
+.affiche img { width: 88px; height: auto; margin-bottom: 4px; }
+.affiche-presente { font-size: 11.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--or-clair); }
+.affiche-nom { margin-top: auto; font-size: 27px; line-height: 1.12; font-weight: 800; text-wrap: balance; }
+.affiche-dans { font-size: 14px; font-weight: 700; color: var(--app-muted); }
+.affiche-titre { font-size: 52px; line-height: .95; font-weight: 900; letter-spacing: .02em; color: var(--or); }
+.affiche-accroche { max-width: 24ch; margin-top: 8px; font-size: 17.5px; line-height: 1.35; font-weight: 700; text-wrap: balance; }
+.affiche-place { margin-top: auto; font-size: 15px; font-weight: 800; letter-spacing: .04em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.affiche-pied { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--app-muted); }
+
+/* Écran verrouillé */
+.ecran-verrou { padding-top: 92px; align-items: center; text-align: center; gap: 6px; background: var(--etoiles, none) center / cover, linear-gradient(180deg, var(--bleu), var(--app-bg) 72%); }
+.verrou-jour { font-size: 15px; font-weight: 700; letter-spacing: .03em; color: var(--app-muted); }
+.verrou-heure { font-size: 88px; line-height: 1; font-weight: 900; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.notif { appearance: none; cursor: pointer; width: 100%; margin-top: 34px; text-align: left; display: grid; grid-template-columns: 42px minmax(0, 1fr); column-gap: 12px; row-gap: 2px; padding: 14px 16px; border-radius: 22px; color: var(--app-fg); font: inherit; border: 1px solid color-mix(in srgb, var(--app-fg) 16%, transparent); background: color-mix(in srgb, var(--app-surface-2) 84%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); animation: notif .6s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes notif { from { opacity: 0; transform: translateY(-18px) scale(.97); } }
+.notif-icone { grid-row: span 3; width: 42px; height: 42px; border-radius: 11px; background: var(--app-bg); display: grid; place-items: center; }
+.notif-icone img { width: 32px; height: auto; }
+.notif-app { font-size: 13px; font-weight: 700; color: var(--app-muted); }
+.notif-titre { font-size: 16.5px; line-height: 1.3; font-weight: 800; }
+.notif-texte { font-size: 15px; line-height: 1.4; color: var(--app-muted); }
+.verrou-aide { margin-top: 10px; font-size: 14px; color: var(--app-muted); }
+
+/* E-mail */
+.ecran-mail { background: var(--mail-fond); color: var(--mail-fg); gap: 14px; }
+.ecran-mail .app-barre-titre { color: var(--mail-muted); }
+.ecran-mail .btn-rond { background: var(--mail-bg); color: var(--mail-fg); border-color: color-mix(in srgb, var(--mail-fg) 18%, transparent); }
+.ecran-mail :focus-visible { outline-color: var(--mail-titre); }
+.mail-de { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; grid-template-areas: "av exp quand" "av a a"; column-gap: 12px; row-gap: 0; align-items: center; font-size: 15px; font-weight: 800; }
+.mail-exp { grid-area: exp; }
+.mail-avatar { grid-area: av; width: 42px; height: 42px; border-radius: 50%; background: var(--app-bg); display: grid; place-items: center; }
+.mail-avatar img { width: 30px; height: auto; }
+.mail-a { grid-area: a; font-size: 13.5px; font-weight: 400; color: var(--mail-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mail-quand { grid-area: quand; font-size: 13px; font-weight: 700; color: var(--mail-muted); }
+.mail-objet { font-size: 22px; line-height: 1.22; font-weight: 800; }
+.mail-corps { display: grid; gap: 12px; padding: 18px; border-radius: 16px; background: var(--mail-bg); font-size: 16.5px; line-height: 1.55; }
+.mail-corps ol { padding-left: 22px; display: grid; gap: 6px; }
+.mail-corps strong { color: var(--mail-titre); }
+.mail-bandeau { margin: -18px -18px 4px; padding: 14px 18px; border-radius: 16px 16px 0 0; background: var(--app-bg); color: var(--app-fg); display: flex; align-items: center; gap: 12px; }
+.mail-bandeau img { width: 52px; height: auto; }
+.mail-bandeau span { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--or); }
+.mail-billet { display: grid; gap: 2px; padding: 12px 14px; border-radius: 12px; background: color-mix(in srgb, var(--mail-titre) 7%, var(--mail-bg)); border: 1px solid color-mix(in srgb, var(--mail-titre) 22%, transparent); }
+.mail-billet b { font-size: 20px; font-weight: 900; color: var(--mail-titre); font-variant-numeric: tabular-nums; }
+.mail-billet span { font-size: 15px; color: var(--mail-muted); }
+.mail-btn { justify-self: start; display: inline-block; padding: 12px 18px; border-radius: 12px; background: var(--mail-titre); color: var(--mail-bg); font-size: 16px; font-weight: 800; }
+.mail-pj { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 12px; border: 1px solid color-mix(in srgb, var(--mail-fg) 14%, transparent); font-size: 14.5px; font-weight: 700; overflow-wrap: anywhere; }
+.mail-pj-icone { flex: none; width: 34px; height: 44px; padding-bottom: 6px; border-radius: 6px; background: var(--app-bg); color: var(--or); font-size: 10px; font-weight: 900; display: grid; place-items: end center; }
+.mail-ia, .mail-pied { font-size: 13.5px; line-height: 1.5; color: var(--mail-muted); }
+.mail-signature { font-weight: 700; }
+
+/* Arrivée */
+.precedemment { list-style: none; padding: 0; display: grid; gap: 10px; }
+.precedemment li { display: grid; gap: 4px; padding: 12px 14px; border-radius: 14px; background: var(--app-surface); font-size: 16px; line-height: 1.45; }
+.precedemment .ep { font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--or); }
+.precedemment li.en-cours { border: 1.5px solid var(--or); }
+
+/* ---------- Régie ---------- */
+.regie { display: grid; gap: 20px; min-width: 0; }
+.regie-tete { display: grid; gap: 6px; }
+.regie-tete h2 { font-size: 28px; line-height: 1.1; font-weight: 900; }
+.regie-tete p { font-size: 16.5px; color: var(--muted); max-width: 60ch; }
+.carte-plan { display: grid; gap: 14px; padding: 18px; border-radius: 20px; border: 1px solid var(--line); background: var(--panel); }
+.carte-plan-tete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; }
+.carte-plan h3 { font-size: 17px; font-weight: 800; }
+.compteurs { font-size: 15px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.compteurs strong { color: var(--fg); font-weight: 800; }
+.plan-regie { width: 100%; max-width: 540px; justify-self: center; }
+.legende { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--muted); }
+.legende li { display: flex; align-items: center; gap: 8px; }
+.pastille { flex: none; width: 18px; height: 15px; border-radius: 4px; }
+.pastille.libre { background: var(--s-libre); }
+.pastille.occupe { background: var(--s-occupe); }
+.pastille.pmr { background: var(--s-pmr); }
+.pastille.groupe { background: var(--or); }
+.note { font-size: 14px; color: var(--muted); }
+
+.chaine { list-style: none; padding: 0; display: grid; gap: 10px; }
+.maillon { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 14px; padding: 15px 16px; border-radius: 16px; border: 1px solid var(--line); background: var(--panel); transition: background .3s, border-color .3s; }
+.maillon-num { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--line); display: grid; place-items: center; font-size: 15px; font-weight: 900; color: var(--muted); font-variant-numeric: tabular-nums; transition: background .3s, border-color .3s, color .3s; }
+.maillon-corps { display: grid; gap: 6px; min-width: 0; }
+.maillon h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; font-size: 17px; line-height: 1.3; font-weight: 800; }
+.maillon p { font-size: 15.5px; line-height: 1.5; color: var(--muted); }
+.maillon .maillon-live { font-size: 14.5px; font-weight: 700; color: var(--fg); }
+.maillon[data-etat="a-venir"] .maillon-live { display: none; }
+.etat-pill { font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; background: var(--accent); color: var(--app-bg); }
+.maillon[data-etat="actif"] { background: var(--panel-2); border-color: var(--accent); }
+.maillon[data-etat="actif"] .maillon-num { background: var(--accent); border-color: var(--accent); color: var(--app-bg); }
+.maillon[data-etat="fait"] .maillon-num { border-color: var(--accent); color: var(--accent-ink); }
+.puces { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.puce { font-size: 13px; font-weight: 700; line-height: 1.3; padding: 4px 9px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel-2); color: var(--fg); }
+.puce.droit { background: transparent; color: var(--accent-ink); border-color: color-mix(in srgb, var(--accent) 55%, var(--line)); }
+
+.pied { display: grid; gap: 6px; max-width: 90ch; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; line-height: 1.55; color: var(--muted); }
+
+/* ---------- Adaptations ---------- */
+@media (max-width: 979px) {
+  .scene { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .tel-col { position: static; }
+}
+@media (max-width: 479px) {
+  .tel { padding: 0; border-radius: 30px; background: none; box-shadow: none; width: 100%; }
+  .app { height: 720px; border-radius: 26px; }
+  .ilot { display: none; }
+  .ecran { padding-top: 26px; }
+  .accueil-haut { padding-top: 56px; }
+  .ecran-verrou { padding-top: 64px; }
+  .chapeau { font-size: 16px; }
+  .carte-plan { padding: 14px; }
+  .maillon { grid-template-columns: 32px minmax(0, 1fr); gap: 12px; padding: 13px 14px; }
+  .maillon-num { width: 32px; height: 32px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+</style>
+
+<div class="page">
+  <header class="tete">
+    <div class="tete-icone"><img src="embleme.webp" alt="" width="54" height="25"></div>
+    <p class="surtitre">YEBA FORMATIONS · Soirée de lancement</p>
+    <h1>Accueil Saison 1</h1>
+    <p class="chapeau">Le parcours d'un invité, de l'invitation jusqu'au lendemain. À gauche, son téléphone. À droite, la régie qui travaille pour lui en coulisses.</p>
+    <p class="badge-demo">Prototype cliquable · personnes et plan fictifs · rien n'est enregistré ni envoyé</p>
+  </header>
+
+  <nav class="frise" aria-label="Moments du parcours de l'invité">
+    <ol>
+      <li data-etat="actif"><button type="button" aria-current="step"><span class="point">1</span><span class="frise-quand">Dès <span class="nw">J-15</span></span><span class="frise-quoi">L'inscription</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">2</span><span class="frise-quand">Aussitôt</span><span class="frise-quoi">Sa place</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">3</span><span class="frise-quand">Aussitôt</span><span class="frise-quoi">Son affiche</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">4</span><span class="frise-quand">Jour J · <span class="nw">H-5</span></span><span class="frise-quoi">Le rappel</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">5</span><span class="frise-quand">Jour J · <span class="nw">H+5</span></span><span class="frise-quoi">Le retard</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">6</span><span class="frise-quand">Jour J</span><span class="frise-quoi">L'arrivée</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">7</span><span class="frise-quand nw">J+1</span><span class="frise-quoi">Le récap</span></button></li>
+    </ol>
+  </nav>
+
+  <main class="scene">
+    <section class="tel-col" aria-label="Téléphone de l'invité, démonstration">
+      <div class="tel">
+        <div class="app" id="app" data-ecran="accueil">
+          <div class="ilot" aria-hidden="true"></div>
+
+          <section class="ecran ecran-accueil" data-ecran="accueil" aria-labelledby="t-accueil">
+            <div class="ciel" aria-hidden="true"><span class="halo"></span></div>
+            <div class="accueil-haut"><img src="logo.webp" alt="YEBA FORMATIONS" width="190" height="164"></div>
+            <div class="accueil-bas">
+              <p class="kicker">Saison 1 · Soirée de lancement</p>
+              <h2 class="titre-xl focus-cible" id="t-accueil" tabindex="-1">Bienvenue à la première.</h2>
+              <p class="texte">Enregistrez-vous en moins d'une minute. Nous vous trouvons une place, à côté des personnes qui vous accompagnent.</p>
+              <button class="btn-or" type="button" data-aller="fiche">Je m'enregistre</button>
+              <p class="mini">Sans application, sans mot de passe.</p>
+            </div>
+          </section>
+
+          <section class="ecran ecran-fiche" data-ecran="fiche" aria-labelledby="t-fiche" hidden>
+            <div class="app-barre">
+              <button class="btn-rond" type="button" data-aller="accueil" aria-label="Revenir à l'accueil">‹</button>
+              <span class="app-barre-titre">Inscription</span>
+              <button class="btn-lien" type="button" id="btnExemple">Remplir un exemple</button>
+            </div>
+            <h2 class="titre-l focus-cible" id="t-fiche" tabindex="-1">Vos informations</h2>
+            <p class="texte-s">Quatre champs obligatoires, signalés par un point d'or.</p>
+            <form id="fiche" novalidate>
+              <div class="champ">
+                <label for="prenom">Prénom<span class="requis"><span class="sr">(obligatoire)</span></span></label>
+                <input id="prenom" name="prenom" autocomplete="given-name" aria-describedby="prenom-err">
+                <p class="erreur" id="prenom-err" hidden></p>
+              </div>
+              <div class="champ">
+                <label for="nom">Nom<span class="requis"><span class="sr">(obligatoire)</span></span></label>
+                <input id="nom" name="nom" autocomplete="family-name" aria-describedby="nom-err">
+                <p class="erreur" id="nom-err" hidden></p>
+              </div>
+              <div class="champ">
+                <label for="entreprise">Entreprise<span class="requis"><span class="sr">(obligatoire)</span></span></label>
+                <input id="entreprise" name="entreprise" autocomplete="organization" aria-describedby="entreprise-err">
+                <p class="erreur" id="entreprise-err" hidden></p>
+              </div>
+              <div class="champ">
+                <label for="fonction">Fonction<span class="facultatif">facultatif</span></label>
+                <input id="fonction" name="fonction" autocomplete="organization-title">
+              </div>
+              <div class="champ">
+                <label for="email">E-mail<span class="requis"><span class="sr">(obligatoire)</span></span></label>
+                <input id="email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="email-err">
+                <p class="erreur" id="email-err" hidden></p>
+              </div>
+              <div class="champ">
+                <label for="priorite">Votre priorité du moment<span class="facultatif">facultatif</span></label>
+                <select id="priorite" name="priorite">
+                  <option value="">Je préfère ne pas répondre</option>
+                  <option value="gagner">Gagner du temps</option>
+                  <option value="donnees">Sécuriser nos données</option>
+                  <option value="visible">Être visible en ligne</option>
+                  <option value="vendre">Mieux vendre</option>
+                  <option value="equipe">Former mon équipe</option>
+                </select>
+              </div>
+              <fieldset class="groupe">
+                <legend>Qui vient avec vous ?</legend>
+                <div class="stepper">
+                  <button class="btn-rond" type="button" id="moins" aria-label="Une personne de moins">−</button>
+                  <output id="nbAcc" aria-live="polite">0</output>
+                  <button class="btn-rond" type="button" id="plus" aria-label="Une personne de plus">+</button>
+                  <span class="stepper-txt" id="nbAccTxt">personne avec vous</span>
+                </div>
+                <div class="accompagnants" id="accompagnants"></div>
+                <p class="note-app">Pour elles, seul le prénom est demandé, et il reste facultatif.</p>
+              </fieldset>
+              <label class="case" for="acces"><input type="checkbox" id="acces"><span>J'ai besoin d'une place facile d'accès (allée, sans marche)<span class="case-note">Facultatif. Sert uniquement au placement, effacé le lendemain.</span></span></label>
+              <label class="case" for="etoile"><input type="checkbox" id="etoile"><span>Afficher mon prénom sur le mur d'étoiles de la salle</span></label>
+              <label class="case" for="actus"><input type="checkbox" id="actus"><span>Recevoir les actualités de YEBA FORMATIONS</span></label>
+              <p class="rgpd"><strong>Vos données.</strong> Elles servent à organiser la soirée : votre place, votre affiche et trois e-mails pratiques. Responsable : YEBA FORMATIONS. Hébergement dans l'Union européenne. Effacement 3 mois après la soirée. Accès, rectification, effacement : <span class="a-completer">adresse de contact à compléter</span>.</p>
+              <button class="btn-or" type="submit">Trouver ma place</button>
+            </form>
+          </section>
+
+          <section class="ecran ecran-calcul" data-ecran="calcul" aria-labelledby="calculTitre" hidden>
+            <div class="calcul-plan" id="planCalcul"></div>
+            <p class="kicker">Placement</p>
+            <h2 class="titre-l focus-cible" id="calculTitre" tabindex="-1">Nous cherchons vos sièges…</h2>
+            <p class="texte-s">Côte à côte, au plus près de la scène, avec un accès facile.</p>
+          </section>
+
+          <section class="ecran ecran-place" data-ecran="place" aria-labelledby="t-place" hidden>
+            <p class="kicker">Votre place</p>
+            <h2 class="titre-l focus-cible" id="t-place" tabindex="-1">Votre place est prête.</h2>
+            <div class="billet">
+              <div><span class="billet-label">Rangée</span><span class="billet-val" id="billetRang">–</span></div>
+              <div><span class="billet-label">Siège</span><span class="billet-val" id="billetSiege">–</span></div>
+            </div>
+            <p class="voisins" id="voisins"></p>
+            <div class="plan-perso" id="planPerso"></div>
+            <p class="texte-s" id="cheminTxt"></p>
+            <p class="etoile-msg" id="etoileMsg" hidden>Votre étoile vient de s'allumer sur l'écran de la salle.</p>
+            <p class="mini">Placement provisoire : l'équipe peut l'ajuster le soir même.</p>
+            <button class="btn-or" type="button" id="versAffiche">Voir mon affiche</button>
+          </section>
+
+          <section class="ecran ecran-affiche" data-ecran="affiche" aria-labelledby="t-affiche" hidden>
+            <p class="kicker">Votre affiche</p>
+            <h2 class="titre-l focus-cible" id="t-affiche" tabindex="-1">Une affiche à votre nom.</h2>
+            <figure class="affiche" aria-label="Affiche personnelle de la Saison 1">
+              <img src="embleme.webp" alt="" width="88" height="41">
+              <p class="affiche-presente">YEBA FORMATIONS présente</p>
+              <p class="affiche-nom" id="afficheNom"></p>
+              <p class="affiche-dans">dans</p>
+              <p class="affiche-titre">SAISON 1</p>
+              <p class="affiche-accroche" id="afficheAccroche"></p>
+              <p class="affiche-place" id="affichePlace"></p>
+              <p class="affiche-pied">Soirée de lancement · La Réunion</p>
+            </figure>
+            <p class="mention-ia">Version réelle : accroche écrite avec l'IA Mistral, puis relue par l'équipe. Ici, accroche de démonstration.</p>
+            <button class="btn-or" type="button" id="btnPdf">Recevoir mon affiche en PDF</button>
+            <p class="mini">Démo : l'e-mail s'affiche ici, rien n'est envoyé.</p>
+          </section>
+
+          <section class="ecran ecran-verrou" data-ecran="verrou" aria-labelledby="verrouHeure" hidden>
+            <p class="verrou-jour" id="verrouJour"></p>
+            <h2 class="verrou-heure focus-cible nw" id="verrouHeure" tabindex="-1"></h2>
+            <button class="notif" type="button" id="notif">
+              <span class="notif-icone"><img src="embleme.webp" alt="" width="32" height="15"></span>
+              <span class="notif-app">YEBA FORMATIONS · maintenant</span>
+              <span class="notif-titre" id="notifTitre"></span>
+              <span class="notif-texte" id="notifTexte"></span>
+            </button>
+            <p class="verrou-aide">Touchez la notification pour ouvrir l'e-mail.</p>
+          </section>
+
+          <section class="ecran ecran-mail" data-ecran="mail" aria-labelledby="mailObjet" hidden>
+            <div class="app-barre">
+              <button class="btn-rond" type="button" id="mailRetour" aria-label="Revenir">‹</button>
+              <span class="app-barre-titre">Boîte de réception</span>
+              <span class="app-barre-vide" aria-hidden="true"></span>
+            </div>
+            <div class="mail-de">
+              <span class="mail-avatar"><img src="embleme.webp" alt="" width="30" height="14"></span>
+              <span class="mail-exp">YEBA FORMATIONS</span>
+              <span class="mail-quand" id="mailQuand"></span>
+              <span class="mail-a" id="mailA"></span>
+            </div>
+            <h2 class="mail-objet focus-cible" id="mailObjet" tabindex="-1"></h2>
+            <div class="mail-corps" id="mailCorps"></div>
+          </section>
+
+          <section class="ecran ecran-arrivee" data-ecran="arrivee" aria-labelledby="t-arrivee" hidden>
+            <p class="kicker" id="arriveeBonjour">Bienvenue</p>
+            <h2 class="titre-l focus-cible" id="t-arrivee" tabindex="-1">Précédemment dans Saison 1</h2>
+            <p class="texte-s">Vous arrivez pendant l'épisode 3. Voici l'essentiel, en une minute.</p>
+            <ol class="precedemment">
+              <li><span class="ep">Épisode 1 · Le casting</span>Aurélien, Stan et Antho se présentent, certifications à l'appui.</li>
+              <li><span class="ep">Épisode 2 · Les racines</span>L'histoire du nom YEBA, le baobab et les cinq valeurs.</li>
+              <li class="en-cours"><span class="ep">Épisode 3 · La promesse · en cours</span>Trois métiers, nos offres, la journée de 7&nbsp;h, Qualiopi et le NDA.</li>
+            </ol>
+            <div class="billet billet-petit">
+              <div><span class="billet-label">Rangée</span><span class="billet-val" id="arriveeRang">–</span></div>
+              <div><span class="billet-label">Siège</span><span class="billet-val" id="arriveeSiege">–</span></div>
+            </div>
+            <p class="texte-s" id="arriveeChemin"></p>
+            <p class="mention-ia">Version réelle : résumés écrits à l'avance avec l'IA Mistral, relus par l'équipe.</p>
+          </section>
+        </div>
+      </div>
+      <div class="tel-actions">
+        <button class="btn-texte" type="button" id="reset">Recommencer la démo</button>
+      </div>
+    </section>
+
+    <section class="regie" aria-labelledby="regie-titre">
+      <div class="regie-tete">
+        <h2 id="regie-titre">La régie</h2>
+        <p>Ce que le système fait en coulisses, à chaque geste de l'invité. L'étape en cours s'allume.</p>
+      </div>
+
+      <div class="carte-plan">
+        <div class="carte-plan-tete">
+          <h3>Plan de salle · vue de l'équipe</h3>
+          <p class="compteurs" id="compteurs"></p>
+        </div>
+        <div class="plan-regie" id="planRegie"></div>
+        <ul class="legende">
+          <li><span class="pastille libre"></span>Libre</li>
+          <li><span class="pastille occupe"></span>Déjà attribuée</li>
+          <li><span class="pastille pmr"></span>PMR, réservée</li>
+          <li><span class="pastille groupe"></span>Le groupe de l'invité</li>
+        </ul>
+        <p class="note">Plan d'exemple : 8 rangs de 12 sièges, allée centrale. Le vrai plan sera dessiné d'après la salle retenue.</p>
+      </div>
+
+      <ol class="chaine">
+        <li class="maillon" data-maillon="1" data-etat="actif">
+          <span class="maillon-num">1</span>
+          <div class="maillon-corps">
+            <h3>Le QR code de l'invitation <span class="etat-pill">En cours</span></h3>
+            <p>Imprimé sur l'invitation envoyée à <span class="nw">J-15</span>, repris à l'entrée. Il ouvre une page légère servie depuis la France, moins de 100 Ko polices comprises.</p>
+            <p class="maillon-live" id="live-1"></p>
+            <p class="puces"><span class="puce">Hébergeur français</span><span class="puce">Polices auto-hébergées</span><span class="puce droit">RGPD · aucun traceur, donc pas de bandeau cookies</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="2" data-etat="a-venir">
+          <span class="maillon-num">2</span>
+          <div class="maillon-corps">
+            <h3>La fiche <span class="etat-pill" hidden>En cours</span></h3>
+            <p>Quatre champs obligatoires. La fiche part vers n8n, auto-hébergé en France, qui l'écrit dans Baserow : tables Invités, Groupes et Places, reliées entre elles.</p>
+            <p class="maillon-live" id="live-2"></p>
+            <p class="puces"><span class="puce">n8n</span><span class="puce">Baserow</span><span class="puce droit">RGPD art. 13 · information à l'écran</span><span class="puce droit">RGPD art. 9 · accessibilité facultative, effacée à <span class="nw">J+1</span></span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="3" data-etat="a-venir">
+          <span class="maillon-num">3</span>
+          <div class="maillon-corps">
+            <h3>Le placement <span class="etat-pill" hidden>En cours</span></h3>
+            <p>Un calcul simple réserve des sièges contigus pour le groupe, au plus près de la scène et de l'allée. Les places PMR restent libres pour qui en a besoin.</p>
+            <p class="maillon-live" id="live-3"></p>
+            <p class="puces"><span class="puce">Script n8n</span><span class="puce droit">IA Act · règles fixes, ce n'est pas de l'IA (considérant 12) : on ne le présente pas comme tel</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="4" data-etat="a-venir">
+          <span class="maillon-num">4</span>
+          <div class="maillon-corps">
+            <h3>Le mur d'étoiles <span class="etat-pill" hidden>En cours</span></h3>
+            <p>Pendant l'accueil, le vidéoprojecteur affiche un ciel. Chaque inscription allume une étoile, avec le prénom si la personne l'accepte.</p>
+            <p class="maillon-live" id="live-4"></p>
+            <p class="puces"><span class="puce">Vidéoprojecteur</span><span class="puce">Ordinateur portable</span><span class="puce droit">RGPD art. 6-1-a · consentement, case décochée par défaut</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="5" data-etat="a-venir">
+          <span class="maillon-num">5</span>
+          <div class="maillon-corps">
+            <h3>L'affiche personnelle <span class="etat-pill" hidden>En cours</span></h3>
+            <p>L'accroche vient d'une banque de textes écrite avec Mistral et relue par l'équipe, choisie selon la priorité indiquée. Gotenberg fabrique le PDF, Brevo l'envoie.</p>
+            <p class="maillon-live" id="live-5"></p>
+            <p class="puces"><span class="puce">Mistral</span><span class="puce">Gotenberg</span><span class="puce">Brevo</span><span class="puce droit">RGPD · aucune donnée personnelle envoyée à l'IA</span><span class="puce droit">IA Act art. 50 · mention « écrit avec l'IA »</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="6" data-etat="a-venir">
+          <span class="maillon-num">6</span>
+          <div class="maillon-corps">
+            <h3><span>Le rappel à <span class="nw">H-5</span></span><span class="etat-pill" hidden>En cours</span></h3>
+            <p>Cinq minutes avant le début, n8n envoie « La Saison 1 commence » aux personnes déjà arrivées et lance le compte à rebours au vidéoprojecteur.</p>
+            <p class="maillon-live" id="live-6"></p>
+            <p class="puces"><span class="puce">n8n</span><span class="puce">Brevo</span><span class="puce droit">RGPD · e-mail de service, pas de prospection</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="7" data-etat="a-venir">
+          <span class="maillon-num">7</span>
+          <div class="maillon-corps">
+            <h3>Les retardataires <span class="etat-pill" hidden>En cours</span></h3>
+            <p>À <span class="nw">H+5</span>, les personnes non pointées reçoivent un e-mail rassurant. À leur arrivée, un scan à l'entrée affiche leur place et le résumé des épisodes manqués.</p>
+            <p class="maillon-live" id="live-7"></p>
+            <p class="puces"><span class="puce">Tablette d'accueil</span><span class="puce">Résumés préparés</span><span class="puce droit">IA Act art. 50 · résumés écrits avec l'IA, relus</span><span class="puce droit">RGPD · pointage oui ou non, sans photo</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="8" data-etat="a-venir">
+          <span class="maillon-num">8</span>
+          <div class="maillon-corps">
+            <h3>Le lendemain <span class="etat-pill" hidden>En cours</span></h3>
+            <p>Un récapitulatif écrit avec Mistral à partir de la captation, relu par Aurélien avant envoi. Les données sont effacées 3 mois après la soirée.</p>
+            <p class="maillon-live" id="live-8"></p>
+            <p class="puces"><span class="puce">Transcription locale</span><span class="puce">Mistral</span><span class="puce">Brevo</span><span class="puce droit">RGPD art. 5-1-e · durée de conservation</span><span class="puce droit">RGPD art. 13 · captation annoncée au public</span></p>
+          </div>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <p>Prototype réalisé pour YEBA FORMATIONS. Personnes, entreprise et plan de salle sont des exemples fictifs ; les textes d'accroche et de résumé sont des textes de démonstration.</p>
+    <p>Outils prévus : n8n (éditeur allemand, auto-hébergé en France), Baserow (Pays-Bas, cloud UE), Brevo et Mistral AI (France), Gotenberg (logiciel libre). Polices Montserrat (licence OFL) embarquées : cette page n'appelle aucun service tiers.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  "use strict";
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduit = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const NBSP = " ", FINE = " ";
+  const typo = (s) => String(s)
+    .replace(/ :/g, NBSP + ":").replace(/ ([;!?])/g, FINE + "$1")
+    .replace(/« /g, "«" + NBSP).replace(/ »/g, NBSP + "»");
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const liste = (a) => (a.length < 2 ? a.join("") : a.slice(0, -1).join(", ") + " et " + a[a.length - 1]);
+
+  /* ---------- Salle d'exemple : 8 rangs de 12 sièges, allée centrale entre les sièges 6 et 7 ---------- */
+  const RANGS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+  const PAR_RANG = 12;
+  const PMR = new Set(["A1", "A12"]);
+  function alea(graine) {
+    let a = graine >>> 0;
+    return () => {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  const OCCUPES = (() => {
+    const r = alea(974), occ = new Set();
+    RANGS.forEach((rang, i) => {
+      const densite = i < 2 ? 0.55 : i < 5 ? 0.42 : 0.25;
+      for (let n = 1; n <= PAR_RANG; n++) {
+        const id = rang + n;
+        if (!PMR.has(id) && r() < densite) occ.add(id);
+      }
+    });
+    return occ;
+  })();
+
+  /* Placement par règles fixes (pas d'IA) : sièges contigus dans un demi-rang, au plus près de la scène et de l'allée. */
+  function trouverBloc(taille, acces) {
+    let meilleur = null;
+    RANGS.forEach((rang, ri) => {
+      [[1, 6], [7, 12]].forEach(([debut, fin]) => {
+        for (let s = debut; s + taille - 1 <= fin; s++) {
+          const e = s + taille - 1, ids = [];
+          for (let n = s; n <= e; n++) ids.push(rang + n);
+          if (ids.some((id) => OCCUPES.has(id))) continue;
+          const avecPmr = ids.some((id) => PMR.has(id));
+          if (avecPmr && !acces) continue;
+          let score;
+          if (acces) score = (avecPmr ? 0 : 50) + ri * 3 + (debut === 1 ? fin - e : Math.min(s - 7, 12 - e));
+          else score = ri * 3 + Math.abs((s + e) / 2 - 6.5);
+          if (!meilleur || score < meilleur.score) meilleur = { rang, ri, debut: s, fin: e, score };
+        }
+      });
+    });
+    return meilleur;
+  }
+  function placer(inv) {
+    const bloc = trouverBloc(1 + inv.accompagnants.length, inv.acces);
+    if (!bloc) return null;
+    const sieges = [];
+    for (let n = bloc.debut; n <= bloc.fin; n++) sieges.push(n);
+    const entree = bloc.debut >= 7 && bloc.debut - 7 > 12 - bloc.fin ? "couloir" : "allee";
+    let ordre;  // le premier siège est celui de l'invité : le plus proche de son entrée (ou la place PMR)
+    if (inv.acces && sieges.some((n) => PMR.has(bloc.rang + n))) ordre = sieges[0] === 1 ? sieges : sieges.slice().reverse();
+    else if (bloc.debut <= 6 || entree === "couloir") ordre = sieges.slice().reverse();
+    else ordre = sieges;
+    return { rang: bloc.rang, ri: bloc.ri, siege: ordre[0], ordre, entree, ids: sieges.map((n) => bloc.rang + n) };
+  }
+
+  /* ---------- Dessin du plan (aucun trait ne traverse un texte) ---------- */
+  const G = { x0: 26, sw: 19, sg: 3, allee: 22, y0: 66, pas: 26, sh: 17 };
+  const xSiege = (n) => (n <= 6 ? G.x0 + (n - 1) * (G.sw + G.sg) : G.x0 + 6 * G.sw + 5 * G.sg + G.allee + (n - 7) * (G.sw + G.sg));
+  const X_ALLEE = G.x0 + 6 * G.sw + 5 * G.sg + G.allee / 2;
+  const X_COULOIR = 322;
+  const yRang = (ri) => G.y0 + ri * G.pas;
+  const Y_TRAVERSE = yRang(RANGS.length - 1) + G.sh + 17;
+  const Y_PORTE = 298;
+  function trace(p) {
+    const gy = yRang(p.ri) - 4.5, cx = xSiege(p.siege) + G.sw / 2;
+    return p.entree === "couloir"
+      ? `M ${X_COULOIR} ${Y_PORTE} V ${gy} H ${cx}`
+      : `M ${X_COULOIR} ${Y_PORTE} V ${Y_TRAVERSE} H ${X_ALLEE} V ${gy} H ${cx}`;
+  }
+  function planSVG({ p = null, chemin = false, lettres = true, textes = true, titre = "Plan de la salle" } = {}) {
+    const groupe = new Set(p ? p.ids : []);
+    let s = `<svg class="plan" viewBox="0 0 344 330" role="img" aria-label="${esc(titre)}">`;
+    s += `<rect class="p-sol" x="2" y="2" width="340" height="326" rx="14"/>`;
+    s += `<rect class="p-scene" x="66" y="10" width="200" height="32" rx="10"/>`;
+    if (textes) s += `<text class="p-scene-txt" x="166" y="30.5" text-anchor="middle">SCÈNE · ÉCRAN</text>`;
+    RANGS.forEach((rang, ri) => {
+      const y = yRang(ri);
+      if (lettres) s += `<text class="p-lettre" x="13" y="${y + 12.5}" text-anchor="middle">${rang}</text>`;
+      for (let n = 1; n <= PAR_RANG; n++) {
+        const id = rang + n, x = xSiege(n);
+        let c = "p-libre";
+        if (groupe.has(id)) c = "p-groupe" + (rang === p.rang && n === p.siege ? " p-moi" : "");
+        else if (PMR.has(id)) c = "p-pmr";
+        else if (OCCUPES.has(id)) c = "p-occupe";
+        s += `<rect class="${c}" x="${x}" y="${y}" width="${G.sw}" height="${G.sh}" rx="4"/>`;
+        if (groupe.has(id) && textes) s += `<text class="p-num" x="${x + G.sw / 2}" y="${y + 12.5}" text-anchor="middle">${n}</text>`;
+      }
+    });
+    s += `<rect class="p-porte" x="308" y="302" width="28" height="4" rx="2"/>`;
+    if (textes) s += `<text class="p-porte-txt" x="336" y="320" text-anchor="end">ENTRÉE</text>`;
+    if (chemin && p) {
+      s += `<path class="p-chemin" d="${trace(p)}"/>`;
+      s += `<circle class="p-arrivee" cx="${xSiege(p.siege) + G.sw / 2}" cy="${yRang(p.ri) - 4.5}" r="3.4"/>`;
+    }
+    return s + "</svg>";
+  }
+
+  /* ---------- Données de démonstration ---------- */
+  const PRIORITES = { gagner: "Gagner du temps", donnees: "Sécuriser nos données", visible: "Être visible en ligne", vendre: "Mieux vendre", equipe: "Former mon équipe" };
+  const ACCROCHES = {
+    "": "Une soirée. Sept épisodes. Une longueur d'avance.",
+    gagner: "Le temps change de camp.",
+    donnees: "Vos données restent à la maison.",
+    visible: "Votre entreprise entre en scène.",
+    vendre: "Chaque mot compte. Chaque client aussi.",
+    equipe: "Votre équipe passe à la saison suivante.",
+  };
+  const EXEMPLE = {
+    prenom: "Camille", nom: "Payet", entreprise: "Atelier Exemple", fonction: "Direction générale",
+    email: "camille.payet@atelier.example", priorite: "gagner", accompagnants: ["Johan", "Sarah"],
+    acces: false, etoile: true, actus: false,
+  };
+  const VERROUS = {
+    h5: { jour: "Jour J · soirée de lancement", heure: "H-5" },
+    retard: { jour: "Jour J · la soirée a commencé", heure: "H+5" },
+    j1: { jour: "Le lendemain", heure: "J+1" },
+  };
+
+  let invite = null, place = null, mailCourant = null, retourMail = "affiche", ecranCourant = "accueil", minuteur = 0, nbAcc = 0;
+  const prenomAcc = (i) => (invite.accompagnants[i] || "").trim() || `la personne ${i + 1}`;
+
+  /* ---------- Fiche ---------- */
+  function rendreAccompagnants(valeurs) {
+    const zone = $("#accompagnants");
+    const v = valeurs || $$("input", zone).map((i) => i.value);
+    zone.innerHTML = "";
+    for (let i = 1; i <= nbAcc; i++) {
+      zone.insertAdjacentHTML("beforeend",
+        `<div class="champ"><label for="acc-${i}">Prénom de la personne ${i}<span class="facultatif">facultatif</span></label>` +
+        `<input id="acc-${i}" autocomplete="off" value="${esc(v[i - 1] || "")}"></div>`);
+    }
+    $("#nbAcc").textContent = String(nbAcc);
+    $("#nbAccTxt").textContent = nbAcc > 1 ? "personnes avec vous" : "personne avec vous";
+    $("#moins").disabled = nbAcc === 0;
+    $("#plus").disabled = nbAcc === 4;
+  }
+  const REGLES = {
+    prenom: (v) => (v ? "" : "Indiquez votre prénom."),
+    nom: (v) => (v ? "" : "Indiquez votre nom."),
+    entreprise: (v) => (v ? "" : "Indiquez le nom de votre entreprise."),
+    email: (v) => (!v ? "Indiquez votre e-mail : il sert à vous envoyer votre place."
+      : /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? "" : "Adresse incomplète : vérifiez le @ et la fin, par exemple .re ou .fr."),
+  };
+  function marquer(k, msg) {
+    $("#" + k).setAttribute("aria-invalid", msg ? "true" : "false");
+    const err = $("#" + k + "-err");
+    err.textContent = typo(msg);
+    err.hidden = !msg;
+  }
+  function valider() {
+    let premier = null;
+    Object.entries(REGLES).forEach(([k, regle]) => {
+      const msg = regle($("#" + k).value.trim());
+      marquer(k, msg);
+      if (msg && !premier) premier = $("#" + k);
+    });
+    if (premier) premier.focus();
+    return !premier;
+  }
+  const effacerErreurs = () => Object.keys(REGLES).forEach((k) => marquer(k, ""));
+  function remplir(I) {
+    ["prenom", "nom", "entreprise", "fonction", "email"].forEach((k) => { $("#" + k).value = I[k]; });
+    $("#priorite").value = I.priorite;
+    nbAcc = I.accompagnants.length;
+    rendreAccompagnants(I.accompagnants);
+    $("#acces").checked = I.acces;
+    $("#etoile").checked = I.etoile;
+    $("#actus").checked = I.actus;
+    effacerErreurs();
+  }
+  function lire() {
+    const v = (k) => $("#" + k).value.trim();
+    return {
+      prenom: v("prenom"), nom: v("nom"), entreprise: v("entreprise"), fonction: v("fonction"), email: v("email"),
+      priorite: $("#priorite").value, accompagnants: $$("#accompagnants input").map((i) => i.value.trim()),
+      acces: $("#acces").checked, etoile: $("#etoile").checked, actus: $("#actus").checked,
+    };
+  }
+
+  /* ---------- Écrans ---------- */
+  const MAILLONS_ECRAN = { accueil: [1], fiche: [2], calcul: [3], place: [3, 4], affiche: [5], arrivee: [7] };
+  const MAILLONS_MAIL = { confirmation: [5], h5: [6], retard: [7], j1: [8] };
+  const ETAPE_ECRAN = { accueil: 0, fiche: 0, calcul: 1, place: 1, affiche: 2, arrivee: 5 };
+  const ETAPE_MAIL = { confirmation: 2, h5: 3, retard: 4, j1: 6 };
+
+  function afficher(nom, focus = true) {
+    $$(".ecran").forEach((e) => { e.hidden = e.dataset.ecran !== nom; e.classList.remove("entre"); });
+    const el = $(`.ecran[data-ecran="${nom}"]`);
+    el.scrollTop = 0;
+    $("#app").dataset.ecran = nom;
+    if (focus && !reduit()) { void el.offsetWidth; el.classList.add("entre"); }
+    ecranCourant = nom;
+    const parMail = nom === "verrou" || nom === "mail";
+    majRegie(parMail ? MAILLONS_MAIL[mailCourant] : MAILLONS_ECRAN[nom]);
+    majFrise(parMail ? ETAPE_MAIL[mailCourant] : ETAPE_ECRAN[nom]);
+    if (focus) { const c = $(".focus-cible", el); if (c) c.focus({ preventScroll: true }); }
+  }
+  function majFrise(etape) {
+    $$(".frise li").forEach((li, i) => {
+      li.dataset.etat = i < etape ? "fait" : i === etape ? "actif" : "a-venir";
+      const b = $("button", li);
+      if (i === etape) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+    });
+  }
+  const siegesTxt = (P) => {
+    const t = P.ids.map((id) => Number(id.slice(1))).sort((a, b) => a - b);
+    return t.length === 1 ? `siège ${t[0]}` : t.length === 2 ? `sièges ${t[0]} et ${t[1]}` : `sièges ${t[0]} à ${t[t.length - 1]}`;
+  };
+  function majRegie(actifs) {
+    const min = Math.min(...actifs);
+    $$(".maillon").forEach((li) => {
+      const n = Number(li.dataset.maillon), actif = actifs.includes(n);
+      li.dataset.etat = actif ? "actif" : n < min ? "fait" : "a-venir";
+      $(".etat-pill", li).hidden = !actif;
+    });
+    const I = invite, P = place, ecrire = (n, t) => { $("#live-" + n).textContent = typo(t); };
+    const nAcc = I ? I.accompagnants.length : 0;
+    ecrire(1, "Page ouverte depuis le QR code de l'invitation.");
+    ecrire(2, I ? `Fiche reçue : ${I.prenom} ${I.nom.charAt(0)}., ${nAcc === 0 ? "sans accompagnant" : nAcc === 1 ? "1 accompagnant" : nAcc + " accompagnants"}.` : "En attente de la fiche.");
+    ecrire(3, P ? `Bloc trouvé : rangée ${P.rang}, ${siegesTxt(P)}.` : I ? "Aucun bloc libre : placement à l'arrivée." : "En attente de la fiche.");
+    ecrire(4, I && I.etoile ? `Étoile allumée : « ${I.prenom} ».` : "Prénom non affiché : case non cochée.");
+    ecrire(5, I && I.priorite ? `Accroche choisie pour « ${PRIORITES[I.priorite]} ».` : "Accroche générale : aucune priorité indiquée.");
+    ecrire(6, "Envoyé aux personnes déjà pointées à l'accueil.");
+    ecrire(7, ecranCourant === "arrivee" ? "Arrivée pointée : place affichée, résumé des épisodes 1 à 3." : "Non pointé à H+5 : e-mail rassurant envoyé.");
+    ecrire(8, "Rédigé à partir de la captation, relu par Aurélien, puis envoyé.");
+  }
+  function majPlanRegie() {
+    const n = OCCUPES.size + (place ? place.ids.length : 0);
+    $("#compteurs").innerHTML = `<strong>${n}</strong> places attribuées sur 96 · <strong>2</strong> places PMR`;
+    $("#planRegie").innerHTML = planSVG({ p: place, titre: "Plan de salle vu par l'équipe : places libres, attribuées, PMR et groupe de l'invité" });
+  }
+
+  function rendrePlace() {
+    const P = place;
+    if (!P) {
+      $("#billetRang").textContent = "–";
+      $("#billetSiege").textContent = "–";
+      $("#voisins").textContent = typo("La salle est presque pleine : l'équipe vous place dès votre arrivée, avec vos accompagnants.");
+      $("#planPerso").innerHTML = planSVG({ titre: "Plan de la salle" });
+      $("#cheminTxt").textContent = "";
+    } else {
+      $("#billetRang").textContent = P.rang;
+      $("#billetSiege").textContent = String(P.siege);
+      const autres = P.ordre.slice(1).map((n, i) => `<strong>${esc(prenomAcc(i))}</strong> (siège ${n})`);
+      const ambiance = P.ri <= 1 ? "au premier plan" : P.ri <= 4 ? "au cœur de la salle" : "avec une vue d'ensemble";
+      $("#voisins").innerHTML = typo(autres.length ? `À vos côtés : ${liste(autres)}.` : `Rangée ${P.rang}, ${ambiance}.`);
+      $("#planPerso").innerHTML = planSVG({ p: P, chemin: true, titre: `Plan de la salle : votre siège, rangée ${P.rang} siège ${P.siege}, est en or, avec le chemin depuis l'entrée` });
+      $("#cheminTxt").textContent = typo(P.entree === "couloir"
+        ? `Entrez en bas à droite et longez le mur jusqu'au rang ${P.rang}.`
+        : `Entrez en bas à droite, puis remontez l'allée centrale jusqu'au rang ${P.rang}.`);
+    }
+    $("#etoileMsg").hidden = !invite.etoile;
+  }
+  function rendreAffiche() {
+    $("#afficheNom").textContent = `${invite.prenom} ${invite.nom}`;
+    $("#afficheAccroche").textContent = typo(ACCROCHES[invite.priorite] || ACCROCHES[""]);
+    $("#affichePlace").textContent = place ? `Rangée ${place.rang} · Siège ${place.siege}` : "Placement à l'arrivée";
+  }
+  function rendreArrivee() {
+    $("#arriveeBonjour").textContent = `Bienvenue, ${invite.prenom}`;
+    $("#arriveeRang").textContent = place ? place.rang : "–";
+    $("#arriveeSiege").textContent = place ? String(place.siege) : "–";
+    $("#arriveeChemin").textContent = typo(!place ? "Un membre de l'équipe vous accompagne jusqu'à une place libre."
+      : place.entree === "couloir" ? "Longez le mur de droite : un membre de l'équipe vous accompagne."
+      : "Entrez par l'allée centrale : un membre de l'équipe vous accompagne.");
+  }
+
+  /* ---------- E-mails (textes de démonstration) ---------- */
+  function contenuMail(type) {
+    const I = invite, P = place, nom = esc(I.prenom);
+    const voisins = P ? P.ordre.slice(1).map((n, i) => `${esc(prenomAcc(i))} (siège ${n})`) : [];
+    const prenoms = P ? P.ordre.slice(1).map((n, i) => esc(prenomAcc(i))) : [];
+    const lieu = P ? `rangée ${P.rang}, siège ${P.siege}` : "votre place, indiquée à l'arrivée";
+    const billet = (sous) => `<div class="mail-billet"><b>${P ? `Rangée ${P.rang} · siège ${P.siege}` : "Placement à l'arrivée"}</b>${sous ? `<span>${sous}</span>` : ""}</div>`;
+    const bandeau = `<div class="mail-bandeau"><img src="embleme.webp" alt="" width="52" height="24"><span>YEBA FORMATIONS · Saison 1</span></div>`;
+    const p = (t) => `<p>${t}</p>`;
+    if (type === "confirmation") return {
+      objet: P ? `Votre place pour la Saison 1 : rangée ${P.rang}, siège ${P.siege}` : "Votre inscription à la Saison 1",
+      apercu: "C'est noté. Votre affiche est en pièce jointe.",
+      corps: bandeau + p(`Bonjour ${nom},`) + p("C'est noté : votre place vous attend.") + billet(voisins.length ? `avec ${liste(voisins)}` : "")
+        + `<div class="mail-pj"><span class="mail-pj-icone">PDF</span><span>Affiche_Saison1_${nom}.pdf</span></div>`
+        + p("Le jour J, nous vous écrirons 5 minutes avant le début pour vous inviter à rejoindre votre siège.")
+        + `<span class="mail-btn">Libérer ma place</span>`
+        + `<p class="mail-pied">Un empêchement ? Ce bouton rend votre place à quelqu'un d'autre. Vos données : accès, rectification ou effacement sur simple réponse à cet e-mail.</p>`,
+    };
+    if (type === "h5") return {
+      objet: "La Saison 1 commence dans 5 minutes",
+      apercu: `Votre place vous attend : ${lieu}.`,
+      corps: bandeau + p(`Bonsoir ${nom},`) + p("Les lumières vont bientôt baisser.") + billet(prenoms.length ? `${liste(prenoms)} à vos côtés` : "")
+        + p("Le générique démarre à l'heure. Vous pouvez rejoindre votre siège dès maintenant.") + `<span class="mail-btn">Revoir mon plan</span>`,
+    };
+    if (type === "retard") return {
+      objet: "Pas d'inquiétude, la Saison 1 vous attend",
+      apercu: "Arrivez tranquillement : nous vous résumerons ce que vous avez manqué.",
+      corps: bandeau + p(`Bonsoir ${nom},`) + p("La soirée vient de commencer, et tout va bien.")
+        + p("Arrivez tranquillement, sans vous presser sur la route. Les embouteillages, on connaît.")
+        + p("À votre arrivée, scannez le QR code de l'entrée : votre place s'affiche, et votre téléphone vous résume en une minute ce que vous avez manqué.")
+        + `<p class="mail-signature">À tout de suite,<br>Aurélien, Stan et Antho</p>`,
+    };
+    return {
+      objet: "Saison 1 : le récapitulatif de votre soirée",
+      apercu: "Les idées clés, votre affiche, et la suite si vous le souhaitez.",
+      corps: bandeau + p(`Bonjour ${nom},`) + p("Merci pour votre présence hier soir. Voici l'essentiel en trois points.")
+        + "<ol><li>Bien cadrée, l'IA fait gagner du temps, dans le respect du RGPD et de l'IA Act.</li>"
+        + "<li>Nos formations s'adaptent à votre équipe : en inter, en intra ou en séminaire.</li>"
+        + "<li>La soirée elle-même était une démonstration : inscription, placement, e-mails, affiche et résumés.</li></ol>"
+        + p(I.priorite ? `Vous nous aviez confié une priorité : <strong>${PRIORITES[I.priorite]}</strong>. Répondez simplement à cet e-mail pour en parler.` : "Une question, un projet ? Répondez simplement à cet e-mail.")
+        + `<p class="mail-ia">Version réelle : récapitulatif écrit avec l'IA Mistral à partir de la captation, relu par Aurélien LUMEKA avant envoi. Ici, texte d'exemple.</p>`
+        + `<p class="mail-pied">Vos données seront effacées 3 mois après la soirée. Pour les effacer dès maintenant, répondez « effacer » à cet e-mail.</p>`,
+    };
+  }
+  function ouvrirMail(type, retour) {
+    mailCourant = type;
+    retourMail = retour;
+    const m = contenuMail(type);
+    $("#mailObjet").textContent = typo(m.objet);
+    $("#mailA").textContent = typo("À : " + invite.email);
+    $("#mailQuand").textContent = type === "j1" ? "J+1" : "maintenant";
+    $("#mailCorps").innerHTML = typo(m.corps);
+    afficher("mail");
+  }
+  function ouvrirVerrou(type) {
+    mailCourant = type;
+    const m = contenuMail(type), v = VERROUS[type];
+    $("#verrouJour").textContent = v.jour;
+    $("#verrouHeure").textContent = v.heure;
+    $("#notifTitre").textContent = typo(m.objet);
+    $("#notifTexte").textContent = typo(m.apercu);
+    const n = $("#notif");
+    n.style.animation = "none";
+    void n.offsetWidth;
+    n.style.animation = "";
+    afficher("verrou");
+  }
+
+  /* ---------- Frise : aller directement à un moment (avec l'invité d'exemple si besoin) ---------- */
+  function assurerInvite() {
+    if (invite) return;
+    remplir(EXEMPLE);
+    invite = lire();
+    place = placer(invite);
+    majPlanRegie();
+  }
+  function allerEtape(i) {
+    clearTimeout(minuteur);
+    if (i === 0) { mailCourant = null; afficher("accueil"); return; }
+    assurerInvite();
+    if (i === 1) { mailCourant = null; rendrePlace(); afficher("place"); }
+    else if (i === 2) { mailCourant = null; rendreAffiche(); afficher("affiche"); }
+    else if (i === 3) ouvrirVerrou("h5");
+    else if (i === 4) ouvrirVerrou("retard");
+    else if (i === 5) { mailCourant = null; rendreArrivee(); afficher("arrivee"); }
+    else ouvrirVerrou("j1");
+  }
+  function reinitialiser() {
+    clearTimeout(minuteur);
+    invite = null; place = null; mailCourant = null;
+    $("#fiche").reset();
+    nbAcc = 0;
+    rendreAccompagnants([]);
+    effacerErreurs();
+    majPlanRegie();
+    afficher("accueil");
+  }
+
+  /* ---------- Ciel étoilé (dessiné une fois, réutilisé par l'accueil, l'affiche et l'écran verrouillé) ---------- */
+  function etoiles() {
+    const r = alea(2021);
+    try {
+      const c = document.createElement("canvas");
+      c.width = 390; c.height = 780;
+      const x = c.getContext("2d");
+      for (let i = 0; i < 160; i++) {
+        const a = (0.25 + r() * 0.7).toFixed(2);
+        x.fillStyle = r() < 0.2 ? `rgba(233, 215, 160, ${a})` : `rgba(255, 255, 255, ${a})`;
+        x.beginPath();
+        x.arc(r() * 390, r() * 780, 0.35 + r() * r() * 1.4, 0, Math.PI * 2);
+        x.fill();
+      }
+      $("#app").style.setProperty("--etoiles", `url(${c.toDataURL("image/png")})`);
+    } catch (e) { /* le fond reste uni */ }
+    const ciel = $(".ciel");
+    for (let i = 0; i < 10; i++) {  // scintillements sur les bords, jamais sur le logo ni sur le texte
+      const s = document.createElement("span");
+      s.className = "scintille";
+      s.style.left = (r() < 0.5 ? 4 + r() * 16 : 80 + r() * 16).toFixed(1) + "%";
+      s.style.top = (4 + r() * 38).toFixed(1) + "%";
+      s.style.animationDelay = (r() * 3).toFixed(2) + "s";
+      ciel.appendChild(s);
+    }
+  }
+
+  /* ---------- Branchements ---------- */
+  $$("[data-aller]").forEach((b) => b.addEventListener("click", () => afficher(b.dataset.aller)));
+  $("#btnExemple").addEventListener("click", () => remplir(EXEMPLE));
+  $("#moins").addEventListener("click", () => { if (nbAcc > 0) { nbAcc -= 1; rendreAccompagnants(); } });
+  $("#plus").addEventListener("click", () => { if (nbAcc < 4) { nbAcc += 1; rendreAccompagnants(); } });
+  Object.keys(REGLES).forEach((k) => $("#" + k).addEventListener("input", () => {
+    if ($("#" + k).getAttribute("aria-invalid") === "true" && !REGLES[k]($("#" + k).value.trim())) marquer(k, "");
+  }));
+  $("#fiche").addEventListener("submit", (ev) => {
+    ev.preventDefault();
+    if (!valider()) return;
+    invite = lire();
+    place = placer(invite);
+    const n = 1 + invite.accompagnants.length;
+    $("#calculTitre").textContent = typo(n === 1 ? "Nous cherchons votre siège…" : `Nous cherchons ${n} sièges côte à côte…`);
+    $("#planCalcul").innerHTML = planSVG({ lettres: false, textes: false, titre: "Recherche de sièges libres" });
+    afficher("calcul");
+    clearTimeout(minuteur);
+    minuteur = setTimeout(() => {
+      $("#planCalcul").innerHTML = planSVG({ p: place, lettres: false, textes: false, titre: "Sièges trouvés" });
+      majPlanRegie();
+      minuteur = setTimeout(() => { rendrePlace(); afficher("place"); }, reduit() ? 200 : 700);
+    }, reduit() ? 250 : 1150);
+  });
+  $("#versAffiche").addEventListener("click", () => { rendreAffiche(); afficher("affiche"); });
+  $("#btnPdf").addEventListener("click", () => ouvrirMail("confirmation", "affiche"));
+  $("#notif").addEventListener("click", () => ouvrirMail(mailCourant, "verrou"));
+  $("#mailRetour").addEventListener("click", () => {
+    if (retourMail === "verrou") afficher("verrou");
+    else { mailCourant = null; afficher(retourMail); }
+  });
+  $$(".frise button").forEach((b, i) => b.addEventListener("click", () => allerEtape(i)));
+  $("#reset").addEventListener("click", reinitialiser);
+
+  etoiles();
+  rendreAccompagnants([]);
+  majPlanRegie();
+  afficher("accueil", false);
+})();
+</script>

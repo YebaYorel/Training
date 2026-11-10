@@ -22,6 +22,7 @@ construits (présentation, histoire, offre YEBA, formations : ≈ 36 min de temp
 | `storyboard.md` | Storyboard épisode par épisode : texte, visuel, animation, notes, durée, mots projetés | — |
 | `felo/prompt_felo_slides.md` · `slides-com/plan_slides_com.md` | Prompt Felo (sans donnée personnelle) · plan de montage Slides.com | Felo · Slides.com |
 | `outils/generer_storyboard_page.py` → `dist/storyboard/` | Storyboard en page web (vignettes, générique 720p, notes sans tarifs) à partager avec l'équipe | — |
+| `accueil/index.html` → `outils/generer_accueil.py` → `dist/accueil/` | **Prototype « Accueil Saison 1 »** : parcours de l'invité (QR, fiche, place sur plan, affiche, e-mails H-5 et retard, arrivée, J+1) et la régie technique ; polices embarquées, aucun service tiers | — |
 
 ## Mode d'emploi (10 minutes)
 
@@ -95,6 +96,13 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 | « Souveraineté par défaut » (S22) | RGPD chap. V | Vrai une fois la migration vers des outils UE terminée (Brevo, Baserow/OVHcloud) |
 | Démo live (S31) | RGPD + IA Act art. 50 | Entreprise fictive ou accord écrit ; annoncer que le site est généré par IA |
 | Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients ou de stagiaires |
+| Site d'inscription (QR) : fiche invité | RGPD art. 5, 6, 13 | 4 champs obligatoires ; mention d'information à l'écran ; adresse de contact à ajouter ; effacement à 3 mois (proposition à valider) |
+| Case « place facile d'accès » | RGPD art. 9 (donnée pouvant révéler un handicap) | Facultative, consentement explicite par la case, utilisée pour le seul placement, effacée à J+1 |
+| Prénoms des accompagnants | RGPD art. 14 | Prénom seul et facultatif ; information remise à l'arrivée |
+| Mur d'étoiles (prénom projeté) | RGPD art. 6-1-a | Case décochée par défaut ; sans case cochée, étoile anonyme |
+| Accroches d'affiche, résumés « Précédemment », récap J+1 | IA Act art. 50 (transparence) ; RGPD art. 28 | Textes écrits avec Mistral et relus ; aucune donnée personnelle envoyée à l'IA ; mention « écrit avec l'IA » |
+| Placement automatique des sièges | IA Act, considérant 12 | Règles fixes : ce n'est pas de l'IA, ne pas le présenter comme tel (C. conso L.121-2) |
+| Captation de la soirée pour le récap J+1 | RGPD art. 13 | Annoncer la captation au public ; ne transcrire que les intervenants |
 | Aucune formation RNCP/RS | C. conso L.121-2 | Ne jamais dire « finançable CPF » ni « formation obligatoire » |
 
 ## À confirmer par vous
