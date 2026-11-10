@@ -433,13 +433,17 @@ export const Formations: React.FC = () => {
 };
 
 // ───────────────────────────── 8. La confiance se prouve : Qualiopi, NDA, horaires ─────────────────────────────
-export const Confiance: React.FC<{ horaires: { debut: string; pause_debut: string; pause_fin: string; fin: string; heures_par_jour: number } }> = ({ horaires }) => {
+export type Certifs = { qualiopi: string; nda: string };
+export const Confiance: React.FC<{
+  horaires: { debut: string; pause_debut: string; pause_fin: string; fin: string; heures_par_jour: number };
+  certifs: Certifs;
+}> = ({ horaires, certifs }) => {
   const g = useG("confiance");
   const [de, fin] = SC.confiance;
   const sortie = p(g, fin - 40, 22, ENTREE); // panneaux partis avant les fils de la constellation finale
   const tuiles = [
-    { titre: "QUALIOPI", l1: "Actions de formation", l2: `Qualitia${NB}·${NB}COFRAC`, petit: false },
-    { titre: "NDA", l1: "04973676397", l2: "Cet enregistrement ne vaut pas agrément de l'État.", petit: true },
+    { titre: "QUALIOPI", l1: certifs.qualiopi, l2: `Actions de formation${NB}· Qualitia${NB}(COFRAC)`, petit: true },
+    { titre: "NDA", l1: certifs.nda, l2: "Cet enregistrement ne vaut pas agrément de l'État.", petit: true },
     { titre: `${horaires.heures_par_jour}${NB}h${NB}/${NB}jour`, l1: `${horaires.debut}${NB}→${NB}${horaires.pause_debut}`, l2: `${horaires.pause_fin}${NB}→${NB}${horaires.fin}`, petit: false },
   ];
   return (

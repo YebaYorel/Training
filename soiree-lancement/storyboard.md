@@ -48,7 +48,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 | S16 | 3 · La promesse | 3 métiers. 1 seul interlocuteur. | 18 | ambiance-noir | 75 s |
 | S17 | 3 · La promesse | Nos offres. Votre format. | 20 | ambiance-noir | 75 s |
 | S18 | 3 · La promesse | 7 h | 21 | journee | 45 s |
-| S19 | 3 · La promesse | La confiance se prouve. | 31 | sceau | 60 s |
+| S19 | 3 · La promesse | La confiance se prouve. | 33 | sceau | 60 s |
 | S20 | 3 · La promesse | Vous formez. On s'occupe du reste. | 19 | ambiance-noir | 45 s |
 | S21 | 3 · La promesse | Petit groupe. Grand suivi. | 17 | ambiance-noir | 45 s |
 | S22 | 3 · La promesse | Souveraineté par défaut. Outils européens d'abord. | 8 | ambiance-noir | 45 s |
@@ -63,7 +63,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 | S29 | 4 · L'atelier | Votre site. À voix haute. En 1 jour. | 20 | ambiance-noir | 75 s |
 | S30 | 4 · L'atelier | Des emails qui obtiennent une réponse. | 20 | ambiance-noir | 75 s |
 | S31 | 4 · L'atelier | Un site internet. Décrit à voix haute. Devant vous. | 11 | ambiance-noir | 240 s |
-| S32 | 4 · L'atelier | À suivre… | 18 | bientot | 60 s |
+| S32 | 4 · L'atelier | À suivre… | 8 | bientot | 60 s |
 | S33 | 4 · L'atelier | Former, c'est bien. Équiper, c'est mieux. | 8 | ambiance-bleu | 20 s |
 | S34 | 5 · Les outils | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | ambiance-noir | 8 s |
 | E5 | 5 · Les outils | Épisode 5 — Les outils *(masquée — à construire)* | 0 | vidéo plein écran | 4.5 s |
@@ -121,7 +121,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> SAISON 1 · SOIRÉE DE LANCEMENT Sous le baobab de la connaissance, les graines du savoir. [DATE À PRÉCISER] · [LIEU À PRÉCISER] · La Réunion
+> SAISON 1 · SOIRÉE DE LANCEMENT · Sous le baobab de la connaissance, · les graines du savoir. · [DATE À PRÉCISER] · [LIEU À PRÉCISER] · La Réunion
 
 *(23 mots projetés)*
 
@@ -135,7 +135,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> CE SOIR Moins de bruit sur l'IA. Plus de décisions.
+> CE SOIR · Moins de bruit sur l'IA. · Plus de décisions.
 
 *(10 mots projetés)*
 
@@ -149,7 +149,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Saison 1 · 7 épisodes Le casting Présentation Les racines Histoire La promesse L'offre YEBA L'atelier Nos formations Les outils Applications & sites web Le diagnostic Audit & devis Le final Mot de fin & offre soirée
+> Saison 1 · 7 épisodes · Le casting — Présentation · Les racines — Histoire · La promesse — L'offre YEBA · L'atelier — Nos formations · Les outils — Applications & sites web · Le diagnostic — Audit & devis · Le final — Mot de fin & offre soirée
 
 *(33 mots projetés)*
 
@@ -179,7 +179,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> 3 visages. 1 mission. Aurélien LUMEKA Directeur · IA & gouvernance Stan [Rôle à préciser] Antho [Rôle à préciser]
+> 3 visages. · 1 mission. · Aurélien LUMEKA · Directeur · IA & gouvernance · Stan · [Rôle à préciser] · Antho · [Rôle à préciser]
 
 *(17 mots projetés)*
 
@@ -193,7 +193,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Certifié. Pas autoproclamé. Google AI Specialist Google Professional AI SecNumacadémie ANSSI MOOC CNIL — RGPD Référent handicap
+> Certifié. · Pas autoproclamé. · Google AI Specialist · Google Professional AI · SecNumacadémie ANSSI · MOOC CNIL — RGPD · Référent handicap
 
 *(16 mots projetés)*
 
@@ -209,7 +209,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Saison 1 · 7 épisodes Le casting Présentation Les racines Histoire La promesse L'offre YEBA L'atelier Nos formations Les outils Applications & sites web Le diagnostic Audit & devis Le final Mot de fin & offre soirée
+> Saison 1 · 7 épisodes · Le casting — Présentation · Les racines — Histoire · La promesse — L'offre YEBA · L'atelier — Nos formations · Les outils — Applications & sites web · Le diagnostic — Audit & devis · Le final — Mot de fin & offre soirée
 
 *(33 mots projetés)*
 
@@ -237,7 +237,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Pas de mot pour « formation ». Alors maman a dit : Ko yeba. Le savoir.
+> Pas de mot pour « formation ». · Alors maman a dit : Ko yeba. Le savoir.
 
 *(13 mots projetés)*
 
@@ -251,7 +251,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> YEBA « Savoir, connaître » — en lingala
+> YEBA · « Savoir, connaître » — en lingala
 
 *(5 mots projetés)*
 
@@ -265,7 +265,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Y L'arbre de la connaissance L'arbre à palabres
+> Y · L'arbre de la connaissance · L'arbre à palabres
 
 *(8 mots projetés)*
 
@@ -279,7 +279,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Sous le baobab, on transmet. Histoires · Vérités · Générations
+> Sous le baobab, · on transmet. · Histoires · Vérités · Générations
 
 *(8 mots projetés)*
 
@@ -293,7 +293,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Des racines. Un réseau. HÉRITAGE Afrique Baobab Transmission MODERNITÉ IA Réseau Pitons 974
+> Des racines. · Un réseau. · HÉRITAGE · Afrique · Baobab · Transmission · MODERNITÉ · IA · Réseau · Pitons 974
 
 *(13 mots projetés)*
 
@@ -307,7 +307,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> 5 valeurs Transmission vivante Bienveillance engagée Allégresse & énergie Élévation collective Authenticité enracinée
+> 5 valeurs · Transmission vivante · Bienveillance engagée · Allégresse & énergie · Élévation collective · Authenticité enracinée
 
 *(12 mots projetés)*
 
@@ -321,7 +321,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Le chemin Avril 2021 Création 2021 → 2025 Vente · Management · Soft skills 2026 IA · RGPD · IA Act Ce soir Nouvelle équipe
+> Le chemin · Avril 2021 · Création · 2021 → 2025 · Vente · Management · Soft skills · 2026 · IA · RGPD · IA Act · Ce soir · Nouvelle équipe
 
 *(20 mots projetés)*
 
@@ -337,7 +337,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Saison 1 · 7 épisodes Le casting Présentation Les racines Histoire La promesse L'offre YEBA L'atelier Nos formations Les outils Applications & sites web Le diagnostic Audit & devis Le final Mot de fin & offre soirée
+> Saison 1 · 7 épisodes · Le casting — Présentation · Les racines — Histoire · La promesse — L'offre YEBA · L'atelier — Nos formations · Les outils — Applications & sites web · Le diagnostic — Audit & devis · Le final — Mot de fin & offre soirée
 
 *(33 mots projetés)*
 
@@ -379,7 +379,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> QUESTION Vos équipes utilisent déjà l'IA. Avec quelles données ?
+> QUESTION · Vos équipes utilisent déjà l'IA. · Avec quelles données ?
 
 *(9 mots projetés)*
 
@@ -393,7 +393,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> 3 métiers. 1 seul interlocuteur. Former Intra · Inter · Séminaires Implémenter Workflows · Sites · Applications Sécuriser RGPD · IA Act · Audit
+> 3 métiers. · 1 seul interlocuteur. · Former — Intra · Inter · Séminaires · Implémenter — Workflows · Sites · Applications · Sécuriser — RGPD · IA Act · Audit
 
 *(18 mots projetés)*
 
@@ -407,7 +407,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Nos offres. Votre format. Inter Catalogue Intra Sur-mesure Séminaire dirigeants Résidentiel Implémentation IA Workflows · sites Conseil & audit RGPD · IA Act
+> Nos offres. · Votre format. · Inter — Catalogue · Intra — Sur-mesure · Séminaire dirigeants — Résidentiel · Implémentation IA — Workflows · sites · Conseil & audit — RGPD · IA Act
 
 *(20 mots projetés)*
 
@@ -415,13 +415,13 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **3. Animation / transition** — Tuiles en fondu montant décalé de 0,12 s.
 
-**Notes orateur (75 s)** — Effectifs : 6 minimum, 8 maximum, en inter comme en intra (barèmes A/B/C, CONFIG SYSTÈME, mis à jour le 07/10/2026). Séminaire dirigeants IA (FOR-0014) : 6 à 8 dirigeants à huis clos, jamais deux concurrents directs sur la même session. TARIFS (à garder pour l'épisode 6, pas affichés ici) : formations inter de 690 à 990 € par stagiaire et par jour, intra de 2 100 à 2 900 € par groupe et par jour, prix nets — TVA non applicable, art. 293 B du CGI. Conseil et audit : tarif encore « à trancher » dans CONFIG SYSTÈME — ne pas l'annoncer.
+**Notes orateur (75 s)** — Effectifs : 6 minimum, 8 maximum, en inter comme en intra (barèmes A/B/C, CONFIG SYSTÈME, mis à jour le 07/10/2026). Séminaire dirigeants IA (FOR-0014) : 6 à 8 dirigeants à huis clos, jamais deux concurrents directs sur la même session. TARIFS — JAMAIS PROJETÉS, ni ici ni à l'épisode 6 (décision d'Aurélien LUMEKA du 10/11/2026) ; réponse orale uniquement si un invité les demande : formations inter de 690 à 990 € par stagiaire et par jour, intra de 2 100 à 2 900 € par groupe et par jour, prix nets — TVA non applicable, art. 293 B du CGI. Conseil et audit : tarif encore « à trancher » dans CONFIG SYSTÈME — ne pas l'annoncer.
 
 ## S18 — La promesse · gabarit `journee`
 
 **1. Titre & texte ultra-court**
 
-> UNE JOURNÉE YEBA 7 h de formation par jour Inscription : 15 jours ouvrés avant Formation Déjeuner Formation 08h30 12h00 13h00 16h30
+> UNE JOURNÉE YEBA · 7 h · de formation par jour · Inscription : 15 jours ouvrés avant · Formation · Déjeuner · Formation · 08h30 · 12h00 · 13h00 · 16h30
 
 *(21 mots projetés)*
 
@@ -435,21 +435,21 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> La confiance se prouve. Condition de prise en charge OPCO QUALIOPI Actions de formation Qualitia · COFRAC NDA N° 04973676397 · Préfet de La Réunion Cet enregistrement ne vaut pas agrément de l'État.
+> La confiance · se prouve. · Condition de prise en charge OPCO · QUALIOPI · N° 25FOR02027.1 · Actions de formation · Qualitia (COFRAC) · NDA · N° 04973676397 · Préfet de La Réunion · Cet enregistrement ne vaut pas agrément de l'État.
 
-*(31 mots projetés)*
+*(33 mots projetés)*
 
 **2. Idée visuelle / mise en page** — Fond vidéo : anneaux d'un sceau doré qui tournent lentement ; deux panneaux en verre (Qualiopi, NDA) ; bandeau bénéfice OPCO. Fond vivant : `sceau` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Panneaux en fondu montant ; bandeau OPCO en dernier.
 
-**Notes orateur (60 s)** — Sources : CONFIG SYSTÈME (NDA, organisme certificateur, bloc-marque normalisé) et YEBA-DOC-13 : « l'organisme est certifié QUALIOPI, condition légale pour que votre formation soit prise en charge sur fonds publics ou mutualisés (code du travail, art. L.6316-1) ». Mention « Cet enregistrement ne vaut pas agrément de l'État » OBLIGATOIRE dès que le NDA est cité (art. L.6352-12). ⚠️ N° Qualiopi : 25FOR02027.1 dans Airtable, 25FOF02027.1 dans vos préférences → vérifier sur le certificat avant de l'afficher (il n'est pas projeté ici). ⚠️ Validité indiquée dans Airtable : 16/02/2027 → vérifier le renouvellement avant de vendre des sessions au-delà. Insérer le logo officiel Qualiopi fourni par Qualitia en respectant sa charte d'usage (mention de la catégorie d'actions).
+**Notes orateur (60 s)** — Sources : CONFIG SYSTÈME (NDA, organisme certificateur, bloc-marque normalisé) et YEBA-DOC-13 : « l'organisme est certifié QUALIOPI, condition légale pour que votre formation soit prise en charge sur fonds publics ou mutualisés (code du travail, art. L.6316-1) ». Mention « Cet enregistrement ne vaut pas agrément de l'État » OBLIGATOIRE dès que le NDA est cité (art. L.6352-12). N° Qualiopi 25FOR02027.1 confirmé par Aurélien LUMEKA le 10/11/2026 (identique à Airtable et au bloc-marque de la fiche programme). ⚠️ Validité indiquée dans Airtable : 16/02/2027 → vérifier le renouvellement avant de vendre des sessions au-delà. Insérer le logo officiel Qualiopi fourni par Qualitia en respectant sa charte d'usage (mention de la catégorie d'actions).
 
 ## S20 — La promesse · gabarit `avantages`
 
 **1. Titre & texte ultra-court**
 
-> Vous formez. On s'occupe du reste. Dossier OPCO monté avec vous Devis 5 jours ouvrés Paiement OPCO direct (subrogation)
+> Vous formez. · On s'occupe du reste. · Dossier OPCO — monté avec vous · Devis — 5 jours ouvrés · Paiement OPCO — direct (subrogation)
 
 *(19 mots projetés)*
 
@@ -463,7 +463,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Petit groupe. Grand suivi. 8 stagiaires maximum par session Attestations sous 15 jours Référent handicap parcours adaptés
+> Petit groupe. · Grand suivi. · 8 stagiaires — maximum par session · Attestations — sous 15 jours · Référent handicap — parcours adaptés
 
 *(17 mots projetés)*
 
@@ -477,7 +477,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> NOTRE LIGNE Souveraineté par défaut. Outils européens d'abord.
+> NOTRE LIGNE · Souveraineté par défaut. · Outils européens d'abord.
 
 *(8 mots projetés)*
 
@@ -491,7 +491,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> NOTRE PROMESSE Nous ne vendons pas la conformité. Nous vous aidons à la prouver.
+> NOTRE PROMESSE · Nous ne vendons pas la conformité. · Nous vous aidons à la prouver.
 
 *(14 mots projetés)*
 
@@ -507,7 +507,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Saison 1 · 7 épisodes Le casting Présentation Les racines Histoire La promesse L'offre YEBA L'atelier Nos formations Les outils Applications & sites web Le diagnostic Audit & devis Le final Mot de fin & offre soirée
+> Saison 1 · 7 épisodes · Le casting — Présentation · Les racines — Histoire · La promesse — L'offre YEBA · L'atelier — Nos formations · Les outils — Applications & sites web · Le diagnostic — Audit & devis · Le final — Mot de fin & offre soirée
 
 *(33 mots projetés)*
 
@@ -549,7 +549,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> NOTRE MÉTHODE On ne repart pas avec des notes. On repart avec un livrable.
+> NOTRE MÉTHODE · On ne repart pas avec des notes. · On repart avec un livrable.
 
 *(14 mots projetés)*
 
@@ -563,7 +563,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> 11 formations. 5 familles. IA générative au travail Copilot Microsoft 365 Agents IA IA souveraine Automatisation sans code Site internet IA Emailing IA Conformité RGPD & IA Act Séminaire dirigeants IA Vente & négociation Manager au quotidien Assistant IA perso
+> 11 formations. · 5 familles. · IA générative au travail · Copilot Microsoft 365 · Agents IA · IA souveraine · Automatisation sans code · Site internet IA · Emailing IA · Conformité RGPD & IA Act · Séminaire dirigeants IA · Vente & négociation · Manager au quotidien · Assistant IA perso
 
 *(38 mots projetés)*
 
@@ -577,7 +577,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Gagner du temps. En sécurité. Avec des preuves. IA générative au travail Demander Produire Prouver 2 jours · 14 h Inter
+> Gagner du temps. · En sécurité. Avec des preuves. · IA générative au travail · Demander · Produire · Prouver · 2 jours · 14 h · Inter
 
 *(20 mots projetés)*
 
@@ -591,7 +591,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Déléguer à l'IA. Sous contrôle humain. Agents IA Autonomie mesurée Traçabilité Arrêt d'urgence 2 jours · 14 h Avancé
+> Déléguer à l'IA. · Sous contrôle humain. · Agents IA · Autonomie mesurée · Traçabilité · Arrêt d'urgence · 2 jours · 14 h · Avancé
 
 *(18 mots projetés)*
 
@@ -605,7 +605,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Votre site. À voix haute. En 1 jour. Site internet IA Dicter Corriger Publier conforme 7 h Intra Sans code
+> Votre site. · À voix haute. En 1 jour. · Site internet IA · Dicter · Corriger · Publier conforme · 7 h · Intra · Sans code
 
 *(20 mots projetés)*
 
@@ -619,7 +619,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> Des emails qui obtiennent une réponse. Emailing IA Segmenter Rédiger avec l'IA Mesurer 1 jour · 7 h Intra RGPD inclus
+> Des emails · qui obtiennent une réponse. · Emailing IA · Segmenter · Rédiger avec l'IA · Mesurer · 1 jour · 7 h · Intra · RGPD inclus
 
 *(20 mots projetés)*
 
@@ -633,7 +633,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> DÉMO LIVE Un site internet. Décrit à voix haute. Devant vous.
+> DÉMO LIVE · Un site internet. · Décrit à voix haute. Devant vous.
 
 *(11 mots projetés)*
 
@@ -647,21 +647,21 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 **1. Titre & texte ultra-court**
 
-> PROCHAINEMENT À suivre… Assistant IA perso Nouvelle formation Espace en ligne Stagiaires & entreprises Émargement numérique QR code · tablette
+> PROCHAINEMENT · À suivre… · Assistant IA perso — Nouvelle formation
 
-*(18 mots projetés)*
+*(8 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Fond vidéo : balayage lumineux de bande-annonce ; trois cartes « bientôt ». Fond vivant : `bientot` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Fond vidéo : balayage lumineux de bande-annonce ; une grande carte « bientôt » alignée sur le titre. Fond vivant : `bientot` (Remotion, boucle muette ; image fixe en version sobre).
 
-**3. Animation / transition** — Cartes en fondu montant ; « À suivre… » scintille.
+**3. Animation / transition** — Carte en fondu montant ; « À suivre… » scintille.
 
-**Notes orateur (60 s)** — 1) FOR-0017 « Assistant IA perso : piloter son activité en parlant à son téléphone » — statut « En développement » dans le CATALOGUE (tâche de finalisation ouverte). 2) et 3) : éléments « Prévu » de STUDIO — FEUILLE DE ROUTE (portail apprenants / entreprises ; émargement numérique signé). ⚠️ À CONFIRMER par Aurélien avant projection : annoncer un service non tenu serait une pratique commerciale trompeuse (C. conso art. L.121-2). ⚖️ RGPD : un espace en ligne et un émargement numérique traitent des données de stagiaires → registre (YEBA-DOC-16), hébergement UE, durée de conservation.
+**Notes orateur (60 s)** — FOR-0017 « Assistant IA perso : piloter son activité en parlant à son téléphone » — statut « En développement » dans le CATALOGUE (tâche de finalisation ouverte). Espace en ligne et émargement numérique : NE PAS les annoncer tant qu'ils ne sont pas créés dans Airtable (décision d'Aurélien LUMEKA du 10/11/2026) ; une carte sera ajoutée ici à ce moment-là. Annoncer un service non tenu serait une pratique commerciale trompeuse (C. conso art. L.121-2). ⚖️ RGPD (le jour où ils existeront) : un espace en ligne et un émargement numérique traitent des données de stagiaires → registre (YEBA-DOC-16), hébergement UE, durée de conservation.
 
 ## S33 — L'atelier · gabarit `statement`
 
 **1. Titre & texte ultra-court**
 
-> ET MAINTENANT Former, c'est bien. Équiper, c'est mieux.
+> ET MAINTENANT · Former, c'est bien. · Équiper, c'est mieux.
 
 *(8 mots projetés)*
 

@@ -948,14 +948,17 @@ def g_bientot(sl, s, idx, ch):
     ch.entree(k, "fondu", 100, 600)
     t = titre(sl, M, 0.95, 9, 1.6, [[(s["titre"], 88, PAL["blanc"], F_GRAS)]], ancre=MSO_ANCHOR.MIDDLE)
     ch.entree(t, "fondu_montant", 400, 900)
-    cw, gap, y = 3.7, 0.32, 3.2
-    x0 = (W - (3 * cw + 2 * gap)) / 2
+    n = len(s["items"])
+    seule = n == 1  # une seule annonce confirmée : grande carte alignée sur le titre
+    cw, gap, y, ch_ = (6.4, 0, 3.2, 2.6) if seule else (3.7, 0.32, 3.2, 2.5)
+    x0 = M if seule else (W - (n * cw + (n - 1) * gap)) / 2
     a_confirmer = []
     for i, it in enumerate(s["items"]):
         x = x0 + i * (cw + gap)
-        carte = rect(sl, f"carte{i}", x, y, cw, 2.5, couleur=PAL["blanc"], opacite=6, contour=PAL["or"], opacite_contour=55, ep=1.25,
+        carte = rect(sl, f"carte{i}", x, y, cw, ch_, couleur=PAL["blanc"], opacite=6, contour=PAL["or"], opacite_contour=55, ep=1.25,
                      forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.08)
-        texte_forme(carte, [[(it["titre"], taille_qui_tient([it["titre"]], cw - 0.6, 1.2, 32, 26), PAL["blanc"], F_GRAS)], [(it["texte"], 24, PAL["or"], F_GRAS)]],
+        pt1, pt2 = corps_titre_texte(it["titre"], it["texte"], cw - 0.7, ch_ - 0.6, 48 if seule else 32, 26, 30 if seule else 24, 24)
+        texte_forme(carte, [[(it["titre"], pt1, PAL["blanc"], F_GRAS)], [(it["texte"], pt2, PAL["or"], F_GRAS)]],
                     align=PP_ALIGN.LEFT, marge=0.35)
         ch.entree(carte, "fondu_montant", 900 + i * 220, 700)
         if it.get("statut") == "a_confirmer":

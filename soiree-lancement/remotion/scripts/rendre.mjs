@@ -14,6 +14,7 @@ const REMOTION = path.resolve(ICI, "..");
 const RACINE = path.resolve(REMOTION, "..");
 const contenu = JSON.parse(fs.readFileSync(path.join(RACINE, "contenu", "slides.json"), "utf8"));
 const horaires = contenu.meta.horaires;
+const certifs = { qualiopi: contenu.meta.qualiopi.numero, nda: contenu.meta.nda.numero };
 const SORTIE = path.join(RACINE, "dist", "videos");
 fs.mkdirSync(SORTIE, { recursive: true });
 
@@ -43,7 +44,7 @@ if (!["generique.wav", "sting.wav"].every((f) => fs.existsSync(path.join(REMOTIO
 
 const travaux = [
   { nom: "preshow", id: "PreShow", props: { boucle: 600 }, muet: true, crf: 24, affiche: 300 },
-  { nom: "generique", id: "Generique", props: { horaires, avecSon: true }, crf: 20, affiche: 2300, fichier: "yeba-saison1-generique" },
+  { nom: "generique", id: "Generique", props: { horaires, certifs, avecSon: true }, crf: 20, affiche: 2300, fichier: "yeba-saison1-generique" },
   ...contenu.episodes.map((e) => ({
     nom: `ep-${e.numero}`,
     id: "Episode",

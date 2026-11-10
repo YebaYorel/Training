@@ -22,7 +22,7 @@ EXCEPTIONS_MOTS = {
 def _textes(x):
     if isinstance(x, str):
         return [x]
-    return [x[k] for k in ("titre", "nom", "texte", "label") if isinstance(x.get(k), str)]
+    return [" — ".join(x[k] for k in ("titre", "nom", "texte", "label") if isinstance(x.get(k), str))]
 
 
 def texte_visible(s):
@@ -31,7 +31,7 @@ def texte_visible(s):
     if L == "video":
         return ""
     if L == "agenda":
-        return " ".join([s["titre"]] + [f"{e['titre']} {e['sujet']}" for e in C["episodes"]])
+        return " · ".join([s["titre"]] + [f"{e['titre']} — {e['sujet']}" for e in C["episodes"]])
     m = [s.get(k, "") for k in ("kicker", "titre", "titre_or", "texte", "mention", "nom")]
     for cle in ("items", "puces", "chips", "branches", "cartes", "segments"):
         for x in s.get(cle, []):
@@ -49,7 +49,7 @@ def texte_visible(s):
         m += [h["debut"], h["pause_debut"], h["pause_fin"], h["fin"]]
     if L == "cover":
         m = [s["kicker"], s["titre"], s["titre_or"], f"{C['meta']['date']} · {C['meta']['lieu']} · La Réunion"]
-    return " ".join(t for t in m if t)
+    return " · ".join(t for t in m if t)
 
 
 def nb_mots(t):

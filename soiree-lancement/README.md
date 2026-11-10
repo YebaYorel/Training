@@ -4,7 +4,7 @@ Aurélien, Stan et Antho · public : dirigeants et cadres dirigeants de TPE-PME 
 
 La soirée se regarde **comme une série** : pré-générique en boucle pendant l'accueil, **générique d'ouverture de 80 s**
 (motion design + bande-son originale), puis 7 épisodes ouverts chacun par sa carte-titre animée. Épisodes 1 à 4
-construits (présentation, histoire, offre YEBA, formations : ≈ 45 min) ; épisodes 5 à 7 déjà en place, masqués
+construits (présentation, histoire, offre YEBA, formations : ≈ 36 min de temps de parole prévu) ; épisodes 5 à 7 déjà en place, masqués
 (applications & sites web, audit & devis, mot de fin avec offre soirée).
 
 ## Livrables
@@ -21,6 +21,7 @@ construits (présentation, histoire, offre YEBA, formations : ≈ 45 min) ; épi
 | `vba/YebaAnimations.bas` | Contrôle avant soirée, mode sobre / cinéma, suppression des post-it avant envoi | VBA |
 | `storyboard.md` | Storyboard épisode par épisode : texte, visuel, animation, notes, durée, mots projetés | — |
 | `felo/prompt_felo_slides.md` · `slides-com/plan_slides_com.md` | Prompt Felo (sans donnée personnelle) · plan de montage Slides.com | Felo · Slides.com |
+| `outils/generer_storyboard_page.py` → `dist/storyboard/` | Storyboard en page web (vignettes, générique 720p, notes sans tarifs) à partager avec l'équipe | — |
 
 ## Mode d'emploi (10 minutes)
 
@@ -50,14 +51,15 @@ Slides.com, PDF se mettent à jour ensemble ; `--videos` pour régénérer musiq
 ## Ce qui a été ajouté à votre demande
 
 - **Les offres** (S17) : inter (catalogue), intra (sur-mesure), séminaire dirigeants résidentiel (mis en avant),
-  implémentation IA (workflows, sites), conseil & audit RGPD · IA Act. Tarifs gardés dans les notes (épisode 6).
-- **Qualiopi + NDA** (S19 et générique) : « Actions de formation · Qualitia · COFRAC », NDA n° 04973676397 (Préfet
-  de La Réunion) avec la mention obligatoire « Cet enregistrement ne vaut pas agrément de l'État », et le bandeau
-  « Condition de prise en charge OPCO ».
+  implémentation IA (workflows, sites), conseil & audit RGPD · IA Act. Tarifs jamais projetés (décision du 10/11/2026).
+- **Qualiopi + NDA** (S19 et générique) : certificat Qualiopi n° 25FOR02027.1 (actions de formation, Qualitia, accrédité
+  COFRAC), NDA n° 04973676397 (Préfet de La Réunion) avec la mention obligatoire « Cet enregistrement ne vaut pas agrément
+  de l'État », et le bandeau « Condition de prise en charge OPCO ».
 - **Les horaires** (S18 et générique) : 08h30-12h00 / 13h00-16h30 = 7 h par jour, inscription 15 jours ouvrés avant.
 - **Les avantages** : ceux déjà garantis (S20-S21 : dossier OPCO monté avec vous, devis sous 5 jours ouvrés, paiement
   OPCO direct en subrogation, 8 stagiaires maximum, attestations sous 15 jours, référent handicap) et **ceux à venir**
-  (S32 « À suivre… » : Assistant IA perso, espace en ligne, émargement numérique — les deux derniers à confirmer).
+  (S32 « À suivre… » : Assistant IA perso). L'espace en ligne et l'émargement numérique ne sont pas annoncés : ils seront
+  ajoutés quand ils existeront dans Airtable (décision du 10/11/2026).
 - **La vidéo de motion design** : le générique, 7 cartes d'épisode, 9 fonds vivants, une boucle d'accueil.
 
 ## Bible motion design (tenue partout)
@@ -88,7 +90,8 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 | Générique, épisodes, fonds | IA Act : non concerné | Fabriqués par programme (Remotion), sans IA générative ; musique synthétisée |
 | Photos de Stan et Antho (initiales pour l'instant) | RGPD + droit à l'image | Accord écrit avant projection ou diffusion |
 | Liste d'invités, émargement de la soirée | RGPD art. 5, 6, 13 | Finalité, base légale, durée de conservation, mention d'information |
-| Espace en ligne et émargement numérique annoncés (S32) | RGPD art. 5, 28, 30 ; C. conso L.121-2 | Hébergement UE, registre (YEBA-DOC-16), et ne les annoncer que s'ils sont décidés |
+| Espace en ligne et émargement numérique (à venir, non annoncés) | RGPD art. 5, 28, 30 ; C. conso L.121-2 | Le jour où ils existent : hébergement UE, registre (YEBA-DOC-16), durée de conservation |
+| Storyboard en ligne (page privée claude.ai, hors UE) | RGPD (minimisation) | Aucun tarif, aucune coordonnée, aucune donnée de client ; partage limité à l'équipe |
 | « Souveraineté par défaut » (S22) | RGPD chap. V | Vrai une fois la migration vers des outils UE terminée (Brevo, Baserow/OVHcloud) |
 | Démo live (S31) | RGPD + IA Act art. 50 | Entreprise fictive ou accord écrit ; annoncer que le site est généré par IA |
 | Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients ou de stagiaires |
@@ -97,8 +100,8 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 ## À confirmer par vous
 
 - [ ] Date et lieu (S01) · rôles de Stan et d'Antho + photos (S04)
-- [ ] N° Qualiopi : **25FOR02027.1** (Airtable) ou **25FOF02027.1** (vos préférences) → vérifier sur le certificat
-      (non projeté pour l'instant) ; validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
-- [ ] « Espace en ligne » et « Émargement numérique » (S32, éléments « Prévu ») : les annoncer ou non
+- [ ] Certificat Qualiopi 25FOR02027.1 (confirmé le 10/11/2026) : validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
 - [ ] Le logo officiel Qualiopi (fourni par Qualitia) peut remplacer le mot « QUALIOPI » en S19, avec sa mention d'usage
-- [ ] Licence Remotion : gratuite jusqu'à 3 salariés, payante au-delà (vérifier sur remotion.pro)
+- [ ] Licence Remotion : gratuite jusqu'à 3 salariés, licence entreprise au-delà → effectif à confirmer
+- [x] Prix : jamais projetés, ni à l'épisode 3 ni à l'épisode 6 (décision du 10/11/2026) ; repères oraux dans les notes de S17
+- [x] FOR-0011 : 2 jours (14 h) — fiche Airtable remise en cohérence le 10/11/2026 (sauvegarde : `../airtable-sauvegardes/`)

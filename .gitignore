@@ -26,3 +26,6 @@ soiree-lancement/remotion/public/audio/
 
 # Source temporaire du PDF (vidéos remplacées par leurs images)
 soiree-lancement/dist/*_IMAGES.pptx
+
+# Page storyboard régénérable (outils/generer_storyboard_page.py)
+soiree-lancement/dist/storyboard/

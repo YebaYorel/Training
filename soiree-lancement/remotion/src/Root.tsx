@@ -6,11 +6,12 @@ import { Ambiance, FondBaobab, FondBientot, FondCover, FondFlux, FondJournee, Fo
 
 // Valeurs par défaut (Studio). Le script scripts/rendre.mjs injecte les vraies valeurs depuis contenu/slides.json.
 const HORAIRES = { debut: "08h30", pause_debut: "12h00", pause_fin: "13h00", fin: "16h30", heures_par_jour: 7 };
+const CERTIFS = { qualiopi: "25FOR02027.1", nda: "04973676397" };
 const V = { fps: 30, width: 1920, height: 1080 };
 
 export const RemotionRoot: React.FC = () => (
   <>
-    <Composition id="Generique" component={Generique} durationInFrames={2400} {...V} defaultProps={{ horaires: HORAIRES, avecSon: true }} />
+    <Composition id="Generique" component={Generique} durationInFrames={2400} {...V} defaultProps={{ horaires: HORAIRES, certifs: CERTIFS, avecSon: true }} />
     <Composition
       id="Episode"
       component={Episode}

@@ -3,7 +3,7 @@ import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remo
 import { NUIT, Polices } from "./charte";
 import { BalayageOr, Bandes, Eclair, Grain, Vignette } from "./lib/calques";
 import { DOUX, p, secousse } from "./lib/motion";
-import { Baobab, Chemin, ColdOpen, Confiance, Final, Formations, Ici, Metiers, Yeba } from "./generique/Scenes";
+import { Baobab, Certifs, Chemin, ColdOpen, Confiance, Final, Formations, Ici, Metiers, Yeba } from "./generique/Scenes";
 import T from "./timeline.json";
 
 export type Horaires = { debut: string; pause_debut: string; pause_fin: string; fin: string; heures_par_jour: number };
@@ -12,7 +12,7 @@ const SC = T.scenes as unknown as Record<string, [number, number]>;
 const seq = (nom: string) => ({ from: SC[nom][0], durationInFrames: SC[nom][1] - SC[nom][0] });
 
 /** « YEBA — Saison 1 » : générique d'ouverture de 80 s, bande-son synchronisée sur timeline.json. */
-export const Generique: React.FC<{ horaires: Horaires; avecSon?: boolean }> = ({ horaires, avecSon = true }) => {
+export const Generique: React.FC<{ horaires: Horaires; certifs: Certifs; avecSon?: boolean }> = ({ horaires, certifs, avecSon = true }) => {
   const f = useCurrentFrame();
   const choc = secousse(f, T.impacts);
   const [o0, o1] = T.bandes_ouverture;
@@ -29,7 +29,7 @@ export const Generique: React.FC<{ horaires: Horaires; avecSon?: boolean }> = ({
         <Sequence {...seq("chemin")}><Chemin /></Sequence>
         <Sequence {...seq("metiers")}><Metiers /></Sequence>
         <Sequence {...seq("formations")}><Formations /></Sequence>
-        <Sequence {...seq("confiance")}><Confiance horaires={horaires} /></Sequence>
+        <Sequence {...seq("confiance")}><Confiance horaires={horaires} certifs={certifs} /></Sequence>
         <Sequence {...seq("final")}><Final /></Sequence>
       </AbsoluteFill>
       {/* Seul reflet global : au passage ColdOpen → Ici, quand AUCUN texte n'est à l'écran. */}

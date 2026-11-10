@@ -305,7 +305,7 @@ def l_bientot(s):
     return f"""
   <p class="kicker" style="left:96px;top:60px">{e(s['kicker'])}</p>
   <h2 class="titre-bientot" data-id="titre">{e(s['titre'])}</h2>
-  <div class="bientots">{cartes}</div>{logo()}"""
+  <div class="bientots{' un' if len(s['items']) == 1 else ''}">{cartes}</div>{logo()}"""
 
 
 LAYOUTS = {
@@ -482,6 +482,7 @@ html,body{background:var(--noir)}
 .bientots{left:84px;right:84px;top:384px;display:flex;gap:38px}
 .carte-bientot{position:relative!important;flex:1;height:300px;background:var(--verre);border:1.5px solid rgba(201,168,76,.55);border-radius:30px;padding:0 42px;display:flex;flex-direction:column;justify-content:center}
 .carte-bientot strong{font-weight:800;font-size:53px;line-height:1.15}.carte-bientot span{color:var(--or);font-weight:800;font-size:40px;margin-top:10px}
+.bientots.un{right:auto;width:768px}.bientots.un .carte-bientot{height:312px}.bientots.un strong{font-size:80px}.bientots.un span{font-size:50px}
 .present .entree{animation:apparait .7s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}
 .present .entree.zoom{animation-name:zoome}@keyframes zoome{from{opacity:0;transform:scale(.82)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.mot-a-mot{opacity:1}}
