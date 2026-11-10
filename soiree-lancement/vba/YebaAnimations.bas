@@ -1,38 +1,148 @@
 Attribute VB_Name = "YebaAnimations"
 ' =====================================================================================
-'  YEBA FORMATIONS — Soirée de lancement
-'  Module VBA PowerPoint : Morphose + animations d'entrée automatiques
+'  YEBA FORMATIONS — « YEBA — Saison 1 » (soirée de lancement)
+'  Module VBA PowerPoint v2 : contrôle, mode sobre / cinéma, nettoyage avant envoi
 '
-'  INSTALLATION (PowerPoint Windows ou Mac, Microsoft 365 / 2019 et plus pour la Morphose) :
+'  IMPORTANT (v2) : les animations, la Morphose, la lecture automatique des vidéos et l'avance
+'  automatique après le générique sont DÉJÀ dans le fichier (générés par pptx/build_pptx.py).
+'  Cette macro ne les efface jamais. Elle sert à :
+'    • YebaVerifier            : rapport complet (Morphose, vidéos, textes < 24 pt, texte alternatif,
+'                                 post-it « à confirmer », slides masquées) — à lancer avant la soirée ;
+'    • YebaModeSobre           : fonds vidéo figés sur leur image (PC modeste, public sensible au mouvement) ;
+'    • YebaModeCinema          : fonds vidéo relancés en boucle, muets ;
+'    • YebaRetirerPostIt       : supprime les post-it rouges hors champ avant d'envoyer le fichier ;
+'    • YebaMorphosePartout     : remet la Morphose sur les slides ajoutées à la main (sans toucher
+'                                 à l'avance automatique des vidéos).
+'
+'  INSTALLATION (Microsoft 365 / PowerPoint 2019 et plus pour la Morphose) :
 '    1. Ouvrir dist/YEBA_Soiree_Lancement.pptx
 '    2. Alt + F11  →  Fichier  →  Importer un fichier…  →  choisir ce fichier .bas
-'    3. Alt + F8   →  lancer « YebaToutAppliquer »
-'    4. Enregistrer sous  →  Présentation PowerPoint (*.pptx)  (la macro n'a pas besoin
-'       d'être conservée : les effets restent dans le fichier)
-'
-'  PRINCIPE : les effets sont posés d'après le NOM des objets (volet Sélection, Alt + F10),
-'  noms générés par pptx/build_pptx.py. Les objets « !!xxx » présents sur deux slides
-'  consécutives sont animés par la Morphose : on ne leur ajoute pas d'effet d'entrée.
+'    3. Alt + F8   →  lancer « YebaVerifier »
+'    4. Enregistrer au format .pptx (la macro n'a pas besoin d'être conservée)
 '
 '  Aucune donnée n'est envoyée hors de votre poste : tout s'exécute localement.
 ' =====================================================================================
 
-Private Const DELAI_ECHELON As Single = 0.2
+Private Const NOM_FOND As String = "fond-video"
+Private Const NOM_POSTIT As String = "a-confirmer"
 
-' ------------------------------------------------------------------ point d'entrée
-Public Sub YebaToutAppliquer()
-    YebaMorphosePartout
-    YebaAppliquerAnimations
-    YebaVideoAutomatique
-    MsgBox "Morphose et animations appliquées sur " & ActivePresentation.Slides.Count & " slides." & vbCrLf & _
-           "Lancez « YebaVerifierAccessibilite » pour contrôler les tailles de texte.", vbInformation, "YEBA FORMATIONS"
+' ------------------------------------------------------------------ rapport de contrôle
+Public Sub YebaVerifier()
+    Dim sld As Slide, shp As Shape, i As Long
+    Dim petits As Long, sansAlt As Long, postits As Long, masquees As Long, videos As Long, sansMorph As Long
+    Dim detail As String
+
+    For Each sld In ActivePresentation.Slides
+        If sld.SlideShowTransition.Hidden = msoTrue Then masquees = masquees + 1
+        If Not EstMorphose(sld.SlideShowTransition.EntryEffect) Then sansMorph = sansMorph + 1
+        For Each shp In sld.Shapes
+            If shp.Name = NOM_POSTIT Then
+                postits = postits + 1
+                detail = detail & "• Slide " & sld.SlideIndex & " : post-it « à confirmer »" & vbCrLf
+            End If
+            If shp.Type = msoMedia Then videos = videos + 1
+            ' Texte alternatif : obligatoire sur les images porteuses de sens (calques décoratifs exclus)
+            If shp.Type = msoPicture Then
+                If Len(Trim$(shp.AlternativeText)) = 0 And Not EstDecoratif(shp.Name) Then
+                    sansAlt = sansAlt + 1
+                    detail = detail & "• Slide " & sld.SlideIndex & " : image « " & shp.Name & " » sans texte alternatif" & vbCrLf
+                End If
+            End If
+            ' Lisibilité : aucun texte projeté sous 24 pt (public malvoyant, charte YEBA)
+            If shp.HasTextFrame And shp.Name <> NOM_POSTIT Then
+                If shp.TextFrame.HasText Then
+                    For i = 1 To shp.TextFrame.TextRange.Runs.Count
+                        With shp.TextFrame.TextRange.Runs(i)
+                            If Len(Trim$(.Text)) > 0 And .Font.Size < 20 Then
+                                petits = petits + 1
+                                detail = detail & "• Slide " & sld.SlideIndex & " : « " & Left$(.Text, 28) & " » en " & .Font.Size & " pt" & vbCrLf
+                            End If
+                        End With
+                    Next i
+                End If
+            End If
+        Next shp
+    Next sld
+
+    MsgBox "Slides : " & ActivePresentation.Slides.Count & " (dont " & masquees & " masquées : épisodes 5 à 7)" & vbCrLf & _
+           "Vidéos intégrées : " & videos & vbCrLf & _
+           "Slides sans Morphose : " & sansMorph & IIf(sansMorph > 0, "  → lancer YebaMorphosePartout", "") & vbCrLf & _
+           "Textes trop petits : " & petits & vbCrLf & _
+           "Images sans texte alternatif : " & sansAlt & vbCrLf & _
+           "Post-it « à confirmer » : " & postits & IIf(postits > 0, "  → à traiter puis YebaRetirerPostIt", "") & vbCrLf & vbCrLf & _
+           IIf(Len(detail) > 0, detail, "Rien à signaler."), _
+           IIf(petits + sansAlt + postits + sansMorph = 0, vbInformation, vbExclamation), "YEBA — contrôle avant soirée"
 End Sub
 
-' ------------------------------------------------------------------ transitions
+' ------------------------------------------------------------------ fonds vidéo
+' Mode sobre : chaque fond vidéo reste affiché sur son image fixe et ne se lance plus.
+Public Sub YebaModeSobre()
+    Dim n As Long
+    n = ReglerFonds(False)
+    MsgBox n & " fond(s) vidéo figé(s) sur leur image. Le générique, les épisodes et les clips restent inchangés.", _
+           vbInformation, "YEBA — mode sobre"
+End Sub
+
+' Mode cinéma : chaque fond vidéo démarre seul, en boucle, sans son.
+Public Sub YebaModeCinema()
+    Dim n As Long
+    n = ReglerFonds(True)
+    MsgBox n & " fond(s) vidéo en lecture automatique, en boucle et muets.", vbInformation, "YEBA — mode cinéma"
+End Sub
+
+Private Function ReglerFonds(lecture As Boolean) As Long
+    Dim sld As Slide, shp As Shape, i As Long, seq As Sequence
+    For Each sld In ActivePresentation.Slides
+        For Each shp In sld.Shapes
+            If shp.Name = NOM_FOND And shp.Type = msoMedia Then
+                ReglerFonds = ReglerFonds + 1
+                On Error Resume Next
+                shp.MediaFormat.Muted = True
+                On Error GoTo 0
+                If lecture Then
+                    With shp.AnimationSettings.PlaySettings
+                        .PlayOnEntry = msoTrue
+                        .LoopUntilStopped = msoTrue
+                        .HideWhileNotPlaying = msoFalse
+                    End With
+                Else
+                    Set seq = sld.TimeLine.MainSequence
+                    For i = seq.Count To 1 Step -1
+                        If seq(i).Shape.Name = NOM_FOND Then seq(i).Delete
+                    Next i
+                    With shp.AnimationSettings.PlaySettings
+                        .PlayOnEntry = msoFalse
+                        .LoopUntilStopped = msoFalse
+                        .HideWhileNotPlaying = msoFalse
+                    End With
+                End If
+            End If
+        Next shp
+    Next sld
+End Function
+
+' ------------------------------------------------------------------ avant envoi du fichier
+Public Sub YebaRetirerPostIt()
+    Dim sld As Slide, i As Long, n As Long
+    For Each sld In ActivePresentation.Slides
+        For i = sld.Shapes.Count To 1 Step -1
+            If sld.Shapes(i).Name = NOM_POSTIT Then
+                sld.Shapes(i).Delete
+                n = n + 1
+            End If
+        Next i
+    Next sld
+    MsgBox n & " post-it supprimé(s).", vbInformation, "YEBA"
+End Sub
+
+' ------------------------------------------------------------------ Morphose
+' Remet la Morphose (repli : fondu) sans toucher à l'avance automatique des slides vidéo.
 Public Sub YebaMorphosePartout()
-    Dim sld As Slide
+    Dim sld As Slide, garderAuto As Boolean, delai As Single
     For Each sld In ActivePresentation.Slides
         With sld.SlideShowTransition
+            garderAuto = (.AdvanceOnTime = msoTrue)
+            delai = .AdvanceTime
             On Error Resume Next
             If ContientTexte(sld, "!!yeba", "Y") Then
                 .EntryEffect = ppEffectMorphByChar      ' YEBA → Y : les lettres E, B, A s'effacent
@@ -44,171 +154,27 @@ Public Sub YebaMorphosePartout()
                 .EntryEffect = ppEffectFadeSmoothly
             End If
             On Error GoTo 0
-            .Duration = 1.5
             .AdvanceOnClick = msoTrue
+            If garderAuto Then
+                .AdvanceOnTime = msoTrue
+                .AdvanceTime = delai
+            End If
         End With
     Next sld
-End Sub
-
-' ------------------------------------------------------------------ animations d'entrée
-Public Sub YebaAppliquerAnimations()
-    Dim sld As Slide, shp As Shape, seq As Sequence
-    For Each sld In ActivePresentation.Slides
-        Set seq = sld.TimeLine.MainSequence
-        ViderSequence seq
-        For Each shp In sld.Shapes
-            AnimerForme sld, seq, shp
-        Next shp
-    Next sld
-End Sub
-
-Public Sub YebaRetirerAnimations()
-    Dim sld As Slide
-    For Each sld In ActivePresentation.Slides
-        ViderSequence sld.TimeLine.MainSequence
-    Next sld
-End Sub
-
-Private Sub AnimerForme(sld As Slide, seq As Sequence, shp As Shape)
-    Dim nom As String, e As Effect
-    nom = shp.Name
-
-    ' Objets pris en charge par la Morphose ou décoratifs : aucun effet d'entrée
-    If Commence(nom, "!!logo") Or Commence(nom, "!!ag") Or Commence(nom, "!!marqueur") _
-       Or Commence(nom, "!!barre") Or Commence(nom, "!!tuile") Or Commence(nom, "!!code") _
-       Or Commence(nom, "!!droite") Or Commence(nom, "!!embleme") Or Commence(nom, "!!yeba") _
-       Or Commence(nom, "guillemets") Or Commence(nom, "legende") Or Commence(nom, "!!filigrane") _
-       Or Commence(nom, "!!video") Or Commence(nom, "meta") Then Exit Sub
-
-    Select Case True
-        Case Commence(nom, "kicker"), Commence(nom, "famille")
-            Ajouter seq, shp, msoAnimEffectFade, msoAnimTriggerAfterPrevious, 0, 0.5
-
-        Case Commence(nom, "!!titre")
-            ' Titre en deux temps : ligne blanche puis ligne or (effet « chute » de la phrase)
-            Set e = Ajouter(seq, shp, msoAnimEffectFade, msoAnimTriggerAfterPrevious, 0.1, 0.7, msoAnimateTextByFirstLevel)
-            EnchainerParagraphes seq, shp, 0.6
-
-        Case Commence(nom, "!!carte"), Commence(nom, "!!badge"), Commence(nom, "!!format-")
-            Ajouter seq, shp, msoAnimEffectAscend, msoAnimTriggerAfterPrevious, DELAI_ECHELON, 0.5
-        Case Commence(nom, "!!photo"), Commence(nom, "nom"), Commence(nom, "role")
-            Ajouter seq, shp, msoAnimEffectFade, msoAnimTriggerWithPrevious, 0, 0.5
-
-        Case Commence(nom, "!!num")
-            ' Valeurs : une par clic, pour laisser l'orateur la commenter
-            Ajouter seq, shp, msoAnimEffectZoom, msoAnimTriggerOnPageClick, 0, 0.4
-        Case Commence(nom, "!!val")
-            Ajouter seq, shp, msoAnimEffectFade, msoAnimTriggerWithPrevious, 0.1, 0.5
-
-        Case Commence(nom, "!!pilier"), Commence(nom, "detail"), Commence(nom, "!!trait")
-            Ajouter seq, shp, msoAnimEffectAscend, msoAnimTriggerAfterPrevious, 0.05, 0.4
-
-        Case Commence(nom, "!!ligne")
-            Set e = Ajouter(seq, shp, msoAnimEffectWipe, msoAnimTriggerAfterPrevious, 0.2, 1.4)
-            e.EffectParameters.Direction = msoAnimDirectionLeft
-        Case Commence(nom, "!!jalon"), Commence(nom, "date"), Commence(nom, "etape")
-            Ajouter seq, shp, msoAnimEffectFade, msoAnimTriggerAfterPrevious, 0.05, 0.35
-
-        Case Commence(nom, "!!baobab")
-            Set e = Ajouter(seq, shp, msoAnimEffectWipe, msoAnimTriggerAfterPrevious, 0.2, 1.6)
-            e.EffectParameters.Direction = msoAnimDirectionBottom
-        Case Commence(nom, "illustration")
-            Ajouter seq, shp, msoAnimEffectWheel, msoAnimTriggerAfterPrevious, 0.2, 1.2
-
-        Case Commence(nom, "puce")
-            Ajouter seq, shp, msoAnimEffectFly, msoAnimTriggerAfterPrevious, 0.1, 0.45
-        Case Commence(nom, "chip")
-            Ajouter seq, shp, msoAnimEffectZoom, msoAnimTriggerAfterPrevious, 0.05, 0.3
-
-        Case Commence(nom, "branche"), Commence(nom, "sous-"), Commence(nom, "mots"), _
-             Commence(nom, "traduction"), Commence(nom, "explication"), Commence(nom, "titre-droite")
-            Ajouter seq, shp, msoAnimEffectFade, msoAnimTriggerAfterPrevious, 0.3, 0.6
-
-        Case Commence(nom, "!!live")
-            ' Pastille « LIVE » : pulsation continue
-            Set e = Ajouter(seq, shp, msoAnimEffectFlashBulb, msoAnimTriggerAfterPrevious, 0, 0.8)
-            e.Timing.RepeatCount = 30
-    End Select
-End Sub
-
-' ------------------------------------------------------------------ vidéo d'intro
-Public Sub YebaVideoAutomatique()
-    Dim sld As Slide, shp As Shape
-    For Each sld In ActivePresentation.Slides
-        For Each shp In sld.Shapes
-            If Commence(shp.Name, "!!video") Then
-                With shp.AnimationSettings.PlaySettings
-                    .PlayOnEntry = msoTrue
-                    ' Seule la vidéo d'attente (Remotion) tourne en boucle ; les clips se jouent une fois
-                    .LoopUntilStopped = IIf(shp.Name = "!!video-intro", msoTrue, msoFalse)
-                    .HideWhileNotPlaying = msoFalse
-                End With
-            End If
-        Next shp
-    Next sld
-End Sub
-
-' ------------------------------------------------------------------ accessibilité
-' Signale tout texte visible inférieur à 24 pt (public malvoyant : charte YEBA).
-Public Sub YebaVerifierAccessibilite()
-    Dim sld As Slide, shp As Shape, i As Long, rapport As String, n As Long
-    For Each sld In ActivePresentation.Slides
-        For Each shp In sld.Shapes
-            If shp.HasTextFrame Then
-                If shp.TextFrame.HasText Then
-                    For i = 1 To shp.TextFrame.TextRange.Runs.Count
-                        With shp.TextFrame.TextRange.Runs(i)
-                            If Len(Trim(.Text)) > 0 And .Font.Size < 24 Then
-                                n = n + 1
-                                rapport = rapport & "Slide " & sld.SlideIndex & " — « " & Left(.Text, 30) & " » : " & .Font.Size & " pt" & vbCrLf
-                            End If
-                        End With
-                    Next i
-                End If
-            End If
-        Next shp
-    Next sld
-    If n = 0 Then
-        MsgBox "Aucun texte sous 24 pt. Présentation conforme à la règle de lisibilité YEBA.", vbInformation, "Accessibilité"
-    Else
-        MsgBox n & " passage(s) sous 24 pt :" & vbCrLf & vbCrLf & rapport, vbExclamation, "Accessibilité"
-    End If
+    MsgBox "Morphose vérifiée sur " & ActivePresentation.Slides.Count & " slides.", vbInformation, "YEBA"
 End Sub
 
 ' ------------------------------------------------------------------ outils
-Private Function Ajouter(seq As Sequence, shp As Shape, effet As MsoAnimEffect, declencheur As MsoAnimTriggerType, _
-                         delai As Single, duree As Single, Optional niveau As MsoAnimateByLevel = msoAnimateLevelNone) As Effect
-    Dim e As Effect
-    Set e = seq.AddEffect(Shape:=shp, effectId:=effet, Level:=niveau, trigger:=declencheur)
-    e.Timing.Duration = duree
-    e.Timing.TriggerDelayTime = delai
-    Set Ajouter = e
+Private Function EstMorphose(effet As PpEntryEffect) As Boolean
+    On Error Resume Next
+    EstMorphose = (effet = ppEffectMorphByObject Or effet = ppEffectMorphByWord Or effet = ppEffectMorphByChar)
+    If Err.Number <> 0 Then EstMorphose = False
+    On Error GoTo 0
 End Function
 
-' Les paragraphes suivants d'un titre s'enchaînent automatiquement (pas de clic supplémentaire)
-Private Sub EnchainerParagraphes(seq As Sequence, shp As Shape, delai As Single)
-    Dim i As Long, premier As Boolean
-    premier = True
-    For i = 1 To seq.Count
-        If seq(i).Shape.Name = shp.Name Then
-            If Not premier Then
-                seq(i).Timing.TriggerType = msoAnimTriggerAfterPrevious
-                seq(i).Timing.TriggerDelayTime = delai
-            End If
-            premier = False
-        End If
-    Next i
-End Sub
-
-Private Sub ViderSequence(seq As Sequence)
-    Dim i As Long
-    For i = seq.Count To 1 Step -1
-        seq(i).Delete
-    Next i
-End Sub
-
-Private Function Commence(texte As String, prefixe As String) As Boolean
-    Commence = (Left$(texte, Len(prefixe)) = prefixe)
+Private Function EstDecoratif(nom As String) As Boolean
+    EstDecoratif = (nom = "!!etoiles" Or nom = "!!halo" Or nom = "vignette" Or nom = "fond-image" _
+                    Or Left$(nom, 4) = "!!av" Or Right$(nom, 6) = "-picto")
 End Function
 
 Private Function ContientTexte(sld As Slide, nom As String, valeur As String) As Boolean

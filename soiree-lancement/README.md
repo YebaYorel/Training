@@ -1,83 +1,104 @@
-# Soirée de lancement — YEBA FORMATIONS
+# « YEBA — Saison 1 » · soirée de lancement YEBA FORMATIONS
 
-Aurélien, Stan et Antho · public : dirigeants et cadres dirigeants triés sur le volet · 1 h à 1 h 15.
+Aurélien, Stan et Antho · public : dirigeants et cadres dirigeants de TPE-PME triés sur le volet · 1 h à 1 h 15.
 
-Parties traitées : **Présentation → Histoire → Offre YEBA → Formations** (29 slides visibles, ≈ 43 min).
-Parties à construire (slides déjà créées mais masquées) : Applications & sites web · Audit & devis · Mot de fin avec offre soirée.
+La soirée se regarde **comme une série** : pré-générique en boucle pendant l'accueil, **générique d'ouverture de 80 s**
+(motion design + bande-son originale), puis 7 épisodes ouverts chacun par sa carte-titre animée. Épisodes 1 à 4
+construits (présentation, histoire, offre YEBA, formations : ≈ 45 min) ; épisodes 5 à 7 déjà en place, masqués
+(applications & sites web, audit & devis, mot de fin avec offre soirée).
 
 ## Livrables
 
 | Fichier | Rôle | Outil |
 |---|---|---|
-| `dist/YEBA_Soiree_Lancement.pptx` | **La présentation**, Morphose incluse, notes orateur complètes | python-pptx |
-| `vba/YebaAnimations.bas` | 1 clic : Morphose + animations d'entrée + vidéo auto + contrôle accessibilité | VBA |
-| `revealjs/index.html` | Version web hors ligne (Auto-Animate), vue orateur avec touche S | Reveal.js |
-| `dist/yeba-intro.mp4` | Vidéo d'ouverture 10 s (déjà insérée en slide 0 du PPTX) | Remotion |
-| `dist/yeba-transition-formations.mp4` | Transition « 04 · Nos formations » (compte-tours) | Remotion |
-| `assets/videos/clip-*.mp4` | 4 clips fournis (Grok), passés en 1920×1080 et volume harmonisé, intégrés au PPTX | — |
-| `dist/YEBA_Soiree_Lancement.pdf` | Export pour Slides.com / impression | LibreOffice |
-| `slides-com/plan_slides_com.md` | Plan de montage Slides.com | Slides.com |
-| `felo/prompt_felo_slides.md` | Prompt prêt à coller (sans donnée personnelle) | Felo Slides |
-| `storyboard.md` | Storyboard slide par slide : texte, visuel, animation, notes | — |
+| `dist/YEBA_Soiree_Lancement.pptx` | **La présentation « cinéma »** : animations natives, Morphose, fonds vidéo vivants, générique et épisodes en lecture automatique, notes orateur | python-pptx |
+| `dist/YEBA_Soiree_Lancement_SOBRE.pptx` | Même présentation, fonds en **images fixes** (PC modeste, public sensible au mouvement) | python-pptx |
+| `dist/videos/yeba-saison1-generique.mp4` | **Le générique** : 80 s, 1080p, son −16 LUFS (offres, Qualiopi, NDA, horaires, 11 formations) | Remotion |
+| `dist/videos/yeba-episode-1…7.mp4` | Cartes-titres d'épisode (4,5 s, sting sonore) | Remotion |
+| `dist/videos/yeba-preshow.mp4`, `fond-*.mp4` | Boucle d'accueil et 9 fonds vivants (sans son) | Remotion |
+| `dist/YEBA_Soiree_Lancement.pdf` | Export figé (Slides.com, impression, envoi) | LibreOffice |
+| `revealjs/index.html` | Version web hors ligne, jumelle du PPTX (Auto-Animate, fonds vidéo, touche S = notes) | Reveal.js |
+| `vba/YebaAnimations.bas` | Contrôle avant soirée, mode sobre / cinéma, suppression des post-it avant envoi | VBA |
+| `storyboard.md` | Storyboard épisode par épisode : texte, visuel, animation, notes, durée, mots projetés | — |
+| `felo/prompt_felo_slides.md` · `slides-com/plan_slides_com.md` | Prompt Felo (sans donnée personnelle) · plan de montage Slides.com | Felo · Slides.com |
 
-## Mode d'emploi (5 minutes)
+## Mode d'emploi (10 minutes)
 
-1. Installer la police **Montserrat** (fichiers `assets/fonts/*.ttf`, licence OFL) : double-clic → Installer.
-2. Ouvrir `dist/YEBA_Soiree_Lancement.pptx`.
-3. `Alt + F11` → Fichier → Importer → `vba/YebaAnimations.bas` ; `Alt + F8` → **YebaToutAppliquer**.
-4. Enregistrer en `.pptx`. Diaporama en **mode Présentateur** : les notes indiquent quoi dire et combien de temps.
+1. Installer **Montserrat** (`assets/fonts/*.ttf`, licence OFL) : double-clic → Installer.
+2. Ouvrir `dist/YEBA_Soiree_Lancement.pptx` avec **Microsoft 365 ou PowerPoint 2019+** (Morphose ; sinon fondu).
+3. Facultatif : `Alt + F11` → Importer `vba/YebaAnimations.bas` → `Alt + F8` → **YebaVerifier** (rapport complet).
+4. Les post-it **rouges à droite des slides** (hors champ, jamais projetés) listent ce qu'il reste à confirmer.
+5. Diaporama en **mode Présentateur**. Le générique et les cartes d'épisode avancent seuls ; tout le reste au clic.
+6. **Répétition sur place** : son du générique (vidéoprojecteur + enceintes), fluidité des fonds vidéo sur le PC de
+   la salle. Si ça saccade : `YebaModeSobre` ou la version `_SOBRE`.
 
-Modifier un texte : éditer `contenu/slides.json`, puis `bash build_all.sh` — le PPTX, le HTML, le storyboard,
-le prompt Felo et le plan Slides.com se mettent à jour ensemble.
+Modifier un texte : éditer `contenu/slides.json`, puis `bash build_all.sh` (PPTX × 2, HTML, storyboard, Felo,
+Slides.com, PDF se mettent à jour ensemble ; `--videos` pour régénérer musique et vidéos).
 
-## Les 4 clips vidéo : où et pourquoi
+## Déroulé de la saison
 
-| Clip | Place | Rôle |
+| Épisode | Contenu | Moments forts |
 |---|---|---|
-| Introduction (livre qui s'ouvre) | Slide 2, juste avant le titre | « Top départ » quand les lumières baissent ; le livre annonce le fil rouge : le savoir |
-| Intelligence Artificielle (sphère néon) | Juste avant « Vos équipes utilisent déjà l'IA ? » | Met la salle dans l'ambiance IA, la question qui suit la ramène à son entreprise |
-| AI (lettres dorées) | Ouverture de « Nos formations », après l'agenda | L'or fait le lien avec la charte et le « garage YEBA » |
-| Conclusion (anneau holographique) | Ouverture du « Mot de fin » (slide masquée tant que la partie n'est pas construite) | Annonce l'offre spéciale soirée |
+| Accueil | Pré-show en boucle | Logo, champ d'étoiles, « la soirée commence dans quelques instants » |
+| Générique | 80 s : La Réunion → YEBA → le baobab → le chemin 2021-2026 → 3 métiers → 11 formations → Qualiopi · NDA · 7 h/jour → logo | Cœur qui bat, odomètre des années, montage des formations sur le tempo, onde de choc finale |
+| 1 · Le casting | Les 3 intervenants, les certifications | Cartes en cascade ; « Certifié. Pas autoproclamé. » |
+| 2 · Les racines | « Ko yeba », YEBA → Y (Morphose par caractère), le baobab, 5 valeurs, le chemin | Le Y devient l'arbre ; le baobab se dessine en vidéo |
+| 3 · La promesse | 3 métiers, **nos offres**, **la journée 7 h**, **Qualiopi + NDA**, **vos avantages**, souveraineté | Le soleil traverse la journée 08h30 → 16h30 ; sceau doré derrière Qualiopi ; carrousel des avantages |
+| 4 · L'atelier | Carte des 11 formations → zoom sur 4 fiches → démo live → « À suivre… » | Zoom avant / arrière entre la carte et chaque fiche ; teaser des **avantages à venir** |
+| 5 · 6 · 7 | Outils · Diagnostic · Final (masqués) | Cartes d'épisode prêtes |
 
-Lecture automatique, une seule fois, son inclus (macro VBA `YebaToutAppliquer`). Tester le son dans la salle.
+## Ce qui a été ajouté à votre demande
 
-## Choix d'expert (pourquoi ce déroulé fonctionne)
+- **Les offres** (S17) : inter (catalogue), intra (sur-mesure), séminaire dirigeants résidentiel (mis en avant),
+  implémentation IA (workflows, sites), conseil & audit RGPD · IA Act. Tarifs gardés dans les notes (épisode 6).
+- **Qualiopi + NDA** (S19 et générique) : « Actions de formation · Qualitia · COFRAC », NDA n° 04973676397 (Préfet
+  de La Réunion) avec la mention obligatoire « Cet enregistrement ne vaut pas agrément de l'État », et le bandeau
+  « Condition de prise en charge OPCO ».
+- **Les horaires** (S18 et générique) : 08h30-12h00 / 13h00-16h30 = 7 h par jour, inscription 15 jours ouvrés avant.
+- **Les avantages** : ceux déjà garantis (S20-S21 : dossier OPCO monté avec vous, devis sous 5 jours ouvrés, paiement
+  OPCO direct en subrogation, 8 stagiaires maximum, attestations sous 15 jours, référent handicap) et **ceux à venir**
+  (S32 « À suivre… » : Assistant IA perso, espace en ligne, émargement numérique — les deux derniers à confirmer).
+- **La vidéo de motion design** : le générique, 7 cartes d'épisode, 9 fonds vivants, une boucle d'accueil.
 
-- **Fil rouge « GPS »** : la même slide d'agenda revient à chaque partie, le marqueur or glisse (Morphose).
-  Le public sait toujours où il en est — essentiel pour une salle de dirigeants.
-- **Narration en 3 temps** : suspense (« pas de mot pour formation ») → révélation (YEBA) → symbole (le Y devient l'arbre).
-  La Morphose *par caractère* fait disparaître E, B, A : le Y reste.
-- **Le garage YEBA** : vos formations portent déjà des noms de pièces automobiles (Allumage, Pilote automatique,
-  Carrosserie, Injection…). La grille devient un « garage » ; chaque tuile zoome en Morphose vers sa fiche.
-- **Démo live** (S28) : un site dicté devant la salle. C'est le moment dont les invités parleront le lendemain.
-- **Promesse honnête** (S20) : « Nous ne vendons pas la conformité. Nous vous aidons à la prouver. » —
-  conforme à votre règle commerciale interne et plus crédible face à des dirigeants.
+## Bible motion design (tenue partout)
+
+Une seule chronologie (`remotion/src/timeline.json`) partagée par l'image et la musique · courbes « expo » pour les
+entrées, jamais linéaires · 3 objets en mouvement au maximum · fonds lents et sombres sous le texte · étoiles et halo
+en parallaxe d'une slide à l'autre (Morphose) · **aucun trait ne traverse un mot** (constellations, anneaux, flux et
+reflets dorés passent hors des textes ou sous des panneaux opaques) · titres ≥ 54 pt, texte ≥ 24 pt (22 pt
+seulement sur la carte du catalogue) · 20 mots projetés au maximum par slide (exceptions : couverture, sommaire,
+carte du catalogue, horaires, mention légale) · aucune césure, espaces insécables à la française.
 
 ## Sources
 
 - Histoire, valeurs, slogan : document de marque « YEBA FORMATIONS » (pièce jointe fournie).
-- Formations : table *CATALOGUE FORMATIONS*, base Airtable « YEBA FORMATIONS - Centre de formation (Adaptable) », consultée le 28/09/2026.
-- Horaires 8 h, règles commerciales, logo sans œil, contrastes WCAG : table *CONFIG SYSTÈME* de la même base.
-- Illustrations (baobab, compte-tours, cercle européen) : dessinées par script (`assets/generer_illustrations.py`), libres de droits.
+- Base Airtable « YEBA FORMATIONS - Centre de formation (Adaptable) », consultée le 10/11/2026 :
+  *CATALOGUE FORMATIONS* (intitulés, durées, statuts, FOR-0017 « En développement ») ; *CONFIG SYSTÈME* (horaires
+  modifiés le 07/10/2026, NDA, Qualiopi, barèmes) ; *DOCUMENTS OFFICIELS* YEBA-DOC-13 « Notice des financements
+  mobilisables » v1.0 §5 et §7 (engagements de service) ; *STUDIO — FEUILLE DE ROUTE* (éléments « Prévu »).
+- Code du travail, art. L.6352-12 (mention NDA) et L.6316-1 (Qualiopi, condition des financements publics ou mutualisés).
+- Code de la consommation, art. L.121-2 (pratiques commerciales trompeuses) ; CGI art. 293 B (TVA non applicable).
+- Illustrations, pictogrammes, calques et musique : produits par script dans ce dépôt (aucun droit tiers).
 
-Photos conseillées (Unsplash, licence gratuite ; le téléchargement direct était bloqué depuis l'environnement de travail) :
-baobab au coucher du soleil — Leon Pauleikhoff (https://unsplash.com/photos/gV8r3I9lvM4) ;
-pitons de La Réunion — Sergey Zhesterev (https://unsplash.com/photos/VJlLx10OYRo).
-
-## ⚖️ RGPD / IA Act — points à traiter avant la soirée
+## ⚖️ RGPD / IA Act — à traiter avant la soirée
 
 | Point | Texte | Action |
 |---|---|---|
-| Photos de Stan et Antho | RGPD + droit à l'image | Accord écrit avant projection ou diffusion |
-| Liste d'invités / émargement | RGPD art. 5, 6, 13 | Finalité, base légale, durée de conservation, mention d'information |
-| Démo live avec un invité | RGPD + IA Act art. 50 | Entreprise fictive ou accord ; dire que le contenu est généré par IA |
-| S19 « Souveraineté par défaut » | RGPD chap. V | Vrai seulement après votre migration Gmail → Brevo, Airtable → Baserow/OVHcloud |
-| Clips générés par IA (Grok, xAI) | IA Act art. 50 + conditions xAI | Le dire à l'oral ; vérifier l'autorisation d'usage commercial |
-| Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients |
+| Clips Grok (xAI) : Introduction, IA, AI, Conclusion | **IA Act art. 50** + conditions d'utilisation xAI | Dire à l'oral qu'ils sont générés par IA ; vérifier l'usage commercial autorisé |
+| Générique, épisodes, fonds | IA Act : non concerné | Fabriqués par programme (Remotion), sans IA générative ; musique synthétisée |
+| Photos de Stan et Antho (initiales pour l'instant) | RGPD + droit à l'image | Accord écrit avant projection ou diffusion |
+| Liste d'invités, émargement de la soirée | RGPD art. 5, 6, 13 | Finalité, base légale, durée de conservation, mention d'information |
+| Espace en ligne et émargement numérique annoncés (S32) | RGPD art. 5, 28, 30 ; C. conso L.121-2 | Hébergement UE, registre (YEBA-DOC-16), et ne les annoncer que s'ils sont décidés |
+| « Souveraineté par défaut » (S22) | RGPD chap. V | Vrai une fois la migration vers des outils UE terminée (Brevo, Baserow/OVHcloud) |
+| Démo live (S31) | RGPD + IA Act art. 50 | Entreprise fictive ou accord écrit ; annoncer que le site est généré par IA |
+| Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients ou de stagiaires |
 | Aucune formation RNCP/RS | C. conso L.121-2 | Ne jamais dire « finançable CPF » ni « formation obligatoire » |
 
-## À compléter par vous
+## À confirmer par vous
 
-- [ ] Date et lieu de la soirée (S01) · [ ] Rôles de Stan et d'Antho + photos (S04)
-- [ ] N° Qualiopi : **25FOR02027.1** dans Airtable, **25FOF02027.1** dans vos préférences → vérifier sur le certificat
-- [ ] Intitulés exacts des certifications Google (S05) · [ ] Outil utilisé pour la démo live (S28)
+- [ ] Date et lieu (S01) · rôles de Stan et d'Antho + photos (S04)
+- [ ] N° Qualiopi : **25FOR02027.1** (Airtable) ou **25FOF02027.1** (vos préférences) → vérifier sur le certificat
+      (non projeté pour l'instant) ; validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
+- [ ] « Espace en ligne » et « Émargement numérique » (S32, éléments « Prévu ») : les annoncer ou non
+- [ ] Le logo officiel Qualiopi (fourni par Qualitia) peut remplacer le mot « QUALIOPI » en S19, avec sa mention d'usage
+- [ ] Licence Remotion : gratuite jusqu'à 3 salariés, payante au-delà (vérifier sur remotion.pro)

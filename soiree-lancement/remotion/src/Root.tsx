@@ -1,20 +1,30 @@
 import React from "react";
 import { Composition } from "remotion";
-import { Intro } from "./Intro";
-import { SectionTitle } from "./SectionTitle";
+import { Generique } from "./Generique";
+import { Episode, EPISODE_DUREE } from "./Episode";
+import { Ambiance, FondBaobab, FondBientot, FondCover, FondFlux, FondJournee, FondSceau, PreShow } from "./Fonds";
 
-// Vidéos motion design YEBA FORMATIONS — 1920 × 1080, 30 images/s.
+// Valeurs par défaut (Studio). Le script scripts/rendre.mjs injecte les vraies valeurs depuis contenu/slides.json.
+const HORAIRES = { debut: "08h30", pause_debut: "12h00", pause_fin: "13h00", fin: "16h30", heures_par_jour: 7 };
+const V = { fps: 30, width: 1920, height: 1080 };
+
 export const RemotionRoot: React.FC = () => (
   <>
-    <Composition id="Intro" component={Intro} durationInFrames={300} fps={30} width={1920} height={1080} />
+    <Composition id="Generique" component={Generique} durationInFrames={2400} {...V} defaultProps={{ horaires: HORAIRES, avecSon: true }} />
     <Composition
-      id="SectionTitle"
-      component={SectionTitle}
-      durationInFrames={150}
-      fps={30}
-      width={1920}
-      height={1080}
-      defaultProps={{ numero: "04", titre: "Nos formations", accroche: "Votre entreprise est un moteur." }}
+      id="Episode"
+      component={Episode}
+      durationInFrames={EPISODE_DUREE}
+      {...V}
+      defaultProps={{ numero: 2, titre: "Les racines", sujet: "Histoire", motif: "baobab", teinte: "terre", avecSon: true }}
     />
+    <Composition id="PreShow" component={PreShow} durationInFrames={600} {...V} defaultProps={{ boucle: 600 }} />
+    <Composition id="Ambiance" component={Ambiance} durationInFrames={360} {...V} defaultProps={{ teinte: "noir", boucle: 360 }} />
+    <Composition id="FondCover" component={FondCover} durationInFrames={360} {...V} defaultProps={{ boucle: 360 }} />
+    <Composition id="FondBaobab" component={FondBaobab} durationInFrames={180} {...V} />
+    <Composition id="FondJournee" component={FondJournee} durationInFrames={180} {...V} defaultProps={{ horaires: HORAIRES }} />
+    <Composition id="FondSceau" component={FondSceau} durationInFrames={360} {...V} defaultProps={{ boucle: 360 }} />
+    <Composition id="FondFlux" component={FondFlux} durationInFrames={360} {...V} defaultProps={{ boucle: 360 }} />
+    <Composition id="FondBientot" component={FondBientot} durationInFrames={360} {...V} defaultProps={{ boucle: 360 }} />
   </>
 );

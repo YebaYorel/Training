@@ -19,3 +19,10 @@ env/
 # Node (réinstallé automatiquement par .claude/hooks/session-start.sh)
 node_modules/
 soiree-lancement/remotion/out/
+
+# Grain et bande-son générés au moment du rendu (scripts/grain.py, audio/composer.py)
+soiree-lancement/remotion/public/grain/
+soiree-lancement/remotion/public/audio/
+
+# Source temporaire du PDF (vidéos remplacées par leurs images)
+soiree-lancement/dist/*_IMAGES.pptx

@@ -1,27 +1,32 @@
 ---
 name: python-pptx
-description: Générer ou modifier des PowerPoint (.pptx) YEBA par script Python avec python-pptx — gabarits sombres, Morphose injectée dans le XML, notes orateur, texte alternatif, slides masquées. À utiliser pour toute création/édition de .pptx dans ce dépôt.
+description: Générer ou modifier des PowerPoint (.pptx) YEBA par script Python avec python-pptx — motion design natif (Morphose, chronologie d'animations, vidéos en lecture automatique, fonds vidéo vivants), notes orateur, texte alternatif, slides masquées. À utiliser pour toute création/édition de .pptx dans ce dépôt.
 ---
 
 # python-pptx (bibliothèque MIT, exécution 100 % locale)
 
-Référence : `soiree-lancement/pptx/build_pptx.py` (18 gabarits : cover, statement, agenda, team, badges,
-word, quote, tree, baobab, split, values, timeline, bignumber, pillars, formats, garage, focus, demo).
+Référence : `soiree-lancement/pptx/build_pptx.py` (21 gabarits : cover, statement, agenda, team, badges, word, quote,
+tree, baobab, split, values, timeline, pillars, offres, journee, confiance, avantages, atelier, focus, demo, bientot + video).
 
-## Commandes
 ```bash
-python3 soiree-lancement/pptx/build_pptx.py          # → soiree-lancement/dist/YEBA_Soiree_Lancement.pptx
+python3 soiree-lancement/pptx/build_pptx.py            # version cinéma (fonds vidéo vivants)
+python3 soiree-lancement/pptx/build_pptx.py --sobre    # mêmes fonds en images fixes
 soffice --headless --convert-to pdf --outdir /tmp soiree-lancement/dist/YEBA_Soiree_Lancement.pptx
-pdftoppm -r 45 -png /tmp/YEBA_Soiree_Lancement.pdf /tmp/s   # puis REGARDER les PNG
+pdftoppm -r 40 -png /tmp/YEBA_Soiree_Lancement.pdf /tmp/s   # puis REGARDER chaque PNG
 ```
+Le script s'arrête (code 2) et liste les textes qui ne tiennent pas : ne jamais livrer avec une alerte.
 
 ## Techniques clés
-- **Morphose** : fonction `morphose(slide, option)` → `mc:AlternateContent` avec `p159:morph`
-  (repli `p:fade`), inséré juste après `p:clrMapOvr`. `option="byChar"` pour un mot qui se transforme.
-- **Appariement Morphose** : même nom d'objet préfixé `!!` sur deux slides consécutives
-  (`!!logo`, `!!marqueur`, `!!tuile-CODE`…).
-- **Taille auto sans débordement** : `taille_qui_tient()` mesure les vrais glyphes Montserrat
-  (`assets/fonts/*.ttf`) → plus grand corps possible, jamais de mot coupé.
-- Layout « Titre seul » pour que chaque slide ait un vrai titre (lecteurs d'écran), `lang="fr-FR"`,
-  `descr` (texte alternatif) sur chaque image, slide masquée via `show="0"`.
-- Vidéo : `shapes.add_movie(...)` ; lecture auto réglée ensuite par la macro VBA.
+- **Chronologie native** (classe `Chrono`) : `<p:timing>` écrit à la main — groupe 0 lancé à l'ouverture
+  (`onBegin`), groupes suivants au clic ; effets fondu, fondu montant, zoom, balayage avec décélération ;
+  `mediacall playFrom(0.0)` + `p:video` (`repeatCount="indefinite"`, `mute="1"`) pour les fonds.
+- `film()` retire le « clic = lecture/pause » que python-pptx ajoute (`a:hlinkClick` + `p:timing` par défaut).
+- **Morphose** : `mc:AlternateContent` (`p159:morph`, repli `p:fade`) juste après `p:clrMapOvr`, `advTm` = avance
+  automatique à la fin des vidéos ; appariement par nom `!!xxx` sur deux slides consécutives.
+- **Calques** (`calques()`) : fond vidéo, étoiles `!!etoiles` (parallaxe), halo `!!halo`, vignettage — puis `au_fond()`
+  les descend SOUS le titre (l'espace réservé Titre est créé en premier : sans cela, le fond le recouvre).
+- **Typographie** (`typo()`) : espaces insécables à la française, « · » et « → » jamais en début de ligne,
+  mots de 1-2 lettres jamais seuls en fin de ligne. Mesure réelle des glyphes Montserrat (800, 400 et Black 900),
+  hauteur de ligne réelle 1,22 ; `verifier_slide()` refuse tout groupe insécable plus large que sa zone.
+- Carrousel : groupes `!!av{page}-{i}-*` posés hors champ (±W) que la Morphose fait glisser.
+- Post-it rouges hors champ (`a-confirmer`) : visibles en édition, jamais projetés.

@@ -50,10 +50,14 @@ Outils toujours disponibles au démarrage (hook `.claude/hooks/session-start.sh`
 **python-pptx, Reveal.js, Remotion, VBA, Slides.com, Felo Slides** — un skill par outil dans
 `.claude/skills/`, orchestrés par le skill `presentation-yeba` (règles Mesaure/Slidor + charte).
 
-- Source unique du contenu : `soiree-lancement/contenu/slides.json`
-- Tout reconstruire : `bash soiree-lancement/build_all.sh` (`--videos` pour Remotion)
+- Source unique du contenu : `soiree-lancement/contenu/slides.json` (concept « série » : générique, 7 épisodes)
+- Tout reconstruire : `bash soiree-lancement/build_all.sh` (PPTX cinéma + sobre, Reveal.js, supports, PDF ;
+  `--videos` pour la bande-son et les 19 vidéos Remotion de `soiree-lancement/dist/videos/`)
+- Motion design : animations natives écrites par python-pptx (pas de VBA requis), fonds vidéo vivants sous le
+  texte, parallaxe étoiles/halo par Morphose ; le builder s'arrête si un texte ne tient pas (aucun mot coupé).
 - Charte : fond #121212 / #1B3A6B, texte blanc, or #C9A84C (jamais en texte sur blanc),
-  Montserrat, 15-20 mots/slide, titres ≥ 54 pt, texte ≥ 28 pt, aucun mot coupé ni barré.
+  Montserrat, 15-20 mots/slide, titres ≥ 54 pt, texte ≥ 24-28 pt, aucun mot coupé ni barré,
+  aucun trait (ligne, reflet, constellation) qui traverse un mot — y compris dans les vidéos.
 - Logo : version **sans œil** (`soiree-lancement/assets/`).
 - Marque blanche : pour un autre organisme, AUCUNE mention de YEBA FORMATIONS.
 - Toujours contrôler visuellement (PDF → PNG) avant de livrer.

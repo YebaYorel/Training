@@ -1,22 +1,19 @@
 ---
 name: vba-powerpoint
-description: Écrire ou adapter des macros VBA PowerPoint pour YEBA — appliquer la Morphose partout, poser des animations d'entrée automatiques d'après le nom des objets, régler la lecture vidéo, vérifier l'accessibilité (tailles < 24 pt).
+description: Écrire ou adapter des macros VBA PowerPoint pour YEBA — contrôle avant soirée (Morphose, vidéos, tailles, texte alternatif, post-it), bascule mode sobre / cinéma des fonds vidéo, nettoyage avant envoi, remise de la Morphose sans casser l'avance automatique.
 ---
 
-# VBA PowerPoint
+# VBA PowerPoint (v2 — non destructif)
 
-Module de référence : `soiree-lancement/vba/YebaAnimations.bas`
+Module de référence : `soiree-lancement/vba/YebaAnimations.bas`. Depuis la v2, animations, Morphose et lecture
+vidéo sont DÉJÀ dans le .pptx (python-pptx) : la macro ne les efface jamais.
 
-## Installation côté utilisateur
-1. Ouvrir le .pptx → Alt + F11 → Fichier → Importer un fichier… → `YebaAnimations.bas`
-2. Alt + F8 → `YebaToutAppliquer` (Morphose + animations + vidéo auto)
-3. `YebaVerifierAccessibilite` → liste tout texte < 24 pt
-4. Enregistrer en .pptx (les effets restent, la macro n'est pas nécessaire)
+| Macro | Effet |
+|---|---|
+| `YebaVerifier` | rapport : slides masquées, vidéos, slides sans Morphose, textes < 20 pt, images sans texte alternatif, post-it |
+| `YebaModeSobre` / `YebaModeCinema` | fonds vidéo (`fond-video`) figés sur leur image / relancés en boucle muette |
+| `YebaRetirerPostIt` | supprime les post-it rouges hors champ avant d'envoyer le fichier |
+| `YebaMorphosePartout` | remet la Morphose (repli fondu) en conservant `AdvanceOnTime` des slides vidéo |
 
-## Conventions
-- Les effets sont choisis d'après le préfixe du nom d'objet (volet Sélection, Alt + F10) :
-  `kicker`, `!!titre`, `!!carte`, `!!badge`, `!!num`/`!!val`, `!!ligne`, `!!baobab`, `puce`, `chip`, `!!live`…
-- Objets `!!logo`, `!!ag*`, `!!marqueur`, `!!tuile-*`, `!!code-*`, `!!yeba` : laissés à la Morphose.
-- Morphose : `ppEffectMorphByObject` / `ppEffectMorphByChar` (Microsoft 365 / PowerPoint 2019+),
-  repli automatique `ppEffectFadeSmoothly`.
-- Sécurité : ne jamais distribuer de .pptm à des clients ; livrer un .pptx sans macro.
+Installation : Alt + F11 → Fichier → Importer → `.bas` ; Alt + F8 → macro ; enregistrer en .pptx.
+Sécurité : ne jamais distribuer de .pptm à des clients ; livrer un .pptx sans macro.
