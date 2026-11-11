@@ -65,6 +65,9 @@ les descriptions : un skill peut alors devoir être appelé **par son nom**.
 | `caveman`, `ultracave` | JuliusBrussee/caveman @ `c310c9d` | Apache 2.0 |
 | `task-observer` | rebelytics/one-skill-to-rule-them-all @ `046b8f2` | CC BY 4.0 |
 | `headroom` | chopratejas/headroom @ `12864fc` | Apache 2.0 |
+| `presentation-yeba`, `python-pptx`, `reveal-js`, `remotion`, `vba-powerpoint`, `slides-com`, `felo-slides` (soirée de lancement, présentations événementielles) | créés pour YEBA | — |
+| `watch` (regarder une vidéo : images + transcription, moteur local imposé) | bradautomates/claude-video @ `03ceb42` (v0.3.2) | MIT |
+| `learnharness` (lire un historique d'apprentissage LearnHarness, lecture seule) | amosblomqvist/learnharness @ `a636647`, dossier `skills/learnharness/` | AGPL-3.0 |
 
 **Lanceurs** (le dépôt d'origine est récupéré à la demande, à un commit relu,
 dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
@@ -75,6 +78,7 @@ dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
 | `vercel-skills` | vercel-labs/agent-skills @ `1a2c79d` | pas de licence |
 | `huashu-design` | alchaincyf/huashu-design @ `b2460b0` | 41 Mo de médias ; voix ByteDance (Chine) à ne pas utiliser |
 | `openmontage` | calesthio/OpenMontage @ `d21f5d4` | projet complet, AGPL |
+| `learnharness-app` | amosblomqvist/learnharness @ `a636647` | application complète (1 255 fichiers), AGPL |
 | `omniroute` | diegosouzapw/OmniRoute @ `3ee8039` | 46 skills rangés dans `.claude/reserve/omniroute/` (inutiles sans serveur OmniRoute) |
 
 ## 3. Serveurs MCP (`.mcp.json`)
@@ -114,3 +118,5 @@ local, sans compte ni service hébergé), puis passer
 
 Ne jamais tirer la dernière version à l'aveugle : relire le diff amont, puis
 recopier le dossier (ou changer le commit du lanceur) et mettre à jour ce fichier.
+`watch` et `learnharness` ont chacun un script `mettre-a-jour.sh` qui recopie
+l'amont à l'identique sans l'exécuter ; relire ensuite `git diff` et leur `PROVENANCE.md`.
