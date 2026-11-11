@@ -44,8 +44,26 @@ fi
 [ -f "$SL/slides-com/plan_slides_com.md" ] && etat+=("Slides.com ✅ (plan + PDF)")
 [ -f "$SL/felo/prompt_felo_slides.md" ] && etat+=("Felo Slides ✅ (prompt)")
 
+# 5. Compétence vidéo « watch » (bradautomates/claude-video, MIT) : yt-dlp + FFmpeg, moteur LOCAL imposé.
+#    Souveraineté : jamais Gemini (Google), Groq ni OpenAI ; la vidéo et l'audio restent dans la session (voir CLAUDE.md).
+WATCH="$ROOT/.claude/skills/watch/scripts"
+if [ -d "$WATCH" ]; then
+  command -v yt-dlp >/dev/null 2>&1 || python3 -m pip install -q -U "yt-dlp[default]" >/dev/null 2>&1 || true
+  if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+    (timeout 180 apt-get install -y -qq ffmpeg >/dev/null 2>&1 \
+      || (timeout 120 apt-get update -qq >/dev/null 2>&1 && timeout 180 apt-get install -y -qq ffmpeg >/dev/null 2>&1)) || true
+  fi
+  if [ ! -f "$HOME/.config/watch/.env" ]; then
+    python3 "$WATCH/setup.py" --engine local --backend none --detail balanced >/dev/null 2>&1 || true
+  elif ! grep -q '^WATCH_ENGINE="local"' "$HOME/.config/watch/.env"; then
+    python3 "$WATCH/setup.py" --engine local >/dev/null 2>&1 || true
+  fi
+  if python3 "$WATCH/setup.py" --check >/dev/null 2>&1; then etat+=("Vidéo /watch ✅ (moteur local)")
+  else etat+=("Vidéo /watch ‼️ python3 .claude/skills/watch/scripts/setup.py --json"); fi
+fi
+
 # Message injecté dans le contexte de Claude au démarrage
 echo "OUTILS DE PRÉSENTATION YEBA : ${etat[*]}"
-echo "Skills : presentation-yeba (chef d'orchestre), python-pptx, reveal-js, remotion, vba-powerpoint, slides-com, felo-slides."
+echo "Skills : presentation-yeba (chef d'orchestre), python-pptx, reveal-js, remotion, vba-powerpoint, slides-com, felo-slides, watch (regarder une vidéo, moteur local)."
 echo "Tout reconstruire : bash soiree-lancement/build_all.sh [--videos] — vidéos : générique 80 s, 7 cartes d'épisode, 9 fonds vivants (dist/videos/)"
 exit 0

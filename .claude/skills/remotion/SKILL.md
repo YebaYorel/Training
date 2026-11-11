@@ -33,6 +33,7 @@ Le navigateur est détecté seul (`/opt/pw-browsers/chromium_headless_shell-*` e
   (`BalayageOr`) passent SOUS des panneaux opaques et sont rognés hors des titres (prop `zone`) ; une scène qui sort
   doit avoir disparu avant que les traits de la suivante n'apparaissent.
 - Contrôle obligatoire : extraire des images (`ffmpeg -ss T -i x.mp4 -frames:v 1`) aux temps forts et les regarder.
+  Plus simple : la compétence `watch` sur le MP4 rendu (`--detail efficient`, ou `--timestamps` aux temps forts), moteur local.
 
 ⚖️ Licence Remotion : gratuite pour les particuliers et les entreprises de 3 salariés maximum ; au-delà, licence
 entreprise payante (vérifier sur remotion.pro). Musique synthétisée par script : aucun droit d'auteur tiers.
