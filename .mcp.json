@@ -2,8 +2,67 @@
   "mcpServers": {
     "baserow": {
       "command": "python",
-      "args": ["baserow_mcp_server.py"],
+      "args": [
+        "baserow_mcp_server.py"
+      ],
       "env": {}
+    },
+    "playwright": {
+      "command": "python",
+      "args": [
+        "scripts/playwright_mcp.py"
+      ],
+      "env": {}
+    },
+    "perplexity": {
+      "type": "http",
+      "url": "https://api.perplexity.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${PERPLEXITY_API_KEY:-}"
+      }
+    },
+    "composio": {
+      "type": "http",
+      "url": "https://connect.composio.dev/mcp"
+    },
+    "chrome-devtools": {
+      "command": "python",
+      "args": [
+        "scripts/mcp_lanceur.py",
+        "chrome-devtools"
+      ],
+      "env": {}
+    },
+    "powerpoint": {
+      "command": "python",
+      "args": [
+        "scripts/mcp_lanceur.py",
+        "powerpoint"
+      ],
+      "env": {}
+    },
+    "google-ads": {
+      "command": "python",
+      "args": [
+        "scripts/mcp_lanceur.py",
+        "google-ads"
+      ],
+      "env": {}
+    },
+    "meta-ads": {
+      "command": "python",
+      "args": [
+        "scripts/mcp_lanceur.py",
+        "meta-ads"
+      ],
+      "env": {}
+    },
+    "21st": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp",
+      "headers": {
+        "x-api-key": "${TWENTYFIRST_API_KEY}"
+      }
     }
   }
 }

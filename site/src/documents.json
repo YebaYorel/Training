@@ -1,0 +1,143 @@
+{
+  "synchronise": "2026-10-07T10:45:39.542Z",
+  "documents": [
+    {
+      "ref": "YEBA-DOC-01",
+      "titre": "Mentions légales",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises"
+      ],
+      "acces": "page",
+      "page": "mentions-legales.html"
+    },
+    {
+      "ref": "YEBA-DOC-02",
+      "titre": "Politique de confidentialité et de protection des données",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises"
+      ],
+      "acces": "page",
+      "page": "confidentialite.html"
+    },
+    {
+      "ref": "YEBA-DOC-03",
+      "titre": "Conditions générales de vente et de prestation",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-04",
+      "titre": "Règlement intérieur applicable aux stagiaires",
+      "pour": [
+        "Stagiaires",
+        "Clients entreprises"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-05",
+      "titre": "Convention de formation professionnelle (modèle — client entreprise)",
+      "pour": [
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-06",
+      "titre": "Contrat de formation professionnelle (modèle — particulier)",
+      "pour": [
+        "Stagiaires",
+        "Prospects"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-08",
+      "titre": "Politique handicap et accessibilité",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-09",
+      "titre": "Procédure de traitement des réclamations, difficultés et aléas",
+      "pour": [
+        "Public / site internet",
+        "Stagiaires",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-10",
+      "titre": "Charte qualité et engagements de service",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-11",
+      "titre": "Charte d'usage de l'intelligence artificielle",
+      "pour": [
+        "Clients entreprises",
+        "Prospects",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-12",
+      "titre": "Politique tarifaire 2026",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises"
+      ],
+      "acces": "demande",
+      "page": null
+    },
+    {
+      "ref": "YEBA-DOC-13",
+      "titre": "Notice des financements mobilisables",
+      "pour": [
+        "Public / site internet",
+        "Prospects",
+        "Clients entreprises",
+        "Stagiaires",
+        "Financeurs / OPCO"
+      ],
+      "acces": "demande",
+      "page": null
+    }
+  ]
+}
