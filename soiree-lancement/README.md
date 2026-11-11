@@ -22,7 +22,9 @@ construits (présentation, histoire, offre YEBA, formations : ≈ 36 min de temp
 | `storyboard.md` | Storyboard épisode par épisode : texte, visuel, animation, notes, durée, mots projetés | — |
 | `felo/prompt_felo_slides.md` · `slides-com/plan_slides_com.md` | Prompt Felo (sans donnée personnelle) · plan de montage Slides.com | Felo · Slides.com |
 | `outils/generer_storyboard_page.py` → `dist/storyboard/` | Storyboard en page web (vignettes, générique 720p, notes sans tarifs) à partager avec l'équipe | — |
-| `accueil/index.html` → `outils/generer_accueil.py` → `dist/accueil/` | **Prototype « Accueil Saison 1 »** : parcours de l'invité (QR, fiche, place sur plan, affiche, e-mails H-5 et retard, arrivée, J+1) et la régie technique ; polices embarquées, aucun service tiers | — |
+| `accueil/index.html` → `outils/generer_accueil.py` → `dist/accueil/` | **Prototype « Accueil Saison 1 »** : parcours de l'invité (QR, fiche, place sur plan, affiche, e-mails H-5 et retard, arrivée, village IA avec passeport, J+1) et la régie technique ; polices embarquées, aucun service tiers | — |
+| Base Airtable « YEBA — Saison 1 · Accueil des invités » (`app3Kv7p5WOhut5Un`) | Invités, Groupes, Places, Épisodes, Accroches, Stands, Sondage, Paramètres ; aucune donnée personnelle à ce stade | Airtable |
+| `accueil/schema_saison1.json` · `outils/migrer_vers_baserow.py` | Schéma commun Airtable / Baserow ; migration en une commande (essai à blanc par défaut, `--creer`, `--copier-airtable`) | Baserow |
 
 ## Mode d'emploi (10 minutes)
 
@@ -97,6 +99,8 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 | Démo live (S31) | RGPD + IA Act art. 50 | Entreprise fictive ou accord écrit ; annoncer que le site est généré par IA |
 | Felo Slides, Slides.com | RGPD art. 28 et chap. V | Contenu public uniquement, jamais de données de clients ou de stagiaires |
 | Site d'inscription (QR) : fiche invité | RGPD art. 5, 6, 13 | 4 champs obligatoires ; mention d'information à l'écran ; adresse de contact à ajouter ; effacement à 3 mois (proposition à valider) |
+| Base Airtable de la soirée (États-Unis) | RGPD chap. V, art. 28 et 30 | Transfert hors UE à inscrire au registre, base légale du transfert à vérifier dans le contrat Airtable ; aucun champ IA d'Airtable utilisé ; migration Baserow prête (`outils/migrer_vers_baserow.py`) |
+| Passeport du village IA, rencontres ciblées | RGPD art. 5-1-c, 6-1-a | Tampons gardés sur le téléphone (aucun suivi des déplacements) ; rencontres sur case décochée par défaut, prénom et entreprise seulement |
 | Case « place facile d'accès » | RGPD art. 9 (donnée pouvant révéler un handicap) | Facultative, consentement explicite par la case, utilisée pour le seul placement, effacée à J+1 |
 | Prénoms des accompagnants | RGPD art. 14 | Prénom seul et facultatif ; information remise à l'arrivée |
 | Mur d'étoiles (prénom projeté) | RGPD art. 6-1-a | Case décochée par défaut ; sans case cochée, étoile anonyme |
@@ -110,6 +114,9 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 - [ ] Date et lieu (S01) · rôles de Stan et d'Antho + photos (S04)
 - [ ] Certificat Qualiopi 25FOR02027.1 (confirmé le 10/11/2026) : validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
 - [ ] Le logo officiel Qualiopi (fourni par Qualitia) peut remplacer le mot « QUALIOPI » en S19, avec sa mention d'usage
-- [ ] Licence Remotion : gratuite jusqu'à 3 salariés, licence entreprise au-delà → effectif à confirmer
+- [x] Licence Remotion : YEBA FORMATIONS compte 1 personne (réponse du 10/11/2026) → licence gratuite (jusqu'à 3 salariés) ; à revoir si l'équipe dépasse 3 personnes
 - [x] Prix : jamais projetés, ni à l'épisode 3 ni à l'épisode 6 (décision du 10/11/2026) ; repères oraux dans les notes de S17
 - [x] FOR-0011 : 2 jours (14 h) — fiche Airtable remise en cohérence le 10/11/2026 (sauvegarde : `../airtable-sauvegardes/`)
+- [x] FOR-0011 validée par Aurélien LUMEKA (10/11/2026) ; correspondance quiz / objectifs remise en O1 à O10 → régénérer les PDF joints à la fiche
+- [x] Autres programmes : horaires laissés tels quels (décision du 10/11/2026)
+- [ ] Photo du plan d'évacuation (non reçue) · Wi-Fi / 4G de la salle · adresse de contact RGPD · offre soirée (5 propositions) · outil de la démo live · budget cadeaux

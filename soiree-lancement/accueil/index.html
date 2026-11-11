@@ -37,6 +37,8 @@
   --or-clair: #E9D7A0;
   --bleu: #1B3A6B;
   --bleu-clair: #4A7BD0;
+  --rouge-hongbao: #8E1B1B;
+  --rouge-hongbao-2: #5E1010;
   --app-s-sol: #18181E;
   --app-s-libre: #30303A;
   --app-s-occupe: #5A5A66;
@@ -101,7 +103,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
 
 /* ---------- Frise du parcours (vraie chronologie : les numéros sont l'ordre des moments) ---------- */
 .frise { overflow-x: auto; scrollbar-width: thin; margin-inline: -4px; }
-.frise ol { list-style: none; padding: 4px 4px 6px; display: grid; grid-template-columns: repeat(7, minmax(104px, 1fr)); min-width: 740px; }
+.frise ol { list-style: none; padding: 4px 4px 6px; display: grid; grid-template-columns: repeat(8, minmax(112px, 1fr)); min-width: 896px; }
 .frise li { position: relative; }
 .frise li + li::before { content: ""; position: absolute; top: 18px; right: calc(50% + 17px); width: calc(100% - 34px); height: 2px; border-radius: 2px; background: var(--line); }
 .frise li[data-etat="fait"]::before, .frise li[data-etat="actif"]::before { background: var(--accent); }
@@ -301,6 +303,27 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
 .precedemment .ep { font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--or); }
 .precedemment li.en-cours { border: 1.5px solid var(--or); }
 
+/* Passeport du village IA */
+.passeport-compte { font-size: 15px; font-weight: 800; letter-spacing: .04em; color: var(--or-clair); font-variant-numeric: tabular-nums; }
+.tampons { list-style: none; padding: 0; display: grid; gap: 10px; }
+.tampon { appearance: none; cursor: pointer; width: 100%; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 12px 14px; border-radius: 16px; border: 1.5px dashed var(--app-line); background: var(--app-surface); color: var(--app-fg); font: inherit; text-align: left; transition: border-color .2s, background .2s; }
+.tampon-num { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-size: 16px; font-weight: 900; border: 2px solid var(--app-line); color: var(--app-muted); font-variant-numeric: tabular-nums; }
+.tampon-corps { display: grid; gap: 2px; min-width: 0; }
+.tampon-nom { font-size: 16px; font-weight: 800; line-height: 1.3; }
+.tampon-txt { font-size: 14px; line-height: 1.35; color: var(--app-muted); }
+.tampon-etat { font-size: 11.5px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--app-muted); }
+.tampon[aria-pressed="true"] { border-style: solid; border-color: var(--or); background: color-mix(in srgb, var(--or) 12%, var(--app-surface)); }
+.tampon[aria-pressed="true"] .tampon-num { background: var(--or); border-color: var(--or); color: var(--app-bg); }
+.tampon[aria-pressed="true"] .tampon-etat { color: var(--or-clair); }
+.hongbao { display: grid; gap: 8px; padding: 22px 20px 20px; border-radius: 18px; background: linear-gradient(160deg, var(--rouge-hongbao), var(--rouge-hongbao-2)); color: var(--or-clair); box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--or) 60%, transparent); animation: ouvre .7s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes ouvre { from { opacity: 0; transform: translateY(12px) scale(.96); } }
+.hongbao-kicker { font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--or); }
+.hongbao-titre { font-size: 22px; line-height: 1.15; font-weight: 900; color: var(--app-fg); }
+.hongbao-offre { font-size: 16.5px; line-height: 1.45; font-weight: 700; }
+.hongbao-note { font-size: 13.5px; line-height: 1.45; color: var(--or-clair); opacity: .85; }
+.rencontres { font-size: 15px; line-height: 1.45; padding: 12px 14px; border-radius: 14px; border: 1px solid var(--app-line); }
+.rencontres strong { color: var(--or-clair); }
+
 /* ---------- Régie ---------- */
 .regie { display: grid; gap: 20px; min-width: 0; }
 .regie-tete { display: grid; gap: 6px; }
@@ -366,7 +389,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     <div class="tete-icone"><img src="embleme.webp" alt="" width="54" height="25"></div>
     <p class="surtitre">YEBA FORMATIONS · Soirée de lancement</p>
     <h1>Accueil Saison 1</h1>
-    <p class="chapeau">Le parcours d'un invité, de l'invitation jusqu'au lendemain. À gauche, son téléphone. À droite, la régie qui travaille pour lui en coulisses.</p>
+    <p class="chapeau">Le parcours d'un invité, de l'invitation jusqu'au lendemain, en passant par le village IA. À gauche, son téléphone. À droite, la régie qui travaille pour lui en coulisses.</p>
     <p class="badge-demo">Prototype cliquable · personnes et plan fictifs · rien n'est enregistré ni envoyé</p>
   </header>
 
@@ -378,7 +401,8 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
       <li data-etat="a-venir"><button type="button"><span class="point">4</span><span class="frise-quand">Jour J · <span class="nw">H-5</span></span><span class="frise-quoi">Le rappel</span></button></li>
       <li data-etat="a-venir"><button type="button"><span class="point">5</span><span class="frise-quand">Jour J · <span class="nw">H+5</span></span><span class="frise-quoi">Le retard</span></button></li>
       <li data-etat="a-venir"><button type="button"><span class="point">6</span><span class="frise-quand">Jour J</span><span class="frise-quoi">L'arrivée</span></button></li>
-      <li data-etat="a-venir"><button type="button"><span class="point">7</span><span class="frise-quand nw">J+1</span><span class="frise-quoi">Le récap</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">7</span><span class="frise-quand">Jour J · cocktail</span><span class="frise-quoi">Le village IA</span></button></li>
+      <li data-etat="a-venir"><button type="button"><span class="point">8</span><span class="frise-quand nw">J+1</span><span class="frise-quoi">Le récap</span></button></li>
     </ol>
   </nav>
 
@@ -457,8 +481,9 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
               </fieldset>
               <label class="case" for="acces"><input type="checkbox" id="acces"><span>J'ai besoin d'une place facile d'accès (allée, sans marche)<span class="case-note">Facultatif. Sert uniquement au placement, effacé le lendemain.</span></span></label>
               <label class="case" for="etoile"><input type="checkbox" id="etoile"><span>Afficher mon prénom sur le mur d'étoiles de la salle</span></label>
+              <label class="case" for="rencontres-ok"><input type="checkbox" id="rencontres-ok"><span>Être présenté à d'autres invités qui partagent ma priorité (prénom et entreprise seulement)</span></label>
               <label class="case" for="actus"><input type="checkbox" id="actus"><span>Recevoir les actualités de YEBA FORMATIONS</span></label>
-              <p class="rgpd"><strong>Vos données.</strong> Elles servent à organiser la soirée : votre place, votre affiche et trois e-mails pratiques. Responsable : YEBA FORMATIONS. Hébergement dans l'Union européenne. Effacement 3 mois après la soirée. Accès, rectification, effacement : <span class="a-completer">adresse de contact à compléter</span>.</p>
+              <p class="rgpd"><strong>Vos données.</strong> Elles servent à organiser la soirée : votre place, votre affiche et trois e-mails pratiques. Responsable : YEBA FORMATIONS. Stockage chez Airtable (États-Unis) en attendant notre passage à un hébergeur européen ; le détail du transfert figure dans notre politique de confidentialité. Effacement 3 mois après la soirée. Accès, rectification, effacement : <span class="a-completer">adresse de contact à compléter</span>.</p>
               <button class="btn-or" type="submit">Trouver ma place</button>
             </form>
           </section>
@@ -547,6 +572,22 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
             <p class="texte-s" id="arriveeChemin"></p>
             <p class="mention-ia">Version réelle : résumés écrits à l'avance avec l'IA Mistral, relus par l'équipe.</p>
           </section>
+
+          <section class="ecran ecran-passeport" data-ecran="passeport" aria-labelledby="t-passeport" hidden>
+            <p class="kicker">Le village IA · cocktail</p>
+            <h2 class="titre-l focus-cible" id="t-passeport" tabindex="-1">Votre passeport Saison 1</h2>
+            <p class="texte-s">Cinq stands autour de la salle. Touchez la puce de chaque stand avec votre téléphone : un tampon s'ajoute.</p>
+            <p class="passeport-compte" id="passeportCompte" aria-live="polite">0 tampon sur 5</p>
+            <ol class="tampons" id="tampons"></ol>
+            <div class="hongbao" id="hongbao" hidden>
+              <p class="hongbao-kicker">Enveloppe rouge ouverte</p>
+              <p class="hongbao-titre">Votre offre de la soirée</p>
+              <p class="hongbao-offre">Diagnostic IA et conformité offert : 45 minutes dans votre entreprise, à réserver dans les 60 jours.</p>
+              <p class="hongbao-note">Exemple : l'offre reste à choisir parmi cinq propositions. La même enveloppe, en papier, vous est remise à la sortie.</p>
+            </div>
+            <p class="rencontres" id="rencontres" hidden></p>
+            <p class="mini">Démo : touchez une carte pour simuler la puce. Vos tampons restent sur votre téléphone : personne ne suit vos déplacements.</p>
+          </section>
         </div>
       </div>
       <div class="tel-actions">
@@ -572,7 +613,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
           <li><span class="pastille pmr"></span>PMR, réservée</li>
           <li><span class="pastille groupe"></span>Le groupe de l'invité</li>
         </ul>
-        <p class="note">Plan d'exemple : 8 rangs de 12 sièges, allée centrale. Le vrai plan sera dessiné d'après la salle retenue.</p>
+        <p class="note">Plan d'exemple : 2 blocs de 6 rangs × 6 sièges (72 places), allée centrale large, places PMR au bord de l'allée, entrée au fond. Le vrai plan sera redessiné d'après la photo du plan d'évacuation.</p>
       </div>
 
       <ol class="chaine">
@@ -589,9 +630,9 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
           <span class="maillon-num">2</span>
           <div class="maillon-corps">
             <h3>La fiche <span class="etat-pill" hidden>En cours</span></h3>
-            <p>Quatre champs obligatoires. La fiche part vers n8n, auto-hébergé en France, qui l'écrit dans Baserow : tables Invités, Groupes et Places, reliées entre elles.</p>
+            <p>Quatre champs obligatoires. La fiche part vers n8n, auto-hébergé en France, qui l'écrit dans Airtable aujourd'hui, Baserow demain : tables Invités, Groupes et Places, reliées entre elles.</p>
             <p class="maillon-live" id="live-2"></p>
-            <p class="puces"><span class="puce">n8n</span><span class="puce">Baserow</span><span class="puce droit">RGPD art. 13 · information à l'écran</span><span class="puce droit">RGPD art. 9 · accessibilité facultative, effacée à <span class="nw">J+1</span></span></p>
+            <p class="puces"><span class="puce">n8n</span><span class="puce">Airtable, puis Baserow</span><span class="puce droit">RGPD chap. V · Airtable : transfert hors UE, à inscrire au registre</span><span class="puce droit">RGPD art. 13 · information à l'écran</span><span class="puce droit">RGPD art. 9 · accessibilité facultative, effacée à <span class="nw">J+1</span></span></p>
           </div>
         </li>
         <li class="maillon" data-maillon="3" data-etat="a-venir">
@@ -642,9 +683,18 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
         <li class="maillon" data-maillon="8" data-etat="a-venir">
           <span class="maillon-num">8</span>
           <div class="maillon-corps">
+            <h3>Le village IA <span class="etat-pill" hidden>En cours</span></h3>
+            <p>Cinq stands autour de la salle, inspirés des salons : hôte IA, bar à prompts, scanner IA Act, studio « site à la voix », mur des idées. Chaque stand a une puce NFC et un QR ; le téléphone garde les tampons et, à cinq, l'enveloppe rouge s'ouvre.</p>
+            <p class="maillon-live" id="live-8"></p>
+            <p class="puces"><span class="puce">Puces NFC</span><span class="puce">Tablette</span><span class="puce">Ordinateur</span><span class="puce droit">RGPD · aucun suivi : les tampons restent sur le téléphone</span><span class="puce droit">IA Act art. 50 · chaque stand dit s'il utilise de l'IA</span></p>
+          </div>
+        </li>
+        <li class="maillon" data-maillon="9" data-etat="a-venir">
+          <span class="maillon-num">9</span>
+          <div class="maillon-corps">
             <h3>Le lendemain <span class="etat-pill" hidden>En cours</span></h3>
             <p>Un récapitulatif écrit avec Mistral à partir de la captation, relu par Aurélien avant envoi. Les données sont effacées 3 mois après la soirée.</p>
-            <p class="maillon-live" id="live-8"></p>
+            <p class="maillon-live" id="live-9"></p>
             <p class="puces"><span class="puce">Transcription locale</span><span class="puce">Mistral</span><span class="puce">Brevo</span><span class="puce droit">RGPD art. 5-1-e · durée de conservation</span><span class="puce droit">RGPD art. 13 · captation annoncée au public</span></p>
           </div>
         </li>
@@ -654,7 +704,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
 
   <footer class="pied">
     <p>Prototype réalisé pour YEBA FORMATIONS. Personnes, entreprise et plan de salle sont des exemples fictifs ; les textes d'accroche et de résumé sont des textes de démonstration.</p>
-    <p>Outils prévus : n8n (éditeur allemand, auto-hébergé en France), Baserow (Pays-Bas, cloud UE), Brevo et Mistral AI (France), Gotenberg (logiciel libre). Polices Montserrat (licence OFL) embarquées : cette page n'appelle aucun service tiers.</p>
+    <p>Outils prévus : n8n (éditeur allemand, auto-hébergé en France), Airtable (États-Unis) en attendant Baserow (Pays-Bas, cloud UE), Brevo et Mistral AI (France), Gotenberg (logiciel libre). Polices Montserrat (licence OFL) embarquées : cette page n'appelle aucun service tiers.</p>
   </footer>
 </div>
 
@@ -671,10 +721,10 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const liste = (a) => (a.length < 2 ? a.join("") : a.slice(0, -1).join(", ") + " et " + a[a.length - 1]);
 
-  /* ---------- Salle d'exemple : 8 rangs de 12 sièges, allée centrale entre les sièges 6 et 7 ---------- */
-  const RANGS = ["A", "B", "C", "D", "E", "F", "G", "H"];
-  const PAR_RANG = 12;
-  const PMR = new Set(["A1", "A12"]);
+  /* ---------- Salle d'exemple : 2 blocs de 6 rangs × 6 sièges, allée centrale large (à remplacer par le vrai plan) ---------- */
+  const RANGS = ["A", "B", "C", "D", "E", "F"];
+  const PAR_RANG = 12;                   // sièges 1 à 6 à gauche de l'allée, 7 à 12 à droite
+  const PMR = new Set(["A6", "A7"]);     // places PMR au bord de l'allée, rang A (exemple)
   function alea(graine) {
     let a = graine >>> 0;
     return () => {
@@ -688,7 +738,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
   const OCCUPES = (() => {
     const r = alea(974), occ = new Set();
     RANGS.forEach((rang, i) => {
-      const densite = i < 2 ? 0.55 : i < 5 ? 0.42 : 0.25;
+      const densite = i < 2 ? 0.55 : i < 4 ? 0.42 : 0.25;
       for (let n = 1; n <= PAR_RANG; n++) {
         const id = rang + n;
         if (!PMR.has(id) && r() < densite) occ.add(id);
@@ -708,9 +758,8 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
           if (ids.some((id) => OCCUPES.has(id))) continue;
           const avecPmr = ids.some((id) => PMR.has(id));
           if (avecPmr && !acces) continue;
-          let score;
-          if (acces) score = (avecPmr ? 0 : 50) + ri * 3 + (debut === 1 ? fin - e : Math.min(s - 7, 12 - e));
-          else score = ri * 3 + Math.abs((s + e) / 2 - 6.5);
+          const bord = debut === 1 ? 6 - e : s - 7;   // distance à l'allée centrale
+          const score = (acces ? (avecPmr ? 0 : 50) : 0) + ri * 3 + bord;
           if (!meilleur || score < meilleur.score) meilleur = { rang, ri, debut: s, fin: e, score };
         }
       });
@@ -722,34 +771,24 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     if (!bloc) return null;
     const sieges = [];
     for (let n = bloc.debut; n <= bloc.fin; n++) sieges.push(n);
-    const entree = bloc.debut >= 7 && bloc.debut - 7 > 12 - bloc.fin ? "couloir" : "allee";
-    let ordre;  // le premier siège est celui de l'invité : le plus proche de son entrée (ou la place PMR)
-    if (inv.acces && sieges.some((n) => PMR.has(bloc.rang + n))) ordre = sieges[0] === 1 ? sieges : sieges.slice().reverse();
-    else if (bloc.debut <= 6 || entree === "couloir") ordre = sieges.slice().reverse();
-    else ordre = sieges;
-    return { rang: bloc.rang, ri: bloc.ri, siege: ordre[0], ordre, entree, ids: sieges.map((n) => bloc.rang + n) };
+    // le premier siège est celui de l'invité : le plus proche de l'allée (c'est aussi la place PMR quand il y en a une)
+    const ordre = bloc.debut <= 6 ? sieges.slice().reverse() : sieges;
+    return { rang: bloc.rang, ri: bloc.ri, siege: ordre[0], ordre, ids: sieges.map((n) => bloc.rang + n) };
   }
 
   /* ---------- Dessin du plan (aucun trait ne traverse un texte) ---------- */
-  const G = { x0: 26, sw: 19, sg: 3, allee: 22, y0: 66, pas: 26, sh: 17 };
+  const G = { x0: 26, sw: 19, sg: 3, allee: 46, y0: 66, pas: 28, sh: 17 };
   const xSiege = (n) => (n <= 6 ? G.x0 + (n - 1) * (G.sw + G.sg) : G.x0 + 6 * G.sw + 5 * G.sg + G.allee + (n - 7) * (G.sw + G.sg));
-  const X_ALLEE = G.x0 + 6 * G.sw + 5 * G.sg + G.allee / 2;
-  const X_COULOIR = 322;
+  const X_ALLEE = G.x0 + 6 * G.sw + 5 * G.sg + G.allee / 2;   // centre de l'allée, de la scène et de l'entrée
   const yRang = (ri) => G.y0 + ri * G.pas;
-  const Y_TRAVERSE = yRang(RANGS.length - 1) + G.sh + 17;
-  const Y_PORTE = 298;
-  function trace(p) {
-    const gy = yRang(p.ri) - 4.5, cx = xSiege(p.siege) + G.sw / 2;
-    return p.entree === "couloir"
-      ? `M ${X_COULOIR} ${Y_PORTE} V ${gy} H ${cx}`
-      : `M ${X_COULOIR} ${Y_PORTE} V ${Y_TRAVERSE} H ${X_ALLEE} V ${gy} H ${cx}`;
-  }
+  const Y_PORTE = 246;
+  const trace = (p) => `M ${X_ALLEE} ${Y_PORTE} V ${yRang(p.ri) - 4.5} H ${xSiege(p.siege) + G.sw / 2}`;
   function planSVG({ p = null, chemin = false, lettres = true, textes = true, titre = "Plan de la salle" } = {}) {
     const groupe = new Set(p ? p.ids : []);
-    let s = `<svg class="plan" viewBox="0 0 344 330" role="img" aria-label="${esc(titre)}">`;
-    s += `<rect class="p-sol" x="2" y="2" width="340" height="326" rx="14"/>`;
-    s += `<rect class="p-scene" x="66" y="10" width="200" height="32" rx="10"/>`;
-    if (textes) s += `<text class="p-scene-txt" x="166" y="30.5" text-anchor="middle">SCÈNE · ÉCRAN</text>`;
+    let s = `<svg class="plan" viewBox="0 0 344 282" role="img" aria-label="${esc(titre)}">`;
+    s += `<rect class="p-sol" x="2" y="2" width="340" height="278" rx="14"/>`;
+    s += `<rect class="p-scene" x="${X_ALLEE - 100}" y="10" width="200" height="32" rx="10"/>`;
+    if (textes) s += `<text class="p-scene-txt" x="${X_ALLEE}" y="30.5" text-anchor="middle">SCÈNE · ÉCRAN</text>`;
     RANGS.forEach((rang, ri) => {
       const y = yRang(ri);
       if (lettres) s += `<text class="p-lettre" x="13" y="${y + 12.5}" text-anchor="middle">${rang}</text>`;
@@ -763,8 +802,8 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
         if (groupe.has(id) && textes) s += `<text class="p-num" x="${x + G.sw / 2}" y="${y + 12.5}" text-anchor="middle">${n}</text>`;
       }
     });
-    s += `<rect class="p-porte" x="308" y="302" width="28" height="4" rx="2"/>`;
-    if (textes) s += `<text class="p-porte-txt" x="336" y="320" text-anchor="end">ENTRÉE</text>`;
+    s += `<rect class="p-porte" x="${X_ALLEE - 20}" y="250" width="40" height="4" rx="2"/>`;
+    if (textes) s += `<text class="p-porte-txt" x="${X_ALLEE}" y="270" text-anchor="middle">ENTRÉE</text>`;
     if (chemin && p) {
       s += `<path class="p-chemin" d="${trace(p)}"/>`;
       s += `<circle class="p-arrivee" cx="${xSiege(p.siege) + G.sw / 2}" cy="${yRang(p.ri) - 4.5}" r="3.4"/>`;
@@ -785,8 +824,15 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
   const EXEMPLE = {
     prenom: "Camille", nom: "Payet", entreprise: "Atelier Exemple", fonction: "Direction générale",
     email: "camille.payet@atelier.example", priorite: "gagner", accompagnants: ["Johan", "Sarah"],
-    acces: false, etoile: true, actus: false,
+    acces: false, etoile: true, actus: false, rencontres: true,
   };
+  const STANDS = [
+    { nom: "L'hôte IA", txt: "Posez vos questions à voix haute, dès l'entrée." },
+    { nom: "Le bar à prompts", txt: "Le prompt du jour, testé sur un cas fictif." },
+    { nom: "Le scanner IA Act", txt: "Cinq questions pour situer vos usages de l'IA." },
+    { nom: "Le studio « site à la voix »", txt: "Décrivez un métier : la page se crée." },
+    { nom: "Le mur des idées", txt: "Votre réponse rejoint le mur, l'IA regroupe les thèmes." },
+  ];
   const VERROUS = {
     h5: { jour: "Jour J · soirée de lancement", heure: "H-5" },
     retard: { jour: "Jour J · la soirée a commencé", heure: "H+5" },
@@ -794,6 +840,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
   };
 
   let invite = null, place = null, mailCourant = null, retourMail = "affiche", ecranCourant = "accueil", minuteur = 0, nbAcc = 0;
+  const tampons = new Set();   // version réelle : gardés dans le téléphone de l'invité (stockage local), jamais envoyés
   const prenomAcc = (i) => (invite.accompagnants[i] || "").trim() || `la personne ${i + 1}`;
 
   /* ---------- Fiche ---------- */
@@ -843,6 +890,7 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     $("#acces").checked = I.acces;
     $("#etoile").checked = I.etoile;
     $("#actus").checked = I.actus;
+    $("#rencontres-ok").checked = I.rencontres;
     effacerErreurs();
   }
   function lire() {
@@ -851,14 +899,15 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
       prenom: v("prenom"), nom: v("nom"), entreprise: v("entreprise"), fonction: v("fonction"), email: v("email"),
       priorite: $("#priorite").value, accompagnants: $$("#accompagnants input").map((i) => i.value.trim()),
       acces: $("#acces").checked, etoile: $("#etoile").checked, actus: $("#actus").checked,
+      rencontres: $("#rencontres-ok").checked,
     };
   }
 
   /* ---------- Écrans ---------- */
-  const MAILLONS_ECRAN = { accueil: [1], fiche: [2], calcul: [3], place: [3, 4], affiche: [5], arrivee: [7] };
-  const MAILLONS_MAIL = { confirmation: [5], h5: [6], retard: [7], j1: [8] };
-  const ETAPE_ECRAN = { accueil: 0, fiche: 0, calcul: 1, place: 1, affiche: 2, arrivee: 5 };
-  const ETAPE_MAIL = { confirmation: 2, h5: 3, retard: 4, j1: 6 };
+  const MAILLONS_ECRAN = { accueil: [1], fiche: [2], calcul: [3], place: [3, 4], affiche: [5], arrivee: [7], passeport: [8] };
+  const MAILLONS_MAIL = { confirmation: [5], h5: [6], retard: [7], j1: [9] };
+  const ETAPE_ECRAN = { accueil: 0, fiche: 0, calcul: 1, place: 1, affiche: 2, arrivee: 5, passeport: 6 };
+  const ETAPE_MAIL = { confirmation: 2, h5: 3, retard: 4, j1: 7 };
 
   function afficher(nom, focus = true) {
     $$(".ecran").forEach((e) => { e.hidden = e.dataset.ecran !== nom; e.classList.remove("entre"); });
@@ -899,11 +948,12 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     ecrire(5, I && I.priorite ? `Accroche choisie pour « ${PRIORITES[I.priorite]} ».` : "Accroche générale : aucune priorité indiquée.");
     ecrire(6, "Envoyé aux personnes déjà pointées à l'accueil.");
     ecrire(7, ecranCourant === "arrivee" ? "Arrivée pointée : place affichée, résumé des épisodes 1 à 3." : "Non pointé à H+5 : e-mail rassurant envoyé.");
-    ecrire(8, "Rédigé à partir de la captation, relu par Aurélien, puis envoyé.");
+    ecrire(8, `Tampons : ${tampons.size} sur 5, gardés sur le téléphone de l'invité.`);
+    ecrire(9, "Rédigé à partir de la captation, relu par Aurélien, puis envoyé.");
   }
   function majPlanRegie() {
     const n = OCCUPES.size + (place ? place.ids.length : 0);
-    $("#compteurs").innerHTML = `<strong>${n}</strong> places attribuées sur 96 · <strong>2</strong> places PMR`;
+    $("#compteurs").innerHTML = `<strong>${n}</strong> places attribuées sur ${RANGS.length * PAR_RANG} · <strong>${PMR.size}</strong> places PMR`;
     $("#planRegie").innerHTML = planSVG({ p: place, titre: "Plan de salle vu par l'équipe : places libres, attribuées, PMR et groupe de l'invité" });
   }
 
@@ -922,9 +972,9 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
       const ambiance = P.ri <= 1 ? "au premier plan" : P.ri <= 4 ? "au cœur de la salle" : "avec une vue d'ensemble";
       $("#voisins").innerHTML = typo(autres.length ? `À vos côtés : ${liste(autres)}.` : `Rangée ${P.rang}, ${ambiance}.`);
       $("#planPerso").innerHTML = planSVG({ p: P, chemin: true, titre: `Plan de la salle : votre siège, rangée ${P.rang} siège ${P.siege}, est en or, avec le chemin depuis l'entrée` });
-      $("#cheminTxt").textContent = typo(P.entree === "couloir"
-        ? `Entrez en bas à droite et longez le mur jusqu'au rang ${P.rang}.`
-        : `Entrez en bas à droite, puis remontez l'allée centrale jusqu'au rang ${P.rang}.`);
+      const cote = P.siege <= 6 ? "à gauche" : "à droite";
+      const bord = P.siege === 6 || P.siege === 7 ? ", juste au bord" : "";
+      $("#cheminTxt").textContent = typo(`Entrez par le fond de la salle et remontez l'allée centrale jusqu'au rang ${P.rang} : votre siège est ${cote} de l'allée${bord}.`);
     }
     $("#etoileMsg").hidden = !invite.etoile;
   }
@@ -937,9 +987,22 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     $("#arriveeBonjour").textContent = `Bienvenue, ${invite.prenom}`;
     $("#arriveeRang").textContent = place ? place.rang : "–";
     $("#arriveeSiege").textContent = place ? String(place.siege) : "–";
-    $("#arriveeChemin").textContent = typo(!place ? "Un membre de l'équipe vous accompagne jusqu'à une place libre."
-      : place.entree === "couloir" ? "Longez le mur de droite : un membre de l'équipe vous accompagne."
-      : "Entrez par l'allée centrale : un membre de l'équipe vous accompagne.");
+    $("#arriveeChemin").textContent = typo(place ? "Remontez l'allée centrale : un membre de l'équipe vous accompagne."
+      : "Un membre de l'équipe vous accompagne jusqu'à une place libre.");
+  }
+  function rendrePasseport() {
+    $("#tampons").innerHTML = typo(STANDS.map((s, i) => {
+      const ok = tampons.has(i);
+      return `<li><button class="tampon" type="button" data-i="${i}" aria-pressed="${ok}"><span class="tampon-num">${i + 1}</span>`
+        + `<span class="tampon-corps"><span class="tampon-nom">${esc(s.nom)}</span><span class="tampon-txt">${esc(s.txt)}</span></span>`
+        + `<span class="tampon-etat">${ok ? "Tamponné" : "Toucher"}</span></button></li>`;
+    }).join(""));
+    const n = tampons.size;
+    $("#passeportCompte").textContent = `${n} tampon${n > 1 ? "s" : ""} sur 5`;
+    $("#hongbao").hidden = n < 5;
+    const r = $("#rencontres");
+    r.hidden = !(invite && invite.rencontres && invite.priorite);
+    if (!r.hidden) r.innerHTML = typo(`<strong>Rencontres ciblées :</strong> 3 invités partagent votre priorité « ${esc(PRIORITES[invite.priorite])} ». L'équipe vous les présente au cocktail.`);
   }
 
   /* ---------- E-mails (textes de démonstration) ---------- */
@@ -1027,11 +1090,13 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
     else if (i === 3) ouvrirVerrou("h5");
     else if (i === 4) ouvrirVerrou("retard");
     else if (i === 5) { mailCourant = null; rendreArrivee(); afficher("arrivee"); }
+    else if (i === 6) { mailCourant = null; rendrePasseport(); afficher("passeport"); }
     else ouvrirVerrou("j1");
   }
   function reinitialiser() {
     clearTimeout(minuteur);
     invite = null; place = null; mailCourant = null;
+    tampons.clear();
     $("#fiche").reset();
     nbAcc = 0;
     rendreAccompagnants([]);
@@ -1100,6 +1165,20 @@ h1 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.04; font-weight: 900; l
   });
   $$(".frise button").forEach((b, i) => b.addEventListener("click", () => allerEtape(i)));
   $("#reset").addEventListener("click", reinitialiser);
+  $("#tampons").addEventListener("click", (ev) => {
+    const b = ev.target.closest(".tampon");
+    if (!b) return;
+    const i = b.dataset.i;
+    tampons.add(Number(i));
+    rendrePasseport();
+    majRegie(MAILLONS_ECRAN.passeport);
+    const meme = $(`.tampon[data-i="${i}"]`);
+    if (meme) meme.focus({ preventScroll: true });
+    if (tampons.size === 5) {   // fait défiler le seul écran du téléphone, jamais la page
+      const h = $("#hongbao");
+      h.offsetParent.scrollTo({ top: h.offsetTop - 24, behavior: reduit() ? "auto" : "smooth" });
+    }
+  });
 
   etoiles();
   rendreAccompagnants([]);
