@@ -15,7 +15,7 @@ Public : dirigeants de TPE-PME triés sur le volet. Langue : français.
 
 Règles de design impératives :
 - 15 à 20 mots maximum par slide, des mots-clés, jamais de phrases longues.
-- Fond très sombre #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9A84C. Jamais d'or sur blanc.
+- Fond très sombre #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9AB4C. Jamais d'or sur blanc.
 - Police Montserrat, très grande (titres 54 pt et plus, texte 28 pt minimum) : public pouvant être malvoyant.
 - Grilles asymétriques, grands chiffres d'impact, chronologies épurées. Aucune ligne ne traverse un mot.
 - Transitions Morphose entre slides consécutives ; halo de lumière et champ d'étoiles en parallaxe lente.

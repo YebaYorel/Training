@@ -12,8 +12,8 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter
 
-OR = (201, 168, 76, 255)
-OR_DOUX = (201, 168, 76, 90)
+OR = (201, 171, 76, 255)
+OR_DOUX = (201, 171, 76, 90)
 BLANC = (255, 255, 255, 255)
 SS = 4  # suréchantillonnage pour l'anticrénelage
 

@@ -94,7 +94,7 @@ export const Ici: React.FC = () => {
           bottom: -620,
           height: 1300,
           background:
-            "radial-gradient(ellipse at 50% 100%, rgba(205,118,58,0.55) 0%, rgba(201,168,76,0.22) 38%, rgba(0,0,0,0) 70%)",
+            "radial-gradient(ellipse at 50% 100%, rgba(205,118,58,0.55) 0%, rgba(201,171,76,0.22) 38%, rgba(0,0,0,0) 70%)",
           opacity: p(g, de, 130, DOUX),
           transform: `translateY(${lerp(220, 0, p(g, de, 180, DOUX))}px)`,
         }}
@@ -179,7 +179,7 @@ export const Yeba: React.FC = () => {
               lineHeight: "380px",
               transform: `translateY(${(1 - s) * -560 + chute * 340}px) rotate(${(i - 1.5) * 9 * chute}deg) scale(${echelle})`,
               opacity: g < impact - 13 + i * 3 ? 0 : 1 - chute,
-              filter: `drop-shadow(0 0 ${30 + 60 * lueur}px rgba(201,168,76,${0.35 + 0.4 * lueur}))`,
+              filter: `drop-shadow(0 0 ${30 + 60 * lueur}px rgba(201,171,76,${0.35 + 0.4 * lueur}))`,
             }}
           >
             <span style={{ backgroundImage: OR_POLI, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>{l}</span>
@@ -283,7 +283,7 @@ export const Chemin: React.FC = () => {
       <div style={{ position: "absolute", left: 0, right: 0, top: 170, display: "flex", justifyContent: "center", ...TEXTE, fontWeight: 900, fontSize: 230 }}>
         <Odometre f={g} cibles={[[1086, "2021"], [1236, "2026"]]} taille={230} duree={44} />
       </div>
-      <div style={{ position: "absolute", left: 160, top: 760, width: 1600 * ligne, height: 3, background: `linear-gradient(90deg, ${OR} 0%, ${OR_CLAIR} 100%)`, boxShadow: "0 0 18px rgba(201,168,76,0.6)" }} />
+      <div style={{ position: "absolute", left: 160, top: 760, width: 1600 * ligne, height: 3, background: `linear-gradient(90deg, ${OR} 0%, ${OR_CLAIR} 100%)`, boxShadow: "0 0 18px rgba(201,171,76,0.6)" }} />
       <div style={{ position: "absolute", left: point - 9, top: 752, width: 18, height: 18, borderRadius: "50%", background: "#FFF6DA", boxShadow: "0 0 26px 8px rgba(233,215,160,0.8)", opacity: ligne }} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 540, textAlign: "center", ...TEXTE, fontWeight: 800, fontSize: 64 }}>
         <span style={{ opacity: 1 - p(g, 1262, 16, DOUX) }}>
@@ -340,7 +340,7 @@ export const Metiers: React.FC = () => {
               height: 560,
               borderRadius: 30,
               background: "linear-gradient(160deg, #1C2333 0%, #10141D 100%)", // opaque : le reflet passe DESSOUS
-              border: "1.5px solid rgba(201,168,76,0.55)",
+              border: "1.5px solid rgba(201,171,76,0.55)",
               boxShadow: "0 30px 80px rgba(0,0,0,0.45)",
               transform: `translateY(${lerp(170, 0, t)}px) scale(${lerp(1, 0.92, sortie)})`,
               opacity: t,
@@ -386,7 +386,7 @@ export const Formations: React.FC = () => {
   const flash = enMontage ? 0.22 * Math.exp(-t / 4) : 0;
   return (
     <AbsoluteFill style={{ opacity: p(g, de, 16, DOUX) * (1 - p(g, fin - 14, 14, DOUX)) }}>
-      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 50%, rgba(201,168,76,${flash}) 0%, rgba(0,0,0,0) 55%)` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 50%, rgba(201,171,76,${flash}) 0%, rgba(0,0,0,0) 55%)` }} />
       {g < 1682 && (
         <div style={{ position: "absolute", left: 0, right: 0, top: 230, textAlign: "center", ...TEXTE, opacity: (1 - sortieCompteur) * p(g, 1600, 14, DOUX), transform: `scale(${1 + sortieCompteur * 0.4})` }}>
           <div style={{ fontWeight: 900, fontSize: 360, lineHeight: "360px" }}>
@@ -418,7 +418,7 @@ export const Formations: React.FC = () => {
       {k >= 0 && (
         <div style={{ position: "absolute", left: 360, right: 360, top: 860, display: "flex", gap: 10, opacity: 1 - p(g, 1840, 10, DOUX) }}>
           {Array.from({ length: n }, (_, j) => (
-            <div key={j} style={{ flex: 1, height: 6, borderRadius: 3, background: j <= k ? OR : "rgba(255,255,255,0.12)", boxShadow: j <= k ? "0 0 12px rgba(201,168,76,0.7)" : undefined }} />
+            <div key={j} style={{ flex: 1, height: 6, borderRadius: 3, background: j <= k ? OR : "rgba(255,255,255,0.12)", boxShadow: j <= k ? "0 0 12px rgba(201,171,76,0.7)" : undefined }} />
           ))}
         </div>
       )}
@@ -467,7 +467,7 @@ export const Confiance: React.FC<{
               height: 440,
               borderRadius: 28,
               background: "linear-gradient(160deg, #18294A 0%, #0D1A31 100%)",
-              border: "1.5px solid rgba(201,168,76,0.55)",
+              border: "1.5px solid rgba(201,171,76,0.55)",
               boxShadow: "0 30px 80px rgba(0,0,0,0.5)",
               padding: "50px 40px",
               boxSizing: "border-box",
@@ -511,7 +511,7 @@ export const Final: React.FC = () => {
       </AbsoluteFill>
       <Halo x={960} y={380} rayon={560 + 260 * lueur} opacite={0.18 + 0.35 * lueur} />
       <OndeDeChoc f={g} debut={impact} y={380} rayonMax={1250} />
-      <div style={{ position: "absolute", left: 960 - 330, top: 120, width: 660, clipPath: `circle(${lerp(0, 85, revele)}% at 50% 42%)`, filter: `drop-shadow(0 0 ${20 + 50 * lueur}px rgba(201,168,76,0.55))` }}>
+      <div style={{ position: "absolute", left: 960 - 330, top: 120, width: 660, clipPath: `circle(${lerp(0, 85, revele)}% at 50% 42%)`, filter: `drop-shadow(0 0 ${20 + 50 * lueur}px rgba(201,171,76,0.55))` }}>
         <Img src={staticFile("logo-yeba-fond-sombre.png")} style={{ width: 660 }} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 742, textAlign: "center", ...TEXTE, fontWeight: 800, fontSize: 50, lineHeight: 1.3 }}>

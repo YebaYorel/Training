@@ -43,7 +43,7 @@ export const Eclair: React.FC<{ f: number; impacts: { f: number; force: number }
   return o < 0.01 ? null : (
     <AbsoluteFill
       style={{
-        background: "radial-gradient(circle at 50% 50%, #FFF7DA 0%, rgba(201,168,76,0.6) 45%, rgba(0,0,0,0) 80%)",
+        background: "radial-gradient(circle at 50% 50%, #FFF7DA 0%, rgba(201,171,76,0.6) 45%, rgba(0,0,0,0) 80%)",
         opacity: o,
         mixBlendMode: "screen",
         pointerEvents: "none",
@@ -59,7 +59,7 @@ export const Halo: React.FC<{
   rayon: number;
   couleur?: string;
   opacite?: number;
-}> = ({ x, y, rayon, couleur = "201,168,76", opacite = 0.35 }) => (
+}> = ({ x, y, rayon, couleur = "201,171,76", opacite = 0.35 }) => (
   <div
     style={{
       position: "absolute",
@@ -95,7 +95,7 @@ export const OndeDeChoc: React.FC<{ f: number; debut: number; x?: number; y?: nu
         height: r * 2,
         borderRadius: "50%",
         border: `${6 * (1 - t) + 1}px solid rgba(233,215,160,${0.55 * (1 - t)})`,
-        boxShadow: `0 0 ${40 * (1 - t)}px rgba(201,168,76,${0.5 * (1 - t)})`,
+        boxShadow: `0 0 ${40 * (1 - t)}px rgba(201,171,76,${0.5 * (1 - t)})`,
       }}
     />
   );
@@ -118,7 +118,7 @@ export const Poussieres: React.FC<{
 }> = ({
   n = 50,
   graine = 7,
-  couleur = "201,168,76",
+  couleur = "201,171,76",
   tailleMin = 3,
   tailleMax = 18,
   opacite = 0.45,
@@ -194,7 +194,7 @@ export const BalayageOr: React.FC<{ f: number; debut: number; duree?: number; zo
           height: 1900,
           transform: "rotate(18deg)",
           background:
-            "linear-gradient(90deg, rgba(201,168,76,0) 0%, rgba(201,168,76,0.35) 35%, rgba(255,246,214,0.9) 50%, rgba(201,168,76,0.35) 65%, rgba(201,168,76,0) 100%)",
+            "linear-gradient(90deg, rgba(201,171,76,0) 0%, rgba(201,171,76,0.35) 35%, rgba(255,246,214,0.9) 50%, rgba(201,171,76,0.35) 65%, rgba(201,171,76,0) 100%)",
           filter: "blur(8px)",
           opacity: impulsion(t, 0.5, 0.3) * 1.2,
         }}
@@ -226,7 +226,7 @@ export const Rayons: React.FC<{ x: number; y: number; boucle: number; opacite?: 
         height: 2800,
         borderRadius: "50%",
         transform: `rotate(${angle}deg)`,
-        background: `repeating-conic-gradient(from 0deg, rgba(201,168,76,${opacite}) 0deg, rgba(201,168,76,0) 22deg, rgba(201,168,76,0) 38deg, rgba(201,168,76,${opacite}) 60deg)`,
+        background: `repeating-conic-gradient(from 0deg, rgba(201,171,76,${opacite}) 0deg, rgba(201,171,76,0) 22deg, rgba(201,171,76,0) 38deg, rgba(201,171,76,${opacite}) 60deg)`,
         filter: "blur(38px)",
         WebkitMaskImage: `radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) ${portee * 0.42}%, rgba(0,0,0,0) ${portee}%)`,
         maskImage: `radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) ${portee * 0.42}%, rgba(0,0,0,0) ${portee}%)`,
@@ -251,7 +251,7 @@ export const Flare: React.FC<{ x: number; y: number; largeur?: number; opacite?:
       height: 6,
       borderRadius: 3,
       background: `linear-gradient(90deg, rgba(255,240,200,0) 0%, rgba(255,240,200,${opacite}) 50%, rgba(255,240,200,0) 100%)`,
-      boxShadow: `0 0 24px rgba(201,168,76,${opacite * 0.8})`,
+      boxShadow: `0 0 24px rgba(201,171,76,${opacite * 0.8})`,
       mixBlendMode: "screen",
     }}
   />

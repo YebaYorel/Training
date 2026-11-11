@@ -38,7 +38,7 @@
     },
     "regles_design": [
       "15 à 20 mots projetés maximum par slide (exceptions : mentions légales obligatoires, carte du catalogue, agenda)",
-      "Fond noir #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9A84C",
+      "Fond noir #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9AB4C",
       "Or jamais en texte sur fond blanc (contraste 2,29:1, échec WCAG)",
       "Corps de texte 28 pt minimum (24 pt pour une mention secondaire), titres 54 pt et plus",
       "Aucun filet ni forme ne traverse un mot ; aucune césure ; espaces insécables",
@@ -53,7 +53,7 @@
     "bleu": "1B3A6B",
     "bleu_nuit": "0E2140",
     "terre": "1A120C",
-    "or": "C9A84C",
+    "or": "C9AB4C",
     "or_clair": "E9D7A0",
     "blanc": "FFFFFF",
     "gris": "B8BCC6"
@@ -899,7 +899,7 @@
       "titre": "11 formations.",
       "titre_or": "5 familles.",
       "familles": {
-        "IA au quotidien": "C9A84C",
+        "IA au quotidien": "C9AB4C",
         "IA avancée": "E9D7A0",
         "Visibilité": "FFFFFF",
         "Gouvernance": "7FA7E0",

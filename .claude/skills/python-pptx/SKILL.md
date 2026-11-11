@@ -1,6 +1,6 @@
 ---
 name: python-pptx
-description: Générer ou modifier des PowerPoint (.pptx) YEBA par script Python avec python-pptx — motion design natif (Morphose, chronologie d'animations, vidéos en lecture automatique, fonds vidéo vivants), notes orateur, texte alternatif, slides masquées. À utiliser pour toute création/édition de .pptx dans ce dépôt.
+description: Générer ou modifier des PowerPoint (.pptx) YEBA par script Python avec python-pptx — motion design natif (Morphose, chronologie d'animations, vidéos en lecture automatique, fonds vidéo vivants), notes orateur, texte alternatif, slides masquées. Outil de fabrication du .pptx, appelé par presentation-yeba (événementiel) ou par yeba-powerpoint (formation, qui garde ses règles d'accessibilité).
 ---
 
 # python-pptx (bibliothèque MIT, exécution 100 % locale)

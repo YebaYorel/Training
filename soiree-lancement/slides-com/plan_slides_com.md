@@ -9,7 +9,7 @@ Deux voies, de la plus fidèle à la plus souple :
 2. **Reconstruire** chaque slide avec le plan ci-dessous, puis activer *Auto-Animate* entre slides
    consécutives et donner le même *Animation ID* aux éléments qui doivent glisser (équivalent Morphose).
 
-Réglages d'identité (Theme → Custom CSS) : fond `#121212`, texte `#FFFFFF`, accent `#C9A84C`,
+Réglages d'identité (Theme → Custom CSS) : fond `#121212`, texte `#FFFFFF`, accent `#C9AB4C`,
 police Montserrat. Copier le bloc CSS de `revealjs/build_reveal.py` (variable `CSS`) pour un rendu identique.
 
 > ⚖️ RGPD : Slides.com héberge vos présentations en ligne. Vérifier la localisation des serveurs et le

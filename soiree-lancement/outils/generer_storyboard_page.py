@@ -169,16 +169,16 @@ def page(noms, taille_video):
 /* Mise en page : guide d'épisodes de série — vignette 16:9 à gauche, fiche à droite ; charte YEBA (noir, or, bleu nuit). */
 :root {{
   --bg: #121212; --surface: #1A1A1E; --surface-2: #202026; --line: #2E2D33;
-  --fg: #FFFFFF; --muted: #B8BCC6; --gold: #C9A84C; --gold-ink: #C9A84C; --blue: #1B3A6B; --alert: #E8A33D;
+  --fg: #FFFFFF; --muted: #B8BCC6; --gold: #C9AB4C; --gold-ink: #C9AB4C; --blue: #1B3A6B; --alert: #E8A33D;
   --display: "Montserrat", "Segoe UI", system-ui, sans-serif; --body: "Montserrat", "Segoe UI", system-ui, sans-serif;
   color-scheme: dark;
 }}
 @media (prefers-color-scheme: light) {{ :root:not([data-theme="dark"]) {{
   --bg: #F4F5F7; --surface: #FFFFFF; --surface-2: #ECEEF2; --line: #D7DAE0;
-  --fg: #121212; --muted: #4A4F5A; --gold: #C9A84C; --gold-ink: #7A5E16; --blue: #1B3A6B; --alert: #8A4B00; color-scheme: light; }} }}
+  --fg: #121212; --muted: #4A4F5A; --gold: #C9AB4C; --gold-ink: #7A5E16; --blue: #1B3A6B; --alert: #8A4B00; color-scheme: light; }} }}
 :root[data-theme="light"] {{
   --bg: #F4F5F7; --surface: #FFFFFF; --surface-2: #ECEEF2; --line: #D7DAE0;
-  --fg: #121212; --muted: #4A4F5A; --gold: #C9A84C; --gold-ink: #7A5E16; --blue: #1B3A6B; --alert: #8A4B00; color-scheme: light; }}
+  --fg: #121212; --muted: #4A4F5A; --gold: #C9AB4C; --gold-ink: #7A5E16; --blue: #1B3A6B; --alert: #8A4B00; color-scheme: light; }}
 * {{ box-sizing: border-box; }}
 body {{ margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; }}
 .page {{ max-width: 1180px; margin: 0 auto; padding-block: 40px 64px;

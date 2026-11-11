@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFilter
 ICI = Path(__file__).resolve().parent
 CALQUES = ICI / "calques"
 PICTOS = ICI / "pictos"
-OR = (201, 168, 76)
+OR = (201, 171, 76)
 OR_CLAIR = (233, 215, 160)
 SS = 4
 

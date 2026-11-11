@@ -14,7 +14,7 @@ const DEGRADES: Record<string, string> = {
   bleu: `linear-gradient(135deg, ${BLEU} 0%, #132A50 50%, ${BLEU_NUIT} 100%)`,
   terre: `linear-gradient(135deg, #22160D 0%, ${TERRE} 55%, #120C08 100%)`,
 };
-const HALOS: Record<string, string> = { noir: "201,168,76", bleu: "110,150,220", terre: "205,118,58" };
+const HALOS: Record<string, string> = { noir: "201,171,76", bleu: "110,150,220", terre: "205,118,58" };
 
 /** Pré-show : boucle de 20 s pendant l'accueil (sans son). */
 export const PreShow: React.FC<{ boucle?: number }> = ({ boucle = 600 }) => {
@@ -27,7 +27,7 @@ export const PreShow: React.FC<{ boucle?: number }> = ({ boucle = 600 }) => {
       <Rayons x={960} y={360} boucle={boucle} opacite={0.16} portee={30} />
       <Halo x={960} y={360} rayon={620} opacite={0.16 + 0.1 * pouls} />
       <Poussieres n={70} graine={3} boucle={boucle} tailleMin={2} tailleMax={12} opacite={0.42} />
-      <div style={{ position: "absolute", left: 960 - 270, top: 120, width: 540, transform: `scale(${souffle})`, filter: "drop-shadow(0 0 40px rgba(201,168,76,0.35))" }}>
+      <div style={{ position: "absolute", left: 960 - 270, top: 120, width: 540, transform: `scale(${souffle})`, filter: "drop-shadow(0 0 40px rgba(201,171,76,0.35))" }}>
         <Img src={staticFile("logo-yeba-fond-sombre.png")} style={{ width: 540 }} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 700, textAlign: "center", color: BLANC, fontWeight: 700, fontSize: 46 }}>
@@ -53,7 +53,7 @@ export const Ambiance: React.FC<{ teinte: string; boucle?: number }> = ({ teinte
       <Halo x={1500 + 220 * Math.cos(a)} y={220 + 120 * Math.sin(2 * a)} rayon={760} couleur={c} opacite={0.15} />
       <Halo x={260 + 160 * Math.sin(a + 1)} y={900 + 90 * Math.cos(a)} rayon={680} couleur={c} opacite={0.1} />
       <Halo x={960 + 300 * Math.sin(2 * a + 2)} y={560 + 80 * Math.cos(a + 0.5)} rayon={900} couleur={c} opacite={0.05} />
-      <Poussieres n={42} graine={teinte.length * 17} boucle={boucle} tailleMin={2} tailleMax={14} opacite={0.32} couleur={teinte === "bleu" ? "190,210,255" : "201,168,76"} />
+      <Poussieres n={42} graine={teinte.length * 17} boucle={boucle} tailleMin={2} tailleMax={14} opacite={0.32} couleur={teinte === "bleu" ? "190,210,255" : "201,171,76"} />
       <Vignette force={0.5} />
     </AbsoluteFill>
   );
@@ -132,7 +132,7 @@ export const FondJournee: React.FC<{ horaires: Horaires }> = ({ horaires }) => {
     return (
       <>
         <div style={{ position: "absolute", left: a, top: FRISE_Y - 3, width: b - a, height: 6, borderRadius: 3, background: tirets ? "repeating-linear-gradient(90deg, rgba(184,188,198,0.45) 0 10px, rgba(0,0,0,0) 10px 18px)" : "rgba(255,255,255,0.12)" }} />
-        {!tirets && fin > a && <div style={{ position: "absolute", left: a, top: FRISE_Y - 3, width: fin - a, height: 6, borderRadius: 3, background: couleur, boxShadow: "0 0 14px rgba(201,168,76,0.7)" }} />}
+        {!tirets && fin > a && <div style={{ position: "absolute", left: a, top: FRISE_Y - 3, width: fin - a, height: 6, borderRadius: 3, background: couleur, boxShadow: "0 0 14px rgba(201,171,76,0.7)" }} />}
       </>
     );
   };
@@ -150,7 +150,7 @@ export const FondJournee: React.FC<{ horaires: Horaires }> = ({ horaires }) => {
       {segment(xp0, xp1, GRIS, true)}
       {segment(xp1, 1660, `linear-gradient(90deg, ${OR} 0%, ${OR_CLAIR} 100%)`)}
       <Halo x={sx} y={sy} rayon={220} couleur="246,220,150" opacite={0.5} />
-      <div style={{ position: "absolute", left: sx - 34, top: sy - 34, width: 68, height: 68, borderRadius: "50%", background: "radial-gradient(circle at 40% 35%, #FFF6DA 0%, #F2D27E 45%, #C9A84C 100%)", boxShadow: "0 0 50px 14px rgba(242,210,126,0.55)" }} />
+      <div style={{ position: "absolute", left: sx - 34, top: sy - 34, width: 68, height: 68, borderRadius: "50%", background: "radial-gradient(circle at 40% 35%, #FFF6DA 0%, #F2D27E 45%, #C9AB4C 100%)", boxShadow: "0 0 50px 14px rgba(242,210,126,0.55)" }} />
       <Poussieres n={24} graine={12} tailleMin={2} tailleMax={7} opacite={0.25} derive={0.1} zone={[0, 0, 1920, 700]} />
       <Vignette force={0.45} />
     </AbsoluteFill>
@@ -163,7 +163,7 @@ export const FondSceau: React.FC<{ boucle?: number }> = ({ boucle = 360 }) => {
   return (
     <AbsoluteFill style={{ background: DEGRADES.bleu }}>
       <AnneauxSceau f={f} x={529} y={547} rayon={300} boucle={boucle} opacite={0.42} />
-      <Halo x={529} y={547} rayon={620} couleur="201,168,76" opacite={0.1 + 0.05 * Math.sin((TAU * f) / boucle)} />
+      <Halo x={529} y={547} rayon={620} couleur="201,171,76" opacite={0.1 + 0.05 * Math.sin((TAU * f) / boucle)} />
       <Poussieres n={36} graine={6} boucle={boucle} tailleMin={2} tailleMax={10} opacite={0.3} couleur="220,230,255" />
       <Vignette force={0.5} />
     </AbsoluteFill>
@@ -216,7 +216,7 @@ export const FondBientot: React.FC<{ boucle?: number }> = ({ boucle = 360 }) => 
   return (
     <AbsoluteFill style={{ background: DEGRADES.noir }}>
       <Halo x={1700 + 120 * Math.sin(a)} y={300 + 140 * Math.cos(a)} rayon={760} couleur="214,140,70" opacite={0.2} />
-      <Halo x={200 + 120 * Math.cos(a)} y={900} rayon={600} couleur="201,168,76" opacite={0.1} />
+      <Halo x={200 + 120 * Math.cos(a)} y={900} rayon={600} couleur="201,171,76" opacite={0.1} />
       <Flare x={960 + 760 * Math.sin(a)} y={1000} largeur={1100} opacite={0.55} />
       <Poussieres n={50} graine={22} boucle={boucle} tailleMin={2} tailleMax={12} opacite={0.36} />
       <Vignette force={0.5} />

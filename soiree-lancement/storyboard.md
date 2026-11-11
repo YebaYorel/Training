@@ -11,7 +11,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 ## Règles de design appliquées
 
 - 15 à 20 mots projetés maximum par slide (exceptions : mentions légales obligatoires, carte du catalogue, agenda)
-- Fond noir #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9A84C
+- Fond noir #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9AB4C
 - Or jamais en texte sur fond blanc (contraste 2,29:1, échec WCAG)
 - Corps de texte 28 pt minimum (24 pt pour une mention secondaire), titres 54 pt et plus
 - Aucun filet ni forme ne traverse un mot ; aucune césure ; espaces insécables

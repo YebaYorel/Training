@@ -343,7 +343,7 @@ CSS = """
 @font-face{font-family:Montserrat;font-weight:700;font-display:block;src:url(fonts/montserrat-latin-700-normal.woff2) format('woff2')}
 @font-face{font-family:Montserrat;font-weight:800;font-display:block;src:url(fonts/montserrat-latin-800-normal.woff2) format('woff2')}
 @font-face{font-family:Montserrat;font-weight:900;font-display:block;src:url(fonts/montserrat-latin-900-normal.woff2) format('woff2')}
-:root{--noir:#121212;--bleu:#1B3A6B;--nuit:#0E2140;--or:#C9A84C;--or-clair:#E9D7A0;--blanc:#fff;--gris:#B8BCC6;--gris2:#8C93A0;--verre:rgba(255,255,255,.06)}
+:root{--noir:#121212;--bleu:#1B3A6B;--nuit:#0E2140;--or:#C9AB4C;--or-clair:#E9D7A0;--blanc:#fff;--gris:#B8BCC6;--gris2:#8C93A0;--verre:rgba(255,255,255,.06)}
 html,body{background:var(--noir)}
 .reveal{font-family:Montserrat,system-ui,sans-serif;color:var(--blanc);font-size:47px;line-height:1.22}
 .reveal .slides section{height:100%;text-align:left;padding:0;box-sizing:border-box}
@@ -378,7 +378,7 @@ html,body{background:var(--noir)}
 .agenda-big{right:66px;top:300px;font-weight:900;font-size:250px;line-height:1;color:var(--or)}
 /* équipe */
 .cartes{left:60px;right:60px;top:204px;display:flex;gap:36px;justify-content:center}
-.carte{position:relative!important;width:462px;height:582px;background:var(--verre);border:2px solid rgba(201,168,76,.55);border-radius:30px;text-align:center;padding-top:42px;box-sizing:border-box}
+.carte{position:relative!important;width:462px;height:582px;background:var(--verre);border:2px solid rgba(201,171,76,.55);border-radius:30px;text-align:center;padding-top:42px;box-sizing:border-box}
 .photo{width:216px;height:216px;margin:0 auto;border-radius:50%;background:var(--bleu);border:4px solid var(--or);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:73px}
 .nom{font-weight:800;font-size:47px;margin-top:34px;padding:0 24px;line-height:1.15}.role{color:var(--gris);font-size:40px;margin-top:20px;padding:0 24px}
 /* badges */
@@ -431,7 +431,7 @@ html,body{background:var(--noir)}
 .detail{color:var(--or);font-weight:800;font-size:47px;line-height:1.2}
 /* offres */
 .offres{left:96px;right:96px;top:222px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:264px 264px;gap:26px}
-.offre{position:relative!important;border:1.5px solid rgba(201,168,76,.5);background:var(--verre);border-radius:26px;padding:0 46px;display:flex;flex-direction:column;justify-content:center}
+.offre{position:relative!important;border:1.5px solid rgba(201,171,76,.5);background:var(--verre);border-radius:26px;padding:0 46px;display:flex;flex-direction:column;justify-content:center}
 .offre strong{font-weight:800;font-size:54px;line-height:1.1}.offre span{color:var(--or);font-weight:800;font-size:43px;margin-top:8px}
 .offre.phare{background:var(--or);border:0}.offre.phare strong,.offre.phare span{color:var(--noir)}
 .o0{grid-column:1/3}.o1{grid-column:3/5}.o2{grid-column:5/7}.o3{grid-column:1/4}.o4{grid-column:4/7}
@@ -446,14 +446,14 @@ html,body{background:var(--noir)}
 .mention{left:96px;bottom:22px;color:var(--gris);font-size:40px}
 /* confiance */
 .panneaux{left:96px;right:96px;top:228px;display:flex;gap:60px}
-.panneau{position:relative!important;flex:1;height:426px;background:var(--nuit);border:2px solid rgba(201,168,76,.6);border-radius:28px;padding:0 54px;display:flex;flex-direction:column;justify-content:center}
+.panneau{position:relative!important;flex:1;height:426px;background:var(--nuit);border:2px solid rgba(201,171,76,.6);border-radius:28px;padding:0 54px;display:flex;flex-direction:column;justify-content:center}
 .panneau strong{font-weight:900;font-size:100px;color:var(--or);line-height:1}.panneau b{font-weight:800;font-size:50px;margin-top:18px}
 .panneau b.moyen{font-size:43px}.panneau small{color:var(--gris);font-size:40px;margin-top:10px;line-height:1.2}
 .bandeau .or{margin-right:18px}.bandeau{left:96px;right:96px;top:686px;height:102px;background:var(--nuit);border:2px solid var(--or);border-radius:60px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:47px}
 /* avantages */
 .titre-avantages{left:96px;top:84px}.titre-avantages h2{position:static}
 .avantages{left:84px;right:84px;top:372px;display:flex;gap:38px}
-.avantage{position:relative!important;flex:1;height:408px;background:var(--verre);border:1.5px solid rgba(201,168,76,.55);border-radius:28px;padding:34px 30px;box-sizing:border-box}
+.avantage{position:relative!important;flex:1;height:408px;background:var(--verre);border:1.5px solid rgba(201,171,76,.55);border-radius:28px;padding:34px 30px;box-sizing:border-box}
 .avantage img{width:114px;display:block}.avantage strong{display:block;font-weight:800;font-size:50px;margin-top:22px;line-height:1.15}
 .avantage span{display:block;color:var(--or);font-weight:800;font-size:43px;margin-top:8px;line-height:1.2}
 /* atelier */
@@ -480,7 +480,7 @@ html,body{background:var(--noir)}
 /* à suivre */
 .titre-bientot{left:96px;top:114px;font-size:147px;white-space:nowrap}
 .bientots{left:84px;right:84px;top:384px;display:flex;gap:38px}
-.carte-bientot{position:relative!important;flex:1;height:300px;background:var(--verre);border:1.5px solid rgba(201,168,76,.55);border-radius:30px;padding:0 42px;display:flex;flex-direction:column;justify-content:center}
+.carte-bientot{position:relative!important;flex:1;height:300px;background:var(--verre);border:1.5px solid rgba(201,171,76,.55);border-radius:30px;padding:0 42px;display:flex;flex-direction:column;justify-content:center}
 .carte-bientot strong{font-weight:800;font-size:53px;line-height:1.15}.carte-bientot span{color:var(--or);font-weight:800;font-size:40px;margin-top:10px}
 .bientots.un{right:auto;width:768px}.bientots.un .carte-bientot{height:312px}.bientots.un strong{font-size:80px}.bientots.un span{font-size:50px}
 .present .entree{animation:apparait .7s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}

@@ -98,7 +98,7 @@ const Radar: React.FC<{ f: number }> = ({ f }) => {
           height: 680,
           borderRadius: "50%",
           transform: `rotate(${angle}deg)`,
-          background: "conic-gradient(from 0deg, rgba(201,168,76,0.45) 0deg, rgba(201,168,76,0) 70deg, rgba(201,168,76,0) 360deg)",
+          background: "conic-gradient(from 0deg, rgba(201,171,76,0.45) 0deg, rgba(201,171,76,0) 70deg, rgba(201,171,76,0) 360deg)",
         }}
       />
     </AbsoluteFill>
@@ -133,7 +133,7 @@ export const Episode: React.FC<EpisodeProps> = ({ numero, titre, sujet, motif, t
   const f = useCurrentFrame();
   const num = String(numero).padStart(2, "0");
   const fond = TEINTES[teinte] ?? TEINTES.noir;
-  const couleurHalo = teinte === "terre" ? "205,118,58" : teinte === "bleu" ? "90,130,200" : "201,168,76";
+  const couleurHalo = teinte === "terre" ? "205,118,58" : teinte === "bleu" ? "90,130,200" : "201,171,76";
   return (
     <AbsoluteFill style={{ background: fond, fontFamily: "Montserrat, sans-serif" }}>
       <Polices />
@@ -148,8 +148,8 @@ export const Episode: React.FC<EpisodeProps> = ({ numero, titre, sujet, motif, t
           top: 470,
           width: 860 * p(f, 6, 26, EXPO),
           height: 2,
-          background: `linear-gradient(90deg, ${OR} 0%, #F6E7B0 45%, rgba(201,168,76,0) 100%)`,
-          boxShadow: "0 0 18px rgba(201,168,76,0.6)",
+          background: `linear-gradient(90deg, ${OR} 0%, #F6E7B0 45%, rgba(201,171,76,0) 100%)`,
+          boxShadow: "0 0 18px rgba(201,171,76,0.6)",
         }}
       />
       <div style={{ position: "absolute", left: 150, top: 396, color: OR, fontWeight: 800, fontSize: 30 }}>
