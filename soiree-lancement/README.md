@@ -9,6 +9,10 @@ construits (présentation, histoire, offre YEBA, formations : ≈ 36 min de temp
 
 ## Livrables
 
+Les fichiers de `dist/` (PowerPoint, PDF, vidéos) **ne sont pas versionnés** : ce dépôt est public. On les
+régénère avec `bash build_all.sh` (`--videos` pour les vidéos Remotion), on les contrôle, puis on les remet en
+pièce jointe. Les sources (`contenu/slides.json`, `assets/`, `remotion/`, `outils/`) restent dans le dépôt.
+
 | Fichier | Rôle | Outil |
 |---|---|---|
 | `dist/YEBA_Soiree_Lancement.pptx` | **La présentation « cinéma »** : animations natives, Morphose, fonds vidéo vivants, générique et épisodes en lecture automatique, notes orateur | python-pptx |
