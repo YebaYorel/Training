@@ -197,14 +197,21 @@ const dessiner = (ctx: CanvasRenderingContext2D, t: number, cam: Camera, trous: 
   // 6. réserves : aucune particule, aucun trait, aucune onde sous un mot (bords fondus)
   ctx.globalCompositeOperation = "destination-out";
   ctx.fillStyle = "#000";
+  // halo d'effacement progressif (flou gaussien) : aucune coupure nette visible autour d'un mot
+  ctx.filter = "blur(10px)";
   for (const b of trous) {
-    for (let s = 5; s >= 0; s--) {
-      const m = s * 9;
-      ctx.globalAlpha = b.a * (s === 0 ? 1 : 0.16);
-      ctx.beginPath();
-      ctx.roundRect(b.x - m, b.y - m, b.w + 2 * m, b.h + 2 * m, 28 + m);
-      ctx.fill();
-    }
+    ctx.globalAlpha = b.a;
+    ctx.beginPath();
+    ctx.roundRect(b.x - 12, b.y - 12, b.w + 24, b.h + 24, 40);
+    ctx.fill();
+  }
+  ctx.filter = "none";
+  // cœur : effacement total sous le mot et sa marge
+  for (const b of trous) {
+    ctx.globalAlpha = b.a;
+    ctx.beginPath();
+    ctx.roundRect(b.x, b.y, b.w, b.h, 28);
+    ctx.fill();
   }
   ctx.globalCompositeOperation = "source-over";
   ctx.globalAlpha = 1;
@@ -240,8 +247,9 @@ const centreSujet = (t: number, cam: Camera) => {
   const k = etapeCourante(t);
   const e = ETAPES[k];
   const f = FORMES[e.forme];
-  const c: V3 = [0, 1, 2].map((i) => (f.bmin[i] + f.bmax[i]) / 2 + (e.decalage[i] ?? 0)) as V3;
-  if (e.forme === "chemin") return [CX, CY * 0.9];
+  const ech = e.echelle ?? 1;
+  const c: V3 = [0, 1, 2].map((i) => ((f.bmin[i] + f.bmax[i]) / 2) * ech + (e.decalage[i] ?? 0)) as V3;
+  if (e.forme === "chemin") return [CX + 400, CY * 0.9]; // le chemin passe dans le tiers droit (VISEE_CHEMIN)
   if (e.aligner_logo) return [CX, LOGO.haut + 170];
   const q = projeter(cam, c);
   return q ? [q[0], q[1]] : [CX, CY];

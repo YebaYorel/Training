@@ -121,7 +121,9 @@
       "fichier": "dist/videos/yeba-saison1-generique-v3.mp4",
       "apercu": "dist/videos/yeba-saison1-generique-v3.jpg",
       "boucle": false,
-      "duree_s": 80
+      "duree_s": 80,
+      "fichier_pptx": "dist/videos/yeba-saison1-generique-v3-pptx.mp4",
+      "_note": "fichier = master 1080p 60 i/s (lecture directe, VLC ou lecteur Windows) ; fichier_pptx = copie 1080p 30 i/s intégrée au PowerPoint (lecture fluide sur tout PC)."
     },
     "episode-1": {
       "fichier": "dist/videos/yeba-episode-1.mp4",

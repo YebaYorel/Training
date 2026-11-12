@@ -177,6 +177,9 @@ const cheminPos = (s: number): V3 => [
   -34.0 * s,
 ];
 export const sCamera = (t: number) => clamp(0.125 * (t - 42.52), 0, 0.96) * lisse((t - 41.6) / 1.4);
+// Visée décalée à gauche du chemin : le chemin et ses jalons passent dans le tiers droit de l'image,
+// les années (écrites à gauche) restent dégagées. Valeur vérifiée par la sonde de composition.
+const VISEE_CHEMIN: V3 = [-2.7, 0.25, 0];
 
 type Cle = { t: number; oeil: V3; cible: V3 };
 const CLES: Cle[] = (() => {
@@ -189,11 +192,11 @@ const CLES: Cle[] = (() => {
       if (suiv && suiv.chemin !== undefined) {
         for (let tt = c.t; tt < suiv.t; tt += 0.5) {
           const s = sCamera(tt);
-          out.push({ t: tt, oeil: cheminPos(s).map((v, k) => v + [0.9, 1.3, 4.2][k]) as V3, cible: cheminPos(Math.min(1, s + 0.13)).map((v, k) => v + [0, 0.25, 0][k]) as V3 });
+          out.push({ t: tt, oeil: cheminPos(s).map((v, k) => v + [0.9, 1.3, 4.2][k]) as V3, cible: cheminPos(Math.min(1, s + 0.13)).map((v, k) => v + VISEE_CHEMIN[k]) as V3 });
         }
       } else {
         const s = sCamera(c.t);
-        out.push({ t: c.t, oeil: cheminPos(s).map((v, k) => v + [0.9, 1.3, 4.2][k]) as V3, cible: cheminPos(Math.min(1, s + 0.13)).map((v, k) => v + [0, 0.25, 0][k]) as V3 });
+        out.push({ t: c.t, oeil: cheminPos(s).map((v, k) => v + [0.9, 1.3, 4.2][k]) as V3, cible: cheminPos(Math.min(1, s + 0.13)).map((v, k) => v + VISEE_CHEMIN[k]) as V3 });
       }
     } else if (c.logo) {
       out.push({ t: c.t, oeil: [0, 0, D_FINAL], cible: [0, 0, 0] });

@@ -19,6 +19,7 @@ Ce que fait le script, sans macro :
 import json
 import math
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -36,6 +37,7 @@ DIST = RACINE / "dist"
 C = json.loads((RACINE / "contenu" / "slides.json").read_text(encoding="utf-8"))
 PAL = {k: RGBColor.from_string(v) for k, v in C["palette"].items()}
 GRIS2 = RGBColor.from_string("8C93A0")
+GRIS_NUM = RGBColor.from_string("B8BCC6")  # numéros d'épisodes à venir : contraste 9,6:1 sur #121212 (AAA)
 NOIR_PUR = RGBColor.from_string("000000")
 IMAGES = "--images" in sys.argv  # source du PDF : chaque vidéo devient son image fixe (sinon le PDF embarque les MP4)
 SOBRE = "--sobre" in sys.argv or IMAGES
@@ -68,6 +70,7 @@ def typo(t: str) -> str:
             t = t.replace(chiffre + unite, chiffre + NB + unite[1:])
     t = t.replace("N° ", "N°" + NB).replace("n° ", "n°" + NB).replace("IA Act", "IA" + NB + "Act")
     t = t.replace(" · ", NB + "· ").replace(" → ", NB + "→" + NB).replace(" & ", " &" + NB)
+    t = t.replace("Microsoft 365", "Microsoft" + NB + "365")
     return _MOT_COURT.sub(lambda m: m.group(1) + NB, t)
 
 
@@ -103,6 +106,52 @@ def nb_lignes(txt, pt, largeur, gras=True):
             lignes += 1
             courant = l
     return lignes
+
+
+MOTS_FAIBLES = {"les", "une", "des", "aux", "avec", "pour", "par", "sur", "sous", "dans", "qui", "que", "nos", "vos",
+               "notre", "votre", "ses", "leur", "leurs", "mes", "tes", "chez", "vers", "entre", "sans", "mais", "donc"}
+
+
+def equilibrer(txt, pt, largeur, gras=True):
+    """Coupures de ligne « de typographe » pour un titre : même nombre de lignes que le retour automatique,
+    lignes de longueurs voisines, coupure de préférence après un point, jamais après un mot-outil
+    (« une », « avec », « des »…). Renvoie la liste des lignes (une seule = rien à faire)."""
+    from itertools import combinations
+    mots = typo(txt).split(" ")
+    if len(mots) < 3:
+        return [txt]
+    L = largeur - 0.2
+    n = nb_lignes(txt, pt, largeur - 0.2, gras)
+    if n < 2 or n >= 99 or n > len(mots):
+        return [txt]
+    # nombre de lignes incertain (le texte tiendrait peut-être sur moins de lignes) : on laisse PowerPoint couper
+    if nb_lignes(txt, pt, largeur * 1.06, gras) < n:
+        return [txt]
+    lg = [largeur_texte(m, pt, gras) for m in mots]
+    esp = largeur_texte(" ", pt, gras)
+    moy = (sum(lg) + esp * (len(mots) - 1)) / n
+    meilleur, cout_min = None, float("inf")
+    for coupes in combinations(range(1, len(mots)), n - 1):
+        bornes = (0,) + coupes + (len(mots),)
+        lignes_, cout = [], 0.0
+        for a, b in zip(bornes, bornes[1:]):
+            w = sum(lg[a:b]) + esp * (b - a - 1)
+            if w > L:
+                break
+            lignes_.append(" ".join(mots[a:b]))
+            cout += (moy - w) ** 2
+            if b < len(mots):
+                fin = mots[b - 1]
+                if fin[-1] in ".!?…":
+                    cout -= 1.5 * moy
+                elif fin[-1] in ",:;":
+                    cout -= 0.6 * moy
+                if fin.lower().strip("«» ") in MOTS_FAIBLES:
+                    cout += 3.0 * moy
+        else:
+            if cout < cout_min:
+                meilleur, cout_min = lignes_, cout
+    return meilleur or [txt]
 
 
 def _hauteur(paras, pt, largeur, interligne, gras):
@@ -169,11 +218,25 @@ def _prep_tf(tf, ancre, marge=0.05, retour=True):
         setattr(tf, m, Inches(marge))
 
 
-def _remplir(tf, paras, align, interligne):
+def _remplir(tf, paras, align, interligne, largeur=None):
     for i, runs in enumerate(paras):
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         p.alignment = align
         p.line_spacing = interligne
+        if largeur and tf.word_wrap is not False and len(runs) == 1 and runs[0][1] >= 36:
+            txt, pt = runs[0][0], runs[0][1]
+            police = runs[0][3] if len(runs[0]) > 3 else F_GRAS
+            lignes_ = equilibrer(txt, pt, largeur - 0.1, _POIDS.get(police, True))
+            if len(lignes_) > 1:
+                for k, ligne in enumerate(lignes_):
+                    if k:
+                        p.add_line_break()
+                        br = p._p.findall(qn("a:br"))[-1]
+                        rpr = br.get_or_add_rPr()
+                        rpr.set("lang", "fr-FR")
+                        rpr.set("sz", str(int(pt * 100)))
+                    _run(p, ligne, *runs[0][1:])
+                continue
         for run in runs:
             _run(p, *run)
 
@@ -183,7 +246,7 @@ def texte(sl, nom, x, y, w, h, paras, align=PP_ALIGN.LEFT, ancre=MSO_ANCHOR.TOP,
     tb = sl.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h))
     nommer(tb, nom)
     _prep_tf(tb.text_frame, ancre, retour=retour)
-    _remplir(tb.text_frame, paras, align, interligne)
+    _remplir(tb.text_frame, paras, align, interligne, largeur=w)
     return tb
 
 
@@ -195,7 +258,7 @@ def titre(sl, x, y, w, h, paras, align=PP_ALIGN.LEFT, ancre=MSO_ANCHOR.TOP, inte
     tf = ph.text_frame
     _prep_tf(tf, ancre)
     tf.text = ""
-    _remplir(tf, paras, align, interligne)
+    _remplir(tf, paras, align, interligne, largeur=w)
     return ph
 
 
@@ -204,7 +267,11 @@ def titre_cache(sl, txt):
     ph = sl.shapes.title
     nommer(ph, "titre")
     ph.text = typo(txt)
-    ph.left, ph.top, ph.width, ph.height = Inches(-4), Inches(0), Inches(3), Inches(1)
+    for p in ph.text_frame.paragraphs:
+        for r in p.runs:
+            r.font.size = Pt(40)  # taille explicite (lecteurs d'écran, vérificateur d'accessibilité)
+    # hors champ, à gauche de la diapo, assez large pour qu'aucun mot ne soit coupé
+    ph.left, ph.top, ph.width, ph.height = Inches(-13), Inches(0), Inches(12.5), Inches(2.0)
 
 
 def _alpha(el_couleur, pct):
@@ -240,10 +307,28 @@ def rect(sl, nom, x, y, w, h, couleur=None, contour=None, ep=2.0, forme=MSO_SHAP
     return s
 
 
+def decoratif(forme):
+    """« Marquer comme décoratif » (Office) : les lecteurs d'écran l'ignorent ; ni texte alternatif ni contraste exigés.
+    Réservé aux décors (fonds, étoiles, halos, vignette, pictos redondants, filigranes)."""
+    cnv = forme._element.xpath("./*[1]/p:cNvPr")[0]
+    ext_lst = cnv.find(qn("a:extLst"))
+    if ext_lst is None:
+        ext_lst = etree.SubElement(cnv, qn("a:extLst"))
+    ext = etree.SubElement(ext_lst, qn("a:ext"))
+    ext.set("uri", "{C183D7F6-B498-43B3-948B-1728B52AA6E4}")
+    d = etree.SubElement(ext, "{http://schemas.microsoft.com/office/drawing/2017/decorative}decorative",
+                         nsmap={"adec": "http://schemas.microsoft.com/office/drawing/2017/decorative"})
+    d.set("val", "1")
+    return forme
+
+
 def image(sl, nom, chemin, x, y, w=None, h=None, alt=""):
+    """Image : alt="" signifie DÉCOR → marquée décorative (sinon le texte alternatif est obligatoire)."""
     pic = sl.shapes.add_picture(str(chemin), Inches(x), Inches(y), Inches(w) if w else None, Inches(h) if h else None)
     nommer(pic, nom)
     pic._element.nvPicPr.cNvPr.set("descr", alt)
+    if not alt.strip():
+        decoratif(pic)
     return pic
 
 
@@ -433,6 +518,7 @@ def calques(sl, s, idx, ch, halo_xy=(6.67, 3.75), halo_taille=9.0):
             couches.append(image(sl, "fond-image", RACINE / spec["apercu"], 0, 0, w=W, h=H, alt=""))
         else:
             mv = film(sl, "fond-video", spec["fichier"], spec["apercu"], alt="Fond animé décoratif")
+            decoratif(mv)
             ch.media(mv, spec["duree_s"], boucle=spec["boucle"], muet=True)
             couches.append(mv)
     # Champ d'étoiles : la Morphose le déplace légèrement d'une slide à l'autre (parallaxe lente)
@@ -519,6 +605,21 @@ def titre_ligne(sl, ch, s, x, y, w, pt_max=54, debut=200):
     return pt
 
 
+def video_pour_pptx(spec):
+    """Copie allégée pour PowerPoint (1080p, 30 i/s, H.264 High, CRF 20) dérivée du master 60 i/s.
+    PowerPoint lit ainsi le générique sans saccade, même sur un PC portable modeste. 100 % local (ffmpeg)."""
+    if "fichier_pptx" not in spec or IMAGES:
+        return spec["fichier"]
+    src, dst = RACINE / spec["fichier"], RACINE / spec["fichier_pptx"]
+    if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
+        print(f"  → copie PowerPoint de {src.name} (30 i/s)…")
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(src), "-vf", "fps=30",
+                        "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-profile:v", "high",
+                        "-pix_fmt", "yuv420p", "-movflags", "+faststart", "-c:a", "aac", "-b:a", "192k",
+                        str(dst)], check=True)
+    return spec["fichier_pptx"]
+
+
 # ───────────────────────────────────────── gabarits ─────────────────────────────────────────
 
 def g_video(sl, s, idx, ch):
@@ -526,7 +627,7 @@ def g_video(sl, s, idx, ch):
     sl.background.fill.fore_color.rgb = NOIR_PUR
     titre_cache(sl, s["titre"])
     spec = C["videos"][s["video"]]
-    mv = film(sl, f"!!video-{s['id']}", spec["fichier"], spec["apercu"], alt=s["visuel"])
+    mv = film(sl, f"!!video-{s['id']}", video_pour_pptx(spec), spec["apercu"], alt=s["visuel"])
     ch.media(mv, spec["duree_s"], boucle=spec["boucle"], muet=False)
 
 
@@ -568,7 +669,7 @@ def g_agenda(sl, s, idx, ch):
     calques(sl, s, idx, ch, (3.2, 3.2), 8.5)
     a = s["agenda_actif"]
     ep = C["episodes"][a]
-    t = titre(sl, M, 0.42, 9, 0.75, [[(s["titre"], 36, PAL["blanc"], F_GRAS)]], nom="!!titre")
+    t = titre(sl, M, 0.38, 9, 0.85, [[(s["titre"], 40, PAL["blanc"], F_GRAS)]], nom="!!titre")
     ch.entree(t, "fondu", 0, 500)
     gros = texte(sl, "!!agbig", 0.55, 1.2, 4.3, 2.75, [[(f"{a + 1:02d}", 170, PAL["or"], F_NOIR)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
     ch.entree(gros, "zoom", 100, 900)
@@ -596,7 +697,7 @@ def g_agenda(sl, s, idx, ch):
         else:
             c = rect(sl, f"!!agn{i}", cx - d / 2, yc - d / 2, d, d, couleur=PAL["noir"], contour=PAL["or"] if i < a else GRIS2, ep=3, forme=MSO_SHAPE.OVAL)
         ch.entree(c, "zoom", 650 + i * 90, 450)
-        num = texte(sl, f"!!agnum{i}", cx - 0.6, yc + 0.7, 1.2, 0.6, [[(f"{i + 1:02d}", 30 if i == a else 26, PAL["or"] if i == a else GRIS2, F_SB)]],
+        num = texte(sl, f"!!agnum{i}", cx - 0.6, yc + 0.7, 1.2, 0.6, [[(f"{i + 1:02d}", 32 if i == a else 28, PAL["or"] if i == a else GRIS_NUM, F_SB)]],
                     align=PP_ALIGN.CENTER, retour=False)
         ch.entree(num, "fondu", 750 + i * 90, 450)
     if largeur_texte(typo(ep["sujet"]), 34, "sb") > 7.6:
@@ -654,6 +755,7 @@ def g_word(sl, s, idx, ch):
 def g_quote(sl, s, idx, ch):
     calques(sl, s, idx, ch, (2.2, 2.2), 8)
     g = texte(sl, "guillemets", 0.3, 0.2, 2.2, 2.2, [[("«", 200, RGBColor.from_string("5A4A22"), F_NOIR)]])
+    decoratif(g)  # ornement : la citation elle-même porte ses guillemets
     ch.entree(g, "fondu", 0, 900)
     titre_deux_tons(sl, ch, s, 2.4, 1.85, 10.2, 4.4, 54, debut=400)
     petit_logo(sl)
@@ -678,7 +780,8 @@ def g_tree(sl, s, idx, ch):
 
 def g_baobab(sl, s, idx, ch):
     calques(sl, s, idx, ch, (3.3, 3.6), 8.5)
-    titre_deux_tons(sl, ch, s, M, 1.6, 6.2, 3.0, 60, debut=1300, ancre_bas=True)
+    # 54 pt sur 7 in : « Sous le baobab, » tient sur une ligne (comme dans le générique), l'arbre reste dégagé à droite
+    titre_deux_tons(sl, ch, s, M, 1.6, 7.0, 3.0, 54, debut=1300, ancre_bas=True)
     mts = texte(sl, "mots", M, 4.85, 6.4, 0.8, [[(s["texte"], 28, PAL["gris"], F_SB)]])
     ch.entree(mts, "fondu", 2500, 900)
     if not s.get("fond"):
@@ -753,6 +856,7 @@ def g_pillars(sl, s, idx, ch):
         x = x0 + i * (cw + gap)
         t0 = 600 + i * 260
         fil = texte(sl, f"filigrane{i}", x, y - 0.3, cw, 1.8, [[(f"0{i + 1}", 110, RGBColor.from_string("2E2A20"), F_NOIR)]])
+        decoratif(fil)  # filigrane : l'ordre est déjà porté par la lecture gauche → droite
         vb = texte(sl, f"pilier{i}", x, y + 1.7, cw, 1.0, [[(it["titre"], pt, PAL["blanc"], F_GRAS)]])
         tr = rect(sl, f"trait{i}", x + 0.05, y + 2.82, 1.0, 0.08, couleur=PAL["or"])
         dt = texte(sl, f"detail{i}", x, y + 3.05, cw, 1.4, [[(it["texte"], taille_qui_tient([it["texte"]], cw, 1.4, 30, 24, gras="sb"), PAL["or"], F_SB)]])
@@ -906,15 +1010,25 @@ ATELIER = next(s for s in C["slides"] if s["layout"] == "atelier")
 COUL_FAMILLE = {f: RGBColor.from_string(c) for f, c in ATELIER["familles"].items()}
 
 
+TUILE_W, TUILE_H = 2.98, 1.36
+
+
+def _pt_tuiles():
+    """Corps commun des noms de formation (grille homogène) : le plus grand qui tient dans TOUTES les tuiles.
+    Inter SemiBold : « Automatisation » ne tient pas à 24 pt en Montserrat ExtraBold dans une tuile."""
+    return min(taille_qui_tient([it["nom"]], TUILE_W - 0.1, TUILE_H - (0.42 if it.get("bientot") else 0), 28, 24, gras="sb")
+               for it in ATELIER["items"])
+
+
 def _tuiles_atelier(sl, ch=None):
-    tw, th, gx, gy = 2.98, 1.36, 0.16, 0.12
+    tw, th, gx, gy = TUILE_W, TUILE_H, 0.16, 0.12
     x0, y0 = (W - (4 * tw + 3 * gx)) / 2, 1.45
+    pt_nom = _pt_tuiles()
     for i, it in enumerate(ATELIER["items"]):
         x, y = x0 + (i % 4) * (tw + gx), y0 + (i // 4) * (th + gy)
         coul = COUL_FAMILLE[it["famille"]]
         r = rect(sl, f"!!tuile-{it['ref']}", x, y, tw, th, couleur=PAL["blanc"], opacite=6, contour=coul, ep=2.25, tirets=bool(it.get("bientot")))
-        haut = th - 0.42 if it.get("bientot") else th
-        paras = [[(it["nom"], taille_qui_tient([it["nom"]], tw - 0.1, haut, 26, 24), PAL["blanc"], F_GRAS)]]
+        paras = [[(it["nom"], pt_nom, PAL["blanc"], F_SB)]]
         if it.get("bientot"):
             paras.append([("bientôt", 24, PAL["or"], F_SB)])
         t = texte(sl, f"!!nom-{it['ref']}", x, y, tw, th, paras, align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
@@ -945,16 +1059,20 @@ def g_atelier(sl, s, idx, ch, retour=False):
     petit_logo(sl)
 
 
-FOCUS_PT = min(lignes(s_, 60, W - 4.1 - 1.3, 3.3) for s_ in C["slides"] if s_["layout"] == "focus")
+FOCUS_BW = 4.6  # largeur de la bande colorée (pouces)
+FOCUS_PT = min(lignes(s_, 60, W - FOCUS_BW - 1.3, 3.3) for s_ in C["slides"] if s_["layout"] == "focus")
+# même corps pour le nom de formation sur les 4 slides « focus » (série homogène, aucun mot coupé)
+FOCUS_NOM_PT = min(taille_qui_tient([s_["nom"]], FOCUS_BW - 0.7, 3.2, 44, 30, gras="noir")
+                   for s_ in C["slides"] if s_["layout"] == "focus")
 
 
 def g_focus(sl, s, idx, ch):
     calques(sl, s, idx, ch, (2.05, 3.75), 8)
     item = next(i for i in ATELIER["items"] if i["ref"] == s["ref"])
     coul = COUL_FAMILLE[item["famille"]]
-    bw = 4.1
+    bw = FOCUS_BW
     rect(sl, f"!!tuile-{s['ref']}", 0, 0, bw, H, couleur=coul)
-    pt = taille_qui_tient([s["nom"]], bw - 0.7, 3.2, 44, 30, gras="noir")
+    pt = FOCUS_NOM_PT
     texte(sl, f"!!nom-{s['ref']}", 0.35, H / 2 - 1.6, bw - 0.7, 3.2, [[(s["nom"], pt, PAL["noir"], F_NOIR)]], align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
     xc, wc = bw + 0.7, W - bw - 1.3
     # La famille est portée par la couleur de la bande (règle des 20 mots : pas de surtitre ici).

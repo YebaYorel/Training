@@ -130,6 +130,8 @@ présentations événementielles. Les supports de formation passent par `yeba-po
 - Générique v3 « La graine » (`soiree-lancement/remotion/src/v3/`) : plan-séquence de particules 3D, 60 i/s, formes dans
   `src/v3/formes.json` (régénérées par `scripts/formes_v3.py`), chronologie image + son `src/v3/timeline3.json`, bande-son
   `audio/composer3.py`. Les textes découpent une réserve dans le calque des particules : aucun point ni trait sous un mot.
+  Après toute retouche de cadrage ou de texte : `bash soiree-lancement/remotion/scripts/sonde_composition.sh` (moteur réel,
+  sans rendu) doit afficher « Cadrage conforme » ; puis images de contrôle (`rendre.mjs --images`) avant le rendu complet.
 - Tout reconstruire : `bash soiree-lancement/build_all.sh` (PPTX cinéma + sobre, Reveal.js, supports, PDF ;
   `--videos` pour la bande-son et les 19 vidéos Remotion de `soiree-lancement/dist/videos/`)
 - Fichiers produits (`soiree-lancement/dist/` : PPTX, PDF, vidéos) **non versionnés** (dépôt public) : les

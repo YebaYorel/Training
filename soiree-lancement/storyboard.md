@@ -18,6 +18,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 - Objets persistants nommés !!xxx pour la Morphose (parallaxe de lumière, logo, repères)
 - Mouvement : entrée « expo-out » 0,5 à 0,8 s, décalage 0,12 s, jamais plus de 3 objets en mouvement simultané
 - Fonds vidéo sombres et lents : la lisibilité du texte prime sur l'effet
+- Typographie (charte officielle) : titres Montserrat ExtraBold/Black, texte courant Inter (Regular/SemiBold)
 
 ## Déroulé
 
@@ -26,50 +27,50 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 | P00 | 0 · Pré-show | YEBA FORMATIONS — la soirée commence dans quelques instants | 0 | vidéo plein écran | 0 s |
 | G01 | 0 · Générique | YEBA — Saison 1 : générique d'ouverture | 0 | vidéo plein écran | 80 s |
 | V01 | 0 · Générique | Vidéo — Introduction | 0 | vidéo plein écran | 6 s |
-| S01 | 0 · Ouverture | Sous le baobab de la connaissance, les graines du savoir. | 23 | cover | 45 s |
-| S02 | 0 · Ouverture | Moins de bruit sur l'IA. Plus de décisions. | 10 | ambiance-noir | 45 s |
-| S03 | 0 · Ouverture | Saison 1 · 7 épisodes | 33 | ambiance-noir | 40 s |
+| S01 | 0 · Ouverture | Sous le baobab de la connaissance, les graines du savoir. | 23 | v3-graine | 45 s |
+| S02 | 0 · Ouverture | Moins de bruit sur l'IA. Plus de décisions. | 10 | v3-nuit | 45 s |
+| S03 | 0 · Ouverture | Saison 1 · 7 épisodes | 33 | v3-nuit | 40 s |
 | E1 | 1 · Le casting | Épisode 1 — Le casting | 0 | vidéo plein écran | 4.5 s |
-| S04 | 1 · Le casting | 3 visages. 1 mission. | 17 | ambiance-noir | 120 s |
-| S05 | 1 · Le casting | Certifié. Pas autoproclamé. | 16 | ambiance-noir | 60 s |
-| S06 | 2 · Les racines | Saison 1 · 7 épisodes | 33 | ambiance-noir | 8 s |
+| S04 | 1 · Le casting | 3 visages. 1 mission. | 17 | v3-nuit | 120 s |
+| S05 | 1 · Le casting | Certifié. Pas autoproclamé. | 16 | v3-nuit | 60 s |
+| S06 | 2 · Les racines | Saison 1 · 7 épisodes | 33 | v3-nuit | 8 s |
 | E2 | 2 · Les racines | Épisode 2 — Les racines | 0 | vidéo plein écran | 4.5 s |
-| S07 | 2 · Les racines | Pas de mot pour « formation ». Alors maman a dit : Ko yeba. Le savoir. | 13 | ambiance-terre | 60 s |
-| S08 | 2 · Les racines | YEBA | 5 | ambiance-terre | 60 s |
-| S09 | 2 · Les racines | Y | 8 | ambiance-terre | 60 s |
-| S10 | 2 · Les racines | Sous le baobab, on transmet. | 8 | baobab | 60 s |
-| S11 | 2 · Les racines | Des racines. Un réseau. | 13 | ambiance-terre | 60 s |
-| S12 | 2 · Les racines | 5 valeurs | 12 | ambiance-terre | 90 s |
-| S13 | 2 · Les racines | Le chemin | 20 | ambiance-terre | 75 s |
-| S14 | 3 · La promesse | Saison 1 · 7 épisodes | 33 | ambiance-noir | 8 s |
+| S07 | 2 · Les racines | Pas de mot pour « formation ». Alors maman a dit : Ko yeba. Le savoir. | 13 | v3-nuit-terre | 60 s |
+| S08 | 2 · Les racines | YEBA | 5 | v3-nuit-terre | 60 s |
+| S09 | 2 · Les racines | Y | 8 | v3-nuit-terre | 60 s |
+| S10 | 2 · Les racines | Sous le baobab, on transmet. | 8 | v3-baobab | 60 s |
+| S11 | 2 · Les racines | Des racines. Un réseau. | 13 | v3-nuit-terre | 60 s |
+| S12 | 2 · Les racines | 5 valeurs | 12 | v3-nuit-terre | 90 s |
+| S13 | 2 · Les racines | Le chemin | 20 | v3-nuit-terre | 75 s |
+| S14 | 3 · La promesse | Saison 1 · 7 épisodes | 33 | v3-nuit | 8 s |
 | E3 | 3 · La promesse | Épisode 3 — La promesse | 0 | vidéo plein écran | 4.5 s |
 | V02 | 3 · La promesse | Vidéo — Intelligence artificielle | 0 | vidéo plein écran | 6 s |
-| S15 | 3 · La promesse | Vos équipes utilisent déjà l'IA. Avec quelles données ? | 9 | flux | 60 s |
-| S16 | 3 · La promesse | 3 métiers. 1 seul interlocuteur. | 18 | ambiance-noir | 75 s |
-| S17 | 3 · La promesse | Nos offres. Votre format. | 20 | ambiance-noir | 75 s |
+| S15 | 3 · La promesse | Vos équipes utilisent déjà l'IA. Avec quelles données ? | 9 | v3-reseau | 60 s |
+| S16 | 3 · La promesse | 3 métiers. 1 seul interlocuteur. | 18 | v3-nuit | 75 s |
+| S17 | 3 · La promesse | Nos offres. Votre format. | 20 | v3-nuit | 75 s |
 | S18 | 3 · La promesse | 7 h | 21 | journee | 45 s |
-| S19 | 3 · La promesse | La confiance se prouve. | 33 | sceau | 60 s |
-| S20 | 3 · La promesse | Vous formez. On s'occupe du reste. | 19 | ambiance-noir | 45 s |
-| S21 | 3 · La promesse | Petit groupe. Grand suivi. | 17 | ambiance-noir | 45 s |
-| S22 | 3 · La promesse | Souveraineté par défaut. Outils européens d'abord. | 8 | ambiance-noir | 45 s |
-| S23 | 3 · La promesse | Nous ne vendons pas la conformité. Nous vous aidons à la prouver. | 14 | ambiance-noir | 45 s |
-| S24 | 4 · L'atelier | Saison 1 · 7 épisodes | 33 | ambiance-noir | 8 s |
+| S19 | 3 · La promesse | La confiance se prouve. | 33 | v3-nuit-bleu | 60 s |
+| S20 | 3 · La promesse | Vous formez. On s'occupe du reste. | 19 | v3-nuit | 45 s |
+| S21 | 3 · La promesse | Petit groupe. Grand suivi. | 17 | v3-nuit | 45 s |
+| S22 | 3 · La promesse | Souveraineté par défaut. Outils européens d'abord. | 8 | v3-nuit | 45 s |
+| S23 | 3 · La promesse | Nous ne vendons pas la conformité. Nous vous aidons à la prouver. | 14 | v3-nuit | 45 s |
+| S24 | 4 · L'atelier | Saison 1 · 7 épisodes | 33 | v3-nuit | 8 s |
 | E4 | 4 · L'atelier | Épisode 4 — L'atelier | 0 | vidéo plein écran | 4.5 s |
 | V03 | 4 · L'atelier | Vidéo — AI | 0 | vidéo plein écran | 6 s |
-| S25 | 4 · L'atelier | On ne repart pas avec des notes. On repart avec un livrable. | 14 | ambiance-bleu | 45 s |
-| S26 | 4 · L'atelier | 11 formations. 5 familles. | 38 | ambiance-noir | 90 s |
-| S27 | 4 · L'atelier | Gagner du temps. En sécurité. Avec des preuves. | 20 | ambiance-noir | 90 s |
-| S28 | 4 · L'atelier | Déléguer à l'IA. Sous contrôle humain. | 18 | ambiance-noir | 75 s |
-| S29 | 4 · L'atelier | Votre site. À voix haute. En 1 jour. | 20 | ambiance-noir | 75 s |
-| S30 | 4 · L'atelier | Des emails qui obtiennent une réponse. | 20 | ambiance-noir | 75 s |
-| S31 | 4 · L'atelier | Un site internet. Décrit à voix haute. Devant vous. | 11 | ambiance-noir | 240 s |
+| S25 | 4 · L'atelier | On ne repart pas avec des notes. On repart avec un livrable. | 14 | v3-nuit-bleu | 45 s |
+| S26 | 4 · L'atelier | 11 formations. 5 familles. | 38 | v3-nuit | 90 s |
+| S27 | 4 · L'atelier | Gagner du temps. En sécurité. Avec des preuves. | 20 | v3-nuit | 90 s |
+| S28 | 4 · L'atelier | Déléguer à l'IA. Sous contrôle humain. | 18 | v3-nuit | 75 s |
+| S29 | 4 · L'atelier | Votre site. À voix haute. En 1 jour. | 20 | v3-nuit | 75 s |
+| S30 | 4 · L'atelier | Des emails qui obtiennent une réponse. | 20 | v3-nuit | 75 s |
+| S31 | 4 · L'atelier | Un site internet. Décrit à voix haute. Devant vous. | 11 | v3-nuit | 240 s |
 | S32 | 4 · L'atelier | À suivre… | 8 | bientot | 60 s |
-| S33 | 4 · L'atelier | Former, c'est bien. Équiper, c'est mieux. | 8 | ambiance-bleu | 20 s |
-| S34 | 5 · Les outils | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | ambiance-noir | 8 s |
+| S33 | 4 · L'atelier | Former, c'est bien. Équiper, c'est mieux. | 8 | v3-nuit-bleu | 20 s |
+| S34 | 5 · Les outils | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | v3-nuit | 8 s |
 | E5 | 5 · Les outils | Épisode 5 — Les outils *(masquée — à construire)* | 0 | vidéo plein écran | 4.5 s |
-| S35 | 6 · Le diagnostic | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | ambiance-noir | 8 s |
+| S35 | 6 · Le diagnostic | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | v3-nuit | 8 s |
 | E6 | 6 · Le diagnostic | Épisode 6 — Le diagnostic *(masquée — à construire)* | 0 | vidéo plein écran | 4.5 s |
-| S36 | 7 · Le final | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | ambiance-noir | 8 s |
+| S36 | 7 · Le final | Saison 1 · 7 épisodes *(masquée — à construire)* | 33 | v3-nuit | 8 s |
 | E7 | 7 · Le final | Épisode 7 — Le final *(masquée — à construire)* | 0 | vidéo plein écran | 4.5 s |
 | V04 | 7 · Le final | Vidéo — Conclusion *(masquée — à construire)* | 0 | vidéo plein écran | 6 s |
 
@@ -125,7 +126,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(23 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Logo plein centre, rayons dorés lents derrière (fond vidéo en boucle), slogan en deux couleurs. Fond vivant : `cover` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Logo plein centre, rayons dorés lents derrière (fond vidéo en boucle), slogan en deux couleurs. Fond vivant : `v3-graine` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Fond vivant en boucle. Slogan en fondu montant. Morphose : le logo file en bas à droite sur la slide suivante.
 
@@ -139,7 +140,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(10 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Phrase en grille asymétrique, filet or vertical à gauche, halo doré qui glisse depuis la slide précédente. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Phrase en grille asymétrique, filet or vertical à gauche, halo doré qui glisse depuis la slide précédente. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 en fondu montant, ligne 2 (or) 0,4 s après.
 
@@ -153,7 +154,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(33 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Liste des 7 épisodes ; repère or sur l'épisode en cours ; grand numéro d'épisode à droite. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Liste des 7 épisodes ; repère or sur l'épisode en cours ; grand numéro d'épisode à droite. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Cette slide revient avant chaque épisode : la Morphose fait glisser le repère or et change le grand numéro (effet « GPS »).
 
@@ -183,7 +184,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(17 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Trois cartes en verre fumé, cercle photo cerclé d'or (à remplacer par les portraits). Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Trois cartes en verre fumé, cercle photo cerclé d'or (à remplacer par les portraits). Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Cartes en fondu montant, décalées de 0,15 s.
 
@@ -197,7 +198,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(16 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Pastilles en verre au contour or, disposées 3 + 2. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Pastilles en verre au contour or, disposées 3 + 2. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Pastilles en zoom léger, une par une.
 
@@ -213,7 +214,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(33 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 2. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 2. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose : le repère glisse.
 
@@ -241,7 +242,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(13 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Citation plein écran sur fond terre, grands guillemets or en filigrane. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Citation plein écran sur fond terre, grands guillemets or en filigrane. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne blanche puis ligne or, en fondu lent.
 
@@ -255,7 +256,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(5 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Mot YEBA géant en or ; traduction dessous. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Mot YEBA géant en or ; traduction dessous. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Zoom d'entrée ; à la slide suivante, Morphose par caractère : E, B, A s'effacent, le Y reste.
 
@@ -269,7 +270,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(8 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Un Y géant dont les branches pointent vers deux étiquettes. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Un Y géant dont les branches pointent vers deux étiquettes. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose par caractère depuis YEBA ; étiquettes en fondu gauche puis droite.
 
@@ -283,7 +284,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(8 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Fond vidéo : un baobab se dessine trait par trait à droite, des graines dorées tombent ; texte à gauche. Fond vivant : `baobab` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Fond vidéo : un baobab se dessine trait par trait à droite, des graines dorées tombent ; texte à gauche. Fond vivant : `v3-baobab` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Le baobab pousse (vidéo 6 s, image finale tenue), texte en fondu montant synchronisé.
 
@@ -297,7 +298,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(13 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Écran coupé : gauche terre, droite bleu ; emblème à cheval sur la jointure. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Écran coupé : gauche terre, droite bleu ; emblème à cheval sur la jointure. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Les mots montent colonne par colonne ; l'emblème apparaît en dernier.
 
@@ -311,7 +312,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(12 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Cinq lignes, numéros or à gauche. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Cinq lignes, numéros or à gauche. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Une valeur par clic, pour la commenter.
 
@@ -325,7 +326,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(20 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Frise horizontale : dates au-dessus de la ligne or, textes dessous, jamais touchés par la ligne. Fond vivant : `ambiance-terre` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Frise horizontale : dates au-dessus de la ligne or, textes dessous, jamais touchés par la ligne. Fond vivant : `v3-nuit-terre` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — La ligne se trace de gauche à droite, les jalons s'allument un à un.
 
@@ -341,7 +342,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(33 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 3. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 3. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose : le repère glisse.
 
@@ -383,7 +384,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(9 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Fond bleu vivant : flux de données qui défilent ; question en or. Fond vivant : `flux` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Fond bleu vivant : flux de données qui défilent ; question en or. Fond vivant : `v3-reseau` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 automatique ; ligne or au clic, après 3 secondes de silence.
 
@@ -397,7 +398,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(18 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Trois colonnes, numéros en filigrane, verbes en blanc, détail en or. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Trois colonnes, numéros en filigrane, verbes en blanc, détail en or. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Colonnes en fondu montant décalé.
 
@@ -411,7 +412,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(20 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Grille « bento » asymétrique : 3 tuiles en haut, 2 en bas ; le séminaire en or plein. Chaque tuile : format en blanc, précision en or. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Grille « bento » asymétrique : 3 tuiles en haut, 2 en bas ; le séminaire en or plein. Chaque tuile : format en blanc, précision en or. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Tuiles en fondu montant décalé de 0,12 s.
 
@@ -439,7 +440,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(33 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Fond vidéo : anneaux d'un sceau doré qui tournent lentement ; deux panneaux en verre (Qualiopi, NDA) ; bandeau bénéfice OPCO. Fond vivant : `sceau` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Fond vidéo : anneaux d'un sceau doré qui tournent lentement ; deux panneaux en verre (Qualiopi, NDA) ; bandeau bénéfice OPCO. Fond vivant : `v3-nuit-bleu` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Panneaux en fondu montant ; bandeau OPCO en dernier.
 
@@ -453,7 +454,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(19 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Trois tuiles en verre avec pictogrammes tracés au trait or. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Trois tuiles en verre avec pictogrammes tracés au trait or. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Tuiles en fondu montant décalé ; Morphose vers la slide suivante (les tuiles glissent à gauche).
 
@@ -467,7 +468,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(17 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Même gabarit que la slide précédente : les nouvelles tuiles arrivent par la droite. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Même gabarit que la slide précédente : les nouvelles tuiles arrivent par la droite. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose depuis 1/2, tuiles en fondu montant décalé.
 
@@ -481,7 +482,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(8 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Phrase, cercle de douze points or en haut à droite. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Phrase, cercle de douze points or en haut à droite. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 puis ligne or.
 
@@ -495,7 +496,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(14 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Manifeste en deux lignes, rien d'autre. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Manifeste en deux lignes, rien d'autre. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 puis ligne or en fondu lent.
 
@@ -511,7 +512,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(33 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 4. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Agenda, repère sur l'épisode 4. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose : le repère glisse.
 
@@ -553,7 +554,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(14 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Phrase pivot sur fond bleu nuit vivant. Fond vivant : `ambiance-bleu` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Phrase pivot sur fond bleu nuit vivant. Fond vivant : `v3-nuit-bleu` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 puis ligne or.
 
@@ -567,7 +568,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(38 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Grille 4 × 3 de tuiles en verre ; bordure à la couleur de la famille ; durée en petit ; la 12e tuile, en pointillés, annonce « bientôt ». Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Grille 4 × 3 de tuiles en verre ; bordure à la couleur de la famille ; durée en petit ; la 12e tuile, en pointillés, annonce « bientôt ». Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Tuiles en cascade (0,06 s). Chaque tuile porte le nom !!tuile-FOR-XXXX : sur les slides suivantes, la tuile s'agrandit en bandeau (zoom Morphose).
 
@@ -581,7 +582,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(20 mots projetés)*
 
-**2. Idée visuelle / mise en page** — La tuile du catalogue devient un bandeau vertical or ; contenu à droite. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — La tuile du catalogue devient un bandeau vertical or ; contenu à droite. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose (zoom depuis la tuile) ; puces en fondu latéral ; pastilles en zoom.
 
@@ -595,7 +596,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(18 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Même gabarit, bandeau or clair. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Même gabarit, bandeau or clair. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose depuis la tuile.
 
@@ -609,7 +610,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(20 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Même gabarit, bandeau blanc. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Même gabarit, bandeau blanc. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose depuis la tuile.
 
@@ -623,7 +624,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(20 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Même gabarit, bandeau blanc. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Même gabarit, bandeau blanc. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Morphose depuis la tuile.
 
@@ -637,7 +638,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(11 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Pastille rouge « LIVE » qui pulse ; titre géant. Fond vivant : `ambiance-noir` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Pastille rouge « LIVE » qui pulse ; titre géant. Fond vivant : `v3-nuit` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Pastille en pulsation continue ; titre en fondu montant.
 
@@ -665,7 +666,7 @@ La soirée se regarde comme une saison de série : pré-générique en boucle pe
 
 *(8 mots projetés)*
 
-**2. Idée visuelle / mise en page** — Phrase pivot sur fond bleu vivant. Fond vivant : `ambiance-bleu` (Remotion, boucle muette ; image fixe en version sobre).
+**2. Idée visuelle / mise en page** — Phrase pivot sur fond bleu vivant. Fond vivant : `v3-nuit-bleu` (Remotion, boucle muette ; image fixe en version sobre).
 
 **3. Animation / transition** — Ligne 1 puis ligne or ; Morphose vers l'agenda.
 
