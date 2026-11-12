@@ -44,7 +44,8 @@
       "Aucun filet ni forme ne traverse un mot ; aucune césure ; espaces insécables",
       "Objets persistants nommés !!xxx pour la Morphose (parallaxe de lumière, logo, repères)",
       "Mouvement : entrée « expo-out » 0,5 à 0,8 s, décalage 0,12 s, jamais plus de 3 objets en mouvement simultané",
-      "Fonds vidéo sombres et lents : la lisibilité du texte prime sur l'effet"
+      "Fonds vidéo sombres et lents : la lisibilité du texte prime sur l'effet",
+      "Typographie (charte officielle) : titres Montserrat ExtraBold/Black, texte courant Inter (Regular/SemiBold)"
     ]
   },
   "palette": {
@@ -111,14 +112,14 @@
   ],
   "videos": {
     "preshow": {
-      "fichier": "dist/videos/yeba-preshow.mp4",
-      "apercu": "dist/videos/yeba-preshow.jpg",
+      "fichier": "dist/videos/yeba-preshow-v3.mp4",
+      "apercu": "dist/videos/yeba-preshow-v3.jpg",
       "boucle": true,
       "duree_s": 20
     },
     "generique": {
-      "fichier": "dist/videos/yeba-saison1-generique.mp4",
-      "apercu": "dist/videos/yeba-saison1-generique.jpg",
+      "fichier": "dist/videos/yeba-saison1-generique-v3.mp4",
+      "apercu": "dist/videos/yeba-saison1-generique-v3.jpg",
       "boucle": false,
       "duree_s": 80
     },
@@ -243,6 +244,48 @@
       "apercu": "dist/videos/fond-bientot.jpg",
       "boucle": true,
       "duree_s": 12
+    },
+    "v3-nuit": {
+      "fichier": "dist/videos/fond-v3-nuit.mp4",
+      "apercu": "dist/videos/fond-v3-nuit.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-nuit-bleu": {
+      "fichier": "dist/videos/fond-v3-nuit-bleu.mp4",
+      "apercu": "dist/videos/fond-v3-nuit-bleu.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-nuit-terre": {
+      "fichier": "dist/videos/fond-v3-nuit-terre.mp4",
+      "apercu": "dist/videos/fond-v3-nuit-terre.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-graine": {
+      "fichier": "dist/videos/fond-v3-graine.mp4",
+      "apercu": "dist/videos/fond-v3-graine.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-baobab": {
+      "fichier": "dist/videos/fond-v3-baobab.mp4",
+      "apercu": "dist/videos/fond-v3-baobab.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-reseau": {
+      "fichier": "dist/videos/fond-v3-reseau.mp4",
+      "apercu": "dist/videos/fond-v3-reseau.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-sceau": {
+      "fichier": "dist/videos/fond-v3-sceau.mp4",
+      "apercu": "dist/videos/fond-v3-sceau.jpg",
+      "boucle": true,
+      "duree_s": 12
     }
   },
   "slides": [
@@ -291,7 +334,7 @@
       "partie": "Ouverture",
       "layout": "cover",
       "teinte": "noir",
-      "fond": "cover",
+      "fond": "v3-graine",
       "kicker": "SAISON 1 · SOIRÉE DE LANCEMENT",
       "titre": "Sous le baobab de la connaissance,",
       "titre_or": "les graines du savoir.",
@@ -307,7 +350,7 @@
       "partie": "Ouverture",
       "layout": "statement",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "kicker": "CE SOIR",
       "titre": "Moins de bruit sur l'IA.",
       "titre_or": "Plus de décisions.",
@@ -322,7 +365,7 @@
       "partie": "Ouverture",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 0,
       "titre": "Saison 1 · 7 épisodes",
       "visuel": "Liste des 7 épisodes ; repère or sur l'épisode en cours ; grand numéro d'épisode à droite.",
@@ -349,7 +392,7 @@
       "partie": "Le casting",
       "layout": "team",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "3 visages.",
       "titre_or": "1 mission.",
       "cartes": [
@@ -380,7 +423,7 @@
       "partie": "Le casting",
       "layout": "badges",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "Certifié.",
       "titre_or": "Pas autoproclamé.",
       "items": [
@@ -401,7 +444,7 @@
       "partie": "Les racines",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 1,
       "titre": "Saison 1 · 7 épisodes",
       "visuel": "Agenda, repère sur l'épisode 2.",
@@ -428,7 +471,7 @@
       "partie": "Les racines",
       "layout": "quote",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "Pas de mot pour « formation ».",
       "titre_or": "Alors maman a dit : Ko yeba. Le savoir.",
       "visuel": "Citation plein écran sur fond terre, grands guillemets or en filigrane.",
@@ -442,7 +485,7 @@
       "partie": "Les racines",
       "layout": "word",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "YEBA",
       "texte": "« Savoir, connaître » — en lingala",
       "visuel": "Mot YEBA géant en or ; traduction dessous.",
@@ -456,7 +499,7 @@
       "partie": "Les racines",
       "layout": "tree",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "Y",
       "branches": [
         "L'arbre de la connaissance",
@@ -473,7 +516,7 @@
       "partie": "Les racines",
       "layout": "baobab",
       "teinte": "terre",
-      "fond": "baobab",
+      "fond": "v3-baobab",
       "titre": "Sous le baobab,",
       "titre_or": "on transmet.",
       "texte": "Histoires · Vérités · Générations",
@@ -488,7 +531,7 @@
       "partie": "Les racines",
       "layout": "split",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "Des racines.",
       "titre_or": "Un réseau.",
       "gauche": {
@@ -518,7 +561,7 @@
       "partie": "Les racines",
       "layout": "values",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "5 valeurs",
       "items": [
         "Transmission vivante",
@@ -538,7 +581,7 @@
       "partie": "Les racines",
       "layout": "timeline",
       "teinte": "terre",
-      "fond": "ambiance-terre",
+      "fond": "v3-nuit-terre",
       "titre": "Le chemin",
       "etapes": [
         {
@@ -569,7 +612,7 @@
       "partie": "La promesse",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 2,
       "titre": "Saison 1 · 7 épisodes",
       "visuel": "Agenda, repère sur l'épisode 3.",
@@ -609,7 +652,7 @@
       "partie": "La promesse",
       "layout": "statement",
       "teinte": "bleu",
-      "fond": "flux",
+      "fond": "v3-reseau",
       "kicker": "QUESTION",
       "titre": "Vos équipes utilisent déjà l'IA.",
       "titre_or": "Avec quelles données ?",
@@ -624,7 +667,7 @@
       "partie": "La promesse",
       "layout": "pillars",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "3 métiers.",
       "titre_or": "1 seul interlocuteur.",
       "items": [
@@ -652,7 +695,7 @@
       "partie": "La promesse",
       "layout": "offres",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "Nos offres.",
       "titre_or": "Votre format.",
       "items": [
@@ -723,7 +766,7 @@
       "partie": "La promesse",
       "layout": "confiance",
       "teinte": "bleu",
-      "fond": "sceau",
+      "fond": "v3-nuit-bleu",
       "titre": "La confiance",
       "titre_or": "se prouve.",
       "qualiopi": {
@@ -748,7 +791,7 @@
       "partie": "La promesse",
       "layout": "avantages",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "Vous formez.",
       "titre_or": "On s'occupe du reste.",
       "items": [
@@ -779,7 +822,7 @@
       "partie": "La promesse",
       "layout": "avantages",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "Petit groupe.",
       "titre_or": "Grand suivi.",
       "items": [
@@ -810,7 +853,7 @@
       "partie": "La promesse",
       "layout": "statement",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "kicker": "NOTRE LIGNE",
       "titre": "Souveraineté par défaut.",
       "titre_or": "Outils européens d'abord.",
@@ -825,7 +868,7 @@
       "partie": "La promesse",
       "layout": "statement",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "kicker": "NOTRE PROMESSE",
       "titre": "Nous ne vendons pas la conformité.",
       "titre_or": "Nous vous aidons à la prouver.",
@@ -840,7 +883,7 @@
       "partie": "L'atelier",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 3,
       "titre": "Saison 1 · 7 épisodes",
       "visuel": "Agenda, repère sur l'épisode 4.",
@@ -880,7 +923,7 @@
       "partie": "L'atelier",
       "layout": "statement",
       "teinte": "bleu_nuit",
-      "fond": "ambiance-bleu",
+      "fond": "v3-nuit-bleu",
       "kicker": "NOTRE MÉTHODE",
       "titre": "On ne repart pas avec des notes.",
       "titre_or": "On repart avec un livrable.",
@@ -895,7 +938,7 @@
       "partie": "L'atelier",
       "layout": "atelier",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "titre": "11 formations.",
       "titre_or": "5 familles.",
       "familles": {
@@ -991,7 +1034,7 @@
       "partie": "L'atelier",
       "layout": "focus",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "ref": "FOR-0011",
       "nom": "IA générative au travail",
       "famille": "IA au quotidien",
@@ -1017,7 +1060,7 @@
       "partie": "L'atelier",
       "layout": "focus",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "ref": "FOR-0013",
       "nom": "Agents IA",
       "famille": "IA avancée",
@@ -1043,7 +1086,7 @@
       "partie": "L'atelier",
       "layout": "focus",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "ref": "FOR-0009",
       "nom": "Site internet IA",
       "famille": "Visibilité",
@@ -1070,7 +1113,7 @@
       "partie": "L'atelier",
       "layout": "focus",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "ref": "FOR-0010",
       "nom": "Emailing IA",
       "famille": "Visibilité",
@@ -1097,7 +1140,7 @@
       "partie": "L'atelier",
       "layout": "demo",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "kicker": "DÉMO LIVE",
       "titre": "Un site internet.",
       "titre_or": "Décrit à voix haute. Devant vous.",
@@ -1133,7 +1176,7 @@
       "partie": "L'atelier",
       "layout": "statement",
       "teinte": "bleu",
-      "fond": "ambiance-bleu",
+      "fond": "v3-nuit-bleu",
       "kicker": "ET MAINTENANT",
       "titre": "Former, c'est bien.",
       "titre_or": "Équiper, c'est mieux.",
@@ -1148,7 +1191,7 @@
       "partie": "Les outils",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 4,
       "cache": true,
       "titre": "Saison 1 · 7 épisodes",
@@ -1177,7 +1220,7 @@
       "partie": "Le diagnostic",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 5,
       "cache": true,
       "titre": "Saison 1 · 7 épisodes",
@@ -1206,7 +1249,7 @@
       "partie": "Le final",
       "layout": "agenda",
       "teinte": "noir",
-      "fond": "ambiance-noir",
+      "fond": "v3-nuit",
       "agenda_actif": 6,
       "cache": true,
       "titre": "Saison 1 · 7 épisodes",

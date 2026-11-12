@@ -36,7 +36,6 @@ DIST = RACINE / "dist"
 C = json.loads((RACINE / "contenu" / "slides.json").read_text(encoding="utf-8"))
 PAL = {k: RGBColor.from_string(v) for k, v in C["palette"].items()}
 GRIS2 = RGBColor.from_string("8C93A0")
-ROUGE_LIVE = RGBColor.from_string("E53935")
 NOIR_PUR = RGBColor.from_string("000000")
 IMAGES = "--images" in sys.argv  # source du PDF : chaque vidéo devient son image fixe (sinon le PDF embarque les MP4)
 SOBRE = "--sobre" in sys.argv or IMAGES
@@ -44,9 +43,10 @@ SOBRE = "--sobre" in sys.argv or IMAGES
 W, H = 13.333, 7.5
 M = 0.8
 PX = W / 1920  # pouces par pixel du repère 1920 × 1080 des vidéos
-F_TEXTE = "Montserrat"
-F_GRAS = "Montserrat ExtraBold"
-F_NOIR = "Montserrat Black"
+F_TEXTE = "Inter"                # texte courant (charte officielle : Inter)
+F_SB = "Inter SemiBold"          # texte appuyé : sous-titres, détails, pastilles, surtitres
+F_GRAS = "Montserrat ExtraBold"  # titres
+F_NOIR = "Montserrat Black"      # très grands mots et chiffres
 NB = " "
 
 FONDS_TEINTE = {"noir": "noir", "terre": "terre", "bleu": "bleu", "bleu_nuit": "bleu_nuit"}
@@ -77,12 +77,11 @@ AVERTISSEMENTS = []  # textes qui ne tiennent pas : affichés en fin de construc
 
 
 def largeur_texte(txt, pt, gras=True):
-    """Largeur réelle (pouces) d'un texte, mesurée sur les glyphes Montserrat (+6 % de marge).
-    gras : True = ExtraBold (800), False = Regular (400), "noir" = Black (900)."""
+    """Largeur réelle (pouces) d'un texte, mesurée sur les glyphes de la police (+6 % de marge).
+    gras : True = Montserrat ExtraBold, "noir" = Montserrat Black, False = Inter Regular, "sb" = Inter SemiBold."""
     from PIL import ImageFont
 
-    poids = {True: 800, False: 400, "noir": 900}[gras]
-    fichier = ASSETS / "fonts" / f"Montserrat-{poids}.ttf"
+    fichier = ASSETS / "fonts" / {True: "Montserrat-800.ttf", "noir": "Montserrat-900.ttf", False: "Inter-400.otf", "sb": "Inter-600.otf"}[gras]
     cle = (fichier, pt)
     if cle not in _POLICES:
         _POLICES[cle] = ImageFont.truetype(str(fichier), size=int(pt * 10))
@@ -143,7 +142,23 @@ def _run(p, texte, pt, couleur, police=F_GRAS, espacement=None):
     rpr.set("lang", "fr-FR")
     if espacement:
         rpr.set("spc", str(espacement))
+    if pt >= 96 and couleur == PAL["or"]:
+        _or_poli(rpr)
     return r
+
+
+A_NS = "http://schemas.openxmlformats.org/drawingml/2006/main"
+
+
+def _or_poli(rpr):
+    """Remplissage « or poli » (dégradé vertical clair → or → or profond) des très grands mots, comme dans les vidéos."""
+    for el in rpr.findall(qn("a:solidFill")):
+        rpr.remove(el)
+    grad = etree.fromstring(
+        f'<a:gradFill xmlns:a="{A_NS}" rotWithShape="1"><a:gsLst>'
+        '<a:gs pos="0"><a:srgbClr val="F6E7B0"/></a:gs><a:gs pos="48000"><a:srgbClr val="C9AB4C"/></a:gs>'
+        '<a:gs pos="100000"><a:srgbClr val="A8873A"/></a:gs></a:gsLst><a:lin ang="5400000" scaled="0"/></a:gradFill>')
+    rpr.insert(0, grad)
 
 
 def _prep_tf(tf, ancre, marge=0.05, retour=True):
@@ -440,7 +455,7 @@ def au_fond(sl, formes):
         arbre.insert(2 + k, forme._element)  # 0 = nvGrpSpPr, 1 = grpSpPr
 
 
-_POIDS = {F_GRAS: True, F_TEXTE: False, F_NOIR: "noir"}
+_POIDS = {F_GRAS: True, F_TEXTE: False, F_NOIR: "noir", F_SB: "sb"}
 
 
 def verifier_slide(sl, ident):
@@ -521,24 +536,26 @@ def g_cover(sl, s, idx, ch):
     logo = image(sl, "!!logo", ASSETS / "logo-yeba-fond-sombre.png", (W - lw) / 2, 0.3, w=lw,
                  alt="Logo YEBA FORMATIONS : trois pitons reliés en réseau, au-dessus du nom YEBA FORMATIONS")
     ch.entree(logo, "zoom", 0, 1100)
-    k = texte(sl, "kicker", 0, 3.72, W, 0.5, [[(s["kicker"], 24, PAL["or"], F_GRAS, 500)]], align=PP_ALIGN.CENTER)
+    k = texte(sl, "kicker", 0, 3.72, W, 0.5, [[(s["kicker"], 24, PAL["or"], F_SB, 400)]], align=PP_ALIGN.CENTER)
     ch.entree(k, "fondu", 700, 700)
     titre_deux_tons(sl, ch, s, 0.8, 4.2, W - 1.6, 1.85, 44, align=PP_ALIGN.CENTER, debut=1000)
     meta = f"{C['meta']['date']} · {C['meta']['lieu']} · La Réunion"
-    m = texte(sl, "meta", 0, 6.3, W, 0.55, [[(meta, 24, PAL["gris"], F_TEXTE)]], align=PP_ALIGN.CENTER)
+    m = texte(sl, "meta", 0, 6.3, W, 0.55, [[(meta, 24, PAL["gris"], F_SB)]], align=PP_ALIGN.CENTER)
     ch.entree(m, "fondu", 1900, 800)
 
 
 def g_statement(sl, s, idx, ch):
     calques(sl, s, idx, ch, (3.2, 3.9), 9.5)
     largeur = 10.8
+    if s.get("fond") in ("v3-reseau", "v3-baobab", "v3-sceau"):
+        largeur = 6.1  # le sujet du fond vivant occupe la droite : aucun mot ne passe devant
     if s["id"] == "S22":
         ill = image(sl, "illustration", ASSETS / "illustrations" / "etoiles-ue.png", 10.4, 0.75, w=2.2,
                     alt="Cercle de douze points dorés évoquant le drapeau européen")
         ch.entree(ill, "zoom", 1300, 900)
         largeur = 9.3
     rect(sl, "!!barre", 0.45, 1.75, 0.12, 4.3, couleur=PAL["or"])
-    k = texte(sl, "kicker", 0.95, 1.18, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_GRAS, 500)]])
+    k = texte(sl, "kicker", 0.95, 1.18, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_SB, 400)]])
     ch.entree(k, "fondu", 100, 600)
     clic = 1 if s.get("kicker") == "QUESTION" else None
     titre_deux_tons(sl, ch, s, 0.95, 1.85, largeur, 4.3, 64, debut=300, clic_or=clic)
@@ -546,21 +563,44 @@ def g_statement(sl, s, idx, ch):
 
 
 def g_agenda(sl, s, idx, ch):
-    calques(sl, s, idx, ch, (10.6, 3.7), 8.0)
+    """Carte de la saison : l'épisode du moment en très grand, les 7 épisodes en chemin lumineux en bas.
+    Les segments du chemin s'arrêtent avant chaque cercle : aucun trait ne touche un numéro."""
+    calques(sl, s, idx, ch, (3.2, 3.2), 8.5)
     a = s["agenda_actif"]
-    titre(sl, M, 0.42, 8, 0.75, [[(s["titre"], 34, PAL["blanc"], F_GRAS)]], nom="!!titre")
-    y0, pas = 1.38, 0.79
-    for i, ep in enumerate(C["episodes"]):
-        y = y0 + i * pas
-        actif = i == a
-        texte(sl, f"!!agn{i}", M + 0.35, y, 0.9, 0.7, [[(f"{i + 1:02d}", 28, PAL["or"] if actif else GRIS2, F_GRAS)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
-        texte(sl, f"!!ag{i}", M + 1.25, y, 3.55, 0.7, [[(ep["titre"], 32 if actif else 28, PAL["blanc"] if actif else GRIS2, F_GRAS if actif else F_TEXTE)]],
-              ancre=MSO_ANCHOR.MIDDLE, retour=False)
-        texte(sl, f"!!ags{i}", M + 4.85, y, 4.45, 0.7, [[(ep["sujet"], 24, PAL["or"] if actif else GRIS2, F_TEXTE)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
-        if largeur_texte(typo(ep["sujet"]), 24, False) > 4.35 or largeur_texte(typo(ep["titre"]), 32) > 3.45:
-            AVERTISSEMENTS.append(f"agenda : « {ep['titre']} / {ep['sujet']} » trop long pour une ligne")
-    rect(sl, "!!marqueur", M, y0 + a * pas + 0.08, 0.13, 0.54, couleur=PAL["or"])
-    texte(sl, "!!agbig", 9.75, 1.35, 3.3, 4.2, [[(f"{a + 1:02d}", 150, PAL["or"], F_NOIR)]], align=PP_ALIGN.RIGHT, ancre=MSO_ANCHOR.MIDDLE, retour=False)
+    ep = C["episodes"][a]
+    t = titre(sl, M, 0.42, 9, 0.75, [[(s["titre"], 36, PAL["blanc"], F_GRAS)]], nom="!!titre")
+    ch.entree(t, "fondu", 0, 500)
+    gros = texte(sl, "!!agbig", 0.55, 1.2, 4.3, 2.75, [[(f"{a + 1:02d}", 170, PAL["or"], F_NOIR)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
+    ch.entree(gros, "zoom", 100, 900)
+    pt = taille_qui_tient([ep["titre"]], 7.7, 1.35, 66, 44)
+    nom = texte(sl, "!!agtitre", 4.95, 1.62, 7.8, 1.35, [[(ep["titre"], pt, PAL["blanc"], F_GRAS)]], ancre=MSO_ANCHOR.BOTTOM)
+    ch.entree(nom, "fondu_montant", 350, 800)
+    sujet = texte(sl, "!!agsujet", 4.97, 3.02, 7.8, 0.75, [[(ep["sujet"], 34, PAL["or"], F_SB)]], retour=False)
+    ch.entree(sujet, "fondu_montant", 600, 800)
+    # chemin de la saison
+    n = len(C["episodes"])
+    xg, xd, yc = 1.25, W - 1.25, 5.35
+    pas = (xd - xg) / (n - 1)
+    for i in range(n):
+        cx = xg + i * pas
+        d = 0.82 if i == a else 0.5
+        if i < n - 1:
+            d_suiv = 0.82 if i + 1 == a else 0.5
+            x0, x1 = cx + d / 2 + 0.14, cx + pas - d_suiv / 2 - 0.14
+            seg = rect(sl, f"!!agc{i}", x0, yc - 0.03, x1 - x0, 0.06, couleur=PAL["or"] if i < a else GRIS2, opacite=100 if i < a else 55)
+            ch.entree(seg, "balayage", 700 + i * 90, 400)
+        if i == a:
+            c = rect(sl, f"!!agn{i}", cx - d / 2, yc - d / 2, d, d, couleur=PAL["or"], forme=MSO_SHAPE.OVAL)
+            halo = rect(sl, "!!aghalo", cx - 0.64, yc - 0.64, 1.28, 1.28, contour=PAL["or"], ep=1.5, opacite_contour=45, forme=MSO_SHAPE.OVAL)
+            ch.entree(halo, "zoom", 1300, 900)
+        else:
+            c = rect(sl, f"!!agn{i}", cx - d / 2, yc - d / 2, d, d, couleur=PAL["noir"], contour=PAL["or"] if i < a else GRIS2, ep=3, forme=MSO_SHAPE.OVAL)
+        ch.entree(c, "zoom", 650 + i * 90, 450)
+        num = texte(sl, f"!!agnum{i}", cx - 0.6, yc + 0.7, 1.2, 0.6, [[(f"{i + 1:02d}", 30 if i == a else 26, PAL["or"] if i == a else GRIS2, F_SB)]],
+                    align=PP_ALIGN.CENTER, retour=False)
+        ch.entree(num, "fondu", 750 + i * 90, 450)
+    if largeur_texte(typo(ep["sujet"]), 34, "sb") > 7.6:
+        AVERTISSEMENTS.append(f"agenda : sujet « {ep['sujet']} » trop long")
     petit_logo(sl)
 
 
@@ -579,8 +619,8 @@ def g_team(sl, s, idx, ch):
         cercle = rect(sl, f"photo{i}", x + (cw - d) / 2, y + 0.35, d, d, couleur=PAL["bleu"], contour=PAL["or"], ep=3, forme=MSO_SHAPE.OVAL)
         texte_forme(cercle, [[(c["initiales"], 44, PAL["blanc"], F_GRAS)]])
         nom = texte(sl, f"nom{i}", x + 0.15, y + 2.25, cw - 0.3, 1.1, [[(c["nom"], pt, PAL["blanc"], F_GRAS)]], align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
-        pt_r = taille_qui_tient([c["role"]], cw - 0.3, 1.3, 26, 24, gras=False)
-        role = texte(sl, f"role{i}", x + 0.15, y + 3.4, cw - 0.3, 1.3, [[(c["role"], pt_r, PAL["gris"], F_TEXTE)]], align=PP_ALIGN.CENTER)
+        pt_r = taille_qui_tient([c["role"]], cw - 0.3, 1.3, 26, 24, gras="sb")
+        role = texte(sl, f"role{i}", x + 0.15, y + 3.4, cw - 0.3, 1.3, [[(c["role"], pt_r, PAL["gris"], F_SB)]], align=PP_ALIGN.CENTER)
         for forme in (carte, cercle, nom, role):
             ch.entree(forme, "fondu_montant", t0, 750)
     petit_logo(sl)
@@ -629,8 +669,8 @@ def g_tree(sl, s, idx, ch):
     pt = min(taille_qui_tient([b_], bw, 1.9, 34, 26) for b_ in (g, d))
     bg = texte(sl, "branche-gauche", xg, 1.1, bw, 1.9, [[(g, pt, PAL["blanc"], F_GRAS)]], align=PP_ALIGN.RIGHT, ancre=MSO_ANCHOR.MIDDLE)
     bd = texte(sl, "branche-droite", xd, 1.1, bw, 1.9, [[(d, pt, PAL["blanc"], F_GRAS)]], align=PP_ALIGN.LEFT, ancre=MSO_ANCHOR.MIDDLE)
-    sg = texte(sl, "sous-gauche", xg, 3.05, bw, 1.0, [[("Genèse · Savoir", 26, PAL["gris"], F_TEXTE)]], align=PP_ALIGN.RIGHT)
-    sd = texte(sl, "sous-droite", xd, 3.05, bw, 1.0, [[("Afrique · Transmission", 26, PAL["gris"], F_TEXTE)]])
+    sg = texte(sl, "sous-gauche", xg, 3.05, bw, 1.0, [[("Genèse · Savoir", 26, PAL["gris"], F_SB)]], align=PP_ALIGN.RIGHT)
+    sd = texte(sl, "sous-droite", xd, 3.05, bw, 1.0, [[("Afrique · Transmission", 26, PAL["gris"], F_SB)]])
     for forme, t0 in ((bg, 500), (sg, 800), (bd, 1100), (sd, 1400)):
         ch.entree(forme, "fondu_montant", t0, 700)
     petit_logo(sl)
@@ -639,7 +679,7 @@ def g_tree(sl, s, idx, ch):
 def g_baobab(sl, s, idx, ch):
     calques(sl, s, idx, ch, (3.3, 3.6), 8.5)
     titre_deux_tons(sl, ch, s, M, 1.6, 6.2, 3.0, 60, debut=1300, ancre_bas=True)
-    mts = texte(sl, "mots", M, 4.85, 6.4, 0.8, [[(s["texte"], 28, PAL["gris"], F_TEXTE)]])
+    mts = texte(sl, "mots", M, 4.85, 6.4, 0.8, [[(s["texte"], 28, PAL["gris"], F_SB)]])
     ch.entree(mts, "fondu", 2500, 900)
     if not s.get("fond"):
         b = image(sl, "baobab", ASSETS / "illustrations" / "baobab-or.png", 7.6, 0.6, h=6.0, alt="Silhouette dorée d'un baobab")
@@ -656,7 +696,7 @@ def g_split(sl, s, idx, ch):
     ch.entree(t2, "fondu_montant", 500, 700)
     for k, (cote, x) in enumerate((("gauche", 0), ("droite", W / 2))):
         bloc = s[cote]
-        paras = [[(bloc["label"], 24, PAL["or"], F_GRAS, 600)]] + [[(m, 36, PAL["blanc"], F_GRAS)] for m in bloc["mots"]]
+        paras = [[(bloc["label"], 24, PAL["or"], F_SB, 500)]] + [[(m, 36, PAL["blanc"], F_GRAS)] for m in bloc["mots"]]
         col = texte(sl, f"mots-{cote}", x + 0.5, 1.75, W / 2 - 1, 3.3, paras, align=PP_ALIGN.CENTER, interligne=1.15)
         ch.entree(col, "fondu_montant", 900 + k * 350, 750)
     em = image(sl, "embleme", ASSETS / "embleme-fond-sombre.png", (W - 3.6) / 2, 5.35, w=3.6,
@@ -688,7 +728,7 @@ def g_timeline(sl, s, idx, ch):
     pas = (W - 2 * bord) / n
     # Même corps pour toutes les étapes ; « a · b · c » devient une petite liste verticale.
     listes = [[m.strip() for m in e["texte"].split("·")] for e in s["etapes"]]
-    pt_e = min(taille_qui_tient(l_, pas - 0.1, 1.95, 28, 24, gras=False) for l_ in listes)
+    pt_e = min(taille_qui_tient(l_, pas - 0.1, 1.95, 28, 24, gras="sb") for l_ in listes)
     pt_d = min(taille_qui_tient([e["date"]], pas - 0.1, 0.95, 36, 26) for e in s["etapes"])
     for i, e in enumerate(s["etapes"]):
         cx = bord + pas * (i + 0.5)
@@ -696,7 +736,7 @@ def g_timeline(sl, s, idx, ch):
         t0 = 900 + i * 380
         j = rect(sl, f"jalon{i}", cx - dmt / 2, ly + 0.03 - dmt / 2, dmt, dmt, couleur=PAL["or"] if i < n - 1 else PAL["blanc"], forme=MSO_SHAPE.OVAL)
         dt = texte(sl, f"date{i}", cx - pas / 2 + 0.05, 2.5, pas - 0.1, 0.95, [[(e["date"], pt_d, PAL["or"], F_GRAS)]], align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.BOTTOM)
-        et = texte(sl, f"etape{i}", cx - pas / 2 + 0.05, 4.45, pas - 0.1, 1.95, [[(m, pt_e, PAL["blanc"], F_TEXTE)] for m in listes[i]], align=PP_ALIGN.CENTER)
+        et = texte(sl, f"etape{i}", cx - pas / 2 + 0.05, 4.45, pas - 0.1, 1.95, [[(m, pt_e, PAL["blanc"], F_SB)] for m in listes[i]], align=PP_ALIGN.CENTER)
         ch.entree(j, "zoom", t0, 450)
         ch.entree(dt, "fondu_montant", t0 + 80, 600)
         ch.entree(et, "fondu", t0 + 200, 600)
@@ -715,7 +755,7 @@ def g_pillars(sl, s, idx, ch):
         fil = texte(sl, f"filigrane{i}", x, y - 0.3, cw, 1.8, [[(f"0{i + 1}", 110, RGBColor.from_string("2E2A20"), F_NOIR)]])
         vb = texte(sl, f"pilier{i}", x, y + 1.7, cw, 1.0, [[(it["titre"], pt, PAL["blanc"], F_GRAS)]])
         tr = rect(sl, f"trait{i}", x + 0.05, y + 2.82, 1.0, 0.08, couleur=PAL["or"])
-        dt = texte(sl, f"detail{i}", x, y + 3.05, cw, 1.4, [[(it["texte"], taille_qui_tient([it["texte"]], cw, 1.4, 28, 24), PAL["or"], F_GRAS)]])
+        dt = texte(sl, f"detail{i}", x, y + 3.05, cw, 1.4, [[(it["texte"], taille_qui_tient([it["texte"]], cw, 1.4, 30, 24, gras="sb"), PAL["or"], F_SB)]])
         ch.entree(fil, "fondu", t0, 700)
         ch.entree(vb, "fondu_montant", t0 + 100, 700)
         ch.entree(tr, "balayage", t0 + 300, 500)
@@ -737,7 +777,7 @@ def g_offres(sl, s, idx, ch):
         coul_t = PAL["noir"] if phare else PAL["blanc"]
         coul_s = PAL["noir"] if phare else PAL["or"]
         pt = taille_qui_tient([it["titre"]], w - 0.7, 1.1, 40, 28)
-        texte_forme(tuile, [[(it["titre"], pt, coul_t, F_GRAS)], [(it["texte"], 26, coul_s, F_GRAS)]], align=PP_ALIGN.LEFT, marge=0.4)
+        texte_forme(tuile, [[(it["titre"], pt, coul_t, F_GRAS)], [(it["texte"], 26, coul_s, F_SB)]], align=PP_ALIGN.LEFT, marge=0.4)
         ch.entree(tuile, "fondu_montant", 600 + i * 140, 700)
     petit_logo(sl)
 
@@ -753,13 +793,13 @@ def g_journee(sl, s, idx, ch):
     h0, h1 = _heure(hor["debut"]), _heure(hor["fin"])
     xh = lambda h: (260 + (h - h0) / (h1 - h0) * 1400) * PX  # noqa: E731  (même repère que la vidéo)
     ms = lambda h: int((16 + 140 * (h - h0) / (h1 - h0)) / 30 * 1000)  # noqa: E731  (passage du soleil)
-    k = texte(sl, "kicker", M, 0.42, 7, 0.5, [[(s["kicker"], 24, PAL["or"], F_GRAS, 500)]])
+    k = texte(sl, "kicker", M, 0.42, 7, 0.5, [[(s["kicker"], 24, PAL["or"], F_SB, 400)]])
     ch.entree(k, "fondu", 100, 600)
     lt = largeur_texte(typo(s["titre"]), 120, "noir") + 0.25
     t = titre(sl, 0.7, 0.72, lt, 1.65, [[(s["titre"], 120, PAL["or"], F_NOIR)]], ancre=MSO_ANCHOR.MIDDLE)
     t.text_frame.word_wrap = False
     ch.entree(t, "zoom", 300, 900)
-    sous = texte(sl, "sous-titre", 0.75 + lt, 1.2, 5.4, 0.75, [[(s["texte"], 30, PAL["blanc"], F_GRAS)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
+    sous = texte(sl, "sous-titre", 0.75 + lt, 1.2, 5.4, 0.75, [[(s["texte"], 30, PAL["blanc"], F_SB)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
     ch.entree(sous, "fondu_montant", 700, 700)
     yb = 860 * PX
     hp0, hp1 = _heure(hor["pause_debut"]), _heure(hor["pause_fin"])
@@ -777,15 +817,15 @@ def g_journee(sl, s, idx, ch):
             boite, al = (x - 0.3, 1.6), PP_ALIGN.LEFT
         else:
             boite, al = (x - 0.8, 1.6), PP_ALIGN.CENTER
-        lab = texte(sl, f"heure-{h}", boite[0], yb + 0.14, boite[1], 0.5, [[(h, 24, PAL["blanc"], F_GRAS)]], align=al, retour=False)
+        lab = texte(sl, f"heure-{h}", boite[0], yb + 0.14, boite[1], 0.5, [[(h, 24, PAL["blanc"], F_SB)]], align=al, retour=False)
         ch.entree(lab, "fondu", ms(_heure(h)), 500)
     for seg in s["segments"]:
         a, b = _heure(seg["de"]), _heure(seg["a"])
         cx = (xh(a) + xh(b)) / 2
         lab = texte(sl, f"segment-{seg['de']}", cx - 1.3, yb - 0.72, 2.6, 0.5,
-                    [[(seg["label"], 24, PAL["gris"] if seg.get("pause") else PAL["or"], F_GRAS)]], align=PP_ALIGN.CENTER, retour=False)
+                    [[(seg["label"], 24, PAL["gris"] if seg.get("pause") else PAL["or"], F_SB)]], align=PP_ALIGN.CENTER, retour=False)
         ch.entree(lab, "fondu", ms((a + b) / 2), 600)
-    men = texte(sl, "mention", M, 6.72, 9, 0.5, [[(s["mention"], 24, PAL["gris"], F_TEXTE)]])
+    men = texte(sl, "mention", M, 6.72, 9, 0.5, [[(s["mention"], 24, PAL["gris"], F_SB)]])
     ch.entree(men, "fondu", 5200, 800)
     petit_logo(sl)
 
@@ -796,8 +836,8 @@ def g_confiance(sl, s, idx, ch):
     q, n = s["qualiopi"], s["nda"]
     pw, py, ph = 5.75, 1.9, 3.55
     panneaux = []
-    for i, (bloc, lignes_bloc) in enumerate(((q, [(q["ligne1"], 30, PAL["blanc"], F_GRAS), (q["ligne2"], 24, PAL["gris"], F_TEXTE)]),
-                                             (n, [(n["ligne1"], 26, PAL["blanc"], F_GRAS), (n["ligne2"], 24, PAL["gris"], F_TEXTE)]))):
+    for i, (bloc, lignes_bloc) in enumerate(((q, [(q["ligne1"], 30, PAL["blanc"], F_SB), (q["ligne2"], 24, PAL["gris"], F_SB)]),
+                                             (n, [(n["ligne1"], 26, PAL["blanc"], F_SB), (n["ligne2"], 24, PAL["gris"], F_SB)]))):
         x = M if i == 0 else W - M - pw
         p = rect(sl, f"panneau{i}", x, py, pw, ph, couleur=PAL["bleu_nuit"], contour=PAL["or"], opacite_contour=60, ep=1.5,
                  forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.06)
@@ -807,7 +847,7 @@ def g_confiance(sl, s, idx, ch):
         panneaux.append(p)
     ban = rect(sl, "bandeau", M, 5.72, W - 2 * M, 0.85, couleur=PAL["bleu_nuit"], contour=PAL["or"], ep=1.5,
                forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.5)
-    texte_forme(ban, [[("✓  ", 28, PAL["or"], F_GRAS), (s["texte"], 28, PAL["blanc"], F_GRAS)]])
+    texte_forme(ban, [[("✓  ", 28, PAL["or"], F_SB), (s["texte"], 28, PAL["blanc"], F_SB)]])
     ch.entree(ban, "fondu_montant", 1600, 800)
     petit_logo(sl)
 
@@ -820,7 +860,7 @@ def corps_titre_texte(titre_txt, sous_txt, largeur, hauteur, titre_max=32, titre
     le sous-texte suit le titre, ils ne peuvent pas se chevaucher)."""
     for pt1 in range(titre_max, titre_min - 1, -2):
         for pt2 in range(min(sous_max, pt1), sous_min - 1, -2):
-            if _hauteur([titre_txt], pt1, largeur, 1.0, True) + _hauteur([sous_txt], pt2, largeur, 1.0, True) <= hauteur - 0.1:
+            if _hauteur([titre_txt], pt1, largeur, 1.0, True) + _hauteur([sous_txt], pt2, largeur, 1.0, "sb") <= hauteur - 0.1:
                 return pt1, pt2
     AVERTISSEMENTS.append(f"tuile trop pleine : {titre_txt} / {sous_txt}")
     return titre_min, sous_min
@@ -839,7 +879,7 @@ def _tuiles_avantages(sl, page, dx, ch=None):
         zone_w, zone_h = tw - 0.5, th - 1.35 - 0.15
         pt1, pt2 = corps_titre_texte(it["titre"], it["texte"], zone_w, zone_h)
         t = texte(sl, f"{base}-texte", x + 0.25, y + 1.35, zone_w, zone_h,
-                  [[(it["titre"], pt1, PAL["blanc"], F_GRAS)], [(it["texte"], pt2, PAL["or"], F_GRAS)]])
+                  [[(it["titre"], pt1, PAL["blanc"], F_GRAS)], [(it["texte"], pt2, PAL["or"], F_SB)]])
         if ch is not None:
             for forme in (r, ic, t):
                 ch.entree(forme, "fondu_montant", 600 + i * 180, 700)
@@ -849,7 +889,7 @@ def g_avantages(sl, s, idx, ch):
     calques(sl, s, idx, ch, (6.67, 4.6), 10)
     page = AVANTAGES.index(s)
     if s.get("kicker"):
-        k = texte(sl, "kicker", M, 0.42, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_GRAS, 500)]])
+        k = texte(sl, "kicker", M, 0.42, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_SB, 400)]])
         if page == 0:
             ch.entree(k, "fondu", 100, 600)
     titre_deux_tons(sl, ch, s, M, 0.6, 11.5, 2.4, min(lignes(a_, 54, 11.5, 2.4) for a_ in AVANTAGES), debut=250)
@@ -867,16 +907,16 @@ COUL_FAMILLE = {f: RGBColor.from_string(c) for f, c in ATELIER["familles"].items
 
 
 def _tuiles_atelier(sl, ch=None):
-    tw, th, gx, gy = 2.95, 1.3, 0.17, 0.12
-    x0, y0 = (W - (4 * tw + 3 * gx)) / 2, 1.5
+    tw, th, gx, gy = 2.98, 1.36, 0.16, 0.12
+    x0, y0 = (W - (4 * tw + 3 * gx)) / 2, 1.45
     for i, it in enumerate(ATELIER["items"]):
         x, y = x0 + (i % 4) * (tw + gx), y0 + (i // 4) * (th + gy)
         coul = COUL_FAMILLE[it["famille"]]
         r = rect(sl, f"!!tuile-{it['ref']}", x, y, tw, th, couleur=PAL["blanc"], opacite=6, contour=coul, ep=2.25, tirets=bool(it.get("bientot")))
         haut = th - 0.42 if it.get("bientot") else th
-        paras = [[(it["nom"], taille_qui_tient([it["nom"]], tw, haut, 24, 22), PAL["blanc"], F_GRAS)]]
+        paras = [[(it["nom"], taille_qui_tient([it["nom"]], tw - 0.1, haut, 26, 24), PAL["blanc"], F_GRAS)]]
         if it.get("bientot"):
-            paras.append([("bientôt", 24, PAL["or"], F_GRAS)])
+            paras.append([("bientôt", 24, PAL["or"], F_SB)])
         t = texte(sl, f"!!nom-{it['ref']}", x, y, tw, th, paras, align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
         if ch is not None:
             ch.entree(r, "fondu", 500 + i * 70, 500)
@@ -887,8 +927,8 @@ def _tuiles_atelier(sl, ch=None):
         x, y = x0, 5.72 + rang * 0.56
         for fam, coul in groupe:
             rect(sl, f"legende-{fam}", x, y + 0.13, 0.28, 0.28, couleur=coul)
-            lw = largeur_texte(typo(fam), 24, False) + 0.15
-            texte(sl, f"legende-txt-{fam}", x + 0.36, y, lw, 0.54, [[(fam, 24, PAL["blanc"], F_TEXTE)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
+            lw = largeur_texte(typo(fam), 24, "sb") + 0.15
+            texte(sl, f"legende-txt-{fam}", x + 0.36, y, lw, 0.54, [[(fam, 24, PAL["blanc"], F_SB)]], ancre=MSO_ANCHOR.MIDDLE, retour=False)
             x += 0.36 + lw + 0.4
         if x > W - 1.5:
             AVERTISSEMENTS.append("légende du catalogue trop large")
@@ -914,20 +954,19 @@ def g_focus(sl, s, idx, ch):
     coul = COUL_FAMILLE[item["famille"]]
     bw = 4.1
     rect(sl, f"!!tuile-{s['ref']}", 0, 0, bw, H, couleur=coul)
-    pt = taille_qui_tient([s["nom"]], 6.9, 1.7, 44, 28, gras="noir")
-    code = texte(sl, f"!!nom-{s['ref']}", bw / 2 - 3.5, H / 2 - 0.85, 7.0, 1.7, [[(s["nom"], pt, PAL["noir"], F_NOIR)]], align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
-    code.rotation = 270
+    pt = taille_qui_tient([s["nom"]], bw - 0.7, 3.2, 44, 30, gras="noir")
+    texte(sl, f"!!nom-{s['ref']}", 0.35, H / 2 - 1.6, bw - 0.7, 3.2, [[(s["nom"], pt, PAL["noir"], F_NOIR)]], align=PP_ALIGN.CENTER, ancre=MSO_ANCHOR.MIDDLE)
     xc, wc = bw + 0.7, W - bw - 1.3
     # La famille est portée par la couleur de la bande (règle des 20 mots : pas de surtitre ici).
     titre_deux_tons(sl, ch, s, xc, 0.55, wc, 3.3, FOCUS_PT, debut=300)
     for i, p_ in enumerate(s["puces"]):
-        pc = texte(sl, f"puce{i}", xc, 4.0 + i * 0.66, wc, 0.66, [[("— ", 32, PAL["or"], F_GRAS), (p_, 32, PAL["blanc"], F_GRAS)]], ancre=MSO_ANCHOR.MIDDLE)
+        pc = texte(sl, f"puce{i}", xc, 4.0 + i * 0.66, wc, 0.66, [[("— ", 32, PAL["or"], F_SB), (p_, 32, PAL["blanc"], F_SB)]], ancre=MSO_ANCHOR.MIDDLE)
         ch.entree(pc, "fondu_montant", 1150 + i * 200, 650)
     x = xc
     for i, c in enumerate(s["chips"]):
-        cw = largeur_texte(typo(c), 24) + 0.5
+        cw = largeur_texte(typo(c), 26, "sb") + 0.5
         chip = rect(sl, f"pastille{i}", x, 6.05, cw, 0.68, contour=PAL["or"], ep=2, forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.5)
-        texte_forme(chip, [[(c, 24, PAL["blanc"], F_GRAS)]])
+        texte_forme(chip, [[(c, 26, PAL["blanc"], F_SB)]])
         ch.entree(chip, "zoom", 1900 + i * 130, 500)
         x += cw + 0.25
     petit_logo(sl)
@@ -935,8 +974,8 @@ def g_focus(sl, s, idx, ch):
 
 def g_demo(sl, s, idx, ch):
     calques(sl, s, idx, ch, (2.0, 1.6), 8)
-    live = rect(sl, "live", M, 1.0, 3.6, 0.75, couleur=ROUGE_LIVE, forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.5)
-    texte_forme(live, [[("●  " + s["kicker"], 26, PAL["blanc"], F_GRAS, 300)]])
+    live = rect(sl, "live", M, 1.0, 3.6, 0.75, couleur=PAL["or"], forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.5)
+    texte_forme(live, [[("●  " + s["kicker"], 26, PAL["noir"], F_SB, 300)]])
     ch.entree(live, "zoom", 150, 600)
     titre_deux_tons(sl, ch, s, M, 2.1, W - 2 * M, 4.2, 72, debut=500)
     petit_logo(sl)
@@ -944,7 +983,7 @@ def g_demo(sl, s, idx, ch):
 
 def g_bientot(sl, s, idx, ch):
     calques(sl, s, idx, ch, (10.6, 3.0), 9)
-    k = texte(sl, "kicker", M, 0.5, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_GRAS, 600)]])
+    k = texte(sl, "kicker", M, 0.5, 8, 0.5, [[(s["kicker"], 24, PAL["or"], F_SB, 500)]])
     ch.entree(k, "fondu", 100, 600)
     t = titre(sl, M, 0.95, 9, 1.6, [[(s["titre"], 88, PAL["blanc"], F_GRAS)]], ancre=MSO_ANCHOR.MIDDLE)
     ch.entree(t, "fondu_montant", 400, 900)
@@ -958,7 +997,7 @@ def g_bientot(sl, s, idx, ch):
         carte = rect(sl, f"carte{i}", x, y, cw, ch_, couleur=PAL["blanc"], opacite=6, contour=PAL["or"], opacite_contour=55, ep=1.25,
                      forme=MSO_SHAPE.ROUNDED_RECTANGLE, arrondi=0.08)
         pt1, pt2 = corps_titre_texte(it["titre"], it["texte"], cw - 0.7, ch_ - 0.6, 48 if seule else 32, 26, 30 if seule else 24, 24)
-        texte_forme(carte, [[(it["titre"], pt1, PAL["blanc"], F_GRAS)], [(it["texte"], pt2, PAL["or"], F_GRAS)]],
+        texte_forme(carte, [[(it["titre"], pt1, PAL["blanc"], F_GRAS)], [(it["texte"], pt2, PAL["or"], F_SB)]],
                     align=PP_ALIGN.LEFT, marge=0.35)
         ch.entree(carte, "fondu_montant", 900 + i * 220, 700)
         if it.get("statut") == "a_confirmer":

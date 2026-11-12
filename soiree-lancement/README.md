@@ -17,9 +17,9 @@ pièce jointe. Les sources (`contenu/slides.json`, `assets/`, `remotion/`, `outi
 |---|---|---|
 | `dist/YEBA_Soiree_Lancement.pptx` | **La présentation « cinéma »** : animations natives, Morphose, fonds vidéo vivants, générique et épisodes en lecture automatique, notes orateur | python-pptx |
 | `dist/YEBA_Soiree_Lancement_SOBRE.pptx` | Même présentation, fonds en **images fixes** (PC modeste, public sensible au mouvement) | python-pptx |
-| `dist/videos/yeba-saison1-generique.mp4` | **Le générique** : 80 s, 1080p, son −16 LUFS (offres, Qualiopi, NDA, horaires, 11 formations) | Remotion |
+| `dist/videos/yeba-saison1-generique-v3.mp4` | **Le générique v3 « La graine »** : 80 s, 1080p, 60 images/s, plan-séquence sans coupe. Une graine de lumière devient réseau, YEBA, baobab, La Réunion (contour réel, « 974 »), le chemin 2021 → ce soir, les 3 métiers, les 11 formations, le sceau Qualiopi / NDA, puis l'emblème officiel. Bande-son originale (pulsation inspirée du maloya), −16 LUFS | Remotion (`src/v3/`) |
 | `dist/videos/yeba-episode-1…7.mp4` | Cartes-titres d'épisode (4,5 s, sting sonore) | Remotion |
-| `dist/videos/yeba-preshow.mp4`, `fond-*.mp4` | Boucle d'accueil et 9 fonds vivants (sans son) | Remotion |
+| `dist/videos/yeba-preshow-v3.mp4`, `fond-v3-*.mp4` | Boucle d'accueil v3 et 7 fonds vivants v3 (même matière que le générique, boucles parfaites de 12 s, sans son) | Remotion |
 | `dist/YEBA_Soiree_Lancement.pdf` | Export figé (Slides.com, impression, envoi) | LibreOffice |
 | `revealjs/index.html` | Version web hors ligne, jumelle du PPTX (Auto-Animate, fonds vidéo, touche S = notes) | Reveal.js |
 | `vba/YebaAnimations.bas` | Contrôle avant soirée, mode sobre / cinéma, suppression des post-it avant envoi | VBA |
@@ -32,7 +32,8 @@ pièce jointe. Les sources (`contenu/slides.json`, `assets/`, `remotion/`, `outi
 
 ## Mode d'emploi (10 minutes)
 
-1. Installer **Montserrat** (`assets/fonts/*.ttf`, licence OFL) : double-clic → Installer.
+1. Installer **Montserrat** et **Inter** (`assets/fonts/*.ttf` et `*.otf`, licence OFL) : double-clic → Installer.
+   Sans Inter, PowerPoint remplace le texte courant par une autre police et les retours à la ligne changent.
 2. Ouvrir `dist/YEBA_Soiree_Lancement.pptx` avec **Microsoft 365 ou PowerPoint 2019+** (Morphose ; sinon fondu).
 3. Facultatif : `Alt + F11` → Importer `vba/YebaAnimations.bas` → `Alt + F8` → **YebaVerifier** (rapport complet).
 4. Les post-it **rouges à droite des slides** (hors champ, jamais projetés) listent ce qu'il reste à confirmer.
@@ -68,14 +69,17 @@ Slides.com, PDF se mettent à jour ensemble ; `--videos` pour régénérer musiq
   (S32 « À suivre… » : Assistant IA perso). L'espace en ligne et l'émargement numérique ne sont pas annoncés : ils seront
   ajoutés quand ils existeront dans Airtable (décision du 10/11/2026).
 - **La vidéo de motion design** : le générique, 7 cartes d'épisode, 9 fonds vivants, une boucle d'accueil.
+- **Version 3 (12/11/2026)** : générique refait en plan-séquence de particules 3D (« La graine », 60 images/s) et
+  nouvelle bande-son ; PowerPoint refait sur la même matière (7 fonds vivants v3, carte de saison pour les sommaires,
+  fiches formation sans texte pivoté, texte courant en Inter conforme à la charte, or officiel #C9AB4C).
 
 ## Bible motion design (tenue partout)
 
-Une seule chronologie (`remotion/src/timeline.json`) partagée par l'image et la musique · courbes « expo » pour les
+Une seule chronologie partagée par l'image et la musique (`remotion/src/v3/timeline3.json` pour le générique v3) · courbes « expo » pour les
 entrées, jamais linéaires · 3 objets en mouvement au maximum · fonds lents et sombres sous le texte · étoiles et halo
 en parallaxe d'une slide à l'autre (Morphose) · **aucun trait ne traverse un mot** (constellations, anneaux, flux et
-reflets dorés passent hors des textes ou sous des panneaux opaques) · titres ≥ 54 pt, texte ≥ 24 pt (22 pt
-seulement sur la carte du catalogue) · 20 mots projetés au maximum par slide (exceptions : couverture, sommaire,
+reflets dorés passent hors des textes ou sous des panneaux opaques ; dans le générique v3, chaque texte
+découpe une « réserve » dans le calque des particules : aucun point ni trait sous un mot) · titres ≥ 54 pt, texte ≥ 24 pt · 20 mots projetés au maximum par slide (exceptions : couverture, sommaire,
 carte du catalogue, horaires, mention légale) · aucune césure, espaces insécables à la française.
 
 ## Sources
@@ -88,6 +92,9 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 - Code du travail, art. L.6352-12 (mention NDA) et L.6316-1 (Qualiopi, condition des financements publics ou mutualisés).
 - Code de la consommation, art. L.121-2 (pratiques commerciales trompeuses) ; CGI art. 293 B (TVA non applicable).
 - Illustrations, pictogrammes, calques et musique : produits par script dans ce dépôt (aucun droit tiers).
+- Contour de La Réunion (générique v3) : Natural Earth 1:10m, domaine public, via le paquet npm world-atlas 2.0.2
+  (licence ISC) ; altitudes du piton des Neiges (3 070 m) et du piton de la Fournaise (2 632 m), relief exagéré à l'image.
+- Polices : Montserrat et Inter (SIL Open Font License 1.1), fichiers locaux, aucun appel à Google Fonts.
 
 ## ⚖️ RGPD / IA Act — à traiter avant la soirée
 

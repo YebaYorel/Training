@@ -24,19 +24,17 @@ export const TEINTES: Record<string, string> = {
 export const OR_POLI = `linear-gradient(180deg, #F6E7B0 0%, ${OR} 46%, ${OR_PROFOND} 100%)`;
 
 const POIDS = [400, 700, 800, 900];
-const css = POIDS.map(
-  (w) =>
-    `@font-face{font-family:Montserrat;font-weight:${w};src:url(${staticFile(
-      `fonts/montserrat-latin-${w}-normal.woff2`
-    )}) format('woff2');}`
-).join("");
+const POIDS_INTER = [500, 600, 700];
+const css =
+  POIDS.map((w) => `@font-face{font-family:Montserrat;font-weight:${w};src:url(${staticFile(`fonts/montserrat-latin-${w}-normal.woff2`)}) format('woff2');}`).join("") +
+  POIDS_INTER.map((w) => `@font-face{font-family:Inter;font-weight:${w};src:url(${staticFile(`fonts/inter-latin-${w}-normal.woff2`)}) format('woff2');}`).join("");
 
 // Charge Montserrat depuis /public (aucun appel réseau) avant de rendre la première image.
 export const Polices: React.FC = () => {
   const [handle] = useState(() => delayRender("Chargement Montserrat"));
   useEffect(() => {
     document.fonts.ready
-      .then(() => Promise.all(POIDS.map((w) => document.fonts.load(`${w} 40px Montserrat`))))
+      .then(() => Promise.all([...POIDS.map((w) => document.fonts.load(`${w} 40px Montserrat`)), ...POIDS_INTER.map((w) => document.fonts.load(`${w} 40px Inter`))]))
       .then(() => continueRender(handle))
       .catch(() => continueRender(handle));
   }, [handle]);

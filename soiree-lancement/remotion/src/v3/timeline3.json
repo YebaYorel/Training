@@ -1,0 +1,870 @@
+{
+  "_lire_moi": "Chronologie du générique v3 « La graine » (secondes). Même fichier pour l'image (src/v3/*.tsx) et le son (audio/composer3.py). Tempo : 12/8 à 80 noires pointées/min (temps = 0,75 s, mesure = 3 s). Textes : uniquement des contenus validés de contenu/slides.json.",
+  "duree": 80.0,
+  "tempo": {
+    "bpm": 80,
+    "temps_s": 0.75,
+    "mesure_s": 3.0
+  },
+  "etapes": [
+    {
+      "forme": "graine",
+      "debut": 0.0,
+      "duree": 0.01,
+      "decalage": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "forme": "reseau",
+      "debut": 4.5,
+      "duree": 2.6,
+      "etalement": 0.4,
+      "tourbillon": 0.6,
+      "decalage": [
+        3.0,
+        0.1,
+        -2.0
+      ],
+      "origine": "explosion"
+    },
+    {
+      "forme": "yeba",
+      "debut": 13.5,
+      "duree": 2.25,
+      "etalement": 0.55,
+      "tourbillon": 1.4,
+      "decalage": [
+        0,
+        0.25,
+        0
+      ],
+      "par_groupe": true
+    },
+    {
+      "forme": "baobab",
+      "debut": 20.25,
+      "duree": 2.7,
+      "etalement": 0.55,
+      "tourbillon": 1.8,
+      "decalage": [
+        4.3,
+        -0.2,
+        0
+      ]
+    },
+    {
+      "forme": "ile",
+      "debut": 30.0,
+      "duree": 3.2,
+      "etalement": 0.6,
+      "tourbillon": 1.0,
+      "decalage": [
+        3.6,
+        -1.0,
+        0.4
+      ],
+      "chute": true,
+      "echelle": 0.7
+    },
+    {
+      "forme": "chemin",
+      "debut": 41.25,
+      "duree": 2.1,
+      "etalement": 0.5,
+      "tourbillon": 1.2,
+      "decalage": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "forme": "metiers",
+      "debut": 51.0,
+      "duree": 1.9,
+      "etalement": 0.45,
+      "tourbillon": 1.4,
+      "decalage": [
+        0,
+        0.35,
+        0
+      ],
+      "par_groupe": true
+    },
+    {
+      "forme": "etoiles",
+      "debut": 58.5,
+      "duree": 1.8,
+      "etalement": 0.5,
+      "tourbillon": 1.2,
+      "decalage": [
+        0.1,
+        0.0,
+        0
+      ]
+    },
+    {
+      "forme": "sceau",
+      "debut": 66.25,
+      "duree": 1.9,
+      "etalement": 0.45,
+      "tourbillon": 1.3,
+      "decalage": [
+        4.3,
+        0.0,
+        0
+      ],
+      "inclinaison": [
+        0.2,
+        -0.45,
+        0
+      ]
+    },
+    {
+      "forme": "graine",
+      "debut": 73.0,
+      "duree": 1.25,
+      "etalement": 0.25,
+      "tourbillon": 0.4,
+      "decalage": [
+        0,
+        0,
+        0
+      ],
+      "implosion": true
+    },
+    {
+      "forme": "embleme",
+      "debut": 74.25,
+      "duree": 1.25,
+      "etalement": 0.3,
+      "tourbillon": 0.5,
+      "decalage": [
+        0,
+        0,
+        0
+      ],
+      "origine": "explosion",
+      "aligner_logo": true
+    }
+  ],
+  "relief": [
+    35.25,
+    36.9
+  ],
+  "logo": {
+    "largeur_px": 620,
+    "haut_px": 132,
+    "fondu": [
+      75.2,
+      76.1
+    ]
+  },
+  "camera": [
+    {
+      "t": 0.0,
+      "oeil": [
+        0,
+        0,
+        4.2
+      ],
+      "cible": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 4.3,
+      "oeil": [
+        0,
+        0,
+        3.4
+      ],
+      "cible": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 7.0,
+      "oeil": [
+        0.8,
+        0.7,
+        12.8
+      ],
+      "cible": [
+        2.3,
+        0.2,
+        -2.0
+      ]
+    },
+    {
+      "t": 11.6,
+      "oeil": [
+        -0.6,
+        0.3,
+        13.6
+      ],
+      "cible": [
+        2.0,
+        0.1,
+        -2.0
+      ]
+    },
+    {
+      "t": 14.6,
+      "oeil": [
+        0,
+        0.25,
+        13.2
+      ],
+      "cible": [
+        0,
+        0.25,
+        0
+      ]
+    },
+    {
+      "t": 19.8,
+      "oeil": [
+        0,
+        0.25,
+        12.2
+      ],
+      "cible": [
+        0,
+        0.25,
+        0
+      ]
+    },
+    {
+      "t": 22.4,
+      "oeil": [
+        2.4,
+        -2.0,
+        10.4
+      ],
+      "cible": [
+        3.3,
+        -1.3,
+        0
+      ]
+    },
+    {
+      "t": 24.4,
+      "oeil": [
+        1.2,
+        0.7,
+        13.6
+      ],
+      "cible": [
+        2.8,
+        0.0,
+        0
+      ]
+    },
+    {
+      "t": 29.2,
+      "oeil": [
+        0.6,
+        1.0,
+        12.6
+      ],
+      "cible": [
+        2.8,
+        0.1,
+        0
+      ]
+    },
+    {
+      "t": 33.6,
+      "oeil": [
+        0.6,
+        12.8,
+        5.6
+      ],
+      "cible": [
+        0.55,
+        -1.0,
+        0.2
+      ]
+    },
+    {
+      "t": 37.2,
+      "oeil": [
+        1.2,
+        6.6,
+        11.6
+      ],
+      "cible": [
+        0.8,
+        -0.8,
+        0.4
+      ]
+    },
+    {
+      "t": 40.6,
+      "oeil": [
+        1.0,
+        7.0,
+        11.2
+      ],
+      "cible": [
+        0.8,
+        -0.9,
+        0.4
+      ]
+    },
+    {
+      "t": 42.0,
+      "chemin": 0.0
+    },
+    {
+      "t": 50.6,
+      "chemin": 0.93
+    },
+    {
+      "t": 52.6,
+      "oeil": [
+        0,
+        0.3,
+        14.2
+      ],
+      "cible": [
+        0,
+        0.3,
+        0
+      ]
+    },
+    {
+      "t": 57.6,
+      "oeil": [
+        0,
+        0.3,
+        13.6
+      ],
+      "cible": [
+        0,
+        0.3,
+        0
+      ]
+    },
+    {
+      "t": 60.0,
+      "oeil": [
+        0.5,
+        0.1,
+        12.8
+      ],
+      "cible": [
+        0.6,
+        0.1,
+        0
+      ]
+    },
+    {
+      "t": 65.4,
+      "oeil": [
+        0.2,
+        -0.1,
+        12.2
+      ],
+      "cible": [
+        0.6,
+        0.0,
+        0
+      ]
+    },
+    {
+      "t": 67.8,
+      "oeil": [
+        0.6,
+        0.2,
+        13.2
+      ],
+      "cible": [
+        1.2,
+        0.0,
+        0
+      ]
+    },
+    {
+      "t": 72.6,
+      "oeil": [
+        0.9,
+        0.1,
+        12.6
+      ],
+      "cible": [
+        1.3,
+        0.0,
+        0
+      ]
+    },
+    {
+      "t": 74.2,
+      "oeil": [
+        0,
+        0,
+        9.0
+      ],
+      "cible": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "t": 80.0,
+      "logo": true
+    }
+  ],
+  "textes": [
+    {
+      "id": "ici",
+      "t0": 6.75,
+      "t1": 11.4,
+      "x": 132,
+      "y": 380,
+      "lignes": [
+        {
+          "texte": "Ici,",
+          "style": "titre",
+          "t": 6.75
+        },
+        {
+          "texte": "le savoir",
+          "style": "titre",
+          "t": 7.25
+        },
+        {
+          "texte": "se partage.",
+          "style": "titre_or",
+          "t": 7.75
+        }
+      ]
+    },
+    {
+      "id": "lingala",
+      "t0": 12.0,
+      "t1": 14.9,
+      "x": 960,
+      "y": 210,
+      "align": "centre",
+      "lignes": [
+        {
+          "texte": "En lingala,",
+          "style": "titre",
+          "t": 12.0
+        }
+      ]
+    },
+    {
+      "id": "savoir",
+      "t0": 16.4,
+      "t1": 20.1,
+      "x": 960,
+      "y": 760,
+      "align": "centre",
+      "lignes": [
+        {
+          "texte": "« savoir, connaître »",
+          "style": "sous_or",
+          "t": 16.4
+        }
+      ]
+    },
+    {
+      "id": "baobab",
+      "t0": 24.75,
+      "t1": 29.3,
+      "x": 132,
+      "y": 400,
+      "lignes": [
+        {
+          "texte": "Sous le baobab,",
+          "style": "titre",
+          "t": 24.75
+        },
+        {
+          "texte": "on transmet.",
+          "style": "titre_or",
+          "t": 25.5
+        }
+      ]
+    },
+    {
+      "id": "974",
+      "t0": 35.25,
+      "t1": 37.5,
+      "x": 132,
+      "y": 300,
+      "lignes": [
+        {
+          "texte": "974",
+          "style": "geant",
+          "t": 35.25
+        }
+      ]
+    },
+    {
+      "id": "racines",
+      "t0": 37.75,
+      "t1": 40.9,
+      "x": 132,
+      "y": 400,
+      "lignes": [
+        {
+          "texte": "Des racines.",
+          "style": "titre",
+          "t": 37.75
+        },
+        {
+          "texte": "Un réseau.",
+          "style": "titre_or",
+          "t": 38.5
+        }
+      ]
+    },
+    {
+      "id": "j2021",
+      "t0": 43.0,
+      "t1": 50.9,
+      "x": 132,
+      "y": 150,
+      "jalons": [
+        {
+          "t": 43.0,
+          "annee": "2021",
+          "texte": "Avril · Création"
+        },
+        {
+          "t": 45.0,
+          "annee": "2025",
+          "texte": "Vente · Management · Soft skills",
+          "prefixe": "2021 →"
+        },
+        {
+          "t": 47.0,
+          "annee": "2026",
+          "texte": "IA · RGPD · IA Act"
+        },
+        {
+          "t": 49.0,
+          "annee": "Ce soir",
+          "texte": "Nouvelle équipe"
+        }
+      ]
+    },
+    {
+      "id": "metiers",
+      "t0": 52.25,
+      "t1": 58.2,
+      "x": 960,
+      "y": 120,
+      "align": "centre",
+      "lignes": [
+        {
+          "texte": "3 métiers.",
+          "style": "titre",
+          "t": 52.25,
+          "meme_ligne": true
+        },
+        {
+          "texte": "1 seul interlocuteur.",
+          "style": "titre_or",
+          "t": 52.75,
+          "meme_ligne": true
+        }
+      ]
+    },
+    {
+      "id": "verbes",
+      "t0": 54.0,
+      "t1": 58.2,
+      "verbes": [
+        {
+          "texte": "Former",
+          "t": 54.0,
+          "groupe": 0
+        },
+        {
+          "texte": "Implémenter",
+          "t": 55.0,
+          "groupe": 1
+        },
+        {
+          "texte": "Sécuriser",
+          "t": 56.0,
+          "groupe": 2
+        }
+      ]
+    },
+    {
+      "id": "formations",
+      "t0": 59.25,
+      "t1": 65.9,
+      "x": 132,
+      "y": 190,
+      "compteur": [
+        59.25,
+        60.25,
+        11
+      ],
+      "lignes": [
+        {
+          "texte": "formations.",
+          "style": "titre",
+          "t": 60.3
+        }
+      ],
+      "familles": [
+        {
+          "texte": "IA au quotidien",
+          "couleur": "C9AB4C",
+          "t": 61.25
+        },
+        {
+          "texte": "IA avancée",
+          "couleur": "E9D7A0",
+          "t": 61.9
+        },
+        {
+          "texte": "Visibilité",
+          "couleur": "FFFFFF",
+          "t": 62.55
+        },
+        {
+          "texte": "Gouvernance",
+          "couleur": "7FA7E0",
+          "t": 63.2
+        },
+        {
+          "texte": "Humain",
+          "couleur": "B8BCC6",
+          "t": 63.85
+        }
+      ]
+    },
+    {
+      "id": "confiance",
+      "t0": 67.5,
+      "t1": 73.0,
+      "x": 132,
+      "y": 210,
+      "lignes": [
+        {
+          "texte": "La confiance",
+          "style": "titre",
+          "t": 67.5
+        },
+        {
+          "texte": "se prouve.",
+          "style": "titre_or",
+          "t": 68.0
+        }
+      ],
+      "preuves": [
+        {
+          "t": 69.25,
+          "titre": "QUALIOPI",
+          "ligne1": "N° 25FOR02027.1",
+          "ligne2": "Actions de formation"
+        },
+        {
+          "t": 70.9,
+          "titre": "NDA",
+          "ligne1": "N° 04973676397",
+          "ligne2": "Cet enregistrement ne vaut pas agrément de l'État."
+        }
+      ]
+    },
+    {
+      "id": "slogan",
+      "t0": 76.5,
+      "t1": 80.5,
+      "x": 960,
+      "y": 772,
+      "align": "centre",
+      "lignes": [
+        {
+          "texte": "Sous le baobab de la connaissance,",
+          "style": "slogan",
+          "t": 76.5
+        },
+        {
+          "texte": "les graines du savoir.",
+          "style": "slogan_or",
+          "t": 77.0
+        }
+      ]
+    },
+    {
+      "id": "saison",
+      "t0": 77.75,
+      "t1": 80.5,
+      "x": 960,
+      "y": 948,
+      "align": "centre",
+      "lignes": [
+        {
+          "texte": "SAISON 1 · SOIRÉE DE LANCEMENT",
+          "style": "kicker",
+          "t": 77.75
+        }
+      ]
+    }
+  ],
+  "son": {
+    "battements": [
+      1.0,
+      1.36,
+      2.5,
+      2.86
+    ],
+    "anneau": 3.0,
+    "impacts": [
+      {
+        "t": 4.5,
+        "force": 0.55
+      },
+      {
+        "t": 15.75,
+        "force": 1.0
+      },
+      {
+        "t": 35.25,
+        "force": 0.7
+      },
+      {
+        "t": 74.25,
+        "force": 1.25
+      }
+    ],
+    "souffles": [
+      12.0,
+      20.25,
+      29.9,
+      41.25,
+      51.0,
+      58.5,
+      66.25
+    ],
+    "montees": [
+      [
+        13.5,
+        15.75
+      ],
+      [
+        33.0,
+        35.25
+      ],
+      [
+        71.5,
+        74.25
+      ]
+    ],
+    "pluie": [
+      29.9,
+      32.6
+    ],
+    "tics": [
+      59.25,
+      60.25,
+      11
+    ],
+    "carillons": [
+      6.75,
+      7.25,
+      7.75,
+      16.4,
+      24.75,
+      25.5,
+      37.75,
+      38.5,
+      43.0,
+      45.0,
+      47.0,
+      49.0,
+      54.0,
+      55.0,
+      56.0,
+      61.25,
+      61.9,
+      62.55,
+      63.2,
+      63.85,
+      69.25,
+      70.9,
+      76.5,
+      77.0
+    ],
+    "sections": [
+      {
+        "de": 0.0,
+        "a": 4.5,
+        "type": "silence"
+      },
+      {
+        "de": 4.5,
+        "a": 12.0,
+        "type": "eveil"
+      },
+      {
+        "de": 12.0,
+        "a": 15.75,
+        "type": "montee"
+      },
+      {
+        "de": 15.75,
+        "a": 20.25,
+        "type": "plein"
+      },
+      {
+        "de": 20.25,
+        "a": 30.0,
+        "type": "baobab"
+      },
+      {
+        "de": 30.0,
+        "a": 35.25,
+        "type": "montee"
+      },
+      {
+        "de": 35.25,
+        "a": 41.25,
+        "type": "plein"
+      },
+      {
+        "de": 41.25,
+        "a": 51.0,
+        "type": "marche"
+      },
+      {
+        "de": 51.0,
+        "a": 66.25,
+        "type": "plein"
+      },
+      {
+        "de": 66.25,
+        "a": 71.5,
+        "type": "confiance"
+      },
+      {
+        "de": 71.5,
+        "a": 74.25,
+        "type": "montee"
+      },
+      {
+        "de": 74.25,
+        "a": 80.0,
+        "type": "final"
+      }
+    ]
+  }
+}

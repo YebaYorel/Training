@@ -127,6 +127,9 @@ Outils toujours disponibles au démarrage des sessions cloud (hook `.claude/hook
 présentations événementielles. Les supports de formation passent par `yeba-powerpoint` (section « Formations »).
 
 - Source unique du contenu : `soiree-lancement/contenu/slides.json` (concept « série » : générique, 7 épisodes)
+- Générique v3 « La graine » (`soiree-lancement/remotion/src/v3/`) : plan-séquence de particules 3D, 60 i/s, formes dans
+  `src/v3/formes.json` (régénérées par `scripts/formes_v3.py`), chronologie image + son `src/v3/timeline3.json`, bande-son
+  `audio/composer3.py`. Les textes découpent une réserve dans le calque des particules : aucun point ni trait sous un mot.
 - Tout reconstruire : `bash soiree-lancement/build_all.sh` (PPTX cinéma + sobre, Reveal.js, supports, PDF ;
   `--videos` pour la bande-son et les 19 vidéos Remotion de `soiree-lancement/dist/videos/`)
 - Fichiers produits (`soiree-lancement/dist/` : PPTX, PDF, vidéos) **non versionnés** (dépôt public) : les
@@ -136,8 +139,8 @@ présentations événementielles. Les supports de formation passent par `yeba-po
 - Charte : celle de la section « Charte YEBA FORMATIONS » (fond #121212 / #1B3A6B, texte blanc, or
   #C9AB4C jamais en texte sur blanc), 15-20 mots/slide, titres ≥ 54 pt, texte ≥ 24-28 pt, aucun mot coupé ni
   barré, aucun trait (ligne, reflet, constellation) qui traverse un mot — y compris dans les vidéos.
-  Écart connu : la soirée v2 écrit encore le texte courant en Montserrat (la charte demande Inter) → à aligner
-  à la prochaine reconstruction, avec contrôle visuel (le builder vérifie qu'aucun mot n'est coupé).
+  Depuis la v3 : titres Montserrat, texte courant Inter (Regular / SemiBold), comme la charte ; Inter doit être
+  installée sur le PC de projection (`soiree-lancement/assets/fonts/`).
 - Logo : version **sans œil** (`soiree-lancement/assets/`).
 - Marque blanche : pour un autre organisme, AUCUNE mention de YEBA FORMATIONS.
 - Toujours contrôler visuellement (PDF → PNG) avant de livrer.

@@ -21,10 +21,9 @@ import build_pptx as P  # noqa: E402
 from generer_supports import nb_mots, texte_visible  # noqa: E402
 
 C = P.C
-T = json.loads((RACINE / "remotion" / "src" / "timeline.json").read_text(encoding="utf-8"))
 SORTIE = RACINE / "dist" / "storyboard"
 PDF = RACINE / "dist" / "YEBA_Soiree_Lancement.pdf"
-GENERIQUE = RACINE / "dist" / "videos" / "yeba-saison1-generique.mp4"
+GENERIQUE = RACINE / C["videos"]["generique"]["fichier"]  # v3 « La graine » (même source que le PowerPoint)
 
 # Notes réécrites pour la version en ligne (tarifs et remises retirés : ils restent dans le PowerPoint)
 NOTES_EN_LIGNE = {
@@ -34,23 +33,24 @@ NOTES_EN_LIGNE = {
     "S36": "À CONSTRUIRE : épisode 7 — Mot de fin avec offre spéciale soirée (conditions à définir par Aurélien).",
 }
 
+# Générique v3 « La graine » : (seconde de début, titre, description) — voir remotion/src/v3/timeline3.json
 SCENES = [
-    ("coldOpen", "Ouverture", "Un point de lumière, des étoiles, « La Réunion · 974 »."),
-    ("ici", "Ici", "« Ici, le savoir se partage. » Les pitons se relient en constellation."),
-    ("yeba", "YEBA", "En lingala, un seul mot : YEBA, « savoir, connaître »."),
-    ("baobab", "Le baobab", "Le Y devient arbre : « Sous le baobab, on transmet. »"),
-    ("chemin", "Le chemin", "Odomètre 2021 → 2026 : création, vente, management, IA, RGPD, IA Act."),
-    ("metiers", "3 métiers", "Former · Implémenter · Sécuriser — un seul interlocuteur."),
-    ("formations", "11 formations", "Le montage des formations sur le tempo, puis « Bientôt : Assistant IA perso »."),
-    ("confiance", "La confiance", "Qualiopi n° 25FOR02027.1 · NDA n° 04973676397 · 7 h par jour."),
-    ("final", "Final", "Onde de choc, logo, « Sous le baobab de la connaissance, les graines du savoir. »"),
+    (0.0, "La graine", "Noir. Une graine de lumière bat comme un cœur, puis éclate."),
+    (4.5, "Le réseau", "Ses éclats deviennent un réseau de racines : « Ici, le savoir se partage. »"),
+    (12.0, "YEBA", "« En lingala, » les particules forment YEBA : « savoir, connaître »."),
+    (20.25, "Le baobab", "Les lettres se dispersent et poussent en baobab : « Sous le baobab, on transmet. »"),
+    (30.0, "974", "Les graines tombent et dessinent La Réunion ; les pitons se lèvent : « 974 ». Des racines. Un réseau."),
+    (41.25, "Le chemin", "Travelling sur un chemin de lumière : 2021, 2025, 2026, ce soir."),
+    (51.0, "3 métiers", "Livre, engrenage, bouclier : Former · Implémenter · Sécuriser."),
+    (58.5, "11 formations", "Onze étoiles, cinq familles (et une étoile pâle : bientôt)."),
+    (66.25, "La confiance", "Un sceau d'anneaux : Qualiopi n° 25FOR02027.1, NDA n° 04973676397."),
+    (73.0, "L'emblème", "Tout revient à la graine, qui éclate en emblème officiel ; le slogan."),
 ]
 
 e = lambda t: html.escape(P.typo(t or ""), quote=False)  # noqa: E731
 
 
-def tc(frame):
-    s = frame / T["fps"]
+def tc(s):
     return f"{int(s // 60)}:{s % 60:04.1f}".replace(".", ",")
 
 
@@ -84,9 +84,9 @@ def vignettes():
 def video():
     (SORTIE / "video").mkdir(exist_ok=True)
     cible = SORTIE / "video" / "generique-720p.mp4"
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(GENERIQUE), "-vf", "scale=1280:-2", "-c:v", "libx264", "-preset", "slow",
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(GENERIQUE), "-vf", "scale=1280:-2,fps=30", "-c:v", "libx264", "-preset", "slow",
                     "-crf", "25", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "112k", "-movflags", "+faststart", str(cible)], check=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(RACINE / "dist" / "videos" / "yeba-saison1-generique.jpg"),
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(RACINE / C["videos"]["generique"]["apercu"]),
                     "-vf", "scale=1280:-2", "-q:v", "4", str(SORTIE / "video" / "generique.jpg")], check=True)
     taille = cible.stat().st_size / 1e6
     if taille > 14.5:
@@ -133,8 +133,8 @@ def page(noms, taille_video):
     eps.update({ep["numero"]: (ep["titre"], ep["sujet"]) for ep in C["episodes"]})
     nav = "".join(f'<a href="#ep-{n}">{"Ouverture" if n == 0 else f"Ép. {n}"}</a>' for n in sorted(eps))
     scenes = "".join(
-        f'<li><span class="tc">{tc(T["scenes"][cle][0])}</span><strong>{e(nom)}</strong><span>{e(txt)}</span></li>'
-        for cle, nom, txt in SCENES
+        f'<li><span class="tc">{tc(debut)}</span><strong>{e(nom)}</strong><span>{e(txt)}</span></li>'
+        for debut, nom, txt in SCENES
     )
     sections = []
     for n in sorted(eps):

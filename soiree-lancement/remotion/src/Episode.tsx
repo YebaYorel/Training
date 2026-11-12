@@ -2,7 +2,7 @@ import React from "react";
 import { AbsoluteFill, Audio, staticFile, useCurrentFrame } from "remotion";
 import { BLANC, OR, Polices, TEINTES } from "./charte";
 import { AnneauxSceau, BaobabTrace, Constellation, LIENS_PITONS, NOEUDS_PITONS } from "./lib/traces";
-import { BalayageOr, Bandes, Grain, Halo, Poussieres, Vignette } from "./lib/calques";
+import { Bandes, Grain, Halo, Poussieres, Vignette } from "./lib/calques";
 import { LettresMontantes, Resserre } from "./lib/texte";
 import { aleatoire, DOUX, EXPO, lerp, p, TAU } from "./lib/motion";
 
@@ -152,16 +152,15 @@ export const Episode: React.FC<EpisodeProps> = ({ numero, titre, sujet, motif, t
           boxShadow: "0 0 18px rgba(201,171,76,0.6)",
         }}
       />
-      <div style={{ position: "absolute", left: 150, top: 396, color: OR, fontWeight: 800, fontSize: 30 }}>
+      <div style={{ position: "absolute", left: 150, top: 388, color: OR, fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: 44 }}>
         <Resserre texte={`ÉPISODE\u00a0${num}`} f={f} debut={14} duree={34} de={0.9} a={0.45} />
       </div>
       <div style={{ position: "absolute", left: 146, top: 500, color: BLANC, fontWeight: 800, fontSize: 112, lineHeight: "130px" }}>
         <LettresMontantes texte={titre} f={f} debut={24} decalage={1.5} />
       </div>
-      <div style={{ position: "absolute", left: 152, top: 664, color: OR, fontWeight: 700, fontSize: 40, opacity: p(f, 52, 20, DOUX) }}>
+      <div style={{ position: "absolute", left: 152, top: 660, color: OR, fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: 52, opacity: p(f, 52, 20, DOUX) }}>
         {sujet}
       </div>
-      <BalayageOr f={f} debut={92} duree={28} />
       <Grain opacite={0.16} />
       <Vignette force={0.6} />
       <Bandes hauteur={120} />
