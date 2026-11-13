@@ -65,3 +65,6 @@ soiree-lancement/dist/storyboard/
 
 # Prototype « Accueil Saison 1 » régénérable (outils/generer_accueil.py)
 soiree-lancement/dist/accueil/
+
+# Roast Room : séances du conseil (briefs, chiffres de l'entreprise) — jamais dans ce dépôt public
+/sessions/

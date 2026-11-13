@@ -129,9 +129,9 @@ carte du catalogue, horaires, mention légale) · aucune césure, espaces inséc
 ## À confirmer par vous
 
 - [ ] Date et lieu (S01) · rôles de Stan et d'Antho + photos (S04)
-- [ ] Certificat Qualiopi 25FOR02027.1 (confirmé le 10/11/2026) : validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
+- [ ] Certificat Qualiopi 25FOR02027.1 (confirmé le 10/11 et le 13/11/2026 ; « 25FOF » est une coquille) : validité au 16/02/2027 d'après Airtable → renouvellement à anticiper
 - [ ] Le logo officiel Qualiopi (fourni par Qualitia) peut remplacer le mot « QUALIOPI » en S19, avec sa mention d'usage
-- [x] Licence Remotion : YEBA FORMATIONS compte 1 personne (réponse du 10/11/2026) → licence gratuite (jusqu'à 3 salariés) ; à revoir si l'équipe dépasse 3 personnes
+- [x] Licence Remotion : YEBA FORMATIONS compte 1 personne, Aurélien seul (réponses du 10/11 et du 13/11/2026) → licence gratuite (jusqu'à 3 salariés) ; à revoir si l'équipe dépasse 3 personnes
 - [x] Prix : jamais projetés, ni à l'épisode 3 ni à l'épisode 6 (décision du 10/11/2026) ; repères oraux dans les notes de S17
 - [x] FOR-0011 : 2 jours (14 h) — fiche Airtable remise en cohérence le 10/11/2026 (sauvegarde : `../airtable-sauvegardes/`)
 - [x] FOR-0011 validée par Aurélien LUMEKA (10/11/2026) ; correspondance quiz / objectifs remise en O1 à O10 → régénérer les PDF joints à la fiche

@@ -1,6 +1,6 @@
 # Skills, plugins et serveurs MCP — inventaire YEBA FORMATIONS
 
-Mis à jour le 2026-11-08. Tout est versionné dans ce dépôt (`.claude/`,
+Mis à jour le 2026-11-13 (Roast Room, agent-desktop). Tout est versionné dans ce dépôt (`.claude/`,
 `.mcp.json`) : chaque session Claude Code (cloud ou PC) ouvrant ce dépôt le
 retrouve. Pour tous les projets du PC : `python scripts/installer_skills_pc.py --appliquer`.
 
@@ -68,6 +68,8 @@ les descriptions : un skill peut alors devoir être appelé **par son nom**.
 | `presentation-yeba`, `python-pptx`, `reveal-js`, `remotion`, `vba-powerpoint`, `slides-com`, `felo-slides` (soirée de lancement, présentations événementielles) | créés pour YEBA | — |
 | `watch` (regarder une vidéo : images + transcription, moteur local imposé) | bradautomates/claude-video @ `03ceb42` (v0.3.2) | MIT |
 | `learnharness` (lire un historique d'apprentissage LearnHarness, lecture seule) | amosblomqvist/learnharness @ `a636647`, dossier `skills/learnharness/` | AGPL-3.0 |
+| `roast-room` + 12 conseillers `.claude/agents/council-*.md` (conseil de décision : Hormozi, Paul Graham / Y Combinator, Gary Vaynerchuk, Bezos, Buffett, Martell, Wickman + 5 sur appel) | nateherkai/roast-room @ `e40f406` | MIT |
+| `agent-desktop`, `agent-desktop-windows`, `agent-desktop-macos`, `agent-desktop-linux` (piloter des applications de bureau, sur le PC seulement) | vercel-labs/agent-desktop @ `947b051` (v1.3.0) | Apache 2.0 |
 
 **Lanceurs** (le dépôt d'origine est récupéré à la demande, à un commit relu,
 dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
@@ -80,6 +82,7 @@ dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
 | `openmontage` | calesthio/OpenMontage @ `d21f5d4` | projet complet, AGPL |
 | `learnharness-app` | amosblomqvist/learnharness @ `a636647` | application complète (1 255 fichiers), AGPL |
 | `omniroute` | diegosouzapw/OmniRoute @ `3ee8039` | 46 skills rangés dans `.claude/reserve/omniroute/` (inutiles sans serveur OmniRoute) |
+| `roast-room-app` | nateherkai/roast-room @ `e40f406` | salle visuelle (application Node, caricatures de personnes réelles) : hors du dépôt public, lecture seule, Google Fonts retiré |
 
 ## 3. Serveurs MCP (`.mcp.json`)
 
@@ -101,6 +104,9 @@ dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
 | irinabuht12-oss/google-ads-meta-ads-mcp | Vitrine commerciale sans code local : les comptes publicitaires passeraient par le service tiers Ryze. Remplacé par le MCP officiel Google |
 | feimacode/open-design-agent-kit | 863 skills + service hébergé avec authentification (auth.feimacode.com) : aurait saturé la liste de skills |
 | higgsfield-ai/higgsfield | Framework d'entraînement GPU, pas l'outil vidéo : remplacé par `higgsfield-ai/skills` (officiel) |
+| roast-room : `newroaster` | Envoie la photo d'une personne réelle à kie.ai (hors UE) et contourne les conditions d'utilisation de YouTube (se fait passer pour l'appli Android). À réinstaller seulement sur demande, sans l'étape portrait |
+| agent-desktop : `jev-desktop` | Envoie le contenu de l'écran (rôles et noms des éléments) au service tiers TypeSafe (api.typesafe.ai) ; nécessite une clé d'API |
+| agent-desktop : `agent-desktop-ffi` | Bibliothèque C pour développeurs : inutile ici |
 
 **claude-mem sur le PC** : `npx claude-mem install --provider host` (mode
 local, sans compte ni service hébergé), puis passer
