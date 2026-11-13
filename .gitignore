@@ -48,3 +48,23 @@ livrables-prives/
 !site/public/**/*.pdf
 dist-client/
 dist-ssr/
+
+# Soirée de lancement : tout se régénère avec bash soiree-lancement/build_all.sh [--videos]
+# (PowerPoint, PDF et vidéos de soiree-lancement/dist/ : ignorés via dist/, *.pptx, *.pdf ci-dessus)
+soiree-lancement/remotion/out/
+
+# Grain et bande-son générés au moment du rendu (scripts/grain.py, audio/composer.py)
+soiree-lancement/remotion/public/grain/
+soiree-lancement/remotion/public/audio/
+
+# Source temporaire du PDF (vidéos remplacées par leurs images)
+soiree-lancement/dist/*_IMAGES.pptx
+
+# Page storyboard régénérable (outils/generer_storyboard_page.py)
+soiree-lancement/dist/storyboard/
+
+# Prototype « Accueil Saison 1 » régénérable (outils/generer_accueil.py)
+soiree-lancement/dist/accueil/
+
+# Roast Room : séances du conseil (briefs, chiffres de l'entreprise) — jamais dans ce dépôt public
+/sessions/

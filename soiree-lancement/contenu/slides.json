@@ -1,0 +1,1292 @@
+{
+  "meta": {
+    "titre": "YEBA FORMATIONS — Saison 1 · Soirée de lancement",
+    "public": "Dirigeants et cadres dirigeants de TPE-PME réunionnaises, triés sur le volet",
+    "duree_totale_min": 75,
+    "intervenants": [
+      "Aurélien LUMEKA",
+      "Stan",
+      "Antho"
+    ],
+    "date": "[DATE À PRÉCISER]",
+    "lieu": "[LIEU À PRÉCISER]",
+    "sources_verifiees_le": "10/11/2026",
+    "sources": [
+      "Document de marque « YEBA FORMATIONS » (pièce jointe d'Aurélien LUMEKA) : histoire, valeurs, slogan",
+      "Base Airtable « YEBA FORMATIONS - Centre de formation (Adaptable) », table CATALOGUE FORMATIONS : intitulés, durées, effectifs, statuts",
+      "Même base, table CONFIG SYSTÈME : horaires (modifiés le 07/10/2026), NDA, Qualiopi, bloc-marque, barèmes A/B/C",
+      "Même base, DOCUMENTS OFFICIELS, YEBA-DOC-13 « Notice des financements mobilisables » v1.0 : engagements de service",
+      "Même base, STUDIO — FEUILLE DE ROUTE : éléments « Prévu »"
+    ],
+    "horaires": {
+      "debut": "08h30",
+      "pause_debut": "12h00",
+      "pause_fin": "13h00",
+      "fin": "16h30",
+      "heures_par_jour": 7
+    },
+    "qualiopi": {
+      "numero": "25FOR02027.1",
+      "categorie": "actions de formation",
+      "certificateur": "Qualitia (accrédité COFRAC)",
+      "validite": "16/02/2027"
+    },
+    "nda": {
+      "numero": "04973676397",
+      "autorite": "Préfet de La Réunion",
+      "mention": "Cet enregistrement ne vaut pas agrément de l'État."
+    },
+    "regles_design": [
+      "15 à 20 mots projetés maximum par slide (exceptions : mentions légales obligatoires, carte du catalogue, agenda)",
+      "Fond noir #121212, bleu #1B3A6B ou terre #1A120C, texte blanc, accent or #C9AB4C",
+      "Or jamais en texte sur fond blanc (contraste 2,29:1, échec WCAG)",
+      "Corps de texte 28 pt minimum (24 pt pour une mention secondaire), titres 54 pt et plus",
+      "Aucun filet ni forme ne traverse un mot ; aucune césure ; espaces insécables",
+      "Objets persistants nommés !!xxx pour la Morphose (parallaxe de lumière, logo, repères)",
+      "Mouvement : entrée « expo-out » 0,5 à 0,8 s, décalage 0,12 s, jamais plus de 3 objets en mouvement simultané",
+      "Fonds vidéo sombres et lents : la lisibilité du texte prime sur l'effet",
+      "Typographie (charte officielle) : titres Montserrat ExtraBold/Black, texte courant Inter (Regular/SemiBold)"
+    ]
+  },
+  "palette": {
+    "noir": "121212",
+    "nuit": "0B0B0E",
+    "bleu": "1B3A6B",
+    "bleu_nuit": "0E2140",
+    "terre": "1A120C",
+    "or": "C9AB4C",
+    "or_clair": "E9D7A0",
+    "blanc": "FFFFFF",
+    "gris": "B8BCC6"
+  },
+  "episodes": [
+    {
+      "numero": 1,
+      "titre": "Le casting",
+      "sujet": "Présentation",
+      "motif": "casting",
+      "teinte": "noir"
+    },
+    {
+      "numero": 2,
+      "titre": "Les racines",
+      "sujet": "Histoire",
+      "motif": "baobab",
+      "teinte": "terre"
+    },
+    {
+      "numero": 3,
+      "titre": "La promesse",
+      "sujet": "L'offre YEBA",
+      "motif": "sceau",
+      "teinte": "bleu"
+    },
+    {
+      "numero": 4,
+      "titre": "L'atelier",
+      "sujet": "Nos formations",
+      "motif": "reseau",
+      "teinte": "noir"
+    },
+    {
+      "numero": 5,
+      "titre": "Les outils",
+      "sujet": "Applications & sites web",
+      "motif": "outils",
+      "teinte": "bleu"
+    },
+    {
+      "numero": 6,
+      "titre": "Le diagnostic",
+      "sujet": "Audit & devis",
+      "motif": "radar",
+      "teinte": "noir"
+    },
+    {
+      "numero": 7,
+      "titre": "Le final",
+      "sujet": "Mot de fin & offre soirée",
+      "motif": "final",
+      "teinte": "noir"
+    }
+  ],
+  "videos": {
+    "preshow": {
+      "fichier": "dist/videos/yeba-preshow-v3.mp4",
+      "apercu": "dist/videos/yeba-preshow-v3.jpg",
+      "boucle": true,
+      "duree_s": 20
+    },
+    "generique": {
+      "fichier": "dist/videos/yeba-saison1-generique-v3.mp4",
+      "apercu": "dist/videos/yeba-saison1-generique-v3.jpg",
+      "boucle": false,
+      "duree_s": 80,
+      "fichier_pptx": "dist/videos/yeba-saison1-generique-v3-pptx.mp4",
+      "_note": "fichier = master 1080p 60 i/s (lecture directe, VLC ou lecteur Windows) ; fichier_pptx = copie 1080p 30 i/s intégrée au PowerPoint (lecture fluide sur tout PC)."
+    },
+    "episode-1": {
+      "fichier": "dist/videos/yeba-episode-1.mp4",
+      "apercu": "dist/videos/yeba-episode-1.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-2": {
+      "fichier": "dist/videos/yeba-episode-2.mp4",
+      "apercu": "dist/videos/yeba-episode-2.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-3": {
+      "fichier": "dist/videos/yeba-episode-3.mp4",
+      "apercu": "dist/videos/yeba-episode-3.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-4": {
+      "fichier": "dist/videos/yeba-episode-4.mp4",
+      "apercu": "dist/videos/yeba-episode-4.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-5": {
+      "fichier": "dist/videos/yeba-episode-5.mp4",
+      "apercu": "dist/videos/yeba-episode-5.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-6": {
+      "fichier": "dist/videos/yeba-episode-6.mp4",
+      "apercu": "dist/videos/yeba-episode-6.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "episode-7": {
+      "fichier": "dist/videos/yeba-episode-7.mp4",
+      "apercu": "dist/videos/yeba-episode-7.jpg",
+      "boucle": false,
+      "duree_s": 4.5
+    },
+    "clip-introduction": {
+      "fichier": "assets/videos/clip-introduction.mp4",
+      "apercu": "assets/videos/clip-introduction-apercu.jpg",
+      "boucle": false,
+      "duree_s": 6.04
+    },
+    "clip-ia": {
+      "fichier": "assets/videos/clip-intelligence-artificielle.mp4",
+      "apercu": "assets/videos/clip-intelligence-artificielle-apercu.jpg",
+      "boucle": false,
+      "duree_s": 6.04
+    },
+    "clip-ai-or": {
+      "fichier": "assets/videos/clip-ai-or.mp4",
+      "apercu": "assets/videos/clip-ai-or-apercu.jpg",
+      "boucle": false,
+      "duree_s": 6.04
+    },
+    "clip-conclusion": {
+      "fichier": "assets/videos/clip-conclusion.mp4",
+      "apercu": "assets/videos/clip-conclusion-apercu.jpg",
+      "boucle": false,
+      "duree_s": 6.04
+    }
+  },
+  "fonds": {
+    "ambiance-noir": {
+      "fichier": "dist/videos/fond-ambiance-noir.mp4",
+      "apercu": "dist/videos/fond-ambiance-noir.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "ambiance-bleu": {
+      "fichier": "dist/videos/fond-ambiance-bleu.mp4",
+      "apercu": "dist/videos/fond-ambiance-bleu.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "ambiance-terre": {
+      "fichier": "dist/videos/fond-ambiance-terre.mp4",
+      "apercu": "dist/videos/fond-ambiance-terre.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "cover": {
+      "fichier": "dist/videos/fond-cover.mp4",
+      "apercu": "dist/videos/fond-cover.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "baobab": {
+      "fichier": "dist/videos/fond-baobab.mp4",
+      "apercu": "dist/videos/fond-baobab.jpg",
+      "boucle": false,
+      "duree_s": 6
+    },
+    "journee": {
+      "fichier": "dist/videos/fond-journee.mp4",
+      "apercu": "dist/videos/fond-journee.jpg",
+      "boucle": false,
+      "duree_s": 6
+    },
+    "sceau": {
+      "fichier": "dist/videos/fond-sceau.mp4",
+      "apercu": "dist/videos/fond-sceau.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "flux": {
+      "fichier": "dist/videos/fond-flux.mp4",
+      "apercu": "dist/videos/fond-flux.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "bientot": {
+      "fichier": "dist/videos/fond-bientot.mp4",
+      "apercu": "dist/videos/fond-bientot.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-nuit": {
+      "fichier": "dist/videos/fond-v3-nuit.mp4",
+      "apercu": "dist/videos/fond-v3-nuit.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-nuit-bleu": {
+      "fichier": "dist/videos/fond-v3-nuit-bleu.mp4",
+      "apercu": "dist/videos/fond-v3-nuit-bleu.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-nuit-terre": {
+      "fichier": "dist/videos/fond-v3-nuit-terre.mp4",
+      "apercu": "dist/videos/fond-v3-nuit-terre.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-graine": {
+      "fichier": "dist/videos/fond-v3-graine.mp4",
+      "apercu": "dist/videos/fond-v3-graine.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-baobab": {
+      "fichier": "dist/videos/fond-v3-baobab.mp4",
+      "apercu": "dist/videos/fond-v3-baobab.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-reseau": {
+      "fichier": "dist/videos/fond-v3-reseau.mp4",
+      "apercu": "dist/videos/fond-v3-reseau.jpg",
+      "boucle": true,
+      "duree_s": 12
+    },
+    "v3-sceau": {
+      "fichier": "dist/videos/fond-v3-sceau.mp4",
+      "apercu": "dist/videos/fond-v3-sceau.jpg",
+      "boucle": true,
+      "duree_s": 12
+    }
+  },
+  "slides": [
+    {
+      "id": "P00",
+      "episode": 0,
+      "partie": "Pré-show",
+      "layout": "video",
+      "video": "preshow",
+      "avance": false,
+      "titre": "YEBA FORMATIONS — la soirée commence dans quelques instants",
+      "visuel": "Boucle de 20 s : l'emblème respire au centre d'une constellation dorée qui dérive lentement ; « La soirée commence dans quelques instants ».",
+      "animation": "Lecture automatique en boucle, sans son. Le présentateur passe à la suite quand la salle est installée.",
+      "duree_s": 0,
+      "notes": "À lancer 20 minutes avant l'heure, pendant l'accueil (musique du lieu en fond). Aucune donnée personnelle à l'écran."
+    },
+    {
+      "id": "G01",
+      "episode": 0,
+      "partie": "Générique",
+      "layout": "video",
+      "video": "generique",
+      "avance": true,
+      "titre": "YEBA — Saison 1 : générique d'ouverture",
+      "visuel": "Film de motion design de 80 s avec bande-son : constellation → pitons, YEBA, baobab tracé, le chemin, 3 métiers, montage des 11 formations, Qualiopi + NDA + horaires, logo final et « À suivre… ».",
+      "animation": "Lecture automatique, son inclus, passage automatique à la slide suivante à la fin.",
+      "duree_s": 80,
+      "notes": "Baisser la lumière de la salle. Ne pas parler pendant le générique : il fait le travail. Il contient la mention obligatoire « Cet enregistrement ne vaut pas agrément de l'État » (code du travail, art. L.6352-12) à côté du NDA. ⚖️ IA Act : vidéo entièrement fabriquée par programme (Remotion), sans IA générative ; la bande-son est synthétisée par script, sans droits d'auteur tiers."
+    },
+    {
+      "id": "V01",
+      "episode": 0,
+      "partie": "Générique",
+      "layout": "video",
+      "video": "clip-introduction",
+      "avance": true,
+      "titre": "Vidéo — Introduction",
+      "visuel": "Clip fourni (Grok) : un livre lumineux s'ouvre au-dessus d'un cercle de savoir, titre « Introduction ».",
+      "animation": "Lecture automatique, passage automatique à la fin.",
+      "duree_s": 6,
+      "notes": "Transition entre le générique et la prise de parole. ⚖️ IA Act art. 50 : clip généré par IA (Grok, xAI) — le dire à l'oral (« générique réalisé avec l'IA »). Vérifier dans les conditions de xAI que l'usage commercial est autorisé."
+    },
+    {
+      "id": "S01",
+      "episode": 0,
+      "partie": "Ouverture",
+      "layout": "cover",
+      "teinte": "noir",
+      "fond": "v3-graine",
+      "kicker": "SAISON 1 · SOIRÉE DE LANCEMENT",
+      "titre": "Sous le baobab de la connaissance,",
+      "titre_or": "les graines du savoir.",
+      "texte": "[DATE] · [LIEU] · La Réunion",
+      "visuel": "Logo plein centre, rayons dorés lents derrière (fond vidéo en boucle), slogan en deux couleurs.",
+      "animation": "Fond vivant en boucle. Slogan en fondu montant. Morphose : le logo file en bas à droite sur la slide suivante.",
+      "duree_s": 45,
+      "notes": "« Bonsoir à toutes et à tous. Merci d'être là. Ce soir, on ne va pas vous parler d'IA comme on en parle partout. On va vous parler de savoir. » Slogan : document de marque YEBA FORMATIONS."
+    },
+    {
+      "id": "S02",
+      "episode": 0,
+      "partie": "Ouverture",
+      "layout": "statement",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "kicker": "CE SOIR",
+      "titre": "Moins de bruit sur l'IA.",
+      "titre_or": "Plus de décisions.",
+      "visuel": "Phrase en grille asymétrique, filet or vertical à gauche, halo doré qui glisse depuis la slide précédente.",
+      "animation": "Ligne 1 en fondu montant, ligne 2 (or) 0,4 s après.",
+      "duree_s": 45,
+      "notes": "« Vous êtes dirigeants. Vous n'avez pas besoin d'un énième article sur l'IA. Vous avez besoin de savoir quoi décider lundi matin. »"
+    },
+    {
+      "id": "S03",
+      "episode": 0,
+      "partie": "Ouverture",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 0,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Liste des 7 épisodes ; repère or sur l'épisode en cours ; grand numéro d'épisode à droite.",
+      "animation": "Cette slide revient avant chaque épisode : la Morphose fait glisser le repère or et change le grand numéro (effet « GPS »).",
+      "duree_s": 40,
+      "notes": "Présenter la soirée comme une série : 7 épisodes, environ 75 minutes. Annoncer l'offre spéciale de l'épisode 7 : cela retient l'attention jusqu'au bout."
+    },
+    {
+      "id": "E1",
+      "episode": 1,
+      "partie": "Le casting",
+      "layout": "video",
+      "video": "episode-1",
+      "avance": true,
+      "titre": "Épisode 1 — Le casting",
+      "visuel": "Carte-titre animée : bandes cinéma, filet or, « ÉPISODE 01 », titre qui monte lettre par lettre, projecteurs en fond.",
+      "animation": "Lecture automatique avec sting sonore, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre d'épisode (Remotion)."
+    },
+    {
+      "id": "S04",
+      "episode": 1,
+      "partie": "Le casting",
+      "layout": "team",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "3 visages.",
+      "titre_or": "1 mission.",
+      "cartes": [
+        {
+          "nom": "Aurélien LUMEKA",
+          "role": "Directeur · IA & gouvernance",
+          "initiales": "AL"
+        },
+        {
+          "nom": "Stan",
+          "role": "[Rôle à préciser]",
+          "initiales": "S"
+        },
+        {
+          "nom": "Antho",
+          "role": "[Rôle à préciser]",
+          "initiales": "A"
+        }
+      ],
+      "visuel": "Trois cartes en verre fumé, cercle photo cerclé d'or (à remplacer par les portraits).",
+      "animation": "Cartes en fondu montant, décalées de 0,15 s.",
+      "duree_s": 120,
+      "notes": "Chacun se présente en 30 secondes : prénom, rôle, une anecdote. ⚠️ Rôles de Stan et d'Antho non communiqués. ⚖️ RGPD / droit à l'image : accord écrit de chacun avant de projeter ou de diffuser les photos."
+    },
+    {
+      "id": "S05",
+      "episode": 1,
+      "partie": "Le casting",
+      "layout": "badges",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "Certifié.",
+      "titre_or": "Pas autoproclamé.",
+      "items": [
+        "Google AI Specialist",
+        "Google Professional AI",
+        "SecNumacadémie ANSSI",
+        "MOOC CNIL — RGPD",
+        "Référent handicap"
+      ],
+      "visuel": "Pastilles en verre au contour or, disposées 3 + 2.",
+      "animation": "Pastilles en zoom léger, une par une.",
+      "duree_s": 60,
+      "notes": "Ne pas lire la liste : « Quand on vous parle de RGPD et d'IA Act, on ne vous récite pas un article de blog. » ⚠️ Vérifier les intitulés exacts des certifications Google sur les attestations. La certification Qualiopi de l'organisme est présentée à l'épisode 3."
+    },
+    {
+      "id": "S06",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 1,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Agenda, repère sur l'épisode 2.",
+      "animation": "Morphose : le repère glisse.",
+      "duree_s": 8,
+      "notes": "Transition silencieuse."
+    },
+    {
+      "id": "E2",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "video",
+      "video": "episode-2",
+      "avance": true,
+      "titre": "Épisode 2 — Les racines",
+      "visuel": "Carte-titre : tons terre et or, silhouette de baobab qui se trace en fond.",
+      "animation": "Lecture automatique, sting, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre d'épisode (Remotion)."
+    },
+    {
+      "id": "S07",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "quote",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "Pas de mot pour « formation ».",
+      "titre_or": "Alors maman a dit : Ko yeba. Le savoir.",
+      "visuel": "Citation plein écran sur fond terre, grands guillemets or en filigrane.",
+      "animation": "Ligne blanche puis ligne or, en fondu lent.",
+      "duree_s": 60,
+      "notes": "Moment émotion : ralentir, baisser la voix. « En lingala, il n'existe pas de mot pour formation. Ma mère m'a parlé du savoir : Ko yeba. » Source : document de marque."
+    },
+    {
+      "id": "S08",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "word",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "YEBA",
+      "texte": "« Savoir, connaître » — en lingala",
+      "visuel": "Mot YEBA géant en or ; traduction dessous.",
+      "animation": "Zoom d'entrée ; à la slide suivante, Morphose par caractère : E, B, A s'effacent, le Y reste.",
+      "duree_s": 60,
+      "notes": "« Je voulais un nom dans ma langue maternelle, pour marquer ma différence et mon attachement à mes racines africaines. »"
+    },
+    {
+      "id": "S09",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "tree",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "Y",
+      "branches": [
+        "L'arbre de la connaissance",
+        "L'arbre à palabres"
+      ],
+      "visuel": "Un Y géant dont les branches pointent vers deux étiquettes.",
+      "animation": "Morphose par caractère depuis YEBA ; étiquettes en fondu gauche puis droite.",
+      "duree_s": 60,
+      "notes": "« Le Y m'a fait penser à un arbre : l'arbre de la connaissance (Genèse, ch. 2 et 3) et l'arbre à palabres, où l'on règle les problèmes du village et où les anciens transmettent. » Source : document de marque."
+    },
+    {
+      "id": "S10",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "baobab",
+      "teinte": "terre",
+      "fond": "v3-baobab",
+      "titre": "Sous le baobab,",
+      "titre_or": "on transmet.",
+      "texte": "Histoires · Vérités · Générations",
+      "visuel": "Fond vidéo : un baobab se dessine trait par trait à droite, des graines dorées tombent ; texte à gauche.",
+      "animation": "Le baobab pousse (vidéo 6 s, image finale tenue), texte en fondu montant synchronisé.",
+      "duree_s": 60,
+      "notes": "« Sous ses branches, les anciens racontaient. Ce n'était ni une salle, ni un bureau : c'était un sanctuaire de transmission. C'est de là qu'est née YEBA FORMATIONS. »"
+    },
+    {
+      "id": "S11",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "split",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "Des racines.",
+      "titre_or": "Un réseau.",
+      "gauche": {
+        "label": "HÉRITAGE",
+        "mots": [
+          "Afrique",
+          "Baobab",
+          "Transmission"
+        ]
+      },
+      "droite": {
+        "label": "MODERNITÉ",
+        "mots": [
+          "IA",
+          "Réseau",
+          "Pitons 974"
+        ]
+      },
+      "visuel": "Écran coupé : gauche terre, droite bleu ; emblème à cheval sur la jointure.",
+      "animation": "Les mots montent colonne par colonne ; l'emblème apparaît en dernier.",
+      "duree_s": 60,
+      "notes": "Expliquer le logo : trois pitons (ancrage réunionnais) et un réseau de points reliés (la transmission). « YEBA, c'est la rencontre entre l'héritage et la modernité. »"
+    },
+    {
+      "id": "S12",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "values",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "5 valeurs",
+      "items": [
+        "Transmission vivante",
+        "Bienveillance engagée",
+        "Allégresse & énergie",
+        "Élévation collective",
+        "Authenticité enracinée"
+      ],
+      "visuel": "Cinq lignes, numéros or à gauche.",
+      "animation": "Une valeur par clic, pour la commenter.",
+      "duree_s": 90,
+      "notes": "Une phrase par valeur. Ex. « Allégresse & énergie : apprendre doit être une fête de l'esprit. » Source : document de marque."
+    },
+    {
+      "id": "S13",
+      "episode": 2,
+      "partie": "Les racines",
+      "layout": "timeline",
+      "teinte": "terre",
+      "fond": "v3-nuit-terre",
+      "titre": "Le chemin",
+      "etapes": [
+        {
+          "date": "Avril 2021",
+          "texte": "Création"
+        },
+        {
+          "date": "2021 → 2025",
+          "texte": "Vente · Management · Soft skills"
+        },
+        {
+          "date": "2026",
+          "texte": "IA · RGPD · IA Act"
+        },
+        {
+          "date": "Ce soir",
+          "texte": "Nouvelle équipe"
+        }
+      ],
+      "visuel": "Frise horizontale : dates au-dessus de la ligne or, textes dessous, jamais touchés par la ligne.",
+      "animation": "La ligne se trace de gauche à droite, les jalons s'allument un à un.",
+      "duree_s": 75,
+      "notes": "« J'ai formé à la vente et au management dans plusieurs centres. Depuis 2026, je forme à l'IA, j'implémente des workflows et je conseille en gouvernance RGPD et IA Act. » Dates : préférences d'Aurélien (YEBA dirigée depuis avril 2021)."
+    },
+    {
+      "id": "S14",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 2,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Agenda, repère sur l'épisode 3.",
+      "animation": "Morphose : le repère glisse.",
+      "duree_s": 8,
+      "notes": "Transition."
+    },
+    {
+      "id": "E3",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "video",
+      "video": "episode-3",
+      "avance": true,
+      "titre": "Épisode 3 — La promesse",
+      "visuel": "Carte-titre : bleu nuit, anneaux d'un sceau qui tournent.",
+      "animation": "Lecture automatique, sting, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre d'épisode (Remotion)."
+    },
+    {
+      "id": "V02",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "video",
+      "video": "clip-ia",
+      "avance": true,
+      "titre": "Vidéo — Intelligence artificielle",
+      "visuel": "Clip fourni (Grok) : ville néon, sphère d'énergie, titre « Intelligence Artificielle ».",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 6,
+      "notes": "Met la salle dans l'ambiance avant la question qui suit. ⚖️ IA Act art. 50 : clip généré par IA (Grok) — le signaler à l'oral."
+    },
+    {
+      "id": "S15",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "statement",
+      "teinte": "bleu",
+      "fond": "v3-reseau",
+      "kicker": "QUESTION",
+      "titre": "Vos équipes utilisent déjà l'IA.",
+      "titre_or": "Avec quelles données ?",
+      "visuel": "Fond bleu vivant : flux de données qui défilent ; question en or.",
+      "animation": "Ligne 1 automatique ; ligne or au clic, après 3 secondes de silence.",
+      "duree_s": 60,
+      "notes": "Faire lever les mains : « Qui a déjà vu un collaborateur coller un devis ou un fichier client dans un outil d'IA gratuit ? » ⚖️ RGPD (art. 5, 28, 32 ; chap. V transferts hors UE) + IA Act art. 4 (maîtrise de l'IA). Ne jamais dire « formation obligatoire » (règle interne, CONFIG SYSTÈME)."
+    },
+    {
+      "id": "S16",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "pillars",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "3 métiers.",
+      "titre_or": "1 seul interlocuteur.",
+      "items": [
+        {
+          "titre": "Former",
+          "texte": "Intra · Inter · Séminaires"
+        },
+        {
+          "titre": "Implémenter",
+          "texte": "Workflows · Sites · Applications"
+        },
+        {
+          "titre": "Sécuriser",
+          "texte": "RGPD · IA Act · Audit"
+        }
+      ],
+      "visuel": "Trois colonnes, numéros en filigrane, verbes en blanc, détail en or.",
+      "animation": "Colonnes en fondu montant décalé.",
+      "duree_s": 75,
+      "notes": "« Vous n'avez pas à coordonner un formateur, un développeur et un juriste : nous formons vos équipes, nous installons les outils, nous sécurisons le tout. »"
+    },
+    {
+      "id": "S17",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "offres",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "Nos offres.",
+      "titre_or": "Votre format.",
+      "items": [
+        {
+          "titre": "Inter",
+          "texte": "Catalogue"
+        },
+        {
+          "titre": "Intra",
+          "texte": "Sur-mesure"
+        },
+        {
+          "titre": "Séminaire dirigeants",
+          "texte": "Résidentiel",
+          "phare": true
+        },
+        {
+          "titre": "Implémentation IA",
+          "texte": "Workflows · sites"
+        },
+        {
+          "titre": "Conseil & audit",
+          "texte": "RGPD · IA Act"
+        }
+      ],
+      "visuel": "Grille « bento » asymétrique : 3 tuiles en haut, 2 en bas ; le séminaire en or plein. Chaque tuile : format en blanc, précision en or.",
+      "animation": "Tuiles en fondu montant décalé de 0,12 s.",
+      "duree_s": 75,
+      "notes": "Effectifs : 6 minimum, 8 maximum, en inter comme en intra (barèmes A/B/C, CONFIG SYSTÈME, mis à jour le 07/10/2026). Séminaire dirigeants IA (FOR-0014) : 6 à 8 dirigeants à huis clos, jamais deux concurrents directs sur la même session. TARIFS — JAMAIS PROJETÉS, ni ici ni à l'épisode 6 (décision d'Aurélien LUMEKA du 10/11/2026) ; réponse orale uniquement si un invité les demande : formations inter de 690 à 990 € par stagiaire et par jour, intra de 2 100 à 2 900 € par groupe et par jour, prix nets — TVA non applicable, art. 293 B du CGI. Conseil et audit : tarif encore « à trancher » dans CONFIG SYSTÈME — ne pas l'annoncer."
+    },
+    {
+      "id": "S18",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "journee",
+      "teinte": "noir",
+      "fond": "journee",
+      "kicker": "UNE JOURNÉE YEBA",
+      "titre": "7 h",
+      "texte": "de formation par jour",
+      "segments": [
+        {
+          "de": "08h30",
+          "a": "12h00",
+          "label": "Formation"
+        },
+        {
+          "de": "12h00",
+          "a": "13h00",
+          "label": "Déjeuner",
+          "pause": true
+        },
+        {
+          "de": "13h00",
+          "a": "16h30",
+          "label": "Formation"
+        }
+      ],
+      "mention": "Inscription : 15 jours ouvrés avant",
+      "visuel": "Fond vidéo : un soleil parcourt l'arc de la journée au-dessus d'une frise horaire qui se trace ; « 7 h » en grand.",
+      "animation": "Le soleil se lève à 08h30 et se couche à 16h30 (vidéo 6 s, image finale tenue) ; heures en fondu synchronisé.",
+      "duree_s": 45,
+      "notes": "Source : CONFIG SYSTÈME, « Horaires standard de session », MODIFIÉ LE 07/10/2026 : 08h30–12h00 et 13h00–16h30, pause méridienne hors temps de formation, soit 7 heures par jour. Délai d'accès : 15 jours ouvrés minimum (mention obligatoire, RNQ indicateur 1). ⚠️ L'ancienne slide « 8 h par jour » a été supprimée : elle était devenue fausse."
+    },
+    {
+      "id": "S19",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "confiance",
+      "teinte": "bleu",
+      "fond": "v3-nuit-bleu",
+      "titre": "La confiance",
+      "titre_or": "se prouve.",
+      "qualiopi": {
+        "titre": "QUALIOPI",
+        "ligne1": "N° 25FOR02027.1",
+        "ligne2": "Actions de formation · Qualitia (COFRAC)"
+      },
+      "nda": {
+        "titre": "NDA",
+        "ligne1": "N° 04973676397 · Préfet de La Réunion",
+        "ligne2": "Cet enregistrement ne vaut pas agrément de l'État."
+      },
+      "texte": "Condition de prise en charge OPCO",
+      "visuel": "Fond vidéo : anneaux d'un sceau doré qui tournent lentement ; deux panneaux en verre (Qualiopi, NDA) ; bandeau bénéfice OPCO.",
+      "animation": "Panneaux en fondu montant ; bandeau OPCO en dernier.",
+      "duree_s": 60,
+      "notes": "Sources : CONFIG SYSTÈME (NDA, organisme certificateur, bloc-marque normalisé) et YEBA-DOC-13 : « l'organisme est certifié QUALIOPI, condition légale pour que votre formation soit prise en charge sur fonds publics ou mutualisés (code du travail, art. L.6316-1) ». Mention « Cet enregistrement ne vaut pas agrément de l'État » OBLIGATOIRE dès que le NDA est cité (art. L.6352-12). N° Qualiopi 25FOR02027.1 confirmé par Aurélien LUMEKA le 10/11/2026 (identique à Airtable et au bloc-marque de la fiche programme). ⚠️ Validité indiquée dans Airtable : 16/02/2027 → vérifier le renouvellement avant de vendre des sessions au-delà. Insérer le logo officiel Qualiopi fourni par Qualitia en respectant sa charte d'usage (mention de la catégorie d'actions)."
+    },
+    {
+      "id": "S20",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "avantages",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "Vous formez.",
+      "titre_or": "On s'occupe du reste.",
+      "items": [
+        {
+          "titre": "Dossier OPCO",
+          "texte": "monté avec vous",
+          "icone": "dossier"
+        },
+        {
+          "titre": "Devis",
+          "texte": "5 jours ouvrés",
+          "icone": "devis"
+        },
+        {
+          "titre": "Paiement OPCO",
+          "texte": "direct (subrogation)",
+          "icone": "paiement"
+        }
+      ],
+      "visuel": "Trois tuiles en verre avec pictogrammes tracés au trait or.",
+      "animation": "Tuiles en fondu montant décalé ; Morphose vers la slide suivante (les tuiles glissent à gauche).",
+      "duree_s": 45,
+      "notes": "Source : YEBA-DOC-13 §7 « Ce que YEBA FORMATIONS s'engage à faire » : dossier de prise en charge constitué avec vous, sans frais ; devis conforme sous 5 jours ouvrés ; facturation directe du financeur en cas de subrogation. Rappel de la notice : en cas de refus ou de prise en charge partielle par l'OPCO, l'entreprise reste redevable du prix (CGV art. 4.4) → toujours obtenir l'accord écrit avant de démarrer."
+    },
+    {
+      "id": "S21",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "avantages",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "Petit groupe.",
+      "titre_or": "Grand suivi.",
+      "items": [
+        {
+          "titre": "8 stagiaires",
+          "texte": "maximum par session",
+          "icone": "groupe"
+        },
+        {
+          "titre": "Attestations",
+          "texte": "sous 15 jours",
+          "icone": "attestation"
+        },
+        {
+          "titre": "Référent handicap",
+          "texte": "parcours adaptés",
+          "icone": "accessibilite"
+        }
+      ],
+      "visuel": "Même gabarit que la slide précédente : les nouvelles tuiles arrivent par la droite.",
+      "animation": "Morphose depuis 1/2, tuiles en fondu montant décalé.",
+      "duree_s": 45,
+      "notes": "Sources : catalogue et barèmes (6 à 8 stagiaires) ; YEBA-DOC-13 §7 (certificat de réalisation et attestation de fin de formation sous 15 jours) ; CONFIG SYSTÈME et YEBA-DOC-08 Politique handicap (référent : Aurélien LUMEKA). AGEFIPH peut financer les surcoûts de compensation (YEBA-DOC-13 §5)."
+    },
+    {
+      "id": "S22",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "statement",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "kicker": "NOTRE LIGNE",
+      "titre": "Souveraineté par défaut.",
+      "titre_or": "Outils européens d'abord.",
+      "visuel": "Phrase, cercle de douze points or en haut à droite.",
+      "animation": "Ligne 1 puis ligne or.",
+      "duree_s": 45,
+      "notes": "⚠️ Engagement de méthode, pas une garantie : vos propres outils sont encore en migration (Gmail → Brevo, Airtable → Baserow/OVHcloud — CONFIG SYSTÈME). ⚖️ RGPD, chapitre V (transferts hors UE)."
+    },
+    {
+      "id": "S23",
+      "episode": 3,
+      "partie": "La promesse",
+      "layout": "statement",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "kicker": "NOTRE PROMESSE",
+      "titre": "Nous ne vendons pas la conformité.",
+      "titre_or": "Nous vous aidons à la prouver.",
+      "visuel": "Manifeste en deux lignes, rien d'autre.",
+      "animation": "Ligne 1 puis ligne or en fondu lent.",
+      "duree_s": 45,
+      "notes": "Règle commerciale interne (CONFIG SYSTÈME) : ni « mise en conformité » automatique, ni « formation obligatoire ». ⚖️ IA Act art. 4 + RGPD art. 5.2 (responsabilité)."
+    },
+    {
+      "id": "S24",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 3,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Agenda, repère sur l'épisode 4.",
+      "animation": "Morphose : le repère glisse.",
+      "duree_s": 8,
+      "notes": "Transition."
+    },
+    {
+      "id": "E4",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "video",
+      "video": "episode-4",
+      "avance": true,
+      "titre": "Épisode 4 — L'atelier",
+      "visuel": "Carte-titre : réseau de nœuds dorés qui se connectent.",
+      "animation": "Lecture automatique, sting, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre d'épisode (Remotion)."
+    },
+    {
+      "id": "V03",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "video",
+      "video": "clip-ai-or",
+      "avance": true,
+      "titre": "Vidéo — AI",
+      "visuel": "Clip fourni (Grok) : couloir de circuits, lettres « AI » dorées.",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 6,
+      "notes": "L'or du clip fait le lien avec la charte. ⚖️ IA Act art. 50 : clip généré par IA (Grok) — le signaler."
+    },
+    {
+      "id": "S25",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "statement",
+      "teinte": "bleu_nuit",
+      "fond": "v3-nuit-bleu",
+      "kicker": "NOTRE MÉTHODE",
+      "titre": "On ne repart pas avec des notes.",
+      "titre_or": "On repart avec un livrable.",
+      "visuel": "Phrase pivot sur fond bleu nuit vivant.",
+      "animation": "Ligne 1 puis ligne or.",
+      "duree_s": 45,
+      "notes": "Chaque fiche du catalogue se termine par une production réelle (objectifs de niveau « Créer ») : plan d'action à 30 jours, charte d'usage de l'IA, procédure d'arrêt d'urgence d'un agent, site en ligne, séquence d'emails. Source : objectifs pédagogiques, CATALOGUE FORMATIONS."
+    },
+    {
+      "id": "S26",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "atelier",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "titre": "11 formations.",
+      "titre_or": "5 familles.",
+      "familles": {
+        "IA au quotidien": "C9AB4C",
+        "IA avancée": "E9D7A0",
+        "Visibilité": "FFFFFF",
+        "Gouvernance": "7FA7E0",
+        "Humain": "B8BCC6"
+      },
+      "items": [
+        {
+          "nom": "IA générative au travail",
+          "famille": "IA au quotidien",
+          "ref": "FOR-0011",
+          "duree": "2 j"
+        },
+        {
+          "nom": "Copilot Microsoft 365",
+          "famille": "IA au quotidien",
+          "ref": "FOR-0006",
+          "duree": "2 j"
+        },
+        {
+          "nom": "Agents IA",
+          "famille": "IA avancée",
+          "ref": "FOR-0013",
+          "duree": "2 j"
+        },
+        {
+          "nom": "IA souveraine",
+          "famille": "IA avancée",
+          "ref": "FOR-0015",
+          "duree": "2 j"
+        },
+        {
+          "nom": "Automatisation sans code",
+          "famille": "IA avancée",
+          "ref": "FOR-0002",
+          "duree": "2 j"
+        },
+        {
+          "nom": "Site internet IA",
+          "famille": "Visibilité",
+          "ref": "FOR-0009",
+          "duree": "1 j"
+        },
+        {
+          "nom": "Emailing IA",
+          "famille": "Visibilité",
+          "ref": "FOR-0010",
+          "duree": "1 j"
+        },
+        {
+          "nom": "Conformité RGPD & IA Act",
+          "famille": "Gouvernance",
+          "ref": "FOR-0003",
+          "duree": "1 j"
+        },
+        {
+          "nom": "Séminaire dirigeants IA",
+          "famille": "Gouvernance",
+          "ref": "FOR-0014",
+          "duree": "2 j"
+        },
+        {
+          "nom": "Vente & négociation",
+          "famille": "Humain",
+          "ref": "FOR-0004",
+          "duree": "1 j"
+        },
+        {
+          "nom": "Manager au quotidien",
+          "famille": "Humain",
+          "ref": "FOR-0008",
+          "duree": "1 j"
+        },
+        {
+          "nom": "Assistant IA perso",
+          "famille": "IA au quotidien",
+          "ref": "FOR-0017",
+          "duree": "bientôt",
+          "bientot": true
+        }
+      ],
+      "visuel": "Grille 4 × 3 de tuiles en verre ; bordure à la couleur de la famille ; durée en petit ; la 12e tuile, en pointillés, annonce « bientôt ».",
+      "animation": "Tuiles en cascade (0,06 s). Chaque tuile porte le nom !!tuile-FOR-XXXX : sur les slides suivantes, la tuile s'agrandit en bandeau (zoom Morphose).",
+      "duree_s": 90,
+      "notes": "Source : CATALOGUE FORMATIONS au 10/11/2026 — 11 fiches « Active » diffusables. Exclues : FOR-0005 et FOR-0007 (sous-traitance en marque blanche : YEBA ne doit pas apparaître), FOR-0001 (archivée). FOR-0017 est « En développement » : présentée comme « bientôt ». ⚠️ Les anciens noms de code (ALLUMAGE-TURBO, CARROSSERIE…) ont disparu du catalogue : ne plus les citer. ⚠️ CPF : aucune formation n'est éligible (pas de code RNCP/RS) — ne jamais dire « finançable CPF »."
+    },
+    {
+      "id": "S27",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "focus",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "ref": "FOR-0011",
+      "nom": "IA générative au travail",
+      "famille": "IA au quotidien",
+      "titre": "Gagner du temps.",
+      "titre_or": "En sécurité. Avec des preuves.",
+      "puces": [
+        "Demander",
+        "Produire",
+        "Prouver"
+      ],
+      "chips": [
+        "2 jours · 14 h",
+        "Inter"
+      ],
+      "visuel": "La tuile du catalogue devient un bandeau vertical or ; contenu à droite.",
+      "animation": "Morphose (zoom depuis la tuile) ; puces en fondu latéral ; pastilles en zoom.",
+      "duree_s": 90,
+      "notes": "FOR-0011. Atelier phare « Le Tri de la Réserve » (je saisis / j'anonymise d'abord / je ne saisis jamais). ⚠️ Incohérence dans Airtable : l'intitulé dit 2 jours (14 h) mais les objectifs décrivent encore un « jour 3 » → mettre la fiche à jour (RNQ indicateur 1). ⚖️ IA Act art. 4 (maîtrise de l'IA) et art. 50 (transparence) + RGPD. Ni diplôme ni certification RNCP/RS."
+    },
+    {
+      "id": "S28",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "focus",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "ref": "FOR-0013",
+      "nom": "Agents IA",
+      "famille": "IA avancée",
+      "titre": "Déléguer à l'IA.",
+      "titre_or": "Sous contrôle humain.",
+      "puces": [
+        "Autonomie mesurée",
+        "Traçabilité",
+        "Arrêt d'urgence"
+      ],
+      "chips": [
+        "2 jours · 14 h",
+        "Avancé"
+      ],
+      "visuel": "Même gabarit, bandeau or clair.",
+      "animation": "Morphose depuis la tuile.",
+      "duree_s": 75,
+      "notes": "FOR-0013, niveau avancé (après FOR-0011). Point d'arrêt humain obligatoire, procédure d'arrêt d'urgence testée. ⚖️ IA Act : qualification des systèmes (interdit, haut risque, transparence, hors champ) ; art. 14 (contrôle humain des systèmes à haut risque)."
+    },
+    {
+      "id": "S29",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "focus",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "ref": "FOR-0009",
+      "nom": "Site internet IA",
+      "famille": "Visibilité",
+      "titre": "Votre site.",
+      "titre_or": "À voix haute. En 1 jour.",
+      "puces": [
+        "Dicter",
+        "Corriger",
+        "Publier conforme"
+      ],
+      "chips": [
+        "7 h",
+        "Intra",
+        "Sans code"
+      ],
+      "visuel": "Même gabarit, bandeau blanc.",
+      "animation": "Morphose depuis la tuile.",
+      "duree_s": 75,
+      "notes": "FOR-0009 « Site internet IA : Créer son site en le décrivant à voix haute ». Public : dirigeants de TPE, artisans, commerçants sans site ou dépendants de leur prestataire. ⚖️ Mentions légales (LCEN art. 6), confidentialité et traceurs (RGPD + art. 82 loi Informatique et Libertés), accessibilité ; IA Act art. 50 selon les contenus générés."
+    },
+    {
+      "id": "S30",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "focus",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "ref": "FOR-0010",
+      "nom": "Emailing IA",
+      "famille": "Visibilité",
+      "titre": "Des emails",
+      "titre_or": "qui obtiennent une réponse.",
+      "puces": [
+        "Segmenter",
+        "Rédiger avec l'IA",
+        "Mesurer"
+      ],
+      "chips": [
+        "1 jour · 7 h",
+        "Intra",
+        "RGPD inclus"
+      ],
+      "visuel": "Même gabarit, bandeau blanc.",
+      "animation": "Morphose depuis la tuile.",
+      "duree_s": 75,
+      "notes": "FOR-0010. ⚖️ RGPD + prospection électronique : consentement préalable en B2C (CPCE art. L.34-5), information et droit d'opposition en B2B ; lien de désinscription, identification de l'expéditeur. Outil d'envoi souverain cohérent : Brevo (France)."
+    },
+    {
+      "id": "S31",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "demo",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "kicker": "DÉMO LIVE",
+      "titre": "Un site internet.",
+      "titre_or": "Décrit à voix haute. Devant vous.",
+      "visuel": "Pastille rouge « LIVE » qui pulse ; titre géant.",
+      "animation": "Pastille en pulsation continue ; titre en fondu montant.",
+      "duree_s": 240,
+      "notes": "Faire décrire par un invité volontaire le métier de son entreprise et générer la page en direct. Prévoir un plan B (vidéo enregistrée) si le réseau du lieu est faible. ⚖️ RGPD : entreprise fictive ou accord de l'invité ; IA Act art. 50 : dire que le contenu est généré par IA."
+    },
+    {
+      "id": "S32",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "bientot",
+      "teinte": "noir",
+      "fond": "bientot",
+      "kicker": "PROCHAINEMENT",
+      "titre": "À suivre…",
+      "items": [
+        {
+          "titre": "Assistant IA perso",
+          "texte": "Nouvelle formation",
+          "statut": "confirme"
+        }
+      ],
+      "visuel": "Fond vidéo : balayage lumineux de bande-annonce ; une grande carte « bientôt » alignée sur le titre.",
+      "animation": "Carte en fondu montant ; « À suivre… » scintille.",
+      "duree_s": 60,
+      "notes": "FOR-0017 « Assistant IA perso : piloter son activité en parlant à son téléphone » — statut « En développement » dans le CATALOGUE (tâche de finalisation ouverte). Espace en ligne et émargement numérique : NE PAS les annoncer tant qu'ils ne sont pas créés dans Airtable (décision d'Aurélien LUMEKA du 10/11/2026) ; une carte sera ajoutée ici à ce moment-là. Annoncer un service non tenu serait une pratique commerciale trompeuse (C. conso art. L.121-2). ⚖️ RGPD (le jour où ils existeront) : un espace en ligne et un émargement numérique traitent des données de stagiaires → registre (YEBA-DOC-16), hébergement UE, durée de conservation."
+    },
+    {
+      "id": "S33",
+      "episode": 4,
+      "partie": "L'atelier",
+      "layout": "statement",
+      "teinte": "bleu",
+      "fond": "v3-nuit-bleu",
+      "kicker": "ET MAINTENANT",
+      "titre": "Former, c'est bien.",
+      "titre_or": "Équiper, c'est mieux.",
+      "visuel": "Phrase pivot sur fond bleu vivant.",
+      "animation": "Ligne 1 puis ligne or ; Morphose vers l'agenda.",
+      "duree_s": 20,
+      "notes": "Passage de relais vers l'épisode 5 (à construire)."
+    },
+    {
+      "id": "S34",
+      "episode": 5,
+      "partie": "Les outils",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 4,
+      "cache": true,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Slide masquée — épisode à construire.",
+      "animation": "Morphose.",
+      "duree_s": 8,
+      "notes": "À CONSTRUIRE : épisode 5 — Applications & sites web."
+    },
+    {
+      "id": "E5",
+      "episode": 5,
+      "partie": "Les outils",
+      "layout": "video",
+      "video": "episode-5",
+      "avance": true,
+      "cache": true,
+      "titre": "Épisode 5 — Les outils",
+      "visuel": "Carte-titre : grille d'interface en fils dorés.",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre prête pour l'épisode 5."
+    },
+    {
+      "id": "S35",
+      "episode": 6,
+      "partie": "Le diagnostic",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 5,
+      "cache": true,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Slide masquée — épisode à construire.",
+      "animation": "Morphose.",
+      "duree_s": 8,
+      "notes": "À CONSTRUIRE : épisode 6 — Audit & devis. AUCUN TARIF PROJETÉ (décision d'Aurélien LUMEKA du 10/11/2026) : on présente la démarche (diagnostic, devis personnalisé sous 5 jours ouvrés), jamais une grille de prix."
+    },
+    {
+      "id": "E6",
+      "episode": 6,
+      "partie": "Le diagnostic",
+      "layout": "video",
+      "video": "episode-6",
+      "avance": true,
+      "cache": true,
+      "titre": "Épisode 6 — Le diagnostic",
+      "visuel": "Carte-titre : radar qui balaie.",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre prête pour l'épisode 6."
+    },
+    {
+      "id": "S36",
+      "episode": 7,
+      "partie": "Le final",
+      "layout": "agenda",
+      "teinte": "noir",
+      "fond": "v3-nuit",
+      "agenda_actif": 6,
+      "cache": true,
+      "titre": "Saison 1 · 7 épisodes",
+      "visuel": "Slide masquée — épisode à construire.",
+      "animation": "Morphose.",
+      "duree_s": 8,
+      "notes": "À CONSTRUIRE : épisode 7 — Mot de fin avec offre spéciale soirée (plancher de remise : −15 % du tarif publié, CONFIG SYSTÈME)."
+    },
+    {
+      "id": "E7",
+      "episode": 7,
+      "partie": "Le final",
+      "layout": "video",
+      "video": "episode-7",
+      "avance": true,
+      "cache": true,
+      "titre": "Épisode 7 — Le final",
+      "visuel": "Carte-titre : la constellation se referme sur l'emblème.",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 4.5,
+      "notes": "Carte-titre prête pour l'épisode 7."
+    },
+    {
+      "id": "V04",
+      "episode": 7,
+      "partie": "Le final",
+      "layout": "video",
+      "video": "clip-conclusion",
+      "avance": true,
+      "cache": true,
+      "titre": "Vidéo — Conclusion",
+      "visuel": "Clip fourni (Grok) : anneau holographique, titre « Conclusion ».",
+      "animation": "Lecture automatique, passage automatique.",
+      "duree_s": 6,
+      "notes": "Annonce l'offre spéciale soirée : enchaîner immédiatement. ⚖️ IA Act art. 50 : clip généré par IA (Grok)."
+    }
+  ]
+}

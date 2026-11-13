@@ -1,0 +1,153 @@
+{
+  "base": "YEBA — Saison 1 · Accueil des invités",
+  "commentaire": "Source unique du schéma : sert à la base Airtable (aujourd'hui) et à la migration vers Baserow (outils/migrer_vers_baserow.py). Types : texte, texte_long, email, choix, case, nombre, date, lien, date_creation.",
+  "tables": [
+    {
+      "nom": "Invités",
+      "description": "Une ligne par personne inscrite (invité principal). Les accompagnants n'ont que leur prénom, facultatif. RGPD : effacement 3 mois après la soirée (proposition à valider) ; case accès effacée dès le lendemain.",
+      "champs": [
+        {"nom": "Invité", "type": "texte", "description": "Prénom NOM, écrit par l'automatisation."},
+        {"nom": "Prénom", "type": "texte"},
+        {"nom": "Nom", "type": "texte"},
+        {"nom": "Entreprise", "type": "texte"},
+        {"nom": "Fonction", "type": "texte", "description": "Facultatif."},
+        {"nom": "E-mail", "type": "email", "description": "Sert aux 3 e-mails pratiques : confirmation, H-5 ou retard, récapitulatif J+1."},
+        {"nom": "Priorité", "type": "choix", "choix": ["Gagner du temps", "Sécuriser nos données", "Être visible en ligne", "Mieux vendre", "Former mon équipe", "Non précisée"]},
+        {"nom": "Nombre d'accompagnants", "type": "nombre"},
+        {"nom": "Prénoms des accompagnants", "type": "texte_long", "description": "Facultatif, prénom seul. RGPD art. 14 : information remise aux accompagnants à leur arrivée."},
+        {"nom": "Besoin d'une place facile d'accès", "type": "case", "description": "RGPD art. 9 : donnée facultative pouvant révéler un handicap ; consentement explicite par la case ; utilisée pour le seul placement. À EFFACER le lendemain de la soirée."},
+        {"nom": "Prénom sur le mur d'étoiles", "type": "case", "description": "RGPD art. 6-1-a : consentement, décoché par défaut."},
+        {"nom": "Accepte les actualités", "type": "case", "description": "Consentement à la prospection par e-mail, décoché par défaut ; désinscription en un clic."},
+        {"nom": "Accepte les rencontres ciblées", "type": "case", "description": "Être présenté à d'autres invités ayant la même priorité (prénom et entreprise seulement). Décoché par défaut."},
+        {"nom": "Statut", "type": "choix", "choix": ["Inscrit", "Arrivé", "Absent", "Désisté"]},
+        {"nom": "Source", "type": "choix", "choix": ["QR de l'invitation", "Inscription à l'entrée", "Saisie par l'équipe"]},
+        {"nom": "Confirmation envoyée", "type": "case"},
+        {"nom": "E-mail H-5 envoyé", "type": "case"},
+        {"nom": "E-mail retard envoyé", "type": "case"},
+        {"nom": "Récapitulatif J+1 envoyé", "type": "case"},
+        {"nom": "Effacement prévu le", "type": "date", "description": "RGPD art. 5-1-e : durée de conservation."},
+        {"nom": "Notes de l'équipe", "type": "texte_long", "description": "Jamais de donnée de santé ni d'opinion (RGPD art. 9)."},
+        {"nom": "Groupe", "type": "lien", "vers": "Groupes"},
+        {"nom": "Siège de l'invité", "type": "lien", "vers": "Places"},
+        {"nom": "Inscrit le", "type": "date_creation"}
+      ]
+    },
+    {
+      "nom": "Groupes",
+      "description": "Un groupe = l'invité principal et ses accompagnants, placés côte à côte.",
+      "champs": [
+        {"nom": "Groupe", "type": "texte", "description": "Ex. : PAYET (3)."},
+        {"nom": "Code groupe", "type": "texte", "description": "Code à transmettre pour rejoindre le groupe en s'inscrivant soi-même."},
+        {"nom": "Taille", "type": "nombre"},
+        {"nom": "Notes de placement", "type": "texte_long"}
+      ]
+    },
+    {
+      "nom": "Places",
+      "description": "Une ligne par siège, d'après le plan de la salle (photo du plan d'évacuation). Le placement est un calcul à règles fixes : ce n'est pas de l'IA (IA Act, considérant 12).",
+      "champs": [
+        {"nom": "Siège", "type": "texte", "description": "Ex. : C7."},
+        {"nom": "Rang", "type": "texte"},
+        {"nom": "Numéro", "type": "nombre"},
+        {"nom": "Bloc", "type": "choix", "choix": ["Gauche", "Droite"]},
+        {"nom": "Place PMR", "type": "case"},
+        {"nom": "Bord d'allée", "type": "case"},
+        {"nom": "Statut", "type": "choix", "choix": ["Libre", "Réservée", "Bloquée"]},
+        {"nom": "Groupe", "type": "lien", "vers": "Groupes"}
+      ]
+    },
+    {
+      "nom": "Épisodes",
+      "description": "Les 7 épisodes de la soirée et les résumés « Précédemment dans Saison 1 » pour les retardataires (écrits avec l'IA, relus avant usage : IA Act art. 50).",
+      "champs": [
+        {"nom": "Épisode", "type": "texte"},
+        {"nom": "Numéro", "type": "nombre"},
+        {"nom": "Titre", "type": "texte"},
+        {"nom": "Sujet", "type": "texte"},
+        {"nom": "Résumé « Précédemment »", "type": "texte_long"},
+        {"nom": "Résumé relu", "type": "case"},
+        {"nom": "À l'écran maintenant", "type": "case", "description": "La régie coche l'épisode en cours : la page des retardataires affiche les résumés des épisodes précédents."}
+      ]
+    },
+    {
+      "nom": "Accroches",
+      "description": "Banque d'accroches pour l'affiche personnelle, choisie selon la priorité. Aucune donnée personnelle n'est envoyée à l'IA.",
+      "champs": [
+        {"nom": "Accroche", "type": "texte"},
+        {"nom": "Priorité", "type": "choix", "choix": ["Gagner du temps", "Sécuriser nos données", "Être visible en ligne", "Mieux vendre", "Former mon équipe", "Non précisée"]},
+        {"nom": "Relue", "type": "case"},
+        {"nom": "Origine", "type": "choix", "choix": ["Brouillon écrit avec l'IA", "Écrite avec Mistral", "Écrite par l'équipe"]}
+      ]
+    },
+    {
+      "nom": "Stands",
+      "description": "Le village IA : 5 stands, une puce NFC et un QR par stand, un tampon sur le passeport (gardé sur le téléphone de l'invité, aucun suivi).",
+      "champs": [
+        {"nom": "Stand", "type": "texte"},
+        {"nom": "Ordre", "type": "nombre"},
+        {"nom": "Ce qu'on y vit", "type": "texte_long"},
+        {"nom": "Animé par", "type": "texte"},
+        {"nom": "Matériel", "type": "texte_long"},
+        {"nom": "IA utilisée", "type": "texte"},
+        {"nom": "Repère RGPD", "type": "texte"},
+        {"nom": "Repère IA Act", "type": "texte"},
+        {"nom": "Puce NFC encodée", "type": "case"}
+      ]
+    },
+    {
+      "nom": "Sondage",
+      "description": "Réponses anonymes au sondage en direct. Ne jamais demander le nom.",
+      "champs": [
+        {"nom": "Réponse", "type": "texte_long"},
+        {"nom": "Thème", "type": "texte", "description": "Regroupement proposé par Mistral, relu avant projection."},
+        {"nom": "Reçue le", "type": "date_creation"}
+      ]
+    },
+    {
+      "nom": "Paramètres",
+      "description": "Réglages de la soirée, lus par l'automatisation.",
+      "champs": [
+        {"nom": "Paramètre", "type": "texte"},
+        {"nom": "Valeur", "type": "texte"},
+        {"nom": "Note", "type": "texte_long"}
+      ]
+    }
+  ],
+  "donnees": {
+    "Épisodes": [
+      {"Épisode": "1 · Le casting", "Numéro": 1, "Titre": "Le casting", "Sujet": "Présentation", "Résumé « Précédemment »": "Aurélien, Stan et Antho se présentent, certifications à l'appui."},
+      {"Épisode": "2 · Les racines", "Numéro": 2, "Titre": "Les racines", "Sujet": "Histoire", "Résumé « Précédemment »": "L'histoire du nom YEBA, le baobab et les cinq valeurs."},
+      {"Épisode": "3 · La promesse", "Numéro": 3, "Titre": "La promesse", "Sujet": "L'offre YEBA", "Résumé « Précédemment »": "Trois métiers, nos offres, la journée de 7 h, Qualiopi et le NDA."},
+      {"Épisode": "4 · L'atelier", "Numéro": 4, "Titre": "L'atelier", "Sujet": "Nos formations", "Résumé « Précédemment »": "La carte des formations, quatre fiches à la loupe et une démonstration en direct."},
+      {"Épisode": "5 · Les outils", "Numéro": 5, "Titre": "Les outils", "Sujet": "Applications & sites web"},
+      {"Épisode": "6 · Le diagnostic", "Numéro": 6, "Titre": "Le diagnostic", "Sujet": "Audit & devis"},
+      {"Épisode": "7 · Le final", "Numéro": 7, "Titre": "Le final", "Sujet": "Mot de fin & offre soirée"}
+    ],
+    "Accroches": [
+      {"Accroche": "Le temps change de camp.", "Priorité": "Gagner du temps", "Origine": "Brouillon écrit avec l'IA"},
+      {"Accroche": "Vos données restent à la maison.", "Priorité": "Sécuriser nos données", "Origine": "Brouillon écrit avec l'IA"},
+      {"Accroche": "Votre entreprise entre en scène.", "Priorité": "Être visible en ligne", "Origine": "Brouillon écrit avec l'IA"},
+      {"Accroche": "Chaque mot compte. Chaque client aussi.", "Priorité": "Mieux vendre", "Origine": "Brouillon écrit avec l'IA"},
+      {"Accroche": "Votre équipe passe à la saison suivante.", "Priorité": "Former mon équipe", "Origine": "Brouillon écrit avec l'IA"},
+      {"Accroche": "Une soirée. Sept épisodes. Une longueur d'avance.", "Priorité": "Non précisée", "Origine": "Brouillon écrit avec l'IA"}
+    ],
+    "Stands": [
+      {"Stand": "L'hôte IA", "Ordre": 1, "Ce qu'on y vit": "À l'entrée, une tablette répond à voix haute aux questions pratiques (programme, vestiaire, toilettes, horaires).", "Matériel": "Tablette, enceinte, puce NFC + QR", "IA utilisée": "Reconnaissance vocale hors ligne (Vosk, modèle français, licence Apache 2.0)", "Repère RGPD": "Rien n'est enregistré ni envoyé", "Repère IA Act": "Art. 50-1 : afficher « assistant automatique »"},
+      {"Stand": "Le bar à prompts", "Ordre": 2, "Ce qu'on y vit": "On teste « le prompt du jour » sur un cas d'entreprise fictif, puis on repart avec la méthode des 4 C.", "Matériel": "Ordinateur ou tablette, cas fictifs imprimés, puce NFC + QR", "IA utilisée": "Mistral Le Chat (voie européenne)", "Repère RGPD": "Cas fictifs uniquement, aucune donnée réelle saisie", "Repère IA Act": "Art. 4 : favoriser la maîtrise de l'IA ; art. 50 si contenu diffusé"},
+      {"Stand": "Le scanner IA Act", "Ordre": 3, "Ce qu'on y vit": "Cinq questions sur le téléphone pour situer ses usages de l'IA (minimal, transparence, haut risque, interdit), puis un échange avec Aurélien.", "Matériel": "Téléphone de l'invité, puce NFC + QR", "IA utilisée": "Aucune : questionnaire à règles fixes", "Repère RGPD": "Réponses gardées sur le téléphone, rien n'est envoyé", "Repère IA Act": "Ne pas le présenter comme de l'IA ; indication, pas avis juridique"},
+      {"Stand": "Le studio « site à la voix »", "Ordre": 4, "Ce qu'on y vit": "Un volontaire décrit le métier d'une entreprise fictive : une page web se crée en direct (démo de l'épisode 4).", "Matériel": "Ordinateur, micro, vidéoprojecteur ou écran, vidéo de secours", "IA utilisée": "Créateur de site par IA européen (à choisir : Jimdo, IONOS ou Hostinger)", "Repère RGPD": "Entreprise fictive ou accord écrit", "Repère IA Act": "Art. 50 : dire que la page est générée par IA"},
+      {"Stand": "Le mur des idées", "Ordre": 5, "Ce qu'on y vit": "Chacun répond à « Votre plus grosse perte de temps ? » ; l'IA regroupe les réponses en thèmes affichés au mur.", "Matériel": "Téléphones, ordinateur, vidéoprojecteur", "IA utilisée": "Mistral (regroupement), relu avant projection", "Repère RGPD": "Réponses anonymes", "Repère IA Act": "Annoncer que le regroupement est fait par IA"}
+    ],
+    "Paramètres": [
+      {"Paramètre": "Date de la soirée", "Valeur": "À préciser"},
+      {"Paramètre": "Heure de début", "Valeur": "À préciser"},
+      {"Paramètre": "Lieu", "Valeur": "À préciser"},
+      {"Paramètre": "Nombre de places", "Valeur": "À confirmer avec le plan de la salle", "Note": "Environ 70 invités et accompagnateurs."},
+      {"Paramètre": "Adresse de contact RGPD", "Valeur": "À compléter", "Note": "Affichée sur le formulaire d'inscription (RGPD art. 13)."},
+      {"Paramètre": "Adresse du site d'inscription", "Valeur": "À définir", "Note": "Le QR de l'invitation (J-15) a besoin d'une adresse qui fonctionne avant la soirée."},
+      {"Paramètre": "Durée de conservation", "Valeur": "3 mois après la soirée (proposition)", "Note": "Case « place facile d'accès » : effacée le lendemain."},
+      {"Paramètre": "Envoi H-5", "Valeur": "5 minutes avant le début", "Note": "Aux personnes déjà pointées à l'accueil."},
+      {"Paramètre": "Envoi retard", "Valeur": "5 minutes après le début", "Note": "Aux personnes non pointées."}
+    ]
+  }
+}

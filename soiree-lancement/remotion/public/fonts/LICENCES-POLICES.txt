@@ -1,0 +1,2 @@
+Inter (The Inter Project Authors, https://github.com/rsms/inter), licence SIL OFL 1.1 — sous-ensemble latin.
+Montserrat (The Montserrat Project Authors), licence SIL OFL 1.1.

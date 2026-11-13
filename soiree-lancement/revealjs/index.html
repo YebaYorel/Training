@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YEBA — Saison 1 · Soirée de lancement</title>
+<link rel="stylesheet" href="vendor/reset.css">
+<link rel="stylesheet" href="vendor/reveal.css">
+<style>
+@font-face{font-family:Montserrat;font-weight:400;font-display:block;src:url(fonts/montserrat-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:700;font-display:block;src:url(fonts/montserrat-latin-700-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:800;font-display:block;src:url(fonts/montserrat-latin-800-normal.woff2) format('woff2')}
+@font-face{font-family:Montserrat;font-weight:900;font-display:block;src:url(fonts/montserrat-latin-900-normal.woff2) format('woff2')}
+:root{--noir:#121212;--bleu:#1B3A6B;--nuit:#0E2140;--or:#C9AB4C;--or-clair:#E9D7A0;--blanc:#fff;--gris:#B8BCC6;--gris2:#8C93A0;--verre:rgba(255,255,255,.06)}
+html,body{background:var(--noir)}
+.reveal{font-family:Montserrat,system-ui,sans-serif;color:var(--blanc);font-size:47px;line-height:1.22}
+.reveal .slides section{height:100%;text-align:left;padding:0;box-sizing:border-box}
+.reveal .slides section>*{position:absolute;margin:0}
+.reveal h1,.reveal h2{font-family:Montserrat;font-weight:800;text-transform:none;letter-spacing:-.01em;margin:0;line-height:1.22;
+  hyphens:none;word-break:normal;overflow-wrap:normal;text-shadow:none}
+.reveal img{margin:0;max-width:none;max-height:none}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.blanc{color:var(--blanc)}.or{color:var(--or)}.centre{text-align:center!important}
+.calque{pointer-events:none}.vignette{left:0;top:0;width:1600px;height:900px}
+.kicker{left:114px;top:142px;font-weight:800;font-size:37px;letter-spacing:.3em;color:var(--or);text-transform:uppercase}
+.petit-logo{right:48px;bottom:30px;width:114px}
+.titre-ligne{left:96px;top:54px;right:96px;white-space:nowrap}
+.titre-petit{left:96px;top:54px;font-size:73px}
+/* couverture */
+.logo-cover{left:calc(50% - 216px);top:36px;width:432px}
+.titre-cover{left:96px;right:96px;top:504px;text-align:center}
+.meta{left:0;right:0;bottom:60px;text-align:center;color:var(--gris);font-size:40px}
+/* déclaration */
+.barre{left:54px;top:210px;width:14px;height:516px;background:var(--or)}
+.statement{left:114px;top:222px;height:516px;display:flex;align-items:center}
+.statement h2{position:static}
+.illu-ue{right:84px;top:90px;width:264px;animation:tourne 40s linear infinite}
+@keyframes tourne{to{transform:rotate(360deg)}}
+/* agenda */
+.titre-agenda{left:96px;top:50px;font-size:57px}
+.agenda{left:96px;top:166px;list-style:none;padding:0 0 0 42px;width:1100px}
+.agenda li{display:flex;align-items:center;height:95px;font-size:47px;color:var(--gris2);font-weight:400;white-space:nowrap}
+.agenda li .n{width:108px;font-weight:800}.agenda li .t{width:426px}.agenda li .s{font-size:40px}
+.agenda li.actif{color:var(--blanc);font-weight:800}.agenda li.actif .t{font-size:53px}.agenda li.actif .n,.agenda li.actif .s{color:var(--or)}
+.marqueur{left:0;top:calc(var(--actif) * 95px + 14px);width:16px;height:66px;background:var(--or)}
+.agenda-big{right:66px;top:300px;font-weight:900;font-size:250px;line-height:1;color:var(--or)}
+/* équipe */
+.cartes{left:60px;right:60px;top:204px;display:flex;gap:36px;justify-content:center}
+.carte{position:relative!important;width:462px;height:582px;background:var(--verre);border:2px solid rgba(201,171,76,.55);border-radius:30px;text-align:center;padding-top:42px;box-sizing:border-box}
+.photo{width:216px;height:216px;margin:0 auto;border-radius:50%;background:var(--bleu);border:4px solid var(--or);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:73px}
+.nom{font-weight:800;font-size:47px;margin-top:34px;padding:0 24px;line-height:1.15}.role{color:var(--gris);font-size:40px;margin-top:20px;padding:0 24px}
+/* badges */
+.badges{left:90px;right:90px;top:240px;display:flex;flex-wrap:wrap;gap:50px 38px;justify-content:center}
+.badge{position:relative!important;width:444px;height:210px;border:3px solid var(--or);border-radius:42px;background:var(--verre);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:44px;padding:0 24px;box-sizing:border-box}
+/* mot / Y */
+.mot-geant{left:0;right:0;top:110px;text-align:center;font-weight:900;font-size:416px;color:var(--or);line-height:1}
+.traduction{left:0;right:0;top:640px;text-align:center;font-weight:800;font-size:60px}
+.y-geant{left:0;right:0;top:40px;text-align:center;font-weight:900;font-size:566px;color:var(--or);line-height:1}
+.branche{top:150px;width:534px;font-size:47px}.branche strong{display:block;font-weight:800;line-height:1.15}
+.branche span{display:block;color:var(--gris);font-size:43px;margin-top:22px;font-weight:400}
+.branche.gauche{left:36px;text-align:right}.branche.droite{right:36px}
+/* citation */
+.guillemets{left:30px;top:10px;font-weight:900;font-size:333px;color:#5A4A22;line-height:1}
+.citation{left:288px;top:222px;width:1224px;padding:0;border:0;box-shadow:none;font-style:normal;font-weight:800;line-height:1.22;background:none}
+.mot-a-mot{display:inline-block;opacity:0}
+.present .mot-a-mot{animation:parole .5s ease-out forwards;animation-delay:calc(1.2s + var(--i) * .3s)}
+@keyframes parole{from{opacity:0;transform:translateY(.3em)}to{opacity:1;transform:none}}
+/* baobab */
+.baobab-texte{left:96px;top:192px;width:760px}.baobab-texte h2{position:static}
+.sous{color:var(--gris);font-size:47px;margin-top:36px!important;position:static!important}
+.baobab{right:120px;top:72px;height:720px}
+/* deux mondes */
+.moitie-bleue{left:800px;top:0;width:800px;height:900px;background:rgba(27,58,107,.88)}
+.split{left:0;top:0;width:1600px;height:900px;display:grid;grid-template-columns:1fr 1fr}
+.split>div{position:relative;padding-top:54px;text-align:center}
+.titre-split{position:static!important;font-size:83px}
+.label{color:var(--or);font-weight:800;font-size:40px;letter-spacing:.3em;margin:48px 0 8px!important}
+.mot{font-weight:800;font-size:60px;margin:4px 0!important}
+.embleme{left:calc(50% - 216px);bottom:48px;width:432px}
+/* valeurs */
+.valeurs{left:96px;top:174px;list-style:none;padding:0}
+.valeurs li{font-weight:800;font-size:67px;height:130px;display:flex;align-items:center}
+.valeurs .n{color:var(--or);font-weight:900;font-size:80px;width:204px}
+/* frise */
+.frise{left:42px;right:42px;top:300px;height:500px;display:flex}
+.frise .ligne{position:absolute;left:0;right:0;top:165px;height:7px;background:var(--or);transform-origin:left}
+.present .frise .ligne{animation:trace 1.5s ease-out both}@keyframes trace{from{transform:scaleX(0)}}
+.jalon{flex:1;text-align:center;position:relative}
+.present .jalon{animation:apparait .6s ease-out both;animation-delay:calc(.9s + var(--i) * .38s)}
+@keyframes apparait{from{opacity:0;transform:translateY(20px)}}
+.jalon .date{height:140px;display:flex;align-items:flex-end;justify-content:center;color:var(--or);font-weight:800;font-size:57px;white-space:nowrap}
+.jalon .point{width:41px;height:41px;border-radius:50%;background:var(--or);margin:8px auto 0}
+.jalon.dernier .point{background:#fff;width:60px;height:60px;margin-top:-2px}
+.jalon .txt{font-size:47px;margin-top:48px;line-height:1.2}
+/* piliers */
+.piliers{left:96px;right:96px;top:236px;display:flex;gap:54px}
+.pilier{position:relative!important;flex:1}.filigrane{font-weight:900;font-size:183px;color:#2E2A20;line-height:1}
+.verbe{font-weight:800;font-size:66px;margin-top:6px;white-space:nowrap}.trait{width:120px;height:10px;background:var(--or);margin:24px 0}
+.detail{color:var(--or);font-weight:800;font-size:47px;line-height:1.2}
+/* offres */
+.offres{left:96px;right:96px;top:222px;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:264px 264px;gap:26px}
+.offre{position:relative!important;border:1.5px solid rgba(201,171,76,.5);background:var(--verre);border-radius:26px;padding:0 46px;display:flex;flex-direction:column;justify-content:center}
+.offre strong{font-weight:800;font-size:54px;line-height:1.1}.offre span{color:var(--or);font-weight:800;font-size:43px;margin-top:8px}
+.offre.phare{background:var(--or);border:0}.offre.phare strong,.offre.phare span{color:var(--noir)}
+.o0{grid-column:1/3}.o1{grid-column:3/5}.o2{grid-column:5/7}.o3{grid-column:1/4}.o4{grid-column:4/7}
+/* journée */
+.sept-h{left:84px;top:86px;font-weight:900;font-size:200px;color:var(--or);line-height:1;white-space:nowrap}
+.sous-sept{left:440px;top:150px;font-weight:800;font-size:50px;white-space:nowrap}
+.frise-jour{height:6px;background:var(--or)}
+.heure{transform:translateX(-50%);font-weight:800;font-size:40px;white-space:nowrap}
+.heure.d{transform:translateX(calc(-100% + 30px))}.heure.g{transform:translateX(-30px)}
+.segment{transform:translateX(-50%);font-weight:800;font-size:40px;color:var(--or);white-space:nowrap}
+.segment.pause{color:var(--gris)}
+.mention{left:96px;bottom:22px;color:var(--gris);font-size:40px}
+/* confiance */
+.panneaux{left:96px;right:96px;top:228px;display:flex;gap:60px}
+.panneau{position:relative!important;flex:1;height:426px;background:var(--nuit);border:2px solid rgba(201,171,76,.6);border-radius:28px;padding:0 54px;display:flex;flex-direction:column;justify-content:center}
+.panneau strong{font-weight:900;font-size:100px;color:var(--or);line-height:1}.panneau b{font-weight:800;font-size:50px;margin-top:18px}
+.panneau b.moyen{font-size:43px}.panneau small{color:var(--gris);font-size:40px;margin-top:10px;line-height:1.2}
+.bandeau .or{margin-right:18px}.bandeau{left:96px;right:96px;top:686px;height:102px;background:var(--nuit);border:2px solid var(--or);border-radius:60px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:47px}
+/* avantages */
+.titre-avantages{left:96px;top:84px}.titre-avantages h2{position:static}
+.avantages{left:84px;right:84px;top:372px;display:flex;gap:38px}
+.avantage{position:relative!important;flex:1;height:408px;background:var(--verre);border:1.5px solid rgba(201,171,76,.55);border-radius:28px;padding:34px 30px;box-sizing:border-box}
+.avantage img{width:114px;display:block}.avantage strong{display:block;font-weight:800;font-size:50px;margin-top:22px;line-height:1.15}
+.avantage span{display:block;color:var(--or);font-weight:800;font-size:43px;margin-top:8px;line-height:1.2}
+/* atelier */
+.titre-atelier{left:96px;top:48px;font-size:80px;white-space:nowrap}
+.atelier{left:61px;right:61px;top:180px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px 20px}
+.tuile{position:relative!important;height:146px;background:var(--verre);border:3px solid var(--c);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-weight:800;font-size:38px;line-height:1.15;padding:0 10px}
+.tuile.bientot{border-style:dashed}.tuile em{font-style:normal;color:var(--or);font-size:36px}
+.legende{left:61px;top:686px;width:1100px;display:flex;flex-wrap:wrap;gap:12px 46px;font-size:40px}
+.legende span{white-space:nowrap}.legende i{display:inline-block;width:34px;height:34px;margin-right:14px;vertical-align:-4px}
+/* fiche formation */
+.bande{left:0;top:0;width:492px;height:900px;background:var(--c);display:flex;align-items:center;justify-content:center}
+.nom-vertical{transform:rotate(-90deg);width:820px;text-align:center;color:var(--noir);font-weight:900;font-size:70px;line-height:1.1}
+.focus{left:576px;top:0;right:80px;height:900px}.focus>*{position:absolute;margin:0}
+.focus-titre{left:0;top:66px;right:0}
+.puces{left:0;top:480px;list-style:none;padding:0!important;margin:0!important}
+.puces li{font-weight:800;font-size:53px;margin-bottom:12px}
+.chips{left:0;top:726px;display:flex;gap:28px}
+.chip{border:3px solid var(--or);border-radius:60px;padding:12px 32px;font-weight:800;font-size:40px;white-space:nowrap}
+/* démo */
+.live{left:96px;top:120px;background:#E53935;border-radius:60px;padding:14px 40px;font-weight:800;font-size:43px;letter-spacing:.12em;display:flex;align-items:center;gap:22px}
+.live i{width:26px;height:26px;border-radius:50%;background:#fff;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.2}}
+.demo{left:96px;top:252px;right:96px;height:504px;display:flex;align-items:center}.demo h2{position:static}
+/* à suivre */
+.titre-bientot{left:96px;top:114px;font-size:147px;white-space:nowrap}
+.bientots{left:84px;right:84px;top:384px;display:flex;gap:38px}
+.carte-bientot{position:relative!important;flex:1;height:300px;background:var(--verre);border:1.5px solid rgba(201,171,76,.55);border-radius:30px;padding:0 42px;display:flex;flex-direction:column;justify-content:center}
+.carte-bientot strong{font-weight:800;font-size:53px;line-height:1.15}.carte-bientot span{color:var(--or);font-weight:800;font-size:40px;margin-top:10px}
+.bientots.un{right:auto;width:768px}.bientots.un .carte-bientot{height:312px}.bientots.un strong{font-size:80px}.bientots.un span{font-size:50px}
+.present .entree{animation:apparait .7s cubic-bezier(.16,1,.3,1) both;animation-delay:var(--d,0s)}
+.present .entree.zoom{animation-name:zoome}@keyframes zoome{from{opacity:0;transform:scale(.82)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.mot-a-mot{opacity:1}}
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-preshow-v3.jpg" data-background-video="../dist/videos/yeba-preshow-v3.mp4" data-background-video-loop data-background-size="cover" id="P00"><h2 class="sr-only">YEBA FORMATIONS — la soirée commence dans quelques instants</h2>
+  <aside class="notes">[P00] Épisode 0 · Pré-show — ≈ 0 s
+
+À lancer 20 minutes avant l&#x27;heure, pendant l&#x27;accueil (musique du lieu en fond). Aucune donnée personnelle à l&#x27;écran.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-saison1-generique-v3.jpg" data-background-video="../dist/videos/yeba-saison1-generique-v3.mp4" data-autoslide="80150" data-background-size="cover" id="G01"><h2 class="sr-only">YEBA — Saison 1 : générique d&#x27;ouverture</h2>
+  <aside class="notes">[G01] Épisode 0 · Générique — ≈ 80 s
+
+Baisser la lumière de la salle. Ne pas parler pendant le générique : il fait le travail. Il contient la mention obligatoire « Cet enregistrement ne vaut pas agrément de l&#x27;État » (code du travail, art. L.6352-12) à côté du NDA. ⚖️ IA Act : vidéo entièrement fabriquée par programme (Remotion), sans IA générative ; la bande-son est synthétisée par script, sans droits d&#x27;auteur tiers.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../assets/videos/clip-introduction-apercu.jpg" data-background-video="../assets/videos/clip-introduction.mp4" data-autoslide="6190" data-background-size="cover" id="V01"><h2 class="sr-only">Vidéo — Introduction</h2>
+  <aside class="notes">[V01] Épisode 0 · Générique — ≈ 6 s
+
+Transition entre le générique et la prise de parole. ⚖️ IA Act art. 50 : clip généré par IA (Grok, xAI) — le dire à l&#x27;oral (« générique réalisé avec l&#x27;IA »). Vérifier dans les conditions de xAI que l&#x27;usage commercial est autorisé.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-graine.jpg" data-background-video="../dist/videos/fond-v3-graine.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-graine.jpg" class="l-cover" id="S01"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-126px;top:-99px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:290px;top:-282px;width:1020px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <img class="logo-cover" data-id="logo" src="../assets/logo-yeba-fond-sombre.png" alt="Logo YEBA FORMATIONS : trois pitons reliés en réseau">
+  <p class="kicker centre" style="top:446px;left:0;right:0">SAISON 1 · SOIRÉE DE LANCEMENT</p>
+  <h2 class="titre titre-cover" data-id="titre" style="font-size:67px"><span class="blanc">Sous le baobab de la connaissance,</span><br><span class="or">les graines du savoir.</span></h2>
+  <p class="meta">[DATE À PRÉCISER] · [LIEU À PRÉCISER] · La Réunion</p>
+  <aside class="notes">[S01] Épisode 0 · Ouverture — ≈ 45 s
+
+« Bonsoir à toutes et à tous. Merci d&#x27;être là. Ce soir, on ne va pas vous parler d&#x27;IA comme on en parle partout. On va vous parler de savoir. » Slogan : document de marque YEBA FORMATIONS.
+
+VISUEL : Logo plein centre, rayons dorés lents derrière (fond vidéo en boucle), slogan en deux couleurs.
+
+ANIMATION : Fond vivant en boucle. Slogan en fondu montant. Morphose : le logo file en bas à droite sur la slide suivante.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-statement" id="S02"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-139px;top:-119px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">CE SOIR</p>
+  <div class="statement" style="width:1296px"><h2 class="titre" data-id="titre" style="font-size:107px"><span class="blanc">Moins de bruit sur l'IA.</span><br><span class="or">Plus de décisions.</span></h2></div>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S02] Épisode 0 · Ouverture — ≈ 45 s
+
+« Vous êtes dirigeants. Vous n&#x27;avez pas besoin d&#x27;un énième article sur l&#x27;IA. Vous avez besoin de savoir quoi décider lundi matin. »
+
+VISUEL : Phrase en grille asymétrique, filet or vertical à gauche, halo doré qui glisse depuis la slide précédente.
+
+ANIMATION : Ligne 1 en fondu montant, ligne 2 (or) 0,4 s après.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S03"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-167px;top:-138px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:0"><li class="actif"><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">01</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S03] Épisode 0 · Ouverture — ≈ 40 s
+
+Présenter la soirée comme une série : 7 épisodes, environ 75 minutes. Annoncer l&#x27;offre spéciale de l&#x27;épisode 7 : cela retient l&#x27;attention jusqu&#x27;au bout.
+
+VISUEL : Liste des 7 épisodes ; repère or sur l&#x27;épisode en cours ; grand numéro d&#x27;épisode à droite.
+
+ANIMATION : Cette slide revient avant chaque épisode : la Morphose fait glisser le repère or et change le grand numéro (effet « GPS »).</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-1.jpg" data-background-video="../dist/videos/yeba-episode-1.mp4" data-autoslide="4650" data-background-size="cover" id="E1"><h2 class="sr-only">Épisode 1 — Le casting</h2>
+  <aside class="notes">[E1] Épisode 1 · Le casting — ≈ 4.5 s
+
+Carte-titre d&#x27;épisode (Remotion).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-team" id="S04"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-235px;top:-161px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-96px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-ligne" data-id="titre" style="font-size:90px"><span class="blanc">3 visages.</span> <span class="or">1 mission.</span></h2><div class="cartes"><div class="carte entree" style="--d:0.60s" data-id="carte0"><div class="photo">AL</div><div class="nom">Aurélien LUMEKA</div><div class="role">Directeur · IA &amp; gouvernance</div></div><div class="carte entree" style="--d:0.78s" data-id="carte1"><div class="photo">S</div><div class="nom">Stan</div><div class="role">[Rôle à préciser]</div></div><div class="carte entree" style="--d:0.96s" data-id="carte2"><div class="photo">A</div><div class="nom">Antho</div><div class="role">[Rôle à préciser]</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S04] Épisode 1 · Le casting — ≈ 120 s
+
+Chacun se présente en 30 secondes : prénom, rôle, une anecdote. ⚠️ Rôles de Stan et d&#x27;Antho non communiqués. ⚖️ RGPD / droit à l&#x27;image : accord écrit de chacun avant de projeter ou de diffuser les photos.
+
+VISUEL : Trois cartes en verre fumé, cercle photo cerclé d&#x27;or (à remplacer par les portraits).
+
+ANIMATION : Cartes en fondu montant, décalées de 0,15 s.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-badges" id="S05"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-255px;top:-161px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-84px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-ligne" data-id="titre" style="font-size:87px"><span class="blanc">Certifié.</span> <span class="or">Pas autoproclamé.</span></h2><div class="badges"><div class="badge entree zoom" style="--d:0.50s">Google AI Specialist</div><div class="badge entree zoom" style="--d:0.64s">Google Professional AI</div><div class="badge entree zoom" style="--d:0.78s">SecNumacadémie ANSSI</div><div class="badge entree zoom" style="--d:0.92s">MOOC CNIL — RGPD</div><div class="badge entree zoom" style="--d:1.06s">Référent handicap</div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S05] Épisode 1 · Le casting — ≈ 60 s
+
+Ne pas lire la liste : « Quand on vous parle de RGPD et d&#x27;IA Act, on ne vous récite pas un article de blog. » ⚠️ Vérifier les intitulés exacts des certifications Google sur les attestations. La certification Qualiopi de l&#x27;organisme est présentée à l&#x27;épisode 3.
+
+VISUEL : Pastilles en verre au contour or, disposées 3 + 2.
+
+ANIMATION : Pastilles en zoom léger, une par une.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S06"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-256px;top:-153px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:1"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class="actif"><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">02</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S06] Épisode 2 · Les racines — ≈ 8 s
+
+Transition silencieuse.
+
+VISUEL : Agenda, repère sur l&#x27;épisode 2.
+
+ANIMATION : Morphose : le repère glisse.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-2.jpg" data-background-video="../dist/videos/yeba-episode-2.mp4" data-autoslide="4650" data-background-size="cover" id="E2"><h2 class="sr-only">Épisode 2 — Les racines</h2>
+  <aside class="notes">[E2] Épisode 2 · Les racines — ≈ 4.5 s
+
+Carte-titre d&#x27;épisode (Remotion).</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-quote" id="S07"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-207px;top:-118px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:-216px;top:-216px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="guillemets" aria-hidden="true">«</div>
+  <blockquote class="citation" data-id="titre" style="font-size:90px"><span class="blanc">Pas de mot pour « formation ».</span><br>
+    <span class="or"><span class="mot-a-mot" style="--i:0">Alors</span> <span class="mot-a-mot" style="--i:1">maman</span> <span class="mot-a-mot" style="--i:2">a dit :</span> <span class="mot-a-mot" style="--i:3">Ko yeba.</span> <span class="mot-a-mot" style="--i:4">Le savoir.</span></span></blockquote><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S07] Épisode 2 · Les racines — ≈ 60 s
+
+Moment émotion : ralentir, baisser la voix. « En lingala, il n&#x27;existe pas de mot pour formation. Ma mère m&#x27;a parlé du savoir : Ko yeba. » Source : document de marque.
+
+VISUEL : Citation plein écran sur fond terre, grands guillemets or en filigrane.
+
+ANIMATION : Ligne blanche puis ligne or, en fondu lent.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-word" id="S08"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-171px;top:-99px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:200px;top:-240px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="mot-geant" data-id="yeba">YEBA</h2>
+  <p class="traduction">« Savoir, connaître » — en lingala</p><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S08] Épisode 2 · Les racines — ≈ 60 s
+
+« Je voulais un nom dans ma langue maternelle, pour marquer ma différence et mon attachement à mes racines africaines. »
+
+VISUEL : Mot YEBA géant en or ; traduction dessous.
+
+ANIMATION : Zoom d&#x27;entrée ; à la slide suivante, Morphose par caractère : E, B, A s&#x27;effacent, le Y reste.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-tree" id="S09"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-142px;top:-81px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:260px;top:-108px;width:1080px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="y-geant" data-id="yeba">Y</h2>
+  <div class="branche gauche entree" style="--d:.5s"><strong>L'arbre de la connaissance</strong><span>Genèse · Savoir</span></div>
+  <div class="branche droite entree" style="--d:1.1s"><strong>L'arbre à palabres</strong><span>Afrique · Transmission</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S09] Épisode 2 · Les racines — ≈ 60 s
+
+« Le Y m&#x27;a fait penser à un arbre : l&#x27;arbre de la connaissance (Genèse, ch. 2 et 3) et l&#x27;arbre à palabres, où l&#x27;on règle les problèmes du village et où les anciens transmettent. » Source : document de marque.
+
+VISUEL : Un Y géant dont les branches pointent vers deux étiquettes.
+
+ANIMATION : Morphose par caractère depuis YEBA ; étiquettes en fondu gauche puis droite.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-baobab.jpg" data-background-video="../dist/videos/fond-v3-baobab.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-baobab.jpg" class="l-baobab" id="S10"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-127px;top:-70px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:-114px;top:-78px;width:1020px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="baobab-texte"><h2 class="titre" data-id="titre" style="font-size:93px"><span class="blanc">Sous le baobab,</span><br><span class="or">on transmet.</span></h2><p class="sous">Histoires · Vérités · Générations</p></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S10] Épisode 2 · Les racines — ≈ 60 s
+
+« Sous ses branches, les anciens racontaient. Ce n&#x27;était ni une salle, ni un bureau : c&#x27;était un sanctuaire de transmission. C&#x27;est de là qu&#x27;est née YEBA FORMATIONS. »
+
+VISUEL : Fond vidéo : un baobab se dessine trait par trait à droite, des graines dorées tombent ; texte à gauche.
+
+ANIMATION : Le baobab pousse (vidéo 6 s, image finale tenue), texte en fondu montant synchronisé.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-split" id="S11"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-131px;top:-66px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:-84px;top:264px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="moitie-bleue" data-id="droite"></div>
+  <div class="split">
+    <div><h2 class="titre-split" data-id="titre"><span class="blanc">Des racines.</span></h2><p class="label">HÉRITAGE</p><p class="mot">Afrique</p><p class="mot">Baobab</p><p class="mot">Transmission</p></div>
+    <div><h2 class="titre-split"><span class="or">Un réseau.</span></h2><p class="label">MODERNITÉ</p><p class="mot">IA</p><p class="mot">Réseau</p><p class="mot">Pitons 974</p></div>
+  </div>
+  <img class="embleme" data-id="embleme" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA : trois pitons en réseau">
+  <aside class="notes">[S11] Épisode 2 · Les racines — ≈ 60 s
+
+Expliquer le logo : trois pitons (ancrage réunionnais) et un réseau de points reliés (la transmission). « YEBA, c&#x27;est la rencontre entre l&#x27;héritage et la modernité. »
+
+VISUEL : Écran coupé : gauche terre, droite bleu ; emblème à cheval sur la jointure.
+
+ANIMATION : Les mots montent colonne par colonne ; l&#x27;emblème apparaît en dernier.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-values" id="S12"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-153px;top:-71px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:-288px;top:0px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-petit" data-id="titre">5 valeurs</h2><ol class="valeurs"><li class="fragment fade-up"><span class="n">01</span>Transmission vivante</li><li class="fragment fade-up"><span class="n">02</span>Bienveillance engagée</li><li class="fragment fade-up"><span class="n">03</span>Allégresse &amp; énergie</li><li class="fragment fade-up"><span class="n">04</span>Élévation collective</li><li class="fragment fade-up"><span class="n">05</span>Authenticité enracinée</li></ol><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S12] Épisode 2 · Les racines — ≈ 90 s
+
+Une phrase par valeur. Ex. « Allégresse &amp; énergie : apprendre doit être une fête de l&#x27;esprit. » Source : document de marque.
+
+VISUEL : Cinq lignes, numéros or à gauche.
+
+ANIMATION : Une valeur par clic, pour la commenter.</aside>
+</section>
+<section data-auto-animate data-background-color="#1A120C" data-background-image="../dist/videos/fond-v3-nuit-terre.jpg" data-background-video="../dist/videos/fond-v3-nuit-terre.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-terre.jpg" class="l-timeline" id="S13"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-187px;top:-83px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-terre.png" alt="" style="left:200px;top:-108px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-petit" data-id="titre">Le chemin</h2>
+  <div class="frise"><div class="ligne"></div><div class="jalon" style="--i:0"><div class="date">Avril 2021</div><div class="point"></div><div class="txt">Création</div></div><div class="jalon" style="--i:1"><div class="date">2021 → 2025</div><div class="point"></div><div class="txt">Vente<br>Management<br>Soft skills</div></div><div class="jalon" style="--i:2"><div class="date">2026</div><div class="point"></div><div class="txt">IA<br>RGPD<br>IA Act</div></div><div class="jalon dernier" style="--i:3"><div class="date">Ce soir</div><div class="point"></div><div class="txt">Nouvelle équipe</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S13] Épisode 2 · Les racines — ≈ 75 s
+
+« J&#x27;ai formé à la vente et au management dans plusieurs centres. Depuis 2026, je forme à l&#x27;IA, j&#x27;implémente des workflows et je conseille en gouvernance RGPD et IA Act. » Dates : préférences d&#x27;Aurélien (YEBA dirigée depuis avril 2021).
+
+VISUEL : Frise horizontale : dates au-dessus de la ligne or, textes dessous, jamais touchés par la ligne.
+
+ANIMATION : La ligne se trace de gauche à droite, les jalons s&#x27;allument un à un.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S14"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-222px;top:-100px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:2"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class="actif"><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">03</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S14] Épisode 3 · La promesse — ≈ 8 s
+
+Transition.
+
+VISUEL : Agenda, repère sur l&#x27;épisode 3.
+
+ANIMATION : Morphose : le repère glisse.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-3.jpg" data-background-video="../dist/videos/yeba-episode-3.mp4" data-autoslide="4650" data-background-size="cover" id="E3"><h2 class="sr-only">Épisode 3 — La promesse</h2>
+  <aside class="notes">[E3] Épisode 3 · La promesse — ≈ 4.5 s
+
+Carte-titre d&#x27;épisode (Remotion).</aside>
+</section>
+<section data-background-color="#000" data-background-image="../assets/videos/clip-intelligence-artificielle-apercu.jpg" data-background-video="../assets/videos/clip-intelligence-artificielle.mp4" data-autoslide="6190" data-background-size="cover" id="V02"><h2 class="sr-only">Vidéo — Intelligence artificielle</h2>
+  <aside class="notes">[V02] Épisode 3 · La promesse — ≈ 6 s
+
+Met la salle dans l&#x27;ambiance avant la question qui suit. ⚖️ IA Act art. 50 : clip généré par IA (Grok) — le signaler à l&#x27;oral.</aside>
+</section>
+<section data-auto-animate data-background-color="#1B3A6B" data-background-image="../dist/videos/fond-v3-reseau.jpg" data-background-video="../dist/videos/fond-v3-reseau.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-reseau.jpg" class="l-statement" id="S15"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-248px;top:-153px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-bleu.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">QUESTION</p>
+  <div class="statement" style="width:1296px"><h2 class="titre" data-id="titre" style="font-size:100px"><span class="blanc">Vos équipes utilisent déjà l'IA.</span><br><span class="or fragment fade-up">Avec quelles données ?</span></h2></div>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S15] Épisode 3 · La promesse — ≈ 60 s
+
+Faire lever les mains : « Qui a déjà vu un collaborateur coller un devis ou un fichier client dans un outil d&#x27;IA gratuit ? » ⚖️ RGPD (art. 5, 28, 32 ; chap. V transferts hors UE) + IA Act art. 4 (maîtrise de l&#x27;IA). Ne jamais dire « formation obligatoire » (règle interne, CONFIG SYSTÈME).
+
+VISUEL : Fond bleu vivant : flux de données qui défilent ; question en or.
+
+ANIMATION : Ligne 1 automatique ; ligne or au clic, après 3 secondes de silence.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-pillars" id="S16"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-222px;top:-161px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-48px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-ligne" data-id="titre" style="font-size:80px"><span class="blanc">3 métiers.</span> <span class="or">1 seul interlocuteur.</span></h2><div class="piliers"><div class="pilier entree" style="--d:0.60s"><div class="filigrane">01</div><div class="verbe">Former</div><div class="trait"></div><div class="detail">Intra · Inter · Séminaires</div></div><div class="pilier entree" style="--d:0.86s"><div class="filigrane">02</div><div class="verbe">Implémenter</div><div class="trait"></div><div class="detail">Workflows · Sites · Applications</div></div><div class="pilier entree" style="--d:1.12s"><div class="filigrane">03</div><div class="verbe">Sécuriser</div><div class="trait"></div><div class="detail">RGPD · IA Act · Audit</div></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S16] Épisode 3 · La promesse — ≈ 75 s
+
+« Vous n&#x27;avez pas à coordonner un formateur, un développeur et un juriste : nous formons vos équipes, nous installons les outils, nous sécurisons le tout. »
+
+VISUEL : Trois colonnes, numéros en filigrane, verbes en blanc, détail en or.
+
+ANIMATION : Colonnes en fondu montant décalé.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-offres" id="S17"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-186px;top:-161px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:588px;top:-252px;width:1080px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-ligne" data-id="titre" style="font-size:90px"><span class="blanc">Nos offres.</span> <span class="or">Votre format.</span></h2><div class="offres"><div class="offre entree o0" style="--d:0.60s"><strong>Inter</strong><span>Catalogue</span></div><div class="offre entree o1" style="--d:0.74s"><strong>Intra</strong><span>Sur-mesure</span></div><div class="offre entree phare o2" style="--d:0.88s"><strong>Séminaire dirigeants</strong><span>Résidentiel</span></div><div class="offre entree o3" style="--d:1.02s"><strong>Implémentation IA</strong><span>Workflows · sites</span></div><div class="offre entree o4" style="--d:1.16s"><strong>Conseil &amp; audit</strong><span>RGPD · IA Act</span></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S17] Épisode 3 · La promesse — ≈ 75 s
+
+Effectifs : 6 minimum, 8 maximum, en inter comme en intra (barèmes A/B/C, CONFIG SYSTÈME, mis à jour le 07/10/2026). Séminaire dirigeants IA (FOR-0014) : 6 à 8 dirigeants à huis clos, jamais deux concurrents directs sur la même session. TARIFS — JAMAIS PROJETÉS, ni ici ni à l&#x27;épisode 6 (décision d&#x27;Aurélien LUMEKA du 10/11/2026) ; réponse orale uniquement si un invité les demande : formations inter de 690 à 990 € par stagiaire et par jour, intra de 2 100 à 2 900 € par groupe et par jour, prix nets — TVA non applicable, art. 293 B du CGI. Conseil et audit : tarif encore « à trancher » dans CONFIG SYSTÈME — ne pas l&#x27;annoncer.
+
+VISUEL : Grille « bento » asymétrique : 3 tuiles en haut, 2 en bas ; le séminaire en or plein. Chaque tuile : format en blanc, précision en or.
+
+ANIMATION : Tuiles en fondu montant décalé de 0,12 s.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-journee.jpg" data-background-video="../dist/videos/fond-journee.mp4" data-background-video-muted data-yeba-poster="../dist/videos/fond-journee.jpg" class="l-journee" id="S18"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-153px;top:-152px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-180px;top:-228px;width:840px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <p class="kicker" style="left:96px;top:50px">UNE JOURNÉE YEBA</p>
+  <h2 class="sept-h" data-id="titre">7 h</h2>
+  <p class="sous-sept">de formation par jour</p>
+  <span class="segment" style="left:472px;top:631px">Formation</span><span class="segment pause" style="left:800px;top:631px">Déjeuner</span><span class="segment" style="left:1128px;top:631px">Formation</span><span class="heure c" style="left:217px;top:734px">08h30</span><span class="heure d" style="left:727px;top:734px">12h00</span><span class="heure g" style="left:873px;top:734px">13h00</span><span class="heure c" style="left:1383px;top:734px">16h30</span>
+  <p class="mention">Inscription : 15 jours ouvrés avant</p><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S18] Épisode 3 · La promesse — ≈ 45 s
+
+Source : CONFIG SYSTÈME, « Horaires standard de session », MODIFIÉ LE 07/10/2026 : 08h30–12h00 et 13h00–16h30, pause méridienne hors temps de formation, soit 7 heures par jour. Délai d&#x27;accès : 15 jours ouvrés minimum (mention obligatoire, RNQ indicateur 1). ⚠️ L&#x27;ancienne slide « 8 h par jour » a été supprimée : elle était devenue fausse.
+
+VISUEL : Fond vidéo : un soleil parcourt l&#x27;arc de la journée au-dessus d&#x27;une frise horaire qui se trace ; « 7 h » en grand.
+
+ANIMATION : Le soleil se lève à 08h30 et se couche à 16h30 (vidéo 6 s, image finale tenue) ; heures en fondu synchronisé.</aside>
+</section>
+<section data-auto-animate data-background-color="#1B3A6B" data-background-image="../dist/videos/fond-v3-nuit-bleu.jpg" data-background-video="../dist/videos/fond-v3-nuit-bleu.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-bleu.jpg" class="l-confiance" id="S19"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-131px;top:-137px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-bleu.png" alt="" style="left:624px;top:-72px;width:1080px"><img class="calque vignette" src="../assets/calques/vignette.png" alt=""><h2 class="titre-ligne" data-id="titre" style="font-size:90px"><span class="blanc">La confiance</span> <span class="or">se prouve.</span></h2>
+  <div class="panneaux">
+    <div class="panneau entree" style="--d:.7s"><strong>QUALIOPI</strong><b>N° 25FOR02027.1</b><small>Actions de formation · Qualitia (COFRAC)</small></div>
+    <div class="panneau entree" style="--d:1.05s"><strong>NDA</strong><b class="moyen">N° 04973676397 · Préfet de La Réunion</b><small>Cet enregistrement ne vaut pas agrément de l'État.</small></div>
+  </div>
+  <div class="bandeau entree" style="--d:1.6s"><span class="or">✓</span> Condition de prise en charge OPCO</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S19] Épisode 3 · La promesse — ≈ 60 s
+
+Sources : CONFIG SYSTÈME (NDA, organisme certificateur, bloc-marque normalisé) et YEBA-DOC-13 : « l&#x27;organisme est certifié QUALIOPI, condition légale pour que votre formation soit prise en charge sur fonds publics ou mutualisés (code du travail, art. L.6316-1) ». Mention « Cet enregistrement ne vaut pas agrément de l&#x27;État » OBLIGATOIRE dès que le NDA est cité (art. L.6352-12). N° Qualiopi 25FOR02027.1 confirmé par Aurélien LUMEKA le 10/11/2026 (identique à Airtable et au bloc-marque de la fiche programme). ⚠️ Validité indiquée dans Airtable : 16/02/2027 → vérifier le renouvellement avant de vendre des sessions au-delà. Insérer le logo officiel Qualiopi fourni par Qualitia en respectant sa charte d&#x27;usage (mention de la catégorie d&#x27;actions).
+
+VISUEL : Fond vidéo : anneaux d&#x27;un sceau doré qui tournent lentement ; deux panneaux en verre (Qualiopi, NDA) ; bandeau bénéfice OPCO.
+
+ANIMATION : Panneaux en fondu montant ; bandeau OPCO en dernier.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-avantages" id="S20"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-127px;top:-118px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-48px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  
+  <div class="titre-avantages"><h2 class="titre" data-id="titre" style="font-size:90px"><span class="blanc">Vous formez.</span><br><span class="or">On s'occupe du reste.</span></h2></div>
+  <div class="avantages"><div class="avantage entree" style="--d:0.60s" data-id="av-S20-0"><img src="../assets/pictos/dossier.png" alt=""><strong>Dossier OPCO</strong><span>monté avec vous</span></div><div class="avantage entree" style="--d:0.78s" data-id="av-S20-1"><img src="../assets/pictos/devis.png" alt=""><strong>Devis</strong><span>5 jours ouvrés</span></div><div class="avantage entree" style="--d:0.96s" data-id="av-S20-2"><img src="../assets/pictos/paiement.png" alt=""><strong>Paiement OPCO</strong><span>direct (subrogation)</span></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S20] Épisode 3 · La promesse — ≈ 45 s
+
+Source : YEBA-DOC-13 §7 « Ce que YEBA FORMATIONS s&#x27;engage à faire » : dossier de prise en charge constitué avec vous, sans frais ; devis conforme sous 5 jours ouvrés ; facturation directe du financeur en cas de subrogation. Rappel de la notice : en cas de refus ou de prise en charge partielle par l&#x27;OPCO, l&#x27;entreprise reste redevable du prix (CGV art. 4.4) → toujours obtenir l&#x27;accord écrit avant de démarrer.
+
+VISUEL : Trois tuiles en verre avec pictogrammes tracés au trait or.
+
+ANIMATION : Tuiles en fondu montant décalé ; Morphose vers la slide suivante (les tuiles glissent à gauche).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-avantages" id="S21"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-142px;top:-98px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-48px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  
+  <div class="titre-avantages"><h2 class="titre" data-id="titre" style="font-size:90px"><span class="blanc">Petit groupe.</span><br><span class="or">Grand suivi.</span></h2></div>
+  <div class="avantages"><div class="avantage entree" style="--d:0.60s" data-id="av-S21-0"><img src="../assets/pictos/groupe.png" alt=""><strong>8 stagiaires</strong><span>maximum par session</span></div><div class="avantage entree" style="--d:0.78s" data-id="av-S21-1"><img src="../assets/pictos/attestation.png" alt=""><strong>Attestations</strong><span>sous 15 jours</span></div><div class="avantage entree" style="--d:0.96s" data-id="av-S21-2"><img src="../assets/pictos/accessibilite.png" alt=""><strong>Référent handicap</strong><span>parcours adaptés</span></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S21] Épisode 3 · La promesse — ≈ 45 s
+
+Sources : catalogue et barèmes (6 à 8 stagiaires) ; YEBA-DOC-13 §7 (certificat de réalisation et attestation de fin de formation sous 15 jours) ; CONFIG SYSTÈME et YEBA-DOC-08 Politique handicap (référent : Aurélien LUMEKA). AGEFIPH peut financer les surcoûts de compensation (YEBA-DOC-13 §5).
+
+VISUEL : Même gabarit que la slide précédente : les nouvelles tuiles arrivent par la droite.
+
+ANIMATION : Morphose depuis 1/2, tuiles en fondu montant décalé.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-statement" id="S22"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-172px;top:-81px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">NOTRE LIGNE</p>
+  <div class="statement" style="width:1116px"><h2 class="titre" data-id="titre" style="font-size:100px"><span class="blanc">Souveraineté par défaut.</span><br><span class="or">Outils européens d'abord.</span></h2></div>
+  <img class="illu-ue" src="../assets/illustrations/etoiles-ue.png" alt="Cercle de douze points dorés évoquant le drapeau européen"><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S22] Épisode 3 · La promesse — ≈ 45 s
+
+⚠️ Engagement de méthode, pas une garantie : vos propres outils sont encore en migration (Gmail → Brevo, Airtable → Baserow/OVHcloud — CONFIG SYSTÈME). ⚖️ RGPD, chapitre V (transferts hors UE).
+
+VISUEL : Phrase, cercle de douze points or en haut à droite.
+
+ANIMATION : Ligne 1 puis ligne or.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-statement" id="S23"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-208px;top:-70px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">NOTRE PROMESSE</p>
+  <div class="statement" style="width:1296px"><h2 class="titre" data-id="titre" style="font-size:100px"><span class="blanc">Nous ne vendons pas la conformité.</span><br><span class="or">Nous vous aidons à la prouver.</span></h2></div>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S23] Épisode 3 · La promesse — ≈ 45 s
+
+Règle commerciale interne (CONFIG SYSTÈME) : ni « mise en conformité » automatique, ni « formation obligatoire ». ⚖️ IA Act art. 4 + RGPD art. 5.2 (responsabilité).
+
+VISUEL : Manifeste en deux lignes, rien d&#x27;autre.
+
+ANIMATION : Ligne 1 puis ligne or en fondu lent.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S24"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-239px;top:-66px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:3"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class="actif"><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">04</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S24] Épisode 4 · L&#x27;atelier — ≈ 8 s
+
+Transition.
+
+VISUEL : Agenda, repère sur l&#x27;épisode 4.
+
+ANIMATION : Morphose : le repère glisse.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-4.jpg" data-background-video="../dist/videos/yeba-episode-4.mp4" data-autoslide="4650" data-background-size="cover" id="E4"><h2 class="sr-only">Épisode 4 — L&#x27;atelier</h2>
+  <aside class="notes">[E4] Épisode 4 · L&#x27;atelier — ≈ 4.5 s
+
+Carte-titre d&#x27;épisode (Remotion).</aside>
+</section>
+<section data-background-color="#000" data-background-image="../assets/videos/clip-ai-or-apercu.jpg" data-background-video="../assets/videos/clip-ai-or.mp4" data-autoslide="6190" data-background-size="cover" id="V03"><h2 class="sr-only">Vidéo — AI</h2>
+  <aside class="notes">[V03] Épisode 4 · L&#x27;atelier — ≈ 6 s
+
+L&#x27;or du clip fait le lien avec la charte. ⚖️ IA Act art. 50 : clip généré par IA (Grok) — le signaler.</aside>
+</section>
+<section data-auto-animate data-background-color="#0E2140" data-background-image="../dist/videos/fond-v3-nuit-bleu.jpg" data-background-video="../dist/videos/fond-v3-nuit-bleu.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-bleu.jpg" class="l-statement" id="S25"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-234px;top:-101px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-bleu.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">NOTRE MÉTHODE</p>
+  <div class="statement" style="width:1296px"><h2 class="titre" data-id="titre" style="font-size:100px"><span class="blanc">On ne repart pas avec des notes.</span><br><span class="or">On repart avec un livrable.</span></h2></div>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S25] Épisode 4 · L&#x27;atelier — ≈ 45 s
+
+Chaque fiche du catalogue se termine par une production réelle (objectifs de niveau « Créer ») : plan d&#x27;action à 30 jours, charte d&#x27;usage de l&#x27;IA, procédure d&#x27;arrêt d&#x27;urgence d&#x27;un agent, site en ligne, séquence d&#x27;emails. Source : objectifs pédagogiques, CATALOGUE FORMATIONS.
+
+VISUEL : Phrase pivot sur fond bleu nuit vivant.
+
+ANIMATION : Ligne 1 puis ligne or.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-atelier" id="S26"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-202px;top:-121px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-120px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-atelier" data-id="titre-atelier"><span class="blanc">11 formations.</span> <span class="or">5 familles.</span></h2>
+  <div class="atelier"><div class="tuile" data-id="tuile-FOR-0011" style="--c:#C9AB4C"><span data-id="nom-FOR-0011">IA générative au travail</span></div><div class="tuile" data-id="tuile-FOR-0006" style="--c:#C9AB4C"><span data-id="nom-FOR-0006">Copilot Microsoft 365</span></div><div class="tuile" data-id="tuile-FOR-0013" style="--c:#E9D7A0"><span data-id="nom-FOR-0013">Agents IA</span></div><div class="tuile" data-id="tuile-FOR-0015" style="--c:#E9D7A0"><span data-id="nom-FOR-0015">IA souveraine</span></div><div class="tuile" data-id="tuile-FOR-0002" style="--c:#E9D7A0"><span data-id="nom-FOR-0002">Automatisation sans code</span></div><div class="tuile" data-id="tuile-FOR-0009" style="--c:#FFFFFF"><span data-id="nom-FOR-0009">Site internet IA</span></div><div class="tuile" data-id="tuile-FOR-0010" style="--c:#FFFFFF"><span data-id="nom-FOR-0010">Emailing IA</span></div><div class="tuile" data-id="tuile-FOR-0003" style="--c:#7FA7E0"><span data-id="nom-FOR-0003">Conformité RGPD &amp; IA Act</span></div><div class="tuile" data-id="tuile-FOR-0014" style="--c:#7FA7E0"><span data-id="nom-FOR-0014">Séminaire dirigeants IA</span></div><div class="tuile" data-id="tuile-FOR-0004" style="--c:#B8BCC6"><span data-id="nom-FOR-0004">Vente &amp; négociation</span></div><div class="tuile" data-id="tuile-FOR-0008" style="--c:#B8BCC6"><span data-id="nom-FOR-0008">Manager au quotidien</span></div><div class="tuile bientot" data-id="tuile-FOR-0017" style="--c:#C9AB4C"><span data-id="nom-FOR-0017">Assistant IA perso</span><em>bientôt</em></div></div><div class="legende"><span><i style="background:#C9AB4C"></i>IA au quotidien</span><span><i style="background:#E9D7A0"></i>IA avancée</span><span><i style="background:#FFFFFF"></i>Visibilité</span><span><i style="background:#7FA7E0"></i>Gouvernance</span><span><i style="background:#B8BCC6"></i>Humain</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S26] Épisode 4 · L&#x27;atelier — ≈ 90 s
+
+Source : CATALOGUE FORMATIONS au 10/11/2026 — 11 fiches « Active » diffusables. Exclues : FOR-0005 et FOR-0007 (sous-traitance en marque blanche : YEBA ne doit pas apparaître), FOR-0001 (archivée). FOR-0017 est « En développement » : présentée comme « bientôt ». ⚠️ Les anciens noms de code (ALLUMAGE-TURBO, CARROSSERIE…) ont disparu du catalogue : ne plus les citer. ⚠️ CPF : aucune formation n&#x27;est éligible (pas de code RNCP/RS) — ne jamais dire « finançable CPF ».
+
+VISUEL : Grille 4 × 3 de tuiles en verre ; bordure à la couleur de la famille ; durée en petit ; la 12e tuile, en pointillés, annonce « bientôt ».
+
+ANIMATION : Tuiles en cascade (0,06 s). Chaque tuile porte le nom !!tuile-FOR-XXXX : sur les slides suivantes, la tuile s&#x27;agrandit en bandeau (zoom Morphose).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-focus" id="S27"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-166px;top:-140px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-234px;top:-30px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="bande" data-id="tuile-FOR-0011" style="--c:#C9AB4C"><span class="nom-vertical">IA générative au travail</span></div>
+  <div class="focus">
+    <h2 class="titre focus-titre" data-id="titre" style="font-size:83px"><span class="blanc">Gagner du temps.</span><br><span class="or">En sécurité. Avec des preuves.</span></h2>
+    <ul class="puces"><li class="entree" style="--d:1.15s"><span class="or">—</span> Demander</li><li class="entree" style="--d:1.35s"><span class="or">—</span> Produire</li><li class="entree" style="--d:1.55s"><span class="or">—</span> Prouver</li></ul>
+    <div class="chips"><span class="chip">2 jours · 14 h</span><span class="chip">Inter</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S27] Épisode 4 · L&#x27;atelier — ≈ 90 s
+
+FOR-0011. Atelier phare « Le Tri de la Réserve » (je saisis / j&#x27;anonymise d&#x27;abord / je ne saisis jamais). ⚠️ Incohérence dans Airtable : l&#x27;intitulé dit 2 jours (14 h) mais les objectifs décrivent encore un « jour 3 » → mettre la fiche à jour (RNQ indicateur 1). ⚖️ IA Act art. 4 (maîtrise de l&#x27;IA) et art. 50 (transparence) + RGPD. Ni diplôme ni certification RNCP/RS.
+
+VISUEL : La tuile du catalogue devient un bandeau vertical or ; contenu à droite.
+
+ANIMATION : Morphose (zoom depuis la tuile) ; puces en fondu latéral ; pastilles en zoom.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-atelier" id="S27-carte"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-138px;top:-154px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-120px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-atelier" data-id="titre-atelier"><span class="blanc">11 formations.</span> <span class="or">5 familles.</span></h2>
+  <div class="atelier"><div class="tuile" data-id="tuile-FOR-0011" style="--c:#C9AB4C"><span data-id="nom-FOR-0011">IA générative au travail</span></div><div class="tuile" data-id="tuile-FOR-0006" style="--c:#C9AB4C"><span data-id="nom-FOR-0006">Copilot Microsoft 365</span></div><div class="tuile" data-id="tuile-FOR-0013" style="--c:#E9D7A0"><span data-id="nom-FOR-0013">Agents IA</span></div><div class="tuile" data-id="tuile-FOR-0015" style="--c:#E9D7A0"><span data-id="nom-FOR-0015">IA souveraine</span></div><div class="tuile" data-id="tuile-FOR-0002" style="--c:#E9D7A0"><span data-id="nom-FOR-0002">Automatisation sans code</span></div><div class="tuile" data-id="tuile-FOR-0009" style="--c:#FFFFFF"><span data-id="nom-FOR-0009">Site internet IA</span></div><div class="tuile" data-id="tuile-FOR-0010" style="--c:#FFFFFF"><span data-id="nom-FOR-0010">Emailing IA</span></div><div class="tuile" data-id="tuile-FOR-0003" style="--c:#7FA7E0"><span data-id="nom-FOR-0003">Conformité RGPD &amp; IA Act</span></div><div class="tuile" data-id="tuile-FOR-0014" style="--c:#7FA7E0"><span data-id="nom-FOR-0014">Séminaire dirigeants IA</span></div><div class="tuile" data-id="tuile-FOR-0004" style="--c:#B8BCC6"><span data-id="nom-FOR-0004">Vente &amp; négociation</span></div><div class="tuile" data-id="tuile-FOR-0008" style="--c:#B8BCC6"><span data-id="nom-FOR-0008">Manager au quotidien</span></div><div class="tuile bientot" data-id="tuile-FOR-0017" style="--c:#C9AB4C"><span data-id="nom-FOR-0017">Assistant IA perso</span><em>bientôt</em></div></div><div class="legende"><span><i style="background:#C9AB4C"></i>IA au quotidien</span><span><i style="background:#E9D7A0"></i>IA avancée</span><span><i style="background:#FFFFFF"></i>Visibilité</span><span><i style="background:#7FA7E0"></i>Gouvernance</span><span><i style="background:#B8BCC6"></i>Humain</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S27-carte] Épisode 4 · L&#x27;atelier — ≈ 3 s
+
+Retour à la carte du catalogue : zoom arrière, puis zoom avant sur la formation suivante.
+
+VISUEL : La fiche se replie dans sa tuile.
+
+ANIMATION : Morphose (zoom arrière).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-focus" id="S28"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-126px;top:-161px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-234px;top:-30px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="bande" data-id="tuile-FOR-0013" style="--c:#E9D7A0"><span class="nom-vertical">Agents IA</span></div>
+  <div class="focus">
+    <h2 class="titre focus-titre" data-id="titre" style="font-size:83px"><span class="blanc">Déléguer à l'IA.</span><br><span class="or">Sous contrôle humain.</span></h2>
+    <ul class="puces"><li class="entree" style="--d:1.15s"><span class="or">—</span> Autonomie mesurée</li><li class="entree" style="--d:1.35s"><span class="or">—</span> Traçabilité</li><li class="entree" style="--d:1.55s"><span class="or">—</span> Arrêt d'urgence</li></ul>
+    <div class="chips"><span class="chip">2 jours · 14 h</span><span class="chip">Avancé</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S28] Épisode 4 · L&#x27;atelier — ≈ 75 s
+
+FOR-0013, niveau avancé (après FOR-0011). Point d&#x27;arrêt humain obligatoire, procédure d&#x27;arrêt d&#x27;urgence testée. ⚖️ IA Act : qualification des systèmes (interdit, haut risque, transparence, hors champ) ; art. 14 (contrôle humain des systèmes à haut risque).
+
+VISUEL : Même gabarit, bandeau or clair.
+
+ANIMATION : Morphose depuis la tuile.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-atelier" id="S28-carte"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-133px;top:-160px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-120px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-atelier" data-id="titre-atelier"><span class="blanc">11 formations.</span> <span class="or">5 familles.</span></h2>
+  <div class="atelier"><div class="tuile" data-id="tuile-FOR-0011" style="--c:#C9AB4C"><span data-id="nom-FOR-0011">IA générative au travail</span></div><div class="tuile" data-id="tuile-FOR-0006" style="--c:#C9AB4C"><span data-id="nom-FOR-0006">Copilot Microsoft 365</span></div><div class="tuile" data-id="tuile-FOR-0013" style="--c:#E9D7A0"><span data-id="nom-FOR-0013">Agents IA</span></div><div class="tuile" data-id="tuile-FOR-0015" style="--c:#E9D7A0"><span data-id="nom-FOR-0015">IA souveraine</span></div><div class="tuile" data-id="tuile-FOR-0002" style="--c:#E9D7A0"><span data-id="nom-FOR-0002">Automatisation sans code</span></div><div class="tuile" data-id="tuile-FOR-0009" style="--c:#FFFFFF"><span data-id="nom-FOR-0009">Site internet IA</span></div><div class="tuile" data-id="tuile-FOR-0010" style="--c:#FFFFFF"><span data-id="nom-FOR-0010">Emailing IA</span></div><div class="tuile" data-id="tuile-FOR-0003" style="--c:#7FA7E0"><span data-id="nom-FOR-0003">Conformité RGPD &amp; IA Act</span></div><div class="tuile" data-id="tuile-FOR-0014" style="--c:#7FA7E0"><span data-id="nom-FOR-0014">Séminaire dirigeants IA</span></div><div class="tuile" data-id="tuile-FOR-0004" style="--c:#B8BCC6"><span data-id="nom-FOR-0004">Vente &amp; négociation</span></div><div class="tuile" data-id="tuile-FOR-0008" style="--c:#B8BCC6"><span data-id="nom-FOR-0008">Manager au quotidien</span></div><div class="tuile bientot" data-id="tuile-FOR-0017" style="--c:#C9AB4C"><span data-id="nom-FOR-0017">Assistant IA perso</span><em>bientôt</em></div></div><div class="legende"><span><i style="background:#C9AB4C"></i>IA au quotidien</span><span><i style="background:#E9D7A0"></i>IA avancée</span><span><i style="background:#FFFFFF"></i>Visibilité</span><span><i style="background:#7FA7E0"></i>Gouvernance</span><span><i style="background:#B8BCC6"></i>Humain</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S28-carte] Épisode 4 · L&#x27;atelier — ≈ 3 s
+
+Retour à la carte du catalogue : zoom arrière, puis zoom avant sur la formation suivante.
+
+VISUEL : La fiche se replie dans sa tuile.
+
+ANIMATION : Morphose (zoom arrière).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-focus" id="S29"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-158px;top:-152px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-234px;top:-30px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="bande" data-id="tuile-FOR-0009" style="--c:#FFFFFF"><span class="nom-vertical">Site internet IA</span></div>
+  <div class="focus">
+    <h2 class="titre focus-titre" data-id="titre" style="font-size:83px"><span class="blanc">Votre site.</span><br><span class="or">À voix haute. En 1 jour.</span></h2>
+    <ul class="puces"><li class="entree" style="--d:1.15s"><span class="or">—</span> Dicter</li><li class="entree" style="--d:1.35s"><span class="or">—</span> Corriger</li><li class="entree" style="--d:1.55s"><span class="or">—</span> Publier conforme</li></ul>
+    <div class="chips"><span class="chip">7 h</span><span class="chip">Intra</span><span class="chip">Sans code</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S29] Épisode 4 · L&#x27;atelier — ≈ 75 s
+
+FOR-0009 « Site internet IA : Créer son site en le décrivant à voix haute ». Public : dirigeants de TPE, artisans, commerçants sans site ou dépendants de leur prestataire. ⚖️ Mentions légales (LCEN art. 6), confidentialité et traceurs (RGPD + art. 82 loi Informatique et Libertés), accessibilité ; IA Act art. 50 selon les contenus générés.
+
+VISUEL : Même gabarit, bandeau blanc.
+
+ANIMATION : Morphose depuis la tuile.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-atelier" id="S29-carte"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-193px;top:-136px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:200px;top:-120px;width:1200px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-atelier" data-id="titre-atelier"><span class="blanc">11 formations.</span> <span class="or">5 familles.</span></h2>
+  <div class="atelier"><div class="tuile" data-id="tuile-FOR-0011" style="--c:#C9AB4C"><span data-id="nom-FOR-0011">IA générative au travail</span></div><div class="tuile" data-id="tuile-FOR-0006" style="--c:#C9AB4C"><span data-id="nom-FOR-0006">Copilot Microsoft 365</span></div><div class="tuile" data-id="tuile-FOR-0013" style="--c:#E9D7A0"><span data-id="nom-FOR-0013">Agents IA</span></div><div class="tuile" data-id="tuile-FOR-0015" style="--c:#E9D7A0"><span data-id="nom-FOR-0015">IA souveraine</span></div><div class="tuile" data-id="tuile-FOR-0002" style="--c:#E9D7A0"><span data-id="nom-FOR-0002">Automatisation sans code</span></div><div class="tuile" data-id="tuile-FOR-0009" style="--c:#FFFFFF"><span data-id="nom-FOR-0009">Site internet IA</span></div><div class="tuile" data-id="tuile-FOR-0010" style="--c:#FFFFFF"><span data-id="nom-FOR-0010">Emailing IA</span></div><div class="tuile" data-id="tuile-FOR-0003" style="--c:#7FA7E0"><span data-id="nom-FOR-0003">Conformité RGPD &amp; IA Act</span></div><div class="tuile" data-id="tuile-FOR-0014" style="--c:#7FA7E0"><span data-id="nom-FOR-0014">Séminaire dirigeants IA</span></div><div class="tuile" data-id="tuile-FOR-0004" style="--c:#B8BCC6"><span data-id="nom-FOR-0004">Vente &amp; négociation</span></div><div class="tuile" data-id="tuile-FOR-0008" style="--c:#B8BCC6"><span data-id="nom-FOR-0008">Manager au quotidien</span></div><div class="tuile bientot" data-id="tuile-FOR-0017" style="--c:#C9AB4C"><span data-id="nom-FOR-0017">Assistant IA perso</span><em>bientôt</em></div></div><div class="legende"><span><i style="background:#C9AB4C"></i>IA au quotidien</span><span><i style="background:#E9D7A0"></i>IA avancée</span><span><i style="background:#FFFFFF"></i>Visibilité</span><span><i style="background:#7FA7E0"></i>Gouvernance</span><span><i style="background:#B8BCC6"></i>Humain</span></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S29-carte] Épisode 4 · L&#x27;atelier — ≈ 3 s
+
+Retour à la carte du catalogue : zoom arrière, puis zoom avant sur la formation suivante.
+
+VISUEL : La fiche se replie dans sa tuile.
+
+ANIMATION : Morphose (zoom arrière).</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-focus" id="S30"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-227px;top:-117px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-234px;top:-30px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="bande" data-id="tuile-FOR-0010" style="--c:#FFFFFF"><span class="nom-vertical">Emailing IA</span></div>
+  <div class="focus">
+    <h2 class="titre focus-titre" data-id="titre" style="font-size:83px"><span class="blanc">Des emails</span><br><span class="or">qui obtiennent une réponse.</span></h2>
+    <ul class="puces"><li class="entree" style="--d:1.15s"><span class="or">—</span> Segmenter</li><li class="entree" style="--d:1.35s"><span class="or">—</span> Rédiger avec l'IA</li><li class="entree" style="--d:1.55s"><span class="or">—</span> Mesurer</li></ul>
+    <div class="chips"><span class="chip">1 jour · 7 h</span><span class="chip">Intra</span><span class="chip">RGPD inclus</span></div>
+  </div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S30] Épisode 4 · L&#x27;atelier — ≈ 75 s
+
+FOR-0010. ⚖️ RGPD + prospection électronique : consentement préalable en B2C (CPCE art. L.34-5), information et droit d&#x27;opposition en B2B ; lien de désinscription, identification de l&#x27;expéditeur. Outil d&#x27;envoi souverain cohérent : Brevo (France).
+
+VISUEL : Même gabarit, bandeau blanc.
+
+ANIMATION : Morphose depuis la tuile.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-demo" id="S31"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-251px;top:-97px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:-240px;top:-288px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="live" data-id="live"><i></i>DÉMO LIVE</div>
+  <div class="demo"><h2 class="titre" data-id="titre" style="font-size:120px"><span class="blanc">Un site internet.</span><br><span class="or">Décrit à voix haute. Devant vous.</span></h2></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S31] Épisode 4 · L&#x27;atelier — ≈ 240 s
+
+Faire décrire par un invité volontaire le métier de son entreprise et générer la page en direct. Prévoir un plan B (vidéo enregistrée) si le réseau du lieu est faible. ⚖️ RGPD : entreprise fictive ou accord de l&#x27;invité ; IA Act art. 50 : dire que le contenu est généré par IA.
+
+VISUEL : Pastille rouge « LIVE » qui pulse ; titre géant.
+
+ANIMATION : Pastille en pulsation continue ; titre en fondu montant.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-bientot.jpg" data-background-video="../dist/videos/fond-bientot.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-bientot.jpg" class="l-bientot" id="S32"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-258px;top:-80px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:732px;top:-180px;width:1080px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <p class="kicker" style="left:96px;top:60px">PROCHAINEMENT</p>
+  <h2 class="titre-bientot" data-id="titre">À suivre…</h2>
+  <div class="bientots un"><div class="carte-bientot entree" style="--d:0.90s"><strong>Assistant IA perso</strong><span>Nouvelle formation</span></div></div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S32] Épisode 4 · L&#x27;atelier — ≈ 60 s
+
+FOR-0017 « Assistant IA perso : piloter son activité en parlant à son téléphone » — statut « En développement » dans le CATALOGUE (tâche de finalisation ouverte). Espace en ligne et émargement numérique : NE PAS les annoncer tant qu&#x27;ils ne sont pas créés dans Airtable (décision d&#x27;Aurélien LUMEKA du 10/11/2026) ; une carte sera ajoutée ici à ce moment-là. Annoncer un service non tenu serait une pratique commerciale trompeuse (C. conso art. L.121-2). ⚖️ RGPD (le jour où ils existeront) : un espace en ligne et un émargement numérique traitent des données de stagiaires → registre (YEBA-DOC-16), hébergement UE, durée de conservation.
+
+VISUEL : Fond vidéo : balayage lumineux de bande-annonce ; une grande carte « bientôt » alignée sur le titre.
+
+ANIMATION : Carte en fondu montant ; « À suivre… » scintille.</aside>
+</section>
+<section data-auto-animate data-background-color="#1B3A6B" data-background-image="../dist/videos/fond-v3-nuit-bleu.jpg" data-background-video="../dist/videos/fond-v3-nuit-bleu.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit-bleu.jpg" class="l-statement" id="S33"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-245px;top:-69px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-bleu.png" alt="" style="left:-186px;top:-102px;width:1140px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <div class="barre" data-id="barre"></div>
+  <p class="kicker">ET MAINTENANT</p>
+  <div class="statement" style="width:1296px"><h2 class="titre" data-id="titre" style="font-size:107px"><span class="blanc">Former, c'est bien.</span><br><span class="or">Équiper, c'est mieux.</span></h2></div>
+  <img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S33] Épisode 4 · L&#x27;atelier — ≈ 20 s
+
+Passage de relais vers l&#x27;épisode 5 (à construire).
+
+VISUEL : Phrase pivot sur fond bleu vivant.
+
+ANIMATION : Ligne 1 puis ligne or ; Morphose vers l&#x27;agenda.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S34" data-visibility="hidden"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-217px;top:-66px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:4"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class="actif"><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">05</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S34] Épisode 5 · Les outils — ≈ 8 s
+
+À CONSTRUIRE : épisode 5 — Applications &amp; sites web.
+
+VISUEL : Slide masquée — épisode à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-5.jpg" data-background-video="../dist/videos/yeba-episode-5.mp4" data-autoslide="4650" data-background-size="cover" id="E5" data-visibility="hidden"><h2 class="sr-only">Épisode 5 — Les outils</h2>
+  <aside class="notes">[E5] Épisode 5 · Les outils — ≈ 4.5 s
+
+Carte-titre prête pour l&#x27;épisode 5.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S35" data-visibility="hidden"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-149px;top:-84px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:5"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class="actif"><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class=""><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">06</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S35] Épisode 6 · Le diagnostic — ≈ 8 s
+
+À CONSTRUIRE : épisode 6 — Audit &amp; devis. AUCUN TARIF PROJETÉ (décision d&#x27;Aurélien LUMEKA du 10/11/2026) : on présente la démarche (diagnostic, devis personnalisé sous 5 jours ouvrés), jamais une grille de prix.
+
+VISUEL : Slide masquée — épisode à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-6.jpg" data-background-video="../dist/videos/yeba-episode-6.mp4" data-autoslide="4650" data-background-size="cover" id="E6" data-visibility="hidden"><h2 class="sr-only">Épisode 6 — Le diagnostic</h2>
+  <aside class="notes">[E6] Épisode 6 · Le diagnostic — ≈ 4.5 s
+
+Carte-titre prête pour l&#x27;épisode 6.</aside>
+</section>
+<section data-auto-animate data-background-color="#121212" data-background-image="../dist/videos/fond-v3-nuit.jpg" data-background-video="../dist/videos/fond-v3-nuit.mp4" data-background-video-muted data-background-video-loop data-yeba-poster="../dist/videos/fond-v3-nuit.jpg" class="l-agenda" id="S36" data-visibility="hidden"><img class="calque" data-id="etoiles" src="../assets/calques/etoiles.png" alt="" style="left:-128px;top:-122px;width:2000px"><img class="calque" data-id="halo" src="../assets/calques/halo-or.png" alt="" style="left:792px;top:-36px;width:960px"><img class="calque vignette" src="../assets/calques/vignette.png" alt="">
+  <h2 class="titre-agenda" data-id="titre-agenda">Saison 1 · 7 épisodes</h2>
+  <ol class="agenda" style="--actif:6"><li class=""><span class="n" data-id="agn0">01</span><span class="t" data-id="ag0">Le casting</span><span class="s" data-id="ags0">Présentation</span></li><li class=""><span class="n" data-id="agn1">02</span><span class="t" data-id="ag1">Les racines</span><span class="s" data-id="ags1">Histoire</span></li><li class=""><span class="n" data-id="agn2">03</span><span class="t" data-id="ag2">La promesse</span><span class="s" data-id="ags2">L'offre YEBA</span></li><li class=""><span class="n" data-id="agn3">04</span><span class="t" data-id="ag3">L'atelier</span><span class="s" data-id="ags3">Nos formations</span></li><li class=""><span class="n" data-id="agn4">05</span><span class="t" data-id="ag4">Les outils</span><span class="s" data-id="ags4">Applications &amp; sites web</span></li><li class=""><span class="n" data-id="agn5">06</span><span class="t" data-id="ag5">Le diagnostic</span><span class="s" data-id="ags5">Audit &amp; devis</span></li><li class="actif"><span class="n" data-id="agn6">07</span><span class="t" data-id="ag6">Le final</span><span class="s" data-id="ags6">Mot de fin &amp; offre soirée</span></li><div class="marqueur" data-id="marqueur"></div></ol>
+  <div class="agenda-big" data-id="agbig">07</div><img class="petit-logo" data-id="logo" src="../assets/embleme-fond-sombre.png" alt="Emblème YEBA FORMATIONS">
+  <aside class="notes">[S36] Épisode 7 · Le final — ≈ 8 s
+
+À CONSTRUIRE : épisode 7 — Mot de fin avec offre spéciale soirée (plancher de remise : −15 % du tarif publié, CONFIG SYSTÈME).
+
+VISUEL : Slide masquée — épisode à construire.
+
+ANIMATION : Morphose.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../dist/videos/yeba-episode-7.jpg" data-background-video="../dist/videos/yeba-episode-7.mp4" data-autoslide="4650" data-background-size="cover" id="E7" data-visibility="hidden"><h2 class="sr-only">Épisode 7 — Le final</h2>
+  <aside class="notes">[E7] Épisode 7 · Le final — ≈ 4.5 s
+
+Carte-titre prête pour l&#x27;épisode 7.</aside>
+</section>
+<section data-background-color="#000" data-background-image="../assets/videos/clip-conclusion-apercu.jpg" data-background-video="../assets/videos/clip-conclusion.mp4" data-autoslide="6190" data-background-size="cover" id="V04" data-visibility="hidden"><h2 class="sr-only">Vidéo — Conclusion</h2>
+  <aside class="notes">[V04] Épisode 7 · Le final — ≈ 6 s
+
+Annonce l&#x27;offre spéciale soirée : enchaîner immédiatement. ⚖️ IA Act art. 50 : clip généré par IA (Grok).</aside>
+</section>
+</div></div>
+<script src="vendor/reveal.js"></script>
+<script src="vendor/plugin/notes.js"></script>
+<script>
+// « Réduire les animations » : fonds vidéo → images fixes, avant l'initialisation de Reveal.
+const SOBRE = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (SOBRE) {
+  document.querySelectorAll('section[data-yeba-poster]').forEach(s => {
+    s.removeAttribute('data-background-video');
+  });
+}
+Reveal.initialize({
+  width: 1600, height: 900, margin: 0, center: false, hash: true, controls: true, progress: true,
+  transition: 'fade', transitionSpeed: 'slow', backgroundTransition: 'fade',
+  autoAnimateDuration: 1.2, autoAnimateEasing: 'cubic-bezier(.65,0,.35,1)', autoAnimateUnmatched: true,
+  autoAnimate: !SOBRE, autoSlideStoppable: true, plugins: [RevealNotes]
+});
+</script>
+</body>
+</html>
