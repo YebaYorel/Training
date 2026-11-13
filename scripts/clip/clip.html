@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<title>YEBA FORMATIONS — clip</title>
+<!-- Clip de motion design fabriqué par programme (aucune IA générative).
+     ?mode=generique (80 s) ou ?mode=attente (boucle de 20 s). Le rendu appelle window.setT(secondes). -->
+<style>
+@font-face { font-family: M; font-weight: 600; src: url("../../site/scripts/documents-pdf/polices/Montserrat-SemiBold.ttf") }
+@font-face { font-family: M; font-weight: 700; src: url("../../site/scripts/documents-pdf/polices/Montserrat-Bold.ttf") }
+@font-face { font-family: M; font-weight: 800; src: url("../../site/scripts/documents-pdf/polices/Montserrat-ExtraBold.ttf") }
+:root { --bleu: #1B3A6B; --or: #C9AB4C; --noir: #121212; --blanc: #fff }
+* { box-sizing: border-box; margin: 0 }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--noir); font-family: M, Arial, sans-serif; color: var(--blanc) }
+#fond { position: absolute; inset: 0 }
+.scene { position: absolute; inset: 0; padding: 110px 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; opacity: 0 }
+.sur { font-size: 44px; font-weight: 700; letter-spacing: .22em; color: var(--or); text-transform: uppercase }
+.titre { font-size: 104px; font-weight: 800; line-height: 1.12 }
+.geant { font-size: 300px; font-weight: 800; letter-spacing: .06em; line-height: 1 }
+.texte { font-size: 60px; font-weight: 600; line-height: 1.3 }
+.or { color: var(--or) }
+.filet { width: 260px; height: 8px; background: var(--or); margin: 44px auto; border-radius: 4px }
+.rang { display: flex; gap: 60px; justify-content: center; align-items: stretch; width: 100% }
+.carte { flex: 1; border: 4px solid var(--or); border-radius: 26px; padding: 54px 30px; background: rgba(27, 58, 107, .55) }
+.carte b { display: block; font-size: 72px; font-weight: 800 }
+.carte span { display: block; margin-top: 18px; font-size: 42px; font-weight: 600; color: var(--or) }
+.grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; width: 100%; margin-top: 50px }
+.puce { border-radius: 18px; background: var(--bleu); border: 3px solid rgba(201, 171, 76, .8); padding: 30px 14px; font-size: 40px; font-weight: 700; line-height: 1.2; display: flex; align-items: center; justify-content: center; min-height: 150px }
+.puce.bientot { background: transparent; color: var(--or); border-style: dashed }
+.ligne { display: flex; align-items: center; justify-content: center; gap: 34px; font-size: 62px; font-weight: 700; margin: 22px 0 }
+.ligne small { font-size: 62px; color: var(--or); font-weight: 800 }
+.mention { font-size: 42px; font-weight: 600; margin-top: 10px; color: #E8EDF5 }
+.plaque { background: var(--blanc); border-radius: 36px; padding: 44px 70px; display: inline-block }
+.plaque img { display: block; height: 400px }
+.frise { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; margin-top: 70px; position: relative }
+.frise::before { content: ""; position: absolute; left: 6%; right: 6%; top: 24px; height: 8px; background: var(--or); border-radius: 4px; transform-origin: left; transform: scaleX(var(--p, 0)) }
+.jalon { width: 20%; position: relative; padding-top: 80px; font-size: 38px; font-weight: 700 }
+.jalon::before { content: ""; position: absolute; left: 50%; top: 0; width: 56px; height: 56px; margin-left: -28px; border-radius: 50%; background: var(--noir); border: 8px solid var(--or) }
+.jalon b { display: block; font-size: 44px; font-weight: 800; color: var(--or); margin-bottom: 10px }
+svg.dessin { width: 760px; height: 560px; overflow: visible }
+svg.dessin path, svg.dessin line { fill: none; stroke-linecap: round; stroke-linejoin: round }
+</style>
+<canvas id="fond" width="1920" height="1080"></canvas>
+
+<div id="generique">
+  <section class="scene" data-s="0,7">
+    <p class="sur" data-a="1">Océan Indien</p>
+    <p class="titre" data-a="2">La Réunion <span class="or">· 974</span></p>
+  </section>
+  <section class="scene" data-s="7,15">
+    <p class="titre" data-a="0.6">Ici, le savoir<br><span class="or">se partage.</span></p>
+  </section>
+  <section class="scene" data-s="15,25">
+    <p class="sur" data-a="0.8">En lingala, un seul mot</p>
+    <p class="geant" data-a="1.8">YEBA</p>
+    <div class="filet" data-a="3.4"></div>
+    <p class="texte" data-a="4">« savoir, connaître »</p>
+  </section>
+  <section class="scene" data-s="25,41">
+    <svg class="dessin" viewBox="0 0 760 560" aria-hidden="true">
+      <!-- 1. le baobab : tronc large, branches en couronne -->
+      <g id="baobab" stroke="#C9AB4C" stroke-width="10">
+        <path pathLength="1" data-d="0.5,2.2" d="M330 540 C338 420 340 330 352 250 M430 540 C422 420 420 330 408 250 M352 250 L408 250"/>
+        <path pathLength="1" data-d="2,1.6" d="M380 250 L380 120 M360 250 L250 150 M400 250 L510 150 M352 262 L160 232 M408 262 L600 232"/>
+        <path pathLength="1" data-d="3,1.4" d="M250 150 L200 90 M250 150 L300 80 M510 150 L460 80 M510 150 L560 90 M380 120 L350 60 M380 120 L410 60"/>
+      </g>
+      <!-- 2. trois pitons -->
+      <g id="pitons" stroke-width="12">
+        <path pathLength="1" data-d="6.4,1.2" stroke="#fff" d="M60 520 L200 250 L340 520 Z"/>
+        <path pathLength="1" data-d="7,1.2" stroke="#C9AB4C" d="M210 520 L380 170 L550 520 Z"/>
+        <path pathLength="1" data-d="7.6,1.2" stroke="#fff" d="M420 520 L560 250 L700 520 Z"/>
+      </g>
+      <!-- 3. le réseau qui les relie -->
+      <g id="reseau" stroke="#C9AB4C" stroke-width="6">
+        <path pathLength="1" data-d="10.6,1.6" d="M200 250 L380 170 L560 250 M200 250 L290 420 L380 330 L470 420 L560 250 M380 170 L380 330 M130 420 L290 420 M470 420 L630 420"/>
+      </g>
+      <g id="noeuds" fill="#C9AB4C" data-a="11.6">
+        <circle cx="200" cy="250" r="16"/><circle cx="380" cy="170" r="18"/><circle cx="560" cy="250" r="16"/>
+        <circle cx="290" cy="420" r="14"/><circle cx="380" cy="330" r="14"/><circle cx="470" cy="420" r="14"/>
+      </g>
+    </svg>
+    <p class="texte" style="margin-top:50px;min-height:160px;position:relative;width:100%">
+      <span data-a="1,5.6" style="position:absolute;inset:0">Le baobab : l'arbre sous lequel <span class="or">on transmet.</span></span>
+      <span data-a="6.2,10.2" style="position:absolute;inset:0">Trois pitons : <span class="or">La Réunion.</span></span>
+      <span data-a="10.8" style="position:absolute;inset:0">Reliés en réseau : <span class="or">le savoir circule.</span></span>
+    </p>
+  </section>
+  <section class="scene" data-s="41,48">
+    <p class="sur" data-a="0.5">Le baobab est devenu notre emblème</p>
+    <div style="margin-top:50px" data-a="1.2"><div class="plaque"><img src="../../site/scripts/documents-pdf/logo-yeba.png" alt="YEBA FORMATIONS"></div></div>
+  </section>
+  <section class="scene" data-s="48,56">
+    <p class="sur" data-a="0.4">Le chemin</p>
+    <div class="frise" id="frise">
+      <div class="jalon" data-a="1"><b>2021</b>Création</div>
+      <div class="jalon" data-a="2"><b>Vente</b>Négociation</div>
+      <div class="jalon" data-a="3"><b>Management</b>Soft skills</div>
+      <div class="jalon" data-a="4"><b>2026</b>IA en entreprise</div>
+      <div class="jalon" data-a="5"><b>RGPD</b>IA Act</div>
+    </div>
+  </section>
+  <section class="scene" data-s="56,63">
+    <p class="sur" data-a="0.4">Trois métiers · un seul interlocuteur</p>
+    <div class="rang" style="margin-top:60px">
+      <div class="carte" data-a="1.2"><b>Former</b><span>Inter · Intra</span></div>
+      <div class="carte" data-a="2.2"><b>Implémenter</b><span>Solutions IA</span></div>
+      <div class="carte" data-a="3.2"><b>Sécuriser</b><span>RGPD · IA Act</span></div>
+    </div>
+  </section>
+  <section class="scene" data-s="63,72">
+    <p class="sur" data-a="0.3">11 formations au catalogue</p>
+    <div class="grille">
+      <div class="puce" data-a="0.9">IA générative au travail</div>
+      <div class="puce" data-a="1.3">Agents IA</div>
+      <div class="puce" data-a="1.7">Automatisation sans code</div>
+      <div class="puce" data-a="2.1">IA souveraine</div>
+      <div class="puce" data-a="2.5">Copilot Microsoft 365</div>
+      <div class="puce" data-a="2.9">Site internet IA</div>
+      <div class="puce" data-a="3.3">Emailing IA</div>
+      <div class="puce" data-a="3.7">RGPD &amp; IA Act</div>
+      <div class="puce" data-a="4.1">Séminaire dirigeants IA</div>
+      <div class="puce" data-a="4.5">Manager au quotidien</div>
+      <div class="puce" data-a="4.9">Vente &amp; négociation</div>
+      <div class="puce bientot" data-a="5.8">Bientôt : Assistant IA perso</div>
+    </div>
+  </section>
+  <section class="scene" data-s="72,81">
+    <p class="sur" data-a="0.3">La confiance</p>
+    <div style="margin-top:40px">
+      <p class="ligne" data-a="1"><small>Qualiopi</small> n° 25FOR02027.1</p>
+      <p class="mention" data-a="1.4">Certification délivrée au titre des actions de formation</p>
+      <p class="ligne" style="margin-top:40px" data-a="2.6"><small>Déclaration d'activité</small> n° 04973676397</p>
+      <p class="mention" data-a="3">Cet enregistrement ne vaut pas agrément de l'État</p>
+      <p class="ligne" style="margin-top:40px" data-a="4.4"><small>7 h</small> par jour · 08h30–12h00 · 13h00–16h30</p>
+    </div>
+  </section>
+  <section class="scene" data-s="81,90" data-fin>
+    <div data-a="0.5"><div class="plaque"><img src="../../site/scripts/documents-pdf/logo-yeba.png" alt="YEBA FORMATIONS" style="height:330px"></div></div>
+    <p class="texte" style="margin-top:46px" data-a="1.6">Sous le baobab de la connaissance,<br><span class="or">les graines du savoir.</span></p>
+    <p class="mention" style="margin-top:34px;font-size:44px" data-a="3">0693 32 24 45 · yebaformations@gmail.com</p>
+  </section>
+</div>
+
+<div id="attente" hidden>
+  <section class="scene" data-s="-9,99">
+    <div id="souffle"><div class="plaque"><img src="../../site/scripts/documents-pdf/logo-yeba.png" alt="YEBA FORMATIONS" style="height:380px"></div></div>
+    <p class="titre" style="font-size:76px;margin-top:56px">La soirée commence<br><span class="or">dans quelques instants</span></p>
+    <p class="texte" style="margin-top:40px;min-height:90px;position:relative;width:100%;font-size:56px">
+      <span data-a="0.4,6" style="position:absolute;inset:0">Former · Implémenter · Sécuriser</span>
+      <span data-a="7,12.6" style="position:absolute;inset:0">Formation IA · RGPD · IA Act</span>
+      <span data-a="13.6,19.2" style="position:absolute;inset:0">La Réunion · 974 · depuis 2021</span>
+    </p>
+  </section>
+</div>
+
+<script>
+const mode = new URLSearchParams(location.search).get("mode") || "generique";
+const racine = document.getElementById(mode);
+document.getElementById(mode === "attente" ? "generique" : "attente").remove();
+racine.hidden = false;
+const DUREE = mode === "attente" ? 20 : 90;
+window.DUREE = DUREE;
+const lisse = (x) => { x = Math.max(0, Math.min(1, x)); return x * x * (3 - 2 * x); };
+
+// Constellation : positions fixées par une suite déterministe ; dérive périodique (boucle parfaite sur 20 s).
+const ctx = document.getElementById("fond").getContext("2d");
+let g = 7; const alea = () => (g = (g * 16807) % 2147483647) / 2147483647;
+const etoiles = Array.from({ length: 70 }, () => ({ x: alea() * 1920, y: alea() * 1080, r: 1.5 + alea() * 3, ph: alea() * 6.28, k: 1 + Math.floor(alea() * 3) }));
+function fond(t) {
+  const grad = ctx.createRadialGradient(960, 540, 80, 960, 540, 1100);
+  grad.addColorStop(0, "#1B3A6B"); grad.addColorStop(0.55, "#14233F"); grad.addColorStop(1, "#121212");
+  ctx.fillStyle = grad; ctx.fillRect(0, 0, 1920, 1080);
+  const w = (2 * Math.PI) / 20;
+  const p = etoiles.map((e) => ({ x: e.x + 26 * Math.sin(w * e.k * t + e.ph), y: e.y + 18 * Math.cos(w * e.k * t + e.ph), r: e.r }));
+  ctx.strokeStyle = "rgba(201,171,76,.16)"; ctx.lineWidth = 1.5;
+  for (let i = 0; i < p.length; i++) for (let j = i + 1; j < p.length; j++) {
+    const d = Math.hypot(p[i].x - p[j].x, p[i].y - p[j].y);
+    if (d < 190) { ctx.beginPath(); ctx.moveTo(p[i].x, p[i].y); ctx.lineTo(p[j].x, p[j].y); ctx.stroke(); }
+  }
+  ctx.fillStyle = "rgba(201,171,76,.55)";
+  for (const e of p) { ctx.beginPath(); ctx.arc(e.x, e.y, e.r, 0, 6.3); ctx.fill(); }
+}
+
+window.setT = (t) => {
+  fond(t);
+  for (const s of racine.querySelectorAll(".scene")) {
+    const [a, b] = s.dataset.s.split(",").map(Number);
+    const fin = s.hasAttribute("data-fin") ? 1 : lisse((b - t) / 0.7);
+    const vis = mode === "attente" ? 1 : lisse((t - a) / 0.7) * fin;
+    s.style.opacity = vis;
+    if (!vis) continue;
+    const l = t - a;
+    for (const el of s.querySelectorAll("[data-a]")) {
+      const [de, a2] = el.dataset.a.split(",").map(Number);
+      const o = lisse((l - de) / 0.6) * (a2 ? lisse((a2 - l) / 0.5) : 1);
+      el.style.opacity = o;
+      if (el instanceof HTMLElement) el.style.transform = `translateY(${(1 - lisse((l - de) / 0.6)) * 36}px)`;
+    }
+    for (const el of s.querySelectorAll("[data-d]")) {
+      const [de, du] = el.dataset.d.split(",").map(Number);
+      el.style.strokeDasharray = 1; el.style.strokeDashoffset = 1 - lisse((l - de) / du);
+    }
+    const bao = s.querySelector("#baobab");
+    if (bao) { bao.style.opacity = 1 - 0.82 * lisse((l - 5.8) / 1.2); }
+    const fr = s.querySelector("#frise");
+    if (fr) fr.style.setProperty("--p", lisse((l - 0.8) / 4.6));
+  }
+  const so = document.getElementById("souffle");
+  if (so) so.style.transform = `scale(${1 + 0.035 * Math.sin((2 * Math.PI * t) / 10)})`;
+};
+document.fonts.ready.then(() => { window.setT(0); window.pret = true; });
+</script>
+</html>
