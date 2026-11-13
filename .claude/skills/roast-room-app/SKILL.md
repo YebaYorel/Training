@@ -46,6 +46,16 @@ cd .claude/vendor-cache/roast-room-app && COUNCIL_RUNNER=viewer node app/server.
 Relu le 13/11/2026 : serveur Node sans dépendance. En mode lecture seule, aucun appel réseau. La page chargeait
 Google Fonts ; l'étape 2 retire ce chargement.
 
+Testé dans le cloud le 13/11/2026 : les étapes 1 et 2 fonctionnent (les 3 exemples apparaissent dans
+`sessions/`, et Git n'en voit rien).
+
+En mode automatique, le garde-fou de Claude Code refuse l'étape 3, parce qu'elle exécute du code tiers. Ne pas
+contourner ce refus. Deux possibilités :
+- Aurélien autorise la commande ;
+- Aurélien lance la salle sur son ordinateur.
+
+Le conseil `roast-room` fonctionne sans la salle.
+
 ## Points d'attention
 
 - **Caricatures** de personnes réelles, fournies par l'auteur : usage local uniquement. Ne jamais les reprendre dans un
