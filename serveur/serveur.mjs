@@ -243,6 +243,8 @@ async function routeur(req, res) {
   }
 
   if (req.method === 'POST' && url.pathname === '/api/ia') {
+    // Limite par adresse AVANT la vérification de signature : un flot de licences forgées ne doit pas occuper le serveur
+    if (!limite('iaip:' + ip, 120, 3600000)) return repondre(res, 429, { erreur: 'Trop de demandes, réessayez plus tard.' }, req)
     const b = await lireJson(req, 24000)
     const v = await verifier(b.licence, texte(b.poste, 14))
     if (!v.ok) return repondre(res, 403, { erreur: v.raison }, req)
