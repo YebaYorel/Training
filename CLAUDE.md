@@ -65,6 +65,9 @@ Bloom) → `yeba-bruner` (spirale, enactif-iconique-symbolique, étayage) →
 `yeba-vulgarisation` → `yeba-powerpoint` + `yeba-charte` → ressource PDF, grille
 critériée, évaluation de 10 questions → `yeba-donnees-formation` (bilan, Qualiopi).
 Horaires, jours et pauses : toujours ceux donnés par Aurélien, jamais supposés.
+Validé par Aurélien le 14/11/2026 : journées de 7 h, 08h30–12h00 / 13h00–16h30, déjeuner 12h00–13h00 ;
+pauses de 15 min à 10h00 et 15h00 (gardées dans le déroulé du formateur) mais **jamais écrites** dans les
+documents remis aux stagiaires et aux clients (programme, diaporama, livret, fiche).
 
 ## Sécurité — règles permanentes
 

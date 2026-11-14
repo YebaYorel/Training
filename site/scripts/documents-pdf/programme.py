@@ -142,8 +142,8 @@ def contenu(f):
     e += sec('Durée et horaires')
     e.append(tableau(['Élément', 'Détail'], [
         ['Durée', f"{f['jours']} jour{'s' if f['jours'] > 1 else ''} — {f['heures']} heures de formation (7 heures par jour)"],
-        ['Horaires', '08h00 – 12h00 et 13h00 – 17h00'],
-        ['Pauses', 'Deux pauses de 15 minutes, à 10h00 et à 15h00 ; pause méridienne de 12h00 à 13h00'],
+        ['Horaires', '08h30 – 12h00 et 13h00 – 16h30, soit 7 heures de formation par jour'],
+        ['Déjeuner', 'De 12h00 à 13h00, hors temps de formation'],
         ['Délai d\'accès', '15 jours ouvrés minimum entre l\'inscription et le démarrage'],
         ['Modalité', f"Présentiel — {esc(f['type'] or 'inter ou intra-entreprise')}"],
     ], [1, 3.6]))

@@ -116,7 +116,7 @@ def contenu(f, sommaire):
     e += [Spacer(1, 14 * mm), Image(str(LOGO), width=46 * mm, height=46 * mm * LOGO_RATIO), Spacer(1, 9 * mm),
           P('LIVRET D\'ACCUEIL DU STAGIAIRE', 'sur_couv'), Spacer(1, 5), P(esc(f['nom']), 'titre_couv'), Spacer(1, 3),
           P(esc(f['promesse']), 'pc'), Spacer(1, 8 * mm)]
-    infos = Table([[P(f"<b>{duree}</b>", 'pc')], [P('08h00 – 17h00 · 7 heures de formation par jour', 'pc')],
+    infos = Table([[P(f"<b>{duree}</b>", 'pc')], [P('08h30 – 16h30 · 7 heures de formation par jour', 'pc')],
                    [P('Dates et lieu : précisés dans votre convocation', 'pc')], [P(f"Réf. {f['ref']} · Présentiel", 'petitc')]], colWidths=[L])
     infos.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), FOND), ('LINEABOVE', (0, 0), (-1, 0), 2.5, OR), ('TOPPADDING', (0, 0), (-1, -1), 3), ('BOTTOMPADDING', (0, 0), (-1, -1), 3)]))
     e += [infos, Spacer(1, 10 * mm), P('Stagiaire : ......................................................', 'pc'), Spacer(1, 12 * mm),
@@ -154,7 +154,7 @@ def contenu(f, sommaire):
         ['Durée', duree], ['Dates', 'Précisées dans votre convocation'],
     ], [0.9, 2]))
     e += [Spacer(1, 6), P('La journée en pratique', 'h2'), tableau(['Élément', 'Détail'], [
-        ['Horaires', Brut('8h00 – 17h00 · 7 heures de formation<br/>Pause : 10h00 – 10h15<br/>Déjeuner : 12h00 – 13h00<br/>Pause : 15h00 – 15h15')],
+        ['Horaires', Brut('08h30 – 12h00 et 13h00 – 16h30<br/>7 heures de formation par jour<br/>Déjeuner : 12h00 – 13h00')],
         ['Lieu', 'Précisé dans votre convocation, envoyée au plus tard 7 jours avant la session'],
         ['Matériel', f['materiel']], ['Formateur', 'Aurélien LUMEKA'],
         ['Financement', ', '.join(f['financements']) + ' — selon votre situation'],
@@ -186,7 +186,7 @@ def contenu(f, sommaire):
         ['Avant', 'Questionnaire de positionnement : connaître votre point de départ et adapter la formation'],
         ['Pendant', 'Observation pendant les ateliers, avec une grille critériée remise dès l\'ouverture'],
         ['En fin de formation', 'Mise en situation notée et quiz de 10 questions (réussite à partir de 7/10)'],
-        ['17h00, dernier jour', 'Questionnaire de satisfaction « à chaud »'],
+        ['16h30, dernier jour', 'Questionnaire de satisfaction « à chaud »'],
         ['À 30 jours (J+30)', 'Questionnaire « à froid » : ce qui a changé au quotidien'],
     ], [0.9, 2]))
 

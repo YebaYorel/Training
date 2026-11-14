@@ -1,7 +1,7 @@
 """Lecture des fiches du CATALOGUE Airtable et mise en forme commune aux programmes et aux livrets.
 
 Règle du dirigeant : une journée = 7 heures de formation, quel que soit le calcul d'Airtable.
-Les horaires (08h00–12h00 / 13h00–17h00, pauses de 10h00 et 15h00) sont ceux des fiches Airtable.
+Les horaires (08h30–12h00 / 13h00–16h30, 7 h par jour) sont ceux des fiches Airtable ; les pauses courtes ne sont pas mentionnées dans les documents.
 Rien n'est modifié dans Airtable : les incohérences relevées sont listées par `incoherences()`.
 """
 import json
