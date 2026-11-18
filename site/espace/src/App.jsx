@@ -5,7 +5,7 @@
 //   • interne : lecture d'Airtable via le proxy local (poste de YEBA uniquement, `npm run espace`).
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
-import { BadgeCheck, Database, FileSpreadsheet, FileText, Flame, LayoutDashboard, Lock, LogOut, RefreshCw, Settings, ShieldCheck, Sparkles, Users } from 'lucide-react'
+import { BadgeCheck, Database, FileSearch, FileSpreadsheet, FileText, Flame, LayoutDashboard, Lock, LogOut, RefreshCw, Settings, ShieldCheck, Sparkles, Users } from 'lucide-react'
 import { DEMO } from './demo.js'
 import { demoDonnees } from './demo-donnees.js'
 import { versDb } from './modele.js'
@@ -20,11 +20,13 @@ import Bpf from './Bpf.jsx'
 import Donnees from './Donnees.jsx'
 import Modeles from './Modeles.jsx'
 import Carburant from './Carburant.jsx'
+import Decortiquer from './Decortiquer.jsx'
 import Licences from './Licences.jsx'
 import Reglages from './Reglages.jsx'
 
 const MODULES = [
   { id: 'tableau', libelle: 'Tableau de bord', Icone: LayoutDashboard, libre: true },
+  { id: 'ingenierie', libelle: 'Ingénierie', Icone: FileSearch, libre: true },
   { id: 'donnees', libelle: 'Mes données', Icone: Database },
   { id: 'parcours', libelle: 'Parcours', Icone: Users },
   { id: 'bpf', libelle: 'BPF', Icone: FileSpreadsheet },
@@ -34,7 +36,7 @@ const MODULES = [
   { id: 'licences', libelle: 'Licences', Icone: BadgeCheck, libre: true },
   { id: 'reglages', libelle: 'Réglages', Icone: Settings, libre: true },
 ]
-const MODULES_INTERNES = ['tableau', 'coffre', 'parcours', 'bpf']
+const MODULES_INTERNES = ['tableau', 'ingenierie', 'coffre', 'parcours', 'bpf']
 // Le lien Airtable interne n'existe que sur le poste de YEBA : absent des versions publiées (studio, aperçu).
 const INTERNE = !['studio', 'apercu', 'client'].includes(import.meta.env.MODE)
 const ESSAI_JOURS = 14
@@ -249,6 +251,7 @@ export default function App() {
   else
     contenu = {
       tableau: <Tableau db={db} donnees={props.donnees} aller={aller} ouverts={ouverts} />,
+      ingenierie: <Decortiquer />,
       donnees: <Donnees donnees={donnees} modifier={modifier} />,
       parcours: <Parcours {...props} />,
       bpf: <Bpf {...props} />,
