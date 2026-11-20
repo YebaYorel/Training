@@ -2,7 +2,7 @@
 // Tout est lu dans le navigateur : aucun fichier ne quitte le poste (RGPD). Sans document, le sujet suffit.
 import { useMemo, useRef, useState } from 'react'
 import { AlertTriangle, Clipboard, FolderArchive, FolderOpen, Download, FileSearch, Wand2 } from 'lucide-react'
-import { arborescenceZip, cleDate, construirePlan, extraire, fichiersDepuisDepot, lireTout, planMarkdown, typeDocument } from './decortiquer.js'
+import { HEURES_PAR_JOUR, arborescenceZip, cleDate, construirePlan, extraire, fichiersDepuisDepot, formatH, lireTout, planMarkdown, typeDocument } from './decortiquer.js'
 import { telechargerBlob } from './word.js'
 import { telecharger } from './ui.jsx'
 
@@ -15,6 +15,7 @@ export default function Decortiquer() {
   const [nomProgramme, setNomProgramme] = useState('')
   const [seqParAt, setSeqParAt] = useState(3)
   const [restreindre, setRestreindre] = useState(false)
+  const [dureeTotale, setDureeTotale] = useState('')
   const [dates, setDates] = useState({})
   const [message, setMessage] = useState('')
   const [survol, setSurvol] = useState(false)
@@ -22,7 +23,7 @@ export default function Decortiquer() {
   const champFichiers = useRef(null)
 
   const extraction = useMemo(() => extraire(docs), [docs])
-  const plan = useMemo(() => construirePlan(extraction, sujet, { seqParAt, restreindre, nomProgramme }), [extraction, sujet, seqParAt, restreindre, nomProgramme])
+  const plan = useMemo(() => construirePlan(extraction, sujet, { seqParAt, restreindre, nomProgramme, dureeTotale: Number(dureeTotale) || 0 }), [extraction, sujet, seqParAt, restreindre, nomProgramme, dureeTotale])
   const lus = docs.filter((d) => d.texte)
   const ignores = docs.filter((d) => d.ignore)
 
@@ -59,8 +60,9 @@ export default function Decortiquer() {
     <div className="dec">
       <h1>Ingénierie de formation</h1>
       <p className="dec-intro">
-        Déposez le <strong>dossier complet</strong> (REAC, fiche RNCP, référentiel, syllabus, programme…) : plusieurs centaines de fichiers sont acceptés.
-        Tout est lu <strong>sur ce poste</strong>, rien n’est envoyé. Sans document, indiquez seulement le sujet.
+        Déposez le <strong>dossier complet</strong> : REAC, référentiel d’évaluation (RE), référentiel de certification (RC), fiche RNCP, fiche RS, syllabus, programme…
+        Vous pouvez <strong>mélanger</strong> plusieurs documents (ex. REAC + RE, RNCP + RC) : séances, progression, préparation des dossiers et de l’examen sont harmonisées.
+        Plusieurs centaines de fichiers sont acceptés et tout est lu <strong>sur ce poste</strong> (rien n’est envoyé). Sans document, le sujet suffit.
       </p>
 
       <section className="carte" aria-labelledby="dec-sujet">
@@ -71,6 +73,10 @@ export default function Decortiquer() {
           <div>
             <label htmlFor="dec-prog">Nom du programme (facultatif)</label>
             <input id="dec-prog" value={nomProgramme} onChange={(e) => setNomProgramme(e.target.value)} placeholder="Ex. : TP MEM" />
+          </div>
+          <div>
+            <label htmlFor="dec-duree">Durée totale connue (h)</label>
+            <input id="dec-duree" type="number" min="0" step="0.5" inputMode="decimal" value={dureeTotale} onChange={(e) => setDureeTotale(e.target.value)} placeholder="Facultatif" />
           </div>
           <div>
             <label htmlFor="dec-seq">Séquences par activité type</label>
@@ -127,8 +133,20 @@ export default function Decortiquer() {
         <p className="dec-origine">
           <Wand2 size={16} aria-hidden="true" /> {plan.origine}
           {plan.rncp && ` · RNCP${plan.rncp}`}
+          {plan.rs && ` · RS${plan.rs}`}
           {plan.niveau && ` · niveau ${plan.niveau}`}
         </p>
+        {plan.types.length > 1 && <p className="dec-croise">Documents croisés : {plan.types.join(' + ')}</p>}
+        <div className="dec-kpis">
+          <div className="kpi"><strong>{formatH(plan.heures.total)}</strong><span>durée {plan.heures.source.startsWith('Estimation') ? 'estimée' : 'répartie'}</span></div>
+          <div className="kpi"><strong>{plan.heures.jours} j</strong><span>de {HEURES_PAR_JOUR} h (8h-12h, 13h-16h)</span></div>
+          <div className="kpi"><strong>{plan.progression.length}</strong><span>séquences</span></div>
+        </div>
+        <p className="dec-note">{plan.heures.source}</p>
+        <div className="dec-examen" role="note">
+          <h3>Comment se passera l’examen</h3>
+          <ul>{plan.examen.map((x) => <li key={x}>{x}</li>)}</ul>
+        </div>
         {plan.origine.startsWith('Squelette') && (
           <p className="dec-alerte" role="note">
             <AlertTriangle size={16} aria-hidden="true" /> Squelette généré à partir du sujet seul, sans référentiel : il structure le travail mais doit être validé (contenus, volumes, évaluation).
@@ -138,19 +156,20 @@ export default function Decortiquer() {
         <ul className="dec-arbre">
           {plan.noeuds.map((n) => (
             <li key={n.nom}>
-              <strong>{n.nom}</strong>
+              <strong>{n.nom} <span className="dec-h">{formatH(n.heures)}</span></strong>
               {n.sequences && (
                 <ul>
                   {n.sequences.map((s) => (
                     <li key={s.nom}>
                       <div className="dec-seq">
-                        <span>{s.nom}</span>
+                        <span>{s.nom} <span className="dec-h">{formatH(s.heures)}</span></span>
                         <label>
                           <span className="dec-visuel-cache">Date de {s.nom}</span>
                           <input type="date" value={dates[cleDate(n, s)] || ''} onChange={(e) => setDates((d) => ({ ...d, [cleDate(n, s)]: e.target.value }))} />
                         </label>
                       </div>
                       <small>{s.competences.join(' · ')}</small>
+                      {s.evaluations?.length > 0 && <small className="dec-eval">Évaluée par : {s.evaluations.join(', ')}</small>}
                     </li>
                   ))}
                 </ul>
@@ -158,6 +177,19 @@ export default function Decortiquer() {
             </li>
           ))}
         </ul>
+        <details>
+          <summary>Progression pédagogique ({plan.progression.length} séquences)</summary>
+          <div className="dec-tableau">
+            <table>
+              <thead><tr><th scope="col">Bloc</th><th scope="col">Séquence</th><th scope="col">Durée</th><th scope="col">Jour(s)</th></tr></thead>
+              <tbody>
+                {plan.progression.map((p) => (
+                  <tr key={p.bloc + p.sequence}><td>{p.bloc}</td><td>{p.sequence}</td><td>{formatH(p.heures)}</td><td>{p.jourDebut === p.jourFin ? `J${p.jourDebut}` : `J${p.jourDebut} à J${p.jourFin}`}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </details>
         {plan.evaluation.length > 0 && (
           <details>
             <summary>Modalités d’évaluation repérées</summary>
