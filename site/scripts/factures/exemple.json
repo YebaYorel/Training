@@ -1,0 +1,101 @@
+{
+  "type": "FACTURE",
+  "numero": "F-XXX-01",
+  "date": "JJ/MM/AAAA",
+  "echeance": "30 jours fin de mois — au plus tard le JJ/MM/AAAA",
+  "objet": "Prestations de formation sous-traitées — Contrats d’apprentissage TETRANERGY — Novembre 2026",
+  "emetteur": {
+    "nom": "YEBA FORMATIONS",
+    "titulaire": "Aurélien LUMEKA — Entreprise individuelle",
+    "lignes": [
+      "Adresse de l’émetteur",
+      "Code postal Ville — La Réunion"
+    ],
+    "contact": [
+      "Téléphone",
+      "E-mail"
+    ],
+    "legal": [
+      "SIRET 814 622 262 00032 — APE 8559A",
+      "Déclaration d’activité n° 04973676397",
+      "Certification Qualiopi n° 25FOR02027.1"
+    ]
+  },
+  "client": {
+    "nom": "CLIENT EXEMPLE",
+    "attention": "À l’attention de M. / Mme …",
+    "lignes": [
+      "Adresse",
+      "Code postal Ville"
+    ],
+    "legal": [
+      "SIRET …"
+    ]
+  },
+  "blocs": [
+    {
+      "titre": "RACM 26-27 — Jeudi Sud",
+      "detail": "Bachelor RACM · Bloc 1 « Veille et tendances marché » (C1.1 / C1.2) · Tetranergy Sud, Saint-Pierre",
+      "contrat": "Contrat : 20 h prévues · 25,00 € HT / heure",
+      "taux": 25,
+      "lignes": [
+        {
+          "date": "Jeudi 05/11/2026",
+          "prevues": 6,
+          "realisees": 0,
+          "intitule": "Jour 1 (visio) — Rôle de la veille, les 4 types de veille, PESTEL ; atelier PESTEL et comportement du consommateur"
+        },
+        {
+          "date": "Jeudi 12/11/2026",
+          "prevues": 6,
+          "realisees": 6,
+          "intitule": "Jour 2 — Les 7 étapes de la veille, outils et SWOT ; diagramme de flux d’informations — Évaluation 1 (C1.1)"
+        },
+        {
+          "date": "Jeudi 19/11/2026",
+          "prevues": 8,
+          "realisees": 8,
+          "intitule": "Jour 3 — Veille concurrentielle, Porter, benchmark omnicanal & RSE, mapping — Évaluation finale (C1.2), études de cas et pitchs"
+        }
+      ]
+    },
+    {
+      "titre": "MCCP2 25-27 — Mardi Ouest",
+      "detail": "Bloc 5 « Piloter et manager la performance de l’équipe et de l’entité commerciale » · Tetranergy Ouest, La Possession",
+      "contrat": "Contrat : 24 h prévues · 42,00 € HT / heure",
+      "taux": 42,
+      "lignes": [
+        {
+          "date": "Lundi 09/11/2026",
+          "prevues": 8,
+          "realisees": 0,
+          "intitule": "Jour 1 — Partie I : donner le cap ; fixer les objectifs (SMART, OKR, GROW) et engager l’équipe"
+        },
+        {
+          "date": "Mardi 10/11/2026",
+          "prevues": 8,
+          "realisees": 8,
+          "intitule": "Jour 2 — Partie II : mesurer la performance (KPI, tableau de bord) ; animer et corriger (rituels, feedback, analyse des écarts)"
+        },
+        {
+          "date": "Mardi 17/11/2026",
+          "prevues": 8,
+          "realisees": 8,
+          "intitule": "Jour 3 — Parties III et IV : faire grandir l’équipe (motivation, conflits, entretiens, inclusion) ; synthèse et évaluation certificative (étude de cas 3 h)"
+        }
+      ]
+    }
+  ],
+  "tva": "TVA non applicable — article 293 B du CGI",
+  "paiement": {
+    "mode": "Virement bancaire",
+    "titulaire": "À RENSEIGNER",
+    "iban": "FR76 XXXX XXXX XXXX XXXX XXXX XXX",
+    "bic": "XXXXXXXX"
+  },
+  "conditions": [
+    "Règlement à 30 jours fin de mois, soit au plus tard le 31/12/2026.",
+    "Seules les heures réellement réalisées sont facturées. Les journées non réalisées figurent au relevé avec leur intitulé, pour information, à 0 €. Intitulés repris des plans de séquencement des modules.",
+    "En cas de retard de paiement : pénalités au taux de trois fois le taux d’intérêt légal (art. L441-10 du Code de commerce) et indemnité forfaitaire pour frais de recouvrement de 40 € (art. D441-5). Aucun escompte pour paiement anticipé."
+  ]
+}

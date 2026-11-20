@@ -48,3 +48,4 @@ livrables-prives/
 !site/public/**/*.pdf
 dist-client/
 dist-ssr/
+site/scripts/factures/donnees/
