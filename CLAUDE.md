@@ -56,6 +56,20 @@ Skill `yeba-charte` ; valeurs exactes dans `.claude/skills/yeba-powerpoint/chart
 - **Exception** : travail pour un autre centre de formation → aucune trace de YEBA
 - Web : polices auto-hébergées (pas de Google Fonts → RGPD)
 
+## Factures — modèle OFFICIEL (validé par Aurélien le 20/11/2026)
+
+Toute facture (et tout devis) se fait **obligatoirement** avec
+`site/scripts/factures/generer.cjs` (`node site/scripts/factures/generer.cjs donnees.json sortie.pdf`),
+sans modifier la mise en page : seul le **numéro** (et les données de la mission) change.
+Références validées : F-BCC-01 et F-FA-01.
+
+- Une page A4, logo fourni, bandeau bleu Émetteur / Facturé à, en-têtes de tableau **or** (texte bleu marine), aucun rose ni noir en aplat.
+- Une ligne par **date contractuelle**, avec **l'intitulé de ce qui a été fait ce jour-là** ; jour non réalisé = liseré or, « Non réalisée — non facturée », 0 €.
+- **Pas de ligne « À l'attention de »** sur le client.
+- Coordonnées client (raison sociale, adresse, SIRET) reprises du contrat/convention signé ; échéance écrite en clair (« 30 jours fin de mois — au plus tard le JJ/MM/AAAA »).
+- Montrer l'aperçu à Aurélien avant tout dépôt sur Drive, brouillon Gmail ou fiche Airtable (DEVIS & FACTURES, champ « N° de facture (PDF) »).
+- Les données réelles (client, IBAN) vont dans `site/scripts/factures/donnees/` (ignoré par Git) : jamais dans le dépôt public.
+
 ## Formations — automatique, sans qu'Aurélien ait à le redemander
 
 Toute demande de formation, module, support, programme ou évaluation passe par
