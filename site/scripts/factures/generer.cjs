@@ -23,17 +23,19 @@ let realisees = 0
 const blocs = d.blocs.map((b) => {
   let sous = 0
   const lignes = b.lignes.map((l) => {
-    const montant = l.realisees * b.taux
+    const montant = l.montant != null ? l.montant : l.realisees * b.taux
     sous += montant
-    prevues += l.prevues
-    realisees += l.realisees
-    const fait = l.realisees > 0
+    prevues += l.prevues || 0
+    realisees += l.realisees || 0
+    const fait = l.cellules ? true : l.realisees > 0
+    const pastille = fait ? (d.pastille || 'Réalisée') : 'Non réalisée — non facturée'
+    const cel = l.cellules || [h(l.prevues), fait ? h(l.realisees) : '0 h', fait ? eur(b.taux) : '—']
     return `<tr class="${fait ? '' : 'non'}">
-      <td class="date">${esc(l.date)}<span class="pastille ${fait ? 'ok' : 'ko'}">${fait ? 'Réalisée' : 'Non réalisée — non facturée'}</span></td>
+      <td class="date">${esc(l.date)}<span class="pastille ${fait ? 'ok' : 'ko'}">${pastille}</span></td>
       <td class="intitule">${esc(l.intitule || '')}</td>
-      <td class="c">${h(l.prevues)}</td>
-      <td class="c">${fait ? h(l.realisees) : '0 h'}</td>
-      <td class="r">${fait ? eur(b.taux) : '—'}</td>
+      <td class="c">${cel[0]}</td>
+      <td class="c">${cel[1]}</td>
+      <td class="r">${cel[2]}</td>
       <td class="r montant">${eur(montant)}</td>
     </tr>`
   })
@@ -45,7 +47,7 @@ const blocs = d.blocs.map((b) => {
     </div>
     <table>
       <colgroup><col style="width:24%"><col><col style="width:8%"><col style="width:9%"><col style="width:9%"><col style="width:11%"></colgroup>
-      <thead><tr><th>Date contractuelle</th><th>Intitulé de l’action de formation</th><th class="c">Prévues</th><th class="c">Réalisées</th><th class="r">Taux HT</th><th class="r">Montant HT</th></tr></thead>
+      <thead><tr><th>Date contractuelle</th><th>Intitulé de l’action de formation</th>${(b.entetes || ['Prévues', 'Réalisées', 'Taux HT']).map((t, i) => `<th class="${i < 2 ? 'c' : 'r'}">${esc(t)}</th>`).join('')}<th class="r">Montant HT</th></tr></thead>
       <tbody>${lignes.join('')}</tbody>
       <tfoot><tr><td colspan="5">Sous-total ${esc(b.titre)}</td><td class="r">${eur(sous)}</td></tr></tfoot>
     </table>
@@ -122,6 +124,10 @@ tfoot td{font-weight:700;background:var(--fond);border-bottom:0}
 .totaux .net span{font-family:Montserrat;font-weight:800;letter-spacing:.06em;text-transform:uppercase;font-size:9pt;align-self:center}
 .totaux .net strong{font-family:Montserrat;font-weight:900;font-size:19pt;color:var(--or)}
 .conditions{margin-top:3.5mm;font-size:7.3pt;color:var(--gris);display:grid;gap:.8mm}
+.accord{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin-top:3mm}
+.accord>div{border:1px solid var(--trait);border-top:1.2mm solid var(--or);border-radius:2.5mm;padding:2.5mm 4mm;height:27mm;font-size:7.6pt;color:var(--gris)}
+.accord h4{font-family:Montserrat;font-weight:800;font-size:7.6pt;letter-spacing:.06em;color:var(--bleu);margin:0 0 1mm}
+.accord p{margin:0 0 1mm}
 footer{position:absolute;left:18mm;right:13mm;bottom:7mm;border-top:1px solid var(--trait);padding-top:2.5mm;display:flex;justify-content:space-between;font-size:7.4pt;color:var(--gris)}
 footer b{color:var(--bleu);font-family:Montserrat;font-weight:800;letter-spacing:.08em}
 </style></head><body>
@@ -130,18 +136,16 @@ footer b{color:var(--bleu);font-family:Montserrat;font-weight:800;letter-spacing
 <header>
   <img src="${LOGO}" alt="YEBA FORMATIONS">
   <div class="titre"><h1>${esc(d.type)}</h1><div class="num">N° <b>${esc(d.numero)}</b></div>
-  <p class="meta">Émise le <strong>${esc(d.date)}</strong> · Échéance : <strong>${esc(d.echeance)}</strong></p></div>
+  <p class="meta">Émis${d.type === 'FACTURE' ? 'e' : ''} le <strong>${esc(d.date)}</strong> · ${esc(d.libelleEcheance || 'Échéance')} : <strong>${esc(d.echeance)}</strong></p></div>
 </header>
 <div class="bandeau">
   <div><p class="etiquette">Émetteur</p><h2>${esc(d.emetteur.nom)}</h2><p>${esc(d.emetteur.titulaire)}</p>${d.emetteur.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.emetteur.contact.map(esc).join(' · ')}</p><p class="petit">${d.emetteur.legal.map(esc).join('<br>')}</p></div>
-  <div><p class="etiquette">Facturé à</p><h2>${esc(d.client.nom)}</h2>${d.client.attention ? `<p>${esc(d.client.attention)}</p>` : ""}${d.client.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.client.legal.map(esc).join('<br>')}</p></div>
+  <div><p class="etiquette">${esc(d.etiquetteClient || 'Facturé à')}</p><h2>${esc(d.client.nom)}</h2>${d.client.attention ? `<p>${esc(d.client.attention)}</p>` : ""}${d.client.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.client.legal.map(esc).join('<br>')}</p></div>
   ${reseau}
 </div>
 <p class="objet">${esc(d.objet)}</p>
-<div class="kpis">
-  <div class="kpi"><strong>${h(prevues)}</strong><span>prévues aux contrats</span></div>
-  <div class="kpi"><strong>${h(realisees)}</strong><span>réalisées et facturées</span></div>
-  <div class="kpi alerte"><strong>${String(prevues - realisees).replace(".", ",")}&nbsp;h</strong><span>non réalisées — non facturées</span></div>
+<div class="kpis">${(d.kpis || [[h(prevues), 'prévues aux contrats'], [h(realisees), 'réalisées et facturées'], [`${String(prevues - realisees).replace('.', ',')}&nbsp;h`, 'non réalisées — non facturées']]).map(([v, t], i) => `
+  <div class="kpi${i === 2 ? ' alerte' : ''}"><strong>${v}</strong><span>${esc(t)}</span></div>`).join('')}
 </div>
 ${blocs.join('')}
 <div class="bas">
@@ -149,13 +153,14 @@ ${blocs.join('')}
     <p>Titulaire : ${esc(d.paiement.titulaire)}</p><p class="iban">IBAN ${esc(d.paiement.iban)}</p><p>BIC ${esc(d.paiement.bic)}</p>
     <p style="margin-top:1.5mm">Merci d’indiquer la référence <strong>${esc(d.numero)}</strong> dans le libellé du virement.</p></div>
   <div class="totaux">
-    <div><span>Total heures facturées</span><span>${h(realisees)}</span></div>
+    <div><span>${esc(d.totalLigne ? d.totalLigne[0] : 'Total heures facturées')}</span><span>${d.totalLigne ? esc(d.totalLigne[1]) : h(realisees)}</span></div>
     <div><span>Total HT</span><span>${eur(totalHT)}</span></div>
     <div class="tva"><span>${esc(d.tva)}</span><span>0,00 €</span></div>
-    <div class="net"><span>Net à payer</span><strong>${eur(totalHT)}</strong></div>
+    <div class="net"><span>${esc(d.libelleNet || 'Net à payer')}</span><strong>${eur(totalHT)}</strong></div>
   </div>
 </div>
 <div class="conditions">${d.conditions.map((c) => `<p>${esc(c)}</p>`).join('')}</div>
+${d.bonPourAccord ? `<div class="accord"><div><h4>BON POUR ACCORD — LE CLIENT</h4><p>Mention manuscrite « Bon pour accord », date, signature et cachet.</p><p>Nom et qualité du signataire :</p></div><div><h4>POUR YEBA FORMATIONS</h4><p>Aurélien LUMEKA, directeur</p><p>Signature :</p></div></div>` : ''}
 </div>
 <footer><span><b>YEBA FORMATIONS</b> · Organisme de formation · Sainte-Clotilde, La Réunion</span><span>${esc(d.type)} ${esc(d.numero)} · page 1/1</span></footer>
 </body></html>`
