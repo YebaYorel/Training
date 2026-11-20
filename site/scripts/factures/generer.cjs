@@ -44,7 +44,7 @@ const blocs = d.blocs.map((b) => {
       <p class="contrat">${esc(b.contrat)}</p>
     </div>
     <table>
-      <colgroup><col style="width:22%"><col><col style="width:8%"><col style="width:9%"><col style="width:9%"><col style="width:13%"></colgroup>
+      <colgroup><col style="width:24%"><col><col style="width:8%"><col style="width:9%"><col style="width:9%"><col style="width:11%"></colgroup>
       <thead><tr><th>Date contractuelle</th><th>Intitulé de l’action de formation</th><th class="c">Prévues</th><th class="c">Réalisées</th><th class="r">Taux HT</th><th class="r">Montant HT</th></tr></thead>
       <tbody>${lignes.join('')}</tbody>
       <tfoot><tr><td colspan="5">Sous-total ${esc(b.titre)}</td><td class="r">${eur(sous)}</td></tr></tfoot>
@@ -97,7 +97,7 @@ header img{width:23mm}
 .bloc-tete p{font-size:7.6pt;color:var(--gris)}
 .bloc-tete .contrat{white-space:nowrap;font-weight:600;color:var(--noir)}
 table{width:100%;border-collapse:collapse}
-th{font-family:Montserrat;font-weight:700;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--noir);padding:1.5mm 2.5mm;text-align:left}
+th{white-space:nowrap;font-family:Montserrat;font-weight:700;font-size:7.2pt;letter-spacing:.08em;text-transform:uppercase;color:var(--bleu);background:var(--or);padding:1.5mm 2.5mm;text-align:left}
 th:first-child{border-radius:1.5mm 0 0 0}th:last-child{border-radius:0 1.5mm 0 0}
 td{padding:1.1mm 2mm;border-bottom:1px solid var(--trait);vertical-align:middle}
 .c{text-align:center}.r{text-align:right}
@@ -134,14 +134,14 @@ footer b{color:var(--bleu);font-family:Montserrat;font-weight:800;letter-spacing
 </header>
 <div class="bandeau">
   <div><p class="etiquette">Émetteur</p><h2>${esc(d.emetteur.nom)}</h2><p>${esc(d.emetteur.titulaire)}</p>${d.emetteur.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.emetteur.contact.map(esc).join(' · ')}</p><p class="petit">${d.emetteur.legal.map(esc).join('<br>')}</p></div>
-  <div><p class="etiquette">Facturé à</p><h2>${esc(d.client.nom)}</h2><p>${esc(d.client.attention)}</p>${d.client.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.client.legal.map(esc).join('<br>')}</p></div>
+  <div><p class="etiquette">Facturé à</p><h2>${esc(d.client.nom)}</h2>${d.client.attention ? `<p>${esc(d.client.attention)}</p>` : ""}${d.client.lignes.map((l) => `<p>${esc(l)}</p>`).join('')}<p class="petit">${d.client.legal.map(esc).join('<br>')}</p></div>
   ${reseau}
 </div>
 <p class="objet">${esc(d.objet)}</p>
 <div class="kpis">
   <div class="kpi"><strong>${h(prevues)}</strong><span>prévues aux contrats</span></div>
   <div class="kpi"><strong>${h(realisees)}</strong><span>réalisées et facturées</span></div>
-  <div class="kpi alerte"><strong>${h(prevues - realisees)}</strong><span>non réalisées — non facturées</span></div>
+  <div class="kpi alerte"><strong>${String(prevues - realisees).replace(".", ",")}&nbsp;h</strong><span>non réalisées — non facturées</span></div>
 </div>
 ${blocs.join('')}
 <div class="bas">
