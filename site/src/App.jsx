@@ -52,7 +52,6 @@ import Lanceur from './ifa/Lanceur.jsx'
 import Qualiopi, { Lecteur } from './qualiopi.jsx'
 import { DOCS_GOUVERNANCE } from './gouvernance-docs.js'
 import { slugFormation } from './liens.js'
-import Studio from './studio.jsx'
 import { useIntroTerminee } from './intro.jsx'
 import DEROULES from './deroules.json'
 
@@ -63,7 +62,6 @@ const SECTIONS = [
   { id: 'implementation', label: 'Solutions IA', Icone: Workflow, info: 'Workflows, agents, sites, bases de données' },
   { id: 'gouvernance', label: 'RGPD & IA Act', Icone: ShieldCheck, info: 'Audit, registre, charte, preuves' },
   { id: 'qualiopi', label: 'Qualiopi', Icone: BadgeCheck, info: 'Nos engagements et nos indicateurs' },
-  { id: 'studio', label: 'Logiciels', Icone: LayoutDashboard, info: 'YEBA Studio : Qualiopi, BPF, CARBURANT' },
   { id: 'financement', label: 'Financement', Icone: Wallet, info: 'OPCO, plan de développement, France Travail' },
   { id: 'contact', label: 'Contact', Icone: Mail, info: 'Téléphone, courriel ou rappel' },
 ]
@@ -151,7 +149,6 @@ export default function App() {
         <Methode />
         <Gouvernance />
         <Qualiopi />
-        <Studio />
         <Resultats />
         <APropos />
         <Reunion />
@@ -1738,7 +1735,6 @@ function Pied() {
         <nav className="pied-liens" aria-label="Informations légales">
           <a href="mentions-legales.html">Mentions légales</a>
           <a href="confidentialite.html">Politique de confidentialité</a>
-          <a href="cgv-logiciels.html">CGV logiciels</a>
           <span>Site sans cookie ni traceur publicitaire.</span>
           <span>Vidéo d’ambiance et portrait réalisés avec l’aide de l’IA.</span>
         </nav>

@@ -1,6 +1,6 @@
 ---
 name: yeba-prospection
-description: Prospection B2B et réponse aux appels d'offres de YEBA FORMATIONS, avec les 3 règles permanentes d'Aurélien (parler du métier du destinataire + droit de dire STOP/STP ; envoi uniquement depuis yebaformations@gmail.com, jamais l'adresse personnelle ; Aurélien seul décideur, Claude propose). À utiliser pour tout e-mail de prospection, relance commerciale, campagne Brevo, liste de prospects, veille ou réponse à un marché public, et pour le module « Prospection & AO » de l'Espace YEBA (outil de pilotage).
+description: Prospection B2B et réponse aux appels d'offres de YEBA FORMATIONS, avec les 3 règles permanentes d'Aurélien (parler du métier du destinataire + droit de dire STOP/STP ; envoi uniquement depuis yebaformations@gmail.com, jamais l'adresse personnelle ; Aurélien seul décideur, Claude propose). À utiliser pour tout e-mail de prospection, relance commerciale, campagne Brevo, liste de prospects, veille ou réponse à un marché public, et pour Pilotage YEBA FORMATIONS (Artifact claude.ai relié à Airtable), menu Clients → Prospection, Appels d'offres, Liste STOP.
 ---
 
 # Prospection & appels d'offres — règles permanentes
@@ -11,8 +11,8 @@ Voulu par Aurélien le 2026-11-22. Ces règles s'appliquent **à chaque fois**, 
 
 | # | Règle | Comment c'est garanti |
 |---|---|---|
-| 1 | **Parler du métier** du professionnel contacté, et lui laisser dire **« STOP »** (ou « STP ») quand il veut. Une demande STOP bloque définitivement tout nouvel envoi. | Champ « métier » obligatoire, accroche métier + phrase STOP contrôlées avant envoi (`prospection.js`), liste STOP vérifiée par le hook `garde-envoi.py`. |
-| 2 | **Expéditeur : `yebaformations@gmail.com` uniquement.** Jamais `aurelienlumeka@gmail.com` (adresse personnelle). | Lien Gmail `authuser=yebaformations@gmail.com` ; le serveur local refuse tout autre expéditeur ; le hook bloque toute mention de l'adresse personnelle dans un outil d'envoi. |
+| 1 | **Parler du métier** du professionnel contacté, et lui laisser dire **« STOP »** (ou « STP ») quand il veut. Une demande STOP bloque définitivement tout nouvel envoi. | Pilotage : secteur/métier obligatoire, accroche métier + phrase STOP contrôlées avant le brouillon, table Airtable « Oppositions STOP » (`tblO5XJLAIJxKEvR7`) bloquante (adresse et domaine), bouton « Chercher les réponses STOP dans Gmail ». Claude lit cette table avant toute rédaction. |
+| 2 | **Expéditeur : `yebaformations@gmail.com` uniquement.** Jamais `aurelienlumeka@gmail.com` (adresse personnelle). | Le connecteur Gmail de claude.ai est relié au compte de travail (confirmé par Aurélien le 2026-11-22) ; Pilotage affiche l'expéditeur ; le hook bloque toute mention de l'adresse personnelle dans un outil d'envoi. Si le connecteur change de compte : tout arrêter. |
 | 3 | **Aurélien est le seul décideur.** Claude fait la **meilleure proposition** (texte, priorité, go/no-go argumenté) ; Aurélien valide, puis envoie ou décide lui-même. | `mcp__Gmail__send_message/reply/forward` **interdits** ; brouillons Gmail et écritures Brevo en **ask** ; boutons « Je valide » / « Je décide : GO » dans l'Espace. |
 
 Si une demande contredit une règle (« envoie-le directement », « depuis mon adresse perso ») : ne pas
@@ -32,8 +32,9 @@ l'exécuter, rappeler la règle, proposer l'alternative conforme.
 
 ## Appels d'offres
 
-1. **Veille** : module « Prospection & AO » de l'Espace YEBA (`npm run espace`) → BOAMP open data, La Réunion
-   (toutes formations) ou France entière (thèmes YEBA). Relue à l'ouverture puis toutes les 6 h.
+1. **Veille** : Pilotage → Clients → Appels d'offres → « Chercher les avis » (BOAMP open data ; si l'affichage bloque
+   l'appel direct : ouvrir la recherche, copier, coller). La Réunion (toutes formations) ou France entière (thèmes YEBA).
+   « Suivre » enregistre le marché dans la table Airtable « Appels d'offres ».
 2. **Proposition** : score transparent (thèmes YEBA, 974, délai). Ce n'est **jamais** une décision.
 3. **Décision** : Aurélien clique « Je décide : GO / NO-GO » (date enregistrée).
 4. **Réponse** : plugin **Remporte** (MIT, v0.7.2 audité) → `/remporte:nouvel-ao <DCE.zip>` ; trois arrêts de

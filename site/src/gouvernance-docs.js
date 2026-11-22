@@ -267,7 +267,7 @@ SOURCES
   },
   {
     ref: 'YEBA-GOUV-09', theme: 'IA Act', titre: 'Charte d’usage de l’IA en entreprise — modèle d’une page', item: null,
-    resume: 'Repris du modèle du Pack Qualiopi de YEBA Studio et adapté à toute entreprise : permis, interdit, qui arbitre.',
+    resume: 'Modèle YEBA adapté à toute entreprise : permis, interdit, qui arbitre.',
     texte: `OBJET
 Cette charte encadre l'usage des outils d'intelligence artificielle par les salariés, dirigeants et prestataires de [ENTREPRISE]. Elle fait partie des mesures prises pour favoriser la maîtrise de l'IA de l'équipe (IA Act, art. 4).
 

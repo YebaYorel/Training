@@ -104,7 +104,11 @@ et de signaler le transfert (RGPD, chapitre V) à chaque usage.
 
 ## Prospection et appels d'offres — règles PERMANENTES (Aurélien, 2026-11-22)
 
-Skill `yeba-prospection` ; module « Prospection & AO » de l'Espace YEBA (outil de pilotage, `npm run espace`).
+Skill `yeba-prospection`. Outil : **Pilotage YEBA FORMATIONS** (Artifact https://claude.ai/artifact/G5GzUwhVYpqS1uFmsjvGsF,
+relié à la base Airtable « YEBA FORMATIONS - Centre de formation (Adaptable) »), menu Clients → onglets Prospection,
+Appels d'offres, Liste STOP. Liste STOP = table Airtable « Oppositions STOP » (`tblO5XJLAIJxKEvR7`) : la lire avant
+toute rédaction de prospection. Marchés suivis = table « Appels d'offres » (`tbl54Xs2eddsynkzU`).
+YEBA Studio n'est plus vendu (retiré du site le 2026-11-22) ; ses modules sont à fusionner dans Pilotage.
 
 1. **Métier + STOP** : chaque message à un professionnel parle de **son métier** et lui permet de répondre
    **STOP** (ou STP) ; une opposition bloque définitivement tout envoi (liste STOP, hook `garde-envoi.py`).
