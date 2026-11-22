@@ -102,6 +102,17 @@ hébergés hors UE pour avoir les meilleurs. Claude continue malgré tout de
 **ne jamais y envoyer de données personnelles de clients ou de stagiaires**,
 et de signaler le transfert (RGPD, chapitre V) à chaque usage.
 
+## Prospection et appels d'offres — règles PERMANENTES (Aurélien, 2026-11-22)
+
+Skill `yeba-prospection` ; module « Prospection & AO » de l'Espace YEBA (outil de pilotage, `npm run espace`).
+
+1. **Métier + STOP** : chaque message à un professionnel parle de **son métier** et lui permet de répondre
+   **STOP** (ou STP) ; une opposition bloque définitivement tout envoi (liste STOP, hook `garde-envoi.py`).
+2. **Expéditeur** : `yebaformations@gmail.com` **uniquement**. Jamais l'adresse personnelle.
+3. **Aurélien seul décideur** : Claude fait la meilleure proposition, n'envoie jamais (`mcp__Gmail__send_message`,
+   `reply`, `forward` interdits ; brouillons et écritures Brevo soumis à validation).
+- Appels d'offres : veille BOAMP dans l'Espace, réponse avec le plugin **Remporte** (`/remporte:nouvel-ao`).
+
 ## Skills et plugins installés
 
 Inventaire complet, sources figées et refus motivés : `SKILLS.md`.

@@ -64,6 +64,19 @@ npm run espace:apercu   # fichier HTML autonome de démonstration (données fict
 - BPF : **préparation**. Rubriques à contrôler avec la notice cerfa n° 50199 avant télédéclaration
   sur Mon Activité Formation (avant le 31 mai N+1).
 
+## Prospection & appels d'offres (module interne, poste YEBA)
+
+Accès : `npm run espace`, puis « Prospection & appels d'offres (poste YEBA) » sur l'écran d'accueil (ou le module
+« Prospection & AO » en mode interne). Absent des versions publiées (remplacé par `prospection-vide.jsx`).
+
+- **Veille** : BOAMP open data (DILA) via le proxy local `/boamp/records` (GET, un seul jeu de données, même origine).
+  La Réunion (toutes formations) ou France entière (thèmes YEBA). Relue à l'ouverture puis toutes les 6 h.
+- **Décision** : l'outil propose (score transparent) ; GO / NO-GO cliqué par Aurélien ; réponse avec Remporte
+  (`/remporte:nouvel-ao`).
+- **Prospects** : métier obligatoire, phrase STOP obligatoire, expéditeur `yebaformations@gmail.com` imposé,
+  validation par Aurélien, puis envoi par Aurélien dans Gmail. Liste STOP bloquante.
+- Données : `site/espace/.prospection/etat.json` (ignoré par Git). Tests : `node site/espace/test-prospection.mjs`.
+
 ## YEBA Studio (logiciels vendus aux organismes de formation)
 
 - Code : `site/espace/` (même application que l'Espace YEBA interne). Publication : `npm run build:tout` → le site dans `dist/`, le logiciel dans `dist/studio/`.

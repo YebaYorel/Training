@@ -30,6 +30,8 @@ council-transcript-*.md
 *.pptx
 # Livrables de formation (clients, stagiaires) : dépôt public, rien ne part sur GitHub
 formaou-*/
+# Prospection locale (contacts B2B, oppositions STOP) : RGPD, jamais sur GitHub
+site/espace/.prospection/
 *.pdf
 !.claude/skills/**/*.pdf
 .agents/

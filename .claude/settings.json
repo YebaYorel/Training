@@ -6,7 +6,10 @@
       "Read(./.env.production)",
       "Edit(./.env)",
       "Bash(git push --force:*)",
-      "Bash(git push -f:*)"
+      "Bash(git push -f:*)",
+      "mcp__Gmail__send_message",
+      "mcp__Gmail__reply",
+      "mcp__Gmail__forward"
     ],
     "ask": [
       "mcp__baserow__delete_row",
@@ -16,7 +19,17 @@
       "Bash(rm -rf:*)",
       "mcp__google-ads",
       "mcp__meta-ads",
-      "mcp__composio"
+      "mcp__composio",
+      "mcp__Gmail__create_draft",
+      "mcp__Gmail__update_draft",
+      "mcp__Brevo__email_campaign_management_create_email_campaign",
+      "mcp__Brevo__email_campaign_management_update_email_campaign",
+      "mcp__Brevo__email_campaign_management_send_test_email",
+      "mcp__Brevo__templates_send_test_template",
+      "mcp__Brevo__sms_campaigns_create_sms_campaign",
+      "mcp__Brevo__automation_update_workflow_status",
+      "mcp__Brevo__automation_create_workflow",
+      "mcp__Brevo__automation_update_workflow"
     ]
   },
   "enabledMcpjsonServers": [
@@ -66,7 +79,8 @@
     "content-marketing@claude-code-workflows": true,
     "business-analytics@claude-code-workflows": true,
     "startup-business-analyst@claude-code-workflows": true,
-    "claude-mem@thedotmack": false
+    "claude-mem@thedotmack": false,
+    "remporte@remporte": true
   },
   "extraKnownMarketplaces": {
     "context-mode": {
@@ -206,6 +220,26 @@
         "source": "github",
         "repo": "thedotmack/claude-mem"
       }
+    },
+    "remporte": {
+      "source": {
+        "source": "github",
+        "repo": "Remporte-dev/remporte-appels-offres"
+      }
     }
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__Gmail__.*|mcp__Brevo__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/garde-envoi.py\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }

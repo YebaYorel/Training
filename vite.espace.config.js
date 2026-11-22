@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import { writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import react from '@vitejs/plugin-react'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import { resolve } from 'node:path'
@@ -59,6 +59,64 @@ function gardeAirtable(jeton) {
   }
 }
 
+/** Prospection & appels d'offres (poste de YEBA uniquement, `npm run espace`) :
+ *  • /boamp/records : veille BOAMP (open data DILA), GET seulement, un seul jeu de données, même origine ;
+ *  • /prospection/etat : fichier local site/espace/.prospection/etat.json (ignoré par Git), jamais publié.
+ *  Règle 2 vérifiée ici aussi : l'expéditeur enregistré ne peut être que l'adresse de travail. */
+const EXPEDITEUR = 'yebaformations@gmail.com'
+function prospectionLocale() {
+  const dossier = resolve(__dirname, 'site/espace/.prospection')
+  const fichier = resolve(dossier, 'etat.json')
+  return {
+    name: 'prospection-locale',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const veille = req.url.startsWith('/boamp/')
+        const etat = req.url === '/prospection/etat'
+        if (!veille && !etat) return next()
+        const refuser = (code, msg) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify({ erreur: msg }))
+        }
+        if (req.headers['sec-fetch-site'] && req.headers['sec-fetch-site'] !== 'same-origin') return refuser(403, 'Origine refusée')
+        const hote = (req.headers.host || '').split(':')[0]
+        if (!['127.0.0.1', 'localhost'].includes(hote)) return refuser(403, 'Hôte refusé')
+        if (veille) {
+          if (req.method !== 'GET') return refuser(405, 'Lecture seule')
+          if (req.url.split('?')[0] !== '/boamp/records') return refuser(403, 'Ressource non autorisée')
+          return next()
+        }
+        if (req.method === 'GET') {
+          res.setHeader('Content-Type', 'application/json')
+          return res.end(existsSync(fichier) ? readFileSync(fichier, 'utf8') : 'null')
+        }
+        if (req.method !== 'PUT') return refuser(405, 'Méthode refusée')
+        let corps = ''
+        req.on('data', (c) => {
+          corps += c
+          if (corps.length > 2_000_000) req.destroy()
+        })
+        req.on('end', () => {
+          let d
+          try {
+            d = JSON.parse(corps)
+          } catch {
+            return refuser(400, 'JSON invalide')
+          }
+          if (!d || d.version !== 1 || !Array.isArray(d.prospects) || !Array.isArray(d.oppositions)) return refuser(400, 'Structure invalide')
+          if (String(d.expediteur || '').toLowerCase() !== EXPEDITEUR) return refuser(422, 'Règle 2 : expéditeur autorisé = ' + EXPEDITEUR)
+          mkdirSync(dossier, { recursive: true })
+          writeFileSync(fichier + '.tmp', JSON.stringify(d, null, 1))
+          renameSync(fichier + '.tmp', fichier)
+          res.setHeader('Content-Type', 'application/json')
+          res.end('{"ok":true}')
+        })
+      })
+    },
+  }
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '') // variables SANS préfixe VITE_ : jamais injectées dans le code client
   const jeton = env.AIRTABLE_TOKEN || ''
@@ -70,6 +128,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       react(),
       gardeAirtable(jeton),
+      prospectionLocale(),
       {
         name: 'csp-api',
         // Autorise le serveur YEBA Studio (paiement, IA) dans la politique de sécurité, s'il est configuré
@@ -99,6 +158,7 @@ export default defineConfig(({ mode }) => {
       ? {
           alias: [
             { find: /^\.\/donnees\.js$/, replacement: resolve(__dirname, 'site/espace/src/donnees-vide.js') },
+            { find: /^\.\/Prospection\.jsx$/, replacement: resolve(__dirname, 'site/espace/src/prospection-vide.jsx') },
             ...(publiee ? [{ find: /^\.\/modeles-qualiopi\.js$/, replacement: resolve(__dirname, 'site/espace/src/modeles-qualiopi-demo.js') }] : []),
           ],
         }
@@ -110,6 +170,22 @@ export default defineConfig(({ mode }) => {
       cors: false,
       headers: ENTETES,
       proxy: {
+        '/boamp': {
+          target: 'https://boamp-datadila.opendatasoft.com',
+          changeOrigin: true,
+          secure: true,
+          rewrite: (p) => p.replace(/^\/boamp\/records/, '/api/explore/v2.1/catalog/datasets/boamp/records'),
+          configure(proxy) {
+            proxy.on('proxyReq', (req) => {
+              req.removeHeader('cookie')
+              req.removeHeader('origin')
+              req.removeHeader('referer')
+            })
+            proxy.on('proxyRes', (res) => {
+              delete res.headers['set-cookie']
+            })
+          },
+        },
         '/airtable': {
           target: 'https://api.airtable.com',
           changeOrigin: true,

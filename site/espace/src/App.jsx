@@ -5,7 +5,7 @@
 //   • interne : lecture d'Airtable via le proxy local (poste de YEBA uniquement, `npm run espace`).
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, MotionConfig, motion } from 'framer-motion'
-import { BadgeCheck, Database, FileSpreadsheet, FileText, Flame, LayoutDashboard, Lock, LogOut, RefreshCw, Settings, ShieldCheck, Sparkles, Users } from 'lucide-react'
+import { BadgeCheck, Database, FileSpreadsheet, FileText, Flame, LayoutDashboard, Lock, LogOut, RefreshCw, Settings, ShieldCheck, Sparkles, Target, Users } from 'lucide-react'
 import { DEMO } from './demo.js'
 import { demoDonnees } from './demo-donnees.js'
 import { versDb } from './modele.js'
@@ -22,6 +22,7 @@ import Modeles from './Modeles.jsx'
 import Carburant from './Carburant.jsx'
 import Licences from './Licences.jsx'
 import Reglages from './Reglages.jsx'
+import Prospection from './Prospection.jsx' // remplacé par un module vide dans les versions publiées
 
 const MODULES = [
   { id: 'tableau', libelle: 'Tableau de bord', Icone: LayoutDashboard, libre: true },
@@ -33,8 +34,9 @@ const MODULES = [
   { id: 'carburant', libelle: 'CARBURANT', Icone: Flame, ia: true },
   { id: 'licences', libelle: 'Licences', Icone: BadgeCheck, libre: true },
   { id: 'reglages', libelle: 'Réglages', Icone: Settings, libre: true },
+  { id: 'prospection', libelle: 'Prospection & AO', Icone: Target, interne: true }, // poste de YEBA uniquement
 ]
-const MODULES_INTERNES = ['tableau', 'coffre', 'parcours', 'bpf']
+const MODULES_INTERNES = ['tableau', 'coffre', 'parcours', 'bpf', 'prospection']
 // Le lien Airtable interne n'existe que sur le poste de YEBA : absent des versions publiées (studio, aperçu).
 const INTERNE = !['studio', 'apercu', 'client'].includes(import.meta.env.MODE)
 const ESSAI_JOURS = 14
@@ -67,6 +69,7 @@ export default function App() {
   const [donnees, setDonnees] = useState(null)
   const [dbInterne, setDbInterne] = useState(null)
   const [interneDispo, setInterneDispo] = useState(false)
+  const [prospectionDispo, setProspectionDispo] = useState(false)
   const [poste, setPoste] = useState('')
   const [licences, setLicences] = useState([])
   const [essai, setEssai] = useState(null)
@@ -83,6 +86,7 @@ export default function App() {
   useEffect(() => {
     codePoste().then(setPoste)
     if (INTERNE) import('./donnees.js').then((m) => m.proxyDisponible().then(setInterneDispo))
+    if (INTERNE) fetch('/prospection/etat', { credentials: 'same-origin' }).then((r) => setProspectionDispo(r.ok)).catch(() => {})
     sante().then((s) => setIaServeur(!!(s.ok && s.ia)))
     const h = () => setModule(moduleDemande())
     addEventListener('hashchange', h)
@@ -211,7 +215,7 @@ export default function App() {
   /* ---------- Droits d'accès ---------- */
   const valides = licences.filter((l) => l.ok)
   const ouverts = useMemo(() => {
-    if (mode === 'demo' || mode === 'interne') return new Set(MODULES.map((m) => m.id))
+    if (mode === 'demo' || mode === 'interne' || mode === 'prospection') return new Set(MODULES.map((m) => m.id))
     const s = modulesOuverts(valides)
     if (essai?.jours > 0) MODULES.forEach((m) => s.add(m.id))
     MODULES.filter((m) => m.libre).forEach((m) => s.add(m.id))
@@ -235,13 +239,18 @@ export default function App() {
             <button className="lien-discret" onClick={passerInterne}><RefreshCw size={14} aria-hidden="true" /> Espace YEBA interne (Airtable)</button> {etat}
           </p>
         )}
+        {prospectionDispo && (
+          <p className="acces-interne">
+            <button className="lien-discret" onClick={() => (aller('prospection'), setMode('prospection'))}><Target size={14} aria-hidden="true" /> Prospection & appels d’offres (poste YEBA)</button>
+          </p>
+        )}
       </MotionConfig>
     )
   }
 
-  const liste = mode === 'interne' ? MODULES.filter((m) => MODULES_INTERNES.includes(m.id)) : MODULES
-  const actif = liste.some((m) => m.id === module) ? module : 'tableau'
-  const titreOrg = mode === 'interne' ? 'YEBA FORMATIONS' : donnees?.organisme?.nom || 'Mon organisme'
+  const liste = mode === 'interne' ? MODULES.filter((m) => MODULES_INTERNES.includes(m.id)) : mode === 'prospection' ? MODULES.filter((m) => m.id === 'prospection') : MODULES.filter((m) => !m.interne)
+  const actif = liste.some((m) => m.id === module) ? module : liste[0].id
+  const titreOrg = mode === 'interne' || mode === 'prospection' ? 'YEBA FORMATIONS' : donnees?.organisme?.nom || 'Mon organisme'
   const props = { db, donnees: mode === 'interne' ? null : donnees, modifier: mode === 'interne' ? null : modifier, aller, essai: essaiPour(actif) }
 
   let contenu
@@ -256,6 +265,7 @@ export default function App() {
       modeles: <Modeles donnees={donnees} essai={essaiPour('modeles')} aller={aller} />,
       carburant: <Carburant donnees={donnees} modifier={modifier} ia={ia} essai={essaiPour('carburant')} aller={aller} />,
       licences: <Licences poste={poste} licences={licences} essai={mode === 'local' ? essai : null} ajouterLicence={ajouterLicence} organisme={donnees?.organisme} offreVisee={offreVisee} />,
+      prospection: <Prospection />,
       reglages: <Reglages donnees={donnees} demo={mode === 'demo'} verrouiller={verrouiller} remplacer={(d) => modifier((x) => Object.assign(x, d), 'Sauvegarde restaurée')} />,
     }[actif]
 
@@ -267,8 +277,8 @@ export default function App() {
           <div className="marque">
             <span className="marque-logo" aria-hidden="true">Y</span>
             <span>
-              <strong>{mode === 'interne' ? 'Espace YEBA' : 'YEBA Studio'}</strong>
-              <small>{mode === 'interne' ? 'Pilotage interne' : 'Formation · Qualiopi · IA'}</small>
+              <strong>{mode === 'interne' || mode === 'prospection' ? 'Espace YEBA' : 'YEBA Studio'}</strong>
+              <small>{mode === 'interne' || mode === 'prospection' ? 'Pilotage interne' : 'Formation · Qualiopi · IA'}</small>
             </span>
           </div>
           <nav aria-label="Modules">
@@ -301,7 +311,7 @@ export default function App() {
             <div>
               <p className="fil">{titreOrg} · {liste.find((m) => m.id === actif)?.libelle}</p>
               <p className={'mode ' + (mode === 'local' ? 'direct' : mode === 'interne' ? 'direct' : 'demo')}>
-                {mode === 'demo' ? 'Démo — organisme fictif, rien n’est enregistré' : mode === 'interne' ? `Données Airtable · lues à ${new Date(db.charge).toLocaleTimeString('fr-FR')}` : enEssai ? `Essai gratuit : encore ${essai.jours} jour(s)` : 'Espace chiffré sur ce poste'}
+                {mode === 'demo' ? 'Démo — organisme fictif, rien n’est enregistré' : mode === 'prospection' ? 'Poste YEBA · enregistré localement (site/espace/.prospection)' : mode === 'interne' ? `Données Airtable · lues à ${new Date(db.charge).toLocaleTimeString('fr-FR')}` : enEssai ? `Essai gratuit : encore ${essai.jours} jour(s)` : 'Espace chiffré sur ce poste'}
               </p>
             </div>
             <div className="entete-actions">
