@@ -68,6 +68,26 @@ conservant les mêmes règles d'accessibilité et en respectant
 `prefers-reduced-motion`. Le .pptx reste le livrable de référence
 (Qualiopi : support remis au stagiaire).
 
+## 3 bis. Illustrations explicatives : skill `anatomy`
+
+Quand une diapo ou une ressource doit **expliquer un mécanisme** (un flux de
+données, un workflow d'IA, le circuit d'un document RGPD…), proposer d'abord
+`anatomy` (figure isométrique SVG « objet réel », exportable en PNG/PDF A4).
+Il est installé hors dépôt (`npx skills add wheresryan22/anatomy -g -a claude-code`,
+MIT, commit audité `1482e84`) : le réinstaller en début de session si absent.
+
+Garde-fous **propres à notre public** (les exemples fournis ne les respectent pas) :
+
+| Point | Règle |
+|---|---|
+| Contraste | Les figures d'origine sont gris clair sur blanc cassé : **illisibles** pour un public malvoyant. Utiliser le thème **sombre** ou renforcer les traits, puis mesurer le contraste (≥ 4,5:1). Si impossible → schéma en formes natives PowerPoint. |
+| Marques | Ne jamais garder un logo ou une marque tiers dans une figure (l'exemple `desk-computer` affiche le logo d'un éditeur d'IA). |
+| Texte | Mots dans la figure ≥ 24 pt une fois insérée ; `anatomy` évite le texte dans le dessin : légender dans la diapo, pas dans l'image. |
+| Format | Insérer le **PNG** (`scripts/capture.mjs`, `--scale 2`) avec **texte alternatif** rempli ; garder la source SVG/HTML hors dépôt. |
+| Organisme | Autre centre de formation → la carte « Fig n » et tout nom propre de l'outil sont retirés ; aucune mention de YEBA. |
+| Taille | Une figure « Figure » (40-80 pièces) peut prendre ~1 h : annoncer le délai ; sinon schéma natif. |
+| Publication | Ne **jamais** publier vers la galerie communautaire sans « oui » explicite (`references/publish.md`). |
+
 ## 4. Livrables d'une formation (rappel)
 
 PowerPoint + grille critériée + ressource PDF complète + évaluation de

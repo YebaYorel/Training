@@ -28,6 +28,8 @@ linkedin/
 council-report-*.html
 council-transcript-*.md
 *.pptx
+# Livrables de formation (clients, stagiaires) : dépôt public, rien ne part sur GitHub
+formaou-*/
 *.pdf
 !.claude/skills/**/*.pdf
 .agents/

@@ -88,7 +88,7 @@ Horaires, jours et pauses : toujours ceux donnés par Aurélien, jamais supposé
 | **SMA / SMO** (réseaux sociaux) | `social-media-skills`, `*-sms`, `ig-*`, `linkedin-skills` |
 | **Blog** | `claude-blog` |
 | **Site web** | `superpowers`, `ui-ux-pro-max`, `impeccable`, `web-quality-skills`, `vercel-skills`, Chrome DevTools MCP, Context7 |
-| **PowerPoint** | `yeba-powerpoint` d'abord ; puis `huashu-design`, `consulting-pptx`, `ppt-agent`, `academic-pptx`, `slide-maker`, `dashi-ppt`, `bang-motion`, MCP `powerpoint` |
+| **PowerPoint** | `yeba-powerpoint` d'abord (et `anatomy` pour les schémas explicatifs, avec ses garde-fous de contraste) ; puis `huashu-design`, `consulting-pptx`, `ppt-agent`, `academic-pptx`, `slide-maker`, `dashi-ppt`, `bang-motion`, MCP `powerpoint` |
 | **Vidéo** | `higgsfield`, `openmontage`, `video-context` |
 | **Sécurité** | `security-sweep`, `security-scanning`, `/security-review` |
 
