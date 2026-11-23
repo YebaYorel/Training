@@ -9,7 +9,7 @@ export const OFFRES = {
   qualiopi: { nom: 'Pack Qualiopi V10', modules: ['coffre', 'modeles'], prix: 300, jours: 0, libellePrix: '300 € — achat unique' },
   bpf: { nom: 'BPF Facile', modules: ['donnees', 'bpf'], prix: 100, jours: 365, libellePrix: '100 € / an / utilisateur' },
   parcours: { nom: 'Parcours', modules: ['donnees', 'parcours', 'bpf'], prix: 89, jours: 31, libellePrix: '89 € / mois' },
-  carburant: { nom: 'CARBURANT', modules: ['donnees', 'carburant'], prix: 49, jours: 31, libellePrix: '49 € / mois — offre pionniers', premierMois: 1 },
+  carburant: { nom: 'PRISE EN CHARGE', modules: ['donnees', 'carburant'], prix: 49, jours: 31, libellePrix: '49 € / mois — offre pionniers', premierMois: 1 },
   studio: { nom: 'YEBA Studio complet', modules: ['coffre', 'modeles', 'donnees', 'parcours', 'bpf', 'carburant'], prix: 129, jours: 31, libellePrix: '129 € / mois — tout inclus' },
 }
 export const GRACE_JOURS = 7 // délai après échéance pour renouveler sans rien perdre

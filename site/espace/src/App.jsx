@@ -31,7 +31,7 @@ const MODULES = [
   { id: 'bpf', libelle: 'BPF', Icone: FileSpreadsheet },
   { id: 'coffre', libelle: 'Coffre Qualiopi', Icone: ShieldCheck },
   { id: 'modeles', libelle: 'Modèles Word', Icone: FileText },
-  { id: 'carburant', libelle: 'CARBURANT', Icone: Flame, ia: true },
+  { id: 'carburant', libelle: 'PRISE EN CHARGE', Icone: Flame, ia: true },
   { id: 'licences', libelle: 'Licences', Icone: BadgeCheck, libre: true },
   { id: 'reglages', libelle: 'Réglages', Icone: Settings, libre: true },
   { id: 'prospection', libelle: 'Prospection & AO', Icone: Target, interne: true }, // poste de YEBA uniquement

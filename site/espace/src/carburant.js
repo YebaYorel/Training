@@ -1,4 +1,4 @@
-// CARBURANT — moteur de détection de l'argent « en jeu » d'un organisme de formation.
+// PRISE EN CHARGE — moteur de détection de l'argent « en jeu » d'un organisme de formation.
 // Règles tirées des causes de rejet les plus fréquentes par les financeurs : dépôt tardif, émargements
 // incomplets, certificat de réalisation absent, facture ≠ accord, facture jamais émise, relance oubliée.
 // L'IA générative (Mistral, via le serveur) ne sert qu'à rédiger et à lire ; les montants viennent des données.

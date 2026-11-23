@@ -75,7 +75,7 @@ export default function Tableau({ db, donnees, aller, ouverts }) {
         <Kpi valeur={`${Math.round(tauxDossiers)} %`} libelle="Pièces des dossiers stagiaires" ton={tauxDossiers >= 90 ? 'ok' : 'attention'} />
         <Kpi valeur={euros(ca)} libelle={`Facturé en ${exercice} (HT)`} />
         <Kpi valeur={`J-${jBpf}`} libelle={`BPF ${exercice} à déclarer`} sous={`avant le 31/05/${exercice + 1}`} ton={jBpf < 45 ? 'attention' : ''} />
-        {donnees && (!ouverts || ouverts.has('carburant')) && <button className="kpi kpi-lien attention" onClick={() => aller('carburant')}><strong>{euros(analyser(donnees).total)}</strong><span>Argent en jeu · CARBURANT</span><small>Voir ce qui bloque →</small></button>}
+        {donnees && (!ouverts || ouverts.has('carburant')) && <button className="kpi kpi-lien attention" onClick={() => aller('carburant')}><strong>{euros(analyser(donnees).total)}</strong><span>Argent en jeu · PRISE EN CHARGE</span><small>Voir ce qui bloque →</small></button>}
       </div>
 
       <div className="colonnes-f">

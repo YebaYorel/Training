@@ -115,7 +115,8 @@ YEBA Studio n'est plus vendu (retiré du site le 2026-11-22) ; ses modules sont 
 2. **Expéditeur** : `yebaformations@gmail.com` **uniquement**. Jamais l'adresse personnelle.
 3. **Aurélien seul décideur** : Claude fait la meilleure proposition, n'envoie jamais (`mcp__Gmail__send_message`,
    `reply`, `forward` interdits ; brouillons et écritures Brevo soumis à validation).
-- Appels d'offres : veille BOAMP dans l'Espace, réponse avec le plugin **Remporte** (`/remporte:nouvel-ao`).
+- Appels d'offres : veille BOAMP dans Pilotage (Clients → Appels d'offres), réponse avec le plugin **Remporte** (`/remporte:nouvel-ao`).
+- Contrats et missions : Pilotage → Formations → Missions & contrats (table `tbl1gThEYdf0xZAaV`) ; facture du mois datée du dernier jour.
 
 ## Skills et plugins installés
 

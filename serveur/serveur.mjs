@@ -3,7 +3,7 @@
 // Trois rôles, rien de plus :
 //   1. Paiement : crée un paiement Mollie (société néerlandaise) pour une offre, au prix fixé ICI (jamais par le client).
 //   2. Licence : une fois le paiement « paid », signe la licence liée au poste du client (Ed25519).
-//   3. IA : relaie vers Mistral AI (Paris) les demandes des licences CARBURANT / Parcours, avec quotas.
+//   3. IA : relaie vers Mistral AI (Paris) les demandes des licences PRISE EN CHARGE / Parcours, avec quotas.
 // Aucune donnée de stagiaire n'est stockée ici. Les textes envoyés à l'IA sont pseudonymisés par le logiciel.
 //
 // Variables d'environnement : voir serveur/README.md.

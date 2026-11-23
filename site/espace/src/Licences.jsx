@@ -6,7 +6,7 @@ import { CGV_URL, commander, sante } from './api.js'
 import { ecrire, lire } from './stockage.js'
 
 export const EMAIL_YEBA = 'contact@yebaformations.re'
-const LIBELLES_MODULES = { coffre: 'Coffre Qualiopi', modeles: '20 modèles Word', donnees: 'Mes données', parcours: 'Parcours', bpf: 'Assistant BPF', carburant: 'CARBURANT (IA)' }
+const LIBELLES_MODULES = { coffre: 'Coffre Qualiopi', modeles: '20 modèles Word', donnees: 'Mes données', parcours: 'Parcours', bpf: 'Assistant BPF', carburant: 'PRISE EN CHARGE (IA)' }
 const PROMESSES = {
   qualiopi: 'Vos documents Qualiopi 2026 remplis à votre nom, en Word, et le suivi des 33 indicateurs.',
   bpf: 'Vos données de l’année au propre, et un BPF rempli par l’assistant en 20 minutes.',

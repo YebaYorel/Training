@@ -1,4 +1,4 @@
-// CARBURANT — l'IA qui fait rentrer l'argent des OPCO.
+// PRISE EN CHARGE — l'IA qui fait rentrer l'argent des OPCO.
 import { useEffect, useMemo, useState } from 'react'
 import { animate, motion } from 'framer-motion'
 import { AlertTriangle, Bot, Check, Clipboard, FileCheck2, Flame, Mail, ScanText, Sparkles, Wand2 } from 'lucide-react'
@@ -129,8 +129,8 @@ export default function Carburant({ donnees, modifier, ia, essai, aller }) {
     <div className="carburant">
       <div className="titre-module">
         <div>
-          <h1><Flame className="flamme" aria-hidden="true" /> CARBURANT</h1>
-          <p className="chapo">Chaque heure réalisée doit devenir une facture payée. CARBURANT repère ce qui bloque, avant le financeur.</p>
+          <h1><Flame className="flamme" aria-hidden="true" /> PRISE EN CHARGE</h1>
+          <p className="chapo">Chaque heure réalisée doit devenir une facture payée. PRISE EN CHARGE repère ce qui bloque, avant le financeur.</p>
         </div>
         <span className={'badge-ia ' + (ia.disponible ? 'on' : '')}>
           <Bot size={16} aria-hidden="true" /> {ia.disponible ? 'IA Mistral connectée (France)' : 'IA hors ligne : règles et modèles'}
@@ -144,7 +144,7 @@ export default function Carburant({ donnees, modifier, ia, essai, aller }) {
           <small>{alertes.length} point(s) à traiter · estimation à partir de vos accords et prix</small>
         </div>
         <div className="jauge-argent secure">
-          <span>Déjà sécurisé grâce à CARBURANT</span>
+          <span>Déjà sécurisé grâce à PRISE EN CHARGE</span>
           <strong><Compteur valeur={totalSecurise} /></strong>
           <div className="piste-garantie" role="img" aria-label={`Garantie 10× : ${Math.round((totalSecurise / OBJECTIF_GARANTIE) * 100)} % de l’objectif annuel`}>
             <motion.span initial={{ width: 0 }} animate={{ width: Math.min(100, (totalSecurise / OBJECTIF_GARANTIE) * 100) + '%' }} transition={{ duration: 1 }} />

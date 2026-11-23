@@ -36,12 +36,12 @@ export default function Studio() {
         <div className="studio-f">
           <motion.article className="carburant-vitrine" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.7, ease: EASE }}>
             <span className="ruban-or"><Sparkles size={16} aria-hidden="true" /> Offre Pionniers 974 · 30 places</span>
-            <h3><Flame className="flamme-vitrine" aria-hidden="true" /> CARBURANT</h3>
+            <h3><Flame className="flamme-vitrine" aria-hidden="true" /> PRISE EN CHARGE</h3>
             <p className="accroche">L’IA qui fait rentrer l’argent des OPCO.</p>
-            <p>Émargement manquant, certificat de réalisation oublié, facture supérieure à l’accord, dépôt hors délai, relance jamais envoyée : CARBURANT le voit <strong>avant</strong> le financeur, chiffre l’argent en jeu et rédige la relance à votre place.</p>
+            <p>Émargement manquant, certificat de réalisation oublié, facture supérieure à l’accord, dépôt hors délai, relance jamais envoyée : PRISE EN CHARGE le voit <strong>avant</strong> le financeur, chiffre l’argent en jeu et rédige la relance à votre place.</p>
             <p className="prix-vitrine"><strong>{c.premierMois} €</strong> le premier mois, puis <strong>{c.prix} €/mois</strong>, tarif gelé à vie.</p>
             <p className="garantie"><ShieldCheck size={18} aria-hidden="true" /> Garantie « 10× » : s’il ne vous signale pas au moins 10 fois son prix en sommes à sécuriser sur 12 mois, l’année vous est remboursée (conditions dans nos <a href="cgv-logiciels.html#garantie">CGV logiciels</a>).</p>
-            <a className="btn btn-or" href={STUDIO_URL} target="_blank" rel="noopener">Voir CARBURANT en action <ArrowRight size={18} aria-hidden="true" /></a>
+            <a className="btn btn-or" href={STUDIO_URL} target="_blank" rel="noopener">Voir PRISE EN CHARGE en action <ArrowRight size={18} aria-hidden="true" /></a>
           </motion.article>
 
           <div className="studio-offres">
@@ -64,7 +64,7 @@ export default function Studio() {
                 <h3>{OFFRES.studio.nom}</h3>
                 <p className="studio-prix">{OFFRES.studio.libellePrix}</p>
               </div>
-              <p>Pack Qualiopi, BPF, Parcours et CARBURANT, pour un seul prix. Sans engagement.</p>
+              <p>Pack Qualiopi, BPF, Parcours et PRISE EN CHARGE, pour un seul prix. Sans engagement.</p>
             </Reveal>
           </div>
         </div>

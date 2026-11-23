@@ -1,5 +1,5 @@
 // Démo YEBA Studio : les données fictives de demo.js, au format « client » (celui de l'espace chiffré).
-// Ainsi la démo passe par EXACTEMENT les mêmes écrans que les clients (saisie, documents, BPF, CARBURANT).
+// Ainsi la démo passe par EXACTEMENT les mêmes écrans que les clients (saisie, documents, BPF, PRISE EN CHARGE).
 import { DEMO } from './demo.js'
 import { donneesVides } from './modele.js'
 

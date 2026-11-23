@@ -1,4 +1,4 @@
-// « Mes données » : tout ce que l'organisme saisit une fois, et qui nourrit Parcours, le BPF, CARBURANT et les documents.
+// « Mes données » : tout ce que l'organisme saisit une fois, et qui nourrit Parcours, le BPF, PRISE EN CHARGE et les documents.
 import { useState } from 'react'
 import { Building2, CheckCircle2 } from 'lucide-react'
 import Collection, { Champ } from './Collection.jsx'

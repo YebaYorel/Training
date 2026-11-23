@@ -1,4 +1,4 @@
-// Les 10 pièces du dossier stagiaire suivies par Parcours, CARBURANT et l'audit blanc.
+// Les 10 pièces du dossier stagiaire suivies par Parcours, PRISE EN CHARGE et l'audit blanc.
 export const PIECES = [
   ['programme', 'Programme'],
   ['convention', 'Convention signée'],

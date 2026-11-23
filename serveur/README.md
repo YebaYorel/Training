@@ -42,4 +42,4 @@ vous encaissez par un **lien de paiement Mollie** créé dans votre tableau de b
 npm run licence -- emettre --offre bpf --poste XXXX-XXXX-XXXX --nom "Nom Prénom" --email x@y.re --organisme "OF"
 ```
 
-CARBURANT fonctionne alors avec ses règles et des modèles de textes (pas d'IA générative).
+PRISE EN CHARGE fonctionne alors avec ses règles et des modèles de textes (pas d'IA générative).

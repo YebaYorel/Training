@@ -371,7 +371,7 @@ thead th { font-family: var(--titre); font-size: 0.78rem; letter-spacing: 0.04em
 .nsf-lib { display: block; font-weight: 400; color: var(--doux); font-size: 0.78rem; }
 .alerte.niv-alerte span, p.alerte { display: flex; gap: 10px; align-items: center; }
 
-/* CARBURANT */
+/* PRISE EN CHARGE */
 .flamme { color: #e0572b; vertical-align: -4px; }
 .badge-ia { display: inline-flex; gap: 6px; align-items: center; padding: 8px 14px; border-radius: 999px; background: #eef1f6; color: var(--doux); font-weight: 700; font-size: 0.85rem; }
 .badge-ia.on { background: var(--vert-f); color: var(--vert); }
