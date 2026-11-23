@@ -18,3 +18,9 @@ Ce dossier garde la source des modules greffés, pour relecture et historique.
   confirmation du destinataire avant TOUT brouillon Gmail, avec carnet d'adresses mémorisé dans le coffre chiffré
   (adresse personnelle et liste STOP refusées) ; « Décortiquer sans dates » (REAC via le moteur de Pilotage, syllabus
   via Claude) : progression et séances, sans dates ni contenu de cours, export Word.
+
+## v11 (23/11/2026) — `assistant-missions-v11.js`
+- **Missions & contrats** réécrit pour la lisibilité : titre sur toute la largeur (il était écrasé par les boutons), fiches en grand texte, faits clés en cases, notes du contrat lisibles, dates par mois, filtres (en cours / à signer / terminées), agenda des prochaines interventions.
+- **Assistant** (Aujourd'hui › Assistant) : rassemble Boîte de réception, indicateurs Qualiopi, factures sans paiement, numéros de facture en double et règles des missions ; pour chaque problème « ce que vous avez déjà » + « ce que je propose » ; solution détaillée et exemple de support (.docx) par Claude (données masquées) ; matrice d'adéquation au référentiel (indicateur 7) construite depuis les décorticages.
+- RIB injecté **à la publication seulement** (`__IBAN_YEBA__` dans ce dépôt public).
+- Garde-fou : aucun brouillon Gmail si le connecteur est branché sur une autre adresse que yebaformations@gmail.com.
