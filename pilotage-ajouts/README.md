@@ -29,3 +29,7 @@ Ce dossier garde la source des modules greffés, pour relecture et historique.
 - Numéro de facture automatique **F-XXX-01** : préfixe par centre (T, BCC, B, JC, I, GEM… réglables dans l'Assistant), rang dans l'année, retour à 01 au 1er janvier ; avoirs dans la même suite.
 - Alerte si deux centres partagent le même préfixe. Le numéro F-XXX-01 est celui affiché sur le PDF et dans les mails.
 - Base : BOFiP BOI-TVA-DECLA-30-20-20-10, § 70-90. Tests : 7/7.
+
+## v13 (23/11/2026)
+- Préfixe **FA** pour FORM'AOU.
+- Les fiches marquées « EXEMPLE (fictif) » (client ou facture) sont ignorées partout : montants, relances, préfixes.

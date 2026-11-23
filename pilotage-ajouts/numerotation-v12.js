@@ -2,7 +2,7 @@
  * Règle d'Aurélien : F = facture ; XXX = lettre(s) du centre ; 01 = rang de la facture dans l'année pour ce centre,
  * remis à 01 au 1er janvier. BOFiP BOI-TVA-DECLA-30-20-20-10 § 70-90 : séries distinctes admises, chronologiques
  * et continues, deux factures de la même année ne portent jamais le même numéro. */
-const PREFIXES_DEFAUT = { "TETRANERGY": "T", "BARRY CONNAN CONSEIL": "BCC", "BEFORMA": "B", "JC FORMATION": "JC", "ICCI FORMATION": "I", "GEM FORMATION": "GEM" };
+const PREFIXES_DEFAUT = { "TETRANERGY": "T", "BARRY CONNAN CONSEIL": "BCC", "BEFORMA": "B", "JC FORMATION": "JC", "ICCI FORMATION": "I", "GEM FORMATION": "GEM", "FORM AOU": "FA" };
 const normNom = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
 function prefixeClient(clientId) {
   const c = cfg(), choisi = (c.prefixes || {})[clientId];
@@ -74,4 +74,18 @@ problemesAssistant = function (r) {   // eslint-disable-line no-func-assign
   const P = problemesV11(r);
   for (const [p, L] of conflitsPrefixes()) P.push({ id: "pf-" + p, source: "Factures", niv: "att", titre: `Préfixe de facture « ${p} » commun à ${L.join(" et ")}`, constat: "Deux centres ne doivent pas partager les mêmes lettres : leurs factures F-" + p + "-01, F-" + p + "-02… se confondraient.", existant: [], propositions: ["Choisir des lettres différentes dans « Numéros de facture » (bas de cette page)."] });
   return P;
+};
+
+// ------------------------------------------------------------------ V13 : les fiches « EXEMPLE (fictif) » ne comptent nulle part
+const estExemple = (s) => /^\s*EXEMPLE\b/i.test(String(s || ""));
+const chargerAvantV13 = charger;
+charger = async function (table, force) {   // eslint-disable-line no-func-assign
+  const r = await chargerAvantV13(table, force);
+  if (!Array.isArray(r)) return r;
+  if (table === "entreprises" || table === "devis") {
+    const exclus = new Set((M.at.entreprises || []).filter((e) => estExemple(e.notes)).map((e) => e.id));
+    const garde = r.filter((x) => !estExemple(x.notes) && !(table === "devis" && (x.client || []).some((id) => exclus.has(id))) && !(table === "entreprises" && exclus.has(x.id)));
+    if (garde.length !== r.length) { M.at[table] = garde; return garde; }
+  }
+  return r;
 };
