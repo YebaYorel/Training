@@ -13,3 +13,8 @@ Ce dossier garde la source des modules greffés, pour relecture et historique.
   forfait, jours non réalisés exclus, jamais en double) ; décorticage (Atelier pédagogique) ; progression et déroulé
   de chaque jour (.docx, horaires et pauses saisis, jamais supposés) ; suggestions de règles et de Claude.
   Table Airtable « MISSIONS & CONTRATS » (`tbl1gThEYdf0xZAaV`).
+- `factures-carnet-decorticage.js` (2026-11-23, version 10) : « Voir / modifier » sur chaque devis et facture
+  (aperçu exact du PDF, modification des brouillons seulement : une facture émise se corrige par avoir) ;
+  confirmation du destinataire avant TOUT brouillon Gmail, avec carnet d'adresses mémorisé dans le coffre chiffré
+  (adresse personnelle et liste STOP refusées) ; « Décortiquer sans dates » (REAC via le moteur de Pilotage, syllabus
+  via Claude) : progression et séances, sans dates ni contenu de cours, export Word.
