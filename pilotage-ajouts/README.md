@@ -24,3 +24,8 @@ Ce dossier garde la source des modules greffés, pour relecture et historique.
 - **Assistant** (Aujourd'hui › Assistant) : rassemble Boîte de réception, indicateurs Qualiopi, factures sans paiement, numéros de facture en double et règles des missions ; pour chaque problème « ce que vous avez déjà » + « ce que je propose » ; solution détaillée et exemple de support (.docx) par Claude (données masquées) ; matrice d'adéquation au référentiel (indicateur 7) construite depuis les décorticages.
 - RIB injecté **à la publication seulement** (`__IBAN_YEBA__` dans ce dépôt public).
 - Garde-fou : aucun brouillon Gmail si le connecteur est branché sur une autre adresse que yebaformations@gmail.com.
+
+## v12 (23/11/2026) — `numerotation-v12.js`
+- Numéro de facture automatique **F-XXX-01** : préfixe par centre (T, BCC, B, JC, I, GEM… réglables dans l'Assistant), rang dans l'année, retour à 01 au 1er janvier ; avoirs dans la même suite.
+- Alerte si deux centres partagent le même préfixe. Le numéro F-XXX-01 est celui affiché sur le PDF et dans les mails.
+- Base : BOFiP BOI-TVA-DECLA-30-20-20-10, § 70-90. Tests : 7/7.
