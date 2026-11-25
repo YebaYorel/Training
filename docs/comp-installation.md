@@ -43,11 +43,13 @@ Source lue le 25/11/2026 : dépôt github.com/trycompai/comp, fichiers `README.m
 - Sous-domaines proposés : `conformite.yebaformations.re` (application) et `portail.yebaformations.re`.
 - Sauvegarde quotidienne chiffrée de la base (RGPD art. 32).
 
-## Ce qu'Aurélien doit fournir (décision dans Airtable > DÉCISIONS DU DIRIGEANT)
+## Décisions (Airtable > DÉCISIONS DU DIRIGEANT)
 
-1. Accord sur le serveur OVHcloud (coût mensuel à vérifier sur ovhcloud.com avant commande).
-2. Accès DNS du domaine yebaformations.re pour les deux sous-domaines.
-3. Accord sur Resend (américain) **ou** sur la modification du code pour Brevo.
+| Point | État au 25/11/2026 |
+|---|---|
+| 1. Serveur OVHcloud | **En attente** : pas encore de réponse d'Aurélien |
+| 2. Deux sous-domaines | **Autorisé** ; bloqué techniquement : on ne sait pas où le domaine est géré et `yebaformations.re` ne répond pas publiquement. Il faut aussi l'adresse IP du serveur (point 1) |
+| 3. E-mails | **Brevo choisi** ; correctif prêt et testé : `outils/comp/` |
 4. Création des comptes : se fera avec request_credential / dans l'environnement, jamais en clair dans le dépôt.
 
 ## En attendant : l'outil de la CNIL, dès ce soir
