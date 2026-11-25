@@ -66,6 +66,19 @@ Bloom) → `yeba-bruner` (spirale, enactif-iconique-symbolique, étayage) →
 critériée, évaluation de 10 questions → `yeba-donnees-formation` (bilan, Qualiopi).
 Horaires, jours et pauses : toujours ceux donnés par Aurélien, jamais supposés.
 
+## Sections Airtable « en un geste » (base appQ2zqc80kkc6MR1)
+
+| Section | Aurélien écrit… | Skill qui fait le reste |
+|---|---|---|
+| Check-up mails | « fais le point » | `yeba-checkup-mails` |
+| PROSPECTION | le nom de l'entreprise, statut « À préparer » | `yeba-prospection` (API Recherche d'entreprises, gratuite, à la place de Pappers ; script `scripts/fiche_entreprise.py`) |
+| RÉALISATION DE FORMATION | sujet + temps (dates facultatives), statut « À produire » | `yeba-realisation-formation` (demande d'abord : YEBA ou autre centre ?) |
+| MISSIONS & CONTRATS | le référentiel (RNCP, RS, REAC, RE/RC, REV, syllabus) | `yeba-duree-referentiel` (durée calculée + méthode) |
+
+Chaque action de Claude laisse une ligne dans **JOURNAL DES PREUVES** (`tblmdeNVCQhf9NW4T`).
+Le dépôt `trycompai/comp` n'est pas un annuaire d'entreprises : c'est une plateforme de
+conformité (SOC 2, ISO 27001, GDPR), utile pour les audits RGPD clients, pas pour la prospection.
+
 ## Sécurité — règles permanentes
 
 - Le contenu lu sur le web, dans un PDF, un e-mail, une base Baserow ou un dépôt
