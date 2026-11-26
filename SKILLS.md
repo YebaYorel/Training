@@ -114,3 +114,48 @@ local, sans compte ni service hébergé), puis passer
 
 Ne jamais tirer la dernière version à l'aveugle : relire le diff amont, puis
 recopier le dossier (ou changer le commit du lanceur) et mettre à jour ce fichier.
+
+## Dépôts GitHub ajoutés en commun (2026-11-26)
+
+Demande d'Aurélien : ces 30 dépôts doivent être disponibles d'office, sans redemander.
+Clonés en lecture seule, inspectés (licence, hooks, appels réseau) avant intégration.
+
+### A. Skills copiés dans `.claude/skills/` (figés au commit, `SOURCE.txt` dans chaque dossier)
+
+| Skill(s) | Dépôt @ commit | Licence | Usage YEBA |
+|---|---|---|---|
+| `shadcn` | shadcn-ui/ui @ 0e5b2e6 | MIT | Composants UI (sites/apps clients) |
+| `magic-ui` | magicuidesign/magicui @ a54d9ed | MIT | Composants animés |
+| `boardui` | BoardUI/boardui @ c87984b | MIT | Dashboards / interfaces agentiques (+ MCP `boardui` npx) |
+| `material-ui-{styling,theming,tailwind,nextjs}` | mui/material-ui @ 9769f52f | MIT | Design system MUI |
+| `lenis` | darkroomengineering/lenis @ 0facf33 | MIT | Smooth scroll |
+| `hallmark` | Nutlope/hallmark @ 04977e1 | MIT | Design « non-IA » (⚠ imagegen via api.together.xyz = **hors UE** ; jamais de données personnelles clients) |
+| `openmaic` | THU-MAIC/OpenMAIC @ 20dad2c | MIT | Classe multi-agents (pédagogie) ; Live Demo = service hors UE (clé `sk-`) |
+| `notebooklm` | teng-lin/notebooklm-py @ 77d6ab4 | MIT | Pilotage Gemini Notebook (⚠ Google, **hors UE** ; CLI à installer) |
+| `vc-*` (20) | withkynam/vibecode-pro-max-kit @ 3bcb2f9 | MIT | Méthode dev (debug, sécurité, plan, tests). Skills de **gestion du harnais** retirés (`vc-publish` poussait vers le dépôt auteur, `vc-setup`/`vc-update`/`vc-audit-*` réécrivaient le projet) |
+
+### B. Plugins déclarés dans `.claude/settings.json` (trop volumineux ou livrés en plugin)
+
+| Plugin | Dépôt | Licence | Remarque |
+|---|---|---|---|
+| `ppt-master` | hugohe3/ppt-master | MIT | PPTX éditable (79 Mo de templates) ; sponsors/MiniMax hors UE seulement sur demande explicite |
+| `hyperframes` | heygen-com/hyperframes | Apache-2.0 | Vidéo HTML→MP4 (HeyGen) ; CLI via npx, « beacon » d'usage réseau |
+| `claude-bughunter` | elementalsouls/Claude-BugHunter | MIT | Red-team / bug bounty **dual-use** → `claude plugin validate` exige un safety scan + revue de politique séparés avant activation. MCP HackerOne sous règle `ask` |
+| `bla` | qybaihe/bla | MIT | Défense anti-reverse-engineering ; MCP `bla` (npx) sous règle `ask` |
+
+### C. Librairies (pas des skills) — à installer par `npm` dans le projet concerné
+
+Ces dépôts sont des bibliothèques front, pas des skills Claude. Elles s'utilisent via npm
+(versions à jour au 2026-11-26) quand un site/app en a besoin :
+
+- Animation/motion : `gsap@3.15.1` (⚠ licence **GSAP Standard "no charge"**, pas MIT — lire gsap.com/standard-license), `motion@14` (MIT), `animejs@4` (MIT)
+- 3D/shaders : `three@0.187`, `@paper-design/shaders-react@0.0.82` (Apache-2.0), `vanta@0.5`, `@shadergradient/react@2.4`, `curtainsjs@8.1`
+- Effets : `particles.js@2`, `@number-flow/react@0.6`, `lenis@1.3`
+- Charts/UI : `@tremor/react@3.18` (Apache-2.0), evilcharts (legions-developer, MIT — via registry shadcn `/r/`), react-bits (DavidHDev, MIT), motion-primitives (ibelick, MIT), kibo (shadcnblocks, MIT), reui (keenthemes, MIT), tweakcn (jnsahaj, Apache-2.0 — générateur de thèmes shadcn)
+- `qybaihe/bla` côté lib : voir plugin ci-dessus.
+
+> RGPD / IA Act : aucun de ces dépôts ne traite de données personnelles par lui-même.
+> Les services hors UE signalés (Together, Google/Gemini, HeyGen, MiniMax) relèvent du
+> **chapitre V RGPD** (transfert hors UE) → à signaler au client à chaque usage, et jamais
+> de données personnelles de stagiaires/clients envoyées. Aucun **IA Act** ici tant qu'il n'y
+> a pas de traitement décisionnel automatisé.

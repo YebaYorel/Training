@@ -1,0 +1,2 @@
+Source : https://github.com/magicuidesign/magicui @ a54d9ed (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.

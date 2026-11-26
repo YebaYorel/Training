@@ -102,6 +102,27 @@ hébergés hors UE pour avoir les meilleurs. Claude continue malgré tout de
 **ne jamais y envoyer de données personnelles de clients ou de stagiaires**,
 et de signaler le transfert (RGPD, chapitre V) à chaque usage.
 
+## Dépôts GitHub communs — à mobiliser d'office (sans redemander)
+
+Aurélien veut que ces outils soient utilisés spontanément. Inventaire complet,
+licences, commits figés et garde-fous : `SKILLS.md` § « Dépôts GitHub ajoutés ».
+
+| Besoin | Réflexe |
+|---|---|
+| Composants UI web/app | skill `shadcn` d'abord ; puis `magic-ui`, `boardui` (dashboards), `material-ui-*` |
+| Librairies front à `npm install` dans le projet | `gsap` (⚠ licence Standard, pas MIT), `motion`, `animejs`, `three`, `vanta`, `@paper-design/shaders-react`, `@shadergradient/react`, `curtainsjs`, `particles.js`, `lenis`, `@number-flow/react`, `@tremor/react` ; registries shadcn : evilcharts, react-bits, motion-primitives, kibo, reui, tweakcn |
+| Design « non-IA » d'une page/site | skill `hallmark` (⚠ imagegen hors UE) |
+| PPTX éditable depuis PDF/DOCX/URL | plugin `ppt-master` (après `yeba-powerpoint` pour la charte) |
+| Vidéo HTML→MP4 | plugin `hyperframes` |
+| Pédagogie multi-agents | skill `openmaic` |
+| Piloter Gemini Notebook | skill `notebooklm` (⚠ Google, hors UE) |
+| Méthode dev (debug, plan, sécurité, tests) | skills `vc-*` |
+| Audit sécurité / red-team (dual-use) | plugins `claude-bughunter`, `bla` — **seulement sur mission autorisée** (pentest/CTF/défense), safety scan requis avant activation |
+
+Garde-fous conservés : services hors UE (Together, Gemini, HeyGen, MiniMax) =
+transfert **RGPD chapitre V** à signaler, jamais de données personnelles de
+stagiaires/clients. Les MCP `bla` et `hackerone` sont sous règle `ask`.
+
 ## Skills et plugins installés
 
 Inventaire complet, sources figées et refus motivés : `SKILLS.md`.

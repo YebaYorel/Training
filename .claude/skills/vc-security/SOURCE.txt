@@ -1,0 +1,2 @@
+Source : https://github.com/withkynam/vibecode-pro-max-kit @ 3bcb2f9 (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.

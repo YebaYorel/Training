@@ -16,7 +16,9 @@
       "Bash(rm -rf:*)",
       "mcp__google-ads",
       "mcp__meta-ads",
-      "mcp__composio"
+      "mcp__composio",
+      "mcp__plugin_bla_bla",
+      "mcp__plugin_claude-bughunter_hackerone"
     ]
   },
   "enabledMcpjsonServers": [
@@ -66,7 +68,11 @@
     "content-marketing@claude-code-workflows": true,
     "business-analytics@claude-code-workflows": true,
     "startup-business-analyst@claude-code-workflows": true,
-    "claude-mem@thedotmack": false
+    "claude-mem@thedotmack": false,
+    "ppt-master@ppt-master": true,
+    "hyperframes@hyperframes": true,
+    "claude-bughunter@elementalsouls": true,
+    "bla@bla": true
   },
   "extraKnownMarketplaces": {
     "context-mode": {
@@ -205,6 +211,30 @@
       "source": {
         "source": "github",
         "repo": "thedotmack/claude-mem"
+      }
+    },
+    "ppt-master": {
+      "source": {
+        "source": "github",
+        "repo": "hugohe3/ppt-master"
+      }
+    },
+    "hyperframes": {
+      "source": {
+        "source": "github",
+        "repo": "heygen-com/hyperframes"
+      }
+    },
+    "elementalsouls": {
+      "source": {
+        "source": "github",
+        "repo": "elementalsouls/Claude-BugHunter"
+      }
+    },
+    "bla": {
+      "source": {
+        "source": "github",
+        "repo": "qybaihe/bla"
       }
     }
   }

@@ -1,0 +1,2 @@
+Source : https://github.com/mui/material-ui @ 9769f52f (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.

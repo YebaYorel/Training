@@ -1,0 +1,2 @@
+Source : https://github.com/BoardUI/boardui @ c87984b (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.

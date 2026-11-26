@@ -1,0 +1,2 @@
+Source : https://github.com/teng-lin/notebooklm-py @ 77d6ab4 (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.

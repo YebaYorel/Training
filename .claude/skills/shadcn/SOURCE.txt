@@ -1,0 +1,2 @@
+Source : https://github.com/shadcn-ui/ui @ 0e5b2e6 (copie figée le 2026-11-26)
+Licence : voir LICENSE. Aucun hook installé.
