@@ -52,7 +52,7 @@ les descriptions : un skill peut alors devoir être appelé **par son nom**.
 | `yeba-*` (charte, powerpoint, ingénierie, bloom, bruner, déroulé, données, vulgarisation) | créés pour YEBA | — |
 | `founder-*` (11) | Jakeschincariol/founder-skill @ `fd9385b` | MIT |
 | `arena` | Jakeschincariol/arena-skill @ `df07b8e` | MIT |
-| `ig-*` (13) | Jakeschincariol/instagram-agent-skill @ `d03c56b` | MIT |
+| `ig-*` (13) | Jakeschincariol/instagram-agent-skill @ `d03c56b` (vérifié identique le 2026-11-28) | MIT |
 | `frontend-slides` | zarazhangrui/frontend-slides @ `9906a34` | MIT |
 | `theme-factory` | anthropics/skills @ `2c5958e` | Apache 2.0 |
 | `academic-pptx` | Gabberflast/academic-pptx-skill @ `9f2b703` | MIT |
@@ -75,6 +75,7 @@ dans `.claude/vendor-cache/`, ignoré par Git, via `scripts/lanceur_depot.py`) :
 | `vercel-skills` | vercel-labs/agent-skills @ `1a2c79d` | pas de licence |
 | `huashu-design` | alchaincyf/huashu-design @ `b2460b0` | 41 Mo de médias ; voix ByteDance (Chine) à ne pas utiliser |
 | `openmontage` | calesthio/OpenMontage @ `d21f5d4` | projet complet, AGPL |
+| `magi-video` | SandAI-org/MAGI-2-preview @ `f68a0f9` | modèle vidéo : code seul, 307 Go de poids, 8 GPU H100 requis (pas dans le cloud) ; licence Apache-2.0 |
 | `omniroute` | diegosouzapw/OmniRoute @ `3ee8039` | 46 skills rangés dans `.claude/reserve/omniroute/` (inutiles sans serveur OmniRoute) |
 
 ## 3. Serveurs MCP (`.mcp.json`)

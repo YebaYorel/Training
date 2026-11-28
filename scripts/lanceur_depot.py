@@ -1,7 +1,7 @@
 """Télécharge un dépôt de skills à une version FIGÉE dans un cache ignoré par Git.
 
 Utilisé par les skills « lanceurs » (huashu-design, vercel-skills, openmontage,
-llm-council) : le code tiers n'est pas recopié dans le dépôt (licence absente,
+llm-council, magi-video) : le code tiers n'est pas recopié dans le dépôt (licence absente,
 fichiers lourds ou licence AGPL), mais récupéré à la demande et vérifié.
 
   python scripts/lanceur_depot.py <owner/repo> <commit_complet> <nom_dossier>
